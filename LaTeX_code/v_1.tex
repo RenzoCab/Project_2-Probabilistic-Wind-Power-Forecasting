@@ -1,0 +1,117 @@
+\documentclass[aspectratio=169]{beamer}\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{amsmath,mathtools}
+\usepackage{mathptmx}
+\usepackage[11pt]{moresize}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{color}
+\usepackage{tabularx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\I}{\mathbb{I}}
+
+\title{Prediction of Wind Power Generation}
+\subtitle{ Waleed Alhaddad}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}\frametitle{Model}
+
+\begin{equation}
+\begin{split}
+dX(t) &= b(X(t); \theta) dt + \sigma (X(t); \theta ) dW(t) \quad t > 0 \\
+X(0) & = x_0
+\end{split}\label{main}
+\end{equation}
+where $X(t) \in [0,1]$ is the normalized stochastic analogue of the power generated $p(t)$. 
+
+\begin{enumerate}
+\item Drift is given by $b(X(t),t ; \theta) = - \theta (t) \Big(X(t)-p(t)\Big)$
+\item Non-centered diffusion is given by: $ \sigma (X(t); \theta) = \sqrt{2\alpha(t) \theta (t) p(t) \Big(1-p(t)\Big) X(t) \Big(1-X(t)\Big)}  $
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}\frametitle{ Toy model with synthetic data }
+We generate paths from the SDE in (\ref{main}) with given parameters using Monte Carlo simulation and then fit the model to check the retrievability of the parameters. We consider the following cases:
+\begin{itemize}
+\item[1:] We consider contant parameters $\theta (t) = \alpha  = 1$
+\item[2:] We consider time varying parameter profiles: 
+\item[3:] We consider random parameters:
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{ Liklihood function }
+
+\begin{equation}
+\mathcal{L}(\theta) = \prod\limits_{i=1}^n\rho( {X_{i+1}|X_{i}}, \theta)  \rho(X_0) 
+\end{equation}
+We first consider Gaussian transition densities,
+\begin{equation}
+\mathcal{L}(\theta) = \prod\limits_{i=1}^n     \rho( {X_{i+1}|X_{i}}, \theta)  \rho(X_0) = \prod\limits_{i=1}^n  \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\Big(\frac{-((X_{i+1}-X_i) - bdt )^2}{2\sigma^2}\Big)
+\end{equation}
+
+\end{frame}
+
+\begin{frame}\frametitle{ Case 1: Contant Parameters }
+In this case, we have
+\begin{itemize}
+\item $ \sigma (X(t); \theta) = \sqrt{2 p(t) \Big(1-p(t)\Big) X(t) \Big(1-X(t)\Big)}  $
+\item $b(X(t),t ; \theta) = -  \Big(X(t)-p(t)\Big)$
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+Thanks
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

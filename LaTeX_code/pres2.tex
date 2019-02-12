@@ -1,0 +1,369 @@
+\documentclass[aspectratio=169]{beamer}\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{amsmath,mathtools}
+\usepackage{mathptmx}
+\usepackage[11pt]{moresize}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{color}
+\usepackage{tabularx}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\I}{\mathbb{I}}
+
+\title{Sequential Monte Carlo And  its Applications}
+\subtitle{Renzo Caballero \& Waleed Alhaddad}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}\frametitle{Introduction: Sequential Monte Carlo (SMC)}
+We are interested in sampling from a "hard to sample" distribution  $\pi (\cdot): E \rightarrow [0,1] $. Then we find a sequence of distributions $\{\pi_n  \}_{n\in \T}$ where $\T = \{ 1,2, \ldots , N  \}$  such that $\pi_n = K_{n-1,n}\pi_{n-1} $ and $\pi = \pi_N $. The general  procedure is as follows:
+\begin{enumerate}
+\item Apply Importance Sampling sequentially (SIS)
+\item A resampling step to control the variance of the SIS.
+\item Compute probability weights corresponding  to the next distribution using a proposal  density.
+\item Compute a quantity of interest using the weights of $\pi_N$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{SMC Applications }
+
+SMC has many applications and particle filtering is one of the most well known. However, SMC is a general class of algorithms and here we will present other areas where it could be applied. The applications presented here are:
+\begin{itemize}
+\item SMC for sampling from difficult distributions.
+\item SMC in  the  Bayesian  framework
+\item SMC for rare event sampling from difficult distributions.
+\end{itemize}
+A distribution may be  considered difficult if:
+\begin{itemize}
+\item Its parametric form has many sharp peaks and valleys.
+\item It attains mass in a tiny space in a high dimensional setting. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{SMC for sampling }
+We would like to sample from a difficult distribution $\pi (x)$. We use tempering to construct a sequence of functions $\{ \pi (x)^\eta \}_{\eta \in \{ \frac{1}{N}, \frac{2}{N}, \ldots , 1 \}}$ tending to  our target  $\pi (x)$.\\
+The method consists of the following steps:
+\begin{itemize}
+\item STEP 1:  Importance Sampling  (SIS)
+\item STEP 2: Resampling.
+\item STEP 3: Obtaining  a quantity of interest 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{SMC for sampling }
+\textbf{ STEP 1: Applying Sequential Importance Sampling  (SIS)}\\
+For $j=1$
+\begin{enumerate}
+\item[§1.1]  We choose a proposal density   $\kappa (x) $.
+\item[§1.2] Sample IID $X_1^{(i)} \sim\kappa (x)$  for $i =1,2,\ldots, M$.
+\item[§1.3] Compute the weights $w^{(i)}_1= \frac{ \pi (X^{(i)})^{1/N}}{\kappa (X^{(i)}) }$\\
+\end{enumerate}
+For $ 1 < j \leq N  $
+\begin{enumerate}
+\item[§1.4]  We choose  $\pi_{j-1}(x)$  as our  proposal density.
+\item[§1.5] Compute the weights $w^{(i)}_j= \frac{\pi_{j}(X_1^{(i)})}{\pi_{j-1}(X_1^{(i)})}$
+\item[§1.6] Normalize the weights, $\tilde{w}^{(i)}_j = \frac{w^{(i)}_j}{\sum_{i=1}^M w^{(i)}_j}$ 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{SMC for sampling }
+\textbf{STEP 2: Resampling }\\
+Next,  we aim to place more samples in our area of interest , and in this case, it is  where the  probability is high. Hence, we resample the samples  associated with large weights.\\
+\begin{enumerate}
+\item[§2.1] Compute the Effective Sample Size $ESS= \frac{1}{\sum_{i=1}^M (\tilde{w}^{(i)}_j )^2 }$ 
+\item [§2.2] Given a threshold $T \in [0,M]$ we check if $ESS < T$: 
+\begin{enumerate}
+\item[§2.2.1]  Sample IID $\tilde{X}_j  \sim  multinomial(M,\underbar{w}_j)$  where $\underbar{w}_j=(\tilde{w}^{(1)}_j , \tilde{w}^{(2)}_j ,\tilde{w}^{(3)}_j ,\ldots, \tilde{w}^{(M)}_j )^{tr} $ and remove duplicated samples.
+\item[§2.2.2]  For all $i \leq M$, set the weights $ \tilde{w}_j^{(i)} = \frac{1}{M} $
+\end{enumerate}
+\end{enumerate}
+\textbf{STEP 3: Obtaining quantity of interest  QoI }\\
+Now we have all the pairs $(\tilde{w}_N^{(i)},X_N^{(i)} )$, we can directly approximate a  QoI  in the following way, 
+\begin{equation}
+\E [ \psi (x)] \approx \sum_{i=1}^M \tilde{w}_N^{(i)}  \psi (X_N^{(i)})
+\end{equation}
+
+\end{frame}
+
+\begin{frame}\frametitle{Example: SMC for sampling  }
+We apply our technique to a mixture of sharp Gaussians.
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F1.eps}
+		\caption{Using $M=1000, N=3$ with  $ \kappa \sim uniform $. We see that the samples accumulate in the areas of high probability as required.   }
+		\label{Ex1}
+	\end{minipage}%
+	\begin{minipage}{.05\textwidth}
+	\end{minipage}
+	\begin{minipage}{.40\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F2.eps}
+		\caption{Effective sample size for $N\leq 3$ steps. We started with a very low effective sample size and after only one iteration we have exceeded the required normalized (respect of the total number of samples) threshold at $T=0.5$}
+		\label{Ex2}
+	\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{SMC for rare events sampling }
+Again we have  a difficult distribution $\pi (x)$ to sample from. However, now we are interested in get samples in areas with extremly low probability, this describe the probability to happen of very rare events. This means that we have to modify our resampling step as follows:
+\textbf{STEP 2: Resampling (modified for rare events) }\\
+\begin{enumerate}
+\item[§2.0]  set $\hat{w}^{(i)}= 1-\tilde{w}^{(i)}$ and normalize.
+\item[§2.1] Compute the Effective Sample Size $ESS= \frac{1}{\sum_{i=1}^M (\hat{w}^{(i)}_j )^2 }$ 
+\item [§2.2] Given a threshold $T \in [0,M]$ we check if $ESS < T$: 
+\begin{enumerate}
+\item[§2.2.1]  Sample IID $\tilde{X}_j  \sim  multinomial(M,\underbar{w}_j)$  where $\underbar{w}_j=(\hat{w}^{(1)}_j , \hat{w}^{(2)}_j ,\hat{w}^{(3)}_j ,\ldots, \hat{w}^{(M)}_j )^{tr} $ and remove duplicated samples.
+\item[§2.2.2]  For all $i \leq M$, set the weights $ \hat{w}_j^{(i)} = \frac{1}{M} $
+\end{enumerate}
+\end{enumerate}
+We choose  $\hat{w}^{(i)}= 1-\tilde{w}^{(i)}$ to obtain the probability of an event not taking place which corresponds to having $1-p$ in a $multinomial(n,1-p)$. And in this way, we are resampling  samples which are associated with low probabilities.
+\end{frame} 
+
+
+\begin{frame}\frametitle{Example: SMC for rare event sampling  }
+We apply our technique to a mixture of  Gaussians and track the evolution of the samples
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F120.png}
+		\caption{Using $M=1000$ with  $ \kappa \sim uniform $. We see that the samples accumulate in the areas of low probability as required.   }
+		\label{Ex1}
+	\end{minipage}%
+	\begin{minipage}{.05\textwidth}
+	\end{minipage}
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F130.eps}
+		\caption{Effective sample size for $N\leq10$. We started with a very low effective sample size and it increases until we have exceeded the required threshold at $T=0.91$}
+		\label{Ex2}
+	\end{minipage}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}\frametitle{Example: SMC for sampling rare events  }
+Results using  the same threshold $T=0.91$.
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F3.eps}
+		\caption{Using $M=1000$ with  $ \kappa \sim uniform $. We see that the samples accumulate in the areas of low probability as required. However, with few samples in a higher probability area    }
+		\label{Ex1}
+	\end{minipage}%
+	\begin{minipage}{.05\textwidth}
+	\end{minipage}
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F4.eps}
+		\caption{Effective sample size for $N\leq 10$. The effective sample size  increases as resampling is performed.  }
+		\label{Ex2}
+	\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Example: SMC for sampling rare events  }
+Results using  a higher threshold $T=1$.
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F8.eps}
+		\caption{Using $M=1000$ with  $ \kappa \sim uniform $. We see that the samples accumulate exclusively  in  areas of very low probability as expected     }
+		\label{Ex1}
+	\end{minipage}%
+	\begin{minipage}{.05\textwidth}
+	\end{minipage}
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{F11.eps}
+		\caption{Effective sample size for $N\leq 10$. The effective sample size  increases as resampling is performed.  }
+		\label{Ex2}
+	\end{minipage}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}\frametitle{SMC in Bayesian Framework}
+In the Bayesian setting, our target distribution $\pi(\cdot)$ is the posterior $\pi(\theta|x) = \frac{\gamma(x, \theta)}{\int_\theta \gamma (x,\theta) \ d\theta} $ where $\gamma(x, \theta)= \underbrace{\mathcal{L}(x|\theta)}_{liklihood} prior(\theta)$. Then we construct  sequence of functions through tempering of $\gamma(x, \theta)$ into $N$ densities, where each density is given by:
+\begin{equation}
+\begin{split}
+&\gamma_0 (\theta , x) =  \Big[ \mathcal{L} (x|\theta) \Big]^0  prior(\theta)  = prior (\theta) \\
+&\gamma_1 (\theta , x) =  \Big[\mathcal{L} (x|\theta) \Big]^{1/N}\gamma_0 (\theta , x)   \\
+&\gamma_2 (\theta , x) =  \Big[ \mathcal{L} (x|\theta) \Big]^{1/N}\gamma_1 (\theta , x) \\
+&\gamma_3(\theta , x) =  \Big[ \mathcal{L} (x|\theta) \Big]^{1/N}\gamma_2 (\theta , x) \\
+&  \quad \quad  \quad  \quad  \quad  \quad  \quad \vdots \\
+&\gamma_N(\theta , x) =  \Big[ \mathcal{L} (x|\theta) \Big] \gamma_{N-1} (\theta , x) \\
+\end{split}
+\end{equation}
+
+%\begin{equation*}
+%\begin{split}
+%\gamma_1 (\theta |\{x_k\}^{\ell-1}_{k=1}) & =\underbrace{ \prod_{i=1}^{\ell -1} \mathcal{L} (x_i|\theta)}_{=K_{0, 1}} \ \gamma_{0} (\theta)\\
+%\gamma_2 (\theta |\{x_k\}^{2\ell-1}_{k=1}) & =\underbrace{ \prod_{i=\ell}^{2 \ell -1} \mathcal{L} (x_i|\theta)}_{=K_{1,2}} \ \gamma_{1} (\theta | \{x_k\}^{\ell-1}_{k=1})\\
+%\quad \quad &  \quad \vdots  \quad \quad  \quad \vdots  \\ 
+%\gamma_j (\theta |\{x_k\}^{j\ell-1}_{k=1}) & =\underbrace{ \prod_{i=(j-1)\ell}^{j \ell -1} \mathcal{L} (x_i|\theta)}_{=K_{j-1,\ j}} \ \gamma_{j-1} (\theta | \{x_k\}^{(j-1)\ell-1}_{k=1})\\
+%\end{split}
+%\end{equation*}
+\end{frame}
+
+
+\begin{frame}\frametitle{STEP 1: Applying Sequential Importance Sampling  (SIS)  }
+  We perform importance sampling sequentially as follows:\\
+  For $j=1$
+\begin{enumerate}
+\item[§1.1]  We choose  $\gamma_{0}(\theta , x)$  as our first proposal density.
+\item[§1.2] Sample IID $\theta_1^{(i)} \sim \gamma_{0}$  for $i =1,2,\ldots, M$.
+\item[§1.3] Compute the weights $w^{(i)}_1= \frac{\gamma_1(\theta_1)}{\gamma_0(\theta_1)}$
+\end{enumerate}
+For  $1< j \leq N$
+\begin{enumerate}
+\item[§2.1]  We choose  $\gamma_{j-1}(\theta , x)$  as our  proposal density.
+\item[§2.2] Compute the weights $w^{(i)}_j= \frac{\gamma_{j}(\theta_1)}{\gamma_{j-1}(\theta_1)}$
+\item[§2.3] Normalize the weights, $\tilde{w}^{(i)}_j = \frac{w^{(i)}_j}{\sum_{i=1}^M w^{(i)}_j}$ 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{STEP 2: Resampling  }
+Next,  we aim to place more samples in our area of interest, and in this case, it is  where the  probability is high. Hence, we resample the samples  based on a $multinomial(n,p)$  with parameter $p$ as chosen below.\\
+\begin{enumerate}
+\item[§3.1] Compute the Effective Sample Size $ESS= \frac{1}{\sum_{i=1}^M (w^{(i)}_j )^2 }$ 
+\item [§3.2] Given a threshold $T \in [0,M]$ we check if $ESS < T$: 
+\begin{enumerate}
+\item[§3.2.1]  Sample IID $\tilde{\theta}_j  \sim  multinomial(M,\underbar{w}_j)$  where $\underbar{w}_j=(\tilde{w}^{(1)}_j , \tilde{w}^{(2)}_j ,\tilde{w}^{(3)}_j ,\ldots, \tilde{w}^{(M)}_j )^{tr} $ and remove duplicated samples.
+\item[§3.2.2]  For all $i \leq M$, set the weights $ \tilde{w}_j^{(i)} = \frac{1}{M} $
+\end{enumerate}
+
+\end{enumerate}
+%\begin{equation}
+%\begin{cases}
+%\sigma=\Big(\sum^{n}_{i=1}\sigma^{-2}_i\Big)^{-\frac{1}{2}},\\
+%\mu=\sigma^2\sum^{n}_{i=1}\sigma^{-2}_i\mu_i.
+%\end{cases}
+%\end{equation}
+%If all the PDF have variance $\sigma_x$, then:
+%\begin{equation}
+%\begin{cases}
+%\sigma=\Big(\sum^{n}_{i=1}\sigma^{-2}_x\Big)^{-\frac{1}{2}}=\frac{\sigma_x}{\sqrt{n}},\\
+%\mu=\sigma^2\sum^{n}_{i=1}\sigma^{-2}_x\mu_i=\frac{1}{n}\sum^n_{i=1}\mu_i.
+%\end{cases}
+%\end{equation}
+\end{frame}
+
+\begin{frame}\frametitle{STEP 3: Obtaining quantity of interest  QoI }
+Now we have all the pairs $(\tilde{w}_N^{(i)},\theta_N^{(i)} )$, we can directly approximate a  QoI  in the following way, 
+\begin{equation}
+\E [ \psi (\theta)] \approx \sum_{i=1}^M \tilde{w}_N^{(i)}  \psi (\theta_N^{(i)})
+\end{equation}
+\end{frame}
+
+
+\begin{frame}\frametitle{Example: SMC for Bayesian }
+We model the measurement error of a deterministic parameter as $R \sim N(0,\tau)$. Then our joint posterior is given by 
+\begin{equation}
+\pi (\mu, \tau| x ) \propto \mathcal{L}(x|\mu, \tau) prior(\mu , \tau)
+\end{equation}
+where  $prior(\mu , \tau)=NormalGamma(\mu, \tau; \lambda, \alpha, \beta)$. We use synthetic data  following a normal distribution $N(\hat{\mu}, \hat{\tau})$. Then through Bayesian  inference we obtain the joint distribution of the parameters of interest $\mu$ and $\tau$ which are assumed to follow a  $NormalGamma$ and our goal is to sample from it. This  choice also enables us to benchmark the method, as these densities are conjugates.
+
+\end{frame}
+
+\begin{frame}
+Applying (SIS) without resampling,
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{.60\textwidth}
+		\centering
+		\includegraphics[width=1.\linewidth]{F7.eps}
+		\caption{Using $M=1000$. We observe that we have a lot of samples in low probability regions of no interest  }
+		\label{Ex1}
+	\end{minipage}%
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Example: SMC for Bayesian }
+Applying  sequential Monte Carlo
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=1.4\linewidth]{F9.eps}
+				\caption{Using $M=1000, N=5$ with  $ \kappa \sim uniform $. The samples (shown in dots) are in  areas of high probability  }
+		\label{Ex1}
+	\end{minipage}%
+	\begin{minipage}{.05\textwidth}
+	\end{minipage}
+	\begin{minipage}{.45\textwidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{F6.eps}
+		\caption{Effective sample size for $N\leq5, T=0.91$. The effective sample size  increases as resampling is performed.  }
+		\label{Ex2}
+	\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Example: SMC for Bayesian }
+\begin{figure}[h!]
+	\centering
+%	\begin{minipage}{.45\textwidth}
+%		\centering
+%		\includegraphics[width=1.3\linewidth]{F5.eps}
+%				\caption{Using $M=1000$ with  $ \kappa \sim uniform $ (different view)   }
+%		\label{Ex1}
+%	\end{minipage}%
+%	\begin{minipage}{.05\textwidth}
+%	\end{minipage}
+		\includegraphics[width=0.8\linewidth]{F10.eps}
+				\caption{Using $M=1000, N=5, T=0.91$. Top view  (samples shown in dots)    }
+		\label{Ex2}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Conclusion: }
+ We conclude that sequential Monte Carlo is able to correct the increasing variance of the weights produced in sequential importance sampling by resampling. Also, we are able to sample from difficult distribution  while controlling our sensitivity to either high probability events or low probability events. Therefore, we are able to sample common and rare events without increasing the number of samples needed and only by accumulating them in the areas of interest.
+\end{frame}
+
+\begin{frame}\frametitle{Other implementations: }
+Sequential Monte Carlo works in every sequence of distributions that converge to the target distribution. In particular we can have the next configurations:
+\begin{enumerate}
+\item In Bayesian framework, we can construct the sequence adding the data by steps.
+\item Given a sequence that converge to our target, we can construct Markov kernels for use as transition kernels in the sequence. In this case the algorithm changes and instead of removing the duplicated samples, we apply the markov kernel which split them into different locations.
+\item In a more general case, the samples can be transdimensional. This means, each distribution in the sequence can have different dimension (i.e. computing changepoints of a process, the number of changepoints is not fix and then, the vector of times where they are changes dimension).
+
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}\frametitle{References: }
+\begin{itemize}
+\item AMCS 308 course notes.
+\item  Del Moral P, Doucet A, Jasra A. Sequential Monte Carlo samplers. Journal of the Royal Statistical Society, Series B. 2006;68:411–436.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+Thanks to $ \{ Raul, \ Erik, \ Marco_{{Scavino}} \}$
+\end{frame}
+\end{document}
