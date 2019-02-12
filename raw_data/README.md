@@ -13,10 +13,10 @@ Raditon    ; -32.386184, -58.132059 ; Paysandú (capital city), Paysandú Depart
 
 
 
-## Data from CAMS
-1.  Raditon <\br>
+## Data from CAMS <br>
 
- Title: CAMS McClear v3.0 model of clear-sky irradiation.
+1.  Raditon <br>
+Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
            for a selected location (worldwide coverage) and a selected period.
@@ -44,8 +44,7 @@ Raditon    ; -32.386184, -58.132059 ; Paysandú (capital city), Paysandú Depart
  Altitude (m): 10.00
  Time reference: Universal time (UT)
 
-2. La Jacinta  <\br>
-
+2. La Jacinta 
  Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
@@ -60,8 +59,7 @@ Raditon    ; -32.386184, -58.132059 ; Paysandú (capital city), Paysandú Depart
  Altitude (m): 44.00
  Time reference: Universal time (UT)
 
-3. Alto Cielo  <\br>
-
+3. Alto Cielo  <br>
  Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
@@ -90,25 +88,25 @@ Raditon    ; -32.386184, -58.132059 ; Paysandú (capital city), Paysandú Depart
  Altitude (m): 90.00
  Time reference: Universal time (UT)
 
-## Second set
-
+## Second set <br>
 
 Data of the following content:
 Object, Provenance, Date Measure, Time Measure, Value
----
-1.La Jacinta  <\br>
+
+1. La Jacinta  <br>
 Start	BJACBG01EAS,01/01/2016,100,0
 End	BJACBG01EAS,31/12/2016,2400,0
----
-2.Raditon  <\br>
+
+2. Raditon  <br>
 Object, Provenance, Date Measure, Time Measure, Value
 Start	DSRADG01EAS,STC,01/01/2016,100,0
 End	DSRADG01EAS,STC,31/12/2016,2400,0
----
-3.Alto Cielo <\br>
+
+3. Alto Cielo <br>
 Start	DACIDG01EAS,SCADAL,01/03/2016,100,0
 End	DACIDG01EAS,STC,31/12/2016,2400,0
-#####################################################################################
+
+
 
 
 
@@ -120,18 +118,25 @@ STATION, DATE, TIME, CLOUDINESS
 
 ## Energy data set
 
+
 Approximate values based on information from SCADA @ 2017-12-31 23:26
+
 Annual generation and exchange data
 
 Content:
+
 Date Hydraulic Wind Solar Thermal Biomass Exp.Arg Imp.Arg Exp.Br. Imp.Br Demand
 
 Start	2017-01-01 00:00:00
+
 End	2017-12-31 23:00:00
+
 ---
 Approximate values ​​based on information from SCADA @ 2018-01-22 17:26
 
 Start	2018-01-01 00:00:00
+
 End	2018-01-22 17:00:00
+
 
 
