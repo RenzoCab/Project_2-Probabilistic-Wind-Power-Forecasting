@@ -1,4 +1,4 @@
-Record of Data
+# Record of Data
 
 
 The order of the places corresponds to the 'order' in the map.
@@ -13,11 +13,8 @@ Raditon    ; -32.386184, -58.132059 ; Paysandú (capital city), Paysandú Depart
 
 
 
-#####################################################################################
-				Data from CAMS
-#####################################################################################
-Raditon
-#####################################################################################
+## Data from CAMS
+1.  Raditon
  Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
@@ -31,7 +28,8 @@ Raditon
  Longitude (positive East, ISO 19115): -58.1321
  Altitude (m): 10.00
  Time reference: Universal time (UT)
-###################################################################################### Title: CAMS McClear v3.0 model of clear-sky irradiation.
+---
+ Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
            for a selected location (worldwide coverage) and a selected period.
@@ -44,9 +42,8 @@ Raditon
  Longitude (positive East, ISO 19115): -58.1321
  Altitude (m): 10.00
  Time reference: Universal time (UT)
-#####################################################################################
-La Jacinta 
-#####################################################################################
+
+2. La Jacinta 
  Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
@@ -60,9 +57,8 @@ La Jacinta
  Longitude (positive East, ISO 19115): -57.9092
  Altitude (m): 44.00
  Time reference: Universal time (UT)
-######################################################################################
-Alto Cielo
-######################################################################################
+
+3. Alto Cielo
  Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
@@ -76,7 +72,7 @@ Alto Cielo
  Longitude (positive East, ISO 19115): -57.4632
  Altitude (m): 90.00
  Time reference: Universal time (UT)
-######################################################################################
+---
  Title: CAMS McClear v3.0 model of clear-sky irradiation.
  Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
            Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
@@ -91,43 +87,36 @@ Alto Cielo
  Altitude (m): 90.00
  Time reference: Universal time (UT)
 
-#####################################################################################
-#####################################################################################
-					Second set
-#####################################################################################
-#####################################################################################
+## Second set
+
 
 Data of the following content:
 Object, Provenance, Date Measure, Time Measure, Value
-####################################################################################
-					La Jacinta
+---
+1.La Jacinta
 Start	BJACBG01EAS,01/01/2016,100,0
 End	BJACBG01EAS,31/12/2016,2400,0
-#####################################################################################
-					Raditon
+---
+2.Raditon
 Object, Provenance, Date Measure, Time Measure, Value
 Start	DSRADG01EAS,STC,01/01/2016,100,0
 End	DSRADG01EAS,STC,31/12/2016,2400,0
-#####################################################################################
-					Alto Cielo
+---
+3.Alto Cielo
 Start	DACIDG01EAS,SCADAL,01/03/2016,100,0
 End	DACIDG01EAS,STC,31/12/2016,2400,0
 #####################################################################################
 
 
-#####################################################################################
-#####################################################################################
-				Seven station cloudiness set
-#####################################################################################
-#####################################################################################
+
+## Seven station cloudiness set
+
 
 STATION, DATE, TIME, CLOUDINESS
 
-#####################################################################################
-#####################################################################################
-				Energy data set
-#####################################################################################
-#####################################################################################
+
+## Energy data set
+
 Approximate values ​​based on information from SCADA @ 2017-12-31 23:26
 Annual generation and exchange data
 
@@ -136,7 +125,7 @@ Date Hydraulic Wind Solar Thermal Biomass Exp.Arg Imp.Arg Exp.Br. Imp.Br Demand
 
 Start	2017-01-01 00:00:00
 End	2017-12-31 23:00:00
-#####################################################################################
+---
 Approximate values ​​based on information from SCADA @ 2018-01-22 17:26
 
 Start	2018-01-01 00:00:00
