@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = git@gitlab.com:waleed.alhaddad/wind-power.git
+	fetch = +refs/*:refs/*
+	mirror = true
