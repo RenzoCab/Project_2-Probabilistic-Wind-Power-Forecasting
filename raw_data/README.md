@@ -18,78 +18,78 @@ Raditon    ; -32.386184, -58.132059 ; Paysandú (capital city), Paysandú Depart
 #####################################################################################
 Raditon
 #####################################################################################
-# Title: CAMS McClear v3.0 model of clear-sky irradiation.
-# Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
-#           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
-#           for a selected location (worldwide coverage) and a selected period.
-# The research leading to these results has received funding from the European Union within the Copernicus programme.
-# Provider: MINES ParisTech (France)
-# More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
-# Date begin (ISO 8601): 2016-01-01T00:00:00.0
-# Date end (ISO 8601): 2017-01-01T00:00:00.0
-# Latitude (positive North, ISO 19115): -32.3862
-# Longitude (positive East, ISO 19115): -58.1321
-# Altitude (m): 10.00
-# Time reference: Universal time (UT)
+ Title: CAMS McClear v3.0 model of clear-sky irradiation.
+ Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
+           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
+           for a selected location (worldwide coverage) and a selected period.
+ The research leading to these results has received funding from the European Union within the Copernicus programme.
+ Provider: MINES ParisTech (France)
+ More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
+ Date begin (ISO 8601): 2016-01-01T00:00:00.0
+ Date end (ISO 8601): 2017-01-01T00:00:00.0
+ Latitude (positive North, ISO 19115): -32.3862
+ Longitude (positive East, ISO 19115): -58.1321
+ Altitude (m): 10.00
+ Time reference: Universal time (UT)
 ###################################################################################### Title: CAMS McClear v3.0 model of clear-sky irradiation.
-# Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
-#           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
-#           for a selected location (worldwide coverage) and a selected period.
-# The research leading to these results has received funding from the European Union within the Copernicus programme.
-# Provider: MINES ParisTech (France)
-# More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
-# Date begin (ISO 8601): 2016-01-01T00:00:00.0
-# Date end (ISO 8601): 2017-01-01T00:00:00.0
-# Latitude (positive North, ISO 19115): -32.3862
-# Longitude (positive East, ISO 19115): -58.1321
-# Altitude (m): 10.00
-# Time reference: Universal time (UT)
+ Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
+           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
+           for a selected location (worldwide coverage) and a selected period.
+ The research leading to these results has received funding from the European Union within the Copernicus programme.
+ Provider: MINES ParisTech (France)
+ More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
+ Date begin (ISO 8601): 2016-01-01T00:00:00.0
+ Date end (ISO 8601): 2017-01-01T00:00:00.0
+ Latitude (positive North, ISO 19115): -32.3862
+ Longitude (positive East, ISO 19115): -58.1321
+ Altitude (m): 10.00
+ Time reference: Universal time (UT)
 #####################################################################################
 La Jacinta 
 #####################################################################################
-# Title: CAMS McClear v3.0 model of clear-sky irradiation.
-# Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
-#           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
-#           for a selected location (worldwide coverage) and a selected period.
-# The research leading to these results has received funding from the European Union within the Copernicus programme.
-# Provider: MINES ParisTech (France)
-# More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
-# Date begin (ISO 8601): 2016-01-01T00:00:00.0
-# Date end (ISO 8601): 2017-01-01T00:00:00.0
-# Latitude (positive North, ISO 19115): -31.4319
-# Longitude (positive East, ISO 19115): -57.9092
-# Altitude (m): 44.00
-# Time reference: Universal time (UT)
+ Title: CAMS McClear v3.0 model of clear-sky irradiation.
+ Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
+           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
+           for a selected location (worldwide coverage) and a selected period.
+ The research leading to these results has received funding from the European Union within the Copernicus programme.
+ Provider: MINES ParisTech (France)
+ More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
+ Date begin (ISO 8601): 2016-01-01T00:00:00.0
+ Date end (ISO 8601): 2017-01-01T00:00:00.0
+ Latitude (positive North, ISO 19115): -31.4319
+ Longitude (positive East, ISO 19115): -57.9092
+ Altitude (m): 44.00
+ Time reference: Universal time (UT)
 ######################################################################################
 Alto Cielo
 ######################################################################################
-# Title: CAMS McClear v3.0 model of clear-sky irradiation.
-# Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
-#           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
-#           for a selected location (worldwide coverage) and a selected period.
-# The research leading to these results has received funding from the European Union within the Copernicus programme.
-# Provider: MINES ParisTech (France)
-# More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
-# Date begin (ISO 8601): 2016-01-01T00:00:00.0
-# Date end (ISO 8601): 2017-01-01T00:00:00.0
-# Latitude (positive North, ISO 19115): -30.4192
-# Longitude (positive East, ISO 19115): -57.4632
-# Altitude (m): 90.00
-# Time reference: Universal time (UT)
+ Title: CAMS McClear v3.0 model of clear-sky irradiation.
+ Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
+           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
+           for a selected location (worldwide coverage) and a selected period.
+ The research leading to these results has received funding from the European Union within the Copernicus programme.
+ Provider: MINES ParisTech (France)
+ More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
+ Date begin (ISO 8601): 2016-01-01T00:00:00.0
+ Date end (ISO 8601): 2017-01-01T00:00:00.0
+ Latitude (positive North, ISO 19115): -30.4192
+ Longitude (positive East, ISO 19115): -57.4632
+ Altitude (m): 90.00
+ Time reference: Universal time (UT)
 ######################################################################################
-# Title: CAMS McClear v3.0 model of clear-sky irradiation.
-# Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
-#           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
-#           for a selected location (worldwide coverage) and a selected period.
-# The research leading to these results has received funding from the European Union within the Copernicus programme.
-# Provider: MINES ParisTech (France)
-# More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
-# Date begin (ISO 8601): 2016-01-01T00:00:00.0
-# Date end (ISO 8601): 2017-01-01T00:00:00.0
-# Latitude (positive North, ISO 19115): -30.4192
-# Longitude (positive East, ISO 19115): -57.4632
-# Altitude (m): 90.00
-# Time reference: Universal time (UT)
+ Title: CAMS McClear v3.0 model of clear-sky irradiation.
+ Content:  A time-series of solar radiation received on horizontal plane and plane always normal to the sun rays at ground level assuming clear sky.
+           Calls on the McClear clear-sky model. Returns the global, beam and diffuse irradiations integrated over a selected time step,
+           for a selected location (worldwide coverage) and a selected period.
+ The research leading to these results has received funding from the European Union within the Copernicus programme.
+ Provider: MINES ParisTech (France)
+ More information at: http://www.soda-pro.com/web-services/radiation/cams-mcclear
+ Date begin (ISO 8601): 2016-01-01T00:00:00.0
+ Date end (ISO 8601): 2017-01-01T00:00:00.0
+ Latitude (positive North, ISO 19115): -30.4192
+ Longitude (positive East, ISO 19115): -57.4632
+ Altitude (m): 90.00
+ Time reference: Universal time (UT)
 
 #####################################################################################
 #####################################################################################
