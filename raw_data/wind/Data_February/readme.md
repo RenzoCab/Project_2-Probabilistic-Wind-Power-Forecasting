@@ -75,8 +75,6 @@ This message and its contents including attachments are intended solely for the 
 
 
 
--- 
-------------------------------
 R. Tempone, PhD
 Professor of Applied Mathematics;
 Division of Mathematics & Computational Sciences & Engineering (CEMSE)
@@ -85,6 +83,5 @@ Building #1 (UN 1550), Office No 4109, Level 4
 Thuwal 23955-6900, Kingdom of Saudi Arabia
 http://www.stochastic_numerics.kaust.edu.sa
 http://www.kaust.edu.sa
-------------------------------
 
 
