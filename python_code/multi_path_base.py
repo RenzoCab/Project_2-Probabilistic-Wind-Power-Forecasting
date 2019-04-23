@@ -1,0 +1,897 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import scipy.stats
+from scipy.optimize import minimize
+from scipy.stats import multivariate_normal
+from mpl_toolkits.mplot3d import Axes3D
+import operator
+from scipy.optimize import minimize
+from scipy.optimize import basinhopping
+import math
+import random
+
+class disct:
+  def __init__(self, N, dt, M ):
+    self.N = N
+    self.dt = dt
+    self.M = M
+
+class real:
+  def __init__(self, mu,sigma ):
+    self.mu = mu
+    self.sigma = sigma
+
+class optimal(real):
+  def __init__(self):
+    real.__init__(self, 0,0 )
+
+class model:
+    def __init__(self, disct, data,ic=0 ):
+        self.disct = disct
+        self.data = data
+        self.ic = ic
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        #input parameters
+        a,b = param;
+
+        L_n=0
+        L_m=0
+
+        for j in range(0,M):
+            L_m = L_m + L_n
+            for i in range(1,N):
+                L_n = L_n  - (X[j,i]- X[j,i-1] - a*dt )**2/(2*dt*b**2) -0.5*np.log(2*math.pi*b**2*dt)
+
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        X = np.zeros((M,N))
+
+        #p=0.5 + 0.5*np.sin(np.linspace(0,2*math.pi,N))
+
+        dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+        X0=self.ic
+
+        for j in range(0,M):
+
+            dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+            for i in range(1,N):
+                X[j,0]=X0
+                b= real.sigma      #sig_real*X[i-1]*(1-X[i-1])
+                a= real.mu       #mu_real*(0.5 - X[i-1])
+                X[j,i]= X[j,i-1]+ a*dt+ b*dW[i-1]
+        self.data = X
+
+        return()
+
+    def optimize(self, param_initial=np.random.uniform(size=2)*10, bnds = ((None, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds);min_param
+
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+class model_in_box:
+    def __init__(self, disct, data,ic=0 ):
+        self.disct = disct
+        self.data = data
+        self.ic = ic
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        #input parameters
+        mu,sigma = param;
+
+        L_n=0
+        L_m=0
+
+        for j in range(0,M):
+            L_m = L_m + L_n
+            for i in range(1,N):
+                b= sigma*X[j,i-1]*(1-X[j,i-1])
+                a= mu*(0.5 - X[j,i-1])
+                L_n = L_n  - (X[j,i]- X[j,i-1] - a*dt )**2/(2*dt*b**2) -0.5*np.log(2*math.pi*b**2*dt)
+
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        X = np.zeros((M,N))
+
+        #p=0.5 + 0.5*np.sin(np.linspace(0,2*math.pi,N))
+
+        dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+        X0=self.ic
+
+        for j in range(0,M):
+
+            dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+            for i in range(1,N):
+                X[j,0]=X0
+                b= real.sigma*X[j,i-1]*(1-X[j,i-1])
+                a= real.mu*(0.5 - X[j,i-1])
+                X[j,i]= X[j,i-1]+ a*dt+ b*dW[i-1]
+            self.data = X
+
+        return()
+
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((None, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds);min_param
+
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+class model_in_box_sine:
+    def __init__(self, disct, data,ic=0 ):
+        self.disct = disct
+        self.data = data
+        self.ic = ic
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        #input parameters
+        mu,sigma = param;
+
+        L_n=0
+        L_m=0
+
+        for j in range(0,M):
+            L_m = L_m + L_n
+            for i in range(1,N):
+                b= sigma*X[j,i-1]*(1-X[j,i-1])
+                a= mu*( 0.5 + 0.5*np.sin(i/N * 2*math.pi) - X[j,i-1])
+                L_n = L_n  - (X[j,i]- X[j,i-1] - a*dt )**2/(2*dt*b**2) -0.5*np.log(2*math.pi*b**2*dt)
+
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        X = np.zeros((M,N))
+
+        #p=0.5 + 0.5*np.sin(np.linspace(0,2*math.pi,N))
+
+        dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+        X0=self.ic
+
+        for j in range(0,M):
+
+            dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+            for i in range(1,N):
+                X[j,0]=X0
+                b= real.sigma*X[j,i-1]*(1-X[j,i-1])
+                a= real.mu*( 0.5 + 0.5*np.sin(i/N * 2*math.pi) - X[j,i-1])
+                X[j,i]= X[j,i-1]+ a*dt+ b*dW[i-1]
+            self.data = X
+
+        return()
+
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((None, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds);min_param
+
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+class model_moments:
+    def __init__(self, disct, data,ic=0 ):
+        self.disct = disct
+        self.data = data
+        self.ic = ic
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        #input parameters
+        theta,alpha = param;
+
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        for j in range(0,M):
+            L_m = L_m + L_n
+            for i in range(1,N):
+                b =   alpha/(16*(1+ alpha/4)) * (1- np.exp( -2*dt*theta*(1+ alpha/4)  )) #variance not std
+                #b=np.sqrt( 2*alpha*theta*(1/4)*(X[j,i-1] + 1/2 )*(1-X[j,i-1] + 1/2 )  )
+                a =  X[j,i-1]*np.exp(- dt*theta)   #mu*( 0.5 + 0.5*np.sin(i/N * 2*math.pi) - X[j,i-1])
+                L_n = L_n  - ( X[j,i] - a   )**2/(2*b**2) -0.5*np.log(2*math.pi*b**2) #  removed dt from both terms
+
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        theta=real.mu
+        alpha=real.sigma
+
+        X = np.zeros((M,N))
+        X0=0
+        dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+        for j in range(0,M):
+
+            dW=dt*np.random.normal(0, 1, N) #removed sqrt(dt)
+
+            for i in range(1,N):
+                X[j,0]=X0
+
+                b = np.sqrt( 2*alpha*theta*(1/4)*(X[j,i-1] + 1/2 )*(1-X[j,i-1] + 1/2 )  )
+
+                X[j,i]= (X[j,i-1] +  b*dW[i-1] )/(1+  theta*dt )
+
+            self.data = X
+
+        return()
+
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((None, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+        #L-BFGS-B
+        myfactr = 1
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'ftol' : myfactr * np.finfo(float).eps });min_param
+        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
+        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x, min_param.message)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+class model_beta_moments:
+    def __init__(self, disct, data,ic=0 ):
+        self.disct = disct
+        self.data = data
+        self.ic = ic
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        for j in range(0,M):
+            L_m = L_m + L_n
+            for i in range(1,N):
+
+                b =   alpha/(16*(1+ alpha/4)) * (1- np.exp( -2*dt*theta*(1+ alpha/4)  )) #variance not std
+                a =  X[j,i-1]*np.exp(- dt*theta)
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)   #lambd*( (a+1)  /2  ) #( (1-a)/b - 1/a )*a**2
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)  #lambd*( (1-a) / 2)
+
+                #if beta_param_alpha <0 or beta_param_beta <0:
+                #    print('WARNING: Negative Shape parameters !')
+                #print(scipy.special.beta(beta_param_alpha, beta_param_beta))
+
+                L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i]+1)/2 ) + (beta_param_beta-1)*np.log(1-( X[j,i] +1)/2 ) -scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+                #- np.log( scipy.special.beta(beta_param_alpha, beta_param_beta) ) #-np.log(2)
+
+                #L_n = L_n  - ( X[j,i] - a   )**2/(2*b**2) -0.5*np.log(2*math.pi*b**2)
+
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        theta=real.mu
+        alpha=real.sigma
+
+        X = np.zeros((M,N))
+        X0=0
+        dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+        for j in range(0,M):
+
+            dW=dt*np.random.normal(0, 1, N) #removed sqrt(dt)
+
+            for i in range(1,N):
+                X[j,0]=X0
+
+                b = np.sqrt( 2*alpha*theta*(1/4)*(X[j,i-1] + 1/2 )*(1-X[j,i-1] + 1/2 )  )
+
+                X[j,i]= (X[j,i-1] +  b*dW[i-1] )/(1+  theta*dt )
+
+            self.data = X
+
+        return()
+
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((0.1, None), (0.1, None))):
+
+        mu_initial,sig_initial=param_initial
+        #L-BFGS-B
+        myfactr = 1
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'ftol' : myfactr * np.finfo(float).eps });min_param
+        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
+        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x, min_param.message)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+class model_beta_flex:
+    def __init__(self, disct, data,forecast ):
+        self.disct = disct
+        self.data = data
+        #self.ic = ic
+        self.forecast = forecast
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N
+        for j in range(0,M):
+            m_1=0
+            m_2=0
+            L_m = L_m + L_n
+            for i in range(0,N-1): #start from 1 or zero
+
+                m_1=X[j,i]*np.exp(- dN*theta)
+
+                m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                            X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                                alpha*theta*p[i]**2*(1-p[i])**2)
+
+                #m_2=  (4*X[j,i]**2 -X[j,i-1]**2  + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #            X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                alpha*theta*p[i]**2*(1-p[i])**2) )/3
+                #print('m1=',m_1)
+                #print('m2=',m_2)
+                a=m_1
+                b=m_2 - m_1**2
+
+                #print('mean=',a)
+                #print('variance=',b)
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b )
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                #print(beta_param_alpha, beta_param_beta)
+
+                #if beta_param_alpha <0 or beta_param_beta <0:
+                #    print('WARNING: Negative Shape parameters !')
+                #print(scipy.special.beta(beta_param_alpha, beta_param_beta))
+
+                L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
+                 (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
+                 scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        theta=real.mu
+        alpha=real.sigma
+
+        X = np.zeros((M,N))
+        X0=0
+        dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+        for j in range(0,M):
+
+            dW=dt*np.random.normal(0, 1, N) #removed sqrt(dt)
+
+            for i in range(1,N):
+                X[j,0]=X0
+
+                b = np.sqrt( 2*alpha*theta*(1/4)*(X[j,i-1] + 1/2 )*(1-X[j,i-1] + 1/2 )  )
+
+                X[j,i]= (X[j,i-1] +  b*dW[i-1] )/(1+  theta*dt )
+
+            self.data = X
+
+        return()
+                                                #ADJUST UPPER BOUND !
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-5, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+        #L-BFGS-B
+        myfactr = 1
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B');min_param
+        #, options={ 'ftol' : myfactr * np.finfo(float).eps }
+        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
+        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x, min_param.message)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+class model_moments_check:
+    def __init__(self, disct, data,ic=0 ):
+        self.disct = disct
+        self.data = data
+        self.ic = ic
+        self.optimal=optimal()
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        #input parameters
+        theta,alpha = param;
+
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        for j in range(0,M):
+            L_m = L_m + L_n
+            for i in range(1,N):
+                #b =   alpha/(16*(1+ alpha/4)) * (1- np.exp( -2*dt*theta*(1+ alpha/4)  )) #variance not std
+                b=np.sqrt( 2*alpha*theta*(1/4)*(X[j,i] + 1/2 )*(1/2 - X[j,i] )  )
+                a =  - X[j,i]*theta  #mu*( 0.5 + 0.5*np.sin(i/N * 2*math.pi) - X[j,i-1])
+                L_n = L_n  - ( X[j,i] - X[j,i-1] + a*dt  )**2/(2*b**2*dt) -0.5*np.log(2*math.pi*b**2*dt) #  -  X[j,i-1] removed
+        return(-1*L_m)
+
+    def renew(self,real):
+
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+
+        theta=real.mu
+        alpha=real.sigma
+
+        X = np.zeros((M,N))
+        X0=0
+        dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+        for j in range(0,M):
+
+            dW=dt*np.random.normal(0, 1, N) #removed sqrt(dt)
+
+            for i in range(1,N):
+                X[j,0]=X0
+
+                b = np.sqrt( 2*alpha*theta*(1/4)*(X[j,i-1] + 1/2 )*(1-X[j,i-1] + 1/2 )  )
+
+                X[j,i]= (X[j,i-1] +  b*dW[i-1] )/(1+  theta*dt )
+
+            self.data = X
+
+        return()
+
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((None, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+        #L-BFGS-B
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'ftol': 1e-25, 'gtol': 1e-25});min_param
+        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} }
+        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs)
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+###########################################################################
+
+def gen_path(X0,disct,real):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    X = np.zeros((M,N))
+
+    #p=0.5 + 0.5*np.sin(np.linspace(0,2*math.pi,N))
+
+    dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+
+    for j in range(0,M):
+
+        dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+        for i in range(1,N):
+            X[j,0]=X0
+            b= real.sigma     #sig_real*X[i-1]*(1-X[i-1])
+            a= real.mu       #mu_real*(0.5 - X[i-1])
+            X[j,i]= X[j,i-1]+ a*dt+ b*dW[i-1]
+
+    return(X)
+
+def gen_path_in_box(X0,disct,real):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    X = np.zeros((M,N))
+
+    #p=0.5 + 0.5*np.sin(np.linspace(0,2*math.pi,N))
+
+    dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+
+    for j in range(0,M):
+
+        dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+        for i in range(1,N):
+            X[j,0]=X0
+            b= real.sigma*X[j,i-1]*(1-X[j,i-1])
+            a= real.mu*(0.5 - X[j,i-1])
+            X[j,i]= X[j,i-1]+ a*dt+ b*dW[i-1]
+
+    return(X)
+
+def gen_path_in_box_sine(X0,disct,real):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    X = np.zeros((M,N))
+
+    #p=0.5 + 0.5*np.sin(np.linspace(0,2*math.pi,N))
+
+    dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+    for j in range(0,M):
+
+        dW=np.sqrt(dt)*np.random.normal(0, 1, N)
+
+        for i in range(1,N):
+            X[j,0]=X0
+            b= real.sigma*X[j,i-1]*(1-X[j,i-1])
+            a= real.mu*( 0.5 + 0.5*np.sin(i/N * 2*math.pi) - X[j,i-1])
+            X[j,i]= X[j,i-1]+ a*dt+ b*dW[i-1]
+
+    return(X)
+
+def gen_path_beta_moments(X0,disct,real):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    theta=real.mu
+    alpha=real.sigma
+
+    X = np.zeros((M,N))
+
+    dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+    for j in range(0,M):
+
+        for i in range(1,N):
+            X[j,0]=X0
+
+            b =   alpha/(16*(1+ alpha/4)) * (1- np.exp( -2*dt*theta*(1+ alpha/4)  ))
+            a =  X[j,i-1]*np.exp(- dt*theta)
+
+            beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)   #lambd*( (a+1)  /2  ) #( (1-a)/b - 1/a )*a**2
+            beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)  #lambd*( (1-a) / 2)
+
+            X[j,i]=np.random.beta(beta_param_alpha,beta_param_beta,1)
+            X[j,i]= -1 +  2*X[j,i] #a + removed
+
+    return(X)
+
+def gen_path_model_moments(X0,disct,real):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    theta=real.mu
+    alpha=real.sigma
+
+    X = np.zeros((M,N))
+
+    dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+    for j in range(0,M):
+
+        dW=np.random.normal(0, 1, N) #removed dt
+
+        for i in range(1,N):
+            X[j,0]=X0
+
+            a =  X[j,i-1]*np.exp(- dt*theta)
+            b =   alpha/(16*(1+ alpha/4)) * (1- np.exp( -2*dt*theta*(1+ alpha/4)  ))
+
+            X[j,i]= a +  b*dW[i-1] #a + removed
+
+    return(X)
+
+def gen_path_model_moments_check(X0,disct,real):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    theta=real.mu
+    alpha=real.sigma
+
+    X = np.zeros((M,N))
+    X0=0
+    dW=np.random.normal(0, 1, N) #removed sqrt(dt)
+
+    for j in range(0,M):
+
+        dW=dt*np.random.normal(0, 1, N) #removed sqrt(dt)
+
+        for i in range(1,N):
+            X[j,0]=X0
+
+            b=np.sqrt( 2*alpha*theta*(1/4)*(X[j,i-1] + 1/2 )*(1/2 - X[j,i-1] )  )
+
+            a =  - X[j,i-1]*theta
+
+            X[j,i]= X[j,i-1] + a*dt +  b*dW[i-1] #check sign of a
+
+    return(X)
+
+def gen_path_beta_flex(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    #while( (beta_param_alpha <=0 ) or ( beta_param_beta <= 0) ):
+
+    for j in range(0,M):
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+        #while( (beta_param_alpha <=0 ) or ( beta_param_beta <= 0) ):
+        for i in range(0,N-1):
+
+        #m_1= X[j,i]*(1- theta*dN)
+            m_1=X[j,i]*np.exp(- dN*theta)
+
+            m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                            X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                                alpha*theta*p[i]**2*(1-p[i])**2)
+
+            #m_2=  (4*X[j,i]**2 -X[j,i-1]**2  + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+            #                X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+            #                    alpha*theta*p[i]**2*(1-p[i])**2) )/3
+
+
+            #print('m1=',m_1)
+            #print('m2=',m_2)
+
+            a=m_1
+            b=m_2 - m_1**2
+
+            #print('mean=',a)
+            #print('variance=',b)
+
+            beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+            beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+            if beta_param_alpha<=0 or beta_param_beta<=0:
+                raise Exception('Beta shape parameters are not positive definite.\
+                 The parameters were: {}'.format(beta_param_alpha) +'and: {}'.format(beta_param_beta) )
+
+            #print(beta_param_alpha, beta_param_beta)
+
+            X[j,i+1]=np.random.beta(beta_param_alpha,beta_param_beta,1)
+
+            X[j,i+1]= -1 +  2*X[j,i+1]
+
+    return(X)
+
+def gen_path_beta_robust(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    max_tries=max(int(N*0.1), 2 )
+    try_count = 0
+    j=0;
+    while j <M:
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+        try:
+            for i in range(0,N-1):
+                m_1=X[j,i]*np.exp(- dN*theta)
+
+                m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                                X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                                    alpha*theta*p[i]**2*(1-p[i])**2)
+                a=m_1
+                b=m_2 - m_1**2
+
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                if beta_param_alpha<=0 or beta_param_beta<=0:
+                    raise Exception('Beta shape parameters are not positive definite.\
+                     The parameters were: {}'.format(beta_param_alpha) +'and: {}'.format(beta_param_beta) )
+
+                X[j,i+1]=np.random.beta(beta_param_alpha,beta_param_beta,1)
+
+                X[j,i+1]= -1 +  2*X[j,i+1]
+        except:
+            try_count += 1
+            print('Try # : ' +str(try_count))
+            i=0
+            pass
+            if try_count >= max_tries:
+                raise Exception("Unable to generate after %s tries" % max_tries)
+        else:
+            j += 1 # increments only if no exception
+
+    return(X)
+
+def abline(slope, intercept):
+    """Plot a line from slope and intercept"""
+    axes = plt.gca()
+    x_vals = np.array(axes.get_xlim())
+    y_vals = intercept + slope * x_vals
+    plt.plot(x_vals, y_vals, '--', label='slope='+str(slope))
