@@ -10,6 +10,7 @@ from scipy.optimize import minimize
 from scipy.optimize import basinhopping
 import math
 import random
+from scipy import interpolate
 
 class disct:
   def __init__(self, N, dt, M ):
@@ -22,9 +23,11 @@ class real:
     self.mu = mu
     self.sigma = sigma
 
+
 class optimal(real):
   def __init__(self):
     real.__init__(self, 0,0 )
+
 
 class model:
     def __init__(self, disct, data,ic=0 ):
@@ -527,6 +530,145 @@ class model_beta_flex:
         err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
         return(err_mu,err_sigma)
 
+class model_beta_data:
+    def __init__(self, disct, data,forecast ):
+        self.disct = disct
+        self.data = data
+        #self.shape_param_alpha=np.empty_like(data)
+        #self.shape_param_beta=np.empty_like(data)
+        #self.ic = ic
+        self.forecast = forecast
+        self.optimal=optimal()
+
+    def compute_shape_parameters(self, param): #needs shape parameters to run
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        theta,alpha = param;
+        #print( theta, alpha)
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N #set N=72
+
+
+        for j in range(0,M):
+            m_1=0
+            m_2=0
+            interpolation_points=200 #add to inputs
+            dx=1/interpolation_points
+            x = np.arange(1,N+1,1)
+            y = X[j,:]
+            tck = interpolate.splrep(x, y, s=0)
+            xnew = np.arange(1,72+1,dx)
+            p_inter = interpolate.splev(xnew, tck, der=0)
+
+            for i in range(0,N-1): #start from 1 or zero
+                m_1=X[j,i]*np.exp(- dN*theta)
+
+                m_2=X[j,i]**2
+                for k in range(i*interpolation_points, interpolation_points*(i+1)):
+                    p=p_inter[k]
+                    m_2 = m_2 + dN*dx*2*(-X[j,i]**2*(theta+alpha*theta*p*(1-p) ) + \
+                            X[j,i]*(alpha*theta*p*(1-p)*(1-2*p )) + \
+                                alpha*theta*p**2*(1-p)**2)
+
+                #print('m1=',m_1)
+                #print('m2=',m_2)
+                a=m_1
+                b=m_2 - m_1**2
+
+                #print('mean=',a)
+                #print('variance=',b)
+
+                self.shape_param_alpha[j,i]= - ( (1+a)*(a**2 +b -1)    )/(2*b )
+                self.shape_param_beta[j,i]= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N #set N=72
+        for j in range(0,M):
+            m_1=0
+            m_2=0
+            L_m = L_m + L_n
+
+            interpolation_points=10 #add to inputs
+            dx=1/interpolation_points
+            x = np.arange(1,N+1,1)
+            y = self.forecast[j,:] #X[j,:] ###### CHECK !
+            tck = interpolate.splrep(x, y, s=0)
+            xnew = np.arange(1,72+1,dx)
+            p_inter = interpolate.splev(xnew, tck, der=0)
+
+            for i in range(0,N-1): #start from 1 or zero
+                m_1=X[j,i]*np.exp(- dN*theta)
+
+                m_2=X[j,i]**2
+                for k in range(i*interpolation_points, interpolation_points*(i+1)):
+                    p=p_inter[k]
+                    m_2 = m_2 + dN*dx*2*(-X[j,i]**2*(theta+alpha*theta*p*(1-p) ) + \
+                            X[j,i]*(alpha*theta*p*(1-p)*(1-2*p )) + \
+                                alpha*theta*p**2*(1-p)**2)
+
+                #print('m1=',m_1)
+                #print('m2=',m_2)
+                a=m_1
+                b=m_2 - m_1**2
+
+                #print('mean=',a)
+                #print('variance=',b)
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b )
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                #print(beta_param_alpha, beta_param_beta)
+
+                #if beta_param_alpha <0 or beta_param_beta <0:
+                #    print('WARNING: Negative Shape parameters !')
+                #print(scipy.special.beta(beta_param_alpha, beta_param_beta))
+
+                L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
+                 (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
+                 scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+        return(-1*L_m)
+
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-5, None), (1e-5, None))):
+
+        mu_initial,sig_initial=param_initial
+        #L-BFGS-B
+        myfactr = 1
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B');min_param
+        #, options={ 'ftol' : myfactr * np.finfo(float).eps }
+        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
+        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x, min_param.message)
+
+
+
 class model_moments_check:
     def __init__(self, disct, data,ic=0 ):
         self.disct = disct
@@ -847,7 +989,7 @@ def gen_path_beta_robust(X0,disct,real,forecast):
     dN=1/N
     X=np.zeros((M,N))
 
-    max_tries=max(int(N*0.1), 2 )
+    max_tries=50 #max(int(M*0.1), 2 )
     try_count = 0
     j=0;
     while j <M:
@@ -857,10 +999,99 @@ def gen_path_beta_robust(X0,disct,real,forecast):
         m_1=X[j,0]
         m_2=X[j,0]**2
         try:
-            for i in range(0,N-1):
-                m_1=X[j,i]*np.exp(- dN*theta)
+             for i in range(0,N-1):
+                if p[i]+X[j,i] >1:
+                    X[j,i]=p[i-1]-p[i]+X[j,i-1]
 
-                m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                if p[i]+X[j,i] <0:
+                    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                m_1=X[j,i]*np.exp(- dN*theta)
+                #
+                # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                     alpha*theta*p[i]**2*(1-p[i])**2)
+
+                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                            alpha*theta*p[i]**2*(1-p[i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[i]*(1-p[i]) ))
+                a=m_1
+                b=m_2 - m_1**2
+                #if (m_2 - m_1**2)<0:
+                if p[i]+X[j,i] >1:
+                    print(m_1,m_2 - m_1**2,p[i]+X[j,i])
+                if p[i]+X[j,i] <0:
+                    print(m_1,m_2 - m_1**2,p[i]+X[j,i])
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                if beta_param_alpha<=0 or beta_param_beta<=0:
+                    raise Exception('Beta shape parameters are not positive definite.\
+                     The parameters were: {}'.format(beta_param_alpha) +'and: {}'.format(beta_param_beta) )
+
+                X[j,i+1]=np.random.beta(beta_param_alpha,beta_param_beta,1)
+
+                X[j,i+1]= -1 +  2*X[j,i+1]
+        except:
+            try_count += 1
+            print('Try # : ' +str(try_count))
+            #print('Beta shape parameters are not positive definite.\
+            # The parameters were: {}'.format(a) +'and: {}'.format(b))
+            i=0
+            pass
+            if try_count >= max_tries:
+                raise Exception("Unable to generate after %s tries" % max_tries)
+        else:
+            j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_path_beta_robust_interpolate(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    #dN=1/N
+    interpolation_points=1000 #add to inputs
+    dx=1/interpolation_points
+    X=np.zeros((M,interpolation_points))
+
+    max_tries=500 #max(int(M*0.1), 2 ) #lower it !
+    try_count = 0
+    j=0;
+    while j<M:
+
+        X[j,0]=X0
+
+        x = np.arange(1,N+1,1)
+
+        y = forecast[j,:] #X[j,:]
+        tck = interpolate.splrep(x, y, s=0)
+
+        #y_data = X[j,:]
+        #tck_data = interpolate.splrep(x, y_data, s=0)
+
+        #xnew = np.arange(1,72+1,dx) # 1 or 72 ?
+        xnew=np.linspace(1,72,interpolation_points)
+        p = interpolate.splev(xnew, tck, der=0)
+        #d_inter=interpolate.splev(xnew, tck_data, der=0)
+
+        try:
+            for i in range(0,interpolation_points):
+                m_1=X[j,i]*np.exp(- dx*theta)
+
+                m_2=  X[j,i]**2 + dx*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
                                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
                                     alpha*theta*p[i]**2*(1-p[i])**2)
                 a=m_1
