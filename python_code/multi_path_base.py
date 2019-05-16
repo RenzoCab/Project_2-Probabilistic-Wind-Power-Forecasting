@@ -315,6 +315,7 @@ class model_moments:
         #L-BFGS-B
         myfactr = 1
         min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'ftol' : myfactr * np.finfo(float).eps });min_param
+
         #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
         #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
         self.optimal.mu= min_param.x[0]
@@ -452,36 +453,43 @@ class model_beta_flex:
             for i in range(0,N-1): #start from 1 or zero
 
                 m_1=X[j,i]*np.exp(- dN*theta)
+                #
+                # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                     alpha*theta*p[i]**2*(1-p[i])**2)
 
-                m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
-                            X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
-                                alpha*theta*p[i]**2*(1-p[i])**2)
-
-                #m_2=  (4*X[j,i]**2 -X[j,i-1]**2  + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
-                #            X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
-                #                alpha*theta*p[i]**2*(1-p[i])**2) )/3
-                #print('m1=',m_1)
-                #print('m2=',m_2)
+                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
+                            alpha*theta*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[j,i]*(1-p[j,i]) ))
                 a=m_1
                 b=m_2 - m_1**2
 
-                #print('mean=',a)
-                #print('variance=',b)
-
-                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b )
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
                 beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
-
-                #print(beta_param_alpha, beta_param_beta)
-
-                #if beta_param_alpha <0 or beta_param_beta <0:
-                #    print('WARNING: Negative Shape parameters !')
-                #print(scipy.special.beta(beta_param_alpha, beta_param_beta))
 
                 L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
                  (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
                  scipy.special.betaln(beta_param_alpha, beta_param_beta)
 
         return(-1*L_m)
+
+    def grad(self,alpha, beta ):
+
+        V=self.data
+        N=self.disct.N
+        M=self.disct.M
+        #input parameters
+
+        s1=np.sum(np.log((V+1)/2), axis=None)
+        s2=np.sum(np.log( 1-  (V+1)/2), axis=None)
+
+        digamma_1=-M*N*scipy.special.digamma(alpha)
+        digamma_2=-M*N*scipy.special.digamma(beta)
+        digamma_common=-M*N*scipy.special.digamma(alpha+beta)
+
+        grad_eval=np.array(( s1 + digamma_1 +digamma_common  , s2  + digamma_2 +digamma_common ))
+
+        return(grad_eval) #not useful because, needs grad in terms of theta and alpha not beta parameter
+
 
     def renew(self,real):
 
@@ -511,13 +519,15 @@ class model_beta_flex:
 
         return()
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-5, None), (1e-5, None))):
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-2, None), (1e-2, None))):
 
         mu_initial,sig_initial=param_initial
         #L-BFGS-B
-        myfactr = 1
-        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B');min_param
-        #, options={ 'ftol' : myfactr * np.finfo(float).eps }
+        #myfactr = 1
+
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'gtol': 1e-19, 'ftol' : 1e-19 });min_param
+        #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
+
         #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
         #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
         self.optimal.mu= min_param.x[0]
@@ -622,14 +632,14 @@ class model_beta_data:
 
             for i in range(0,N-1): #start from 1 or zero
                 m_1=X[j,i]*np.exp(- dN*theta)
-
                 m_2=X[j,i]**2
                 for k in range(i*interpolation_points, interpolation_points*(i+1)):
                     p=p_inter[k]
-                    m_2 = m_2 + dN*dx*2*(-X[j,i]**2*(theta+alpha*theta*p*(1-p) ) + \
-                            X[j,i]*(alpha*theta*p*(1-p)*(1-2*p )) + \
-                                alpha*theta*p**2*(1-p)**2)
-
+                    # m_2 = m_2 + dN*dx*2*(-X[j,i]**2*(theta+alpha*theta*p*(1-p) ) + \
+                    #         X[j,i]*(alpha*theta*p*(1-p)*(1-2*p )) + \
+                    #             alpha*theta*p**2*(1-p)**2)
+                    m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+            alpha*theta*p[i]**2*(1-p[i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[i]*(1-p[i]) ))
                 #print('m1=',m_1)
                 #print('m2=',m_2)
                 a=m_1
@@ -653,12 +663,12 @@ class model_beta_data:
 
         return(-1*L_m)
 
-    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-5, None), (1e-5, None))):
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-3, None), (1e-3, None))):
 
         mu_initial,sig_initial=param_initial
         #L-BFGS-B
-        myfactr = 1
-        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B');min_param
+        #myfactr = 1
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'gtol': 1e-16, 'ftol' : 1e-16 });min_param
         #, options={ 'ftol' : myfactr * np.finfo(float).eps }
         #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
         #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
@@ -1016,11 +1026,6 @@ def gen_path_beta_robust(X0,disct,real,forecast):
                             alpha*theta*p[i]**2*(1-p[i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[i]*(1-p[i]) ))
                 a=m_1
                 b=m_2 - m_1**2
-                #if (m_2 - m_1**2)<0:
-                if p[i]+X[j,i] >1:
-                    print(m_1,m_2 - m_1**2,p[i]+X[j,i])
-                if p[i]+X[j,i] <0:
-                    print(m_1,m_2 - m_1**2,p[i]+X[j,i])
 
                 beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
                 beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
@@ -1043,6 +1048,575 @@ def gen_path_beta_robust(X0,disct,real,forecast):
                 raise Exception("Unable to generate after %s tries" % max_tries)
         else:
             j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_path_normal_robust(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    max_tries=50 #max(int(M*0.1), 2 )
+    try_count = 0
+    j=0;
+    while j <M:
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+        try:
+             for i in range(0,N-1):
+                if p[i]+X[j,i] >1:
+                    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                if p[i]+X[j,i] <0:
+                    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                m_1=X[j,i]*np.exp(- dN*theta)
+                #
+                # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                     alpha*theta*p[i]**2*(1-p[i])**2)
+
+                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                            alpha*theta*p[i]**2*(1-p[i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[i]*(1-p[i]) ))
+                a=m_1
+                b=m_2 - m_1**2
+                #if (m_2 - m_1**2)<0:
+                # if p[i]+X[j,i] >1:
+                #     print(m_1,m_2 - m_1**2,p[i]+X[j,i])
+                # if p[i]+X[j,i] <0:
+                #     print(m_1,m_2 - m_1**2,p[i]+X[j,i])
+
+
+                X[j,i+1]=np.random.normal(a,np.sqrt(b),1)
+
+
+                #X[j,i+1]= -1 +  2*X[j,i+1]
+        except:
+            try_count += 1
+            print('Try # : ' +str(try_count))
+            #print('Beta shape parameters are not positive definite.\
+            # The parameters were: {}'.format(a) +'and: {}'.format(b))
+            i=0
+            pass
+            if try_count >= max_tries:
+                raise Exception("Unable to generate after %s tries" % max_tries)
+        else:
+            j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_path_normal_Euler(X0,disct,real,forecast):
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+
+    dN=1/N
+    X=np.zeros((M,N))
+
+    try_count = 0
+    j=0;
+    while j <M:
+        X[j,0]=X0
+        a=0
+        b=0
+        dW=np.sqrt(dN)*np.random.normal(0, 1, N)
+
+        for i in range(0,N-1):
+            X[j,0]=X0
+            b=  2*alpha*theta*p[i]*(1-p[i])*(X[j,i]+ p[i])*(1-X[j,i]- p[i])
+            a= - theta*X[j,i]
+
+            # if X[j,i] >1:
+            #     print('WARNING: X greater than one ')
+            #     print(a,b,X[j,i])
+            # if X[j,i] <0:
+            #     print('WARNING: X less than one ')
+            #     print(a,b,X[j,i])
+
+            X[j,i+1]= X[j,i] + a*dN+ np.sqrt(b)*dW[i]
+
+            #a= -theta*(X[j,i] - p[i])
+            #b= 2*alpha*theta*p[i]*(1-p[i])*X[j,i]*( 1-X[j,i] )
+
+            #if (m_2 - m_1**2)<0:
+
+
+            #X[j,i+1]+=np.random.normal(a*dN,np.sqrt(b*dN),1)
+
+        j += 1 # increments only if no exception
+
+    return(X)
+
+
+
+def gen_X_beta(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+    dp=np.gradient(p) #derivative tracking
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    max_tries=50 #max(int(M*0.1), 2 )
+    try_count = 0
+    j=0;
+    while j <M:
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+        try:
+             for i in range(0,N-1):
+                #if p[i]+X[j,i] >1:
+                #    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                #if p[i]+X[j,i] <0:
+                #    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                m_1=( X[j,i] + dN*(theta*p[i+1] ) )/( 1+ dN*theta )   #X[j,i]*np.exp(- dN*theta)
+                #
+                # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                     alpha*theta*p[i]**2*(1-p[i])**2)
+
+                m_2= ( X[j,i]**2 + 2*dN*(m_1*(-theta*m_1 \
+                +alpha*theta*p[i+1]*(1-p[i+1])+ theta*p[i+1])))/( 1 + 2*dN*( alpha*theta*p[i+1]*(1-p[i+1]) ) )
+
+                #(X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #            alpha*theta*p[i]**2*(1-p[i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[i]*(1-p[i]) ))
+
+                a=m_1
+                b=m_2 - m_1**2
+                #print(X[j,i])
+                #if (m_2 - m_1**2)<0:
+                # if X[j,i] >1:
+                #     print('WARNING: X greater than one ')
+                #     print(m_1,m_2 - m_1**2,X[j,i])
+                # if X[j,i] <0:
+                #     print('WARNING: X less than one ')
+                #     print(m_1,m_2 - m_1**2,X[j,i])
+
+                beta_param_alpha= ( (1-a)/b - 1/a   )*a**2
+                beta_param_beta= beta_param_alpha*( 1/a -1 )
+
+                if beta_param_alpha<=0 or beta_param_beta<=0:
+                    raise Exception('Beta shape parameters are not positive definite.\
+                    /n The parameters were: {}'.format(beta_param_alpha) +'and: {}'.format(beta_param_beta) )
+
+                X[j,i+1]=np.random.beta(beta_param_alpha,beta_param_beta,1)
+
+                #X[j,i+1]= -1 +  2*X[j,i+1]
+        except:
+            try_count += 1
+            print('Try # : ' +str(try_count))
+            print('Beta shape parameters are not positive definite.\
+            /n The parameters were: {}'.format(beta_param_alpha) +'and: {}'.format(beta_param_beta))
+            i=0
+            pass
+            if try_count >= max_tries:
+                raise Exception("Unable to generate after %s tries" % max_tries)
+        else:
+            j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_X_normal(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+    dp=np.gradient(p) #derivative tracking
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    max_tries=50 #max(int(M*0.1), 2 )
+    try_count = 0
+    j=0;
+    while j <M:
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+        try:
+             for i in range(0,N-1):
+                #if p[i]+X[j,i] >1:
+                #    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                #if p[i]+X[j,i] <0:
+                #    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+                m_1=( X[j,i] + dN*(theta*p[i+1] )  )/( 1+ dN*theta )   #X[j,i]*np.exp(- dN*theta)
+
+
+                # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                     alpha*theta*p[i]**2*(1-p[i])**2)
+
+                m_2= ( X[j,i]**2 + 2*dN*(m_1*(-theta*m_1  \
+                +alpha*theta*p[i+1]*(1-p[i+1])+ theta*p[i+1])))/( 1 + 2*dN*( alpha*theta*p[i+1]*(1-p[i+1]) ) )
+
+                #(X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #            alpha*theta*p[i]**2*(1-p[i])**2) ) /(  1+ dN*2*(theta+alpha*theta*p[i]*(1-p[i]) ))
+
+                a=m_1
+                b=m_2 - m_1**2
+                #print(X[j,i])
+                #if (m_2 - m_1**2)<0:
+                # if X[j,i] >1:
+                #     print('WARNING: X greater than one ')
+                #     print(m_1,m_2 - m_1**2,X[j,i])
+                # if X[j,i] <0:
+                #     print('WARNING: X less than one ')
+                #     print(m_1,m_2 - m_1**2,X[j,i])
+
+
+                X[j,i+1]=X[j,i+1]= a+ np.sqrt(b)*np.random.normal(0,1,1)
+
+                #X[j,i+1]= -1 +  2*X[j,i+1]
+        except:
+            try_count += 1
+            i=0
+            pass
+            if try_count >= max_tries:
+                raise Exception("Unable to generate after %s tries" % max_tries)
+        else:
+            j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_X_normal_euler(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+
+    dN=1/N
+    X=np.zeros((M,N))
+
+    try_count = 0
+    j=0;
+    while j <M:
+        X[j,0]=X0
+        a=0
+        b=0
+        dW=np.sqrt(dN)*np.random.normal(0, 1, N)
+
+        for i in range(0,N-1):
+            X[j,0]=X0
+            b=  2*alpha*theta*p[i]*(1-p[i])*X[j,i]*(1-X[j,i])
+            a= - theta*(X[j,i]-p[i])
+
+            # if X[j,i] >1:
+            #     print('WARNING: X greater than one ')
+            #     print(a,b,X[j,i])
+            # if X[j,i] <0:
+            #     print('WARNING: X less than one ')
+            #     print(a,b,X[j,i])
+
+            X[j,i+1]= X[j,i] + a*dN+ np.sqrt(b)*dW[i]
+
+            #a= -theta*(X[j,i] - p[i])
+            #b= 2*alpha*theta*p[i]*(1-p[i])*X[j,i]*( 1-X[j,i] )
+
+            #if (m_2 - m_1**2)<0:
+
+
+            #X[j,i+1]+=np.random.normal(a*dN,np.sqrt(b*dN),1)
+
+        j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_X_normal_euler_derivative_tracking(X0,disct,real,forecast):
+
+    p=forecast
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+    X0=p[0]
+
+    theta=real.mu
+    alpha=real.sigma
+    issue_counter=0
+    X=np.zeros((M,N))
+    max_tries=200
+    dN=1/N
+    i=0
+    j=0
+    while j < M:
+        X[j,0]=X0
+        a=0
+        b=0
+        dW=np.sqrt(dN)*np.random.normal(0, 1, N)
+        i=0
+        while i<N-1:
+            try:
+                try_count=0
+                X[j,0]=X0
+
+                b=  2*alpha*theta*p[i]*(1-p[i])*X[j,i]*(1-X[j,i])
+                a= - theta*(X[j,i]-p[i]) + (p[i+1]-p[i])/dN
+
+                X[j,i+1]= X[j,i] + a*dN+ np.sqrt(b)*dW[i]
+                #print(X[j,i+1])
+                if (X[j,i+1]<0) or (X[j,i+1])>1:
+                    #print('EXCEPTION !! ')
+                    Z0=X[j,i+1]
+                    raise Exception('outside: {}'.format(X[j,i+1]) )
+                #print('here')
+            except:
+                #print('issue with ', X[j,i+1])
+                interpolation_count=0
+                Z_init=X[j,i]
+                Z_sol=X[j,i+1]
+                while Z_sol<0 or Z_sol>1:
+                    #print('Solving Expection')
+                    try_count += 1
+                    interpolation_count+=1
+
+                    #print('Try # : ' +str(try_count))
+
+                    interpolation_points=10*interpolation_count
+                    x = np.array((0,1))
+                    y = np.array(( p[i-1] , p[i] ))
+                    f = interpolate.interp1d(x, y)
+                    xnew=np.linspace(0,1,interpolation_points)
+                    p_inside = f(xnew)
+
+                    dN_in=1/(N+ interpolation_points)
+                    dW_inner=np.sqrt(dN_in)*np.random.normal(0, 1, interpolation_points)
+
+                    Z=np.zeros((interpolation_points))
+                    Z[0]=Z_init
+                    for  k in range(0,interpolation_points-1):
+                        b=  2*alpha*theta*p_inside[k]*(1-p_inside[k])*Z[k]*(1-Z[k])
+                        a= - theta*(Z[k]-p_inside[k]) + (p_inside[k+1]-p_inside[k])/dN_in
+                        #print(b)
+                        Z[k+1]= Z[k] + a*dN_in+ np.sqrt(b)*dW_inner[k]
+
+                        #print(Z[k+1])
+                    if np.isnan(Z[k+1])==False:
+                        Z_sol = Z[k+1]
+                        #print('achieved ',Z_sol)
+                pass
+                X[j,i+1]= Z_sol
+                #print('achieved ',Z_sol)
+                issue_counter+=1
+                i+=1
+                if try_count >= max_tries:
+                    raise Exception("Unable to generate after %s tries" % max_tries)
+            else:
+                i+=1
+        j+=1
+    print(issue_counter, ' issues resolved')
+
+    return(X)
+
+def gen_X_beta_derivative_tracking(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    max_tries=50 #max(int(M*0.1), 2 )
+    try_count = 0
+    j=0;
+    while j <M:
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+        try:
+             for i in range(0,N-1):
+
+                if X[j,i] >1:
+                    X[j,i]=X[j,i-1]
+
+                if X[j,i] <0:
+                    X[j,i]=X[j,i-1]
+
+                m_1=( X[j,i] + dN*(theta*p[i+1] ) + (p[i+1]-p[i]  )  )/( 1+ dN*theta )   #X[j,i]*np.exp(- dN*theta)
+
+
+                # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+                #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+                #                     alpha*theta*p[i]**2*(1-p[i])**2)
+
+                m_2= ( X[j,i]**2 + 2*dN*(m_1*(-theta*m_1 + (p[i+1]-p[i])/(dN)  \
+                    +alpha*theta*p[i+1]*(1-p[i+1])+ theta*p[i+1])))/( 1 + 2*dN*( alpha*theta*p[i+1]*(1-p[i+1]) ) )
+
+                a=m_1
+                b=m_2 - m_1**2
+                #print(X[j,i])
+                #if (m_2 - m_1**2)<0:
+                # if X[j,i] >1:
+                #     print('WARNING: X greater than one ')
+                #     print(m_1,m_2 - m_1**2,X[j,i])
+                # if X[j,i] <0:
+                #     print('WARNING: X less than one ')
+                #     print(m_1,m_2 - m_1**2,X[j,i])
+
+                beta_param_alpha= ( (1-a)/b - 1/a   )*a**2
+                beta_param_beta= beta_param_alpha*( 1/a -1 )
+
+                if beta_param_alpha<=0 or beta_param_beta<=0:
+                    raise Exception('Beta shape parameters are not positive definite.\
+                     The parameters were: {}'.format(p[i+1] - p[i]) +'and: {}'.format(p[i+1] - p[i]) )
+
+                X[j,i+1]=np.random.beta(beta_param_alpha,beta_param_beta,1)
+
+                #X[j,i+1]= -1 +  2*X[j,i+1]
+        except:
+            try_count += 1
+            print('Try # : ' +str(try_count))
+            print('Beta shape parameters are not positive definite.\
+            /n The parameters were: {}'.format(p[i+1] - p[i]) +'and: {}'.format(X[j,i]))
+            i=0
+            pass
+            if try_count >= max_tries:
+                raise Exception("Unable to generate after %s tries" % max_tries)
+        else:
+            j += 1 # increments only if no exception
+
+    return(X)
+
+def gen_X_normal_derivative_tracking(X0,disct,real,forecast):
+
+    N=disct.N
+    dt=disct.dt
+    M=disct.M
+
+    p=forecast
+
+    theta=real.mu
+    alpha=real.sigma
+
+    beta_param_alpha=0
+    beta_param_beta=0
+
+    m_1=0
+    m_2=0
+    dN=1/N
+    X=np.zeros((M,N))
+
+    max_tries=50 #max(int(M*0.1), 2 )
+    try_count = 0
+    j=0;
+    while j <M:
+        m_1=0
+        m_2=0
+        X[j,0]=X0
+        m_1=X[j,0]
+        m_2=X[j,0]**2
+
+        for i in range(0,N-1):
+            #if p[i]+X[j,i] >1:
+            #    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+            #if p[i]+X[j,i] <0:
+            #    X[j,i]=p[i-1]-p[i]+X[j,i-1]
+
+            if X[j,i] >1:
+                X[j,i]=X[j,i-1]
+
+            if X[j,i] <0:
+                X[j,i]=X[j,i-1]
+
+            m_1=( X[j,i] + dN*(theta*p[i+1] ) + (p[i+1]-p[i]  )  )/( 1+ dN*theta )   #X[j,i]*np.exp(- dN*theta)
+
+
+            # m_2=  X[j,i]**2 + dN*2*(-X[j,i]**2*(theta+alpha*theta*p[i]*(1-p[i]) ) + \
+            #                 X[j,i]*(alpha*theta*p[i]*(1-p[i])*(1-2*p[i] )) + \
+            #                     alpha*theta*p[i]**2*(1-p[i])**2)
+
+            m_2= ( X[j,i]**2 + 2*dN*(m_1*(-theta*m_1 + (p[i+1]-p[i])/(dN)  \
+                +alpha*theta*p[i+1]*(1-p[i+1])+ theta*p[i+1])))/( 1 + 2*dN*( alpha*theta*p[i+1]*(1-p[i+1]) ) )
+
+            a=m_1
+            b=m_2 - m_1**2
+
+            #print(X[j,i])
+            #if (m_2 - m_1**2)<0:
+            # if X[j,i] >1:
+            #     print('WARNING: X greater than one ')
+            #     print(m_1,m_2 - m_1**2,X[j,i])
+            # if X[j,i] <0:
+            #     print('WARNING: X less than zero ')
+            #     print(m_1,m_2 - m_1**2,X[j,i])
+
+
+            X[j,i+1]= a+ np.sqrt(b)*np.random.normal(0,1,1)
+
+                #X[j,i+1]= -1 +  2*X[j,i+1]
+        j += 1 # increments only if no exception
 
     return(X)
 
@@ -1119,6 +1693,8 @@ def gen_path_beta_robust_interpolate(X0,disct,real,forecast):
             j += 1 # increments only if no exception
 
     return(X)
+
+
 
 def abline(slope, intercept):
     """Plot a line from slope and intercept"""
