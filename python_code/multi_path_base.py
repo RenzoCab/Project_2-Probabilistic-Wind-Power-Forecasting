@@ -540,6 +540,94 @@ class model_beta_flex:
         err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
         return(err_mu,err_sigma)
 
+class model_modified_drift:
+    def __init__(self, disct, data,forecast ):
+        self.disct = disct
+        self.data = data
+        #self.ic = ic
+        self.forecast = forecast
+        self.optimal=optimal()
+
+        #plt.figure()
+        #plt.plot(p)
+
+        #plt.figure()
+        #plt.plot(p_dot)
+
+        #plt.figure()
+        #plt.plot(zero_drift)
+
+        #plt.figure()
+        #plt.plot(zero_drift_fixed)
+
+        #plt.figure()
+        #plt.plot(theta_adjusted)
+
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N
+        for j in range(0,M):
+            m_1=0
+            m_2=0
+            L_m = L_m + L_n
+            theta_adjusted=theta_adjust( theta , p[j,:] )
+            for i in range(0,N-1): #start from 1 or zero
+
+                m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
+
+                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
+                            alpha*theta_adjusted[i]*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i]) ))
+                a=m_1
+                b=m_2 - m_1**2
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
+                 (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
+                 scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+        return(-1*L_m)
+
+                                                #ADJUST UPPER BOUND !
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-2, None), (1e-2, None))):
+
+        mu_initial,sig_initial=param_initial
+        #L-BFGS-B
+        #myfactr = 1
+
+        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'gtol': 1e-19, 'ftol' : 1e-19 });min_param
+        #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
+
+        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
+        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
+        self.optimal.mu= min_param.x[0]
+        self.optimal.sigma= min_param.x[1]
+
+        return(min_param.x, min_param.message)
+
+    def get_error(self,real):
+        err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
+        err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
+        return(err_mu,err_sigma)
+
+
 class model_beta_data:
     def __init__(self, disct, data,forecast ):
         self.disct = disct
@@ -755,6 +843,27 @@ class model_moments_check:
         err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
         return(err_mu,err_sigma)
 ###########################################################################
+
+def theta_adjust(theta,forecast):
+    p=forecast
+    N=len(p)
+    p_dot=np.diff(p)*N
+
+    zero_drift = np.diff(p)*N/theta + p[:-1]
+    zero_drift_fixed=np.zeros_like(zero_drift)
+    theta_adjusted=np.zeros_like(zero_drift)
+
+    for i in range(0,len(zero_drift)):
+        zero_drift_fixed[i] = p_dot[i]/max(theta, abs(p_dot[i])/(min(p[i], 1-p[i]) + 1e-16) ) + p[i]
+        theta_adjusted[i]= max(theta, abs(p_dot[i])/(min(p[i], 1-p[i]) + 1e-16 ) )
+
+    #if max(zero_drift_fixed)>1:
+    #        print('WARNING: outside range ! bigger than one ')
+    #if min(zero_drift_fixed)<0 and abs(min(zero_drift_fixed)) > 1e-10:
+    #        print('WARNING: outside range ! less than zero')
+
+    return(theta_adjusted ) #, zero_drift_fixed return  if needed
+
 
 def gen_path(X0,disct,real):
 
@@ -1393,7 +1502,7 @@ def gen_X_normal_euler_derivative_tracking(X0,disct,real,forecast):
     alpha=real.sigma
     issue_counter=0
     X=np.zeros((M,N))
-    max_tries=200
+    max_tries=100
     dN=1/N
     i=0
     j=0
@@ -1413,6 +1522,14 @@ def gen_X_normal_euler_derivative_tracking(X0,disct,real,forecast):
 
                 X[j,i+1]= X[j,i] + a*dN+ np.sqrt(b)*dW[i]
                 #print(X[j,i+1])
+
+                    #remove later
+                if X[j,i+1] >1:
+                    X[j,i+1]=X[j,i]
+
+                if X[j,i+1] <0:
+                    X[j,i+1]=X[j,i]
+
                 if (X[j,i+1]<0) or (X[j,i+1])>1:
                     #print('EXCEPTION !! ')
                     Z0=X[j,i+1]
@@ -1465,6 +1582,43 @@ def gen_X_normal_euler_derivative_tracking(X0,disct,real,forecast):
     print(issue_counter, ' issues resolved')
 
     return(X)
+
+def gen_X_normal_euler_DT_modified(X0,disct,real,forecast):
+    p=forecast
+    N=disct.N
+    M=disct.M
+    X0=p[0]
+    theta=real.mu
+    alpha=real.sigma
+    X=np.zeros((M,N))
+    #X_zero_drift=np.zeros(N)
+    dN=1/N
+    i=0
+    j=0
+    while j < M:
+        X[j,0]=X0
+        a=0
+        b=0
+        dW=np.sqrt(dN)*np.random.normal(0, 1, N)
+        i=0
+        while i<N-1:
+
+            b=  2*alpha*theta[i]*p[i]*(1-p[i])*X[j,i]*(1-X[j,i])
+            a= - theta[i]*(X[j,i]-p[i]) + (p[i+1]-p[i])/(dN)
+            if b<0:
+                print('negative b')
+
+            X[j,i+1]= X[j,i] + a*dN+ np.sqrt(b)*dW[i]
+
+            if X[j,i+1] >1:
+                X[j,i+1]=X[j,i];
+            if X[j,i+1] <0:
+                X[j,i+1]=X[j,i];
+            #X_zero_drift[i]= p[i]+ (p[i+1]-p[i])/(dN*theta[i]);
+
+            i+=1
+        j+=1
+    return( X )
 
 def gen_X_beta_derivative_tracking(X0,disct,real,forecast):
 
