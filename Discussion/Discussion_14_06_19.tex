@@ -1,0 +1,94 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[activeacute, english]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newcommand\dist{\stackrel{\mathclap{\footnotesize\mbox{d.}}}{=}}
+\usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\usepackage[spanish,onelanguage]{algorithm2e}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposición}
+%\newenvironment{proof}[1][Demostración]{\begin{trivlist}
+%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definición]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Ejemplo]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Nota]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\negr}[1]{\textit{\textbf{#1}}}
+
+\title{Power Forecasting and Control\\ discussion notes}
+
+%\author{Waleed Alhaddad }
+
+\date{}
+\begin{document}
+\maketitle
+
+\section{Notes on current work flow}
+\begin{itemize}
+\item Fit and simulate  the model for shorter periods of 6hr, 24hr and compare parameters and behavior.
+\item Fit and simulate model without the term $p_t(1-p_t)$  and compare parameters and behavior. Check if it is necessary.
+\item Find a way to  prove that the optimization problem is indeed convex in the parameters of the SDE if possible.
+\item Reasoning why the sensitivity in the parameter $\alpha$ is much higher than the parameter $\theta$, ellipse suggests that a linear combinations of the two parameters $\alpha, \theta_0$ seem to be equivalent. Visually, we can also  see by trying out parameters, that certain combination of $\alpha$ and $\theta_0$ seem to be indeed very similar to other combinations.
+\end{itemize}
+
+\section{Notes on future work}
+\begin{itemize}
+\item Consider regime switching to detect human energy management decisions.
+\end{itemize}
+
+%\newpage
+%\section{Things to do}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+%
+%
+%
+%\section{Things to do}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+
+%\section{Motivation}
+
+
+%\section{Introduction}
+
+
+
+%\section{Model}
+
+
+%\section{Conclusion}
+
+ 
+
+%\subsection{Model}
+%\begin{thebibliography}{99}
+%	\bibitem{apo} Apostol, T. (1974). \emph{Mathematical Analysis} (2nd ed.),  Addison-Wesley. pp.218-230
+%	\bibitem{E} Cabaña, E. (2012). \emph{Introducción a los
+%		procesos estocásticos}, Notas
+%	para el Curso de la Licenciatura en Estadística, Universidad de la República. pp.98-115
+%\end{thebibliography}
+
+
+\end{document}
+

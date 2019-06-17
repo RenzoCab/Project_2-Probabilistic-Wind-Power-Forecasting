@@ -11,7 +11,14 @@ from scipy.optimize import basinhopping
 import math
 import random
 from scipy import interpolate
+from math import pi
+from numpy import linalg as LA
 
+
+##############
+#constants
+Nfeval=0
+##############
 class disct:
   def __init__(self, N, dt, M ):
     self.N = N
@@ -547,6 +554,7 @@ class model_modified_drift:
         #self.ic = ic
         self.forecast = forecast
         self.optimal=optimal()
+        self.Nfeval=0
 
         #plt.figure()
         #plt.plot(p)
@@ -602,25 +610,44 @@ class model_modified_drift:
                 L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
                  (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
                  scipy.special.betaln(beta_param_alpha, beta_param_beta)
+        # display information
+        #if self.Nfeval%5 == 0:
+        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        self.Nfeval += 1
 
         return(-1*L_m)
 
-                                                #ADJUST UPPER BOUND !
-    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-2, None), (1e-2, None))):
 
+                                                #ADJUST UPPER BOUND !
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-3, None), (1e-3, None))):
+        print("starting optimization")
         mu_initial,sig_initial=param_initial
         #L-BFGS-B
-        #myfactr = 1
+        #min_param=minimize(self.likelihood,param_initial,bounds=bnds, \
+        #   method='L-BFGS-B', options={ 'gtol': 1e-19, 'ftol' : 1e-19 });min_param
+        #myfactr=100
 
-        min_param=minimize(self.likelihood,param_initial,bounds=bnds, method='L-BFGS-B', options={ 'gtol': 1e-19, 'ftol' : 1e-19 });min_param
+        #min_param=minimize(self.likelihood,param_initial,bounds=bnds, \
+        #   method='L-BFGS-B', options={ 'gtol': myfactr , 'ftol' : myfactr });min_param
+
+        minimizer_kwargs = {"method":"L-BFGS-B", "bounds":bnds} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
+        min_param = basinhopping(self.likelihood, param_initial,T=0 ,minimizer_kwargs=minimizer_kwargs,
+                    niter=30)
+
+
         #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
+        #x,f,d=scipy.optimize.fmin_l_bfgs_b(self.likelihood,param_initial, approx_grad=True)
+
+        #x,f,d=scipy.optimize.fmin_l_bfgs_b(self.likelihood,param_initial,bounds=bnds, \
+        #    factr=10, pgtol=1e-30, epsilon=1e-30, iprint=100, maxfun=1e6, maxiter=1e6,maxls=25, approx_grad=True)
 
         #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
         #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
-        self.optimal.mu= min_param.x[0]
-        self.optimal.sigma= min_param.x[1]
+        #self.optimal.mu= min_param[0][0]
+        #self.optimal.sigma= min_param[0][1]
 
-        return(min_param.x, min_param.message)
+        #return(x,f,d)
+        return(min_param)
 
     def get_error(self,real):
         err_mu = np.abs( self.optimal.mu - real.mu )/real.mu
