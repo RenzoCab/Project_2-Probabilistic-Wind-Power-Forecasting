@@ -118,7 +118,7 @@ class model_modified_drift:
 
         minimizer_kwargs = {"method":"L-BFGS-B", "bounds":bnds} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
         min_param = basinhopping(self.likelihood, param_initial,T=0 ,minimizer_kwargs=minimizer_kwargs,
-                    niter=1)
+                    niter=30)
 
 
         #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
@@ -878,12 +878,13 @@ def gen_X_normal_euler_DT_modified(X0,disct,real,forecast):
         b=0
         dW=np.sqrt(dN)*np.random.normal(0, 1, N)
         i=0
+        NG_var=False
         while i<N-1:
 
             b=  2*alpha*theta[i]*p[i]*(1-p[i])*X[j,i]*(1-X[j,i])
             a= - theta[i]*(X[j,i]-p[i]) + (p[i+1]-p[i])/(dN)
             if b<0:
-                print('negative b')
+                NG_var=True
 
             X[j,i+1]= X[j,i] + a*dN+ np.sqrt(b)*dW[i]
 
@@ -894,7 +895,9 @@ def gen_X_normal_euler_DT_modified(X0,disct,real,forecast):
             #X_zero_drift[i]= p[i]+ (p[i+1]-p[i])/(dN*theta[i]);
 
             i+=1
+        if (NG_var==True): print('negative variance in Generator. ' );
         j+=1
+
     return( X )
 
 def gen_X_beta_derivative_tracking(X0,disct,real,forecast):
@@ -1229,78 +1232,79 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,\
     os.mkdir(dir_path + '/72hr')
     os.mkdir(dir_path + '/6hr')
     N=disct_in.N
-    interpolation_points=disct_in.N
+    #interpolation_points=disct_in.N
+    num_forecasts=len(list_forecast_number) # to follow the custom forecast order
+    q975=np.zeros((num_forecasts,N+1))
+    q025=np.zeros((num_forecasts,N+1))
+    q95=np.zeros((num_forecasts,N+1))
+    q05=np.zeros((num_forecasts,N+1))
+    q50=np.zeros((num_forecasts,N+1))
+    q75=np.zeros((num_forecasts,N+1))
+    q25=np.zeros((num_forecasts,N+1))
 
-    q975=np.zeros((N))
-    q025=np.zeros((N))
-    q95=np.zeros((N))
-    q05=np.zeros((N))
-    q50=np.zeros((N))
-    q75=np.zeros((N))
-    q25=np.zeros((N))
-
-    xnew = np.linspace(0,72,interpolation_points)
-
+    xnew = np.linspace(0,N,N+1)
+    x = np.linspace(1,N,N)
 
     theta= real_in.mu #7.8155
     alpha= real_in.sigma #1.072
-
+    j=0
     for k in list_forecast_number: #   #range(0,n_paths): #n_paths
-        p=forecast_data_inter[0,k,:] #obtain cleansed forecast
-        d=forecast_data_inter[1,k,:]
+        p=forecast_data_inter[0,k,:N] #obtain cleansed forecast
+        inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
+        p=inter_1(xnew)
+        d=forecast_data_inter[1,k,:N]
         dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
         dt=1
         M_test=disct_in.M
 
-        fig=plt.figure(2,figsize=(10, 4))
-        fig.clf()
-        plt.plot(xnew,p, label='forecast')
-        plt.plot(xnew,d, label='actual production')
-
-        plt.xlim(1, 73)
-        plt.ylim(-0.1, 1.1)
-        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
-
-        plt.xticks( fontsize = 20);
-        plt.yticks( fontsize = 20);
-        plt.xlabel('Time [hr]',fontsize = 24)
-        plt.ylabel('Power',fontsize = 24)
-        plt.legend( prop={'size': 15})
-        plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
+        # fig=plt.figure(2,figsize=(10, 4))
+        # fig.clf()
+        # plt.plot(xnew,p, label='forecast')
+        # plt.plot(xnew,d, label='actual production')
+        #
+        # plt.xlim(1, 73)
+        # plt.ylim(-0.1, 1.1)
+        # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+        #
+        # plt.xticks( fontsize = 20);
+        # plt.yticks( fontsize = 20);
+        # plt.xlabel('Time [hr]',fontsize = 24)
+        # plt.ylabel('Power',fontsize = 24)
+        # plt.legend( prop={'size': 15})
+        # plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
 
 
         theta_adjusted, zero_drift_fixed=theta_adjust(theta,p)
 
-        #theta_const= np.zeros_like(theta_array)+12.3
-
         real_1 = real(theta_adjusted, alpha ) #theta_array
 
-        disct_temp = disct(N,dt,M_test)
+        disct_temp = disct(N+1,dt,M_test)
 
-        X = np.empty((M_test,N));
+        X = np.empty((M_test,N+1));
         X= gen_X_normal_euler_DT_modified(X0=p[0],disct=disct_temp,real=real_1,forecast=p)
         #plt.plot(X[0,:])
 
-        for i in range(0,N):
-            q975[i]=np.quantile(X[:,i], 0.975)
-            q025[i]=np.quantile(X[:,i], 0.025)
+        for i in range(0,N+1):
+            q975[k,i]=np.quantile(X[:,i], 0.975)
+            q025[k,i]=np.quantile(X[:,i], 0.025)
 
-            q95[i]=np.quantile(X[:,i], 0.95)
-            q05[i]=np.quantile(X[:,i], 0.05)
+            q95[k,i]=np.quantile(X[:,i], 0.95)
+            q05[k,i]=np.quantile(X[:,i], 0.05)
 
-            q50[i]=np.quantile(X[:,i], 0.5)
+            q50[k,i]=np.quantile(X[:,i], 0.5)
 
-            q75[i]=np.quantile(X[:,i], 0.75)
-            q25[i]=np.quantile(X[:,i], 0.25)
+            q75[k,i]=np.quantile(X[:,i], 0.75)
+            q25[k,i]=np.quantile(X[:,i], 0.25)
 
+        #plotting
         fig=plt.figure(2,figsize=(10, 4))
         fig.clf()
 
-        plt.xlim(1, 73)
+        plt.xlim(1, N)
         plt.ylim(-0.1, 1.1)
 
-        plt.fill_between(xnew, q75,q25,color='k',alpha=0.2, label='90% CI', edgecolor=None)
-        plt.fill_between(xnew, q95,q05,color='k',alpha=0.3, label='50% CI', edgecolor=None)
+        plt.fill_between(xnew, q75[j,:],q25[j,:],color='k',alpha=0.2, label='90% CI', edgecolor=None)
+        plt.fill_between(xnew, q95[j,:],q05[j,:],color='k',alpha=0.3, label='50% CI', edgecolor=None)
 
         #plt.plot(xnew,np.mean(normal_X_derivative_tracking_Euler, axis=0),'c-', label='Mean')
 
@@ -1308,14 +1312,14 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,\
         #dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
         plt.plot(xnew,p, 'r-', label='forecast',linewidth=3)
         #plt.plot(xnew[:-1],zero_drift_fixed, 'y-', label='Zero Drift Line',linewidth=1)
-        plt.plot(xnew,d , 'y-', label='actual production',linewidth=3)
+        plt.plot(x,d , 'y-', label='actual production',linewidth=3)
         plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
 
         plt.xticks( fontsize = 20);
         plt.yticks( fontsize = 20);
         plt.xlabel('Time [hr]',fontsize = 24)
         plt.ylabel('Power',fontsize = 24)
-        plt.legend( prop={'size': 15})
+        plt.legend( prop={'size': 10})
         plt.savefig(dir_path+'/72hr/'+'72hr_'+str(k)+'.pdf', bbox_inches="tight")
 
         fig= plt.figure(2,figsize=(10, 4))
@@ -1324,27 +1328,51 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,\
         plt.xlim(1, 7)
         plt.ylim(-0.1, 1.1)
 
-        plt.fill_between(xnew, q75,q25,color='k',alpha=0.2, label='90% CI', edgecolor=None)
-        plt.fill_between(xnew, q95,q05,color='k',alpha=0.3, label='50% CI', edgecolor=None)
+        plt.fill_between(xnew, q75[j,:],q25[j,:],color='k',alpha=0.2, label='90% CI', edgecolor=None)
+        plt.fill_between(xnew, q95[j,:],q05[j,:],color='k',alpha=0.3, label='50% CI', edgecolor=None)
 
         #plt.plot(xnew,np.mean(normal_X_derivative_tracking_Euler, axis=0),'c-', label='Mean')
 
         #plt.plot(xnew,q50,'y-', label='Median')
 
         plt.plot(xnew,p, 'r-', label='forecast',linewidth=3)
-        plt.plot(xnew,d , 'y-', label='actual production',linewidth=3)
+        plt.plot(x,d , 'y-', label='actual production',linewidth=3)
 
         #plt.plot(xnew[:-1],zero_drift_fixed, 'y-', label='Zero Drift Line',linewidth=1)
 
         plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24) #,fontsize=10 Forecast Confidence Intervals
         plt.xlabel('Time [hr]',fontsize = 24)
         plt.ylabel('Power',fontsize = 24)
-        plt.legend( prop={'size': 15})
+        plt.legend( prop={'size': 10})
         plt.xlim(1, 7)
         plt.ylim(-0.1, 1.1)
         plt.xticks( fontsize = 20);
         plt.yticks( fontsize = 20);
         plt.savefig( dir_path+'/6hr/'+'6hr_' +str(k)+'.pdf', bbox_inches="tight")
+
+        j+=1;
+
+    #save output
+
+    file_object  = open(dir_path+'/parameter.info', 'w')
+    note='Confidence intervals for ' + str(num_forecasts)+' forecasts of '\
+    + str(N) +' hours.'+ '\n' +'Parameters used are theta= '\
+    +str(theta) + ' and alpha= ' + str(alpha) + '.Generated by '+str(M_test) \
+    + ' simulations.'
+    file_object.write(note)
+    file_object.close()
+
+    np.save(dir_path + '/forecast_list', list_forecast_number)
+    np.save(dir_path + '/N', N)
+    np.save(dir_path + '/theta_0', theta)
+    np.save(dir_path + '/alpha', alpha)
+    np.save(dir_path + '/q975', q975)
+    np.save(dir_path + '/q025', q025)
+    np.save(dir_path + '/q95', q95)
+    np.save(dir_path + '/q05', q05)
+    np.save(dir_path + '/q50', q50)
+    np.save(dir_path + '/q75', q75)
+    np.save(dir_path + '/q25', q25)
 
 def abline(slope, intercept):
     """Plot a line from slope and intercept"""

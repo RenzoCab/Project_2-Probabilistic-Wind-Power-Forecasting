@@ -1,6 +1,6 @@
 
 import os
-os.chdir('/Users/alhaddwt/Waleed Dropbox/Waleed Al-Haddad/GitLab/wind-power/python_code')
+os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
 from Base import *
 #from multi_path_base import model_modified_drift
 forecast_with_data=np.load('data/forecast_with_data.npy')

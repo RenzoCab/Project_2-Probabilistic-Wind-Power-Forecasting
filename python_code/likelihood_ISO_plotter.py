@@ -1,5 +1,5 @@
 import os
-os.chdir('/Users/alhaddwt/Waleed Dropbox/Waleed Al-Haddad/GitLab/wind-power/python_code')
+os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
