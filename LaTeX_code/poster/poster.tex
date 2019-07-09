@@ -139,7 +139,7 @@ X_0 & = X_0
 Let $p_t$ be a numerical wind power forecast, which is an input to this approach. Then the model is given by the following It\^{o} stochastic differential equation,
 \begin{equation}
 \begin{split}
-dX_t&= \dot{p} \ dt + (\theta_t -X_t) \ dt + b (X_t; \bm{\theta} ) \ dW_t \quad t > 0 \\
+dX_t&= \dot{p} \ dt - \theta_t( X_t- p_t) \ dt + b (X_t; \bm{\theta} ) \ dW_t \quad t > 0 \\
 X_0&=x_0
 \end{split}
 \end{equation}
@@ -156,7 +156,7 @@ In order to avoid differentiation of the forecast $\dot{p}_t$ and simplify, we a
 Then  model becomes,
 \begin{equation}
 \begin{split}
-dV_t &=  - \theta V_t \  dt + \sqrt{2 \theta \alpha p_t(1-p_t) (V_t +p_t ) (1-V_t-p_t)} \  dW_t \quad t > 0 \\
+dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha p_t(1-p_t) (V_t +p_t ) (1-V_t-p_t)} \  dW_t \quad t > 0 \\
 V_0 & = v_0
 \end{split}\label{main}
 \end{equation}
@@ -246,24 +246,6 @@ The numerical wind power generation forecast set contains  1217 forecasts of the
 
 
 \subsection*{ Optimization  }
-\begin{itemize}
-%\item The log-likelihood is convex in the  parameters $(\alpha, \theta_t )$ on the positive quadrant.
-\item We optimize using L-BFGS algorithm constrained to the positive quadrant.
-\end{itemize}
-The ellipse defined by the  Hessian of the log-likelihood shrinks at a fast rate as shown in Figure (\ref{ellipse_drawing}). The contours of the  log-likelihood can be seen in Figure (\ref{contour}).
-
-\begin{figure}[t]
-\begin{center}
-%\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
-   \includegraphics[width=0.6\linewidth]{ellipse1193_samples_dN=14e-02.pdf}
-    \includegraphics[width=0.6\linewidth]{ellipse_conv_samples_dN=14e-02.pdf}
-\end{center}
-   \caption{Left:Shrinkage of the ellipse determined by the Hessian matrix of the log-likelihood around the point of optimality $(\theta_0^*, \alpha^*)\approx (8,1)$ (Axis are not in natural scale, arrows only to  eignevector direction). Right: Convergence of the major and semi-axis of the ellipse  of the Hessian of the log-likelihood at the point optimality $(\theta_0^*, \alpha^*)\approx (8,1)$. Note that it is slightly faster than the expected rate of $1/\sqrt{M}$. This is due to the correlation structure of the process $V_t$, thus a path may act  as more than one  uncorrelated sample.}
-\label{ellipse_drawing}
-\end{figure}
-
-
-
  \begin{figure}[t]
 \begin{center}
 %\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
@@ -274,6 +256,25 @@ The ellipse defined by the  Hessian of the log-likelihood shrinks at a fast rate
    \caption{Contour plot of the log-likelihood with only 100 sample paths, point of optimality $(\theta_0^*, \alpha^*)\approx (8,1)$ indicated by the  black dot.}
 \label{contour}
 \end{figure} 
+\begin{itemize}
+%\item The log-likelihood is convex in the  parameters $(\alpha, \theta_t )$ on the positive quadrant.
+\item We optimize using L-BFGS algorithm constrained to the positive quadrant.
+\end{itemize}
+The ellipse defined by the  Hessian of the log-likelihood shrinks at a fast rate as shown in Figure (\ref{ellipse_drawing}). The contours of the  log-likelihood can be seen in Figure (\ref{contour}).
+
+\begin{figure}[t]
+\begin{center}
+%\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
+    \includegraphics[width=0.6\linewidth]{ellipse_conv_samples_dN=14e-02.pdf}
+   \includegraphics[width=0.6\linewidth]{ellipse1193_samples_dN=14e-02.pdf}
+\end{center}
+   \caption{Left:Shrinkage of the ellipse determined by the Hessian matrix of the log-likelihood around the point of optimality $(\theta_0^*, \alpha^*)\approx (8,1)$ (Axis are not in natural scale, arrows only to  eignevector direction). Right: Convergence of the major and semi-axis of the ellipse  of the Hessian of the log-likelihood at the point optimality $(\theta_0^*, \alpha^*)\approx (8,1)$. Note that it is slightly faster than the expected rate of $1/\sqrt{M}$. This is due to the correlation structure of the process $V_t$, thus a path may act  as more than one  uncorrelated sample.}
+\label{ellipse_drawing}
+\end{figure}
+
+
+
+
 
 
 \section*{Results}

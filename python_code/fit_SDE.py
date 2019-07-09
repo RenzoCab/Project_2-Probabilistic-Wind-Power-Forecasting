@@ -11,7 +11,7 @@ os.mkdir(current_data_dir)
 
 print(current_data_dir)
 
-N=7 #forecast_data_inter.shape[2]
+N=72 #forecast_data_inter.shape[2]
 M=forecast_data_inter.shape[1]
 dt=1
 #forecast_data_inter[0,:,:] #forecast
@@ -22,7 +22,7 @@ V= forecast_data_inter[1,:M,:]-forecast_data_inter[0,:M,:]
 
 #answer 9.06 , 0.473
 this_model=model_modified_drift(disct_temp,V, forecast= p)
-intial_point=np.array((8.5,0.5))
+intial_point=np.array((10,0.3))
 optim=this_model.optimize(intial_point)
 
 file_object  = open(current_data_dir+'/results.out', 'w')

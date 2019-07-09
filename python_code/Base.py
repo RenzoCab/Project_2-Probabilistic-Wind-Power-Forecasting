@@ -85,8 +85,8 @@ class model_modified_drift:
             for i in range(0,N-1): #start from 1 or zero
                 m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
 
-                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
-                            alpha*theta_adjusted[i]*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i]) ))
+                m_2=  (X[j,i]**2 + 2*dN*( m_1*(alpha*theta_adjusted[i]*(1-2*p[j,i])) + \
+                            alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])))/(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]))
                 a=m_1
                 b=m_2 - m_1**2
 
@@ -105,7 +105,7 @@ class model_modified_drift:
 
 
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-3, None), (1e-3, None))):
+    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-1, 1e-1), (1e-1, 1e-1))):
         print("starting optimization")
         mu_initial,sig_initial=param_initial
         #L-BFGS-B
@@ -140,7 +140,59 @@ class model_modified_drift:
         err_sigma = np.abs( self.optimal.sigma - real.sigma )/real.sigma
         return(err_mu,err_sigma)
 
+class model_modified_drift_p_term:
+    def __init__(self, disct, data,forecast ):
+        self.disct = disct
+        self.data = data
+        #self.ic = ic
+        self.forecast = forecast
+        self.optimal=optimal()
+        self.Nfeval=0
 
+
+    def likelihood(self,param):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N
+        for j in range(0,M):
+            m_1=0
+            m_2=0
+            L_m = L_m + L_n
+            theta_adjusted, _ = theta_adjust( theta , p[j,:] )
+            for i in range(0,N-1): #start from 1 or zero
+                m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
+
+                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
+                            alpha*theta_adjusted[i]*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i]) ))
+                a=m_1
+                b=m_2 - m_1**2
+
+                beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+                beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
+                 (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
+                 scipy.special.betaln(beta_param_alpha, beta_param_beta)
+        # display information
+        #if self.Nfeval%5 == 0:
+        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        self.Nfeval += 1
+
+        return(-1*L_m)
 ###########################################################################
 # Path generators / simulators
 
@@ -881,7 +933,7 @@ def gen_X_normal_euler_DT_modified(X0,disct,real,forecast):
         NG_var=False
         while i<N-1:
 
-            b=  2*alpha*theta[i]*p[i]*(1-p[i])*X[j,i]*(1-X[j,i])
+            b=  2*alpha*theta[i]*X[j,i]*(1-X[j,i]) #remove p(1-p)
             a= - theta[i]*(X[j,i]-p[i]) + (p[i+1]-p[i])/(dN)
             if b<0:
                 NG_var=True
@@ -1226,7 +1278,129 @@ def theta_adjust(theta, forecast):
 
     return(theta_adjusted, zero_drift_fixed )
 
-def empirical_Confidence_Interval_plots(forecast_data_inter,\
+def empirical_Confidence_Interval_plots(forecast_data_inter,hours,\
+    real_in, disct_in,list_forecast_number,\
+    dir_path):
+    if isinstance(hours, int)==False:
+        raise ValueError('hours is not an integer. Please use integer values only.')
+    os.makedirs(dir_path + '/'+str(hours)+'hr',exist_ok=True)
+    N=disct_in.N
+    freq=(N+1)*1 # evert 10 minutes
+    #interpolation_points=disct_in.N
+    num_forecasts=len(list_forecast_number) # to follow the custom forecast order
+    q975=np.zeros((num_forecasts,freq))
+    q025=np.zeros((num_forecasts,freq))
+    q95=np.zeros((num_forecasts,freq))
+    q05=np.zeros((num_forecasts,freq))
+    q50=np.zeros((num_forecasts,freq))
+    q75=np.zeros((num_forecasts,freq))
+    q25=np.zeros((num_forecasts,freq))
+
+    xnew = np.linspace(0,N,freq) #np.linspace(0,N,N+1)
+    x = np.linspace(1,N,N)
+
+    theta= real_in.mu #7.8155
+    alpha= real_in.sigma #1.072
+    j=0
+    for k in list_forecast_number: #   #range(0,n_paths): #n_paths
+        p=forecast_data_inter[0,k,:N] #obtain cleansed forecast
+        inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
+        p=inter_1(xnew)
+        d=forecast_data_inter[1,k,:N]
+        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
+        dt=1
+        M_test=disct_in.M
+
+        # fig=plt.figure(2,figsize=(10, 4))
+        # fig.clf()
+        # plt.plot(xnew,p, label='forecast')
+        # plt.plot(xnew,d, label='actual production')
+        #
+        # plt.xlim(1, 73)
+        # plt.ylim(-0.1, 1.1)
+        # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+        #
+        # plt.xticks( fontsize = 20);
+        # plt.yticks( fontsize = 20);
+        # plt.xlabel('Time [hr]',fontsize = 24)
+        # plt.ylabel('Power',fontsize = 24)
+        # plt.legend( prop={'size': 15})
+        # plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
+
+
+        theta_adjusted, zero_drift_fixed=theta_adjust(theta,p)
+
+        real_1 = real(theta_adjusted, alpha ) #theta_array
+
+        disct_temp = disct(freq,dt,M_test)
+
+        X = np.empty((M_test,N+1));
+        X= gen_X_normal_euler_DT_modified(X0=p[0],disct=disct_temp,real=real_1,forecast=p)
+        #plt.plot(X[0,:])
+
+        for i in range(0,freq):
+            q975[k,i]=np.quantile(X[:,i], 0.975)
+            q025[k,i]=np.quantile(X[:,i], 0.025)
+
+            q95[k,i]=np.quantile(X[:,i], 0.95)
+            q05[k,i]=np.quantile(X[:,i], 0.05)
+
+            q50[k,i]=np.quantile(X[:,i], 0.5)
+
+            q75[k,i]=np.quantile(X[:,i], 0.75)
+            q25[k,i]=np.quantile(X[:,i], 0.25)
+
+        #plotting
+        fig=plt.figure(2,figsize=(10, 4))
+        fig.clf()
+
+        plt.xlim(1, hours)
+        plt.ylim(-0.1, 1.1)
+
+        plt.fill_between(xnew, q75[j,:],q25[j,:],color='k',alpha=0.2, label='90% CI', edgecolor=None)
+        plt.fill_between(xnew, q95[j,:],q05[j,:],color='k',alpha=0.3, label='50% CI', edgecolor=None)
+
+        #plt.plot(xnew,np.mean(normal_X_derivative_tracking_Euler, axis=0),'c-', label='Mean')
+
+        #plt.plot(xnew,q50,'y-', label='Median')
+        #dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
+        plt.plot(xnew,p, 'r-', label='forecast',linewidth=3)
+        #plt.plot(xnew[:-1],zero_drift_fixed, 'y-', label='Zero Drift Line',linewidth=1)
+        plt.plot(x,d , 'y-', label='actual production',linewidth=3)
+        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+
+        plt.xticks( fontsize = 20);
+        plt.yticks( fontsize = 20);
+        plt.xlabel('Time [hr]',fontsize = 24)
+        plt.ylabel('Power',fontsize = 24)
+        plt.legend( prop={'size': 12})
+        plt.savefig(dir_path+'/'+str(hours)+'hr/'+str(k)+'.pdf', bbox_inches="tight")
+
+        j+=1;
+
+    #save output
+
+    file_object  = open(dir_path+'/parameter.info', 'w')
+    note='Confidence intervals for ' + str(num_forecasts)+' forecasts of '\
+    + str(N) +' hours.'+ '\n' +'Parameters used are theta= '\
+    +str(theta) + ' and alpha= ' + str(alpha) + '.Generated by '+str(M_test) \
+    + ' simulations.'
+    file_object.write(note)
+    file_object.close()
+
+    np.save(dir_path + '/forecast_list', list_forecast_number)
+    np.save(dir_path + '/N', N)
+    np.save(dir_path + '/theta_0', theta)
+    np.save(dir_path + '/alpha', alpha)
+    np.save(dir_path + '/q975', q975)
+    np.save(dir_path + '/q025', q025)
+    np.save(dir_path + '/q95', q95)
+    np.save(dir_path + '/q05', q05)
+    np.save(dir_path + '/q50', q50)
+    np.save(dir_path + '/q75', q75)
+    np.save(dir_path + '/q25', q25)
+
+def empirical_Confidence_Interval_plots_old(forecast_data_inter,\
     real_in, disct_in,list_forecast_number,\
     dir_path):
     os.mkdir(dir_path + '/72hr')
@@ -1319,7 +1493,7 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,\
         plt.yticks( fontsize = 20);
         plt.xlabel('Time [hr]',fontsize = 24)
         plt.ylabel('Power',fontsize = 24)
-        plt.legend( prop={'size': 10})
+        plt.legend( prop={'size': 15})
         plt.savefig(dir_path+'/72hr/'+'72hr_'+str(k)+'.pdf', bbox_inches="tight")
 
         fig= plt.figure(2,figsize=(10, 4))
@@ -1343,7 +1517,7 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,\
         plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24) #,fontsize=10 Forecast Confidence Intervals
         plt.xlabel('Time [hr]',fontsize = 24)
         plt.ylabel('Power',fontsize = 24)
-        plt.legend( prop={'size': 10})
+        plt.legend( prop={'size': 15})
         plt.xlim(1, 7)
         plt.ylim(-0.1, 1.1)
         plt.xticks( fontsize = 20);
@@ -1373,6 +1547,94 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,\
     np.save(dir_path + '/q50', q50)
     np.save(dir_path + '/q75', q75)
     np.save(dir_path + '/q25', q25)
+
+
+
+def path_simulator(forecast_data_inter,hours,\
+    real_in, disct_in,list_forecast_number,\
+    dir_path):
+
+    if isinstance(hours, int)==False:
+        raise ValueError('hours is not an integer. Please use integer values only.')
+
+    os.makedirs(dir_path + '/'+str(hours)+'hr',exist_ok=True)
+    #os.makedirs(dir_path + '/6hr',exist_ok=True)
+    N=disct_in.N
+    #interpolation_points=disct_in.N
+    num_forecasts=len(list_forecast_number) # to follow the custom forecast order
+
+    xnew = np.linspace(0,N,(N+1)*6) #np.linspace(0,N,N+1)
+    x = np.linspace(1,N,N)
+
+    theta= real_in.mu #7.8155
+    alpha= real_in.sigma #1.072
+    j=0
+    for k in list_forecast_number: #   #range(0,n_paths): #n_paths
+        p=forecast_data_inter[0,k,:N] #obtain cleansed forecast
+        inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
+        p=inter_1(xnew)
+        #d=forecast_data_inter[1,k,:N]
+        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
+        dt=1
+        M_test=disct_in.M
+
+        # fig=plt.figure(2,figsize=(10, 4))
+        # fig.clf()
+        # plt.plot(xnew,p, label='forecast')
+        # plt.plot(xnew,d, label='actual production')
+        #
+        # plt.xlim(1, 73)
+        # plt.ylim(-0.1, 1.1)
+        # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+        #
+        # plt.xticks( fontsize = 20);
+        # plt.yticks( fontsize = 20);
+        # plt.xlabel('Time [hr]',fontsize = 24)
+        # plt.ylabel('Power',fontsize = 24)
+        # plt.legend( prop={'size': 15})
+        # plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
+
+        theta_adjusted, zero_drift_fixed=theta_adjust(theta,p)
+
+        real_1 = real(theta_adjusted, alpha ) #theta_array
+
+        disct_temp = disct((N+1)*6,dt,M_test)
+
+        X = np.empty((M_test,(N+1)*6));
+        X= gen_X_normal_euler_DT_modified(X0=p[0],disct=disct_temp,real=real_1,forecast=p)
+
+        #plotting
+        fig=plt.figure(2,figsize=(10, 4))
+        fig.clf()
+
+        plt.xlim(1, hours)
+        plt.ylim(-0.1, 1.1)
+
+        plt.plot(xnew,p, 'k-', label='forecast',linewidth=5)
+        #plt.plot(x,d , 'y-', label='actual production',linewidth=2)
+
+        for i in range(0,len(X)):
+            plt.plot(xnew,X[i] , '-o',linewidth=1,markersize=3)
+        plt.plot(xnew,X[i] , '-o', label='simulated production',linewidth=1,markersize=3)
+
+        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+
+        plt.xticks( fontsize = 20);
+        plt.yticks( fontsize = 20);
+        plt.xlabel('Time [hr]',fontsize = 24)
+        plt.ylabel('Power',fontsize = 24)
+        plt.legend( prop={'size': 20})
+        plt.savefig(dir_path+'/'+ str(hours) +'hr/'+str(k)+'.pdf', bbox_inches="tight")
+
+    file_object  = open(dir_path+'/parameter.info', 'w')
+    note='Simulation of ' + str(num_forecasts)+' forecasts spanning '\
+    + str(N) +' hours.'+ '\n' +'Parameters used are theta= '\
+    +str(theta) + ' and alpha= ' + str(alpha) + '.Generated by '+str(M_test) \
+    + ' simulations.'
+    file_object.write(note)
+    file_object.close()
+    np.save(dir_path + '/forecast_list', list_forecast_number)
+
 
 def abline(slope, intercept):
     """Plot a line from slope and intercept"""

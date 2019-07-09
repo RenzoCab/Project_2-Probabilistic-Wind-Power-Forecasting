@@ -11,12 +11,18 @@ os.mkdir(current_plotting_dir) # make a time stamped folder to contain all plots
 
 print(current_plotting_dir)
 
-current_list=list(range(0, data.shape[1])) #=list(range(0, data.shape[1])) #full_set
-disct_in= disct(N=72, dt=1, M=1000) #M is number of paths wanted in ensamble
-real_in=real(8,1) # SDE parameters to be generated from
+current_list= list(range(0, data.shape[1])) #=list(range(0, data.shape[1])) #full_set
+disct_in= disct(N=72, dt=1, M=1500) #M is number of paths wanted in ensamble
+real_in=real(7.26, 0.123) # SDE parameters to be generated from
 
-empirical_Confidence_Interval_plots(forecast_data_inter=data,  real_in=real_in,\
+empirical_Confidence_Interval_plots(forecast_data_inter=data,hours=24,  real_in=real_in,\
             disct_in=disct_in, list_forecast_number=current_list,\
             dir_path=current_plotting_dir)
+
+
+empirical_Confidence_Interval_plots(forecast_data_inter=data,hours=12,  real_in=real_in,\
+            disct_in=disct_in, list_forecast_number=current_list,\
+            dir_path=current_plotting_dir)
+
 
 print(current_plotting_dir)

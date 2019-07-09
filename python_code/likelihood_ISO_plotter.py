@@ -19,8 +19,9 @@ def Ellipse (H_opt, mean=[ 8 ,  1]):
 
 
 base_path=current_plotting_dir='data/'
-chosen_folder='likelihood_explorer_'+ '19-06-19-17-08-48'
+chosen_folder='likelihood_explorer_'+ '19-07-08-13-47-22'
 data_path=base_path+chosen_folder
+
 
 #plotting chosen_folder
 
@@ -43,17 +44,16 @@ max_Z = np.max(np.abs(Z));
 max_Z
 norm = cm.colors.Normalize(vmax= -1*abs(Z/max_Z).min(), vmin=-1*abs(Z/max_Z ).max())
 cmap = cm.RdGy
-contours=plt.contourf(X, Y, Z/max_Z,50, norm=norm, cmap=cmap)
+contours=plt.contourf(X, Y, Z/max_Z,150, cmap=cmap)
 plt.colorbar()
 plt.title('Beta Distribution Log-likelihood \n (' + str(M) +' samples, $\\Delta N=1/$'+str(N)+')'); #,fontsize=24
 plt.xlabel('$\\theta$');
 plt.ylabel('$\\alpha$');
 file_name='ISO_'+str(M) +'_inter='+str(N);
-plt.scatter(8, 1, c='k', alpha=0.5)
+plt.scatter(7.26, 0.123, c='k', alpha=0.5)
 plt.savefig( 'plots/'+chosen_folder+'/' +file_name+'.pdf', bbox_inches="tight")
 
-
-
+print('plots/'+chosen_folder+'/' +file_name+'.pdf')
 
 
 H=np.zeros((60,60))
