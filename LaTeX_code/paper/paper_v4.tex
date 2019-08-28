@@ -1,0 +1,288 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{mathptmx}
+\usepackage[11pt]{moresize}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{bm}
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\I}{\mathbb{I}}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[breaklinks=true,bookmarks=false]{hyperref}
+
+\cvprfinalcopy % *** Uncomment this line for the final submission
+
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+%\ifcvprfinal\pagestyle{empty}\fi
+\setcounter{page}{1}
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{Paper Outline  \\ "Stochastic Wind Power Forecasting"  }  % \\  \small{Report}}
+
+\author{ Waleed Alhaddad\textsuperscript{\textasteriskcentered} \qquad Ahmed Kebaier\textsuperscript{\ddag} \qquad Ra\'ul  Tempone\textsuperscript{\textasteriskcentered}\textsuperscript{\textdagger} \\
+\textsuperscript{\textasteriskcentered}CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia \\ \textsuperscript{\textdagger}Alexander von Humboldt Professor, RWTH Aachen University,  Germany
+ \\ \textsuperscript{\ddag}Université Paris 13, Sorbonne Paris Cité, LAGA, CNRS (UMR 7539) , Villetaneuse , France }
+
+\maketitle
+%\thispagestyle{empty}
+
+%%%%%%%%% ABSTRACT
+
+\begin{abstract}
+
+\begin{itemize}
+    \item Briefly say the motivation and applications
+    \item What is novel here and why its better.
+    \begin{itemize}
+        \item Fast
+        \item accurate
+        \item computationally efficient
+    \end{itemize}
+    \item summarize the technique
+    \begin{itemize}
+        \item Indirect inference
+        \item Moment based approximation of the transition densities
+    \end{itemize}
+    \item mention the data used.
+    \begin{itemize}
+        \item Uruguay
+        \item frequency
+        \item Period
+    \end{itemize}
+    \item mention concluding results.
+\end{itemize}
+
+\end{abstract}
+
+%%%%%%%%% BODY TEXT
+\section{Introduction}
+
+\begin{itemize}
+    \item Importance and interested parties
+    \item Literature review on current forecasting practices
+    \item shortcomings of current deterministic and probabilistic forecasts.
+    \item Mention our ability of simulating production and why it's important.
+    \item Consequence of not taking into account the real world performance of the forecasts. And present proofs where such forecasts fail such as in complex terrains.
+    \item Consequences of not taking into account skewness of the errors this includes asymmetric cost for up and down-regulation of power.
+    \item Emphasize that it works independent of the forecasting technology. Thus we are able to compare different forecasts based on their real world performance.
+    \item Mention past contributions to the topic and show what is novel in this approach.
+    \item Mention the data used in this study.
+    \item Summary of the structure of the paper, describe the flow and what each section contains.
+\end{itemize}
+
+
+%-------------------------------------------------------------------------
+\section{Phenomenological  Model}
+
+\begin{itemize}
+    \item Introduce the intuitive main model in $X$ in a general setting and what class it belongs to.
+    \item motivate such choice by requiring mean reversion and boundedness of the process.
+    \item Introduce derivative tracking and explain why it's needed.
+    \item State the associated Fokker-Plank
+    \item State the iterated expression for all the moments.
+\end{itemize}
+
+
+
+\subsection{Physical Constrains}
+
+\begin{itemize}
+    \item Introduce why we have the physical constrains.
+    \item We want to fulfill the physical constraints with the least number of parameters and assumptions (parsimony).
+    \item Discuss the normalization between $[0,1]$ and why its needed
+\end{itemize}
+
+
+
+\begin{itemize}
+    \item Motivate the choice of diffusion and its behavior at the boundaries.
+    \item Note that this diffusion is state-dependent and why this is a challenge.
+\end{itemize}
+
+
+\begin{itemize}
+    \item Motivate the time-dependent  $\theta_t$
+\end{itemize}
+
+\begin{itemize}
+    \item write the model including the drift and diffusion.
+    \item Do a Feller test to show that the process stays almost surely in $[0,1]$
+    \item Show that if we start with zero error in the mean it will stay that way indefinitely. Show this using Ito.
+
+\end{itemize}
+
+
+\begin{itemize}
+    \item Motivate the change of variables to avoid numerical differentiation.
+\end{itemize}
+
+
+
+\subsubsection{State Independent-Models}
+
+\begin{itemize}
+    \item note that the state-independent diffusion model is favorable to utilize probability theory.
+    \item introduce Lamperti transformation on $V$, write the new SDE and its moments.
+    \item give explicit expression to compute the moments as a proposition.
+    \item Remark that in the lamperti space:
+    \begin{itemize}
+        \item no longer able to obtain the exact moment equations as we had in the original space.
+        \item inexactness of the moment equations introduces a bias which we didn't have in the original space.
+    \end{itemize}
+    \item We can work in either the original space (state dependent diffusion) or the Lamperti space (state-independent diffusion).
+    \begin{itemize}
+        \item In the original space we use either a  Beta distribution as a proxy or a maximum entropy distribution.
+        \item In the Lamperti space we use the gaussian as a proxy either by linearizing the SDE or its moments equations.
+    \end{itemize}
+    \item Say that We may infer in either spaces, the original space or Lamperti space.
+    \item Discuss why we approximate the SDE directly by linearization or why to approximate its moments instead.
+    \item Ability to estimate parameters using the brackets and least squares when high-frequency data is available.
+
+\end{itemize}
+
+
+
+\section{Data}
+
+\begin{itemize}
+    \item introduce the data sets: observations, forecast, frequency.
+    \item Show histograms exhibiting the skewness.
+    \item Show the correction to the skewness after Lamperti.
+    \item conclude that the diffusion model $\sqrt{x(1-x)}$ is correct as the Lamperti shows.
+    \item Discuss cleaning the data set from instances of curtailing.
+    \item Example plot of forecast and real production from the data set.
+\end{itemize}
+
+
+\section{Parameter Estimation}
+\begin{itemize}
+    \item Write the likelihood for one path first using markovianity.
+    \item Justify the product of paths by introducing observation error to the recoded production observations. Write that it's independent and small Gaussian noise.
+    \item Mention that the Fokker-Plank written in the model section is computationally formidable for parameter estimation.
+
+    \item Mention the two spaces: the original space and Lamperti space.
+
+    \item We assumes a proxy distribution either a Beta or a maximum entropy distribution. That this is the underlaying assumption and reason it based on the skewness and boundedness of the data explained in the above section.
+    \item In Lamperti space discuss that we either linearize the SDE or its moments equations. Justify it by saying that the time intervals are small and such approximations are reasonable.
+\end{itemize}
+
+\subsection{Initial Parameter Estimation}
+
+\begin{itemize}
+    \item Introduce why this is important to cross check and it may be possible to use it as an estimating procedure for high-frequency data.
+    \item mention that it is important to help initialize the optimization procedure and save on computations.
+    \item estimate the product of the parameters using the brackets.
+    \item estimate the mean reversion parameter using least squares.
+\end{itemize}
+
+
+Then,
+
+\begin{itemize}
+    \item State the objective function and the optimization technique
+\end{itemize}
+
+
+\section{Results}
+For each model and technique we will state the following as a results:
+\begin{itemize}
+    \item Results from optimization
+    \begin{itemize}
+        \item Convergence of the ellipse around the optimal point.
+        \item confidence intervals on obtained the parameters
+        \item AIC and BIC information criteria for model comparison.
+    \end{itemize}
+    \item Results from MCMC to verify and demonstrate that we have exhaustively searched the space. This is important as we are not able to guarantee the convexity of our objective function.
+    \item Plots of forecast simulations.
+    \item Plots of forecast confidence intervals.
+\end{itemize}
+
+
+\subsection{ Comparison Parameter Estimation Technique}
+State the results above for the following models:
+\begin{itemize}
+    \item  Moment matching with a Beta proxy.
+    \item Approximate Moment matching  with a Gaussian proxy in Lamperti space.
+    \item Moments matching of a Linearized version of the SDE in the Lamperti space.
+\end{itemize}
+
+\section{Model Comparison}
+Choose the best candidate from the different Parameter Estimation Techniques to compare the following models:
+\begin{itemize}
+  \item Model 0: This model is the most basic model without derivative tracking.
+
+  \item Model 1: This model features derivative tracking with a diffusion term that is forecast dependent by including the term $p_t(1-p_t)$.
+
+  \item Model 2:  Model features derivative tracking and excluding the term $p_t(1-p_t)$
+\end{itemize}
+
+
+\section{Forecast Provider Comparison}
+Choose the best technique form the "Comparison Parameter Estimation Technique" section. Then choose the best candidate from the "Model Comparison" section and apply it on forecasts from two different forecasting companies. State results as mentioned before.
+
+\begin{itemize}
+    \item Assigning weights for making forecast ensembles.
+\end{itemize}
+
+\section{Model on Disaggregated Data}
+Choose the best forecasting company, model, technique and  apply it on the disaggregated data. State results as before for each wind farm.
+\begin{itemize}
+    \item We study it as a network and how it behaves for power transport and load management. This means that we cannot assume that the nodes are independent, but we need to capture the interplay between them with a minimal number of parameters to tune.
+    \item Must incorporate correlation between wind farms in the noise $dW_t$.
+\end{itemize}
+\section{Extra: Optimal forecasting update interval}
+\begin{itemize}
+    \item We have hourly updated forecast from France. Therefore we can choose the best series of predictions (the first point of each update which is at an hourly frequency).
+    \item  Allows us to evaluate the uncertainty for the "next hour" wind power production forecasts.
+    \item redo the same evaluation on series made up of updates every 4 hours and another every 6 hours and so on.
+    \item this allows us to find the optimal update frequency for different operational uses and clients.
+    \item we are able to classify forecasts according to which forecast horizon they are better at. Say forecaster A technology is better at forecasting the next 12 hours and must be recomputed at that frequency. However, forecaster B is better at forecasting the next hour and must be recomputed hourly.
+\end{itemize}
+
+\section{Conclusions}
+
+\begin{itemize}
+    \item state our achievements
+    \item summarize results briefly.
+    \item recap of the abstract.
+    \item close with a remark for the future
+\end{itemize}
+
+
+\section*{Acknowledgement}
+
+\section*{References}
+
+
+\end{document}

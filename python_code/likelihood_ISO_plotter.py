@@ -17,12 +17,20 @@ def Ellipse (H_opt, mean=[ 8 ,  1]):
     angle =math.acos(sum(eig_vect_opt[1]*np.array((0,1))));angle
     return(width,height,angle, eig_vect_opt )
 
-
+#19-07-26-15-30-16 Beta
+#model of lamperti linearizing fit_SDE 19-07-26-14-16-28
+#model of Beta
 base_path=current_plotting_dir='data/'
-chosen_folder='likelihood_explorer_'+ '19-07-08-13-47-22'
+chosen_folder='likelihood_explorer_'+ '19-08-16-12-58-11'
 data_path=base_path+chosen_folder
-
-
+#19-07-26-15-20-01 with X
+#19-08-15-19-47-28 old m2
+#19-08-15-19-29-58 new m2
+#19-08-15-20-12-30 old setup
+#19-08-15-20-28-19 m11 and m2
+#19-08-15-19-29-58
+#19-08-15-19-20-46
+#19-08-15-17-51-54
 #plotting chosen_folder
 
 os.mkdir('plots/'+chosen_folder)
@@ -40,27 +48,27 @@ N=np.load(data_path+'/interpolation_points.npy')
 
 dN=1/N
 
-max_Z = np.max(np.abs(Z));
-max_Z
-norm = cm.colors.Normalize(vmax= -1*abs(Z/max_Z).min(), vmin=-1*abs(Z/max_Z ).max())
+
+#max_Z = np.max(np.abs(Z));
+#max_Z
+#norm = cm.colors.Normalize(vmax= -1*abs(Z/max_Z).min(), vmin=-1*abs(Z/max_Z ).max())
 cmap = cm.RdGy
-contours=plt.contourf(X, Y, Z/max_Z,150, cmap=cmap)
+#contours=plt.contourf(X[5:20,5:20], Y[5:20, 5:20], Z[5:20, 5:20],200, cmap=cmap)
+contours=plt.contourf(X, Y, Z,100, cmap=cmap)
 plt.colorbar()
-plt.title('Beta Distribution Log-likelihood \n (' + str(M) +' samples, $\\Delta N=1/$'+str(N)+')'); #,fontsize=24
+plt.title('Lamperti Distribution Log-likelihood \n (' + str(M) +' samples, $\\Delta N=1/$'+str(N)+')'); #,fontsize=24
 plt.xlabel('$\\theta$');
 plt.ylabel('$\\alpha$');
 file_name='ISO_'+str(M) +'_inter='+str(N);
-plt.scatter(7.26, 0.123, c='k', alpha=0.5)
 plt.savefig( 'plots/'+chosen_folder+'/' +file_name+'.pdf', bbox_inches="tight")
-
 print('plots/'+chosen_folder+'/' +file_name+'.pdf')
 
 
 H=np.zeros((60,60))
-H[:30,:30]= Z_grad_xx
-H[30:,30:]= Z_grad_yy
-H[:30,30:]= Z_grad_yx
-H[30:,:30]= Z_grad_xy
+H[:30,:30]= Z_grad_xx;
+H[30:,30:]= Z_grad_yy;
+H[:30,30:]= Z_grad_yx;
+H[30:,:30]= Z_grad_xy;
 
 eig_values, eig_vect=LA.eig(H)
 

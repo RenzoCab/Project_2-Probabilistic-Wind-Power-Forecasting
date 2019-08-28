@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import scipy.stats
 from scipy.optimize import minimize
-from scipy.stats import multivariate_normal
+from scipy.stats import multivariate_normal, norm
 from mpl_toolkits.mplot3d import Axes3D
 import operator
 from scipy.optimize import minimize
@@ -43,23 +43,7 @@ class model_modified_drift:
         self.optimal=optimal()
         self.Nfeval=0
 
-        #plt.figure()
-        #plt.plot(p)
-
-        #plt.figure()
-        #plt.plot(p_dot)
-
-        #plt.figure()
-        #plt.plot(zero_drift)
-
-        #plt.figure()
-        #plt.plot(zero_drift_fixed)
-
-        #plt.figure()
-        #plt.plot(theta_adjusted)
-
-
-    def likelihood(self,param):
+    def lamperti_likelihood_SDE_approx(self,param):
         #data
         X=self.data
         p=self.forecast
@@ -77,18 +61,82 @@ class model_modified_drift:
         m_1=0
         m_2=0
         dN=1/N
+        counter=0
         for j in range(0,M):
-            m_1=0
+            h=0
+            g=0
+            mean=0
+            var=0
+            L_m = L_m + L_n
+            theta_adjusted, _ = theta_adjust( theta , p[j,:] )
+            for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
+                #theta_adjusted[i]
+                g= g + theta_adjusted[i]*(1-2*p[j,i])*h*dN #this h is approx.
+                h= h + theta_adjusted[i]*(alpha-1)*dN
+
+                mean= X[j,i]* np.exp(h) - g
+                var= var + 2*alpha*theta*np.exp(2*h) *dN
+
+                if np.isnan(mean): print('mean is nan')
+                if np.isnan(var): print('var is nan')
+
+                #norm(0, 1).pdf(10)
+
+                L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+
+        # display information
+        #if self.Nfeval%5 == 0:
+        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        self.Nfeval += 1
+        #print('counter is ', counter)
+
+        return(-1*L_m)
+
+    def beta_likelihood(self,param):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N
+        counter=False
+        for j in range(0,M):
+            m_1=0  #fix initial condition as zero error in the first point
             m_2=0
             L_m = L_m + L_n
             theta_adjusted, _ = theta_adjust( theta , p[j,:] )
-            for i in range(0,N-1): #start from 1 or zero
-                m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
+            #print(counter)
+            counter=False
+            h=0
+            for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
+                h= h + dN*theta_adjusted[i]
+                m_1= m_1*np.exp(-h) #revise this expression
 
-                m_2=  (X[j,i]**2 + 2*dN*( m_1*(alpha*theta_adjusted[i]*(1-2*p[j,i])) + \
-                            alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])))/(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]))
-                a=m_1
-                b=m_2 - m_1**2
+                m_2=  (m_2 + 2*dN*( m_1*(alpha*theta_adjusted[i]*(1-2*p[j,i])) + \
+                            alpha*theta_adjusted[i]))/(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]))
+                a=m_1;
+                b=m_2 - m_1**2;
+
+                if np.isnan(a): print('a is nan')
+                if np.isnan(b): print('b is nan')
+                if not np.isfinite(a): print('a is infinite')
+                if not np.isfinite(b): print('b is infinite')
+
+                if b==0: b=1e-16
+                if b<0:
+                    b=1e-16
+                    counter = True
 
                 beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
                 beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
@@ -100,26 +148,90 @@ class model_modified_drift:
         #if self.Nfeval%5 == 0:
         print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
         self.Nfeval += 1
+        print(counter)
+
 
         return(-1*L_m)
 
+    def lamperti_likelihood_moment_approx(self,param):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        #print( theta, alpha)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        eps=np.finfo(float).eps;
+        m_1=0
+        m_2=0
+        dN=1/N
+        counter=0
+        for j in range(0,M):
+            h=0
+            g=0
+            mean=0
+            var=0
+            L_m = L_m + L_n
+            theta_adjusted, _ = theta_adjust( theta , p[j,:] )
+            for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
+                #theta_adjusted[i]
+                g= g + theta_adjusted[i]*(2*p[j,i]-1)*h*dN #this h is approx.
+                h= h + theta_adjusted[i]*(1-2*alpha)*dN
+                arc_in=np.exp(-h)*(g+np.sin(X[j,i]) )
+
+                if (arc_in >1):
+                    arc_in=1
+                    counter +=1
+                if (arc_in <-1):
+                    arc_in=-1
+                    counter +=1
+                if np.isnan(arc_in): print('arc_in is nan')
+
+                mean= np.arcsin(arc_in )
+
+                var= var + 2*alpha*theta*dN
+                if np.isnan(mean): print('mean is nan')
+                if np.isnan(var): print('var is nan')
+
+                #norm(0, 1).pdf(10)
+
+                L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+
+        # display information
+        #if self.Nfeval%5 == 0:
+        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        self.Nfeval += 1
+        print('counter is ', counter)
+
+        return(-1*L_m)
 
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, param_initial=np.random.uniform(size=2), bnds = ((1e-1, 1e-1), (1e-1, 1e-1))):
+    def optimize(self, inference="beta_likelihood" ,method="Nelder-Mead", niter=1 , temp=0,  param_initial=np.random.uniform(size=2), bnds = ((1e-3, None), (1e-3, None))):
         print("starting optimization")
         mu_initial,sig_initial=param_initial
-        #L-BFGS-B
-        #min_param=minimize(self.likelihood,param_initial,bounds=bnds, \
-        #   method='L-BFGS-B', options={ 'gtol': 1e-19, 'ftol' : 1e-19 });min_param
-        #myfactr=100
 
-        #min_param=minimize(self.likelihood,param_initial,bounds=bnds, \
-        #   method='L-BFGS-B', options={ 'gtol': myfactr , 'ftol' : myfactr });min_param
+        if inference=="beta_likelihood":
+            likelihood=self.beta_likelihood
+        if inference=='lamperti_likelihood_SDE_approx':
+            likelihood=self.lamperti_likelihood_SDE_approx
+        if inference=='lamperti_likelihood_moment_approx':
+            likelihood=self.lamperti_likelihood_moment_approx
 
-        minimizer_kwargs = {"method":"L-BFGS-B", "bounds":bnds} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
-        min_param = basinhopping(self.likelihood, param_initial,T=0 ,minimizer_kwargs=minimizer_kwargs,
-                    niter=30)
-
+        if method=="Nelder-Mead":
+            minimizer_kwargs = {"method":"Nelder-Mead"} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
+            min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
+        if method=="L-BFGS-B":
+            minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}
+            min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
+        if method=="SLSQP":
+            minimizer_kwargs = {"method": "SLSQP", "bounds":bnds , "options":{ 'ftol': 1e-10, 'gtol': 1e-10} }
+            min_param = basinhopping(likelihood, param_initial,T=temp, minimizer_kwargs=minimizer_kwargs, niter=niter)
 
         #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
         #x,f,d=scipy.optimize.fmin_l_bfgs_b(self.likelihood,param_initial, approx_grad=True)
@@ -127,12 +239,6 @@ class model_modified_drift:
         #x,f,d=scipy.optimize.fmin_l_bfgs_b(self.likelihood,param_initial,bounds=bnds, \
         #    factr=10, pgtol=1e-30, epsilon=1e-30, iprint=100, maxfun=1e6, maxiter=1e6,maxls=25, approx_grad=True)
 
-        #minimizer_kwargs = {"method": "SLSQP", "bounds":bnds} #, "options":{ 'ftol': 1e-10, 'gtol': 1e-10} } #'gtol': 1e-9
-        #min_param = basinhopping(self.likelihood, x0=param_initial, minimizer_kwargs=minimizer_kwargs) # 'ftol': 1e-25,'gtol': 1e-25
-        #self.optimal.mu= min_param[0][0]
-        #self.optimal.sigma= min_param[0][1]
-
-        #return(x,f,d)
         return(min_param)
 
     def get_error(self,real):
@@ -1182,17 +1288,25 @@ def gen_path_beta_robust_interpolate(X0,disct,real,forecast):
 #########################################################################
 # Functions
 
-def likelihood_evaluater(theta_array,alpha_array,this_model,path_dir ):
+def likelihood_evaluater(theta_array,alpha_array,this_model,inference,path_dir ):
 
     x = theta_array
     y = alpha_array
-
     X, Y = np.meshgrid(x, y)
-
     Z=np.zeros((len(x), len(y)))
-    for i in range(0,len(y)):
-        for j in range(0,len(x)):
-            Z[j,i] = this_model.likelihood(param=np.array((X[j,i],Y[j,i])))
+
+    if inference=="beta_likelihood":
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                Z[j,i] = this_model.beta_likelihood(param=np.array((X[j,i],Y[j,i])))
+    if inference=='lamperti_likelihood_SDE_approx':
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                Z[j,i] = this_model.lamperti_likelihood_SDE_approx(param=np.array((X[j,i],Y[j,i])))
+    if inference=='lamperti_likelihood_moment_approx':
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                Z[j,i] = this_model.lamperti_likelihood_moment_approx(param=np.array((X[j,i],Y[j,i])))
 
     Zx, Zy=np.gradient(Z)
 

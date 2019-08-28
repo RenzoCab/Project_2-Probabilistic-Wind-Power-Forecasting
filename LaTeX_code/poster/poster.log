@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  29 JUN 2019 11:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  1 AUG 2019 11:24
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **poster.tex
 (./poster.tex
@@ -577,8 +578,8 @@ LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <20.74> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
 
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./rwth.pdf): PDF inclusion: 
-found PDF version <1.7>, but at most version <1.5> allowed
+pdfTeX warning: pdflatex (file ./rwth.pdf): PDF inclusion: found PDF version <1
+.7>, but at most version <1.5> allowed
 <rwth.pdf, id=2, 401.5pt x 100.375pt>
 File: rwth.pdf Graphic file (type pdf)
  <use rwth.pdf>
@@ -599,32 +600,51 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <29.86> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 92.
 
-Package xcolor Warning: Incompatible color definition on input line 113.
-
-
-Package xcolor Warning: Incompatible color definition on input line 138.
-
-
-Package xcolor Warning: Incompatible color definition on input line 180.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 7540) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+<Forecast_data_82.pdf, id=3, 644.33852pt x 310.82938pt>
+File: Forecast_data_82.pdf Graphic file (type pdf)
+
+<use Forecast_data_82.pdf>
+Package pdftex.def Info: Forecast_data_82.pdf used on input line 126.
+(pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <20.74> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 128.
+
+
+Package xcolor Warning: Incompatible color definition on input line 135.
+
+
+Package xcolor Warning: Incompatible color definition on input line 160.
+
+
+Package xcolor Warning: Incompatible color definition on input line 201.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
+
+ []
+
+
+Underfull \hbox (badness 7540) in paragraph at lines 204--205
 []\OT1/phv/m/n/20.74 Consider a set of M paths with N ob-ser-va-tions each, $\O
 ML/ztmcm/m/it/20.74 V[] \OT1/ztmcm/m/n/20.74 =
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 190.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
-
- []
+Package xcolor Warning: Incompatible color definition on input line 211.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 212--213
@@ -632,151 +652,135 @@ Underfull \hbox (badness 10000) in paragraph at lines 212--213
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
+Package xcolor Warning: Incompatible color definition on input line 252.
 
- []
-
-<Forecast_data_68.pdf, id=3, 644.33852pt x 310.82938pt>
-File: Forecast_data_68.pdf Graphic file (type pdf)
-
-<use Forecast_data_68.pdf>
-Package pdftex.def Info: Forecast_data_68.pdf used on input line 237.
-(pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
-
-<Forecast_data_82.pdf, id=4, 644.33852pt x 310.82938pt>
-File: Forecast_data_82.pdf Graphic file (type pdf)
-
-<use Forecast_data_82.pdf>
-Package pdftex.def Info: Forecast_data_82.pdf used on input line 238.
-(pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <20.74> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 240.
-
-
-Package xcolor Warning: Incompatible color definition on input line 248.
-
-<ISO_100_samples_dN=14e-02.pdf, id=5, 415.07458pt x 304.57162pt>
+<ISO_100_samples_dN=14e-02.pdf, id=4, 415.07458pt x 304.57162pt>
 File: ISO_100_samples_dN=14e-02.pdf Graphic file (type pdf)
 
 <use ISO_100_samples_dN=14e-02.pdf>
-Package pdftex.def Info: ISO_100_samples_dN=14e-02.pdf used on input line 252.
+Package pdftex.def Info: ISO_100_samples_dN=14e-02.pdf used on input line 256.
 (pdftex.def)             Requested size: 633.96138pt x 465.1937pt.
 
-<ellipse_conv_samples_dN=14e-02.pdf, id=6, 450.66495pt x 290.78575pt>
+<ellipse_conv_samples_dN=14e-02.pdf, id=5, 450.66495pt x 290.78575pt>
 File: ellipse_conv_samples_dN=14e-02.pdf Graphic file (type pdf)
 
 <use ellipse_conv_samples_dN=14e-02.pdf>
 Package pdftex.def Info: ellipse_conv_samples_dN=14e-02.pdf used on input line 
-268.
+272.
 (pdftex.def)             Requested size: 422.64809pt x 272.70857pt.
 
-<ellipse1193_samples_dN=14e-02.pdf, id=7, 425.39413pt x 304.57162pt>
+<ellipse1193_samples_dN=14e-02.pdf, id=6, 425.39413pt x 304.57162pt>
 File: ellipse1193_samples_dN=14e-02.pdf Graphic file (type pdf)
 
 <use ellipse1193_samples_dN=14e-02.pdf>
 Package pdftex.def Info: ellipse1193_samples_dN=14e-02.pdf used on input line 2
-69.
+73.
 (pdftex.def)             Requested size: 422.64809pt x 302.6143pt.
 
-<72hr_forecast_CI_31.pdf, id=8, 644.33852pt x 310.82938pt>
-File: 72hr_forecast_CI_31.pdf Graphic file (type pdf)
+<simulated/12hr/1124.pdf, id=7, 653.59184pt x 315.16559pt>
+File: simulated/12hr/1124.pdf Graphic file (type pdf)
 
-<use 72hr_forecast_CI_31.pdf>
-Package pdftex.def Info: 72hr_forecast_CI_31.pdf used on input line 291.
+<use simulated/12hr/1124.pdf>
+Package pdftex.def Info: simulated/12hr/1124.pdf used on input line 286.
+(pdftex.def)             Requested size: 563.5272pt x 271.74403pt.
+
+<simulated/24hr/19.pdf, id=8, 644.33852pt x 315.16559pt>
+File: simulated/24hr/19.pdf Graphic file (type pdf)
+
+<use simulated/24hr/19.pdf>
+Package pdftex.def Info: simulated/24hr/19.pdf used on input line 287.
+(pdftex.def)             Requested size: 563.5272pt x 275.64417pt.
+
+<confidence_intervals/24hr/31.pdf, id=9, 644.33852pt x 310.82938pt>
+File: confidence_intervals/24hr/31.pdf Graphic file (type pdf)
+
+<use confidence_intervals/24hr/31.pdf>
+Package pdftex.def Info: confidence_intervals/24hr/31.pdf used on input line 29
+9.
 (pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
 
-<72hr_forecast_CI_437.pdf, id=9, 644.33852pt x 310.82938pt>
-File: 72hr_forecast_CI_437.pdf Graphic file (type pdf)
+<confidence_intervals/24hr/820.pdf, id=10, 644.33852pt x 310.82938pt>
+File: confidence_intervals/24hr/820.pdf Graphic file (type pdf)
 
-<use 72hr_forecast_CI_437.pdf>
-Package pdftex.def Info: 72hr_forecast_CI_437.pdf used on input line 292.
+<use confidence_intervals/24hr/820.pdf>
+Package pdftex.def Info: confidence_intervals/24hr/820.pdf used on input line 3
+00.
 (pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
 
-<72hr_forecast_CI_82.pdf, id=10, 644.33852pt x 310.82938pt>
-File: 72hr_forecast_CI_82.pdf Graphic file (type pdf)
+<confidence_intervals/12hr/75.pdf, id=11, 653.59184pt x 310.82938pt>
+File: confidence_intervals/12hr/75.pdf Graphic file (type pdf)
 
-<use 72hr_forecast_CI_82.pdf>
-Package pdftex.def Info: 72hr_forecast_CI_82.pdf used on input line 293.
-(pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
+<use confidence_intervals/12hr/75.pdf>
+Package pdftex.def Info: confidence_intervals/12hr/75.pdf used on input line 31
+1.
+(pdftex.def)             Requested size: 563.5272pt x 268.00523pt.
 
-<6hr_forecast_CI_75.pdf, id=11, 647.20862pt x 310.82938pt>
-File: 6hr_forecast_CI_75.pdf Graphic file (type pdf)
+<confidence_intervals/12hr/148.pdf, id=12, 653.59184pt x 310.82938pt>
+File: confidence_intervals/12hr/148.pdf Graphic file (type pdf)
 
-<use 6hr_forecast_CI_75.pdf>
-Package pdftex.def Info: 6hr_forecast_CI_75.pdf used on input line 303.
-(pdftex.def)             Requested size: 563.5272pt x 270.64702pt.
-
-<6hr_forecast_CI_59.pdf, id=12, 647.20862pt x 310.82938pt>
-File: 6hr_forecast_CI_59.pdf Graphic file (type pdf)
-
-<use 6hr_forecast_CI_59.pdf>
-Package pdftex.def Info: 6hr_forecast_CI_59.pdf used on input line 304.
-(pdftex.def)             Requested size: 563.5272pt x 270.64702pt.
+<use confidence_intervals/12hr/148.pdf>
+Package pdftex.def Info: confidence_intervals/12hr/148.pdf used on input line 3
+12.
+(pdftex.def)             Requested size: 563.5272pt x 268.00523pt.
 
 <72hr_forecast_CI_623.pdf, id=13, 644.33852pt x 310.82938pt>
 File: 72hr_forecast_CI_623.pdf Graphic file (type pdf)
 
 <use 72hr_forecast_CI_623.pdf>
-Package pdftex.def Info: 72hr_forecast_CI_623.pdf used on input line 315.
+Package pdftex.def Info: 72hr_forecast_CI_623.pdf used on input line 324.
 (pdftex.def)             Requested size: 563.5272pt x 271.8517pt.
-
-Overfull \vbox (0.75304pt too high) has occurred while \output is active []
-
-
-[1
+ [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./KAUST
-_Logo.pdf> <./rwth.pdf> <./Forecast_data_68.pdf
+_Logo.pdf> <./rwth.pdf> <./Forecast_data_82.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Forecast_data_68.pdf): PDF
- inclusion: multiple pdfs with page group included in a single page
-> <./Forecast_data_82.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Forecast_data_82.pdf): PDF
- inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./Forecast_data_82.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
 > <./ISO_100_samples_dN=14e-02.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ISO_100_samples_dN=14e-02.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./ISO_100_samples_dN=14e-02.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
 > <./ellipse_conv_samples_dN=14e-02.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ellipse_conv_samples_dN=14
-e-02.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
+pdfTeX warning: pdflatex (file ./ellipse_conv_samples_dN=14e-02.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
 > <./ellipse1193_samples_dN=14e-02.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ellipse1193_samples_dN=14e
--02.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
-e
-> <./72hr_forecast_CI_31.pdf
+pdfTeX warning: pdflatex (file ./ellipse1193_samples_dN=14e-02.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./simulated/12hr/1124.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_31.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./72hr_forecast_CI_437.pdf
+pdfTeX warning: pdflatex (file ./simulated/12hr/1124.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+> <./simulated/24hr/19.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_437.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
-> <./72hr_forecast_CI_82.pdf
+pdfTeX warning: pdflatex (file ./simulated/24hr/19.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+> <./confidence_intervals/24hr/31.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_82.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
-> <./6hr_forecast_CI_75.pdf
+pdfTeX warning: pdflatex (file ./confidence_intervals/24hr/31.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./confidence_intervals/24hr/820.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./6hr_forecast_CI_75.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
-> <./6hr_forecast_CI_59.pdf
+pdfTeX warning: pdflatex (file ./confidence_intervals/24hr/820.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./confidence_intervals/12hr/75.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./6hr_forecast_CI_59.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./confidence_intervals/12hr/75.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./confidence_intervals/12hr/148.pdf
+
+pdfTeX warning: pdflatex (file ./confidence_intervals/12hr/148.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
 > <./72hr_forecast_CI_623.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_623.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./72hr_forecast_CI_623.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
 >] (./poster.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -786,10 +790,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4927 strings out of 493014
- 71167 string characters out of 6133351
- 227257 words of memory out of 5000000
- 8292 multiletter control sequences out of 15000+600000
+ 4932 strings out of 493014
+ 71331 string characters out of 6133351
+ 224665 words of memory out of 5000000
+ 8293 multiletter control sequences out of 15000+600000
  53143 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,18n,35p,627b,368s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -806,9 +810,9 @@ fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/
 type1/urw/symbol/usyr.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/s
 ymbol/usyr.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on poster.pdf (1 page, 266365 bytes).
+Output written on poster.pdf (1 page, 279739 bytes).
 PDF statistics:
- 554 PDF objects out of 1000 (max. 8388607)
+ 550 PDF objects out of 1000 (max. 8388607)
  114 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
