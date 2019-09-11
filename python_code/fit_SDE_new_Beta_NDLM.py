@@ -1,7 +1,7 @@
 import os
-os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
-from Base import *
-forecast_data_in=np.load('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code/data/cleansed/URG_forecast_data_A_2018.npy')
+os.chdir('/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code')
+from Base_plus import *
+forecast_data_in=np.load('/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/data/cleansed/URG_forecast_data_A_2018.npy')
 #forecast_data_inter=data_check_interpolate(forecast_with_data=forecast_with_data)
 now = dtM.datetime.now();
 current_time=now.strftime("%y-%m-%d-%H-%M-%S")
@@ -36,8 +36,8 @@ X=forecast_data_inter[1,:-240,:]
 
 #answer 9.06 , 0.473
 this_model=model_modified_drift(disct_temp,V, forecast= p)
-intial_point= np.array((11,0.15))
-optim=this_model.optimize(intial_point)
+intial_point= np.array((1,0.8))
+optim=this_model.optimize(inference="beta_likelihood" ,method="Nelder-Mead",param_initial=intial_point)
 
 
 optim

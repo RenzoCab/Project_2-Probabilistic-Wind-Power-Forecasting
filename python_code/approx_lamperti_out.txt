@@ -1,0 +1,524 @@
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:16: UserWarning: test warning
+  app.launch_new_instance()
+Evaluating using approx. lamperti 
+l=  770.8619568122609
+l=  766.5216992664984
+l=  770.3154857496037
+l=  770.5178886104833
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+l=  770.654445285166
+l=  6620.000438645924
+l=  770.4646816638096
+l=  770.0245109406551
+l=  6433.289947487336
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  13746.631007714539
+l=  770.5313832672158
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  13765.40812396478
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  15417.394350687491
+l=  770.6857725451925
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+l=  770.8008689259632
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  20050.22993604934
+l=  6487.744256115538
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  20452.428044979457
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  21295.786361097613
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  22316.955629492004
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  23367.836442719545
+l=  6467.981581715049
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  24292.079691926276
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  25072.510705864443
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  89725.5068587707
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  91109.4682083566
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  104241.01029632852
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  107701.17495391441
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  111934.28440988631
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  118214.41952043788
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  115602.22430368314
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  120725.47424375423
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  122483.42555260204
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  124150.16344427568
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  193306.98089091247
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  215748.1433501803
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  238649.83574911623
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  254219.7357748905
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  250584.5143210262
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  257546.64628161473
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  259299.67330803216
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  262395.1829286118
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  260707.671453909
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  260284.38015812536
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  262116.62944852907
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  272375.5811953496
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  276430.09649512306
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  280633.59717822005
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  281786.27541658323
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  286636.61083326786
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  294022.64075925195
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  288687.5568084326
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  290072.6304277778
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  294626.332688593
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  293854.87258943263
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  294612.33406982414
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  295208.49459666945
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  293845.96489379683
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  294679.56154283567
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  294571.65976979694
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+l=  293820.5467612053
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+l=  nan
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  nan
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  nan
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:104: RuntimeWarning: invalid value encountered in log
+  L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  nan
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  237244.80276042584
+/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
+  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
+/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2125: RuntimeWarning: overflow encountered in double_scalars
+  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+l=  267645.0751380241
+[            nan             nan             nan   6620.00043865
+   6433.28994749             nan             nan   6487.74425612
+             nan   6467.98158172    766.52169927    770.31548575
+    770.86195681    770.51788861    770.65444529    770.46468166
+    770.02451094    770.53138327    770.68577255    770.80086893
+  13746.63100771  13765.40812396  15417.39435069  20050.22993605
+  20452.42804498  21295.7863611   22316.95562949  23367.83644272
+  24292.07969193  25072.51070586  89725.50685877  91109.46820836
+ 104241.01029633 107701.17495391 111934.28440989 115602.22430368
+ 118214.41952044 120725.47424375 122483.4255526  124150.16344428
+ 193306.98089091 215748.14335018 238649.83574912 250584.51432103
+ 254219.73577489 257546.64628161 259299.67330803 260707.67145391
+ 262116.62944853 262395.18292861 237244.80276043 267645.07513802
+ 272375.58119535 276430.09649512 280633.59717822 286636.61083327
+ 290072.63042778 294022.64075925 294626.33268859 294571.6597698
+ 260284.38015813 281786.27541658 288687.55680843 294679.56154284
+ 294612.33406982 295208.49459667             nan 293854.87258943
+ 293845.9648938  293820.54676121             nan             nan
+             nan             nan             nan             nan
+             nan             nan             nan             nan
+             nan             nan             nan             nan
+             nan             nan             nan             nan
+             nan             nan             nan             nan
+             nan             nan             nan             nan
+             nan             nan             nan             nan]
+output arrays save successfully !
+data/likelihood_explorer_19-09-10-18-21-33

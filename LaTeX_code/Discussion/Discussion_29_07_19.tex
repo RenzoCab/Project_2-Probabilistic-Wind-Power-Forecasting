@@ -106,7 +106,7 @@ Thus equivalently,
 	\lim_{v \to 1} S(v,t)=0 , \quad \lim_{v \to -1} S(v,t) = 0
 \end{equation}
 
-Finally, we conclude that the boarders of the range $[0,1]$ are reflectors and are impenetrable. Hence, the process $V_t$ cannot exit the range $[-1,1]$.
+Finally, we conclude that the boarders of the range $[-1,1]$ are reflectors and are impenetrable. Hence, the process $V_t$ cannot exit the range $[-1,1]$.
 
 \item Optimizer initialization
 	\begin{itemize}
@@ -134,56 +134,88 @@ Finally, we conclude that the boarders of the range $[0,1]$ are reflectors and a
 	\end{split}\label{VtSDE}
 	\end{equation}
 		and the moments by,
-		\begin{equation*}
-		\frac{d m_1 (t)}{dt} = - m_1(t)\theta_t \implies m_1(t_2)= V_{t_1} e^{-\int_{t_1}^{t_2} \theta_t \ dt }
-		\end{equation*}
-		\begin{equation*}
+		\begin{equation}
 		\begin{split}
-		\frac{d m_2 (t)}{dt} &=  - m_2(t)\theta(1+\alpha) + \alpha\theta m_1(t)( (1-p_t -p_t^2)) +2 \\
-		& \implies m_2(t_2) = v_{t_1}^2 e^{-(1+\alpha)\int_{t_1}^{t_2} \theta_t \ dt} \\
-		& \quad \quad + \alpha \int_{t_1}^{t_2} \left(\theta_s m_1(s)( 1-p_s - p_s^2 )+2\right)   e^{-(1+\alpha)\int_{t_1}^{t_2-s} \theta_u \ du}  \ ds
+		\frac{d m_1 (t)}{dt} &= - m_1(t)\theta_t \\
+		\frac{d m_2 (t)}{dt} &=  -2 m_2(t)\theta(1+\alpha) + 2\alpha\theta m_1(t)(1-2p_t) + 2 \alpha\theta p_t (1-p_t)\\
 		\end{split}
-		\end{equation*}
-		We discretize and integrate numerically step-by-step using the Tripizoidal rule,
+		\end{equation}
+		with initial conditions $m_1(t_1)=x,\ m_2(t_1)=x^2$ where $x$ is an observation of the process $V_t$ at the previous time step.\\
+		The solution of the ODEs above is given by,
+		\begin{equation}
+		\begin{split}
+			m_1(t_2) & = m_1(t_1) e^{-\int_{t_1}^{t_2} \theta_t \ dt }\\
+		m_2(t_2) & = m_2 (t_1) e^{-2(1+\alpha)\int_{t_1}^{t_2} \theta_t \ dt} \\
+		& + \alpha \int_{t_1}^{t_2} \left(2\theta_s m_1(s)( 1-2p_s)+ 2\theta_s p_s(1-p_s)\right)   e^{-2(1+\alpha)\int_{t_1}^{t_2-s} \theta_u \ du}  \ ds
+		\end{split}
+		\end{equation}
+
+		We linearly interpolate the forecast, observations and parameters between the observation. Then we integrate numerically using the tripizoidal rule. We define a uniform grid $i=\{0,1,2,3 \ \cdots K \}$ such that $\Delta t = \frac{t_2 - t_1}{K} =  \frac{\Delta N }{K} $. Where $\Delta N $ is the time between the observations of the process $V_t$.
 		\begin{align*}
-			m_{1,i+1}&= v_i \ e^{ - \frac{\theta_i + \theta_{i+1}}{2} \Delta t} \\
-			m_{2,i+1} &= v_i^2 e^{-(1+ \alpha)\frac{\theta_i + \theta_{i+1}}{2} \Delta t } + \\
-			& \alpha \Delta t  \frac{ \left( \theta_{i+1}m_{1,i+1}(1-p_{i+1} - p_{i+1}^2)+2 \right)e^{-(1+\alpha) \frac{\theta_i + \theta_{i+1}}{2} \Delta t }  + \theta_{i}v_{i}(1-p_{i} - p_{i}^2) +2    }{2}
+			\int_{t_1}^{t_2} \theta_t \ dt & \approx I_{1,K} = \sum_{i=0}^K \frac{ \theta_i + \theta_{i+1} } {2} \Delta t  \\
 	\end{align*}
-	where $v_i$ is an observation of the process $V_t$ at the previous time step.\\
-	We check the Feller condition on the boundaries $[0,1]$ of the process $V_t$. If the following condition holds
+Similarly,
 	\begin{equation*}
-		\lim_{x\to x_{0}} \left( a(x,t)  - \frac{1}{2}\frac{\partial}{\partial x} b^2(x,t) \right) \geq 0
+	\begin{split}
+		\int_{t_1}^{t_2} & \left(2\theta_s m_1(s)( 1-2p_s)+ 2\theta_s p_s(1-p_s)\right)   e^{-2(1+\alpha)\int_{t_1}^{t_2-s} \theta_u \ du}  \ ds \\
+		 & \approx I_{2,K} = \sum_{i=0}^K \Delta t  \frac{ \left( 2 \theta_{i+1}m_{1,i+1}(1-2p_{i+1}) +2 \theta_{i+1} p_{i+1} (1-p_{i+1})  \right) e^{-2(1+\alpha) I_{1,i+1} } }{2} \ +\\
+		&  \Delta t \frac{\left( 2 \theta_{i}m_{1,i}(1-2p_{i}) +2 \theta_{i} p_{i} (1-p_{i})  \right) e^{-2(1+\alpha) I_{i} } }{2}  \\
+\end{split}
 \end{equation*}
-Then the process is bounded by $x_0$.
-	\begin{equation*}
-		\lim_{v\to -1,+1} \left( - \theta_t v - \theta_t \alpha \right( 1- 2v - 2p_t \left) \right) \geq 0
-\end{equation*}
+Finally, we have
+\begin{equation}
+\begin{split}
+	m_1(t_2) & \approx m_1(t_1) e^{-I_1 }\\
+m_2(t_2) & = m_2 (t_1) e^{-2(1+\alpha)I_1}  + \alpha I_2 \\
+\end{split}
+\end{equation}
+with initial conditions $m_1(t_1)= m_{1,0}=x,\ m_2(t_1)=m_{2,0}=x^2$ where $x$ is an observation of the process $V_t$ at the previous time step.\\
 		\item Moments approach with a Gaussian proxy after a Lamperti transformation and an approximation in the first moment. The SDE is given by,
 		\begin{equation}
 			dZ_t= \frac{- \theta_t (1+ \sin(Z_t) - 2p_t) + \alpha \theta_t \sin (Z_t)   }{\cos (Z_t)} + \sqrt{2 \alpha \theta_t} dW_t
 	\end{equation}
 		where $Z_t = \arcsin \left( \frac{1}{2} \left( V_t+p_t \right) - 1 \right) $. After the assumption that $\E[\sin(Z_t)]
-	 \approx \E Z_t$. Note that $Z_t \in \R $ is not bounded and so this approximation is not justified. We can write approximate the moments as follows,
+	 \approx \E Z_t$. Note that $Z_t \in \R $ is not bounded and so this approximation cannot be justified by a small angle approximation. We can write approximate moments as follows,
 		\begin{equation*}
 					m_1(t_2)= \arcsin \left( e^{- (1-\alpha) \int_{t_1}^{t_2} \theta_t \ dt }  \left(  \int_{t_1}^{t_2} \theta_s \left( 2p_s-1\right)e^{(1-\alpha) \int_{t_1}^{s} \theta_u \ du } \ ds \right) + \sin (Z_{t_1}) \right)
 		\end{equation*}
 		By linearizing the variance around the mean, we can obtain the following approximate variance
 		\begin{equation}
-					v(t_2)= e^{2\int_{t_1}^{t_2} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(s)} \ dt} \left(\alpha \int_{t_1}^{t_2} \theta_t e^{-2\int_{t_1}^{s} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(s)} } \ ds  \right)
+					v(t_2)= e^{2\int_{t_1}^{t_2} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(s)} \ ds} \left(\alpha \int_{t_1}^{t_2} \theta_s e^{-2\int_{t_1}^{s} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(u)} du } \ ds  \right)
 		\end{equation}
-		where $a(x;\theta_s)=\frac{- \theta_t (1+ \sin(x) - 2p_t) + \alpha \theta_t \sin (x)   }{\cos (x)}$ is the drift term after the Lamperti transformation.
-		We first differentiate the function $a(x;\theta_s)$,
+		where $a(x;\theta_s)=\frac{- \theta_t (1+ \sin(x) - 2p_t) + \alpha \theta_t \sin (x)   }{\cos (x)}$ is the drift term after the Lamperti transformation. Thus,
 		\begin{align*}
 			\frac{\partial a(x;\theta_s)}{\partial x} = \theta_t (2p_t - 1) \tan (x) \sec (x) + \theta_t (\alpha - 1)\sec^2 (x) \
 		\end{align*}
-		Then, we discretize and integrate numerically step-by-step using the Tripizoidal rule,
-		\begin{align*}
-		%\begin{split}
-			m_{1,i+1} &= \arcsin \left(  \left(  \frac{ \theta_{i+1}(2p_{i_+1} - 1) + \theta_{i}(2p_{i} - 1)e^{- (1-\alpha) \frac{\theta_i + \theta_{i+1}}{2} \Delta t}   }{2} \Delta t \right)  +  \sin(v_i) \right) \\
-			v_{i+1} &= \alpha \Delta t  \frac{ \theta_{i+1} e^{2 \frac{\frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_{1,i+1}}}{2} \Delta t  }+  \theta_{i}  e^{2 \frac{\frac{\partial a(x;\theta_s)}{\partial x}|_{x= v_i}}{2}   } }{2}
-		%\end{split}
-	\end{align*}
+		We linearly interpolate the forecast, observations and parameters between the observation. Then, we integrate numerically using the tripizoidal rule,
+		\begin{equation*}
+			\begin{split}
+			& \int_{t_1}^{t_2}  \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(s)} \ ds \\
+			& \approx I_{3,K}= \sum_{i=0}^K \frac{ \theta_{i+1} (2p_{i+1} - 1) \tan (m_{1,i+1}) \sec (m_{1,i+1}) + \theta_{i+1}(\alpha - 1)\sec^2 (m_{1,i+1}) }{2} \Delta t \ + \\
+			& \frac{ \theta_i (2p_i - 1) \tan (m_{1,i}) \sec (m_{1,i}) + \theta_{i} (\alpha - 1)\sec^2 (m_{1,i}) }{2} \Delta t
+			\end{split}
+		\end{equation*}
+
+		\begin{equation*}
+			\begin{split}
+			& \int_{t_1}^{t_2} \theta_s \left( 2p_s-1\right)e^{(1-\alpha) \int_{t_1}^{s} \theta_u \ du } \ ds \\
+			& \approx I_{4,K}= \sum_{i=0}^K \frac{ \theta_{i+1} \left( 2p_{i+1}-1\right)e^{(1-\alpha)I_{1,i+1} } +  \theta_i \left( 2p_i-1\right)e^{(1-\alpha) I_{1,i} }}{2} \Delta t \\
+			\end{split}
+		\end{equation*}
+
+		\begin{equation*}
+			\begin{split}
+			& \int_{t_1}^{t_2} \theta_s e^{-2\int_{t_1}^{s} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(u)} du } \ ds \approx I_{5,K}= \sum_{i=0}^K \frac{ \theta_{i+1}e^{-2 I_{3,i+1} } + \theta_{i}e^{-2 I_{3,i} } }{2} \Delta t \\
+			\end{split}
+		\end{equation*}
+
+Finally, we have
+		\begin{equation}
+			m_{1}(t_2)  \approx \arcsin \left(   e^{-(1-\alpha)I_{1,K}} I_{4,K} +  \sin(m_{1}(t_1) \right)
+	\end{equation}
+	\begin{equation}
+		v(t_2)  \approx e^{2I_{3,K}} \alpha I_{5,K}
+\end{equation}
 
 		\item Moments approach with a Gaussian proxy on a linearized SDE after a Lamperti transformation. The SDE becomes an Ornstein-Uhlenbeck  type,
 		\begin{equation}
@@ -195,14 +227,39 @@ Then the process is bounded by $x_0$.
 	\end{eqnarray*}
 	and its mean and variance are given by,
 	\begin{align}
-		m_1(t) &= Z_0e^{(\alpha-1)\int_0^t \theta_s \ ds } - \int_0^t \theta_s (1-2p_s) e^{(\alpha-1)\int_s^t \theta_u \ du } \ ds\\
-		v(t)&= \int_0^t \sqrt{2 \theta_s \alpha} \ e^{(\alpha-1)\int_s^t \theta_u \ du }
+		m_1(t_2) &= m_1(t_1) e^{(\alpha-1)\int_{t_1}^{t_2} \theta_s \ ds } - \int_{t_1}^{t_2} \theta_s (1-2p_s) e^{(\alpha-1)\int_s^t_2 \theta_u \ du } \ ds\\
+		v(t_2) &= \int_{t_1}^{t_2} \sqrt{2 \theta_s \alpha} \ e^{(\alpha-1)\int_s^{t_2} \theta_u \ du }
 \end{align}
-We discretize and integrate numerically step-by-step using the Tripizoidal rule,
-\begin{align*}
-	m_{1,i+1} &= z_0 e^{(\alpha-1) \frac{\theta_{i+1}+ \theta_i}{2} \Delta t } - \Delta t \frac{\theta_{i+1}( 1-2p_{i+1} )e^{(\alpha-1) \frac{\theta_{i+1} + \theta_i}{2} \Delta t} + \theta_i (1-2p_i) }{2} \\
-	v_{i+1} &= \sqrt{2 \alpha} \Delta t \frac{\sqrt{\theta_{i+1}} e^{(\alpha-1)\frac{\theta_{i+1} + \theta_i}{2}\Delta t} +\sqrt{\theta_{i}}  }{2}
-\end{align*}
+
+\begin{equation*}
+	\begin{split}
+	& \int_s^{t_2} \theta_u \ du \approx I_{6,n}= \sum_{i=n}^K \frac{ \theta_i + \theta_{i+1} }{2}\Delta t \\
+	\end{split}
+\end{equation*}
+for $n$ such that $s=n \Delta t$.
+
+\begin{equation*}
+	\begin{split}
+	& \int_{t_1}^{t_2} \theta_s (1-2p_s) e^{(\alpha-1)\int_s^t_2 \theta_u \ du } \ ds \\
+	& \approx I_{7,K}= \sum_{i=0}^K \frac{    \theta_{i+1} (1-2p_{i+1}) e^{(\alpha-1)I_{6,i+1} }    +    \theta_{i} (1-2p_{i}) e^{(\alpha-1)I_{6,i} }      }{2}\Delta t \\
+	\end{split}
+\end{equation*}
+
+\begin{equation*}
+	\begin{split}
+	& \int_{t_1}^{t_2} \sqrt{2 \theta_s \alpha} \ e^{(\alpha-1)\int_s^{t_2} \theta_u \ du } \\
+	& \approx I_{8,K}= \sum_{i=0}^K \frac{     \sqrt{2 \theta_{i+1} \alpha} \ e^{(\alpha-1)I_{6,i+1} }    +     \sqrt{2 \theta_{i} \alpha} \ e^{(\alpha-1)I_{6,i} }      }{2}\Delta t \\
+	\end{split}
+\end{equation*}
+
+Finally, we have
+		\begin{equation}
+			m_{1}(t_2)  \approx m_1(t_1) e^{(\alpha-1)I_{1,K}} - I_{7,K}
+	\end{equation}
+	\begin{equation}
+		v(t_2)  \approx I_{8,K}
+\end{equation}
+
 
 \end{itemize}
 

@@ -15,6 +15,13 @@ from math import pi
 from numpy import linalg as LA
 import datetime as dtM
 import os
+import multiprocessing as mp
+import time
+from scipy.integrate import solve_ivp
+import sys
+import warnings
+from tqdm import tqdm
+
 ##############
 #constants
 Nfeval=0
@@ -43,7 +50,7 @@ class model_modified_drift:
         self.optimal=optimal()
         self.Nfeval=0
 
-    def lamperti_likelihood_SDE_approx(self,param):
+    def lamperti_likelihood_SDE_approx(self,param,send_end_to_evaluater=None):
         #data
         X=self.data
         p=self.forecast
@@ -53,46 +60,62 @@ class model_modified_drift:
         M=self.disct.M
         #input parameters
         theta,alpha = param;
-        #print( theta, alpha)
         L_n=0;
         L_m=0;
-        a=0;b=0;
         eps=np.finfo(float).eps;
-        m_1=0
-        m_2=0
         dN=1/N
+        dA=0
         counter=0
         for j in range(0,M):
-            h=0
-            g=0
             mean=0
             var=0
             L_m = L_m + L_n
             theta_adjusted, _ = theta_adjust( theta , p[j,:] )
-            for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
-                #theta_adjusted[i]
-                g= g + theta_adjusted[i]*(1-2*p[j,i])*h*dN #this h is approx.
-                h= h + theta_adjusted[i]*(alpha-1)*dN
+            L_n=0
+            for i in range(0,N-2): #start from 1 or zero #Implement Tripizoidal scheme
 
-                mean= X[j,i]* np.exp(h) - g
-                var= var + 2*alpha*theta*np.exp(2*h) *dN
+                mean, var =moment_compute_approx_lamperti(dN, X_prev=X[j,i], X_next=X[j,i+1], p_prev=p[j,i],p_next=p[j,i+1], theta_prev=theta_adjusted[i], theta_next=theta_adjusted[i+1],alpha=alpha )
 
-                if np.isnan(mean): print('mean is nan')
-                if np.isnan(var): print('var is nan')
+                # k=(theta_adjusted[i+1]*(2*p[j,i+1]-1) +theta_adjusted[i]*(2*p[j,i]-1)*np.exp( (alpha-1)*(theta_adjusted[i+1]+ theta_adjusted[i] )*dN/2 )  )*dN/2
+                #
+                # if k+1<0.1: k=1
+                #
+                # mean=np.arcsin(k) + np.sin(X[j,i])
+                #
+                # dA_i= theta_adjusted[i]*(2*p[j,i] -1)*np.tan(X[j,i])/np.cos(X[j,i]) \
+                #     + theta_adjusted[i]*(alpha - 1)*(1/np.cos(X[j,i]))**2
+                #
+                # dA_i_plus= theta_adjusted[i+1]*(2*p[j,i+1] -1)*np.tan(X[j,i+1])/np.cos(X[j,i+1]) \
+                #     + theta_adjusted[i+1]*(alpha - 1)*(1/np.cos(X[j,i+1]))**2
+                #
+                # var= dN*alpha*( theta_adjusted[i+1]*np.exp( dN*dA_i_plus) + theta_adjusted[i]*np.exp( dN*dA_i) )/2
 
-                #norm(0, 1).pdf(10)
+                # #theta_adjusted[i]
+                # k=np.exp(-dN*(1-alpha)*theta_adjusted[i] )*dN*theta_adjusted[i]*(2*p[j,i]-1) \
+                #         + np.sin(X[j,i])
+                # if k+1<0.1: k=1
+                #
+                # mean= np.arcsin( k )
+                # dA= theta_adjusted[i]*(2*p[j,i] -1)*np.tan(X[j,i])/np.cos(X[j,i]) \
+                #     + theta_adjusted[i]*(alpha - 1)*(1/np.cos(X[j,i]))**2
+                # var= np.exp(2*dN*dA)*dN*alpha*theta_adjusted[i]
+
+                # if np.isnan(mean): print('mean is nan' , mean)
+                #if np.isnan(var): print('var is nan', var)
 
                 L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
 
         # display information
         #if self.Nfeval%5 == 0:
-        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
-        self.Nfeval += 1
+        # print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        # self.Nfeval += 1
         #print('counter is ', counter)
-
+        print('l= ', -1*L_m)
+        if send_end_to_evaluater != None:
+            send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
-    def beta_likelihood(self,param):
+    def beta_likelihood(self,param, send_end_to_evaluater=None):
         #data
         X=self.data
         p=self.forecast
@@ -102,68 +125,49 @@ class model_modified_drift:
         M=self.disct.M
         #input parameters
         theta,alpha = param;
-        #print( theta, alpha)
         L_n=0;
         L_m=0;
         a=0;b=0;
-        eps=np.finfo(float).eps;
-        m_1=0
-        m_2=0
         dN=1/N
         counter=False
         for j in range(0,M):
-            m_1=0  #fix initial condition as zero error in the first point
-            m_2=0
             L_m = L_m + L_n
             theta_adjusted, _ = theta_adjust( theta , p[j,:] )
-            counter=False
-            h=0
-            for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
-                #element=(theta_adjusted[i] + theta_adjusted[i+1])/2 * dN
-                #m_1 = X[j,i]*np.exp(-1*element )
+            L_n=0
+            for i in range(0,N-2):
+                m_1,m_2=beta_moment(dN, X_prev=X[j,i], X_next=X[j,i+1], p_prev=p[j,i],p_next=p[j,i+1], theta_prev=theta_adjusted[i], theta_next=theta_adjusted[i+1],alpha=alpha )
 
-                # m_2= X[j,i]**2 * np.exp(-1*(1+alpha)*element) + \
-                #     alpha*dN*( ( theta_adjusted[i+1]*m_1*(1-p[j,i+1]- p[j,i+1]**2) +2 )*np.exp(-1*(1+alpha)*element ) +\
-                #     theta_adjusted[i]*X[j,i]*(1-p[j,i] - p[j,i]**2 ) +2 )/2
+                a=m_1; #mean
+                b=m_2- m_1**2; #variance
 
-                m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
-
-                m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
-                            alpha*theta_adjusted[i]*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i]) ))
-
-                #m_222=X[j,i]**2 * np.exp( -(1+alpha)*theta_adjusted[i]*dN ) + dN*(alpha*theta_adjusted[i]*X[j,i]*(1-p[j,i]-p[j,i]**2) + 2)*np.exp(-(1+alpha)*theta_adjusted[i]*dN )
-
-                a=m_1;
-                b=m_2- m_1**2;
-                #print(m_2,m_22)
-                #if b<0: print('negative variance !! help')
-
+                #sanity checks
                 if np.isnan(a): print('a is nan')
                 if np.isnan(b): print('b is nan')
                 if not np.isfinite(a): print('a is infinite')
                 if not np.isfinite(b): print('b is infinite')
-
                 if b==0: b=1e-16
                 if b<0:
                     b=1e-16
                     counter = True
 
+                #shape parameters of the beta distribution
                 beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
                 beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
 
-                L_n = L_n +  (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
+                L_n = L_n + (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
                  (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
                  scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
         # display information
         #if self.Nfeval%5 == 0:
         #print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
         self.Nfeval += 1
-        #print(counter)
-
-
+        print('l= ', -1*L_m)
+        if send_end_to_evaluater != None:
+            send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
-    def lamperti_likelihood_moment_approx(self,param):
+    def beta_likelihood_parallel(self,param, send_end_to_evaluater):
         #data
         X=self.data
         p=self.forecast
@@ -181,44 +185,133 @@ class model_modified_drift:
         m_1=0
         m_2=0
         dN=1/N
+        counter=False #compute_path_moments
+        jobs = []
+        pipe_list = []
+        for j in range(0,M):
+            #L_m = L_m + L_n
+            theta_adjusted, _ = theta_adjust( theta , p[j,:] )
+            counter=False
+            recv_end, send_end =  mp.Pipe(False)
+            arg_list=[j,N, X, p, theta_adjusted, alpha]
+            p_temp = mp.Process(target=compute_path_moments, args=( *arg_list,send_end))
+            jobs.append(p_temp)
+            pipe_list.append(recv_end)
+            p_temp.start()
+
+        for proc in jobs:
+            proc.join()
+        result_list = [x.recv() for x in pipe_list]
+        #print(result_list)
+        L_m=np.sum(result_list)
+
+        # display information
+        #if self.Nfeval%5 == 0:
+        #print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        self.Nfeval += 1
+        #print(counter)
+        send_end_to_evaluater.send(-1*L_m)
+        return(-1*L_m) #, m_1_list,m_2_list, m_1_E_list, m_2_E_list
+
+    # def beta_likelihood_parallel_depreciated(self,param):
+    #     #data
+    #     X=self.data
+    #     p=self.forecast
+    #     #discretization object
+    #     N=self.disct.N
+    #     dt=self.disct.dt
+    #     M=self.disct.M
+    #     #input parameters
+    #     theta,alpha = param;
+    #     #print( theta, alpha)
+    #     L_n=0;
+    #     L_m=0;
+    #     a=0;b=0;
+    #     eps=np.finfo(float).eps;
+    #     m_1=0
+    #     m_2=0
+    #     dN=1/N
+    #     counter=False #compute_path_moments
+    #     for j in range(0,M):
+    #         m_1=0  #fix initial condition as zero error in the first point
+    #         m_2=0
+    #         L_m = L_m + L_n
+    #         theta_adjusted, _ = theta_adjust( theta , p[j,:] )
+    #         counter=False
+    #         h=0
+    #         jobs = []
+    #         pipe_list = []
+    #         for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal
+    #             recv_end, send_end =  mp.Pipe(False)
+    #             arg_list=[1/self.disct.N, X[j,i], X[j,i+1], p[j,i], theta_adjusted[i], alpha]
+    #             p_temp = mp.Process(target=moment_compute, args=( *arg_list,send_end))
+    #             jobs.append(p_temp)
+    #             pipe_list.append(recv_end)
+    #             p_temp.start()
+    #
+    #         for proc in jobs:
+    #             proc.join()
+    #         result_list = [x.recv() for x in pipe_list]
+    #         L_n=np.sum(result_list)
+    #         print(L_n)
+    #
+    #
+    #     # display information
+    #     #if self.Nfeval%5 == 0:
+    #     #print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+    #     self.Nfeval += 1
+    #     #print(counter)
+    #     return(-1*L_m) #, m_1_list,m_2_list, m_1_E_list, m_2_E_list
+    #
+
+    def lamperti_likelihood_linearized(self,param,send_end_to_evaluater=None):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        L_n=0;
+        L_m=0;
+        eps=np.finfo(float).eps;
+        dN=1/N
+        dA=0
         counter=0
         for j in range(0,M):
-            h=0
-            g=0
             mean=0
             var=0
             L_m = L_m + L_n
             theta_adjusted, _ = theta_adjust( theta , p[j,:] )
-            for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
+            #print( 'shape ' , theta_adjusted.shape)
+            L_n=0
+            for i in range(0,N-3): #start from 1 or zero #Implement Tripizoidal scheme
+
+                mean,var= linear_lamperti_moment(dN, X_prev=X[j,i], X_next=X[j,i+1], p_prev=p[j,i],p_next=p[j,i+1], theta_prev=theta_adjusted[i], theta_next=theta_adjusted[i+1],alpha=alpha )
                 #theta_adjusted[i]
-                g= g + theta_adjusted[i]*(2*p[j,i]-1)*h*dN #this h is approx.
-                h= h + theta_adjusted[i]*(1-2*alpha)*dN
-                arc_in=np.exp(-h)*(g+np.sin(X[j,i]) )
+                # mean = X[j,i]*np.exp((alpha-1)*dN*theta_adjusted[i])\
+                #     - dN*theta_adjusted[i]*(1-2*p[j,i])
+                # var = np.exp(dN*(alpha-1)*theta_adjusted[i])*dN*np.sqrt(2*alpha*theta_adjusted[i])
 
-                if (arc_in >1):
-                    arc_in=1
-                    counter +=1
-                if (arc_in <-1):
-                    arc_in=-1
-                    counter +=1
-                if np.isnan(arc_in): print('arc_in is nan')
+                # mean = X[j,i]*np.exp((alpha-1)*(theta_adjusted[i+1] + theta_adjusted[i])*dN/2) - dN*(theta_adjusted[i+1]*(1-2*p[j,i+1])*np.exp((alpha-1)*(theta_adjusted[i+1] + theta_adjusted[i])*dN/2) + theta_adjusted[i]*(1-2*p[j,i]) )/2
+                #
+                # var= np.sqrt(2*alpha)*dN*(np.sqrt(theta_adjusted[i+1])*np.exp((alpha-1)*(theta_adjusted[i+1] + theta_adjusted[i])*dN/2)  + np.sqrt(theta_adjusted[i]) )/2
 
-                mean= np.arcsin(arc_in )
-
-                var= var + 2*alpha*theta*dN
-                if np.isnan(mean): print('mean is nan')
-                if np.isnan(var): print('var is nan')
-
-                #norm(0, 1).pdf(10)
+                #if np.isnan(mean): print('mean is nan' , mean, k)
+                #if np.isnan(var): print('var is nan', var)
 
                 L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
 
         # display information
         #if self.Nfeval%5 == 0:
-        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
-        self.Nfeval += 1
-        print('counter is ', counter)
-
+        # print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
+        # self.Nfeval += 1
+        #print('counter is ', counter)
+        print('l= ', -1*L_m)
+        if send_end_to_evaluater != None:
+            send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
                                                 #ADJUST UPPER BOUND !
@@ -231,8 +324,8 @@ class model_modified_drift:
             print('Evaluating using the Beta likelihood')
         if inference=='lamperti_likelihood_SDE_approx':
             likelihood=self.lamperti_likelihood_SDE_approx
-        if inference=='lamperti_likelihood_moment_approx':
-            likelihood=self.lamperti_likelihood_moment_approx
+        if inference=='lamperti_likelihood_linearized':
+            likelihood=self.lamperti_likelihood_linearized
 
         if method=="Nelder-Mead":
             minimizer_kwargs = {"method":"Nelder-Mead"} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
@@ -1299,6 +1392,108 @@ def gen_path_beta_robust_interpolate(X0,disct,real,forecast):
 #########################################################################
 # Functions
 
+def likelihood_evaluater_pool(theta_array,alpha_array,this_model,inference,path_dir ):
+
+    x = theta_array
+    y = alpha_array
+    X, Y = np.meshgrid(x, y)
+    Z=np.zeros((len(x), len(y)))
+    grid_list=[]
+    for i in range(0,len(y)):
+        for j in range(0,len(x)):
+            grid_list.append(np.array((x[j],y[i])))
+
+
+    if inference=="beta_likelihood":
+        print('Evaluating using the Beta likelihood parallel pooling')
+
+        num_tasks = len(grid_list)
+
+        with mp.Pool(mp.cpu_count()) as pool:
+            result_list= list( tqdm(pool.imap(this_model.beta_likelihood, grid_list ), total=num_tasks))
+
+        pool.close()
+        pool.join()
+        # result_list = [x.recv() for x in pipe_list]
+        result_list=np.array(result_list)
+        Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+
+
+    if inference=='lamperti_likelihood_SDE_approx':
+        print('Evaluating using approx. lamperti ')
+        jobs = []
+        pipe_list = []
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                recv_end, send_end_to_evaluater = mp.Pipe(False)
+                p = mp.Process(target=this_model.lamperti_likelihood_SDE_approx, args=(np.array((x[j],y[i])), send_end_to_evaluater))
+                jobs.append(p)
+                pipe_list.append(recv_end)
+                p.start()
+
+        for proc in jobs:
+            proc.join()
+        result_list = [x.recv() for x in pipe_list]
+        result_list=np.array(result_list)
+        #print(result_list)
+        Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+        ########
+    if inference=='lamperti_likelihood_linearized':
+        print('Evaluating using linearized lamperti')
+        jobs = []
+        pipe_list = []
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                recv_end, send_end_to_evaluater = mp.Pipe(False)
+                p = mp.Process(target=this_model.lamperti_likelihood_linearized, args=(np.array((x[j],y[i])), send_end_to_evaluater))
+                jobs.append(p)
+                pipe_list.append(recv_end)
+                p.start()
+
+        for proc in jobs:
+            proc.join()
+        result_list = [x.recv() for x in pipe_list]
+        result_list=np.array(result_list)
+        print(result_list)
+        Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+        ########
+
+    Zx,Zy=np.gradient(Z)
+
+    Z_grad_x=np.zeros((len(y), len(x)))
+    Z_grad_y=np.zeros((len(y), len(x)))
+    for i in range(0,len(x)):
+        for j in range(0,len(y)):
+            Z_grad_x[i,j] = Zx[i][j]
+            Z_grad_y[i,j] = Zy[i][j]
+
+    Zxx,Zxy =np.gradient(Z_grad_x)
+    Zyx,Zyy =np.gradient(Z_grad_y)
+
+    Z_grad_xx=np.zeros((len(y), len(x)))
+    Z_grad_yy=np.zeros((len(y), len(x)))
+    Z_grad_xy=np.zeros((len(y), len(x)))
+    Z_grad_yx=np.zeros((len(y), len(x)))
+
+    for i in range(0,len(x)):
+        for j in range(0,len(y)):
+            Z_grad_xx[i,j] = Zxx[i][j]
+            Z_grad_yy[i,j] = Zyy[i][j]
+            Z_grad_xy[i,j] = Zxy[i][j]
+            Z_grad_yx[i,j] = Zyx[i][j]
+
+    np.save(path_dir+'/theta', X)
+    np.save(path_dir+'/alpha', Y)
+    np.save(path_dir+'/value', Z)
+    np.save(path_dir+'/grad_x', Z_grad_x)
+    np.save(path_dir+'/grad_y', Z_grad_y)
+    np.save(path_dir+'/grad_xx', Z_grad_xx)
+    np.save(path_dir+'/grad_yy', Z_grad_yy)
+    np.save(path_dir+'/grad_xy', Z_grad_xy)
+    np.save(path_dir+'/grad_yx', Z_grad_yx)
+    print('output arrays save successfully in ' + path_dir )
+    return()
+
 def likelihood_evaluater(theta_array,alpha_array,this_model,inference,path_dir ):
 
     x = theta_array
@@ -1308,19 +1503,63 @@ def likelihood_evaluater(theta_array,alpha_array,this_model,inference,path_dir )
 
     if inference=="beta_likelihood":
         print('Evaluating using the Beta likelihood')
+        jobs = []
+        pipe_list = []
         for i in range(0,len(y)):
             for j in range(0,len(x)):
-                Z[j,i] = this_model.beta_likelihood(param=np.array((X[j,i],Y[j,i])))
-    if inference=='lamperti_likelihood_SDE_approx':
-        for i in range(0,len(y)):
-            for j in range(0,len(x)):
-                Z[j,i] = this_model.lamperti_likelihood_SDE_approx(param=np.array((X[j,i],Y[j,i])))
-    if inference=='lamperti_likelihood_moment_approx':
-        for i in range(0,len(y)):
-            for j in range(0,len(x)):
-                Z[j,i] = this_model.lamperti_likelihood_moment_approx(param=np.array((X[j,i],Y[j,i])))
+                recv_end, send_end_to_evaluater = mp.Pipe(False)
+                p = mp.Process(target=this_model.beta_likelihood, args=(np.array((x[j],y[i])), send_end_to_evaluater))
+                jobs.append(p)
+                pipe_list.append(recv_end)
+                p.start()
 
-    Zx, Zy=np.gradient(Z)
+        for proc in jobs:
+            proc.join()
+        result_list = [x.recv() for x in pipe_list]
+        result_list=np.array(result_list)
+        print(result_list)
+        Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+
+    if inference=='lamperti_likelihood_SDE_approx':
+        print('Evaluating using approx. lamperti ')
+        jobs = []
+        pipe_list = []
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                recv_end, send_end_to_evaluater = mp.Pipe(False)
+                p = mp.Process(target=this_model.lamperti_likelihood_SDE_approx, args=(np.array((x[j],y[i])), send_end_to_evaluater))
+                jobs.append(p)
+                pipe_list.append(recv_end)
+                p.start()
+
+        for proc in jobs:
+            proc.join()
+        result_list = [x.recv() for x in pipe_list]
+        result_list=np.array(result_list)
+        #print(result_list)
+        Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+        ########
+    if inference=='lamperti_likelihood_linearized':
+        print('Evaluating using linearized lamperti')
+        jobs = []
+        pipe_list = []
+        for i in range(0,len(y)):
+            for j in range(0,len(x)):
+                recv_end, send_end_to_evaluater = mp.Pipe(False)
+                p = mp.Process(target=this_model.lamperti_likelihood_linearized, args=(np.array((x[j],y[i])), send_end_to_evaluater))
+                jobs.append(p)
+                pipe_list.append(recv_end)
+                p.start()
+
+        for proc in jobs:
+            proc.join()
+        result_list = [x.recv() for x in pipe_list]
+        result_list=np.array(result_list)
+        print(result_list)
+        Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+        ########
+
+    Zx,Zy=np.gradient(Z)
 
     Z_grad_x=np.zeros((len(y), len(x)))
     Z_grad_y=np.zeros((len(y), len(x)))
@@ -1762,9 +2001,301 @@ def path_simulator(forecast_data_inter,hours,\
     np.save(dir_path + '/forecast_list', list_forecast_number)
 
 
+
+def compute_path_moments(j,N,X,p,theta_adjusted, alpha, send_end):
+    m_1=0  #fix initial condition as zero error in the first point
+    m_2=0
+    dN=1/N
+    L_n=0
+    for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
+        m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
+        m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
+                     alpha*theta_adjusted[i]*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i]) ))
+        a=m_1;
+        b=m_2- m_1**2;
+
+        if np.isnan(a): print('a is nan')
+        if np.isnan(b): print('b is nan')
+        if not np.isfinite(a): print('a is infinite')
+        if not np.isfinite(b): print('b is infinite')
+
+        if b==0: b=1e-16
+        if b<0:
+            b=1e-16
+
+        beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+        beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+        L_n_current= (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
+         (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
+         scipy.special.betaln(beta_param_alpha, beta_param_beta)
+        L_n = L_n + L_n_current
+    send_end.send(L_n)
+
+# def moment_compute(dN, X_prev, X_next, p_prev, theta_current,       alpha_current,send_end ):
+#         m_1=X_prev*np.exp(- dN*theta_current)
+#         m_2=  (X_prev**2 + 2*dN*( X_prev*(alpha_current*theta_current*p_prev*(1-p_prev)*(1-2*p_prev )) + \
+#                      alpha_current*theta_current*p_prev**2*(1-p_prev)**2) ) /(  1+ dN*2*(theta_current+alpha_current*theta_current*p_prev*(1-p_prev) ))
+#         a=m_1;
+#         b=m_2- m_1**2;
+#
+#         if b==0: b=1e-16
+#         if b<0:
+#             b=1e-16
+#
+#         beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
+#         beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+#
+#         L_n_current=(beta_param_alpha-1 )*np.log(  (X_next+1)/2 ) +\
+#          (beta_param_beta-1)*np.log(1-( X_next +1)/2 )-\
+#          scipy.special.betaln(beta_param_alpha, beta_param_beta)
+#
+#         send_end.send(L_n_current)
+
+def moment_compute(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+    start=0 ; end=1
+    N_INT=100
+    x=np.linspace(start,end, N_INT )
+    X_INT=np.interp(x,[start,end], [X_prev,X_next] )
+    P_INT=np.interp(x,[start,end], [p_prev,p_next] )
+    theta_INT=np.interp(x,[start,end], [theta_prev,theta_next] )
+    d_INT= 10/N_INT #change time scale to choose which units ? we choose minutes
+    m_1=X_prev
+    m_2=X_prev**2
+    m_1_prev=0
+    I_1_prev=0
+    I_1=0
+    I_2=0
+    for q in range( 0, len(X_INT)-1 ):
+
+        m_1_prev=m_1
+        I_1_prev=I_1
+
+        I_1= I_1 + (theta_INT[q] + theta_INT[q+1])*d_INT/2
+
+        m_1= X_prev*np.exp(-I_1)
+
+        I_2 = I_2 + ( ( 2*theta_INT[q+1]*m_1*(1-2*P_INT[q+1])    + 2*theta_INT[q+1]*P_INT[q+1]*(1-P_INT[q+1]) )*np.exp(-2*(1+alpha )*I_1)  + ( 2*theta_INT[q]*m_1_prev*(1-2*P_INT[q])    + 2*theta_INT[q]*P_INT[q]*(1-P_INT[q]) )*np.exp(-2*(1+alpha )*I_1_prev)   )*d_INT/2
+
+        # m_1_prev=m_1
+        # m_1 = m_1*np.exp(-1*(theta_INT[q] + theta_INT[q+1])*d_INT/2 )
+        #
+        # m_2=(m_2 + 0.5*d_INT*( -2*m_2*theta_INT[q]*(1+alpha) + 2*m_1_prev*alpha*theta_INT[q]*(1-2*P_INT[q]) + 2*alpha*theta_INT[q]*P_INT[q]*(1-P_INT[q]) + 2*m_1*alpha*theta_INT[q+1]*(1-2*P_INT[q+1]) + 2*alpha*theta_INT[q+1]*P_INT[q+1]*(1-P_INT[q+1]) ) )/(1-d_INT*theta_INT[q+1]*(1+alpha))
+
+    m_1= X_prev*np.exp(-I_1)
+    m_2=X_prev**2*np.exp(-2*(1+alpha)*I_1) + alpha*I_2
+
+    return(m_1,m_2)
+
+def moment_compute_approx_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
+
+    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
+
+    fun=lambda t, m: approx_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2] , rtol=1e-2, atol=1e-2)
+    m_1= sol.y[0,-1]
+    var= sol.y[1,-1]
+    return(m_1,var)
+
+    # start=0 ; end=1
+    # N_INT=10
+    # x=np.linspace(start,end, N_INT )
+    # X_INT=np.interp(x,[start,end], [X_prev,X_next] )
+    # P_INT=np.interp(x,[start,end], [p_prev,p_next] )
+    # theta_INT=np.interp(x,[start,end], [theta_prev,theta_next] )
+    # d_INT= (10/N_INT)
+    # I_1=0
+    # I_2=0
+    # I_3=0
+    # I_4=0
+    # I_1_prev=0
+    # I_3_prev=0
+    # I_3_list=[]
+    # K=0
+    # mean_current=0
+    # for q in range( 0, len(X_INT)-1 ):
+    #     I_1_prev=I_1
+    #     mean_prev=mean_current
+    #     I_3_prev=I_3
+    #
+    #     I_1= I_1 + ( theta_INT[q] + theta_INT[q+1] )*d_INT/2
+    #
+    #     I_2= I_2 + (theta_INT[q+1]*(2*P_INT[q+1]-1)*np.exp((1-alpha)*I_1) + theta_INT[q]*(2*P_INT[q]-1)*np.exp((1-alpha)*I_1_prev  ) )*d_INT/2
+    #
+    #     K=np.exp(-1*(1-alpha)*I_1 )*I_2 + np.sin(X_prev)
+    #
+    #     if K>1:
+    #         #print(K-1)
+    #         K=1
+    #     if K<-1:
+    #         #print(K+1)
+    #         K=-1
+    #
+    #     mean_current= np.arcsin(K)
+    #
+    #
+    #     I_3= I_3 + ( theta_INT[q+1]*(2*P_INT[q+1]-1)*np.tan(mean_current)/np.cos(mean_current) + theta_INT[q+1]*(alpha - 1)/np.cos(mean_current)**2 + theta_INT[q]*(2*P_INT[q]-1)*np.tan(mean_prev)/np.cos(mean_prev) + theta_INT[q]*(alpha - 1)/np.cos(mean_prev)**2 )*d_INT/2
+    #
+    #     I_3_list.append(I_3)
+
+        #print(I_3)
+
+
+        # if not np.isfinite(theta_INT[q+1]): print('theta_INT[q+1] is infinite', theta_INT[q+1])
+        # if not np.isfinite(theta_INT[q]): print('theta_INT[q] is infinite', theta_INT[q])
+        # if not np.isfinite(I_3): print('I_3 is infinite', I_3)
+        # if not np.isfinite(I_3_prev): print('I_3_prev is infinite', I_3_prev)
+
+
+        #I_4= I_4 + (theta_INT[q+1]*np.exp(-2*I_3) + theta_INT[q]*np.exp(-2*I_3_prev) )*d_INT/2
+
+
+        # if not np.isfinite(I_4):
+        #     print('I_4 is infinite')
+        #     print('theta_INT[q+1]= ' , theta_INT[q+1])
+        #     print('mean_current= ' , mean_current )
+        #     print('theta_INT[q+1]= ' , theta_INT[q+1])
+        #     print('P_INT[q]= ' , P_INT[q])
+        #
+        # if np.isnan(I_3):
+        #     print('I_3 is nan')
+        # if np.isnan(I_4):
+        #     print('I_4 is nan')
+
+    # for t in range(0,len(X_INT)-1):
+    #     I_4= I_4 + (theta_INT[t+1]*np.exp(-2*I_3_list[-t-1]) + theta_INT[t]*np.exp(-2*I_3_list[-t]) )*d_INT/2
+    #
+    # K=np.exp(-1*(1-alpha)*I_1 )*I_2 + np.sin(X_prev)
+    # if K>1: K=1
+    # if K<-1: K=-1
+    # mean=np.arcsin(K)
+    # var=alpha*I_4
+    # if np.isnan(var):
+    #     print('var is nan, we have I_3 and I_4 as ', I_3, I_4)
+
+    # return(mean,var)
+
+
+
+
+
+# def moment_compute_linear_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+#     start=0 ; end=1
+#     N_INT=100
+#     x=np.linspace(start,end, N_INT )
+#     X_INT=np.interp(x,[start,end], [X_prev,X_next] )
+#     P_INT=np.interp(x,[start,end], [p_prev,p_next] )
+#     theta_INT=np.interp(x,[start,end], [theta_prev,theta_next] )
+#     d_INT= (10/N_INT)
+#     I_3=0
+#     I_1=0
+#     I_2=0
+#     I_4=0
+#     I_3_prev=0
+#     for q in range( 0, len(X_INT)-1 ):
+#         I_3_prev=I_3
+#         I_1= I_1 +( theta_INT[q] + theta_INT[q+1]  )*d_INT/2
+#         for w in range(q, len(X_INT)-1 ):
+#             I_3 = I_3 + ( theta_INT[q] + theta_INT[q+1]  )*d_INT/2
+#
+#         I_2 = I_2 + ( theta_INT[q]*(1-2*P_INT[q])*np.exp( (alpha-1)*I_3_prev ) + theta_INT[q+1]*(1-2*P_INT[q+1])*np.exp( (alpha-1)*I_3 ) )*d_INT/2
+#         I_4 = I_4 + ( np.sqrt(2*alpha*theta_INT[q+1] )*np.exp( (alpha-1)*I_3 )   + np.sqrt(2*alpha*theta_INT[q] )*np.exp( (alpha-1)*I_3_prev )  )*d_INT/2
+#
+#     mean= X_prev*np.exp( (alpha-1)*I_1 ) - I_2
+#     var= I_4
+#
+#     return(mean,var)
+
+
 def abline(slope, intercept):
     """Plot a line from slope and intercept"""
     axes = plt.gca()
     x_vals = np.array(axes.get_xlim())
     y_vals = intercept + slope * x_vals
     plt.plot(x_vals, y_vals, '--', label='slope='+str(slope))
+
+
+    #############################################################################################333
+
+def beta_ODE_RHS(t, m ,p_func,theta_func, alpha):
+    m_1_RHS= -m[0]*theta_func(t)
+    m_2_RHS= -2*m[1]*theta_func(t)*(1+alpha) + 2*alpha*theta_func(t)*m[0]*(1-2*p_func(t)) + 2*alpha*theta_func(t)*p_func(t)*( 1-p_func(t) )
+    return(m_1_RHS, m_2_RHS)
+
+
+def approx_lamperti_ODE_RHS(t, m ,p_func,theta_func, alpha):
+    m_1_RHS= -m[0]*theta_func(t)*(1-alpha) - theta_func(t)*(1-2*p_func(t))
+    var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
+    return(m_1_RHS, var_RHS)
+
+def linear_lamperti_ODE_RHS(t, m ,p_func,theta_func, alpha):
+    m_1_RHS= m[0]*theta_func(t)*(alpha -1) - theta_func(t)*(1-2*p_func(t))
+    var_RHS= (alpha -1)*theta_func(t)*m[1] + np.sqrt(2*theta_func(t)*alpha)
+    return(m_1_RHS, var_RHS)
+
+
+# p_func = interpolate.interp1d([0,1], [0.4,0.3] , kind='linear')
+#
+# theta_func = interpolate.interp1d([0,1], [10,13] , kind='linear')
+#
+# beta_ODE_RHS(0.5, m=np.array((1,2)), p_func=p_func , theta_func=theta_func, alpha=0.1  )
+#
+# fun=lambda t, m: beta_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=0.1)
+# sol = solve_ivp(fun, [0, 1], [2,8], method='RK45', t_eval=[1])
+# m_1= np.asscalar(sol.y[0])
+# m_2= np.asscalar(sol.y[1])
+
+
+
+def beta_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
+
+    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
+
+    fun=lambda t, m: beta_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2],rtol=1e-2, atol=1e-2)
+    m_1= sol.y[0,-1]
+    m_2= sol.y[1,-1]
+
+    # m_1=X_prev
+    # m_2=X_prev**2
+    # m_1_prev=0
+    # I_1_prev=0
+    # I_1=0
+    # I_2=0
+    # for q in range( 0, len(X_INT)-1 ):
+
+        # m_1_prev=m_1
+        # I_1_prev=I_1
+        #
+        # I_1= I_1 + (theta_INT[q] + theta_INT[q+1])*d_INT/2
+        #
+        # m_1= X_prev*np.exp(-I_1)
+        #
+        # I_2 = I_2 + ( ( 2*theta_INT[q+1]*m_1*(1-2*P_INT[q+1])    + 2*theta_INT[q+1]*P_INT[q+1]*(1-P_INT[q+1]) )*np.exp(-2*(1+alpha )*I_1)  + ( 2*theta_INT[q]*m_1_prev*(1-2*P_INT[q])    + 2*theta_INT[q]*P_INT[q]*(1-P_INT[q]) )*np.exp(-2*(1+alpha )*I_1_prev)   )*d_INT/2
+
+        # m_1_prev=m_1
+        # m_1 = m_1*np.exp(-1*(theta_INT[q] + theta_INT[q+1])*d_INT/2 )
+        #
+        # m_2=(m_2 + 0.5*d_INT*( -2*m_2*theta_INT[q]*(1+alpha) + 2*m_1_prev*alpha*theta_INT[q]*(1-2*P_INT[q]) + 2*alpha*theta_INT[q]*P_INT[q]*(1-P_INT[q]) + 2*m_1*alpha*theta_INT[q+1]*(1-2*P_INT[q+1]) + 2*alpha*theta_INT[q+1]*P_INT[q+1]*(1-P_INT[q+1]) ) )/(1-d_INT*theta_INT[q+1]*(1+alpha))
+
+    # m_1= X_prev*np.exp(-I_1)
+    # m_2=X_prev**2*np.exp(-2*(1+alpha)*I_1) + alpha*I_2
+
+    return(m_1,m_2)
+
+
+def linear_lamperti_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
+
+    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
+
+    fun=lambda t, m: linear_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2], rtol=1e-2, atol=1e-2)
+    m_1= sol.y[0,-1]
+    var= sol.y[1,-1]
+
+    return(m_1,var)
