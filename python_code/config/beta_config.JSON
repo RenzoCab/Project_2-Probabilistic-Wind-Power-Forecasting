@@ -1,0 +1,20 @@
+{
+  "likelihood" : "beta_likelihood",
+  "num_paths" : 100,
+  "theta":
+    {
+      "start": 0.01,
+      "end": 25,
+      "num_steps": 25
+    },
+  "alpha":
+    {
+      "start": 0.01,
+      "end": 1,
+      "num_steps": 25
+    },
+  "data_path": "/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/data/cleansed/URG_forecast_data_A_2018.npy",
+  "logs_file_name": "beta.log",
+  "dir_path":"/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_codealpha",
+  "num_cores": "all"
+}

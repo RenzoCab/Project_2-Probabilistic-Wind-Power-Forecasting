@@ -21,6 +21,7 @@ from scipy.integrate import solve_ivp
 import sys
 import warnings
 from tqdm import tqdm
+import argparse
 
 ##############
 #constants
@@ -1392,7 +1393,7 @@ def gen_path_beta_robust_interpolate(X0,disct,real,forecast):
 #########################################################################
 # Functions
 
-def likelihood_evaluater_pool(theta_array,alpha_array,this_model,inference,path_dir ):
+def likelihood_evaluater_pool(theta_array,alpha_array,this_model,inference,path_dir, num_cores=mp.cpu_count() ):
 
     x = theta_array
     y = alpha_array
@@ -1403,58 +1404,40 @@ def likelihood_evaluater_pool(theta_array,alpha_array,this_model,inference,path_
         for j in range(0,len(x)):
             grid_list.append(np.array((x[j],y[i])))
 
-
     if inference=="beta_likelihood":
-        print('Evaluating using the Beta likelihood parallel pooling')
+        print('Evaluating the Beta likelihood using ' + str(num_cores) + ' cores ' )
 
         num_tasks = len(grid_list)
-
-        with mp.Pool(mp.cpu_count()) as pool:
+        with mp.Pool(num_cores) as pool:
             result_list= list( tqdm(pool.imap(this_model.beta_likelihood, grid_list ), total=num_tasks))
-
         pool.close()
         pool.join()
-        # result_list = [x.recv() for x in pipe_list]
         result_list=np.array(result_list)
         Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
 
 
     if inference=='lamperti_likelihood_SDE_approx':
-        print('Evaluating using approx. lamperti ')
-        jobs = []
-        pipe_list = []
-        for i in range(0,len(y)):
-            for j in range(0,len(x)):
-                recv_end, send_end_to_evaluater = mp.Pipe(False)
-                p = mp.Process(target=this_model.lamperti_likelihood_SDE_approx, args=(np.array((x[j],y[i])), send_end_to_evaluater))
-                jobs.append(p)
-                pipe_list.append(recv_end)
-                p.start()
+        print('Evaluating approx. lamperti using ' + str(num_cores) + ' cores ' )
 
-        for proc in jobs:
-            proc.join()
-        result_list = [x.recv() for x in pipe_list]
+        num_tasks = len(grid_list)
+        with mp.Pool(num_cores) as pool:
+            result_list= list( tqdm(pool.imap(this_model.lamperti_likelihood_SDE_approx, grid_list ), total=num_tasks))
+        pool.close()
+        pool.join()
         result_list=np.array(result_list)
-        #print(result_list)
         Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
+
+
         ########
     if inference=='lamperti_likelihood_linearized':
-        print('Evaluating using linearized lamperti')
-        jobs = []
-        pipe_list = []
-        for i in range(0,len(y)):
-            for j in range(0,len(x)):
-                recv_end, send_end_to_evaluater = mp.Pipe(False)
-                p = mp.Process(target=this_model.lamperti_likelihood_linearized, args=(np.array((x[j],y[i])), send_end_to_evaluater))
-                jobs.append(p)
-                pipe_list.append(recv_end)
-                p.start()
+        print('Evaluating  linearized lamperti using ' + str(num_cores) + ' cores ' )
 
-        for proc in jobs:
-            proc.join()
-        result_list = [x.recv() for x in pipe_list]
+        num_tasks = len(grid_list)
+        with mp.Pool(num_cores) as pool:
+            result_list= list( tqdm(pool.imap(this_model.lamperti_likelihood_linearized, grid_list ), total=num_tasks))
+        pool.close()
+        pool.join()
         result_list=np.array(result_list)
-        print(result_list)
         Z=result_list.reshape((len(x), len(y))) #maybe opposite orientation
         ########
 
@@ -2250,9 +2233,9 @@ def linear_lamperti_ODE_RHS(t, m ,p_func,theta_func, alpha):
 
 def beta_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
 
-    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear', fill_value='extrapolate')
 
-    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
+    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
 
     fun=lambda t, m: beta_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
     sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2],rtol=1e-2, atol=1e-2)
@@ -2289,9 +2272,9 @@ def beta_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha 
 
 def linear_lamperti_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
 
-    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear',fill_value='extrapolate')
 
-    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
+    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
 
     fun=lambda t, m: linear_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
     sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2], rtol=1e-2, atol=1e-2)
