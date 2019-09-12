@@ -15,7 +15,7 @@ config_file= open(args.filename)  #config/beta_config.JSON
 
 setup=config.loadconfig.Test(config_file)
 
-os.chdir(setup.dir_path)
+#os.chdir(setup.dir_path)
 
 print( ' starting ' + setup.likelihood + ' evaluator ')
 orig_stdout = sys.stdout
@@ -35,7 +35,7 @@ warnings.simplefilter("once")
 
 
 #from multi_path_base import model_modified_drift
-forecast_data_in=np.load('/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/data/cleansed/URG_forecast_data_A_2018.npy')
+forecast_data_in=np.load(setup.data_dir)
 now = dtM.datetime.now();
 current_time=now.strftime("%y-%m-%d-%H-%M-%S")
 script_name='likelihood_explorer'
