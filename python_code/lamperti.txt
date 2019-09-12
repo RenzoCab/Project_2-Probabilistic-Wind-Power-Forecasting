@@ -1,0 +1,5 @@
+ loading configuration 
+Data output will be save in  fit_SDE19-09-12-20-50-58
+ Data has been Lamperti transformed 
+ optimizing lamperti_likelihood_linearized using Nelder-Mead
+starting optimization

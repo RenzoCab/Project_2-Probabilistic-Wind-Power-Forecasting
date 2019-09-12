@@ -20,18 +20,15 @@ np.max(forecast_data_inter[1:,:,:])<=1
 np.min(forecast_data_inter[1:,:,:])>=0
 
 N=forecast_data_inter.shape[2]
-M=forecast_data_inter.shape[1]-900 #to be changed in generalization
+M=forecast_data_inter.shape[1]-973 #to be changed in generalization
 dt=1
 #forecast_data_inter[0,:,:] #forecast
 
-N
-M
-dt
 
 disct_temp = disct(N,dt,M)
-p=forecast_data_inter[2,:-240,:]
-V= forecast_data_inter[2,:-240,:]-forecast_data_inter[1,:-240,:]
-X=forecast_data_inter[1,:-240,:]
+p=forecast_data_inter[2,:-973,:]
+V= forecast_data_inter[2,:-973,:]-forecast_data_inter[1,:-973,:]
+X=forecast_data_inter[1,:-973,:]
 #Z = np.arcsin(2*X - 1)
 
 #answer 9.06 , 0.473

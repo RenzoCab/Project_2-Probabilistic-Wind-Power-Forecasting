@@ -1,5 +1,5 @@
 {
-  "likelihood" : "beta_likelihood",
+  "likelihood" : "lamperti_likelihood_linearized",
   "num_paths" : 100,
   "theta":
     {

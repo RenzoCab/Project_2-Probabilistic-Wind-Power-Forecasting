@@ -22,10 +22,10 @@ def Ellipse (H_opt, mean=[ 8 ,  1]):
 #model using approx lamperti 19-09-04-16-11-26
 #model of Beta
 base_path=current_plotting_dir='data/'
-chosen_folder='likelihood_explorer_'+ '19-09-11-11-08-40'
+chosen_folder='likelihood_explorer_'+ '19-09-11-21-32-05'
 #beta 19-09-08-13-58-19
 
-
+cd ps
 data_path=base_path+chosen_folder
 
 #plotting chosen_folder
