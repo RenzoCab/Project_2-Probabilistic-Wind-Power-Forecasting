@@ -13,6 +13,7 @@ print( ' loading configuration ')
 #args.filename
 config_file= open(args.filename)  #config/beta_config.JSON
 
+
 setup=config.loadconfig.Test(config_file)
 
 # os.chdir(setup.dir_path)
@@ -21,10 +22,10 @@ setup=config.loadconfig.Test(config_file)
 # f = open( setup.logs_file_name, 'w')
 # sys.stdout = f
 
-def customwarn(message, category, filename, lineno, file=None, line=None):
-    sys.stdout.write(warnings.formatwarning(message, category, filename, lineno))
-
-warnings.showwarning = customwarn
+# def customwarn(message, category, filename, lineno, file=None, line=None):
+#     sys.stdout.write(warnings.formatwarning(message, category, filename, lineno))
+#
+# warnings.showwarning = customwarn
 
 warnings.simplefilter("once")
 
@@ -65,8 +66,9 @@ if setup.likelihood=='lamperti_likelihood_linearized':
     print(' Data has been Lamperti transformed ')
 
 
+
 this_model=model_modified_drift(disct_temp,V, forecast= p)
-intial_point= np.array(( setup.optimzation_initial_point['theta_init'], setup.optimzation_initial_point['alpha_init']))
+intial_point= ( setup.optimization['theta_init'], setup.optimization['alpha_init'] , setup.optimization['batch_size'])
 
 print( ' optimizing ' + setup.likelihood + ' using ' + setup.optimizer )
 

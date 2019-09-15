@@ -22,6 +22,7 @@ import sys
 import warnings
 from tqdm import tqdm
 import argparse
+import itertools as iter
 
 ##############
 #constants
@@ -60,7 +61,7 @@ class model_modified_drift:
         dt=self.disct.dt
         M=self.disct.M
         #input parameters
-        theta,alpha = param;
+        theta,alpha, _ = param;
         L_n=0;
         L_m=0;
         eps=np.finfo(float).eps;
@@ -116,6 +117,80 @@ class model_modified_drift:
             send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
+    def rand_beta_objective(self,param, send_end_to_evaluater=None):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha, batch_size = param;
+        batch_size=int(batch_size)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        dN=1/N
+        counter=False
+
+        ##############
+        # a batch of pairwise consecutive samples
+
+        list_pairs_V=[]
+        list_pairs_p=[]
+        list_pairs_theta=[]
+
+        for i in range(M):
+            list_pairs_V.append(pairwise( X[i,1:-1]))
+            list_pairs_p.append(pairwise( p[i,1:-1]))
+            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0]))
+
+        obs_pairs=iter.chain(*list_pairs_V);
+        forecast_pairs=iter.chain(*list_pairs_p);
+        theta_pairs=iter.chain(*list_pairs_theta);
+        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
+        batch=random_combination(combined_iter,batch_size)
+        ##############
+
+
+        for j in range(batch_size):
+
+            m_1,m_2=beta_moment( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=batch[j][1][0] ,p_next=batch[j][1][1], theta_prev=batch[j][2][0], theta_next=batch[j][2][1],alpha=alpha )
+
+            a=m_1; #mean
+            b=m_2- m_1**2; #variance
+
+            #sanity checks
+            if np.isnan(a): print('a is nan')
+            if np.isnan(b): print('b is nan')
+            if not np.isfinite(a): print('a is infinite')
+            if not np.isfinite(b): print('b is infinite')
+            if b==0: b=1e-16
+            if b<0:
+                b=1e-16
+                counter = True
+
+            #shape parameters of the beta distribution
+            beta_param_alpha= - ( (1+a)*(a**2 +b -1)  )/(2*b)
+            beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+            L_n = L_n + (beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
+             (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
+             scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+        # display information
+        # if self.Nfeval%5 == 0:
+        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n ))
+        self.Nfeval += 1
+        # print('l= ', -1*L_n)
+        if send_end_to_evaluater != None:
+            send_end_to_evaluater.send(-1*L_n)
+
+        return(-1*L_n)
+
+
+
     def beta_likelihood(self,param, send_end_to_evaluater=None):
         #data
         X=self.data
@@ -125,7 +200,7 @@ class model_modified_drift:
         dt=self.disct.dt
         M=self.disct.M
         #input parameters
-        theta,alpha = param;
+        theta,alpha,_ = param;
         L_n=0;
         L_m=0;
         a=0;b=0;
@@ -168,6 +243,9 @@ class model_modified_drift:
             send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
+
+
+
     def beta_likelihood_parallel(self,param, send_end_to_evaluater):
         #data
         X=self.data
@@ -177,7 +255,7 @@ class model_modified_drift:
         dt=self.disct.dt
         M=self.disct.M
         #input parameters
-        theta,alpha = param;
+        theta,alpha,_ = param;
         #print( theta, alpha)
         L_n=0;
         L_m=0;
@@ -274,7 +352,7 @@ class model_modified_drift:
         dt=self.disct.dt
         M=self.disct.M
         #input parameters
-        theta,alpha = param;
+        theta,alpha,_ = param;
         L_n=0;
         L_m=0;
         eps=np.finfo(float).eps;
@@ -316,17 +394,23 @@ class model_modified_drift:
         return(-1*L_m)
 
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, inference="beta_likelihood" ,method="Nelder-Mead", niter=1 , temp=0,  param_initial=np.random.uniform(size=2), bnds = ((1e-3, None), (1e-3, None))):
+    def optimize(self, param_initial,inference="beta_likelihood" ,method="Nelder-Mead", niter=1 , temp=0, bnds = ((1e-3, None), (1e-3, None))):
         print("starting optimization")
-        mu_initial,sig_initial=param_initial
+        # mu_initial,sig_initial=param_initial
 
         if inference=="beta_likelihood":
             likelihood=self.beta_likelihood
             print('Evaluating using the Beta likelihood')
-        if inference=='lamperti_likelihood_SDE_approx':
+        elif inference=='lamperti_likelihood_SDE_approx':
             likelihood=self.lamperti_likelihood_SDE_approx
-        if inference=='lamperti_likelihood_linearized':
+            print('Evaluating using lamperti_likelihood_SDE_approx')
+        elif inference=='lamperti_likelihood_linearized':
             likelihood=self.lamperti_likelihood_linearized
+            print('Evaluating using lamperti_likelihood_linearized')
+        elif inference=='rand_beta_objective':
+            likelihood=self.rand_beta_objective
+            print('Evaluating using rand_beta_objective')
+        else: print('Requested likelihood not found! ')
 
         if method=="Nelder-Mead":
             minimizer_kwargs = {"method":"Nelder-Mead"} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
@@ -1181,7 +1265,6 @@ def gen_X_beta_derivative_tracking(X0,disct,real,forecast):
     m_2=0
     dN=1/N
     X=np.zeros((M,N))
-
     max_tries=50 #max(int(M*0.1), 2 )
     try_count = 0
     j=0;
@@ -2071,8 +2154,8 @@ def moment_compute(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alp
     return(m_1,m_2)
 
 def moment_compute_approx_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
-    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
 
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear')
     theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
 
     fun=lambda t, m: approx_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
@@ -2190,13 +2273,28 @@ def moment_compute_approx_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev
 #
 #     return(mean,var)
 
-
+####################################################################################################
+#helper Functions
+#####################################################################################################
 def abline(slope, intercept):
     """Plot a line from slope and intercept"""
     axes = plt.gca()
     x_vals = np.array(axes.get_xlim())
     y_vals = intercept + slope * x_vals
     plt.plot(x_vals, y_vals, '--', label='slope='+str(slope))
+
+def pairwise(iterable):
+    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
+    a, b = iter.tee(iterable)
+    next(b, None)
+    return zip(a, b)
+
+def random_combination(iterable, r):
+    "Random selection from itertools.combinations(iterable, r)"
+    pool = tuple(iterable)
+    n = len(pool)
+    indices = sorted(random.sample(range(n), r))
+    return tuple(pool[i] for i in indices)
 
 
     #############################################################################################333

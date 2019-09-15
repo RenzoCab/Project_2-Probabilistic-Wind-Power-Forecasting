@@ -33,10 +33,9 @@ note='Fit for ' + str(M) +' paths' + ' of ' + str(N) +' hours. Initialized at '\
 file_object.write( note +'\n'+str(optim.x) +'\n' +optim.message[0])
 file_object.close()
 
-optim
+print(optim)
 
 
-optim
 
 #Additions, brackets computations, lamparti
 #
