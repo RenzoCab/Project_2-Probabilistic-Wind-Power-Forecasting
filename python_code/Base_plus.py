@@ -1,28 +1,29 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.cm as cm
+import matplotlib.pyplot as plt #general plotting
+import matplotlib.cm as cm #plotting color map
+import matplotlib as mpl #plotting ellipse
 import scipy.stats
-from scipy.optimize import minimize
-from scipy.stats import multivariate_normal, norm
-from mpl_toolkits.mplot3d import Axes3D
+from scipy.stats import multivariate_normal, norm  #used to evaluate normal and path generation
+from mpl_toolkits.mplot3d import Axes3D #3D plots
 import operator
-from scipy.optimize import minimize
-from scipy.optimize import basinhopping
+from scipy.optimize import minimize #optimization wraper
+from scipy.optimize import basinhopping #opimization wrapper
 import math
 import random
-from scipy import interpolate
-from math import pi
-from numpy import linalg as LA
-import datetime as dtM
-import os
-import multiprocessing as mp
-import time
-from scipy.integrate import solve_ivp
-import sys
-import warnings
-from tqdm import tqdm
-import argparse
-import itertools as iter
+from scipy import interpolate #interpolation , might not be used anymore
+from math import pi #constant
+from numpy import linalg as LA # linear algebra operations for hessian
+import datetime as dtM #processing of datetime data
+import os #make directories / change working path
+import multiprocessing as mp # prallelizing likelihood_evaluater
+import time #time for timing tasks
+from scipy.integrate import solve_ivp #RK4 numerical solving odes
+import sys #to obtain system current path
+import warnings #make each warning appear only once, warning redirection
+from tqdm import tqdm #progress bar output in stderr
+import argparse #Command line input
+import itertools as iter #iter object tools for batching
+import numdifftools as nd #differentiation / Hessian computation
 
 ##############
 #constants
@@ -51,6 +52,34 @@ class model_modified_drift:
         self.forecast = forecast
         self.optimal=optimal()
         self.Nfeval=0
+
+    def likelihood_evaluate(self, selector, param, batch_size=None):
+        if selector=="beta_likelihood":
+            # print('Evaluating using the Beta likelihood')
+            print(' still have to do it ')
+            return()
+
+        elif selector=='lamperti_likelihood_SDE_approx':
+            # likelihood=self.lamperti_likelihood_SDE_approx
+            # print('Evaluating using lamperti_likelihood_SDE_approx')
+            print(' still have to do it ')
+            return()
+
+        elif selector=='lamperti_likelihood_linearized':
+            # likelihood=self.lamperti_likelihood_linearized
+            # print('Evaluating using lamperti_likelihood_linearized')
+            print(' still have to do it ')
+            return()
+
+        elif selector=='rand_beta_objective':
+            likelihood=self.rand_beta_objective
+            print('Evaluating using rand_beta_objective')
+            return(self.rand_beta_objective(param, batch_size ) )
+
+        else:
+            print('Requested likelihood not found! ')
+            return()
+
 
     def lamperti_likelihood_SDE_approx(self,param,send_end_to_evaluater=None):
         #data
@@ -117,7 +146,7 @@ class model_modified_drift:
             send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
-    def rand_beta_objective(self,param, send_end_to_evaluater=None):
+    def rand_beta_objective(self,param,batch_size, send_end_to_evaluater=None):
         #data
         X=self.data
         p=self.forecast
@@ -126,7 +155,7 @@ class model_modified_drift:
         dt=self.disct.dt
         M=self.disct.M
         #input parameters
-        theta,alpha, batch_size = param;
+        theta,alpha = param;
         batch_size=int(batch_size)
         L_n=0;
         L_m=0;
@@ -189,6 +218,49 @@ class model_modified_drift:
 
         return(-1*L_n)
 
+
+    def compute_ellipse(self, inference , param , batch_size , plot=False):
+
+        if inference=="beta_likelihood":
+            likelihood=self.beta_likelihood
+            print('Evaluating using the Beta likelihood')
+
+        elif inference=='lamperti_likelihood_SDE_approx':
+            likelihood=self.lamperti_likelihood_SDE_approx
+            print('Evaluating using lamperti_likelihood_SDE_approx')
+
+        elif inference=='lamperti_likelihood_linearized':
+            likelihood=self.lamperti_likelihood_linearized
+            print('Evaluating using lamperti_likelihood_linearized')
+
+        elif inference=='rand_beta_objective':
+            likelihood=self.rand_beta_objective
+            print('Evaluating using rand_beta_objective')
+
+        else: print('Requested likelihood not found! ')
+
+        wraper=lambda param: likelihood( (param[0],param[1]), batch_size )
+        Hess=nd.Hessian(wraper)((param[0], param[1])); #copmute hessian
+        width,height,angle, eig_vect_opt=Ellipse(Hess, param)
+
+        if plot==True:
+            plt.clf()
+            fig, ax = plt.subplots()
+            ell = mpl.patches.Ellipse(xy=mean, width=width, height=height, angle = 180+angle, alpha=1, color='k')
+            V = np.array([eig_vect_opt[0],eig_vect_opt[1]])
+            origin = [10],[0.1] # origin point
+            #plt.quiver(*origin, V[:,0],V[:,1], color=['r','b'], scale=10)
+            ax.add_patch(ell)
+            ax.autoscale()
+            plt.ticklabel_format(axis='x', style='sci', scilimits=(-2,2))
+            plt.ticklabel_format(axis='y', style='sci', scilimits=(-2,2))
+            file_name='ellipse'+str(M) +'_interp='+ str(N)
+            plt.title('Ellipse of the Hessian of Log-likelihood at the optimal \n ( batch size= ' + str(current_batch_size) + ' )' );
+            plt.xlabel('$\\theta$');
+            plt.ylabel('$\\alpha$');
+            plt.savefig( 'plots/'+chosen_folder+'/'+file_name + '.pdf')
+
+        return(width,height,angle, eig_vect_opt,Hess )
 
 
     def beta_likelihood(self,param, send_end_to_evaluater=None):
@@ -394,7 +466,7 @@ class model_modified_drift:
         return(-1*L_m)
 
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, param_initial,inference="beta_likelihood" ,method="Nelder-Mead", niter=1 , temp=0, bnds = ((1e-3, None), (1e-3, None))):
+    def optimize(self, param_initial,batch_size,inference="beta_likelihood" ,method="Nelder-Mead", niter=1 , temp=0, bnds = ((1e-3, None), (1e-3, None))):
         print("starting optimization")
         # mu_initial,sig_initial=param_initial
 
@@ -413,14 +485,15 @@ class model_modified_drift:
         else: print('Requested likelihood not found! ')
 
         if method=="Nelder-Mead":
-            minimizer_kwargs = {"method":"Nelder-Mead"} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
-            min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
+            minimizer_kwargs = {"method":"Nelder-Mead", "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2, "maxiter":30 }} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
+            min_param = basinhopping(lambda param: likelihood(param, batch_size) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
         if method=="L-BFGS-B":
             minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}
             min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
         if method=="SLSQP":
             minimizer_kwargs = {"method": "SLSQP", "bounds":bnds , "options":{ 'ftol': 1e-10, 'gtol': 1e-10} }
             min_param = basinhopping(likelihood, param_initial,T=temp, minimizer_kwargs=minimizer_kwargs, niter=niter)
+
 
         #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
         #x,f,d=scipy.optimize.fmin_l_bfgs_b(self.likelihood,param_initial, approx_grad=True)
@@ -2380,3 +2453,29 @@ def linear_lamperti_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_
     var= sol.y[1,-1]
 
     return(m_1,var)
+
+def Ellipse (H_opt, mean):
+    eig_values_opt, eig_vect_opt=LA.eig(H_opt)
+    a_opt=1/np.sqrt(np.max(np.abs(eig_values_opt)))  #radius on the x-axis
+    b_opt=1/np.sqrt( np.min(np.abs(eig_values_opt))) #radius on the y-axis
+    width = a_opt**2
+    height = b_opt**2
+    angle =math.acos(sum(eig_vect_opt[1]*np.array((0,1))));angle
+    return(width,height,angle, eig_vect_opt )
+
+f= lambda x,y: 0
+f= np.vectorize(f,otypes=[np.float])
+
+def init(line, point):
+    line.set_data([], [])
+    line.set_3d_properties([])
+    point.set_data([], [])
+    point.set_3d_properties([])
+    return line, point
+
+def animate(line,point,path,i):
+    line.set_data(path[0,:i], path[1,:i])
+    line.set_3d_properties(f(*path[::,:i]))
+    point.set_data(path[0,i-1:i], path[1,i-1:i])
+    point.set_3d_properties(f(*path[::,i-1:i]))
+    return line, point
