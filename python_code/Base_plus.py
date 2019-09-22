@@ -25,6 +25,13 @@ import argparse #Command line input
 import itertools as iter #iter object tools for batching
 import numdifftools as nd #differentiation / Hessian computation
 
+########################
+#Warning controls
+
+warnings.filterwarnings('error', '.*invalid value encountered.*',)
+
+
+
 ##############
 #constants
 Nfeval=0
@@ -181,42 +188,50 @@ class model_modified_drift:
         combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
         batch=random_combination(combined_iter,batch_size)
         ##############
+        num_tries=10
+        for attempt in range(num_tries):
+            try:
+                for j in range(batch_size):
+
+                    m_1,m_2=beta_moment( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=batch[j][1][0] ,p_next=batch[j][1][1], theta_prev=batch[j][2][0], theta_next=batch[j][2][1],alpha=alpha )
+
+                    a=m_1; #mean
+                    b=m_2- m_1**2; #variance
+
+                    #sanity checks
+                    if np.isnan(a): print('a is nan')
+                    if np.isnan(b): print('b is nan')
+                    if not np.isfinite(a): print('a is infinite')
+                    if not np.isfinite(b): print('b is infinite')
+                    if b==0: b=1e-16
+                    if b<0:
+                        b=1e-16
+                        counter = True
+
+                    #shape parameters of the beta distribution
+                    beta_param_alpha= - ( (1+a)*(a**2 +b -1)  )/(2*b)
+                    beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                    L_n = L_n + (beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
+                     (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
+                     scipy.special.betaln(beta_param_alpha, beta_param_beta)
 
 
-        for j in range(batch_size):
+                if np.isnan(L_n):
+                    raise ValueError('NaN value in likelihood')
+                # display information
+                # if self.Nfeval%5 == 0:
+                print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n ))
+                self.Nfeval += 1
+                if send_end_to_evaluater != None:
+                    send_end_to_evaluater.send(-1*L_n)
+                return(-1*L_n)
 
-            m_1,m_2=beta_moment( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=batch[j][1][0] ,p_next=batch[j][1][1], theta_prev=batch[j][2][0], theta_next=batch[j][2][1],alpha=alpha )
+            except ValueError:
+                print('trying again...trial number '+ str(attempt) )
 
-            a=m_1; #mean
-            b=m_2- m_1**2; #variance
 
-            #sanity checks
-            if np.isnan(a): print('a is nan')
-            if np.isnan(b): print('b is nan')
-            if not np.isfinite(a): print('a is infinite')
-            if not np.isfinite(b): print('b is infinite')
-            if b==0: b=1e-16
-            if b<0:
-                b=1e-16
-                counter = True
 
-            #shape parameters of the beta distribution
-            beta_param_alpha= - ( (1+a)*(a**2 +b -1)  )/(2*b)
-            beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
-
-            L_n = L_n + (beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
-             (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
-             scipy.special.betaln(beta_param_alpha, beta_param_beta)
-
-        # display information
-        # if self.Nfeval%5 == 0:
-        print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n ))
-        self.Nfeval += 1
-        # print('l= ', -1*L_n)
-        if send_end_to_evaluater != None:
-            send_end_to_evaluater.send(-1*L_n)
-
-        return(-1*L_n)
 
 
     def compute_ellipse(self, inference , param , batch_size , plot=False):
@@ -240,27 +255,38 @@ class model_modified_drift:
         else: print('Requested likelihood not found! ')
 
         wraper=lambda param: likelihood( (param[0],param[1]), batch_size )
-        Hess=nd.Hessian(wraper)((param[0], param[1])); #copmute hessian
-        width,height,angle, eig_vect_opt=Ellipse(Hess, param)
 
-        if plot==True:
-            plt.clf()
-            fig, ax = plt.subplots()
-            ell = mpl.patches.Ellipse(xy=mean, width=width, height=height, angle = 180+angle, alpha=1, color='k')
-            V = np.array([eig_vect_opt[0],eig_vect_opt[1]])
-            origin = [10],[0.1] # origin point
-            #plt.quiver(*origin, V[:,0],V[:,1], color=['r','b'], scale=10)
-            ax.add_patch(ell)
-            ax.autoscale()
-            plt.ticklabel_format(axis='x', style='sci', scilimits=(-2,2))
-            plt.ticklabel_format(axis='y', style='sci', scilimits=(-2,2))
-            file_name='ellipse'+str(M) +'_interp='+ str(N)
-            plt.title('Ellipse of the Hessian of Log-likelihood at the optimal \n ( batch size= ' + str(current_batch_size) + ' )' );
-            plt.xlabel('$\\theta$');
-            plt.ylabel('$\\alpha$');
-            plt.savefig( 'plots/'+chosen_folder+'/'+file_name + '.pdf')
+        for attempt in range(10):
+            try:
+                Hess=nd.Hessian(wraper)((param[0], param[1])); #copmute hessian
 
-        return(width,height,angle, eig_vect_opt,Hess )
+                width,height,angle, eig_vect_opt=Ellipse(Hess, param)
+
+                if plot==True:
+                    plt.clf()
+                    fig, ax = plt.subplots()
+                    ell = mpl.patches.Ellipse(xy=mean, width=width, height=height, angle = 180+angle, alpha=1, color='k')
+                    V = np.array([eig_vect_opt[0],eig_vect_opt[1]])
+                    origin = [10],[0.1] # origin point
+                    #plt.quiver(*origin, V[:,0],V[:,1], color=['r','b'], scale=10)
+                    ax.add_patch(ell)
+                    ax.autoscale()
+                    plt.ticklabel_format(axis='x', style='sci', scilimits=(-2,2))
+                    plt.ticklabel_format(axis='y', style='sci', scilimits=(-2,2))
+                    file_name='ellipse'+str(M) +'_interp='+ str(N)
+                    plt.title('Ellipse of the Hessian of Log-likelihood at the optimal \n ( batch size= ' + str(current_batch_size) + ' )' );
+                    plt.xlabel('$\\theta$');
+                    plt.ylabel('$\\alpha$');
+                    plt.savefig( 'plots/'+chosen_folder+'/'+file_name + '.pdf')
+
+                FAIL= False
+
+                return(width,height,angle, eig_vect_opt,Hess, FAIL )
+
+            except:
+                print('Value error in obtaining Hessian, we try again' , attempt )
+                FAIL= True;
+        return(width,height,angle, eig_vect_opt,Hess, FAIL )
 
 
     def beta_likelihood(self,param, send_end_to_evaluater=None):
@@ -2128,7 +2154,7 @@ def path_simulator(forecast_data_inter,hours,\
         plt.xlabel('Time [hr]',fontsize = 24)
         plt.ylabel('Power',fontsize = 24)
         plt.legend( prop={'size': 20})
-        plt.savefig(dir_path+'/'+ str(hours) +'hr/'+str(k)+'.pdf', bbox_inches="tight")
+        plt.savefig(dir_path+'/'+ str(hours) +'hr/'+str(k)+'.pdf', bbox_inches="tight");
 
     file_object  = open(dir_path+'/parameter.info', 'w')
     note='Simulation of ' + str(num_forecasts)+' forecasts spanning '\
@@ -2471,11 +2497,11 @@ def init(line, point):
     line.set_3d_properties([])
     point.set_data([], [])
     point.set_3d_properties([])
-    return line, point
+    return(line, point)
 
 def animate(line,point,path,i):
     line.set_data(path[0,:i], path[1,:i])
     line.set_3d_properties(f(*path[::,:i]))
     point.set_data(path[0,i-1:i], path[1,i-1:i])
     point.set_3d_properties(f(*path[::,i-1:i]))
-    return line, point
+    return(line, point)

@@ -1,16 +1,17 @@
 #%%
 import os
-os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
+import sys
+os.chdir(sys.path[0])
 from data_cleansing import *
 #%%
 
-
 # %%
 #file paths
-forecast_A='/Users/alhaddwt/Google Drive/GitLab/wind-power/raw_data/Uruguay/wind/Wind_Data_2018_provider_A.csv'
-forecast_B='/Users/alhaddwt/Google Drive/GitLab/wind-power/raw_data/Uruguay/wind/Wind_Data_provider_B.csv'
-production_path='/Users/alhaddwt/Google Drive/GitLab/wind-power/raw_data/Uruguay/wind/anuales_gen_int_2018_10m_aggregated.csv'
+forecast_A='./raw_data/Uruguay/wind/Wind_Data_2018_provider_A.csv'
+forecast_B='./raw_data/Uruguay/wind/Wind_Data_provider_B.csv'
+production_path='./raw_data/Uruguay/wind/anuales_gen_int_2018_10m_aggregated.csv'
 #normalization_path='/Users/alhaddwt/Google Drive/GitLab/wind-power/raw_data/France/normalization_2019.txt'
+
 
 #import files
 d = pd.read_csv(production_path, delimiter= ',', header=2,  dtype=str)
@@ -69,7 +70,21 @@ forecast_data_A[:,1:,:]=np.abs(forecast_data_A[:,1:,:]/1500)
 np.max(forecast_data_A[:,1:,:])
 np.min(forecast_data_A[:,1:,:])
 
-plt.plot(forecast_data_A[640,2,:])
+
+path=56;
+
+fig=plt.figure(2,figsize=(10, 4))
+plt.plot(get_datetime64( forecast_data_A[path,0,:]   ), forecast_data_A[path,1,:] , label='data'  )
+plt.plot(get_datetime64( forecast_data_A[path,0,:]   ), forecast_data_A[path,2,:], label='forecast'   )
+plt.ylim(-0.1, 1.1)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Time [hr]',fontsize = 24)
+plt.ylabel('Normalized Power',fontsize = 24)
+plt.legend( prop={'size': 20})
+plt.savefig('data_' + str(int(forecast_data_A[path,0,0]))+'.pdf',bbox_inches="tight")
+
+
 
 # %%
 base_path='/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code/data/cleansed/'

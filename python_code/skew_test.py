@@ -1,6 +1,7 @@
 import os
-os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
-from Base import *
+import sys
+os.chdir(sys.path[0])
+from Base_plus import *
 from scipy.stats import moment,skew,probplot, norm
 forecast_with_data=np.load('data/forecast_with_data.npy')
 forecast_data_inter=data_check_interpolate(forecast_with_data=forecast_with_data)

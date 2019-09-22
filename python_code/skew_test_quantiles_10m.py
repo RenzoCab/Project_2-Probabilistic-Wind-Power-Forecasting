@@ -1,10 +1,11 @@
 # %%
 import os
-os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
-from Base import *
+import sys
+os.chdir(sys.path[0])
+from Base_plus import *
 from scipy.stats import moment,skew,probplot, norm,shapiro, normaltest
 
-forecast_data_in=np.load('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code/data/cleansed/URG_forecast_data_A_2018.npy')
+forecast_data_in=np.load('./data/cleansed/URG_forecast_data_A_2018.npy')
 #forecast_data_inter=data_check_interpolate(forecast_with_data=forecast_with_data)
 forecast_data_inter=np.swapaxes(forecast_data_in, 0,1)
 
@@ -58,17 +59,49 @@ R.shape
 R[np.isfinite(R)].shape
 np.diff(R).shape
 plt.hist(R,20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('Full Power Range' ,fontsize=24)
+plt.savefig('hist_full.pdf',bbox_inches="tight")
+
 
 probplot(R, plot=plt)
 
+
+
+
 R[P.flatten()<0.3].shape
 plt.hist(R[P.flatten()<0.3],20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('Low Power Range' ,fontsize=24)
+plt.savefig('hist_low.pdf',bbox_inches="tight")
+
+
+
+
 
 probplot(R[P.flatten()<0.3], plot=plt)
 
 
 R[P.flatten()>0.6].shape
 plt.hist(R[P.flatten()>0.6],20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('High Power Range' ,fontsize=24)
+plt.savefig('hist_low.pdf',bbox_inches="tight")
+
+
+
 
 probplot(R[P.flatten()>0.6], plot=plt)
 
