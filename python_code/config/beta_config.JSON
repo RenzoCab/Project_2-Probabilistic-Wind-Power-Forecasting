@@ -1,6 +1,6 @@
 {
   "likelihood" : "rand_beta_objective",
-  "num_paths" : 100,
+  "num_paths" : 973,
   "theta":
     {
       "start": 0.01,

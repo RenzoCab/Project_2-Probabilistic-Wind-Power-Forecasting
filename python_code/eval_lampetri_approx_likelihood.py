@@ -34,8 +34,7 @@ N=forecast_data_inter.shape[2];N
 M=forecast_data_inter.shape[1]-973;M
 dt=1
 dN=1/N;dN
-M
-N
+
 disct_temp = disct(N,dt,M)
 p=forecast_data_inter[2,:-973,:]  #240
 V=forecast_data_inter[2,:-973,:] -forecast_data_inter[1,:-973,:]

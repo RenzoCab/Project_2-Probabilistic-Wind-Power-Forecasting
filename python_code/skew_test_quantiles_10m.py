@@ -91,14 +91,14 @@ probplot(R[P.flatten()<0.3], plot=plt)
 
 
 R[P.flatten()>0.6].shape
-plt.hist(R[P.flatten()>0.6],20,density=True)
+plt.hist(R[P.flatten()>0.7],20,density=True)
 plt.xticks( fontsize = 15);
 plt.yticks( fontsize = 20);
 plt.xlabel('Forecast Error',fontsize = 20)
 # plt.ylabel('Number of Incident',fontsize = 20)
 # plt.legend( prop={'size': 20})
 plt.title('High Power Range' ,fontsize=24)
-plt.savefig('hist_low.pdf',bbox_inches="tight")
+plt.savefig('hist_high.pdf',bbox_inches="tight")
 
 
 
@@ -106,7 +106,14 @@ plt.savefig('hist_low.pdf',bbox_inches="tight")
 probplot(R[P.flatten()>0.6], plot=plt)
 
 R[(P.flatten()>=0.4)   & (P.flatten()<=0.6)].shape
-plt.hist(R[ (P.flatten()>=0.4)   & (P.flatten()<=0.6)],20,density=True)
+plt.hist(R[ (P.flatten()>=0.3)   & (P.flatten()<=0.7)],20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('Mid Power Range' ,fontsize=24)
+plt.savefig('hist_mid.pdf',bbox_inches="tight")
 
 probplot(R[(P.flatten()>=0.4)   & (P.flatten()<=0.6)], plot=plt)
 
@@ -122,17 +129,41 @@ plt.hist(Q,20,density=True)
 probplot(Q, plot=plt)
 
 
-Q[P.flatten()<0.35].shape
-plt.hist(Q[P.flatten()<0.35],20,density=True)
+Q[P.flatten()<0.30].shape
+plt.hist(Q[P.flatten()<0.30],20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('Low Power Range' ,fontsize=24)
+plt.savefig('hist_low_lamperti.pdf',bbox_inches="tight")
+
 probplot(Q[P.flatten()<0.3], plot=plt)
 
 
-Q[P.flatten()>0.35].shape
+Q[P.flatten()>0.7].shape
 plt.hist(Q[P.flatten()>0.35],20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('High Power Range' ,fontsize=24)
+plt.savefig('hist_high_lamperti.pdf',bbox_inches="tight")
+
 probplot(Q[P.flatten()>0.6], plot=plt)
 
 Q[(P.flatten()>=0.4)   & (P.flatten()<=0.6)].shape
 plt.hist(Q[ (P.flatten()>=0.4)   & (P.flatten()<=0.6)],20,density=True)
+plt.xticks( fontsize = 15);
+plt.yticks( fontsize = 20);
+plt.xlabel('Forecast Error',fontsize = 20)
+# plt.ylabel('Number of Incident',fontsize = 20)
+# plt.legend( prop={'size': 20})
+plt.title('Mid Power Range' ,fontsize=24)
+plt.savefig('hist_mid_lamperti.pdf',bbox_inches="tight")
+
 
 probplot(Q[(P.flatten()>=0.4)   & (P.flatten()<=0.6)], plot=plt)
 

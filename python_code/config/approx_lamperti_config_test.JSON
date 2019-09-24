@@ -1,0 +1,28 @@
+{
+  "likelihood" : "rand_approx_lamperti",
+  "num_paths" : 100,
+  "theta":
+    {
+      "start": 0.01,
+      "end": 25,
+      "num_steps": 25
+    },
+  "alpha":
+    {
+      "start": 0.01,
+      "end": 1,
+      "num_steps": 25
+    },
+  "data_path": "/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/data/cleansed/URG_forecast_data_A_2018.npy",
+  "num_cores": "all",
+  "optimizer":"Nelder-Mead",
+  "optimization":
+    {
+      "theta_init": 10,
+      "alpha_init": 0.5,
+      "initial_batch_size": 5,
+      "batch_multiplier": 2,
+      "max_batch_size": 100000
+  }
+
+}

@@ -25,7 +25,6 @@ base_path=current_plotting_dir='data/'
 chosen_folder='likelihood_explorer_'+ '19-09-11-21-32-05'
 #beta 19-09-08-13-58-19
 
-cd ps
 data_path=base_path+chosen_folder
 
 #plotting chosen_folder
@@ -45,22 +44,103 @@ N=np.load(data_path+'/interpolation_points.npy')
 
 dN=1/N
 
+from matplotlib import ticker, cm
+%matplotlib qt
+fig = plt.figure(1)
 
-
-#max_Z = np.max(np.abs(Z));
-#max_Z
-#norm = cm.colors.Normalize(vmax= -1*abs(Z/max_Z).min(), vmin=-1*abs(Z/max_Z ).max())
-cmap = cm.RdGy
+# max_Z = np.max(np.abs(Z));
+# norm = cm.colors.Normalize(vmax= abs(Z/max_Z).min(), vmin=-1*abs(Z/max_Z ).max())
+cmap = cm.coolwarm
 #contours=plt.contourf(X[5:20,5:20], Y[5:20, 5:20], Z[5:20, 5:20],200, cmap=cmap)
-contours=plt.contourf(X, Y, Z,100, cmap=cmap)
+contours=plt.contourf(X, Y, Z,600, cmap=cmap)
 plt.colorbar()
-plt.scatter(22.32967705,  0.04929445)
+plt.plot(23.95875, 0.34)
 plt.title('Beta Log-likelihood \n (' + str(M) +' samples, $\\Delta N=1/$'+str(N)+')'); #,fontsize=24
 plt.xlabel('$\\theta$');
 plt.ylabel('$\\alpha$');
 file_name='ISO_'+str(M) +'_inter='+str(N);
+
 plt.savefig( 'plots/'+chosen_folder+'/' +file_name+'.pdf', bbox_inches="tight")
 print('plots/'+chosen_folder+'/' +file_name+'.pdf')
+
+
+np.amin(Z)
+i=np.where(  Z==np.amin(Z))
+
+np.sum(np.isnan(Z))
+Z[i]
+X[i]
+Y[i]
+
+
+Z[8,23]
+Z[7,23] < Z[i]
+
+X[7,23]
+Y[7,23]
+
+
+
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
+import numpy as np
+
+%matplotlib qt
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+plt.title('Beta Log-likelihood \n (' + str(M) +' samples, $\\Delta N=1/$'+str(N)+')'); #,fontsize=24
+plt.xlabel('$\\theta$');
+plt.ylabel('$\\alpha$');
+# # Make data.
+# X = np.arange(-5, 5, 0.25)
+# Y = np.arange(-5, 5, 0.25)
+# X, Y = np.meshgrid(X, Y)
+# R = np.sqrt(X**2 + Y**2)
+# Z = np.sin(R)
+
+
+# Plot the surface.
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False, alpha=.8)
+# plt.plot(23.95875, 0.34, 'o')
+ax.plot([23.95875], [0.34], [Z[8,23]], markerfacecolor='k', markeredgecolor='k', marker='o', markersize=10, alpha=0.6)
+
+# Customize the z axis.
+# ax.set_zlim(-1.01, 1.01)
+# ax.zaxis.set_major_locator(LinearLocator(10))
+# ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+
+# Add a color bar which maps values to colors.
+fig.colorbar(surf, shrink=0.5, aspect=5)
+
+plt.show()
+
+
+
+from mpl_toolkits.mplot3d import axes3d
+import matplotlib.pyplot as plt
+from matplotlib import cm
+
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+# X, Y, Z = axes3d.get_test_data(0.05)
+ax.plot_surface(X, Y, Z, rstride=8, cstride=8, alpha=0.3)
+cset = ax.contour(X, Y, Z, zdir='z', offset=-100, cmap=cm.coolwarm)
+cset = ax.contour(X, Y, Z, zdir='x', offset=-40, cmap=cm.coolwarm)
+cset = ax.contour(X, Y, Z, zdir='y', offset=40, cmap=cm.coolwarm)
+
+# ax.set_xlabel('X')
+# ax.set_xlim(-40, 40)
+# ax.set_ylabel('Y')
+# ax.set_ylim(-40, 40)
+# ax.set_zlabel('Z')
+# ax.set_zlim(-100, 100)
+
+plt.show()
+
+
 
 # H=np.zeros((60,60))
 # H[:30,:30]= Z_grad_xx;

@@ -79,9 +79,13 @@ class model_modified_drift:
             return()
 
         elif selector=='rand_beta_objective':
-            likelihood=self.rand_beta_objective
             print('Evaluating using rand_beta_objective')
             return(self.rand_beta_objective(param, batch_size ) )
+
+
+        elif selector=='rand_approx_lamperti':
+            print('Evaluating using rand_approx_lamperti')
+            return(self.rand_approx_lamperti(param, batch_size ) )
 
         else:
             print('Requested likelihood not found! ')
@@ -113,33 +117,6 @@ class model_modified_drift:
             for i in range(0,N-2): #start from 1 or zero #Implement Tripizoidal scheme
 
                 mean, var =moment_compute_approx_lamperti(dN, X_prev=X[j,i], X_next=X[j,i+1], p_prev=p[j,i],p_next=p[j,i+1], theta_prev=theta_adjusted[i], theta_next=theta_adjusted[i+1],alpha=alpha )
-
-                # k=(theta_adjusted[i+1]*(2*p[j,i+1]-1) +theta_adjusted[i]*(2*p[j,i]-1)*np.exp( (alpha-1)*(theta_adjusted[i+1]+ theta_adjusted[i] )*dN/2 )  )*dN/2
-                #
-                # if k+1<0.1: k=1
-                #
-                # mean=np.arcsin(k) + np.sin(X[j,i])
-                #
-                # dA_i= theta_adjusted[i]*(2*p[j,i] -1)*np.tan(X[j,i])/np.cos(X[j,i]) \
-                #     + theta_adjusted[i]*(alpha - 1)*(1/np.cos(X[j,i]))**2
-                #
-                # dA_i_plus= theta_adjusted[i+1]*(2*p[j,i+1] -1)*np.tan(X[j,i+1])/np.cos(X[j,i+1]) \
-                #     + theta_adjusted[i+1]*(alpha - 1)*(1/np.cos(X[j,i+1]))**2
-                #
-                # var= dN*alpha*( theta_adjusted[i+1]*np.exp( dN*dA_i_plus) + theta_adjusted[i]*np.exp( dN*dA_i) )/2
-
-                # #theta_adjusted[i]
-                # k=np.exp(-dN*(1-alpha)*theta_adjusted[i] )*dN*theta_adjusted[i]*(2*p[j,i]-1) \
-                #         + np.sin(X[j,i])
-                # if k+1<0.1: k=1
-                #
-                # mean= np.arcsin( k )
-                # dA= theta_adjusted[i]*(2*p[j,i] -1)*np.tan(X[j,i])/np.cos(X[j,i]) \
-                #     + theta_adjusted[i]*(alpha - 1)*(1/np.cos(X[j,i]))**2
-                # var= np.exp(2*dN*dA)*dN*alpha*theta_adjusted[i]
-
-                # if np.isnan(mean): print('mean is nan' , mean)
-                #if np.isnan(var): print('var is nan', var)
 
                 L_n = L_n  - ( X[j,i+1]- X[j,i] - mean   )**2/(2*var) -0.5*np.log(2*math.pi*var)
 
@@ -232,6 +209,106 @@ class model_modified_drift:
 
 
 
+    def rand_approx_lamperti(self,param,batch_size, send_end_to_evaluater=None):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        batch_size=int(batch_size)
+        L_n=0;
+        L_m=0;
+        a=0;b=0;
+        dN=1/N
+        counter=False
+
+        ##############
+        # a batch of pairwise consecutive samples
+
+        list_pairs_V=[]
+        list_pairs_p=[]
+        list_pairs_theta=[]
+
+        for i in range(M):
+            list_pairs_V.append(pairwise( X[i,1:-1]))
+            list_pairs_p.append(pairwise( p[i,1:-1]))
+            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0]))
+
+        obs_pairs=iter.chain(*list_pairs_V);
+        forecast_pairs=iter.chain(*list_pairs_p);
+        theta_pairs=iter.chain(*list_pairs_theta);
+        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
+        batch=random_combination(combined_iter,batch_size)
+        ##############
+        num_tries=10
+        for attempt in range(num_tries):
+            try:
+                L_n=0
+                for j in range(batch_size):
+
+                    m_1,m_2=moment_compute_approx_lamperti( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=batch[j][1][0] ,p_next=batch[j][1][1], theta_prev=batch[j][2][0], theta_next=batch[j][2][1],alpha=alpha )
+
+                    a=m_1; #mean
+                    b=m_2- m_1**2; #variance
+
+                    #sanity checks
+                    if np.isnan(a): print('a is nan')
+                    if np.isnan(b): print('b is nan')
+                    if not np.isfinite(a): print('a is infinite')
+                    if not np.isfinite(b): print('b is infinite')
+                    if b==0: b=1e-16
+                    if b<0:
+                        b=1e-16
+                        counter = True
+
+                    #shape parameters of the beta distribution
+                    beta_param_alpha= - ( (1+a)*(a**2 +b -1)  )/(2*b)
+                    beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+
+                    if np.isnan(beta_param_alpha): print('beta_param_alpha is nan')
+                    if np.isnan(beta_param_beta): print('beta_param_beta is nan')
+
+                    temp=(beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
+                     (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
+                     scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+
+                    # print('input is ',dN, batch[j][0][0] , batch[j][0][1], batch[j][1][0] ,batch[j][1][1], batch[j][2][0], batch[j][2][1],alpha  )
+                    # print('current= ' , temp )
+                    # print('prev_L_n', L_n)
+                    # print('new sum ', L_n+ temp)
+
+
+                    L_n = L_n + (beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
+                     (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
+                     scipy.special.betaln(beta_param_alpha, beta_param_beta)
+
+                    if L_n==np.inf:
+                        # print('input was ',dN, batch[j][0][0] , batch[j][0][1], batch[j][1][0] ,batch[j][1][1], batch[j][2][0], batch[j][2][1],alpha  )
+                        return( np.inf )
+                        # raise ValueError('L_n is not finite')
+                    if L_n==-1*np.inf:
+                        # print('input was ',dN, batch[j][0][0] , batch[j][0][1], batch[j][1][0] ,batch[j][1][1], batch[j][2][0], batch[j][2][1],alpha  )
+                        return( np.inf )
+                        # raise ValueError('L_n is not finite')
+
+                if np.isnan(L_n):
+                    raise ValueError('NaN value in likelihood')
+                # display information
+                # if self.Nfeval%5 == 0:
+                print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n ))
+                self.Nfeval += 1
+                if L_n==np.inf: L_n=-1*np.inf
+                if send_end_to_evaluater != None:
+                    send_end_to_evaluater.send(-1*L_n)
+                return(-1*L_n)
+
+            except Error:
+                print('trying again...trial number '+ str(attempt) )
 
 
     def compute_ellipse(self, inference , param , batch_size , plot=False):
@@ -252,11 +329,15 @@ class model_modified_drift:
             likelihood=self.rand_beta_objective
             print('Evaluating using rand_beta_objective')
 
+        elif inference=='rand_approx_lamperti':
+            likelihood=self.rand_approx_lamperti
+            print('Evaluating using rand_approx_lamperti')
+
         else: print('Requested likelihood not found! ')
 
-        wraper=lambda param: likelihood( (param[0],param[1]), batch_size )
+        wraper=lambda param: likelihood( (param[0] , param[1]), batch_size )
 
-        for attempt in range(10):
+        for attempt in range(1):
             try:
                 Hess=nd.Hessian(wraper)((param[0], param[1])); #copmute hessian
 
@@ -339,6 +420,7 @@ class model_modified_drift:
         print('l= ', -1*L_m)
         if send_end_to_evaluater != None:
             send_end_to_evaluater.send(-1*L_m)
+
         return(-1*L_m)
 
 
@@ -390,56 +472,6 @@ class model_modified_drift:
         send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m) #, m_1_list,m_2_list, m_1_E_list, m_2_E_list
 
-    # def beta_likelihood_parallel_depreciated(self,param):
-    #     #data
-    #     X=self.data
-    #     p=self.forecast
-    #     #discretization object
-    #     N=self.disct.N
-    #     dt=self.disct.dt
-    #     M=self.disct.M
-    #     #input parameters
-    #     theta,alpha = param;
-    #     #print( theta, alpha)
-    #     L_n=0;
-    #     L_m=0;
-    #     a=0;b=0;
-    #     eps=np.finfo(float).eps;
-    #     m_1=0
-    #     m_2=0
-    #     dN=1/N
-    #     counter=False #compute_path_moments
-    #     for j in range(0,M):
-    #         m_1=0  #fix initial condition as zero error in the first point
-    #         m_2=0
-    #         L_m = L_m + L_n
-    #         theta_adjusted, _ = theta_adjust( theta , p[j,:] )
-    #         counter=False
-    #         h=0
-    #         jobs = []
-    #         pipe_list = []
-    #         for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal
-    #             recv_end, send_end =  mp.Pipe(False)
-    #             arg_list=[1/self.disct.N, X[j,i], X[j,i+1], p[j,i], theta_adjusted[i], alpha]
-    #             p_temp = mp.Process(target=moment_compute, args=( *arg_list,send_end))
-    #             jobs.append(p_temp)
-    #             pipe_list.append(recv_end)
-    #             p_temp.start()
-    #
-    #         for proc in jobs:
-    #             proc.join()
-    #         result_list = [x.recv() for x in pipe_list]
-    #         L_n=np.sum(result_list)
-    #         print(L_n)
-    #
-    #
-    #     # display information
-    #     #if self.Nfeval%5 == 0:
-    #     #print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_m ))
-    #     self.Nfeval += 1
-    #     #print(counter)
-    #     return(-1*L_m) #, m_1_list,m_2_list, m_1_E_list, m_2_E_list
-    #
 
     def lamperti_likelihood_linearized(self,param,send_end_to_evaluater=None):
         #data
@@ -492,26 +524,34 @@ class model_modified_drift:
         return(-1*L_m)
 
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, param_initial,batch_size,inference="beta_likelihood" ,method="Nelder-Mead", niter=1 , temp=0, bnds = ((1e-3, None), (1e-3, None))):
+    def optimize(self, param_initial,batch_size,inference ,method="Nelder-Mead", niter=1 , temp=0, bnds = ((1e-3, None), (1e-3, None))):
         print("starting optimization")
         # mu_initial,sig_initial=param_initial
 
         if inference=="beta_likelihood":
             likelihood=self.beta_likelihood
             print('Evaluating using the Beta likelihood')
+
         elif inference=='lamperti_likelihood_SDE_approx':
             likelihood=self.lamperti_likelihood_SDE_approx
             print('Evaluating using lamperti_likelihood_SDE_approx')
+
         elif inference=='lamperti_likelihood_linearized':
             likelihood=self.lamperti_likelihood_linearized
             print('Evaluating using lamperti_likelihood_linearized')
+
         elif inference=='rand_beta_objective':
             likelihood=self.rand_beta_objective
             print('Evaluating using rand_beta_objective')
+
+        elif inference=='rand_approx_lamperti':
+            likelihood=self.rand_approx_lamperti
+            print('Evaluating using rand_approx_lamperti')
+
         else: print('Requested likelihood not found! ')
 
         if method=="Nelder-Mead":
-            minimizer_kwargs = {"method":"Nelder-Mead", "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2, "maxiter":30 }} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }
+            minimizer_kwargs = {"method":"Nelder-Mead"} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
             min_param = basinhopping(lambda param: likelihood(param, batch_size) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
         if method=="L-BFGS-B":
             minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}
@@ -2258,7 +2298,7 @@ def moment_compute_approx_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev
     theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
 
     fun=lambda t, m: approx_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2] , rtol=1e-2, atol=1e-2)
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2] ) #, rtol=1e-2, atol=1e-2
     m_1= sol.y[0,-1]
     var= sol.y[1,-1]
     return(m_1,var)
