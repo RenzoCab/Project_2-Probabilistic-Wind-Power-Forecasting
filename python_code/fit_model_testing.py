@@ -148,7 +148,7 @@ print( ' optimizing ' + setup.likelihood + ' using ' + setup.optimizer + ' with 
 
 while current_batch_size <= setup.optimization['max_batch_size']:
     #optimize
-    optim=this_model.optimize(inference=setup.likelihood, batch_size=current_batch_size, method=setup.optimizer, param_initial=intial_point);
+    optim=this_model.optimize(inference=setup.likelihood, batch_size=current_batch_size, method=setup.optimizer, param_initial=intial_point, niter=2, temp=0);
 
     print(optim.message[0])
     print(optim.x)
@@ -158,6 +158,7 @@ while current_batch_size <= setup.optimization['max_batch_size']:
     print(result_note)
 
     file_object.write(result_note)
+
     # print('Computing Hessian at ', intial_point)
 
     # width,height,angle, eig_vect_opt,Hess, FAIL = this_model.compute_ellipse(inference=setup.likelihood, param=optim.x, batch_size=current_batch_size, plot=False);
@@ -209,40 +210,3 @@ print('results have been saved in ' + current_data_dir + '/results.out' )
 
 
 ######################################################################################################
-
-
-
-
-def moment_compute_approx_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
-
-    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear', fill_value='extrapolate')
-    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear', fill_value='extrapolate')
-
-    fun=lambda t, m: approx_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0,1], [X_prev,X_prev**2]) #, rtol=1e-2, atol=1e-2
-    m_1= sol.y[0,-1]
-    var= sol.y[1,-1]
-    return(m_1,var)
-
-
-m_1,m_2=moment_compute_approx_lamperti(0.00234192037470726 ,0.04734770446666664 ,0.04940852864444448 ,0.20468333333333333, 0.20177111111111112 ,26.089044875446845, 26.089044875446845 ,2.1)
-
-
-m_1
-m_2
-
-
-a=m_1; #mean
-b=m_2- m_1**2; #variance
-
-
-a
-b
-
-beta_param_alpha= - ( (1+a)*(a**2 +b -1)  )/(2*b)
-beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
-
-
-L_n=(beta_param_alpha-1 )*np.log(  ( 0.04940852864444448 +1)/2 ) +(beta_param_beta-1)*np.log(1-( 0.04940852864444448 +1)/2 )-scipy.special.betaln(beta_param_alpha, beta_param_beta)
-
-L_n

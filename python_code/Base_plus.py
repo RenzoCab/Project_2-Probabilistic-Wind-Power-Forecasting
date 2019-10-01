@@ -229,6 +229,8 @@ class model_modified_drift:
         ##############
         # a batch of pairwise consecutive samples
 
+        if alpha <= 0 : return(np.inf)
+
         list_pairs_V=[]
         list_pairs_p=[]
         list_pairs_theta=[]
@@ -551,7 +553,7 @@ class model_modified_drift:
         else: print('Requested likelihood not found! ')
 
         if method=="Nelder-Mead":
-            minimizer_kwargs = {"method":"Nelder-Mead"} #"options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
+            minimizer_kwargs = {"method":"Nelder-Mead", "options":{'disp': True} } #"options":{options={'disp': True}  'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
             min_param = basinhopping(lambda param: likelihood(param, batch_size) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
         if method=="L-BFGS-B":
             minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}

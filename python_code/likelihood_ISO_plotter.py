@@ -1,5 +1,5 @@
 import os
-os.chdir('/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code')
+os.chdir('./python_code')
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -87,6 +87,14 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
 
+label_size = 20
+mpl.rcParams['xtick.labelsize'] = label_size
+mpl.rcParams['ytick.labelsize'] = label_size
+
+plt.rcParams.update({'font.size': 22})
+plt.rcParams.update({'font.weight': 'bold'})
+plt.rcParams.update({'font.family': 'normal'})
+
 %matplotlib qt
 fig = plt.figure()
 ax = fig.gca(projection='3d')
@@ -105,7 +113,7 @@ plt.ylabel('$\\alpha$');
 surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
                        linewidth=0, antialiased=False, alpha=.8)
 # plt.plot(23.95875, 0.34, 'o')
-ax.plot([23.95875], [0.34], [Z[8,23]], markerfacecolor='k', markeredgecolor='k', marker='o', markersize=10, alpha=0.6)
+# ax.plot([23.95875], [0.34], [Z[8,23]], markerfacecolor='k', markeredgecolor='k', marker='o', markersize=10, alpha=0.6)
 
 # Customize the z axis.
 # ax.set_zlim(-1.01, 1.01)
@@ -114,14 +122,14 @@ ax.plot([23.95875], [0.34], [Z[8,23]], markerfacecolor='k', markeredgecolor='k',
 
 # Add a color bar which maps values to colors.
 fig.colorbar(surf, shrink=0.5, aspect=5)
-
 plt.show()
-
+plt.savefig('3D_beta_likelihood.pdf', bbox_inches='tight')
 
 
 from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
 from matplotlib import cm
+
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
