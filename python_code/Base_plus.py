@@ -1856,6 +1856,7 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,hours,\
     if isinstance(hours, int)==False:
         raise ValueError('hours is not an integer. Please use integer values only.')
     os.makedirs(dir_path + '/'+str(hours)+'hr',exist_ok=True)
+    os.makedirs(dir_path + '/'+'data_plots',exist_ok=True)
     N=disct_in.N
     freq=(N+1)*1 # evert 10 minutes
     #interpolation_points=disct_in.N
@@ -1875,29 +1876,29 @@ def empirical_Confidence_Interval_plots(forecast_data_inter,hours,\
     alpha= real_in.sigma #1.072
     j=0
     for k in list_forecast_number: #   #range(0,n_paths): #n_paths
-        p=forecast_data_inter[0,k,:N] #obtain cleansed forecast
+        p=forecast_data_inter[2,k,:N] #obtain cleansed forecast
         inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
         p=inter_1(xnew)
         d=forecast_data_inter[1,k,:N]
-        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
+        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[0,k,0])
         dt=1
         M_test=disct_in.M
 
-        # fig=plt.figure(2,figsize=(10, 4))
-        # fig.clf()
-        # plt.plot(xnew,p, label='forecast')
-        # plt.plot(xnew,d, label='actual production')
-        #
-        # plt.xlim(1, 73)
-        # plt.ylim(-0.1, 1.1)
-        # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
-        #
-        # plt.xticks( fontsize = 20);
-        # plt.yticks( fontsize = 20);
-        # plt.xlabel('Time [hr]',fontsize = 24)
-        # plt.ylabel('Power',fontsize = 24)
-        # plt.legend( prop={'size': 15})
-        # plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
+        fig=plt.figure(2,figsize=(10, 4))
+        fig.clf()
+        plt.plot(xnew,p, label='forecast')
+        plt.plot(x,d, label='actual production')
+
+        plt.xlim(1, 427)
+        plt.ylim(-0.1, 1.1)
+        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+
+        plt.xticks( fontsize = 20);
+        plt.yticks( fontsize = 20);
+        plt.xlabel('Time [min]',fontsize = 24)
+        plt.ylabel('Power',fontsize = 24)
+        plt.legend( prop={'size': 15})
+        plt.savefig(dir_path +'/data_plots' + '/' + str(k)+'.pdf', bbox_inches="tight")
 
 
         theta_adjusted, zero_drift_fixed=theta_adjust(theta,p)
@@ -1999,25 +2000,25 @@ def empirical_Confidence_Interval_plots_old(forecast_data_inter,\
         inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
         p=inter_1(xnew)
         d=forecast_data_inter[1,k,:N]
-        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
+        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[0,k,0])
         dt=1
         M_test=disct_in.M
 
-        # fig=plt.figure(2,figsize=(10, 4))
-        # fig.clf()
-        # plt.plot(xnew,p, label='forecast')
-        # plt.plot(xnew,d, label='actual production')
-        #
-        # plt.xlim(1, 73)
-        # plt.ylim(-0.1, 1.1)
-        # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
-        #
-        # plt.xticks( fontsize = 20);
-        # plt.yticks( fontsize = 20);
-        # plt.xlabel('Time [hr]',fontsize = 24)
-        # plt.ylabel('Power',fontsize = 24)
-        # plt.legend( prop={'size': 15})
-        # plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
+        fig=plt.figure(2,figsize=(10, 4))
+        fig.clf()
+        plt.plot(xnew,p, label='forecast')
+        plt.plot(xnew,d, label='actual production')
+
+        plt.xlim(1, 427)
+        plt.ylim(-0.1, 1.1)
+        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+
+        plt.xticks( fontsize = 20);
+        plt.yticks( fontsize = 20);
+        plt.xlabel('Time [hr]',fontsize = 24)
+        plt.ylabel('Power',fontsize = 24)
+        plt.legend( prop={'size': 15})
+        plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
 
 
         theta_adjusted, zero_drift_fixed=theta_adjust(theta,p)
@@ -2135,18 +2136,18 @@ def path_simulator(forecast_data_inter,hours,\
     #interpolation_points=disct_in.N
     num_forecasts=len(list_forecast_number) # to follow the custom forecast order
 
-    xnew = np.linspace(0,N,(N+1)*6) #np.linspace(0,N,N+1)
+    xnew = np.linspace(0,N,(N+1)) #np.linspace(0,N,N+1)
     x = np.linspace(1,N,N)
 
     theta= real_in.mu #7.8155
     alpha= real_in.sigma #1.072
     j=0
     for k in list_forecast_number: #   #range(0,n_paths): #n_paths
-        p=forecast_data_inter[0,k,:N] #obtain cleansed forecast
+        p=forecast_data_inter[2,k,:N] #obtain cleansed forecast
         inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
         p=inter_1(xnew)
         #d=forecast_data_inter[1,k,:N]
-        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[2,k,0])
+        dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[0,k,0])
         dt=1
         M_test=disct_in.M
 
@@ -2170,9 +2171,9 @@ def path_simulator(forecast_data_inter,hours,\
 
         real_1 = real(theta_adjusted, alpha ) #theta_array
 
-        disct_temp = disct((N+1)*6,dt,M_test)
+        disct_temp = disct((N+1),dt,M_test)
 
-        X = np.empty((M_test,(N+1)*6));
+        X = np.empty((M_test,(N+1)));
         X= gen_X_normal_euler_DT_modified(X0=p[0],disct=disct_temp,real=real_1,forecast=p)
 
         #plotting
@@ -2186,14 +2187,14 @@ def path_simulator(forecast_data_inter,hours,\
         #plt.plot(x,d , 'y-', label='actual production',linewidth=2)
 
         for i in range(0,len(X)):
-            plt.plot(xnew,X[i] , '-o',linewidth=1,markersize=3)
-        plt.plot(xnew,X[i] , '-o', label='simulated production',linewidth=1,markersize=3)
+            plt.plot(xnew,X[i] , '-',linewidth=1,markersize=4)
+        plt.plot(xnew,X[i] , '-', label='simulated production',linewidth=1,markersize=4)
 
         plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
 
         plt.xticks( fontsize = 20);
         plt.yticks( fontsize = 20);
-        plt.xlabel('Time [hr]',fontsize = 24)
+        plt.xlabel('Time [min]',fontsize = 24)
         plt.ylabel('Power',fontsize = 24)
         plt.legend( prop={'size': 20})
         plt.savefig(dir_path+'/'+ str(hours) +'hr/'+str(k)+'.pdf', bbox_inches="tight");
@@ -2300,7 +2301,7 @@ def moment_compute_approx_lamperti(dN, X_prev, X_next, p_prev,p_next, theta_prev
     theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear')
 
     fun=lambda t, m: approx_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2] ) #, rtol=1e-2, atol=1e-2
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2-X_prev] ) #, rtol=1e-2, atol=1e-2
     m_1= sol.y[0,-1]
     var= sol.y[1,-1]
     return(m_1,var)
@@ -2424,6 +2425,13 @@ def abline(slope, intercept):
     y_vals = intercept + slope * x_vals
     plt.plot(x_vals, y_vals, '--', label='slope='+str(slope))
 
+def abline_log(slope, intercept):
+    """Plot a line from slope and intercept"""
+    axes = plt.gca()
+    x_vals = np.array(axes.get_xlim())
+    y_vals = intercept + slope * x_vals
+    plt.loglog(x_vals, y_vals, '--', label='slope='+str(slope))
+
 def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
     a, b = iter.tee(iterable)
@@ -2516,7 +2524,7 @@ def linear_lamperti_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_
     theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
 
     fun=lambda t, m: linear_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2], rtol=1e-2, atol=1e-2)
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2-X_prev], rtol=1e-2, atol=1e-2)
     m_1= sol.y[0,-1]
     var= sol.y[1,-1]
 

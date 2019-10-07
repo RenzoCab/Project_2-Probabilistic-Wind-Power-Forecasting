@@ -1,6 +1,6 @@
 import os
 import sys
-os.chdir(sys.path[0])
+os.chdir(sys.path[0]) #+'/python_code'
 from Base_plus import *
 import config.loadconfig
 import argparse
@@ -16,7 +16,6 @@ from shutil import copyfile
 #Warning control
 warnings.filterwarnings('error', '.*invalid value encountered.*',)
 
-
 parser = argparse.ArgumentParser(description='Likelihood Evaluator v1.0')
 parser.add_argument('-filename', help=' Config file name or path')
 parser.add_argument('--version', action='version', version='Likelihood Evaluator v1.0')
@@ -24,7 +23,7 @@ args = parser.parse_args()
 
 print( ' loading configuration ')
 #args.filename
-config_file= open('config/approx_lamperti_config_test.JSON')  #config/beta_config.JSON
+config_file= open('config/beta_config_test.JSON')  #config/beta_config.JSON
 
 
 setup=config.loadconfig.Test(config_file)
@@ -84,7 +83,7 @@ now = dtM.datetime.now();
 current_time=now.strftime("%y-%m-%d-%H-%M-%S")
 script_name='fit_SDE'
 current_data_dir= script_name +current_time
-os.mkdir(current_data_dir)
+os.makedirs(current_data_dir,exist_ok=True)
 
 forecast_data_inter=np.swapaxes(forecast_data_in, 0,1)
 print('Data output will be save in ',current_data_dir)
@@ -120,6 +119,7 @@ file_object  = open(current_data_dir+'/results.out', 'w')
 
 copyfile('config/beta_config_test.JSON', current_data_dir + '/beta_config_test.JSON' )
 
+# width,height,angle, eig_vect_opt,Hess, FAIL = this_model.compute_ellipse(inference=setup.likelihood, param=(12, 0.4 ), batch_size=10 , plot=False);
 
 
 #initialize parameters

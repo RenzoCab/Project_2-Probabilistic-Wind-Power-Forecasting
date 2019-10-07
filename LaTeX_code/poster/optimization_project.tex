@@ -77,7 +77,7 @@ Previous attempt by M\o ller et al. (M\o ller, Zugno, \& Madsen, 2016)  consider
 %-------------------------------------------------------------------------
 \section{Phenomenological  Model}
 
-Let $X_t$ be the  wind power generation forecasts stochastic process defined by the  following parameterized stochastic differential equation (SDE), 
+Let $X_t$ be the  wind power generation forecasts stochastic process defined by the  following parameterized stochastic differential equation (SDE),
 \begin{equation}
 \begin{split}
 dX_t &= a(X_t; \bm{\theta}) dt + b (X_t; \bm{\theta} ) dW_t \quad t > 0 \\
@@ -111,12 +111,12 @@ As the  installed power production capacity is limited, we normalize with respec
 \subsubsection*{Diffusion Control: } The physical constraint is respected  by choosing  diffusion coefficient $ b (x; \bm{\theta} )= \sqrt{2 \theta_t \alpha p_t(1-p_t) x (1-x)} $ that is zero on the boundaries of $[0,1]$. Note that $\alpha$ is a path variability constant parameter to be determined.
 \subsubsection*{Drift Control: }
 
-Observe that the term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s.  inside the range $[0,1]$. In other words, the zero drift line defined by $a(X_t; \bm{\theta}) =0$ must  be contained inside the range $[0,1]$. Thus, must have that, 
+Observe that the term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s.  inside the range $[0,1]$. In other words, the zero drift line defined by $a(X_t; \bm{\theta}) =0$ must  be contained inside the range $[0,1]$. Thus, must have that,
 \begin{equation}
 \frac{- |\dot{p_t}|}{p_t} \leq \theta \leq \frac{|\dot{p}_t|}{1- p_t}
 \end{equation}
 
-which is satisfied  by choosing $\theta_t$ as follows, 
+which is satisfied  by choosing $\theta_t$ as follows,
 \begin{equation}
 \theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ) \label{theta_t}
 \end{equation}
@@ -178,7 +178,7 @@ We apply the model to Uruguayan wind power generation data and their correspondi
 The SDE above defines the stochastic process $V_t$. Consider a set of M paths with N observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$ observed in intervals of $\Delta_N$. Since $V_t$ is Markovian, the likelihood function is given by  product of its  transition densities.
 
 \begin{equation}
-\mathcal{L}(\bm{\theta};V) =\prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j,i+1}|V_{j,i}}, \bm{\theta})  \rho (V_{j,0}) 
+\mathcal{L}(\bm{\theta};V) =\prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j,i+1}|V_{j,i}}, \bm{\theta})  \rho (V_{j,0})
 \label{likelihood}
 \end{equation}
 
@@ -187,7 +187,7 @@ Solving for transition densities of the process $V_t$ requires solving the Fokke
 
 Therefore, we propose an approximate likelihood inspired by the stationary distribution of the process $X_t$ which is a Beta distribution for a constant forecast $p_t$.Additionally,  as the process $X_t$ and $p_t$ take on values in $[0,1]$, then $V_t$ takes on values in $[-1,1]$. Therefore,  it is natural to use a  Beta distribution with compact support on $[-1,1]$.
 
-%We obtain the modified Beta distribution, 
+%We obtain the modified Beta distribution,
 %
 %\begin{equation}
 %\begin{split}
@@ -245,7 +245,7 @@ The contours of the  log-likelihood can be seen in Figure (\ref{contour}).To fur
 \end{center}
    \caption{Contour plot of the log-likelihood with only 100 sample paths, point of optimality $(\theta_0^*, \alpha^*)\approx (8,1)$ indicated by the  black dot.}
 \label{contour}
-\end{figure} 
+\end{figure}
 
 
 
@@ -258,10 +258,10 @@ The contours of the  log-likelihood can be seen in Figure (\ref{contour}).To fur
 
 \section{Results}
  We are able to obtain the parameters based on the complete data sets mentioned earlier. The parameters are given by $(\theta^*, \alpha^*)\approx (8,1)$.
- 
- 
+
+
 %We can also see in Figure() that the region surrounding the optimal parameters becomes more defined as we add more sample paths.
- 
+
 In Figure (\ref{fig:72hr}) and (\ref{fig:6hr}), we simulate sample forecast errors $V_t$ using the optimal parameters  $(\theta_0^*, \alpha^*)\approx (8,1)$ and obtain the associated confidence bands empirically using 1000 sample paths of each forecast. %Note that the confidence bands obtained are non-trivial and reflect the complexity of the uncertainties in numerical wind power generation forecasts.
 
 \begin{figure}[t]
@@ -286,8 +286,8 @@ In Figure (\ref{fig:72hr}) and (\ref{fig:6hr}), we simulate sample forecast erro
    \caption{ Examples of confidence bands obtained for the first 6 hours of the forecasts. This is important as this specific forecasting company computes a new forecast every 6 hours for reliability.}
 \label{fig:6hr}
 \end{figure}
- 
- 
+
+
  \begin{figure}[t]
 \begin{center}
 %\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}

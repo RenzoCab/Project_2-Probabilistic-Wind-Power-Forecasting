@@ -18,9 +18,9 @@
   "optimizer":"Nelder-Mead",
   "optimization":
     {
-      "theta_init": 9,
-      "alpha_init": 0.7,
-      "initial_batch_size": 5,
+      "theta_init": 12,
+      "alpha_init": 0.1,
+      "initial_batch_size": 50,
       "batch_multiplier": 2,
       "max_batch_size": 100000
   }

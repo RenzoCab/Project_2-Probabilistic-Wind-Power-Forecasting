@@ -1,26 +1,51 @@
 import os
-os.chdir('/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code')
-from Base import *
-forecast_with_data=np.load('data/forecast_with_data.npy')
-data=data_check_interpolate(forecast_with_data=forecast_with_data)
+import sys
+os.chdir(sys.path[0]+'/python_code')
+from Base_plus import *
+
+import config.loadconfig
+
+warnings.filterwarnings('error', '.*invalid value encountered.*',)
+
+parser = argparse.ArgumentParser(description='Likelihood Evaluator v1.0')
+parser.add_argument('-filename', help=' Config file name or path')
+parser.add_argument('--version', action='version', version='Likelihood Evaluator v1.0')
+args = parser.parse_args()
+
+print( ' loading configuration ')
+#args.filename
+config_file= open('config/approx_lamperti_config_test.JSON')  #config/beta_config.JSON
+
+
+setup=config.loadconfig.Test(config_file)
+
+
+forecast_data_in=np.load(setup.data_path)
+
+forecast_data_in.shape
+
+data=np.swapaxes(forecast_data_in, 0,1)
+
+
 now = dtM.datetime.now();
 current_time=now.strftime("%y-%m-%d-%H-%M-%S")
 script_name='sample_paths_'
 current_plotting_dir='plots/'+ script_name +current_time
-os.mkdir(current_plotting_dir) # make a time stamped folder to contain all plots
+# os.mkdir(current_plotting_dir) # make a time stamped folder to contain all plots
+os.makedirs(current_plotting_dir,exist_ok=True)
 
 print(current_plotting_dir)
 
-current_list= list(range(0, data.shape[1])) #=list(range(0, data.shape[1])) #full_set
-M=5
+current_list= list(range(0, 800)) #=list(range(0, data.shape[1])) #full_set
+M=3
 N=427
 disct_in= disct(N=N, dt=1, M=M) #M is number of paths wanted in ensamble
-real_in=real(22.32967705, 0.049445) # SDE parameters to be generated from
+real_in=real(12, 0.1) # SDE parameters to be generated from
 
-path_simulator(forecast_data_inter=data,hours=12,\
+path_simulator(forecast_data_inter=data,hours=144,\
     real_in=real_in, disct_in=disct_in,list_forecast_number=current_list,\
     dir_path=current_plotting_dir)
 
-path_simulator(forecast_data_inter=data,hours=24,\
-    real_in=real_in, disct_in=disct_in,list_forecast_number=current_list,\
-    dir_path=current_plotting_dir)
+# path_simulator(forecast_data_inter=data,hours=427,\
+#     real_in=real_in, disct_in=disct_in,list_forecast_number=current_list,\
+#     dir_path=current_plotting_dir)

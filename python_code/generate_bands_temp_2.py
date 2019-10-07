@@ -1,6 +1,6 @@
 import os
-os.chdir('/Users/alhaddwt/Google Drive/GitLab/wind-power/python_code')
-from Base import *
+os.chdir('./python_code')
+from Base_plus import *
 forecast_with_data=np.load('data/forecast_with_data.npy')
 data=data_check_interpolate(forecast_with_data=forecast_with_data)
 now = dtM.datetime.now();
@@ -14,6 +14,14 @@ print(current_plotting_dir)
 current_list=list(range(0, data.shape[1])) #=list(range(0, data.shape[1])) #full_set
 disct_in= disct(N=7, dt=1, M=1000) #M is number of paths wanted in ensamble
 real_in=real(2.02,1.25) # SDE parameters to be generated from
+
+plt.plot(data[1,1,:])
+plt.plot(data[0,1,:])
+
+
+data[2,2,:]
+
+
 
 empirical_Confidence_Interval_plots(forecast_data_inter=data,  real_in=real_in,\
             disct_in=disct_in, list_forecast_number=current_list,\

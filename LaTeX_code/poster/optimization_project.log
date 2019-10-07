@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUN 2019 18:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 OCT 2019 17:28
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **optimization_project.tex
 (./optimization_project.tex
@@ -569,12 +570,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
 [2 <./conv_sine_shift.pdf> <./Forecast_data_68.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Forecast_data_68.pdf): PDF
- inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./Forecast_data_68.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
 > <./Forecast_data_82.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./Forecast_data_82.pdf): PDF
- inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./Forecast_data_82.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
 >]
 Overfull \hbox (2.69435pt too wide) detected at line 210
 [][]\OML/ztmcm/m/it/10 ^^X[] \OT1/ztmcm/m/n/10 = \OMS/ztmcm/m/n/10 ^^@[] \OML/z
@@ -651,36 +652,38 @@ Underfull \vbox (badness 2158) has occurred while \output is active []
  [3 <./ellipse1193_samples_dN=14e-02.pdf> <./ellipse_conv_samples_dN=14e-02.pdf
 
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ellipse_conv_samples_dN=14
-e-02.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
+pdfTeX warning: pdflatex (file ./ellipse_conv_samples_dN=14e-02.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
 > <./ISO_100_samples_dN=14e-02.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./ISO_100_samples_dN=14e-02.
-pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-No file optimization_project.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
-[4 <./72hr_forecast_CI_31.pdf> <./72hr_forecast_CI_437.pdf
+pdfTeX warning: pdflatex (file ./ISO_100_samples_dN=14e-02.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+>] (./optimization_project.bbl
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_437.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
+ [4 <./72hr_forecast_CI_31.pdf> <./72hr_forecast_CI_437.pdf
+
+pdfTeX warning: pdflatex (file ./72hr_forecast_CI_437.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
 > <./72hr_forecast_CI_82.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_82.pdf): 
-PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./72hr_forecast_CI_82.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
 > <./6hr_forecast_CI_75.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./6hr_forecast_CI_75.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./6hr_forecast_CI_75.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
 > <./6hr_forecast_CI_59.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./6hr_forecast_CI_59.pdf): P
-DF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./6hr_forecast_CI_59.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
 > <./72hr_forecast_CI_623.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./72hr_forecast_CI_623.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./72hr_forecast_CI_623.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
 >]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 321.
  (./optimization_project.aux)
@@ -693,8 +696,8 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 321.
  ) 
 Here is how much of TeX's memory you used:
- 7656 strings out of 493014
- 111249 string characters out of 6133351
+ 7659 strings out of 493014
+ 111309 string characters out of 6133351
  216425 words of memory out of 5000000
  10995 multiletter control sequences out of 15000+600000
  54158 words of font info for 120 fonts, out of 8000000 for 9000
@@ -713,10 +716,10 @@ ive/2016/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2016
 1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on optimization_project.pdf (4 pages, 282731 bytes).
+Output written on optimization_project.pdf (4 pages, 282811 bytes).
 PDF statistics:
- 644 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 648 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

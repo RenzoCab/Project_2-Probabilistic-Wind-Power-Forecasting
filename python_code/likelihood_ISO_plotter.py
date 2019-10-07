@@ -29,7 +29,7 @@ data_path=base_path+chosen_folder
 
 #plotting chosen_folder
 
-os.mkdir('plots/'+chosen_folder)
+os.makedirs('plots/'+chosen_folder, exist_ok=True)
 
 Z=np.load(data_path+'/value.npy')
 X=np.load(data_path+'/theta.npy')
