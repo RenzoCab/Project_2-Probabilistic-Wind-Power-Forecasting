@@ -74,39 +74,58 @@ Reliable wind power generation forecasting is crucial for applications such as t
 Reliable wind power generation forecasting is crucial for the following applications [ref]:
 \begin{itemize}
 \item Allocation of energy reserves such as water levels in dams or oil and gas reserves.
-\item Operation scheduling of conventional power plants.
-\item Optimization of the price of electricity for different users such as electric utilities, Transmission system operator (TSOs), Electricity Service providers (ESPs), Independent power producers (IPPs), and energy traders.
+\item Operation scheduling of non-controlable power plants.
+\item Optimization of the price of electricity for different parties such as electric utilities, Transmission system operator (TSOs), Electricity Service providers (ESPs), Independent power producers (IPPs), and energy traders.
 \item Maintenance planning such as that of power plants components and transmission lines.
 
 \end{itemize}
 
-Different methods have been applied to wind power forecasting. They can be generally categorized as follows: physical models, statistical methods, artificial intelligence methods, persistence models, spatial correlation methods and hybrid approaches. The output of such methods is usually a deterministic forecast. Occasionally probabilistic forecasts are produced through uncertainty propagation in the data, parameters or through forecast ensembles. However, little has been done in terms of producing data driven probabilistic forecasts based on real-world performance of forecasting models. It is crucial to capture actual performance of a forecast as it has been known that a given forecasting technology exhibits different behavior for different wind farms and seasons [ref]. This is due to many factors which forecast are challenged to capture such as the surrounding terrains of the wind farm and the condition of the blades such as icing or dirt. It is known that complex terrains decrease the accuracy of wind power forecasts significantly [ref]. It also has been shown that the performance of forecasts varies from month to month. Thus the performance of wind power forecasts is location and time dependent.
+Different methods have been applied to wind power forecasting. They can be generally categorized as follows: physical models, statistical methods, artificial intelligence methods and hybrid approaches. The output of such methods is usually a deterministic forecast. Occasionally probabilistic forecasts are produced through uncertainty propagation in the data, parameters or through forecast ensembles. However, there is a lacking in simulating and producing data driven stochastic forecasts based on real-world performance of forecasting models. It is crucial to capture actual performance of a forecast as it has been known that different forecasting technologies exhibits different behavior for different wind farms and seasons [ref]. This is due to many factors which forecast are challenged to capture such as the surrounding terrains of the wind farm and the condition of the blades such as icing,wear and tear or dirt. It is known that complex terrains in both off shore and on shore locations decrease the accuracy of wind power forecasts significantly [ref]. It also has been shown that the performance of forecasts varies from month to month. Thus the performance of wind power forecasts is location and time dependent.
 
-Many approaches have been taken to evaluate the performance of a given forecast. There are two types of errors: level errors and phase errors. The use of mean or median errors in this context may be misleading as wind power forecast errors are asymmetric. This is a natural consequence of wind power being non-negative. This is important as the associated cost to power forecast errors are also asymmetric due to different costs for up and down  power regulations which are determined by the electricity market [ref].
+Many approaches have been taken to evaluate the uncertainty of a given forecast. There are two types of errors: level errors and phase errors. The use of mean or median errors in this context may be misleading as wind power forecast errors are asymmetric. This is a natural consequence of wind power being non-negative and bounded by the maximuim capacity of production. This is important as the associated cost to power forecast errors are also asymmetric due to different costs for up and down  power regulations which are determined by the electricity market [ref].
 
-We propose to model wind power forecasts errors using parametric stochastic differential equations (SDEs) whose solution defines a stochastic process. This resultant stochastic process describes the time evolution dynamics of wind power forecast errors while preserving properties such as the correlation structure and asymmetry. Additionally, the model is agnostic of  wind power forecasting technology and serves as a complement to forecasting procedures by providing a data driven probabilistic forecast. Hence, we are able to evaluate wind power forecasts according to their real-world performance and we are able to compare different forecasting technologies.
+We propose to model wind power forecasts errors using parametric stochastic differential equations (SDEs) whose solution defines a stochastic process. This resultant stochastic process describes the time evolution dynamics of wind power forecast errors while capturing properties such as a correlation structure and the inherent asymmetry. Additionally, the model we propose is agnostic of the forecasting technology and serves to complement forecasting procedures by providing a data driven stochastic forecast. Hence, we are able to evaluate wind power forecasts according to their real-world performance and we are able to compare different forecasting technologies. Most notably, we are able to simulate future wind power production given a deterministic wind power forecast. Future wind power production as well as the analytical form of the proposed SDE can be used in optimal control problems involving wind power production.
 
 Previous attempt by M\o ller et al. (M\o ller, Zugno, \& Madsen, 2016)  considered stochastic wind power forecast models based on stochastic differential equations (SDEs). Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to Uruguayan and french wind power forecasts together with historical wind power production data pertaining to the year 2017-2018.
+
+We use a year long data set from Uruguay based on 1000 observation paths, each of which is 72-hours long with observations recorded every 10 min. In total, it is a data set of approximatly half a million data points recorded in 2018. See figure (\ref{fig:sample_data}). The data is normalized with respect to the maximuim power capacity of wind power production in Uruguay. The asymmetry or skew nature of the data is clear when inspected for different power production levels. We split the aggregated data into a low, meduim and high power range. See figure (\ref{fig:skew_data}).
+
+In this paper we present the phenomenological underlaying model in section (2) and describe the physical constraints in section (3) and how these constrains can be met. Then, in section (4), we will introduce an alternative formulation of the model in Lamperti space. In section (5), we show our parameter estimation procedure and its results in section (6). We compare alternative models in section (7) and different forecast providers in section (8).
+\begin{figure}
+  \includegraphics[width=40mm,scale=1]{plots/data_1516064400.pdf}
+  \includegraphics[width=40mm,scale=1]{plots/data_1516323600.pdf}\\
+  \caption{Two samples from the Uruguayan of 2018. Each sample compromises of two 72-hour paths. In yellow is an hourly wind power production forecast. In blue is the actual wind power production recorded in 10 minute intervals.}
+  \label{fig:sample_data}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=26mm,scale=1]{plots/hist_low.pdf}
+  \includegraphics[width=26mm,scale=1]{plots/hist_mid.pdf}
+  \includegraphics[width=26mm,scale=1]{plots/hist_high.pdf}
+  \caption{We see that forecast errors exhibit skewness near the boundries (i.e. low and high power production regimes.). Low power is when produced power is less than $0.3$, mid power is when it is between $0.3$ and $0.6$ and high power when is larger than $0.6$. }
+  \label{fig:skew_data}
+\end{figure}
 
 %-------------------------------------------------------------------------
 \section{Phenomenological  Model}
 We introduce the following phenomenological model. Let $X_t$ be the  wind power generation forecasts stochastic process defined by the  following parameterized stochastic differential equation (SDE),
 \begin{equation}
 \begin{split}
-dX_t &= a(X_t; \bm{\theta}) dt + b (X_t; \bm{\theta} ) dW_t \quad t > 0 \\
-X_0 & = X_0
+dX_t &= a(X_t; p_t, \dot{p}_t,\bm{\theta}) \ dt + b (X_t;p_t, \bm{\theta} ) \ dW_t \quad t > 0 \\
+X_0 & = x_0
 \end{split}
 \label{main}
 \end{equation}
 
 \begin{itemize}
-\item $a(\cdot; \bm{\theta}):[0,1] \to \R $  a drift function.
-\item $b (\cdot; \bm{\theta} ):[0,1] \to \R$  a  diffusion function.
+\item $a(\cdot; p_t, \dot{p}_t,\bm{\theta}):[0,1] \to \R \ $  a drift function.
+\item $b (\cdot;p_t, \bm{\theta} ):[0,1] \to \R \ $  a  diffusion function.
 \item $\bm{\theta}$: a vector of parameters.
+\item $p_t$ time-dependent scalar value and $ \dot{p}_t$ is its time derivative at time $t$. (in our case  $p_t$ is a deterministic forecast).
 \item $W_t$: Standard Wiener random process in $\R$.
 \end{itemize}
 
-We would like to have this model closely follow wind power forecasts while ensuring that it is unbiased with respect to the forecast. That is, we would like to have $\E X_t = p_t$ where $p_t$ is a deterministic given wind power forecast.
+We would like to have this model closely follow wind power forecasts while ensuring that it is unbiased with respect to the forecast. It straightforward to show that $\E X_t = p_t$ where $p_t$ is a deterministic given wind power forecast in the model above.
 
 \subsection{Physical Constrains}
 
@@ -163,7 +182,7 @@ The transition densities can be exactly obtained by solving the following parame
 \begin{equation}
 \begin{split}
 \frac{ \partial f }{\partial t } & (y ,t | x , s, \theta_t, \alpha )= - \frac{\partial}{ \partial y} ( a( y;\dot{p}_t , p_t, \theta_t ) f( y ,t | x , s, \theta_t , \alpha ) ) \\
-& + \frac{1}{2} \frac{\partial^2}{ \partial y^2} ( b(y;\theta_t, \alpha  )  f( y ,t | x , s, \theta_t , \alpha )  ) \quad  t < s\\
+& + \frac{1}{2} \frac{\partial^2}{ \partial y^2} ( b^2(y;\theta_t, \alpha  )  f( y ,t | x , s, \theta_t , \alpha )  ) \quad  t < s\\
 \end{split}
 \end{equation}
 

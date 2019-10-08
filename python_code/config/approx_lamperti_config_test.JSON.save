@@ -1,0 +1,28 @@
+{
+  "likelihood" : "rand_approx_lamperti",
+  "num_paths" : 100,
+  "theta":
+    {
+      "start": 0.01,
+      "end": 25,
+      "num_steps": 25
+    },
+  "alpha":
+    {
+      "start": 0.01,
+      "end": 1,
+      "num_steps": 25
+    },
+  "data_path": "./data/cleansed/URG_forecast_data_A_2018.npy",
+  "num_cores": "all",
+  "optimizer":"Nelder-Mead",
+  "optimization":
+    {
+      "theta_init": 11,
+      "alpha_init": 0.4,
+      "initial_batch_size": 10,
+      "batch_multiplier": 2,
+      "max_batch_size": 100000
+  }
+
+}
