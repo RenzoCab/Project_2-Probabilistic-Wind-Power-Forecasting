@@ -64,7 +64,7 @@ class model_modified_drift: #this is the main / most recent class for model
         self.Nfeval=0 # for printing , constant
 
 #####################################
-    def likelihood_evaluate(self, selector, param, batch_size=None): # the none is ignored if we put a value,
+    def likelihood_evaluate(self, selector, param, batch ,batch_size=None): # the none is ignored if we put a value,
     # it is a default.
         # When you optimize, param is the iteration starting point. This means that, if we # OPTIMIZE:
         # over f(x), x is param. param is the theta and alpha of the likelihood. the likelihood is
@@ -90,7 +90,7 @@ class model_modified_drift: #this is the main / most recent class for model
 
         elif selector=='rand_beta_objective': ## <<<< This is the best until NOW!!! V with no lamparti
             print('Evaluating using rand_beta_objective')
-            return(self.rand_beta_objective(param, batch_size ) )
+            return(self.rand_beta_objective(param, batch_size,batch ) )
 
 
         elif selector=='rand_approx_lamperti': # Best for lamparti!!!!! V with lamparti
@@ -140,7 +140,39 @@ class model_modified_drift: #this is the main / most recent class for model
             send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
-    def rand_beta_objective(self,param,batch_size, send_end_to_evaluater=None):
+    def gen_mini_batch(self,param,batch_size, send_end_to_evaluater=None):
+        #data
+        X=self.data
+        p=self.forecast
+        #discretization object
+        N=self.disct.N
+        #dt=self.disct.dt
+        M=self.disct.M
+        #input parameters
+        theta,alpha = param;
+        batch_size=int(batch_size)
+
+
+        # a batch of pairwise consecutive samples
+        list_pairs_V=[]
+        list_pairs_p=[]
+        list_pairs_theta=[]
+        for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
+            list_pairs_V.append(pairwise( X[i,1:-1]))
+            list_pairs_p.append(pairwise( p[i,1:-1]))
+            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
+            # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
+            # fine to supply theta_=theta_t.
+        obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
+        forecast_pairs=iter.chain(*list_pairs_p);
+        theta_pairs=iter.chain(*list_pairs_theta);
+        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
+        # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
+        batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
+
+        return(batch)
+
+    def rand_beta_objective(self,param,batch_size, batch ,send_end_to_evaluater=None):
         #data
         X=self.data
         p=self.forecast
@@ -150,7 +182,7 @@ class model_modified_drift: #this is the main / most recent class for model
         M=self.disct.M
         #input parameters
         theta,alpha = param;
-        batch_size=int(batch_size)
+        # batch_size=int(batch_size)
         L_n=0;
         L_m=0;
         a=0;b=0;
@@ -158,25 +190,25 @@ class model_modified_drift: #this is the main / most recent class for model
         counter=False
 
         ##############
-        # a batch of pairwise consecutive samples
 
-        list_pairs_V=[]
-        list_pairs_p=[]
-        list_pairs_theta=[]
 
-        for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
-            list_pairs_V.append(pairwise( X[i,1:-1]))
-            list_pairs_p.append(pairwise( p[i,1:-1]))
-            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
-            # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
-            # fine to supply theta_=theta_t.
+        # # a batch of pairwise consecutive samples
+        # list_pairs_V=[]
+        # list_pairs_p=[]
+        # list_pairs_theta=[]
+        # for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
+        #     list_pairs_V.append(pairwise( X[i,1:-1]))
+        #     list_pairs_p.append(pairwise( p[i,1:-1]))
+        #     list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
+        #     # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
+        #     # fine to supply theta_=theta_t.
+        # obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
+        # forecast_pairs=iter.chain(*list_pairs_p);
+        # theta_pairs=iter.chain(*list_pairs_theta);
+        # combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
+        # # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
+        # batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
 
-        obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
-        forecast_pairs=iter.chain(*list_pairs_p);
-        theta_pairs=iter.chain(*list_pairs_theta);
-        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
-        # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
-        batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
         ##############
         num_tries=10
         for attempt in range(num_tries): # WE JUST TRY MANY TIMES IN CASE WE have a bad data point that produces an error.
@@ -567,8 +599,10 @@ class model_modified_drift: #this is the main / most recent class for model
         else: print('Requested likelihood not found! ')
 
         if method=="Nelder-Mead":
+            batch = self.gen_mini_batch(param_initial,batch_size) # Be careful because the mini_batch is created using the initial parameters.
+            # This may be wrong, because the batch may depends on the actual parameters in the optimization.
             minimizer_kwargs = {"method":"Nelder-Mead", "options":{'disp': True} } #"options":{options={'disp': True}  'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
-            min_param = basinhopping(lambda param: likelihood(param, batch_size) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
+            min_param = basinhopping(lambda param: likelihood(param, batch_size, batch) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
         if method=="L-BFGS-B":
             minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}
             min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
