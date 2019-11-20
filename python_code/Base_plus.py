@@ -23,9 +23,12 @@ import warnings #make each warning appear only once, warning redirection
 from tqdm import tqdm #progress bar output in stderr
 import argparse #Command line input
 import itertools as iter #iter object tools for batching
-import numdifftools as nd #differentiation / Hessian computation
+#import numdifftools as nd #differentiation / Hessian computation
 
 ########################
+
+
+
 #Warning controls
 
 warnings.filterwarnings('error', '.*invalid value encountered.*',)
@@ -34,33 +37,40 @@ warnings.filterwarnings('error', '.*invalid value encountered.*',)
 
 ##############
 #constants
-Nfeval=0
+Nfeval=0 # for printing .
 ##############
-class disct:
+class disct: #discritization class
   def __init__(self, N,dt, M ):
-    self.N = N
-    self.dt = dt
-    self.M = M
+    self.N = N #numeber of samples
+    self.dt = dt  # dt of time , not used efficitvely now
+    self.M = M #number of paths
 
-class real:
+class real: #real parameters of the model (for siumulation only)
   def __init__(self, mu,sigma ):
-    self.mu = mu
-    self.sigma = sigma
+    self.mu = mu #mean reversion (this is theta_0 in paper)
+    self.sigma = sigma #path variability (it is alpha in paper)
 
-class optimal(real):
+class optimal(real): #this is for the optimal parameters we found/fitted
   def __init__(self):
-    real.__init__(self, 0,0 )
+    real.__init__(self, 0,0 ) # This copies the class real but sets its values in (0,0)
 
-class model_modified_drift:
-    def __init__(self, disct, data,forecast ):
-        self.disct = disct
-        self.data = data
+class model_modified_drift: #this is the main / most recent class for model
+    def __init__(self, disct, data,forecast ): # Initializations. You need to add the data inside.
+        self.disct = disct # disc class
+        self.data = data # array with all the paths and (maybe forcasts)
         #self.ic = ic
-        self.forecast = forecast
-        self.optimal=optimal()
-        self.Nfeval=0
+        self.forecast = forecast # All the forcasts
+        self.optimal=optimal() # Initialization (with (0,0))
+        self.Nfeval=0 # for printing , constant
 
-    def likelihood_evaluate(self, selector, param, batch_size=None):
+#####################################
+    def likelihood_evaluate(self, selector, param, batch_size=None): # the none is ignored if we put a value,
+    # it is a default.
+        # When you optimize, param is the iteration starting point. This means that, if we # OPTIMIZE:
+        # over f(x), x is param. param is the theta and alpha of the likelihood. the likelihood is
+        # constacted by theta, alpha and data.
+        # The tikelihood is constructed assuming that theta is not theta 0, it is theta.
+        # This is a selector
         if selector=="beta_likelihood":
             # print('Evaluating using the Beta likelihood')
             print(' still have to do it ')
@@ -78,21 +88,21 @@ class model_modified_drift:
             print(' still have to do it ')
             return()
 
-        elif selector=='rand_beta_objective':
+        elif selector=='rand_beta_objective': ## <<<< This is the best until NOW!!! V with no lamparti
             print('Evaluating using rand_beta_objective')
             return(self.rand_beta_objective(param, batch_size ) )
 
 
-        elif selector=='rand_approx_lamperti':
+        elif selector=='rand_approx_lamperti': # Best for lamparti!!!!! V with lamparti
             print('Evaluating using rand_approx_lamperti')
             return(self.rand_approx_lamperti(param, batch_size ) )
 
         else:
             print('Requested likelihood not found! ')
             return()
+#####################################
 
-
-    def lamperti_likelihood_SDE_approx(self,param,send_end_to_evaluater=None):
+    def lamperti_likelihood_SDE_approx(self,param,send_end_to_evaluater=None): ## lamparti likelihod Number 1!
         #data
         X=self.data
         p=self.forecast
@@ -154,19 +164,22 @@ class model_modified_drift:
         list_pairs_p=[]
         list_pairs_theta=[]
 
-        for i in range(M):
+        for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
             list_pairs_V.append(pairwise( X[i,1:-1]))
             list_pairs_p.append(pairwise( p[i,1:-1]))
-            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0]))
+            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
+            # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
+            # fine to supply theta_=theta_t.
 
-        obs_pairs=iter.chain(*list_pairs_V);
+        obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
         forecast_pairs=iter.chain(*list_pairs_p);
         theta_pairs=iter.chain(*list_pairs_theta);
         combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
-        batch=random_combination(combined_iter,batch_size)
+        # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
+        batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
         ##############
         num_tries=10
-        for attempt in range(num_tries):
+        for attempt in range(num_tries): # WE JUST TRY MANY TIMES IN CASE WE have a bad data point that produces an error.
             try:
                 for j in range(batch_size):
 
@@ -174,13 +187,14 @@ class model_modified_drift:
 
                     a=m_1; #mean
                     b=m_2- m_1**2; #variance
+                    # mean and variance of the transitions in the SDE
 
                     #sanity checks
                     if np.isnan(a): print('a is nan')
                     if np.isnan(b): print('b is nan')
                     if not np.isfinite(a): print('a is infinite')
                     if not np.isfinite(b): print('b is infinite')
-                    if b==0: b=1e-16
+                    if b==0: b=1e-16 # remmeber b is variance!
                     if b<0:
                         b=1e-16
                         counter = True
@@ -192,15 +206,15 @@ class model_modified_drift:
                     L_n = L_n + (beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
                      (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
                      scipy.special.betaln(beta_param_alpha, beta_param_beta)
-
+                    # L_n is the value of the likelihood, given some parameters and given some data batch.
 
                 if np.isnan(L_n):
                     raise ValueError('NaN value in likelihood')
                 # display information
                 # if self.Nfeval%5 == 0:
                 print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n ))
-                self.Nfeval += 1
-                if send_end_to_evaluater != None:
+                self.Nfeval += 1 # Nfeval just gives you the number of times the likelihood has been called.
+                if send_end_to_evaluater != None: # send_end_to_evaluater is a communication channel in case we want to parallelize.
                     send_end_to_evaluater.send(-1*L_n)
                 return(-1*L_n)
 

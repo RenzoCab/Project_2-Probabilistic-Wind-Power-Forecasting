@@ -4,7 +4,7 @@ os.chdir(sys.path[0])
 from Base_plus import *
 import config.loadconfig
 import argparse
-import numdifftools as nd
+#import numdifftools as nd
 
 parser = argparse.ArgumentParser(description='Likelihood Evaluator v1.0')
 parser.add_argument('-filename', help=' Config file name or path')

@@ -4,7 +4,7 @@ os.chdir(sys.path[0]) #+'/python_code'
 from Base_plus import *
 import config.loadconfig
 import argparse
-import numdifftools as nd
+#import numdifftools as nd
 from matplotlib import animation
 from IPython.display import HTML
 from matplotlib.colors import LogNorm
