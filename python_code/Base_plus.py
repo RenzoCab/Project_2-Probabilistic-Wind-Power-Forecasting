@@ -140,7 +140,7 @@ class model_modified_drift: #this is the main / most recent class for model
             send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
-    def gen_mini_batch(self,param,batch_size, send_end_to_evaluater=None):
+    def gen_mini_batch(self, batch_size, send_end_to_evaluater=None): # param
         #data
         X=self.data
         p=self.forecast
@@ -149,24 +149,29 @@ class model_modified_drift: #this is the main / most recent class for model
         #dt=self.disct.dt
         M=self.disct.M
         #input parameters
-        theta,alpha = param;
+        # theta,alpha = param;
         batch_size=int(batch_size)
-
 
         # a batch of pairwise consecutive samples
         list_pairs_V=[]
         list_pairs_p=[]
-        list_pairs_theta=[]
+        list_pairs_pdot=[]
+        # list_pairs_theta=[]
         for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
+            N=len(p[i,1:])
+            p_dot=np.diff(p[i,1:])*N # We hace to check if actually p_dot(t*) = dp/dt (t*) and not, e.g., t*+1 or t*-1
             list_pairs_V.append(pairwise( X[i,1:-1]))
             list_pairs_p.append(pairwise( p[i,1:-1]))
-            list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
+            list_pairs_pdot.append(pairwise(p_dot))
+            # list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
             # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
             # fine to supply theta_=theta_t.
         obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
         forecast_pairs=iter.chain(*list_pairs_p);
-        theta_pairs=iter.chain(*list_pairs_theta);
-        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
+        pdot_pairs=iter.chain(*list_pairs_pdot);
+        # theta_pairs=iter.chain(*list_pairs_theta);
+        # combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
+        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,pdot_pairs) #fillvalue=np.nan
         # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
         batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
 
@@ -215,7 +220,14 @@ class model_modified_drift: #this is the main / most recent class for model
             try:
                 for j in range(batch_size):
 
-                    m_1,m_2=beta_moment( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=batch[j][1][0] ,p_next=batch[j][1][1], theta_prev=batch[j][2][0], theta_next=batch[j][2][1],alpha=alpha )
+                    # batch[j] = (obs_pairs,forecast_pairs,pdot_pairs)
+                    pdot_prev=batch[j][2][0]
+                    pdot_next=batch[j][2][1]
+                    p_prev=batch[j][1][0]
+                    p_next=batch[j][1][1]
+                    theta_prev = theta_t(theta = theta, p = p_prev, pdot = pdot_prev)    # theta_t(theta, p, pdot)
+                    theta_next = theta_t(theta = theta, p = p_next, pdot = pdot_next)
+                    m_1,m_2=beta_moment( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=p_prev ,p_next=p_next, theta_prev=theta_prev, theta_next=theta_next,alpha=alpha )
 
                     a=m_1; #mean
                     b=m_2- m_1**2; #variance
@@ -599,7 +611,8 @@ class model_modified_drift: #this is the main / most recent class for model
         else: print('Requested likelihood not found! ')
 
         if method=="Nelder-Mead":
-            batch = self.gen_mini_batch(param_initial,batch_size) # Be careful because the mini_batch is created using the initial parameters.
+            # gen_mini_batch(self, batch_size, send_end_to_evaluater=None)
+            batch = self.gen_mini_batch(batch_size) # Be careful because the mini_batch is created using the initial parameters.
             # This may be wrong, because the batch may depends on the actual parameters in the optimization.
             minimizer_kwargs = {"method":"Nelder-Mead", "options":{'disp': True} } #"options":{options={'disp': True}  'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
             min_param = basinhopping(lambda param: likelihood(param, batch_size, batch) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
@@ -1897,6 +1910,9 @@ def theta_adjust(theta, forecast):
         theta_adjusted[i]= max(theta, abs(p_dot[i])/(min(p[i], 1-p[i]) + 1e-16 ) )
 
     return(theta_adjusted, zero_drift_fixed )
+
+def theta_t(theta, p, pdot): # (theta_0, batches), from batches we only want {pdot}
+    return(max(theta, abs(pdot)/(min(p, 1-p) + 1e-16 ) ) )
 
 def empirical_Confidence_Interval_plots(forecast_data_inter,hours,\
     real_in, disct_in,list_forecast_number,\

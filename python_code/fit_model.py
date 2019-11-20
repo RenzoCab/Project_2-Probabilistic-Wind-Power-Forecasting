@@ -133,8 +133,9 @@ print('Computing Hessian at intial point')
 
 # THIS IS WRONG, WE NEED TO USE THE SAME BATCH AS IN THE OPTIMIZOR:
 
-batch = this_model.gen_mini_batch((setup.optimization['theta_init'], setup.optimization['alpha_init']),setup.optimization['initial_batch_size'], send_end_to_evaluater=None)
-# likelihood_evaluate(self, selector, param, batch ,batch_size=None): # the none is ignored if we put a value,
+# gen_mini_batch(self, batch_size, send_end_to_evaluater=None)
+batch = this_model.gen_mini_batch(setup.optimization['initial_batch_size'], send_end_to_evaluater=None)
+# likelihood_evaluate(self, selector, param, batch ,batch_size=None)
 likelihood_initial_value= this_model.likelihood_evaluate(selector = setup.likelihood, param = (setup.optimization['theta_init'], setup.optimization['alpha_init']), batch = batch, batch_size = setup.optimization['initial_batch_size'])
 
 #creating initial array
@@ -145,7 +146,7 @@ likelihood_initial_value= this_model.likelihood_evaluate(selector = setup.likeli
 parmeter_convergence_limited=np.array((setup.optimization['theta_init'],setup.optimization['alpha_init'], likelihood_initial_value , setup.optimization['initial_batch_size'] ))
 
 #printing
-print( ' optimizing ' + setup.likelihood + ' using ' + setup.optimizer + ' with ' + str(setup.optimization['initial_batch_size']) + ' batches.'  )
+print( ' optimizing ' + setup.likelihood + ' using ' + setup.optimizer + ' with ' + str(setup.optimization['initial_batch_size']) + ' samples in the batch.'  )
 # print( 'Ellipse ' + ' H: ',height , 'W: ', width )
 
 
