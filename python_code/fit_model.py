@@ -99,8 +99,6 @@ p=forecast_data_inter[2,:setup.num_paths,:]
 V= forecast_data_inter[2,:setup.num_paths,:]-forecast_data_inter[1,:setup.num_paths,:]
 X=forecast_data_inter[1,:setup.num_paths,:]
 
-
-
 if setup.likelihood=='lamperti_likelihood_SDE_approx':
     V = np.arcsin(2*X - 1)
     print(' Data has been Lamperti transformed ')
@@ -109,10 +107,9 @@ if setup.likelihood=='lamperti_likelihood_linearized':
     V = np.arcsin(2*X - 1)
     print(' Data has been Lamperti transformed ')
 
-
-
 this_model=model_modified_drift(disct_temp,V, forecast= p)
 
+# print(this_model.expected_cross_time()) # We print this to test the function expected_cross_time.
 
 
 file_object  = open(current_data_dir+'/results.out', 'w')

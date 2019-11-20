@@ -64,6 +64,21 @@ class model_modified_drift: #this is the main / most recent class for model
         self.Nfeval=0 # for printing , constant
 
 #####################################
+
+    def expected_cross_time(self):
+        # We are assuming that all the paths have the same length.
+        V=self.data
+        N=self.disct.N
+        M=self.disct.M
+        counter = 0;
+        for j in range(0,M):
+            for i in range(0,N-1):
+
+                if V[j,i]*V[j,i+1] < 0:
+                    counter += 1;
+
+        return( M*N/counter) # The units are 10 minutes. i.e., if expected_cross_time = 12.3 then the expected time is 123 minutes.
+
     def likelihood_evaluate(self, selector, param, batch ,batch_size=None): # the none is ignored if we put a value,
     # it is a default.
         # When you optimize, param is the iteration starting point. This means that, if we # OPTIMIZE:
