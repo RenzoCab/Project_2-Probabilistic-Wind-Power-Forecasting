@@ -1,6 +1,6 @@
 {
   "likelihood" : "rand_beta_objective",
-  "num_paths" : 973,
+  "num_paths" : 830,
   "theta":
     {
       "start": 0.01,
@@ -18,11 +18,11 @@
   "optimizer":"Nelder-Mead",
   "optimization":
     {
-      "theta_init": 8,
-      "alpha_init": 1,
-      "initial_batch_size": 5,
+      "theta_init": 1,
+      "alpha_init": 0.1,
+      "initial_batch_size": 350,
       "batch_multiplier": 2,
-      "max_batch_size": 100000
+      "max_batch_size": 22000
   }
 
 }

@@ -88,16 +88,51 @@ os.makedirs(current_data_dir,exist_ok=True)
 forecast_data_inter=np.swapaxes(forecast_data_in, 0,1)
 print('Data output will be save in ',current_data_dir)
 
-
-
-N=forecast_data_inter.shape[2]
+# WARNING: Notice that we redefine the length in the transitions-direction for each vector.
+# It was 72 hrs \approx 427 transitions, now (22/11/2019) it is 6 hrs \approx 59 transitions.
+N=forecast_data_inter.shape[2] - 368 # 427 - 368 = 59, we do this_model because
+# we only want the first 6 hours for each path to avoid overlaping.
+# 427 # If we are considering 3 24-hours paths, notice that N < 72*6 because
+# of the repetition at the bopundries of each day.
 M= setup.num_paths  #forecast_data_inter.shape[1]-973 #to be changed in generalization
 dt=1
+p=forecast_data_inter[2,:setup.num_paths,:N]
+p = p[::2,:]
+# V= forecast_data_inter[2,:setup.num_paths,:]-forecast_data_inter[1,:setup.num_paths,:]
+V= forecast_data_inter[1,:setup.num_paths,:N] - forecast_data_inter[2,:setup.num_paths,:N]
+V = V[::2,:]
+X=forecast_data_inter[1,:setup.num_paths,:N]
+X = X[::2,:]
+M = V.shape[0]
 
-disct_temp = disct(N,dt,M)
-p=forecast_data_inter[2,:setup.num_paths,:]
-V= forecast_data_inter[2,:setup.num_paths,:]-forecast_data_inter[1,:setup.num_paths,:]
-X=forecast_data_inter[1,:setup.num_paths,:]
+disct_temp = disct(N,dt,M) # We want to follow V = X - P \implies X = V + P
+
+
+######## ToComplete:
+# def get_datetime64(time_stamp):
+#     return np.datetime64(int(time_stamp),'s')
+# get_datetime64=np.vectorize(get_datetime64)
+# print(forecast_data_inter[0,:setup.num_paths,0])
+# print(get_datetime64(forecast_data_inter[0,:setup.num_paths,0]))
+######## ToComplete:
+# D=V
+# O=np.sum(np.diff(D, axis= 1 )**2, axis=1)
+# K= np.sum(2*(D+p)*(1-D-p) , axis=1)
+# R= np.mean(O/K )
+# # print( 'HERE ', R, K, O, O/K, D, p)
+# print( 'HERE ', R)
+# aux1 = 0; aux2 = 0; aux3 = 0
+# for j in range(0,M):
+#     for i in range(0,N-1):
+#
+#         aux1 += (D[j,i+1]-D[j,i])**2
+#         aux2 += 2*(D[j,i]+p[j,i])*(1-D[j,i]-p[j,i])
+#
+#     aux3 += aux1 / aux2
+# result = aux3 / M
+# print('HERE ',result)
+
+
 
 if setup.likelihood=='lamperti_likelihood_SDE_approx':
     V = np.arcsin(2*X - 1)
@@ -149,7 +184,7 @@ print( ' optimizing ' + setup.likelihood + ' using ' + setup.optimizer + ' with 
 
 while current_batch_size <= setup.optimization['max_batch_size']:
     #optimize
-    optim=this_model.optimize(inference=setup.likelihood, batch_size=current_batch_size, method=setup.optimizer, param_initial=intial_point, niter=2, temp=0);
+    optim=this_model.optimize(inference=setup.likelihood, batch_size=current_batch_size, method=setup.optimizer, param_initial=intial_point, niter=1, temp=0);
 
     print(optim.message[0])
     print(optim.x)

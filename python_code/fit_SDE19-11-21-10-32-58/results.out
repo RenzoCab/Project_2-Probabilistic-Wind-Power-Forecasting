@@ -1,0 +1,1 @@
+optimization result for a batch of size 5 initialized at [8 1] is [13.80145302  0.04550454] with functional value -10.531163272789925 with message requested number of basinhopping iterations completed successfully results save in fit_SDE19-11-21-10-32-58startimg fit for a batch of size 10 initialized at [13.80145302  0.04550454]

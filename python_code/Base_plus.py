@@ -117,6 +117,20 @@ class model_modified_drift: #this is the main / most recent class for model
             return()
 #####################################
 
+    # def initial_param(self,param,send_end_to_evaluater=None): ## lamparti likelihod Number 1!
+    #     #data
+    #     D=self.data # Model data (it can be V, Z or even X).
+    #     p=self.forecast
+    #     #discretization object
+    #     N=self.disct.N
+    #     M=self.disct.M
+    #     #input parameters
+    #     theta,alpha, _ = param;
+    #
+    #
+
+#####################################
+
     def lamperti_likelihood_SDE_approx(self,param,send_end_to_evaluater=None): ## lamparti likelihod Number 1!
         #data
         X=self.data
@@ -172,8 +186,8 @@ class model_modified_drift: #this is the main / most recent class for model
         list_pairs_p=[]
         list_pairs_pdot=[]
         # list_pairs_theta=[]
-        for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
-            N=len(p[i,1:])
+        for i in range(0,M-1): # the pairs are (y_{i-1},y_i), all the transitions
+            # N=len(p[i,1:])
             p_dot=np.diff(p[i,1:])*N # We hace to check if actually p_dot(t*) = dp/dt (t*) and not, e.g., t*+1 or t*-1
             list_pairs_V.append(pairwise( X[i,1:-1]))
             list_pairs_p.append(pairwise( p[i,1:-1]))
@@ -208,26 +222,6 @@ class model_modified_drift: #this is the main / most recent class for model
         a=0;b=0;
         dN=1/N
         counter=False
-
-        ##############
-
-
-        # # a batch of pairwise consecutive samples
-        # list_pairs_V=[]
-        # list_pairs_p=[]
-        # list_pairs_theta=[]
-        # for i in range(M): # the pairs are (y_{i-1},y_i), all the transitions
-        #     list_pairs_V.append(pairwise( X[i,1:-1]))
-        #     list_pairs_p.append(pairwise( p[i,1:-1]))
-        #     list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
-        #     # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
-        #     # fine to supply theta_=theta_t.
-        # obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
-        # forecast_pairs=iter.chain(*list_pairs_p);
-        # theta_pairs=iter.chain(*list_pairs_theta);
-        # combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
-        # # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
-        # batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
 
         ##############
         num_tries=10
@@ -630,7 +624,9 @@ class model_modified_drift: #this is the main / most recent class for model
             batch = self.gen_mini_batch(batch_size) # Be careful because the mini_batch is created using the initial parameters.
             # This may be wrong, because the batch may depends on the actual parameters in the optimization.
             minimizer_kwargs = {"method":"Nelder-Mead", "options":{'disp': True} } #"options":{options={'disp': True}  'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
-            min_param = basinhopping(lambda param: likelihood(param, batch_size, batch) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
+            min_param=scipy.optimize.minimize(fun=likelihood , x0=param_initial ,args=(batch_size, batch), method="Nelder-Mead")
+            #min_param=scipy.optimize.minimize(fun=lambda param: likelihood(param, batch_size, batch) , x0=param_initial ,args=minimizer_kwargs)
+            #min_param = basinhopping(lambda param: likelihood(param, batch_size, batch) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
         if method=="L-BFGS-B":
             minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}
             min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
@@ -662,7 +658,7 @@ class model_modified_drift_p_term:
         self.Nfeval=0
 
 
-    def likelihood(self,param):
+    def likelihood(self,param): # OLD VERSION.
         #data
         X=self.data
         p=self.forecast
@@ -867,7 +863,9 @@ def gen_path_model_moments_check(X0,disct,real):
     return(X)
 
 def gen_path_beta_flex(X0,disct,real,forecast):
-
+    # TODO: We have to choose the correct normalization constant for the final time (choose correctly T).
+    # Now we are using T = 1, which is not correct because we use dN = 1/N and we want that
+    # dN = 1 transition.
     N=disct.N
     dt=disct.dt
     M=disct.M
@@ -1425,6 +1423,7 @@ def gen_X_normal_euler_derivative_tracking(X0,disct,real,forecast):
     return(X)
 
 def gen_X_normal_euler_DT_modified(X0,disct,real,forecast):
+    # TITLE: GENERATE X-SDE from Normal with Euler using Derivative Trancking.
     p=forecast
     N=disct.N
     M=disct.M
@@ -1457,6 +1456,8 @@ def gen_X_normal_euler_DT_modified(X0,disct,real,forecast):
             if X[j,i+1] <0:
                 X[j,i+1]=X[j,i];
             #X_zero_drift[i]= p[i]+ (p[i+1]-p[i])/(dN*theta[i]);
+
+            # TODO: Generate path in Lapmarti space and then to transform back to X.
 
             i+=1
         if (NG_var==True): print('negative variance in Generator. ' );
@@ -2218,6 +2219,7 @@ def path_simulator(forecast_data_inter,hours,\
     xnew = np.linspace(0,N,(N+1)) #np.linspace(0,N,N+1)
     x = np.linspace(1,N,N)
 
+
     theta= real_in.mu #7.8155
     alpha= real_in.sigma #1.072
     j=0
@@ -2225,20 +2227,21 @@ def path_simulator(forecast_data_inter,hours,\
         p=forecast_data_inter[2,k,:N] #obtain cleansed forecast
         inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
         p=inter_1(xnew)
-        #d=forecast_data_inter[1,k,:N]
+        d=forecast_data_inter[1,k,:N]
         dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[0,k,0])
         dt=1
         M_test=disct_in.M
 
-        # fig=plt.figure(2,figsize=(10, 4))
-        # fig.clf()
+        # THIS: plots the forcast data.
+        fig=plt.figure(2,figsize=(10, 4))
+        fig.clf()
         # plt.plot(xnew,p, label='forecast')
-        # plt.plot(xnew,d, label='actual production')
-        #
+        plt.plot(x,d, label='actual production')
+
         # plt.xlim(1, 73)
         # plt.ylim(-0.1, 1.1)
         # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
-        #
+
         # plt.xticks( fontsize = 20);
         # plt.yticks( fontsize = 20);
         # plt.xlabel('Time [hr]',fontsize = 24)
@@ -2256,8 +2259,8 @@ def path_simulator(forecast_data_inter,hours,\
         X= gen_X_normal_euler_DT_modified(X0=p[0],disct=disct_temp,real=real_1,forecast=p)
 
         #plotting
-        fig=plt.figure(2,figsize=(10, 4))
-        fig.clf()
+        # fig=plt.figure(2,figsize=(10, 4))
+        # fig.clf()
 
         plt.xlim(1, hours)
         plt.ylim(-0.1, 1.1)
@@ -2558,40 +2561,19 @@ def linear_lamperti_ODE_RHS(t, m ,p_func,theta_func, alpha):
 
 
 def beta_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+    # Notice that today (21/11/2019), we are not using dN.
 
-    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear', fill_value='extrapolate')
+    transition_duration = dN # Before 21/11/2019, we had transition_duration = 1.
 
-    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
+    p_func = interpolate.interp1d([0,transition_duration], [p_prev,p_next] , kind='linear', fill_value='extrapolate')
+    # [0,1] is the time between consecutive transitions. This is valid while we use transitions as unit.
+    # If we use minutes and we have that 1 tr = 10 min, then we would need to use [0.10].
+    theta_func = interpolate.interp1d([0,transition_duration], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
 
     fun=lambda t, m: beta_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2],rtol=1e-2, atol=1e-2)
+    sol = solve_ivp(fun, [0, transition_duration], [X_prev,X_prev**2],rtol=1e-2, atol=1e-2)
     m_1= sol.y[0,-1]
     m_2= sol.y[1,-1]
-
-    # m_1=X_prev
-    # m_2=X_prev**2
-    # m_1_prev=0
-    # I_1_prev=0
-    # I_1=0
-    # I_2=0
-    # for q in range( 0, len(X_INT)-1 ):
-
-        # m_1_prev=m_1
-        # I_1_prev=I_1
-        #
-        # I_1= I_1 + (theta_INT[q] + theta_INT[q+1])*d_INT/2
-        #
-        # m_1= X_prev*np.exp(-I_1)
-        #
-        # I_2 = I_2 + ( ( 2*theta_INT[q+1]*m_1*(1-2*P_INT[q+1])    + 2*theta_INT[q+1]*P_INT[q+1]*(1-P_INT[q+1]) )*np.exp(-2*(1+alpha )*I_1)  + ( 2*theta_INT[q]*m_1_prev*(1-2*P_INT[q])    + 2*theta_INT[q]*P_INT[q]*(1-P_INT[q]) )*np.exp(-2*(1+alpha )*I_1_prev)   )*d_INT/2
-
-        # m_1_prev=m_1
-        # m_1 = m_1*np.exp(-1*(theta_INT[q] + theta_INT[q+1])*d_INT/2 )
-        #
-        # m_2=(m_2 + 0.5*d_INT*( -2*m_2*theta_INT[q]*(1+alpha) + 2*m_1_prev*alpha*theta_INT[q]*(1-2*P_INT[q]) + 2*alpha*theta_INT[q]*P_INT[q]*(1-P_INT[q]) + 2*m_1*alpha*theta_INT[q+1]*(1-2*P_INT[q+1]) + 2*alpha*theta_INT[q+1]*P_INT[q+1]*(1-P_INT[q+1]) ) )/(1-d_INT*theta_INT[q+1]*(1+alpha))
-
-    # m_1= X_prev*np.exp(-I_1)
-    # m_2=X_prev**2*np.exp(-2*(1+alpha)*I_1) + alpha*I_2
 
     return(m_1,m_2)
 
