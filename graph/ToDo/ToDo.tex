@@ -1,0 +1,105 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[activeacute, english]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+
+\newcommand\dist{\stackrel{\mathclap{\footnotesize\mbox{d.}}}{=}}
+\usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\usepackage[spanish,onelanguage]{algorithm2e}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposición}
+%\newenvironment{proof}[1][Demostración]{\begin{trivlist}
+%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definición]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Ejemplo]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Nota]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\negr}[1]{\textit{\textbf{#1}}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\title{Paper To-Do List}
+
+\author{Waleed Alhaddad}
+
+\date{19/11/2019}
+\begin{document}
+\maketitle
+
+
+% Participants:
+% \begin{multicols}{3}
+% \begin{itemize}
+% 	\item Waleed
+% 	\item Ahmed
+% 	\item Raul
+% \end{itemize}
+% \end{multicols}
+
+\section{To do}
+\begin{enumerate}
+\item Read, understand and reference Japan literature ( 3 Days )
+\item Add references through out the paper and learn how to use bibilex (1 hr )
+\item Copy subject calssification and keywords from Somaya's paper. Then discuss the choice and improve it with Raul and Ahmad. (30 m)
+\item Add labels to the paper sections. We do this because it is easier to refer to sections after they have an associated label.
+\item Add two simulation function with zero diffusion, where one is with derivative tracking and the other without it. Select an oscilattory forecast or synthesize one to test on it and plot bth plots to show the phase error when we don't have derivative tracking. (30 m)
+\item Rename section 3 to: state Independent Diffusion; Lamperti transform
+\item Number and emphasize the Lamperti transform excplicitly.
+\item Change title of section 4 to: Likelihood in V space.
+\item Fockker-Plank equation 
+\begin{itemize}
+\item Change variable in Fockker-Plank from y to $V_{t_{i,j}}$
+\item define the functions $a$ and $b$ in the statement
+\item  clearly state the time interval that it is between $t_{i,j}$ and $t_{j,i+1}$
+\item State initial condition to be a Dirac function at $V_{j,i}$
+\item make a connection between the fokker plank and the likelihood transitions, i.e. $\rho(V_{j,i+1}| V_{j,i})  = f(V_{j,i+1}, t_{j,i+1}|V_{j,i}, t_{j,i} )$
+\end{itemize}
+
+\item check dimensions of $\theta$ and if it looks reasonable with the average number of crossings $(\sim 5)$ (0.5 Day)
+\item relate the $\theta$ to the time correlation structure and see how big of a gap should be left between two consecutive best samples. Then cut accordingly if possible. Check the ratio of time correlation to the length of the path if its much less than one as we would like. (2 Days)
+\item Import data (1 Weeks)
+\begin{itemize}
+\item import the data again
+\item Detect when the forecast has started or read it as indicated in the data set.
+\item arrange the forecast in chronological order and  know which are consecutive forecasts
+\item check if the forecast has no missing or corrupt data points
+\item check the difference of time between the start times of the forecasts and record that information.
+\item adapt the number of samples to be variable in every path. Then adjust all the code and solvers for this added flexibility.
+\item Check which segments are the most recent for the time in question , i.e. choosing the path of best available forecast.
+\end{itemize}
+\item Add discussion about Lamperti and linearization of the non-linear drif that arises. Mention that the best proxy is Gaussian and approximation is good enough as the time between samples is small. 
+\item obtain an estimate of the product $\theta_0 \alpha$ using quadratic variations and implement a function that computes that. Justify assuming that $\theta_t$ is independent of time here is somehow acceptable otherwise it is not possible to estimate $\theta_t \alpha$ using the quadratic variations.write a funciton that checks the number of crossing in the processed data set in order to seperate the product of $\alpha \theta_0$. (0.25 Day)
+\item Implement Model 0 and adjust the rest of the code and plotting to this. (3 Days)
+\item Remove Model 1 and write a paragraph about it because when $p=1$ or $p=0$ it is not physical to have zero diffusion. (0.2 Days)
+\item Import, clean, filter and process the french data as done in step (12). Then run the best model in standard and in Lamperti space ( 1 week )
+\item Fix the mini-batching in the optimization as it resets the samples in each evaluation. Should store the sample for next evaluations within one optimization run. (3 Days)
+\item Produce documentation for all functions, scripts and objects. (1.5 weeks)
+\end{enumerate}
+Total continous time needed: 8-9 weeks to do the above list.
+
+\end{document}
