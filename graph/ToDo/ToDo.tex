@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[activeacute, english]{babel}
 \usepackage{graphicx}
@@ -13,19 +13,18 @@
 \usepackage{mathrsfs}
 \usepackage{tikz}
 \usepackage{float}
-\usepackage{algpseudocode}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{multicol}
+\usepackage{listings}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{algpseudocode}
 
-\newcommand\dist{\stackrel{\mathclap{\footnotesize\mbox{d.}}}{=}}
-\usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
-\usepackage[spanish,onelanguage]{algorithm2e}
+% \usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\usepackage[onelanguage,ruled,lined, linesnumbered]{algorithm2e}
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposición}
-%\newenvironment{proof}[1][Demostración]{\begin{trivlist}
-%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 \newenvironment{definition}[1][Definición]{\begin{trivlist}
 		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 \newenvironment{example}[1][Ejemplo]{\begin{trivlist}
@@ -43,12 +42,11 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\T}{\mathbb{T}}
-\title{Paper To-Do List}
 
-\author{Waleed Alhaddad}
-
-\date{19/11/2019}
 \begin{document}
+\title{Paper To-Do List}
+\author{Waleed Alhaddad}
+\date{19/11/2019}
 \maketitle
 
 
@@ -63,15 +61,15 @@
 
 \section{To do}
 \begin{enumerate}
-\item Read, understand and reference Japan literature ( 3 Days )
-\item Add references through out the paper and learn how to use bibilex (1 hr )
+\item Read, understand and reference Japan literature (3 Days)
+\item Add references through out the paper and learn how to use bibilex (1 hr)
 \item Copy subject calssification and keywords from Somaya's paper. Then discuss the choice and improve it with Raul and Ahmad. (30 m)
 \item Add labels to the paper sections. We do this because it is easier to refer to sections after they have an associated label.
 \item Add two simulation function with zero diffusion, where one is with derivative tracking and the other without it. Select an oscilattory forecast or synthesize one to test on it and plot bth plots to show the phase error when we don't have derivative tracking. (30 m)
 \item Rename section 3 to: state Independent Diffusion; Lamperti transform
 \item Number and emphasize the Lamperti transform excplicitly.
 \item Change title of section 4 to: Likelihood in V space.
-\item Fockker-Plank equation 
+\item Fockker-Plank equation
 \begin{itemize}
 \item Change variable in Fockker-Plank from y to $V_{t_{i,j}}$
 \item define the functions $a$ and $b$ in the statement
@@ -92,7 +90,7 @@
 \item adapt the number of samples to be variable in every path. Then adjust all the code and solvers for this added flexibility.
 \item Check which segments are the most recent for the time in question , i.e. choosing the path of best available forecast.
 \end{itemize}
-\item Add discussion about Lamperti and linearization of the non-linear drif that arises. Mention that the best proxy is Gaussian and approximation is good enough as the time between samples is small. 
+\item Add discussion about Lamperti and linearization of the non-linear drif that arises. Mention that the best proxy is Gaussian and approximation is good enough as the time between samples is small.
 \item obtain an estimate of the product $\theta_0 \alpha$ using quadratic variations and implement a function that computes that. Justify assuming that $\theta_t$ is independent of time here is somehow acceptable otherwise it is not possible to estimate $\theta_t \alpha$ using the quadratic variations.write a funciton that checks the number of crossing in the processed data set in order to seperate the product of $\alpha \theta_0$. (0.25 Day)
 \item Implement Model 0 and adjust the rest of the code and plotting to this. (3 Days)
 \item Remove Model 1 and write a paragraph about it because when $p=1$ or $p=0$ it is not physical to have zero diffusion. (0.2 Days)
@@ -100,6 +98,63 @@
 \item Fix the mini-batching in the optimization as it resets the samples in each evaluation. Should store the sample for next evaluations within one optimization run. (3 Days)
 \item Produce documentation for all functions, scripts and objects. (1.5 weeks)
 \end{enumerate}
-Total continous time needed: 8-9 weeks to do the above list.
 
+\section{Code correction report:}
+
+\begin{enumerate}
+
+\item The data is wrong. There are many repeated paths. After correcting most of the code, it is needed to download all again and do the processing again.
+\item We have to be careful about that is $(\theta,\alpha)$ in the Likelihood. When we optimize, we need to optimize over $(\theta_0,\alpha)$ so we would have
+\begin{equation*}
+\mathcal{L}=\mathcal{L}\left(\theta_0,\alpha,\{V\},\{p\}\right).
+\end{equation*}
+Notice that $\theta=\theta(\theta_0,\dot{p})$.
+
+\end{enumerate}
+
+\section{Pseudocode:}
+
+\begin{algorithm}[H]
+
+	* load paths information into this\_model *;\\
+
+    \While{\textup{current\_batch\_size $<=$ max\_batch\_size}}{
+		this\_model.{\color{blue}\textbf{optimize}}(intial\_point, current\_batch\_size, $\dots$)\;
+		current\_batch\_size = current\_batch\_size * batch\_multiplier;\
+    }
+
+    \textbf{** Methods from this\_model object **}\\
+    \SetKwFunction{FMain}{this\_model.{\color{blue}\textbf{optimize}}}
+	\SetKwProg{Pn}{Method}{:}{\KwRet}
+    \Pn{\FMain{\textup{intial\_point, current\_batch\_size, $\dots$}}}{
+		likelihood = self.{\color{violet}\textbf{rand\_beta\_objective}}\;
+		batch = self.{\color{red}\textbf{gen\_mini\_batch}}(batch\_size)\;
+		min\_param = scipy.optimize.minimize(fun = likelihood, x0 = param\_initial, args = (batch\_size, batch), method = "Nelder-Mead")\;
+		\textbf{Returns} = min\_param
+	}
+
+	\SetKwFunction{FMain}{this\_model.{\color{red}\textbf{gen\_mini\_batch}}}
+	\SetKwProg{Pn}{Method}{:}{\KwRet}
+    \Pn{\FMain{\textup{current\_batch\_size, $\dots$}}}{
+		self.\{X,p,N,M\};\\
+		* create $\dot{p}$ *;\\
+		* create linked-lists with V,p, and $\dot{p}$ *;\\
+		* create 2D array with the linked-lists (call it combined\_iter) *;\\
+		batch = random\_combination(combined\_iter, batch\_size);\\
+		\textbf{Returns} = batch
+	}
+
+	\SetKwFunction{FMain}{this\_model.{\color{violet}\textbf{rand\_beta\_objective}}}
+	\SetKwProg{Pn}{Method}{:}{\KwRet}
+    \Pn{\FMain{\textup{current\_batch\_size, $\dots$}}}{
+    	\For{\textup{j in range(batch\_size)}}{
+    		* find moments using {\color{orange}\textbf{beta\_moment}} *;\\
+    		L\_n = L\_n + ($\dots$);
+    	}
+		\textbf{Returns} = -L\_n
+	}
+
+\caption{Main Algorithm}
+\end{algorithm}
+eee
 \end{document}

@@ -21,19 +21,16 @@ from scipy.integrate import solve_ivp #RK4 numerical solving odes
 import sys #to obtain system current path
 import warnings #make each warning appear only once, warning redirection
 from tqdm import tqdm #progress bar output in stderr
+import pickle # We use this to save and load variables.
 import argparse #Command line input
 import itertools as iter #iter object tools for batching
 #import numdifftools as nd #differentiation / Hessian computation
 
 ########################
 
-
-
 #Warning controls
 
 warnings.filterwarnings('error', '.*invalid value encountered.*',)
-
-
 
 ##############
 #constants
@@ -54,14 +51,14 @@ class optimal(real): #this is for the optimal parameters we found/fitted
   def __init__(self):
     real.__init__(self, 0,0 ) # This copies the class real but sets its values in (0,0)
 
-class model_modified_drift: #this is the main / most recent class for model
+class model_modified_drift: #this is the MAIN / MOST recent class for model.
     def __init__(self, disct, data,forecast ): # Initializations. You need to add the data inside.
         self.disct = disct # disc class
-        self.data = data # array with all the paths and (maybe forcasts)
+        self.data  = data # array with all the paths and (maybe forcasts)
         #self.ic = ic
         self.forecast = forecast # All the forcasts
-        self.optimal=optimal() # Initialization (with (0,0))
-        self.Nfeval=0 # for printing , constant
+        self.optimal  = optimal() # Initialization (with (0,0))
+        self.Nfeval   = 0 # for printing , constant
 
 #####################################
 
@@ -77,44 +74,38 @@ class model_modified_drift: #this is the main / most recent class for model
                 if V[j,i]*V[j,i+1] < 0:
                     counter += 1;
 
-        return( M*N/counter) # The units are 10 minutes. i.e., if expected_cross_time = 12.3 then the expected time is 123 minutes.
+        return(M*N/counter) # The units are 10 minutes, i.e., if expected_cross_time = 12.3 then the expected time is 123 minutes.
 
-    def likelihood_evaluate(self, selector, param, batch ,batch_size=None): # the none is ignored if we put a value,
-    # it is a default.
-        # When you optimize, param is the iteration starting point. This means that, if we # OPTIMIZE:
-        # over f(x), x is param. param is the theta and alpha of the likelihood. the likelihood is
-        # constacted by theta, alpha and data.
-        # The tikelihood is constructed assuming that theta is not theta 0, it is theta.
-        # This is a selector
-        if selector=="beta_likelihood":
+    def likelihood_evaluate(self, selector, param, batch, batch_size = None): # The none is ignored if we put a value.
+        # When you optimize, param is the iteration starting point.
+        # param is the theta and alpha of the Likelihood. The Likelihood is constacted by theta, alpha and data.
+        # The Likelihood is constructed assuming that theta is not theta 0, which is wrong.
+
+        if selector == "beta_likelihood":
             # print('Evaluating using the Beta likelihood')
             print(' still have to do it ')
             return()
-
-        elif selector=='lamperti_likelihood_SDE_approx':
+        elif selector == 'lamperti_likelihood_SDE_approx':
             # likelihood=self.lamperti_likelihood_SDE_approx
             # print('Evaluating using lamperti_likelihood_SDE_approx')
             print(' still have to do it ')
             return()
-
-        elif selector=='lamperti_likelihood_linearized':
+        elif selector == 'lamperti_likelihood_linearized':
             # likelihood=self.lamperti_likelihood_linearized
             # print('Evaluating using lamperti_likelihood_linearized')
             print(' still have to do it ')
             return()
-
-        elif selector=='rand_beta_objective': ## <<<< This is the best until NOW!!! V with no lamparti
+        elif selector == 'rand_beta_objective': # This is the best until NOW!!! V with no Lamparti.
             print('Evaluating using rand_beta_objective')
-            return(self.rand_beta_objective(param, batch_size,batch ) )
-
-
-        elif selector=='rand_approx_lamperti': # Best for lamparti!!!!! V with lamparti
+            return(self.rand_beta_objective(param, batch_size, batch))
+        elif selector == 'rand_approx_lamperti': # Best for Lamparti!!! V with Lamparti.
             print('Evaluating using rand_approx_lamperti')
             return(self.rand_approx_lamperti(param, batch_size ) )
-
         else:
             print('Requested likelihood not found! ')
-            return()
+
+        return()
+
 #####################################
 
     # def initial_param(self,param,send_end_to_evaluater=None): ## lamparti likelihod Number 1!
@@ -126,8 +117,6 @@ class model_modified_drift: #this is the main / most recent class for model
     #     M=self.disct.M
     #     #input parameters
     #     theta,alpha, _ = param;
-    #
-    #
 
 #####################################
 
@@ -169,17 +158,15 @@ class model_modified_drift: #this is the main / most recent class for model
             send_end_to_evaluater.send(-1*L_m)
         return(-1*L_m)
 
-    def gen_mini_batch(self, batch_size, send_end_to_evaluater=None): # param
+    def gen_mini_batch(self, batch_size, send_end_to_evaluater = None): # param
         #data
-        X=self.data
-        p=self.forecast
-        #discretization object
-        N=self.disct.N
-        #dt=self.disct.dt
-        M=self.disct.M
+        X = self.data
+        p = self.forecast
+        N = self.disct.N
+        M = self.disct.M
         #input parameters
         # theta,alpha = param;
-        batch_size=int(batch_size)
+        batch_size = int(batch_size)
 
         # a batch of pairwise consecutive samples
         list_pairs_V=[]
@@ -188,95 +175,100 @@ class model_modified_drift: #this is the main / most recent class for model
         # list_pairs_theta=[]
         for i in range(0,M-1): # the pairs are (y_{i-1},y_i), all the transitions
             # N=len(p[i,1:])
-            p_dot=np.diff(p[i,1:])*N # We hace to check if actually p_dot(t*) = dp/dt (t*) and not, e.g., t*+1 or t*-1
-            list_pairs_V.append(pairwise( X[i,1:-1]))
-            list_pairs_p.append(pairwise( p[i,1:-1]))
+            p_dot = np.diff(p[i,1:])*N # We have to check if actually p_dot(t*) = dp/dt (t*) and not, e.g., t*+1 or t*-1
+            list_pairs_V.append(pairwise(X[i,1:-1]))
+            list_pairs_p.append(pairwise(p[i,1:-1]))
             list_pairs_pdot.append(pairwise(p_dot))
             # list_pairs_theta.append(pairwise( theta_adjust( theta , p[i,1:] )[0])) # parameters
             # Be sure that, even when the likelihood is contructed assuing theta=theta_0, it is
             # fine to supply theta_=theta_t.
-        obs_pairs=iter.chain(*list_pairs_V); # the star * transform a list into an array
-        forecast_pairs=iter.chain(*list_pairs_p);
-        pdot_pairs=iter.chain(*list_pairs_pdot);
+        obs_pairs      = iter.chain(*list_pairs_V); # the star * transform a list into an array
+        forecast_pairs = iter.chain(*list_pairs_p);
+        pdot_pairs     = iter.chain(*list_pairs_pdot);
         # theta_pairs=iter.chain(*list_pairs_theta);
         # combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,theta_pairs) #fillvalue=np.nan
-        combined_iter=iter.zip_longest(obs_pairs,forecast_pairs,pdot_pairs) #fillvalue=np.nan
+        combined_iter = iter.zip_longest(obs_pairs,forecast_pairs,pdot_pairs) #fillvalue=np.nan
         # combined_iter = (x_{i-1},x_1,...,,,theta_i) wirh ALL THE DATA
-        batch=random_combination(combined_iter,batch_size) # you sample from the r^6 chain.
+        batch = random_combination(combined_iter, batch_size) # you sample from the r^6 chain.
+
+        # Testing:
+        # toSave = open('allBatches.pckl','wb')
+        # pickle.dump(batch,toSave)
+        # toSave.close()
+        # exit()
 
         return(batch)
 
-    def rand_beta_objective(self,param,batch_size, batch ,send_end_to_evaluater=None):
-        #data
-        X=self.data
-        p=self.forecast
-        #discretization object
-        N=self.disct.N
-        dt=self.disct.dt
-        M=self.disct.M
-        #input parameters
+    def rand_beta_objective(self, param, batch_size, batch, send_end_to_evaluater = None):
+
+        X  = self.data
+        p  = self.forecast
+        N  = self.disct.N
+        dt = self.disct.dt
+        M  = self.disct.M
+        # Input parameters:
         theta,alpha = param;
-        # batch_size=int(batch_size)
-        L_n=0;
-        L_m=0;
-        a=0;b=0;
-        dN=1/N
-        counter=False
+        # batch_size = int(batch_size):
+        L_n     = 0;
+        L_m     = 0;
+        a       = 0;
+        b       = 0;
+        dN      = 1/N;
+        counter = False;
 
         ##############
-        num_tries=10
-        for attempt in range(num_tries): # WE JUST TRY MANY TIMES IN CASE WE have a bad data point that produces an error.
+        num_tries = 10
+        for attempt in range(num_tries): # WE TRY MANY TIMES IN CASE WE have a bad data point that produces an error.
             try:
                 for j in range(batch_size):
 
                     # batch[j] = (obs_pairs,forecast_pairs,pdot_pairs)
-                    pdot_prev=batch[j][2][0]
-                    pdot_next=batch[j][2][1]
-                    p_prev=batch[j][1][0]
-                    p_next=batch[j][1][1]
-                    theta_prev = theta_t(theta = theta, p = p_prev, pdot = pdot_prev)    # theta_t(theta, p, pdot)
+                    pdot_prev  = batch[j][2][0]
+                    pdot_next  = batch[j][2][1]
+                    p_prev     = batch[j][1][0]
+                    p_next     = batch[j][1][1]
+                    theta_prev = theta_t(theta = theta, p = p_prev, pdot = pdot_prev) # theta_t(theta, p, pdot).
                     theta_next = theta_t(theta = theta, p = p_next, pdot = pdot_next)
-                    m_1,m_2=beta_moment( dN, X_prev=batch[j][0][0] , X_next=batch[j][0][1], p_prev=p_prev ,p_next=p_next, theta_prev=theta_prev, theta_next=theta_next,alpha=alpha )
+                    m_1,m_2    = beta_moment(dN, X_prev = batch[j][0][0], X_next = batch[j][0][1],
+                    p_prev = p_prev, p_next = p_next, theta_prev = theta_prev, theta_next = theta_next, alpha = alpha)
 
-                    a=m_1; #mean
-                    b=m_2- m_1**2; #variance
-                    # mean and variance of the transitions in the SDE
+                    a = m_1; # Mean.
+                    b = m_2 - m_1**2; # Variance.
+                    # Mean and variance of the transitions in the SDE.
 
-                    #sanity checks
+                    # Sanity checks:
                     if np.isnan(a): print('a is nan')
                     if np.isnan(b): print('b is nan')
                     if not np.isfinite(a): print('a is infinite')
                     if not np.isfinite(b): print('b is infinite')
-                    if b==0: b=1e-16 # remmeber b is variance!
-                    if b<0:
-                        b=1e-16
+                    if b == 0: b = 1e-16 # Remmeber b is variance!
+                    if b < 0:
+                        b = 1e-16
                         counter = True
 
-                    #shape parameters of the beta distribution
-                    beta_param_alpha= - ( (1+a)*(a**2 +b -1)  )/(2*b)
-                    beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+                    # Shape parameters of the beta distribution:
+                    beta_param_alpha = -((1+a) * (a**2+b-1)) / (2*b)
+                    beta_param_beta  = ((a-1) * (a**2+b-1)) / (2*b)
 
-                    L_n = L_n + (beta_param_alpha-1 )*np.log(  (batch[j][0][1]+1)/2 ) +\
-                     (beta_param_beta-1)*np.log(1-( batch[j][0][1] +1)/2 )-\
-                     scipy.special.betaln(beta_param_alpha, beta_param_beta)
-                    # L_n is the value of the likelihood, given some parameters and given some data batch.
+                    L_n = L_n + (beta_param_alpha-1) * np.log((batch[j][0][1]+1)/2) + \
+                    (beta_param_beta-1) * np.log(1-(batch[j][0][1]+1)/2) - \
+                    scipy.special.betaln(beta_param_alpha, beta_param_beta)
+                    # L_n is the value of the Likelihood, given some parameters and given some data batch.
 
                 if np.isnan(L_n):
                     raise ValueError('NaN value in likelihood')
-                # display information
+                # Display information:
                 # if self.Nfeval%5 == 0:
-                print ('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n ))
-                self.Nfeval += 1 # Nfeval just gives you the number of times the likelihood has been called.
+                print('{0:4d}   {1: 3.12f}   {2: 3.12f}   {3: 3.1f}'.format(self.Nfeval, theta, alpha, -1*L_n))
+                self.Nfeval += 1 # Nfeval just gives you the number of times the Likelihood has been called.
                 if send_end_to_evaluater != None: # send_end_to_evaluater is a communication channel in case we want to parallelize.
                     send_end_to_evaluater.send(-1*L_n)
                 return(-1*L_n)
 
             except ValueError:
-                print('trying again...trial number '+ str(attempt) )
+                print('Trying again... trial number ' + str(attempt))
 
-
-
-    def rand_approx_lamperti(self,param,batch_size, send_end_to_evaluater=None):
+    def rand_approx_lamperti(self, param,batch_size, send_end_to_evaluater = None):
         #data
         X=self.data
         p=self.forecast
@@ -492,9 +484,6 @@ class model_modified_drift: #this is the main / most recent class for model
 
         return(-1*L_m)
 
-
-
-
     def beta_likelihood_parallel(self,param, send_end_to_evaluater):
         #data
         X=self.data
@@ -522,7 +511,7 @@ class model_modified_drift: #this is the main / most recent class for model
             counter=False
             recv_end, send_end =  mp.Pipe(False)
             arg_list=[j,N, X, p, theta_adjusted, alpha]
-            p_temp = mp.Process(target=compute_path_moments, args=( *arg_list,send_end))
+            p_temp = mp.Process(target=compute_path_moments, args=(arg_list,send_end))
             jobs.append(p_temp)
             pipe_list.append(recv_end)
             p_temp.start()
@@ -593,47 +582,44 @@ class model_modified_drift: #this is the main / most recent class for model
         return(-1*L_m)
 
                                                 #ADJUST UPPER BOUND !
-    def optimize(self, param_initial,batch_size,inference ,method="Nelder-Mead", niter=1 , temp=0, bnds = ((1e-3, None), (1e-3, None))):
-        print("starting optimization")
-        # mu_initial,sig_initial=param_initial
+    def optimize(self, param_initial, batch_size, inference, method = "Nelder-Mead", niter = 1 , temp = 0, bnds = ((1e-3, None), (1e-3, None))):
+        print("Starting method 'opimize'...")
+        # mu_initial, sig_initial=param_initial.
 
-        if inference=="beta_likelihood":
-            likelihood=self.beta_likelihood
+        # Just to print:
+        if inference == "beta_likelihood":
+            likelihood = self.beta_likelihood
             print('Evaluating using the Beta likelihood')
-
-        elif inference=='lamperti_likelihood_SDE_approx':
-            likelihood=self.lamperti_likelihood_SDE_approx
+        elif inference == 'lamperti_likelihood_SDE_approx':
+            likelihood = self.lamperti_likelihood_SDE_approx
             print('Evaluating using lamperti_likelihood_SDE_approx')
-
-        elif inference=='lamperti_likelihood_linearized':
-            likelihood=self.lamperti_likelihood_linearized
+        elif inference == 'lamperti_likelihood_linearized':
+            likelihood = self.lamperti_likelihood_linearized
             print('Evaluating using lamperti_likelihood_linearized')
-
-        elif inference=='rand_beta_objective':
-            likelihood=self.rand_beta_objective
+        elif inference == 'rand_beta_objective':
+            likelihood = self.rand_beta_objective
             print('Evaluating using rand_beta_objective')
-
-        elif inference=='rand_approx_lamperti':
-            likelihood=self.rand_approx_lamperti
+        elif inference == 'rand_approx_lamperti':
+            likelihood = self.rand_approx_lamperti
             print('Evaluating using rand_approx_lamperti')
+        else: print('Requested likelihood not found!')
 
-        else: print('Requested likelihood not found! ')
-
-        if method=="Nelder-Mead":
-            # gen_mini_batch(self, batch_size, send_end_to_evaluater=None)
-            batch = self.gen_mini_batch(batch_size) # Be careful because the mini_batch is created using the initial parameters.
-            # This may be wrong, because the batch may depends on the actual parameters in the optimization.
-            minimizer_kwargs = {"method":"Nelder-Mead", "options":{'disp': True} } #"options":{options={'disp': True}  'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 } #, "options":{ 'xatol': 10e-2 , 'fatol' : 10e-2 }
-            min_param=scipy.optimize.minimize(fun=likelihood , x0=param_initial ,args=(batch_size, batch), method="Nelder-Mead")
+        if method == "Nelder-Mead":
+            # gen_mini_batch(self, batch_size, send_end_to_evaluater = None).
+            batch = self.gen_mini_batch(batch_size) # We create the batches we will use.
+            minimizer_kwargs = {"method": "Nelder-Mead", "options":{'disp': True}}
+            # "options": {options={'disp': True} 'gtol': myfactr, 'ftol': myfactr, "maxiter": 10}
+            # "options": {'xatol': 10e-2 , 'fatol' : 10e-2}
+            min_param = scipy.optimize.minimize(fun = likelihood, x0 = param_initial,
+            args = (batch_size, batch), method = "Nelder-Mead")
             #min_param=scipy.optimize.minimize(fun=lambda param: likelihood(param, batch_size, batch) , x0=param_initial ,args=minimizer_kwargs)
             #min_param = basinhopping(lambda param: likelihood(param, batch_size, batch) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
-        if method=="L-BFGS-B":
-            minimizer_kwargs = {"method":"L-BFGS-B" , "options":{ 'gtol': myfactr , 'ftol' : myfactr, "maxiter":10 }}
-            min_param = basinhopping(likelihood, param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
-        if method=="SLSQP":
-            minimizer_kwargs = {"method": "SLSQP", "bounds":bnds , "options":{ 'ftol': 1e-10, 'gtol': 1e-10} }
-            min_param = basinhopping(likelihood, param_initial,T=temp, minimizer_kwargs=minimizer_kwargs, niter=niter)
-
+        if method == "L-BFGS-B":
+            minimizer_kwargs = {"method": "L-BFGS-B", "options":{ 'gtol': myfactr, 'ftol': myfactr, "maxiter": 10}}
+            min_param        = basinhopping(likelihood, param_initial, T = temp, minimizer_kwargs = minimizer_kwargs, niter = niter)
+        if method == "SLSQP":
+            minimizer_kwargs = {"method": "SLSQP", "bounds": bnds, "options":{'ftol': 1e-10, 'gtol': 1e-10}}
+            min_param        = basinhopping(likelihood, param_initial, T = temp, minimizer_kwargs = minimizer_kwargs, niter = niter)
 
         #, options={ 'gtol': myfactr * np.finfo(float).eps, 'ftol' : myfactr * np.finfo(float).eps });min_param
         #x,f,d=scipy.optimize.fmin_l_bfgs_b(self.likelihood,param_initial, approx_grad=True)
@@ -1927,27 +1913,27 @@ def theta_adjust(theta, forecast):
 
     return(theta_adjusted, zero_drift_fixed )
 
-def theta_t(theta, p, pdot): # (theta_0, batches), from batches we only want {pdot}
-    return(max(theta, abs(pdot)/(min(p, 1-p) + 1e-16 ) ) )
+def theta_t(theta, p, pdot): # (theta_0, batches). From batches, we only want $\dot{p}$.
+    return(max(theta, abs(pdot)/(min(p, 1-p) + 1e-16)))
 
 def empirical_Confidence_Interval_plots(forecast_data_inter,hours,\
     real_in, disct_in,list_forecast_number,\
     dir_path):
-    if isinstance(hours, int)==False:
+    if isinstance(hours, int) == False:
         raise ValueError('hours is not an integer. Please use integer values only.')
-    os.makedirs(dir_path + '/'+str(hours)+'hr',exist_ok=True)
-    os.makedirs(dir_path + '/'+'data_plots',exist_ok=True)
-    N=disct_in.N
-    freq=(N+1)*1 # evert 10 minutes
+    os.makedirs(dir_path + '/' + str(hours) + 'hr',exist_ok = True)
+    os.makedirs(dir_path + '/' + 'data_plots', exist_ok = True)
+    N    = disct_in.N
+    freq = (N+1)*1 # Evert 10 minutes.
     #interpolation_points=disct_in.N
-    num_forecasts=len(list_forecast_number) # to follow the custom forecast order
-    q975=np.zeros((num_forecasts,freq))
-    q025=np.zeros((num_forecasts,freq))
-    q95=np.zeros((num_forecasts,freq))
-    q05=np.zeros((num_forecasts,freq))
-    q50=np.zeros((num_forecasts,freq))
-    q75=np.zeros((num_forecasts,freq))
-    q25=np.zeros((num_forecasts,freq))
+    num_forecasts = len(list_forecast_number) # To follow the custom forecast order.
+    q975          = np.zeros((num_forecasts,freq))
+    q025          = np.zeros((num_forecasts,freq))
+    q95           = np.zeros((num_forecasts,freq))
+    q05           = np.zeros((num_forecasts,freq))
+    q50           = np.zeros((num_forecasts,freq))
+    q75           = np.zeros((num_forecasts,freq))
+    q25           = np.zeros((num_forecasts,freq))
 
     xnew = np.linspace(0,N,freq) #np.linspace(0,N,N+1)
     x = np.linspace(1,N,N)
@@ -2058,16 +2044,16 @@ def empirical_Confidence_Interval_plots_old(forecast_data_inter,\
     dir_path):
     os.mkdir(dir_path + '/72hr')
     os.mkdir(dir_path + '/6hr')
-    N=disct_in.N
+    N = disct_in.N
     #interpolation_points=disct_in.N
-    num_forecasts=len(list_forecast_number) # to follow the custom forecast order
-    q975=np.zeros((num_forecasts,N+1))
-    q025=np.zeros((num_forecasts,N+1))
-    q95=np.zeros((num_forecasts,N+1))
-    q05=np.zeros((num_forecasts,N+1))
-    q50=np.zeros((num_forecasts,N+1))
-    q75=np.zeros((num_forecasts,N+1))
-    q25=np.zeros((num_forecasts,N+1))
+    num_forecasts = len(list_forecast_number) # to follow the custom forecast order
+    q975          = np.zeros((num_forecasts,N+1))
+    q025          = np.zeros((num_forecasts,N+1))
+    q95           = np.zeros((num_forecasts,N+1))
+    q05           = np.zeros((num_forecasts,N+1))
+    q50           = np.zeros((num_forecasts,N+1))
+    q75           = np.zeros((num_forecasts,N+1))
+    q25           = np.zeros((num_forecasts,N+1))
 
     xnew = np.linspace(0,N,N+1)
     x = np.linspace(1,N,N)
@@ -2313,8 +2299,8 @@ def compute_path_moments(j,N,X,p,theta_adjusted, alpha, send_end):
         if b<0:
             b=1e-16
 
-        beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
-        beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
+        beta_param_alpha = - ( (1+a)*(a**2 + b - 1) )/ (2*b)
+        beta_param_beta  = ( (a-1)*(a**2 + b - 1) ) / (2*b)
 
         L_n_current= (beta_param_alpha-1 )*np.log(  (X[j,i+1]+1)/2 ) +\
          (beta_param_beta-1)*np.log(1-( X[j,i+1] +1)/2 )-\
@@ -2527,7 +2513,6 @@ def random_combination(iterable, r):
     indices = sorted(random.sample(range(n), r))
     return tuple(pool[i] for i in indices)
 
-
     #############################################################################################333
 
 def beta_ODE_RHS(t, m ,p_func,theta_func, alpha):
@@ -2558,36 +2543,31 @@ def linear_lamperti_ODE_RHS(t, m ,p_func,theta_func, alpha):
 # m_1= np.asscalar(sol.y[0])
 # m_2= np.asscalar(sol.y[1])
 
+def beta_moment(dN, X_prev, X_next, p_prev, p_next, theta_prev, theta_next, alpha):
 
-
-def beta_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
-    # Notice that today (21/11/2019), we are not using dN.
-
+    # dN = 1/N.
     transition_duration = dN # Before 21/11/2019, we had transition_duration = 1.
 
-    p_func = interpolate.interp1d([0,transition_duration], [p_prev,p_next] , kind='linear', fill_value='extrapolate')
-    # [0,1] is the time between consecutive transitions. This is valid while we use transitions as unit.
-    # If we use minutes and we have that 1 tr = 10 min, then we would need to use [0.10].
-    theta_func = interpolate.interp1d([0,transition_duration], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
+    p_func     = interpolate.interp1d([0,transition_duration], [p_prev,p_next],         kind = 'linear', fill_value = 'extrapolate')
+    theta_func = interpolate.interp1d([0,transition_duration], [theta_prev,theta_next], kind = 'linear', fill_value = 'extrapolate')
 
-    fun=lambda t, m: beta_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0, transition_duration], [X_prev,X_prev**2],rtol=1e-2, atol=1e-2)
-    m_1= sol.y[0,-1]
-    m_2= sol.y[1,-1]
+    fun = lambda t, m: beta_ODE_RHS(t, m, p_func = p_func, theta_func = theta_func, alpha = alpha)
+    sol = solve_ivp(fun, [0, transition_duration], [X_prev, X_prev**2], rtol = 1e-2, atol = 1e-2)
+    m_1 = sol.y[0,-1]
+    m_2 = sol.y[1,-1]
 
     return(m_1,m_2)
 
+def linear_lamperti_moment(dN, X_prev, X_next, p_prev, p_next, theta_prev, theta_next, alpha ):
 
-def linear_lamperti_moment(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
+    p_func = interpolate.interp1d([0,1], [p_prev,p_next], kind = 'linear', fill_value = 'extrapolate')
 
-    p_func = interpolate.interp1d([0,1], [p_prev,p_next] , kind='linear',fill_value='extrapolate')
+    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind = 'linear',fill_value = 'extrapolate')
 
-    theta_func = interpolate.interp1d([0,1], [theta_prev,theta_next], kind='linear',fill_value='extrapolate')
-
-    fun=lambda t, m: linear_lamperti_ODE_RHS(t, m, p_func=p_func,theta_func=theta_func, alpha=alpha)
-    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2-X_prev], rtol=1e-2, atol=1e-2)
-    m_1= sol.y[0,-1]
-    var= sol.y[1,-1]
+    fun = lambda t, m: linear_lamperti_ODE_RHS(t, m, p_func = p_func, theta_func = theta_func, alpha = alpha)
+    sol = solve_ivp(fun, [0, 1], [X_prev,X_prev**2-X_prev], rtol = 1e-2, atol = 1e-2)
+    m_1 = sol.y[0,-1]
+    var = sol.y[1,-1]
 
     return(m_1,var)
 
