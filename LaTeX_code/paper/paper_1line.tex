@@ -184,11 +184,11 @@ Z_t = h(V_t) = \arcsin (2(V_t + p_t) -1)\,,
 \end{equation}
 that, after applying It\^{o}'s formula on $h(V_t)$, gives the state-independent diffusion SDE
 \begin{equation}
-dZ_t = \left[  \frac{- \theta_t V_t}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{2} \frac{\left( \frac{1}{2} - (V_t + p_t)\right)}{(V_t + p_t)(1 - V_t - p_t)}  \right] \,dt + \sqrt{2 \theta_t \alpha}\, dW_t \,. \label{eq:stindepSDE}
+dZ_t = \left[  \frac{- \theta_t V_t}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{2} \frac{\theta_t \alpha \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \right] \,dt + \sqrt{2 \theta_t \alpha}\, dW_t \,. \label{eq:stindepSDE}
 \end{equation}
 After replacing $V_t = \frac{\sin(Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
 \begin{equation}
-dZ_t = \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t) + \frac{\sin{Z_t}}{2}}{\cos{Z_t}} \,dt + \sqrt{2 \theta_t \alpha}\, dW_t \,. \label{eq:stindepSDE}
+dZ_t = \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t) + \theta_t \alpha \sin{(Z_t)}}{\cos{(Z_t)}} \,dt + \sqrt{2 \theta_t \alpha}\, dW_t \,. 
 \end{equation}
 
 
@@ -198,7 +198,8 @@ dZ_t = \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t) + \frac{\sin{Z_t}}{2}}{\cos{Z_t}
 %\end{align}
 %where the Lamperti trasform is given by $Z_t = \arcsin \left( \frac{1}{2} \left( V_t+p_t \right) - 1 \right) $. 
 
-We can see in Figure (\ref{fig:skew_after_lamperti}) the effects of the Lamperti transform on the forecast error data. The Lamperti transform has greatly reduced  the forecast error skewness and ensures that the process stays in the range $[0,1]$. Thus, in this case,  we can consider using a Gaussian density as a proxy transition density.
+We can see in Figure (\ref{fig:skew_after_lamperti}) the effects of the Lamperti transform on the forecast error data. 
+The Lamperti transform has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be approximated through Gaussian densities.
 %---END SECTION 3---
 
 %---BEGIN SECTION 4---
@@ -206,10 +207,10 @@ We can see in Figure (\ref{fig:skew_after_lamperti}) the effects of the Lamperti
 
 \subsection{Likelihood}
 
-Since $V_t$ defined by our SDE is Markovian, the likelihood function can be written as a product of transition densities.  Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
+The It\^{o} process $V_t$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function can be written as a product of transition densities.  Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
 
 \begin{equation}
-\mathcal{L}(\theta;V) =\prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j,i+1}|V_{j,i}},\bm{\theta} )  \rho (V_{j,0})
+\mathcal{L}(\bm{\theta};V) =\prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j,i+1}|V_{j,i}},\bm{\theta} )  \rho (V_{j,0})
 \label{likelihood}
 \end{equation}
 

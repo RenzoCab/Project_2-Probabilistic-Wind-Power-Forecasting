@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  28 JAN 2020 15:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  29 JAN 2020 10:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,9 +422,6 @@ File: biblatex.cfg
 
 (./paper_1line.aux
 
-LaTeX Warning: Label `eq:stindepSDE' multiply defined.
-
-
 LaTeX Warning: Label `tab:model_comparison' multiply defined.
 
 )
@@ -623,7 +620,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 175--176
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
@@ -633,35 +630,36 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 359.
+               Default added (so using `tbp') on input line 360.
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 371--373
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--374
 
  []
 
+[9]
 <plots/alpha_conv_beta.png, id=316, 438.1971pt x 311.2428pt>
 File: plots/alpha_conv_beta.png Graphic file (type png)
 <use plots/alpha_conv_beta.png>
-Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 377.
+Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 378.
 (pdftex.def)             Requested size: 438.19601pt x 311.24203pt.
 <plots/theta_conv_beta.png, id=318, 437.4744pt x 311.7246pt>
 File: plots/theta_conv_beta.png Graphic file (type png)
 <use plots/theta_conv_beta.png>
-Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 378.
+Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 379.
 (pdftex.def)             Requested size: 437.47331pt x 311.72383pt.
 <simulated/24hr/1099.pdf, id=319, 644.33852pt x 315.16559pt>
 File: simulated/24hr/1099.pdf Graphic file (type pdf)
 <use simulated/24hr/1099.pdf>
-Package pdftex.def Info: simulated/24hr/1099.pdf  used on input line 383.
+Package pdftex.def Info: simulated/24hr/1099.pdf  used on input line 384.
 (pdftex.def)             Requested size: 644.33694pt x 315.16481pt.
 <simulated/24hr/1178.pdf, id=320, 644.33852pt x 315.16559pt>
 File: simulated/24hr/1178.pdf Graphic file (type pdf)
 <use simulated/24hr/1178.pdf>
-Package pdftex.def Info: simulated/24hr/1178.pdf  used on input line 384.
+Package pdftex.def Info: simulated/24hr/1178.pdf  used on input line 385.
 (pdftex.def)             Requested size: 644.33694pt x 315.16481pt.
 
-Overfull \hbox (55.5478pt too wide) in paragraph at lines 383--385
+Overfull \hbox (55.5478pt too wide) in paragraph at lines 384--386
 [][] [] 
  []
 
@@ -672,42 +670,38 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: confidence_intervals/24hr/31.pdf Graphic file (type pdf)
 <use confidence_intervals/24hr/31.pdf>
 Package pdftex.def Info: confidence_intervals/24hr/31.pdf  used on input line 3
-89.
+90.
 (pdftex.def)             Requested size: 644.33694pt x 310.8286pt.
 <confidence_intervals/24hr/820.pdf, id=322, 644.33852pt x 310.82938pt>
 File: confidence_intervals/24hr/820.pdf Graphic file (type pdf)
 <use confidence_intervals/24hr/820.pdf>
 Package pdftex.def Info: confidence_intervals/24hr/820.pdf  used on input line 
-390.
+391.
 (pdftex.def)             Requested size: 644.33694pt x 310.8286pt.
 
-Overfull \hbox (55.5478pt too wide) in paragraph at lines 389--391
+Overfull \hbox (55.5478pt too wide) in paragraph at lines 390--392
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>] [11 <./simulat
+[10] [11 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png> <./simulat
 ed/24hr/1099.pdf> <./simulated/24hr/1178.pdf
 
 pdfTeX warning: pdflatex.exe (file ./simulated/24hr/1178.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
-> <./confidence_intervals/24hr/31.pdf
-
-pdfTeX warning: pdflatex.exe (file ./confidence_intervals/24hr/31.pdf): PDF inc
-lusion: multiple pdfs with page group included in a single page
-> <./confidence_intervals/24hr/820.pdf
-
-pdfTeX warning: pdflatex.exe (file ./confidence_intervals/24hr/820.pdf): PDF in
-clusion: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (6.95227pt too wide) in paragraph at lines 410--410
+Overfull \hbox (6.95227pt too wide) in paragraph at lines 411--411
 \OT1/cmr/m/it/10 Lit-er-a-ture Overview \OT1/cmr/m/n/10 (2nd edi-tion, tech. re
 p. ANEMOS.plus and SafeWind
  []
 
-[12] (./paper_1line.aux)
+[12 <./confidence_intervals/24hr/31.pdf> <./confidence_intervals/24hr/820.pdf
+
+pdfTeX warning: pdflatex.exe (file ./confidence_intervals/24hr/820.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
+>] (./paper_1line.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -718,7 +712,7 @@ Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 Here is how much of TeX's memory you used:
  11062 strings out of 492162
  193148 string characters out of 6129062
- 726586 words of memory out of 5000000
+ 727587 words of memory out of 5000000
  15284 multiletter control sequences out of 15000+600000
  19227 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -741,10 +735,10 @@ s/cm/cmr9.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/201
 9/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2019/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (12 pages, 623443 bytes).
+Output written on paper_1line.pdf (12 pages, 623175 bytes).
 PDF statistics:
  586 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 154 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
