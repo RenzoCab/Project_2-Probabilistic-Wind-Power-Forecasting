@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  29 JAN 2020 10:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  1 FEB 2020 08:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -7,8 +7,8 @@ entering extended mode
 LaTeX2e <2019-10-01> patch level 3
 (c:/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
-(c:/texlive/2019/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
+(c:/texlive/2019/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@section=\count81
@@ -141,6 +141,14 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
+(c:/texlive/2019/texmf-dist/tex/latex/preprint/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip46
+\@affilsep=\skip47
+\c@Maxaffil=\count100
+\c@authors=\count101
+\c@affil=\count102
+)
 (c:/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
 
@@ -163,7 +171,7 @@ Package pdftexcmds Info: \pdfdraftmode found.
 )
 (c:/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count100
+\etb@tempcnta=\count103
 )
 (c:/texlive/2019/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
@@ -173,7 +181,7 @@ Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 ))
 (c:/texlive/2019/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count101
+\lrq@indent=\count104
 
 (c:/texlive/2019/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -185,61 +193,61 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count102
-\c@listtotal=\count103
-\c@listcount=\count104
-\c@liststart=\count105
-\c@liststop=\count106
-\c@citecount=\count107
-\c@citetotal=\count108
-\c@multicitecount=\count109
-\c@multicitetotal=\count110
-\c@instcount=\count111
-\c@maxnames=\count112
-\c@minnames=\count113
-\c@maxitems=\count114
-\c@minitems=\count115
-\c@citecounter=\count116
-\c@maxcitecounter=\count117
-\c@savedcitecounter=\count118
-\c@uniquelist=\count119
-\c@uniquename=\count120
-\c@refsection=\count121
-\c@refsegment=\count122
-\c@maxextratitle=\count123
-\c@maxextratitleyear=\count124
-\c@maxextraname=\count125
-\c@maxextradate=\count126
-\c@maxextraalpha=\count127
-\c@abbrvpenalty=\count128
-\c@highnamepenalty=\count129
-\c@lownamepenalty=\count130
-\c@maxparens=\count131
-\c@parenlevel=\count132
-\blx@tempcnta=\count133
-\blx@tempcntb=\count134
-\blx@tempcntc=\count135
-\blx@maxsection=\count136
-\blx@maxsegment@0=\count137
-\blx@notetype=\count138
-\blx@parenlevel@text=\count139
-\blx@parenlevel@foot=\count140
-\blx@sectionciteorder@0=\count141
-\blx@entrysetcounter=\count142
-\labelnumberwidth=\skip46
-\labelalphawidth=\skip47
-\biblabelsep=\skip48
-\bibitemsep=\skip49
-\bibnamesep=\skip50
-\bibinitsep=\skip51
-\bibparsep=\skip52
-\bibhang=\skip53
+\c@tabx@nest=\count105
+\c@listtotal=\count106
+\c@listcount=\count107
+\c@liststart=\count108
+\c@liststop=\count109
+\c@citecount=\count110
+\c@citetotal=\count111
+\c@multicitecount=\count112
+\c@multicitetotal=\count113
+\c@instcount=\count114
+\c@maxnames=\count115
+\c@minnames=\count116
+\c@maxitems=\count117
+\c@minitems=\count118
+\c@citecounter=\count119
+\c@maxcitecounter=\count120
+\c@savedcitecounter=\count121
+\c@uniquelist=\count122
+\c@uniquename=\count123
+\c@refsection=\count124
+\c@refsegment=\count125
+\c@maxextratitle=\count126
+\c@maxextratitleyear=\count127
+\c@maxextraname=\count128
+\c@maxextradate=\count129
+\c@maxextraalpha=\count130
+\c@abbrvpenalty=\count131
+\c@highnamepenalty=\count132
+\c@lownamepenalty=\count133
+\c@maxparens=\count134
+\c@parenlevel=\count135
+\blx@tempcnta=\count136
+\blx@tempcntb=\count137
+\blx@tempcntc=\count138
+\blx@maxsection=\count139
+\blx@maxsegment@0=\count140
+\blx@notetype=\count141
+\blx@parenlevel@text=\count142
+\blx@parenlevel@foot=\count143
+\blx@sectionciteorder@0=\count144
+\blx@entrysetcounter=\count145
+\labelnumberwidth=\skip48
+\labelalphawidth=\skip49
+\biblabelsep=\skip50
+\bibitemsep=\skip51
+\bibnamesep=\skip52
+\bibinitsep=\skip53
+\bibparsep=\skip54
+\bibhang=\skip55
 \blx@bcfin=\read1
 \blx@bcfout=\write3
 \blx@langwohyphens=\language85
-\c@mincomprange=\count143
-\c@maxcomprange=\count144
-\c@mincompwidth=\count145
+\c@mincomprange=\count146
+\c@maxcomprange=\count147
+\c@mincompwidth=\count148
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -254,100 +262,100 @@ File: apa.dbx 2019/12/22 v9.4 APA biblatex style data model
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count146
-\c@savedafterword=\count147
-\c@annotator=\count148
-\c@savedannotator=\count149
-\c@author=\count150
-\c@savedauthor=\count151
-\c@bookauthor=\count152
-\c@savedbookauthor=\count153
-\c@commentator=\count154
-\c@savedcommentator=\count155
-\c@editor=\count156
-\c@savededitor=\count157
-\c@editora=\count158
-\c@savededitora=\count159
-\c@editorb=\count160
-\c@savededitorb=\count161
-\c@editorc=\count162
-\c@savededitorc=\count163
-\c@foreword=\count164
-\c@savedforeword=\count165
-\c@holder=\count166
-\c@savedholder=\count167
-\c@introduction=\count168
-\c@savedintroduction=\count169
-\c@namea=\count170
-\c@savednamea=\count171
-\c@nameb=\count172
-\c@savednameb=\count173
-\c@namec=\count174
-\c@savednamec=\count175
-\c@translator=\count176
-\c@savedtranslator=\count177
-\c@shortauthor=\count178
-\c@savedshortauthor=\count179
-\c@shorteditor=\count180
-\c@savedshorteditor=\count181
-\c@groupauthor=\count182
-\c@savedgroupauthor=\count183
-\c@narrator=\count184
-\c@savednarrator=\count185
-\c@execproducer=\count186
-\c@savedexecproducer=\count187
-\c@execdirector=\count188
-\c@savedexecdirector=\count189
-\c@with=\count190
-\c@savedwith=\count191
-\c@labelname=\count192
-\c@savedlabelname=\count193
-\c@institution=\count194
-\c@savedinstitution=\count195
-\c@lista=\count196
-\c@savedlista=\count197
-\c@listb=\count198
-\c@savedlistb=\count199
-\c@listc=\count266
-\c@savedlistc=\count267
-\c@listd=\count268
-\c@savedlistd=\count269
-\c@liste=\count270
-\c@savedliste=\count271
-\c@listf=\count272
-\c@savedlistf=\count273
-\c@location=\count274
-\c@savedlocation=\count275
-\c@organization=\count276
-\c@savedorganization=\count277
-\c@origlocation=\count278
-\c@savedoriglocation=\count279
-\c@origpublisher=\count280
-\c@savedorigpublisher=\count281
-\c@publisher=\count282
-\c@savedpublisher=\count283
-\c@language=\count284
-\c@savedlanguage=\count285
-\c@origlanguage=\count286
-\c@savedoriglanguage=\count287
-\c@citation=\count288
-\c@savedcitation=\count289
-\c@pageref=\count290
-\c@savedpageref=\count291
-\shorthandwidth=\skip54
-\shortjournalwidth=\skip55
-\shortserieswidth=\skip56
-\shorttitlewidth=\skip57
-\shortauthorwidth=\skip58
-\shorteditorwidth=\skip59
-\locallabelnumberwidth=\skip60
-\locallabelalphawidth=\skip61
-\localshorthandwidth=\skip62
-\localshortjournalwidth=\skip63
-\localshortserieswidth=\skip64
-\localshorttitlewidth=\skip65
-\localshortauthorwidth=\skip66
-\localshorteditorwidth=\skip67
+\c@afterword=\count149
+\c@savedafterword=\count150
+\c@annotator=\count151
+\c@savedannotator=\count152
+\c@author=\count153
+\c@savedauthor=\count154
+\c@bookauthor=\count155
+\c@savedbookauthor=\count156
+\c@commentator=\count157
+\c@savedcommentator=\count158
+\c@editor=\count159
+\c@savededitor=\count160
+\c@editora=\count161
+\c@savededitora=\count162
+\c@editorb=\count163
+\c@savededitorb=\count164
+\c@editorc=\count165
+\c@savededitorc=\count166
+\c@foreword=\count167
+\c@savedforeword=\count168
+\c@holder=\count169
+\c@savedholder=\count170
+\c@introduction=\count171
+\c@savedintroduction=\count172
+\c@namea=\count173
+\c@savednamea=\count174
+\c@nameb=\count175
+\c@savednameb=\count176
+\c@namec=\count177
+\c@savednamec=\count178
+\c@translator=\count179
+\c@savedtranslator=\count180
+\c@shortauthor=\count181
+\c@savedshortauthor=\count182
+\c@shorteditor=\count183
+\c@savedshorteditor=\count184
+\c@groupauthor=\count185
+\c@savedgroupauthor=\count186
+\c@narrator=\count187
+\c@savednarrator=\count188
+\c@execproducer=\count189
+\c@savedexecproducer=\count190
+\c@execdirector=\count191
+\c@savedexecdirector=\count192
+\c@with=\count193
+\c@savedwith=\count194
+\c@labelname=\count195
+\c@savedlabelname=\count196
+\c@institution=\count197
+\c@savedinstitution=\count198
+\c@lista=\count199
+\c@savedlista=\count266
+\c@listb=\count267
+\c@savedlistb=\count268
+\c@listc=\count269
+\c@savedlistc=\count270
+\c@listd=\count271
+\c@savedlistd=\count272
+\c@liste=\count273
+\c@savedliste=\count274
+\c@listf=\count275
+\c@savedlistf=\count276
+\c@location=\count277
+\c@savedlocation=\count278
+\c@organization=\count279
+\c@savedorganization=\count280
+\c@origlocation=\count281
+\c@savedoriglocation=\count282
+\c@origpublisher=\count283
+\c@savedorigpublisher=\count284
+\c@publisher=\count285
+\c@savedpublisher=\count286
+\c@language=\count287
+\c@savedlanguage=\count288
+\c@origlanguage=\count289
+\c@savedoriglanguage=\count290
+\c@citation=\count291
+\c@savedcitation=\count292
+\c@pageref=\count293
+\c@savedpageref=\count294
+\shorthandwidth=\skip56
+\shortjournalwidth=\skip57
+\shortserieswidth=\skip58
+\shorttitlewidth=\skip59
+\shortauthorwidth=\skip60
+\shorteditorwidth=\skip61
+\locallabelnumberwidth=\skip62
+\locallabelalphawidth=\skip63
+\localshorthandwidth=\skip64
+\localshortjournalwidth=\skip65
+\localshortserieswidth=\skip66
+\localshorttitlewidth=\skip67
+\localshortauthorwidth=\skip68
+\localshorteditorwidth=\skip69
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -359,19 +367,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (c:/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
-\c@textcitecount=\count292
-\c@textcitetotal=\count293
-\c@textcitemaxnames=\count294
-\c@biburlbigbreakpenalty=\count295
-\c@biburlbreakpenalty=\count296
-\c@biburlnumpenalty=\count297
-\c@biburlucpenalty=\count298
-\c@biburllcpenalty=\count299
+\c@textcitecount=\count295
+\c@textcitetotal=\count296
+\c@textcitemaxnames=\count297
+\c@biburlbigbreakpenalty=\count298
+\c@biburlbreakpenalty=\count299
+\c@biburlnumpenalty=\count300
+\c@biburlucpenalty=\count301
+\c@biburllcpenalty=\count302
 \biburlbigskip=\muskip12
 \biburlnumskip=\muskip13
 \biburlucskip=\muskip14
 \biburllcskip=\muskip15
-\c@smartand=\count300
+\c@smartand=\count303
 )
 Package biblatex Info: Trying to load bibliography style 'apa'...
 Package biblatex Info: ... file 'apa.bbx' found.
@@ -383,8 +391,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (c:/texlive/2019/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count301
-\c@bbx:relatedtotal=\count302
+\c@bbx:relatedcount=\count304
+\c@bbx:relatedtotal=\count305
 ))
 Package biblatex Info: Trying to load citation style 'apa'...
 Package biblatex Info: ... file 'apa.cbx' found.
@@ -417,8 +425,12 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 (c:/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
 ))
-\@quotelevel=\count303
-\@quotereset=\count304
+\@quotelevel=\count306
+\@quotereset=\count307
+
+
+LaTeX Warning: Unused global option(s):
+    [english].
 
 (./paper_1line.aux
 
@@ -427,30 +439,30 @@ LaTeX Warning: Label `tab:model_comparison' multiply defined.
 )
 \openout1 = `paper_1line.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
  (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count305
+\scratchcounter=\count308
 \scratchdimen=\dimen114
 \scratchbox=\box29
-\nofMPsegments=\count306
-\nofMParguments=\count307
+\nofMPsegments=\count309
+\nofMParguments=\count310
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count308
+\MPscratchCnt=\count311
 \MPscratchDim=\dimen115
-\MPnumerator=\count309
-\makeMPintoPDFobject=\count310
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
 \everyMPtoPDFconversion=\toks22
 ) (c:/texlive/2019/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
@@ -508,89 +520,86 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper_1line.bbl' found.
 
 (./paper_1line.bbl)
-Package biblatex Info: Reference section=0 on input line 20.
-Package biblatex Info: Reference segment=0 on input line 20.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+Package biblatex Info: Reference section=0 on input line 22.
+Package biblatex Info: Reference segment=0 on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
 
  (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 
 
 (c:/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
-8.
+Overfull \hbox (15.91705pt too wide) in paragraph at lines 49--50
+[]\OT1/cmr/m/n/10.95 Keywords: In-di-rect in-fer-ence, wind power, prob-a-bilis
+-tic fore-cast-ing, stochas-
+ []
 
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
+9.
 (c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 28.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
+ [1
 
-Overfull \hbox (167.78384pt too wide) in paragraph at lines 28--28
- [][] 
+{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (7.46118pt too wide) in paragraph at lines 70--71
+[]\OT1/cmr/m/n/10.95 We pro-pose to model wind power fore-casts er-rors us-ing 
+para-met-ric stochas-
  []
 
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
-
-Overfull \hbox (4.55615pt too wide) in paragraph at lines 49--50
-\OT1/cmr/m/n/10 providers (ESPs), In-de-pen-dent power pro-duc-ers (IPPs), and 
-en-ergy traders. 
- []
-
-[1
-
-{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<plots/data_1516064400.pdf, id=17, 649.21967pt x 285.15533pt>
+[2]
+<plots/data_1516064400.pdf, id=16, 649.21967pt x 285.15533pt>
 File: plots/data_1516064400.pdf Graphic file (type pdf)
 <use plots/data_1516064400.pdf>
-Package pdftex.def Info: plots/data_1516064400.pdf  used on input line 67.
+Package pdftex.def Info: plots/data_1516064400.pdf  used on input line 79.
 (pdftex.def)             Requested size: 649.21808pt x 285.15462pt.
-<plots/data_1516323600.pdf, id=18, 649.21967pt x 285.15533pt>
+<plots/data_1516323600.pdf, id=17, 649.21967pt x 285.15533pt>
 File: plots/data_1516323600.pdf Graphic file (type pdf)
 <use plots/data_1516323600.pdf>
-Package pdftex.def Info: plots/data_1516323600.pdf  used on input line 68.
+Package pdftex.def Info: plots/data_1516323600.pdf  used on input line 80.
 (pdftex.def)             Requested size: 649.21808pt x 285.15462pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 79--81
 
  []
 
-<plots/hist_low.pdf, id=19, 373.81534pt x 302.07793pt>
+<plots/hist_low.pdf, id=18, 373.81534pt x 302.07793pt>
 File: plots/hist_low.pdf Graphic file (type pdf)
 <use plots/hist_low.pdf>
-Package pdftex.def Info: plots/hist_low.pdf  used on input line 74.
+Package pdftex.def Info: plots/hist_low.pdf  used on input line 86.
 (pdftex.def)             Requested size: 373.81442pt x 302.07718pt.
-<plots/hist_mid.pdf, id=20, 392.965pt x 302.07793pt>
+<plots/hist_mid.pdf, id=19, 392.965pt x 302.07793pt>
 File: plots/hist_mid.pdf Graphic file (type pdf)
 <use plots/hist_mid.pdf>
-Package pdftex.def Info: plots/hist_mid.pdf  used on input line 75.
+Package pdftex.def Info: plots/hist_mid.pdf  used on input line 87.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
-<plots/hist_high.pdf, id=21, 395.47803pt x 302.07793pt>
+<plots/hist_high.pdf, id=20, 395.47803pt x 302.07793pt>
 File: plots/hist_high.pdf Graphic file (type pdf)
 <use plots/hist_high.pdf>
-Package pdftex.def Info: plots/hist_high.pdf  used on input line 76.
+Package pdftex.def Info: plots/hist_high.pdf  used on input line 88.
 (pdftex.def)             Requested size: 395.47705pt x 302.07718pt.
-<plots/hist_low_lamperti.pdf, id=22, 392.965pt x 302.07793pt>
+<plots/hist_low_lamperti.pdf, id=21, 392.965pt x 302.07793pt>
 File: plots/hist_low_lamperti.pdf Graphic file (type pdf)
 <use plots/hist_low_lamperti.pdf>
-Package pdftex.def Info: plots/hist_low_lamperti.pdf  used on input line 82.
+Package pdftex.def Info: plots/hist_low_lamperti.pdf  used on input line 94.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
-<plots/hist_mid_lamperti.pdf, id=23, 392.965pt x 302.07793pt>
+<plots/hist_mid_lamperti.pdf, id=22, 392.965pt x 302.07793pt>
 File: plots/hist_mid_lamperti.pdf Graphic file (type pdf)
 <use plots/hist_mid_lamperti.pdf>
-Package pdftex.def Info: plots/hist_mid_lamperti.pdf  used on input line 83.
+Package pdftex.def Info: plots/hist_mid_lamperti.pdf  used on input line 95.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
-<plots/hist_high_lamperti.pdf, id=24, 392.965pt x 302.07793pt>
+<plots/hist_high_lamperti.pdf, id=23, 392.965pt x 302.07793pt>
 File: plots/hist_high_lamperti.pdf Graphic file (type pdf)
 <use plots/hist_high_lamperti.pdf>
-Package pdftex.def Info: plots/hist_high_lamperti.pdf  used on input line 84.
+Package pdftex.def Info: plots/hist_high_lamperti.pdf  used on input line 96.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
-[3 <./plots/data_1516064400.pdf> <./plots/data_1516323600.pdf
+[3] [4 <./plots/data_1516064400.pdf> <./plots/data_1516323600.pdf
 
 pdfTeX warning: pdflatex.exe (file ./plots/data_1516323600.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
@@ -606,7 +615,11 @@ le pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex.exe (file ./plots/hist_high.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
->] [4 <./plots/hist_low_lamperti.pdf> <./plots/hist_mid_lamperti.pdf
+> <./plots/hist_low_lamperti.pdf
+
+pdfTeX warning: pdflatex.exe (file ./plots/hist_low_lamperti.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./plots/hist_mid_lamperti.pdf
 
 pdfTeX warning: pdflatex.exe (file ./plots/hist_mid_lamperti.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
@@ -615,93 +628,111 @@ n: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex.exe (file ./plots/hist_high_lamperti.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
 >] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Overfull \hbox (4.3962pt too wide) in paragraph at lines 188--188
+[]\OT1/cmr/bx/n/14.4 State in-de-pen-dent dif-fu-sion: Lam-perti trans-form 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
+Overfull \hbox (13.23021pt too wide) detected at line 203
+\OML/cmm/m/it/10.95 dZ[] \OT1/cmr/m/n/10.95 = []  \OML/cmm/m/it/10.95 dt \OT1/c
+mr/m/n/10.95 + [] \OML/cmm/m/it/10.95 dW[] :
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 
  []
 
-[7] [8]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[8] [9] [10]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 360.
+               Default added (so using `tbp') on input line 381.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--374
+Underfull \hbox (badness 10000) in paragraph at lines 393--395
 
  []
 
-[9]
-<plots/alpha_conv_beta.png, id=316, 438.1971pt x 311.2428pt>
+[11]
+<plots/alpha_conv_beta.png, id=319, 438.1971pt x 311.2428pt>
 File: plots/alpha_conv_beta.png Graphic file (type png)
 <use plots/alpha_conv_beta.png>
-Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 378.
+Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 399.
 (pdftex.def)             Requested size: 438.19601pt x 311.24203pt.
-<plots/theta_conv_beta.png, id=318, 437.4744pt x 311.7246pt>
+<plots/theta_conv_beta.png, id=321, 437.4744pt x 311.7246pt>
 File: plots/theta_conv_beta.png Graphic file (type png)
 <use plots/theta_conv_beta.png>
-Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 379.
+Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 400.
 (pdftex.def)             Requested size: 437.47331pt x 311.72383pt.
-<simulated/24hr/1099.pdf, id=319, 644.33852pt x 315.16559pt>
+<simulated/24hr/1099.pdf, id=322, 644.33852pt x 315.16559pt>
 File: simulated/24hr/1099.pdf Graphic file (type pdf)
 <use simulated/24hr/1099.pdf>
-Package pdftex.def Info: simulated/24hr/1099.pdf  used on input line 384.
+Package pdftex.def Info: simulated/24hr/1099.pdf  used on input line 405.
 (pdftex.def)             Requested size: 644.33694pt x 315.16481pt.
-<simulated/24hr/1178.pdf, id=320, 644.33852pt x 315.16559pt>
+<simulated/24hr/1178.pdf, id=323, 644.33852pt x 315.16559pt>
 File: simulated/24hr/1178.pdf Graphic file (type pdf)
 <use simulated/24hr/1178.pdf>
-Package pdftex.def Info: simulated/24hr/1178.pdf  used on input line 385.
+Package pdftex.def Info: simulated/24hr/1178.pdf  used on input line 406.
 (pdftex.def)             Requested size: 644.33694pt x 315.16481pt.
 
-Overfull \hbox (55.5478pt too wide) in paragraph at lines 384--386
+Overfull \hbox (40.75893pt too wide) in paragraph at lines 405--407
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<confidence_intervals/24hr/31.pdf, id=321, 644.33852pt x 310.82938pt>
+<confidence_intervals/24hr/31.pdf, id=324, 644.33852pt x 310.82938pt>
 File: confidence_intervals/24hr/31.pdf Graphic file (type pdf)
 <use confidence_intervals/24hr/31.pdf>
-Package pdftex.def Info: confidence_intervals/24hr/31.pdf  used on input line 3
-90.
+Package pdftex.def Info: confidence_intervals/24hr/31.pdf  used on input line 4
+11.
 (pdftex.def)             Requested size: 644.33694pt x 310.8286pt.
-<confidence_intervals/24hr/820.pdf, id=322, 644.33852pt x 310.82938pt>
+<confidence_intervals/24hr/820.pdf, id=325, 644.33852pt x 310.82938pt>
 File: confidence_intervals/24hr/820.pdf Graphic file (type pdf)
 <use confidence_intervals/24hr/820.pdf>
 Package pdftex.def Info: confidence_intervals/24hr/820.pdf  used on input line 
-391.
+412.
 (pdftex.def)             Requested size: 644.33694pt x 310.8286pt.
 
-Overfull \hbox (55.5478pt too wide) in paragraph at lines 390--392
+Overfull \hbox (40.75893pt too wide) in paragraph at lines 411--413
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10] [11 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png> <./simulat
+[12 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>] [13 <./simulat
 ed/24hr/1099.pdf> <./simulated/24hr/1178.pdf
 
 pdfTeX warning: pdflatex.exe (file ./simulated/24hr/1178.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
->]
-Overfull \hbox (6.95227pt too wide) in paragraph at lines 411--411
-\OT1/cmr/m/it/10 Lit-er-a-ture Overview \OT1/cmr/m/n/10 (2nd edi-tion, tech. re
-p. ANEMOS.plus and SafeWind
- []
+> <./confidence_intervals/24hr/31.pdf
 
-[12 <./confidence_intervals/24hr/31.pdf> <./confidence_intervals/24hr/820.pdf
+pdfTeX warning: pdflatex.exe (file ./confidence_intervals/24hr/31.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+> <./confidence_intervals/24hr/820.pdf
 
 pdfTeX warning: pdflatex.exe (file ./confidence_intervals/24hr/820.pdf): PDF in
 clusion: multiple pdfs with page group included in a single page
->] (./paper_1line.aux)
+>]
+Overfull \hbox (4.52342pt too wide) in paragraph at lines 432--432
+\OT1/cmr/m/n/10.95 tiv-ity in Stochas-tic Wind Power Fore-cast Mod-els. In M. P
+a-padrakakis,
+ []
+
+
+Overfull \hbox (1.04347pt too wide) in paragraph at lines 432--432
+\OT1/cmr/m/it/10.95 Con-fer-ence on Un-cer-tainty Quan-tifi-ca-tion in Com-pu-t
+a-tional Sci-ences
+ []
+
+[14] [15] (./paper_1line.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -710,35 +741,33 @@ Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11062 strings out of 492162
- 193148 string characters out of 6129062
- 727587 words of memory out of 5000000
- 15284 multiletter control sequences out of 15000+600000
- 19227 words of font info for 71 fonts, out of 8000000 for 9000
+ 11139 strings out of 492162
+ 194196 string characters out of 6129062
+ 726514 words of memory out of 5000000
+ 15364 multiletter control sequences out of 15000+600000
+ 19528 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,14n,51p,1248b,4720s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2019/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c
-:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/
-2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2019/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr9.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/201
-9/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2019/texmf-d
-ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (12 pages, 623175 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+b10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c
+:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/
+2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on paper_1line.pdf (15 pages, 601665 bytes).
 PDF statistics:
- 586 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
+ 587 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

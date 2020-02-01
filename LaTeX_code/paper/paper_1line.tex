@@ -1,10 +1,12 @@
-\documentclass{article}
+\documentclass[11pt,english]{article}
 
 \usepackage{graphicx}
 \usepackage{amssymb, amsmath}
 \usepackage{bm} % more powerful version to get bold
 
 \usepackage{xcolor}
+
+\usepackage{authblk}
 
 \usepackage[backend=biber, style=apa,autocite=inline]{biblatex} % package for bibliography
 \DeclareLanguageMapping{english}{english-apa}
@@ -21,13 +23,21 @@
 
 \title{ Stochastic Wind Power Forecasting }  % \\  \small{Report}}
 
-\author{ Waled Alhaddad\textsuperscript{\textasteriskcentered} \qquad Ahmed Kebaier\textsuperscript{\ddag} \qquad Ra\'ul  Tempone\textsuperscript{\textasteriskcentered}\textsuperscript{\textdagger} \\
-\textsuperscript{\textasteriskcentered}CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia \\ \textsuperscript{\textdagger}Alexander von Humboldt Professor, RWTH Aachen University,  Germany
- \\ \textsuperscript{\ddag}Université Paris 13, Sorbonne Paris Cité, LAGA, CNRS (UMR 7539) , Villetaneuse , France }
+\author[1]{Waled Alhaddad}
+\author[2]{Ahmed Kebaier}
+\author[3]{ Ra\'ul  Tempone}
+%\author[2]{Corresponding Author\thanks{email@2nduniversity.com}}
+\affil[1,3]{CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia}
+\affil[3]{Alexander von Humboldt Professor, RWTH Aachen University, Germany}
+\affil[2]{Université Paris 13, Sorbonne Paris Cité, LAGA, CNRS (UMR 7539), Villetaneuse, France}
+
+%\author{ Waled Alhaddad \textsuperscript{\textasteriskcentered} \qquad Ahmed Kebaier\textsuperscript{\ddag} \qquad Ra\'ul  Tempone\textsuperscript{\textasteriskcentered}\textsuperscript{\textdagger} \\
+%\textsuperscript{\textasteriskcentered}CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia \\ \textsuperscript{\textdagger}Alexander von Humboldt Professor, RWTH Aachen University, Germany
+% \\ \textsuperscript{\ddag}Université Paris 13, Sorbonne Paris Cité, LAGA, CNRS (UMR 7539), Villetaneuse, France}
 
 \maketitle
 %\thispagestyle{empty}
-{\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection, sensitivity.}
+
 %%%%%%%%% ABSTRACT
 
 \begin{abstract}
@@ -36,13 +46,15 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 \end{abstract}
 
+{\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection, sensitivity.}
+
 %%%%%%%%% BODY TEXT
 
 
 %---BEGIN SECTION 1---
 \section{Introduction}  \label{Section_1}
 
-Reliable wind power generation forecasting is crucial for the following applications [ref]:
+Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
 \begin{itemize}
 \item Allocation of energy reserves such as water levels in dams or oil, and gas reserves.
 \item Operation scheduling of non-controlable power plants.
@@ -90,14 +102,17 @@ In this paper we present the phenomenological underlying model in Section \ref{S
 %---BEGIN SECTION 2---
 \section{Phenomenological  Model} \label{Section_2}
 
-We introduce the following phenomenological model. Let $\{X_t, \, t>0\}$  be the  wind power generation forecasts stochastic process defined by the following parameterized stochastic differential equation (SDE)
+We introduce the following phenomenological model. Let $X = \{X_t, \, t>0\}$  be the  wind power generation forecasts stochastic process defined by the following parameterized stochastic differential equation (SDE)
 
-\begin{align}
-dX_t & =  a(X_t; p_t, \dot{p}_t,\bm{\theta}) \ dt + b (X_t; p_t, \bm{\theta} ) \ dW_t \nonumber \\ 
-X_0 & =  x_0\,,   \label{eq:main}
-\end{align}
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dX_t \!\!\!&=  a(X_t; p_t, \dot{p}_t,\bm{\theta}) \,dt + b (X_t; p_t, \bm{\theta} ) \,dW_t  \\
+     X_0  \!\!\!&=  x_0,
+  \end{array}\right. \label{eq:main}
+\end{equation} 
+
 where
-
 
 \begin{itemize}
 \item $a(\cdot; p_t, \dot{p}_t,\bm{\theta}):[0,1] \to \mathbb{R} \ $  denotes a drift function,
@@ -107,7 +122,7 @@ where
 \item $\{W_t, \, t >0\}$ is a standard Wiener process in $\mathbb{R}$.
 \end{itemize}
 
- In this work, $p_t$ is to be considered as a deterministic forecast of the wind power generation at time $t$ which is available from an official source. 
+In this work, $p_t$ is to be considered as a deterministic forecast of the wind power generation at time $t$ which is available from an official source. 
 
 Our goal is to provide a specification of the model (\ref{eq:main}) to follow closely the available wind power forecasts while ensuring its unbiasedness with respect to the forecast. It is straightforward to show that $\mathbb{E} \left[X_t\right] = p_t$, where $p_t$ is the available deterministic wind power forecast for the time $t$.
 
@@ -174,7 +189,7 @@ V_0 & = v_0 \,. \label{VtSDE}
 
 Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. \\
 
-We consider the following transformation 
+We consider the following Lamperti transformation 
 \begin{equation}
 Z_t = h(V_t) = \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
 \end{equation}
@@ -198,8 +213,8 @@ dZ_t = \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t) + \theta_t \alpha \sin{(Z_t)}}{\
 %\end{align}
 %where the Lamperti trasform is given by $Z_t = \arcsin \left( \frac{1}{2} \left( V_t+p_t \right) - 1 \right) $. 
 
-We can see in Figure (\ref{fig:skew_after_lamperti}) the effects of the Lamperti transform on the forecast error data. 
-The Lamperti transform has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be approximated through Gaussian densities.
+We can see in Figure (\ref{fig:skew_after_lamperti}) the effect of the Lamperti transformation upon the forecast error data. 
+The Lamperti transformation has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be adequately approximated through Gaussian densities.
 %---END SECTION 3---
 
 %---BEGIN SECTION 4---
@@ -207,21 +222,27 @@ The Lamperti transform has greatly reduced the forecast error skewness, ensuring
 
 \subsection{Likelihood}
 
-The It\^{o} process $V_t$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function can be written as a product of transition densities.  Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
+Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t >0 \}$ is sampled at $N$ equispaced discrete points with length interval $\Delta_N$, and let $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$ denote this random sample. 
 
+Let $\rho_i(v \vert v_{j, t_{i-1}} ; \bm{\theta})$ denote the conditional probability density of $V_{j, t_i}$ given $V_{j, t_{i-1}} = v_{j, t_{i-1}}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
+
+The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the data can be written as the following product of transition densities:  
+%Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
 \begin{equation}
-\mathcal{L}(\bm{\theta};V) =\prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j,i+1}|V_{j,i}},\bm{\theta} )  \rho (V_{j,0})
+\mathcal{L}(\bm{\theta}; V^{M,N}) = \prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho_i ( {V_{j, t_i}| V_{j, t_{i-1}}} ; \bm{\theta} )  \, \rho_0 (V_{j, t_0}) \,.
 \label{likelihood}
 \end{equation}
 
-The transition densities can be exactly obtained by solving the following parametric Fokker-Planck equation,
+The exact computation of the likelihood (\ref{likelihood}) relies on the availability of a closed-form expression for the transition densities of $V$ that, on the basis of the Markovian property of $V$, are characterized, for $ t_{j, i-1} < t < t_{j,i}$,  as solutions of the Fokker-Planck-Kolmogorov equation (\cite[36]{iacus1}, \cite[61-68]{saso}):
 
 \begin{align}
-\frac{ \partial f }{\partial t } & (v ,t | x , s, \theta_0 , \alpha )= - \frac{\partial}{ \partial v} ( a( v;  p_t, \dot{p}_t, \theta_0 ) f( v ,t | x , s, \theta_0  , \alpha ) ) \nonumber \\
-& + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( b^2(v; p_t, \theta_0, \alpha  )  f(v ,t | x , s,\theta_0 , \alpha ) ) \quad  t < s \,.\\
+\frac{ \partial f }{\partial t } & \rho_i(v_{j,i} ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} )= - \frac{\partial}{ \partial v} (- \theta_t v \, \rho_i(v ,t_{j,i} \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ) \nonumber \\
+& + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( 2 \theta_t \alpha (v+ p_t) (1 - v- p_t) \, \rho_i(v ,t_{j,i} \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) )\,,  \label{eq:fpk}
 \end{align}
+subject to the initial conditions $\rho_{i-1}(v , t_{j, i-1} , \bm{\theta} ) = \delta(v - V_{j, t_{i-1}}) \,,$ where $ \delta(v - V_{j, t_{i-1}})$ is the Dirac-delta generalized function centered at $ V_{j, t_{i-1}}\,,$ and suitable boundary conditions.
 
-This is a parametric PDE which is computationally expensive to solve and optimize for every transition. Therefore, we consider approximate likelihood methods.
+Nevertheless, closed-form solutions to this initial-boundary value problem can be obtained only in a few cases. Besides, solving numerically (\ref{eq:fpk}) at every transition step is computationally expensive. 
+Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. 
 
 \subsection{Approximate Likelihood}
 Solving for transition densities of the process $V_t$ requires solving the Fokker-Planck equation at every step which is computationally prohibitive. A common choice is performing a Gaussian approximation of the transition densities, but this is inappropriate here due to physical constraints which give rise to asymmetric forecasting errors as seen in figure (\ref{fig:skew_data}).\\

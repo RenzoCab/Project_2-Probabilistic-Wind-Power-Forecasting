@@ -235,7 +235,6 @@
       \field{title}{A {L}iterature {R}eview of {W}ind {F}orecasting {M}ethods}
       \field{volume}{2}
       \field{year}{2014}
-      \true{nocite}
       \field{pages}{161\bibrangedash 168}
       \range{pages}{8}
       \verb{doi}
@@ -367,7 +366,6 @@
       \field{title}{The {S}tate of the {A}rt in {S}hort-{T}erm {P}rediction of {W}ind {P}ower. A {L}iterature {O}verview}
       \field{type}{techreport}
       \field{year}{2011}
-      \true{nocite}
       \verb{doi}
       \verb 10.13140/RG.2.1.2581.4485
       \endverb
@@ -435,6 +433,53 @@
       \verb{url}
       \verb https://doi.org/10.1002/9780412399206
       \endverb
+    \endentry
+    \entry{hurn}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=7cc2d1f74cff492e953435ea73188b45}{%
+           family={Hurn},
+           familyi={H\bibinitperiod},
+           given={A.S.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb2e97843968867b006521a0632740a5}{%
+           family={Jeisman},
+           familyi={J\bibinitperiod},
+           given={J.I.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=008a69f4079b2056944448563a15b97c}{%
+           family={Lindsay},
+           familyi={L\bibinitperiod},
+           given={K.A.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{59e95d1ad4df551c83a3d04b507d2c0f}
+      \strng{fullhash}{1cd6668f31b34a4a28faadc31a43ff12}
+      \strng{bibnamehash}{1cd6668f31b34a4a28faadc31a43ff12}
+      \strng{authorbibnamehash}{1cd6668f31b34a4a28faadc31a43ff12}
+      \strng{authornamehash}{59e95d1ad4df551c83a3d04b507d2c0f}
+      \strng{authorfullhash}{1cd6668f31b34a4a28faadc31a43ff12}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Financial Econometrics}
+      \field{number}{3}
+      \field{title}{Seeing the Wood for the Trees: A Critical Evaluation of Methods to Estimate the Parameters of Stochastic Differential Equations}
+      \field{volume}{5}
+      \field{year}{2007}
+      \true{nocite}
+      \field{pages}{390\bibrangedash 455}
+      \range{pages}{66}
+      \verb{doi}
+      \verb 10.1093/jjfinec/nbm009
+      \endverb
+      \keyw{Wind-SDE}
     \endentry
     \entry{iacus1}{book}{}
       \name{author}{1}{}{%
@@ -940,6 +985,76 @@
       \true{nocite}
       \field{pages}{181\bibrangedash 219}
       \range{pages}{39}
+      \keyw{Wind-SDE}
+    \endentry
+    \entry{zhbo}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=16afd9391f364b3271b8cebd5c90d52f}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ebccafec4489a1203684275a47839f55}{%
+           family={Botterud},
+           familyi={B\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3702f1c146e64a6c91fc47b81ea59fc7}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=773767b0a1621b24a1459812af869250}{%
+           family={Bessa},
+           familyi={B\bibinitperiod},
+           given={R.J.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3c68b9b14e057bc01f0d76101c93d66a}{%
+           family={Keko},
+           familyi={K\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2fa7c9453deeddd0dbc3d8477dc83f4d}{%
+           family={Sumaili},
+           familyi={S\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7f1d2b11fd1e4681299e0c9e32c18c29}{%
+           family={Miranda},
+           familyi={M\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{55bb903f07ef80a3809f5998738e9374}
+      \strng{fullhash}{b3d48d4ea1166d56280ddc85d4564663}
+      \strng{bibnamehash}{b3d48d4ea1166d56280ddc85d4564663}
+      \strng{authorbibnamehash}{b3d48d4ea1166d56280ddc85d4564663}
+      \strng{authornamehash}{55bb903f07ef80a3809f5998738e9374}
+      \strng{authorfullhash}{b3d48d4ea1166d56280ddc85d4564663}
+      \field{sortinit}{Z}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wind Energy}
+      \field{number}{3}
+      \field{title}{Application of probabilistic wind power forecasting in electricity markets}
+      \field{volume}{16}
+      \field{year}{2013}
+      \field{pages}{321\bibrangedash 338}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1002/we.1496
+      \endverb
       \keyw{Wind-SDE}
     \endentry
   \enddatalist
