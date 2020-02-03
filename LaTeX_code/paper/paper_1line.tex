@@ -241,11 +241,13 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 \end{align}
 subject to the initial conditions $\rho_{i-1}(v , t_{j, i-1} , \bm{\theta} ) = \delta(v - V_{j, t_{i-1}}) \,,$ where $ \delta(v - V_{j, t_{i-1}})$ is the Dirac-delta generalized function centered at $ V_{j, t_{i-1}}\,,$ and suitable boundary conditions.
 
-Nevertheless, closed-form solutions to this initial-boundary value problem can be obtained only in a few cases. Besides, solving numerically (\ref{eq:fpk}) at every transition step is computationally expensive. 
-Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. 
+Closed-form solutions to initial-boundary value problem for SDEs can be obtained only in a few cases. Besides, in our case solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
+Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.
 
 \subsection{Approximate Likelihood}
-Solving for transition densities of the process $V_t$ requires solving the Fokker-Planck equation at every step which is computationally prohibitive. A common choice is performing a Gaussian approximation of the transition densities, but this is inappropriate here due to physical constraints which give rise to asymmetric forecasting errors as seen in figure (\ref{fig:skew_data}).\\
+
+
+A common choice is performing a Gaussian approximation of the transition densities, but this is inappropriate here due to physical constraints which give rise to asymmetric forecasting errors as seen in figure (\ref{fig:skew_data}).\\
 
 We propose a proxy transition density. We match the moments of our SDE model with that of the proxy density. Using It\^o formula, we arrive at the following iterative ODEs for the state dependent diffusion formulation (\ref{VtSDE})
 \begin{equation}
