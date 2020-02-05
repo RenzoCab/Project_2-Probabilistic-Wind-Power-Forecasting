@@ -48,6 +48,8 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 {\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection, sensitivity.}
 
+{\color{red} Add AMS Classification.}
+
 %%%%%%%%% BODY TEXT
 
 
@@ -57,13 +59,13 @@ Reliable wind power generation forecasting is crucial for applications such as t
 Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
 \begin{itemize}
 \item Allocation of energy reserves such as water levels in dams or oil, and gas reserves.
-\item Operation scheduling of non-controlable power plants.
+\item Operation scheduling of controlable power plants.
 \item Optimization of the price of electricity for different parties such as electric utilities, Transmission system operator (TSOs), Electricity service providers (ESPs), Independent power producers (IPPs), and energy traders.
 \item Maintenance planning such as that of power plants components and transmission lines.
 
 \end{itemize}
 
-Different methods have been applied to wind power forecasting. They can be generally categorized as follows: physical models, statistical methods, artificial intelligence methods and hybrid approaches. The output of such methods is usually a deterministic forecast. Occasionally probabilistic forecasts are produced through uncertainty propagation in the data, parameters or through forecast ensembles. However, there is a lacking in simulating and producing data driven stochastic forecasts based on real-world performance of forecasting models. It is crucial to capture actual performance of a forecast as it has been known that different forecasting technologies exhibits different behavior for different wind farms and seasons [ref]. This is due to many factors which forecast are challenged to capture such as the surrounding terrains of the wind farm and the condition of the blades such as icing, wear and tear or dirt. It is known that complex terrains in both off shore and on shore locations decrease the accuracy of wind power forecasts significantly [ref]. It also has been shown that the performance of forecasts varies from month to month. Thus the performance of wind power forecasts is location and time dependent.
+Different methods have been applied to wind power forecasting. They can be generally categorized as follows: physical models, statistical methods, artificial intelligence methods and hybrid approaches. The output of such methods is usually a deterministic forecast. Occasionally probabilistic forecasts are produced through uncertainty propagation in the data, parameters or through forecast ensembles. {\color{red} Expand discussion about works on probabilistic forecasting.} However, there is a lacking in simulating and producing data driven stochastic forecasts based on real-world performance of forecasting models. It is crucial to capture actual performance of a forecast as it has been known that different forecasting technologies exhibits different behavior for different wind farms and seasons [ref]. This is due to many factors which forecast are challenged to capture such as the surrounding terrains of the wind farm and the condition of the blades such as icing, wear and tear or dirt. It is known that complex terrains in both off shore and on shore locations decrease the accuracy of wind power forecasts significantly [ref]. It also has been shown that the performance of forecasts varies from month to month. Thus the performance of wind power forecasts is location and time dependent.
 
 Many approaches have been taken to evaluate the uncertainty of a given forecast. There are two types of errors: level errors and phase errors. The use of mean or median errors in this context may be misleading as wind power forecast errors are asymmetric. This is a natural consequence of wind power being non-negative and bounded by the maximuim capacity of production. This is important as the associated cost to power forecast errors are also asymmetric due to different costs for up and down  power regulations which are determined by the electricity market [ref].
 
@@ -71,14 +73,16 @@ We propose to model wind power forecasts errors using parametric stochastic diff
 
 Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations (SDEs). Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to French and Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2017-2018.
 
+{\color{red} Change this paragraph. Discuss with the global dataset, the dataset after removing days when curtailing has been detected, the data set without curtailing and with Lamperti transform.}
 We use a year long data set from Uruguay based on 1000 observation paths, each of which is 72-hours long with observations recorded every 10 min. In total, it is a data set of approximatly half a million data points recorded in 2018. See Figure (\ref{fig:sample_data}). The data is normalized with respect to the maximuim power capacity of wind power production in Uruguay. The asymmetry or skew nature of the data is clear when inspected for different power production levels. We split the aggregated data into a low, meduim and high power range. See Figure (\ref{fig:skew_data}).
+{\color{red} Analysis of the autocorrelation, removing days to achieve independence.} 
 
 In this paper we present the phenomenological underlying model in Section \ref{Section_2} and describe the physical constraints in Section \ref{Section_3} and how these constrains can be met. Then, in Section \ref{Section_4}, we will introduce an alternative formulation of the model in Lamperti space. In Section \ref{Section_5}, we show our parameter estimation procedure and its results in Section \ref{Section_6}. We compare alternative models in Section \ref{Section_7} and different forecast providers in Section \ref{Section_8}.
 
 \begin{figure}
   \includegraphics[width=60mm,scale=1]{plots/data_1516064400.pdf}
   \includegraphics[width=60mm,scale=1]{plots/data_1516323600.pdf}\\
-  \caption{Two samples from the Uruguayan of 2018. Each sample compromises of two 72-hour paths. In yellow is an hourly wind power production forecast. In blue is the actual wind power production recorded in 10 minute intervals.}
+  \caption{Two samples from the Uruguayan of 2018. Each sample compromises of two 72-hour paths. In yellow is an hourly wind power production forecast. In blue is the actual wind power production recorded in 10 minute intervals. {\color{red} New figures with 2019 Uruguayan dataset.}}
   \label{fig:sample_data}
 \end{figure}
 
@@ -86,7 +90,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=38mm,scale=1]{plots/hist_low.pdf}
   \includegraphics[width=38mm,scale=1]{plots/hist_mid.pdf}
   \includegraphics[width=38mm,scale=1]{plots/hist_high.pdf}
-  \caption{We see that forecast errors exhibit skewness near the boundries (i.e. low and high power production regimes.). Low power is when produced power is less than $0.3$, mid power is when it is between $0.3$ and $0.6$ and high power when is larger than $0.6$. }
+  \caption{We see that forecast errors exhibit skewness near the boundries (i.e. low and high power production regimes.). Low power is when produced power is less than $0.3$, mid power is when it is between $0.3$ and $0.6$ and high power when is larger than $0.6$.   {\color{red} New figures with 2019 Uruguayan dataset.}}
   \label{fig:skew_data}
 \end{figure}
 
@@ -94,7 +98,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=38mm,scale=1]{plots/hist_low_lamperti.pdf}
   \includegraphics[width=38mm,scale=1]{plots/hist_mid_lamperti.pdf}
   \includegraphics[width=38mm,scale=1]{plots/hist_high_lamperti.pdf}
-  \caption{We observe that skewness has been greatly reduced after the Lamperti transformation. This motivates us to use a Gaussian transition density as a proxy density.}
+  \caption{We observe that skewness has been greatly reduced after the Lamperti transformation. This motivates us to use a Gaussian transition density as a proxy density.  {\color{red} New figures with 2019 Uruguayan dataset.}}
   \label{fig:skew_after_lamperti}
 \end{figure}
 %---END SECTION 1---
@@ -129,10 +133,13 @@ Our goal is to provide a specification of the model (\ref{eq:main}) to follow cl
 \subsection{Physical Constrains}
 
 Let $p_t$ be a numerical wind power forecast, which is an input to this approach. Assume that the wind power generation forecasts are modeled as solutions to the following It\^{o} stochastic differential equation
-\begin{align}
-dX_t&= \dot{p}_t \ dt - \theta_t (X_t - p_t) \ dt + b (X_t; \bm{\theta} ) \ dW_t\,, \quad t > 0 \nonumber \\
-X_0 &= x_0\,. \label{model:derivative_tracking_X}
-\end{align}
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dX_t \!\!\!&= \dot{p}_t \ dt - \theta_t (X_t - p_t) \ dt + b (X_t; \bm{\theta} ) \ dW_t\,, \quad t > 0  \\
+   X_0  \!\!\!&=  x_0 \,.
+ \end{array}\right.  \label{model:derivative_tracking_X}
+\end{equation} 
 
 According to the SDE specification in (\ref{model:derivative_tracking_X}), the process $X_t$ satisfies the two following properties: \begin{itemize}
 \item it is mean reverting to the wind power forecast $p_t$, and 
@@ -147,40 +154,45 @@ Observe that a mean reverting model without derivative tracking exhibits consist
 \end{figure}
 
 
-We normalize the forecast and production data to Uruguay  installed power capacity at the time of observation. Thus our process must be limited to the range $[0,1]$. To enforce this constraint, our  drift and diffusion terms  must satisfy certain rules.
+We normalize the forecast and production data to Uruguay installed power capacity at the time of observation. Thus our process must be limited to the range $[0,1]$. To enforce this constraint, our  drift and diffusion terms  must satisfy certain rules.
  
 
 Let $\bm{\theta} = (\theta_0,\alpha)$. We want a process that follow the wind forecast, thus we choose mean reverting drift term which also tracks the derivative of $p_t$, which is an input to our model.
   \begin{equation}
     a(x; p_t,\bm{\theta})=  \dot{p_t} - \theta_t(x - p_t)
   \end{equation}
-where $\theta_t>0$ is a time-dependent parameter that controls the speed of reversion.
+where $\theta_t>0$ is a time-dependent parameter that controls the speed of reversion. {\color{red} Derivative tracking does not assure that the paths of the process $X$ take values in $[0,1]$.}
 
 
 We would like  a diffusion term that vanishes at the boundaries to prevent the process from escaping the region $[0,1]$.
   \begin{equation}
     b (x; p_t,\bm{\theta} )= \sqrt{2 \theta_t \alpha x (1-x)}
   \end{equation}
-  where $\alpha >0$ is a constant parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and , in particular, it is a Jacobi type diffusion.
+  where $\alpha >0$ is a constant parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and , in particular, it is a Jacobi type diffusion. {\color{red} Add expressions and references for these class of diffusions, for example \cite{iacus1}.}
 
 To further ensure that the process does not escape the region $[0,1]$, the mean reversion parameter has to be selected according to the following rule. Observe that the time derivative term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s.  inside the range $[0,1]$. In other words, the zero drift line defined by $a(x; p_t,\bm{\theta}) =0$, which an attractor, must be contained inside the range $[0,1]$. Thus, we must have that
 \begin{equation}
-\frac{- |\dot{p_t}|}{p_t} \leq \theta \leq \frac{|\dot{p}_t|}{1- p_t}
+\frac{- |\dot{p_t}|}{p_t} \leq \theta_t \leq \frac{|\dot{p}_t|}{1- p_t}
 \end{equation}
 which is satisfied  by choosing a time-dependent  $\theta_t$ as follows,
 \begin{equation}
-\theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0 \label{theta_t}
+\theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0\,. \label{theta_t}
 \end{equation}
+
+{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unkonwn parameter appear in \ref{theta_t}. } 
 
 \subsubsection*{Change of Variables:}
 To avoid differentiation of the forecast $p_t$ and simplify, we apply the change of variables $$V_t = X_t - p_t \,.$$ 
 
 The  model becomes,
-\begin{align}
-dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t  \nonumber \\ %\quad t > 0
-V_0 & = v_0 \,. \label{VtSDE}
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dV_t \!\!\!&=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t   \\ %\quad t > 0
+V_0 \!\!\!&=  v_0 \,. \label{VtSDE}
 % \theta_t &= \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right )\\
-\end{align}
+\end{array}\right. 
+\end{equation}
 %---END SECTION 2---
 
 
@@ -189,7 +201,7 @@ V_0 & = v_0 \,. \label{VtSDE}
 
 Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. \\
 
-We consider the following Lamperti transformation 
+We consider the following Lamperti transformation  {\color{red} (Modify the transformation to obtain an unitary diffusion coefficient in the SDE for $Z$. Remind that in continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
 \begin{equation}
 Z_t = h(V_t) = \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
 \end{equation}
@@ -229,9 +241,11 @@ Let $\rho_i(v \vert v_{j, t_{i-1}} ; \bm{\theta})$ denote the conditional probab
 The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the data can be written as the following product of transition densities:  
 %Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
 \begin{equation}
-\mathcal{L}(\bm{\theta}; V^{M,N}) = \prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho_i ( {V_{j, t_i}| V_{j, t_{i-1}}} ; \bm{\theta} )  \, \rho_0 (V_{j, t_0}) \,.
+\mathcal{L}(\bm{\theta}; V^{M,N}) = \prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j, t_i}| V_{j, t_{i-1}}} ; p_{[t_{i-1}, t_{i}]},  \bm{\theta} )  \, \rho_0 (V_{j, t_0}) \,.
 \label{likelihood}
 \end{equation}
+
+ {\color{red} In \ref{likelihood} modify the expression for $\rho_0$ contemplating the lag, say $\delta$, between the time when the forecast is done and the first time of forecasting. $\rho_0$ can be written as a conditional density between these two times. Once $\theta_0$ and $\alpha$ have been estimated, one could estimate $\delta$.}
 
 The exact computation of the likelihood (\ref{likelihood}) relies on the availability of a closed-form expression for the transition densities of $V$ that, on the basis of the Markovian property of $V$, are characterized, for $ t_{j, i-1} < t < t_{j,i}$,  as solutions of the Fokker-Planck-Kolmogorov equation (\cite[36]{iacus1}, \cite[61-68]{saso}):
 
@@ -239,7 +253,7 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 \frac{ \partial f }{\partial t } & \rho_i(v_{j,i} ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} )= - \frac{\partial}{ \partial v} (- \theta_t v \, \rho_i(v ,t_{j,i} \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ) \nonumber \\
 & + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( 2 \theta_t \alpha (v+ p_t) (1 - v- p_t) \, \rho_i(v ,t_{j,i} \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) )\,,  \label{eq:fpk}
 \end{align}
-subject to the initial conditions $\rho_{i-1}(v , t_{j, i-1} , \bm{\theta} ) = \delta(v - V_{j, t_{i-1}}) \,,$ where $ \delta(v - V_{j, t_{i-1}})$ is the Dirac-delta generalized function centered at $ V_{j, t_{i-1}}\,,$ and suitable boundary conditions.
+subject to the initial conditions $\rho_{i-1}(v , t_{j, i-1} , \bm{\theta} ) = \delta(v - V_{j, t_{i-1}}) \,,$ where $ \delta(v - V_{j, t_{i-1}})$ is the Dirac-delta generalized function centered at $ V_{j, t_{i-1}}\,.$
 
 Closed-form solutions to initial-boundary value problem for SDEs can be obtained only in a few cases. Besides, in our case solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
 Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.
@@ -269,7 +283,7 @@ And for the state independent diffusion formulation, similarly, we  obtain a sys
 & \quad + \theta_t (\alpha - 1) \sec^2(m_1 (t))  + 2 \theta_t \alpha \,.
 \end{align}
 
-A suitable candidate for a proxy transition density is a Beta probability distribution as it is compactly supported and can morph into symmetric and asymmetric shapes.
+A suitable candidate for a proxy transition density is a Beta probability distribution as it is compactly supported and can morph into symmetric and asymmetric shapes. {\color{red} Move this sentence to next section.}
 
 \subsubsection*{ Moment Matching}
 To approximate the transition densities of  the process $V_t$ by a Beta distribution, we match its moments with the shape parameters $\xi_1, \xi_2$ of a Beta proxy density on $[-1,1]$. The any moment of the process $V_t$ is  given by solving the corresponding ODE system  for the $k^{th}$  moment,
@@ -281,8 +295,9 @@ The shape parameters are given by
 where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$
 
 \subsection{Optimization}
+{\color{red} Rewrite the discussion to obtain fast initial estimate for the two unknow parameters.}
 
-To initialize the optimization process, we solve the following least-squares problem which gives us first estimates of the mean reversion parameter $\theta_0$:
+To initialize the optimization process for the likelihood function of the process $V$, we solve the following least-squares problem which gives us first estimates of the mean reversion parameter $\theta_0$: {\color{red} Add explanation regarding the motivation for this objective function.}
 
 \begin{equation}
  \arg\min \sum\limits_{i}^M \sum\limits_j^N \left( v_{i+1,j}  - v_{i,j}- \left( - \theta_t v_{i,j}\right) \left(t_{i+1,j} - t_{i,j} \right)  \right)^2 ,
@@ -290,7 +305,7 @@ To initialize the optimization process, we solve the following least-squares pro
  
  where $v_{i,j}=x_{i,j}-p_{i,j}$,  $x_{i,j}$ is historical wind power production and $p_{i,j}$ is the wind power forecast.
  
- By assuming ergodicity, we can obtain a first estimate on the product of the parameters as follows,
+ By assuming ergodicity {\color{red} not ergodicity, instead simply for the quadratic variation formula.}, we can obtain a first estimate on the product of the parameters as follows,
  
 \begin{equation}
 \theta_0 \alpha = \frac{1}{M} \sum\limits_i^M \frac{ \sum\limits_j^N (x_{i+1,j}  - x_{i,j})^2}{2 \sum\limits_j^N x_{i,j}(1-x_{i,j}) } \,.
@@ -309,7 +324,7 @@ Solving for $\alpha$, we have both first estimates to quick start the inference 
 
 We compare two candidate models to find the best-fit that maximizes the retained information,
 \begin{itemize}
-  \item Model 0: This model does not feature derivative tracking.
+  \item Model 1: This model does not feature derivative tracking.
   \begin{align}
   dX_t &=  - \theta_0 (p_t-X_t) \  dt + \sqrt{2 \theta \alpha X_t (1-X_t)} \  dW_t   \nonumber \\ %\quad t > 0
   X_0 & = x_0 \,, \label{M0}
@@ -326,7 +341,7 @@ We compare two candidate models to find the best-fit that maximizes the retained
 %  with $\theta_t$ given by (\ref{theta_t}). This model has been used by [ insert ref ] and [ insert ref ]. Initial interest in this model stems from interest in long-term stationary solution, which may exists  if the forecast is constant. However, this is almost never occurs and thus including the term $p_t(1-p_t)$ is irrelevant. Additionally, the term $p_t(1-p_t)$ leads the model to become deterministic when the forecast is at the boundaries (i.e.$p=1$ or $p=0$)  which is not realistic. We have run computations on this model and the results were not satisfactory. Therefore, we exclude this model from further discussions.
 %  
 
-  \item Model 1: This model features derivative tracking, i.e. it is equivalent to (\ref{model:derivative_tracking_X}).
+  \item Model 2: This model features derivative tracking, i.e. it is equivalent to (\ref{model:derivative_tracking_X}).
   \begin{align}
   dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t   \nonumber \\ %\quad t > 0
   V_0 & = v_0 \,, \label{M2}
@@ -339,7 +354,7 @@ We compare two candidate models to find the best-fit that maximizes the retained
 \begin{tabular}{|c|c|c|c|}
 \hline
 Model   &  parameters $(\theta_0, \alpha)$   & AIC & BIC \\ \hline
-Model 0 &  $(\add,\add) $    &  \add   &  \add   \\ \hline
+Model 1 &  $(\add,\add) $    &  \add   &  \add   \\ \hline
 Model 2 &   $(\add,\add)$   &  \add   &   \add    \\ \hline
 \end{tabular}
 \caption{We compare the different models based on information criterion. \add }
@@ -392,6 +407,10 @@ With Lamperti transform &   $(12,0.29) \pm (\add , \add)  $   \\ \hline
 \label{tab:model_comparison}
 \end{table}
 
+{\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models (if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.)}
+
+{\color{red} Discuss to which extent it is needed more accuracy in the estimation of $\bm{\theta}$. How many data we need to achive enough accuracy for the estimates of the two parameters? Generally, such accuracy is application dependent}
+
  We are able to obtain the parameters based on the complete data sets. Using the different models variations, we are able to simulate wind power production given a forecast. We see in figures ()-()
 five possible wind power production paths for each model.\\
 
@@ -400,26 +419,24 @@ In Figures ()-(), we show point-wise empirical confidence bands for the differen
 \begin{figure}
   \includegraphics[width=56mm,scale=1]{plots/alpha_conv_beta.png}
   \includegraphics[width=56mm,scale=1]{plots/theta_conv_beta.png}
-  \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to  year 2018. }
+  \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to  year 2018.{\color{red} Figure with data 2019} }
 \end{figure}
 
     \begin{figure}[h]
       \includegraphics[width=70mm,scale=1]{simulated/24hr/1099.pdf}
       \includegraphics[width=70mm,scale=1]{simulated/24hr/1178.pdf}
-      \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Forecast is from Uruguay pertaining to  year 2018. }
+      \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Forecast is from Uruguay pertaining to  year 2018. {\color{red} Figure with data 2019}}
     \end{figure}
 
     \begin{figure}[h]
       \includegraphics[width=70mm,scale=1]{confidence_intervals/24hr/31.pdf}
       \includegraphics[width=70mm,scale=1]{confidence_intervals/24hr/820.pdf}
-       \caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2018. }
+       \caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2018. {\color{red} Figure with data 2019}}
     \end{figure}
 %---END SECTION 7---
 
 %---BEGIN SECTION 8---
 \section{Conclusions} \label{Section_8}
-
-{\color{red} Application: Using this tool, it is possible to iterate over hyper parameters for the wind power forecasting, reaching an optimal forecasting.}
 
 We have proposed a method to produce stochastic wind power forecasts based on parametric SDEs. This method is agnostic of the wind power forecasting technology. Using this method, we were able to simulate future wind power production paths and obtain confidence bands. We conclude that Model 2 is a best-fit model. It features time-derivative tracking of the forecast, time-dependent mean reversion parameter, and a more natural diffusion term. Moreover, the model preserves the asymmetry of wind power forecast errors and their correlation structure.
 

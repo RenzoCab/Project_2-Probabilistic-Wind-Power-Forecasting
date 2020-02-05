@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  1 FEB 2020 08:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  5 FEB 2020 04:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -538,17 +538,17 @@ Overfull \hbox (15.91705pt too wide) in paragraph at lines 49--50
 -tic fore-cast-ing, stochas-
  []
 
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
-9.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 6
+1.
 (c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
  [1
 
 {c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (7.46118pt too wide) in paragraph at lines 70--71
+Overfull \hbox (7.46118pt too wide) in paragraph at lines 72--73
 []\OT1/cmr/m/n/10.95 We pro-pose to model wind power fore-casts er-rors us-ing 
 para-met-ric stochas-
  []
@@ -557,47 +557,47 @@ para-met-ric stochas-
 <plots/data_1516064400.pdf, id=16, 649.21967pt x 285.15533pt>
 File: plots/data_1516064400.pdf Graphic file (type pdf)
 <use plots/data_1516064400.pdf>
-Package pdftex.def Info: plots/data_1516064400.pdf  used on input line 79.
+Package pdftex.def Info: plots/data_1516064400.pdf  used on input line 83.
 (pdftex.def)             Requested size: 649.21808pt x 285.15462pt.
 <plots/data_1516323600.pdf, id=17, 649.21967pt x 285.15533pt>
 File: plots/data_1516323600.pdf Graphic file (type pdf)
 <use plots/data_1516323600.pdf>
-Package pdftex.def Info: plots/data_1516323600.pdf  used on input line 80.
+Package pdftex.def Info: plots/data_1516323600.pdf  used on input line 84.
 (pdftex.def)             Requested size: 649.21808pt x 285.15462pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
+Underfull \hbox (badness 10000) in paragraph at lines 83--85
 
  []
 
 <plots/hist_low.pdf, id=18, 373.81534pt x 302.07793pt>
 File: plots/hist_low.pdf Graphic file (type pdf)
 <use plots/hist_low.pdf>
-Package pdftex.def Info: plots/hist_low.pdf  used on input line 86.
+Package pdftex.def Info: plots/hist_low.pdf  used on input line 90.
 (pdftex.def)             Requested size: 373.81442pt x 302.07718pt.
 <plots/hist_mid.pdf, id=19, 392.965pt x 302.07793pt>
 File: plots/hist_mid.pdf Graphic file (type pdf)
 <use plots/hist_mid.pdf>
-Package pdftex.def Info: plots/hist_mid.pdf  used on input line 87.
+Package pdftex.def Info: plots/hist_mid.pdf  used on input line 91.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
 <plots/hist_high.pdf, id=20, 395.47803pt x 302.07793pt>
 File: plots/hist_high.pdf Graphic file (type pdf)
 <use plots/hist_high.pdf>
-Package pdftex.def Info: plots/hist_high.pdf  used on input line 88.
+Package pdftex.def Info: plots/hist_high.pdf  used on input line 92.
 (pdftex.def)             Requested size: 395.47705pt x 302.07718pt.
 <plots/hist_low_lamperti.pdf, id=21, 392.965pt x 302.07793pt>
 File: plots/hist_low_lamperti.pdf Graphic file (type pdf)
 <use plots/hist_low_lamperti.pdf>
-Package pdftex.def Info: plots/hist_low_lamperti.pdf  used on input line 94.
+Package pdftex.def Info: plots/hist_low_lamperti.pdf  used on input line 98.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
 <plots/hist_mid_lamperti.pdf, id=22, 392.965pt x 302.07793pt>
 File: plots/hist_mid_lamperti.pdf Graphic file (type pdf)
 <use plots/hist_mid_lamperti.pdf>
-Package pdftex.def Info: plots/hist_mid_lamperti.pdf  used on input line 95.
+Package pdftex.def Info: plots/hist_mid_lamperti.pdf  used on input line 99.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
 <plots/hist_high_lamperti.pdf, id=23, 392.965pt x 302.07793pt>
 File: plots/hist_high_lamperti.pdf Graphic file (type pdf)
 <use plots/hist_high_lamperti.pdf>
-Package pdftex.def Info: plots/hist_high_lamperti.pdf  used on input line 96.
+Package pdftex.def Info: plots/hist_high_lamperti.pdf  used on input line 100.
 (pdftex.def)             Requested size: 392.96404pt x 302.07718pt.
 [3] [4 <./plots/data_1516064400.pdf> <./plots/data_1516323600.pdf
 
@@ -627,87 +627,86 @@ n: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex.exe (file ./plots/hist_high_lamperti.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
->] [5]
-Overfull \hbox (4.3962pt too wide) in paragraph at lines 188--188
+>] [5] [6]
+Overfull \hbox (4.3962pt too wide) in paragraph at lines 200--200
 []\OT1/cmr/bx/n/14.4 State in-de-pen-dent dif-fu-sion: Lam-perti trans-form 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
 
  []
 
-[6]
-Overfull \hbox (13.23021pt too wide) detected at line 203
+
+Overfull \hbox (13.23021pt too wide) detected at line 215
 \OML/cmm/m/it/10.95 dZ[] \OT1/cmr/m/n/10.95 = []  \OML/cmm/m/it/10.95 dt \OT1/c
 mr/m/n/10.95 + [] \OML/cmm/m/it/10.95 dW[] :
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 264--265
 
  []
 
-[8] [9] [10]
+[9] [10] [11]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 381.
+               Default added (so using `tbp') on input line 398.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 393--395
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 414--416
 
  []
 
-[11]
-<plots/alpha_conv_beta.png, id=319, 438.1971pt x 311.2428pt>
+<plots/alpha_conv_beta.png, id=322, 438.1971pt x 311.2428pt>
 File: plots/alpha_conv_beta.png Graphic file (type png)
 <use plots/alpha_conv_beta.png>
-Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 399.
+Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 420.
 (pdftex.def)             Requested size: 438.19601pt x 311.24203pt.
-<plots/theta_conv_beta.png, id=321, 437.4744pt x 311.7246pt>
+<plots/theta_conv_beta.png, id=324, 437.4744pt x 311.7246pt>
 File: plots/theta_conv_beta.png Graphic file (type png)
 <use plots/theta_conv_beta.png>
-Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 400.
+Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 421.
 (pdftex.def)             Requested size: 437.47331pt x 311.72383pt.
-<simulated/24hr/1099.pdf, id=322, 644.33852pt x 315.16559pt>
+<simulated/24hr/1099.pdf, id=325, 644.33852pt x 315.16559pt>
 File: simulated/24hr/1099.pdf Graphic file (type pdf)
 <use simulated/24hr/1099.pdf>
-Package pdftex.def Info: simulated/24hr/1099.pdf  used on input line 405.
+Package pdftex.def Info: simulated/24hr/1099.pdf  used on input line 426.
 (pdftex.def)             Requested size: 644.33694pt x 315.16481pt.
-<simulated/24hr/1178.pdf, id=323, 644.33852pt x 315.16559pt>
+<simulated/24hr/1178.pdf, id=326, 644.33852pt x 315.16559pt>
 File: simulated/24hr/1178.pdf Graphic file (type pdf)
 <use simulated/24hr/1178.pdf>
-Package pdftex.def Info: simulated/24hr/1178.pdf  used on input line 406.
+Package pdftex.def Info: simulated/24hr/1178.pdf  used on input line 427.
 (pdftex.def)             Requested size: 644.33694pt x 315.16481pt.
 
-Overfull \hbox (40.75893pt too wide) in paragraph at lines 405--407
+Overfull \hbox (40.75893pt too wide) in paragraph at lines 426--428
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<confidence_intervals/24hr/31.pdf, id=324, 644.33852pt x 310.82938pt>
+<confidence_intervals/24hr/31.pdf, id=327, 644.33852pt x 310.82938pt>
 File: confidence_intervals/24hr/31.pdf Graphic file (type pdf)
 <use confidence_intervals/24hr/31.pdf>
 Package pdftex.def Info: confidence_intervals/24hr/31.pdf  used on input line 4
-11.
+32.
 (pdftex.def)             Requested size: 644.33694pt x 310.8286pt.
-<confidence_intervals/24hr/820.pdf, id=325, 644.33852pt x 310.82938pt>
+<confidence_intervals/24hr/820.pdf, id=328, 644.33852pt x 310.82938pt>
 File: confidence_intervals/24hr/820.pdf Graphic file (type pdf)
 <use confidence_intervals/24hr/820.pdf>
 Package pdftex.def Info: confidence_intervals/24hr/820.pdf  used on input line 
-412.
+433.
 (pdftex.def)             Requested size: 644.33694pt x 310.8286pt.
 
-Overfull \hbox (40.75893pt too wide) in paragraph at lines 411--413
+Overfull \hbox (40.75893pt too wide) in paragraph at lines 432--434
 [][] [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>] [13 <./simulat
+[13 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>] [14 <./simulat
 ed/24hr/1099.pdf> <./simulated/24hr/1178.pdf
 
 pdfTeX warning: pdflatex.exe (file ./simulated/24hr/1178.pdf): PDF inclusion: m
@@ -721,18 +720,18 @@ lusion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex.exe (file ./confidence_intervals/24hr/820.pdf): PDF in
 clusion: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (4.52342pt too wide) in paragraph at lines 432--432
+Overfull \hbox (4.52342pt too wide) in paragraph at lines 451--451
 \OT1/cmr/m/n/10.95 tiv-ity in Stochas-tic Wind Power Fore-cast Mod-els. In M. P
 a-padrakakis,
  []
 
 
-Overfull \hbox (1.04347pt too wide) in paragraph at lines 432--432
+Overfull \hbox (1.04347pt too wide) in paragraph at lines 451--451
 \OT1/cmr/m/it/10.95 Con-fer-ence on Un-cer-tainty Quan-tifi-ca-tion in Com-pu-t
 a-tional Sci-ences
  []
 
-[14] [15] (./paper_1line.aux)
+[15] [16] (./paper_1line.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -741,13 +740,13 @@ Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11139 strings out of 492162
- 194196 string characters out of 6129062
- 726514 words of memory out of 5000000
- 15364 multiletter control sequences out of 15000+600000
+ 11142 strings out of 492162
+ 194229 string characters out of 6129062
+ 726537 words of memory out of 5000000
+ 15367 multiletter control sequences out of 15000+600000
  19528 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,14n,51p,1248b,4720s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,14n,57p,1333b,4720s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-di
@@ -764,10 +763,10 @@ ic/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:
 /texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (15 pages, 601665 bytes).
+Output written on paper_1line.pdf (16 pages, 604907 bytes).
 PDF statistics:
- 587 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 590 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
