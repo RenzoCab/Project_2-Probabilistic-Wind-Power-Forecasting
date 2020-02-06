@@ -1,4 +1,5 @@
 import numpy as np
+import pandas
 import matplotlib.pyplot as plt #general plotting
 import matplotlib.cm as cm #plotting color map
 import matplotlib as mpl #plotting ellipse
@@ -201,11 +202,7 @@ class model_modified_drift: #this is the MAIN / MOST recent class for model.
 
     def rand_beta_objective(self, param, batch_size, batch, send_end_to_evaluater = None):
 
-        X  = self.data
-        p  = self.forecast
         N  = self.disct.N
-        dt = self.disct.dt
-        M  = self.disct.M
         # Input parameters:
         theta,alpha = param;
         # batch_size = int(batch_size):
@@ -597,7 +594,7 @@ class model_modified_drift: #this is the MAIN / MOST recent class for model.
             likelihood = self.lamperti_likelihood_linearized
             print('Evaluating using lamperti_likelihood_linearized')
         elif inference == 'rand_beta_objective':
-            likelihood = self.rand_beta_objective
+            likelihood = self.rand_beta_objective # THIS ONE!
             print('Evaluating using rand_beta_objective')
         elif inference == 'rand_approx_lamperti':
             likelihood = self.rand_approx_lamperti
@@ -612,8 +609,8 @@ class model_modified_drift: #this is the MAIN / MOST recent class for model.
             # "options": {'xatol': 10e-2 , 'fatol' : 10e-2}
             min_param = scipy.optimize.minimize(fun = likelihood, x0 = param_initial,
             args = (batch_size, batch), method = "Nelder-Mead")
-            #min_param=scipy.optimize.minimize(fun=lambda param: likelihood(param, batch_size, batch) , x0=param_initial ,args=minimizer_kwargs)
-            #min_param = basinhopping(lambda param: likelihood(param, batch_size, batch) , param_initial,T=temp ,minimizer_kwargs=minimizer_kwargs,niter=niter)
+            #min_param = scipy.optimize.minimize(fun=lambda param: likelihood(param, batch_size, batch), x0 = param_initial, args = minimizer_kwargs)
+            #min_param = basinhopping(lambda param: likelihood(param, batch_size, batch), param_initial, T = temp, minimizer_kwargs = minimizer_kwargs, niter = niter)
         if method == "L-BFGS-B":
             minimizer_kwargs = {"method": "L-BFGS-B", "options":{ 'gtol': myfactr, 'ftol': myfactr, "maxiter": 10}}
             min_param        = basinhopping(likelihood, param_initial, T = temp, minimizer_kwargs = minimizer_kwargs, niter = niter)
@@ -2187,117 +2184,90 @@ def empirical_Confidence_Interval_plots_old(forecast_data_inter,\
     np.save(dir_path + '/q75', q75)
     np.save(dir_path + '/q25', q25)
 
+def path_simulator(forecast_data_inter, hours, real_in, disct_in, list_forecast_number, dir_path):
 
+    if isinstance(hours, int) == False:
+        raise ValueError('Hours is not an integer. Please use integer values only.')
 
-def path_simulator(forecast_data_inter,hours,\
-    real_in, disct_in,list_forecast_number,\
-    dir_path):
+    os.makedirs(dir_path + '/' + str(hours) + 'hr', exist_ok = True)
+    N = disct_in.N
+    num_forecasts = len(list_forecast_number) # Not very important.
 
-    if isinstance(hours, int)==False:
-        raise ValueError('hours is not an integer. Please use integer values only.')
+    # This is the x-axe. I will change it so it becomes normalized.
+    xnew = np.linspace(0,N,(N+1))
+    x    = np.linspace(1,N,N)
+    xx   = np.linspace(0,1,145) # Corresponding to the time from 00:00 to 00:00 with intervals of 10 minutes.
 
-    os.makedirs(dir_path + '/'+str(hours)+'hr',exist_ok=True)
-    #os.makedirs(dir_path + '/6hr',exist_ok=True)
-    N=disct_in.N
-    #interpolation_points=disct_in.N
-    num_forecasts=len(list_forecast_number) # to follow the custom forecast order
+    theta = real_in.mu
+    alpha = real_in.sigma
 
-    xnew = np.linspace(0,N,(N+1)) #np.linspace(0,N,N+1)
-    x = np.linspace(1,N,N)
-
-
-    theta= real_in.mu #7.8155
-    alpha= real_in.sigma #1.072
-    j=0
-    for k in list_forecast_number: #   #range(0,n_paths): #n_paths
-        p=forecast_data_inter[2,k,:N] #obtain cleansed forecast
-        inter_1=interpolate.interp1d(x, p, fill_value='extrapolate')
-        p=inter_1(xnew)
-        d=forecast_data_inter[1,k,:N]
+    for k in list_forecast_number:
+        p         = forecast_data_inter[2,k,:N]
+        inter_1   = interpolate.interp1d(x, p, fill_value = 'extrapolate')
+        p         = inter_1(xnew)
+        X         = forecast_data_inter[1,k,:N]
         dt_object = dtM.datetime.fromtimestamp(forecast_data_inter[0,k,0])
-        dt=1
-        M_test=disct_in.M
+        dt        = disct_in.dt
+        M_test    = disct_in.M
 
-        # THIS: plots the forcast data.
-        fig=plt.figure(2,figsize=(10, 4))
+        # THIS: plots the forecast data. Over it, we will plot the simulations.
+        fig = plt.figure(2,figsize = (10, 4))
         fig.clf()
-        # plt.plot(xnew,p, label='forecast')
-        plt.plot(x,d, label='actual production')
+        plt.plot(x, X, label = 'Actual Production')
+        theta_adjusted, zero_drift_fixed = theta_adjust(theta,p)
 
-        # plt.xlim(1, 73)
-        # plt.ylim(-0.1, 1.1)
-        # plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
+        real_1 = real(theta_adjusted, alpha )
 
-        # plt.xticks( fontsize = 20);
-        # plt.yticks( fontsize = 20);
-        # plt.xlabel('Time [hr]',fontsize = 24)
-        # plt.ylabel('Power',fontsize = 24)
-        # plt.legend( prop={'size': 15})
-        # plt.savefig('Forecast_data_'+ str(k)+'.pdf', bbox_inches="tight")
+        disct_temp = disct((N+1), dt, M_test)
 
-        theta_adjusted, zero_drift_fixed=theta_adjust(theta,p)
-
-        real_1 = real(theta_adjusted, alpha ) #theta_array
-
-        disct_temp = disct((N+1),dt,M_test)
-
-        X = np.empty((M_test,(N+1)));
-        X= gen_X_normal_euler_DT_modified(X0=p[0],disct=disct_temp,real=real_1,forecast=p)
-
-        #plotting
-        # fig=plt.figure(2,figsize=(10, 4))
-        # fig.clf()
+        X = np.empty((M_test, (N+1)));
+        X = gen_X_normal_euler_DT_modified(X0 = p[0], disct = disct_temp, real = real_1, forecast = p)
 
         plt.xlim(1, hours)
         plt.ylim(-0.1, 1.1)
 
-        plt.plot(xnew,p, 'k-', label='forecast',linewidth=5)
-        #plt.plot(x,d , 'y-', label='actual production',linewidth=2)
+        plt.plot(xnew,p, 'k-', label = 'forecast', linewidth = 5)
 
-        for i in range(0,len(X)):
-            plt.plot(xnew,X[i] , '-',linewidth=1,markersize=4)
-        plt.plot(xnew,X[i] , '-', label='simulated production',linewidth=1,markersize=4)
-
-        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)#,fontsize=24
-
+        for i in range(0, len(X)):
+            plt.plot(xnew, X[i], '-', linewidth = 1, markersize = 4)
+        plt.plot(xnew, X[i], '-', label = 'Simulated Production', linewidth = 1, markersize = 4)
+        plt.title('{:%d, %b %Y (%H:%M)}'.format(dt_object),fontsize=24)
         plt.xticks( fontsize = 20);
         plt.yticks( fontsize = 20);
-        plt.xlabel('Time [min]',fontsize = 24)
-        plt.ylabel('Power',fontsize = 24)
+        plt.xlabel('Time [min]', fontsize = 24)
+        plt.ylabel('Power', fontsize = 24)
         plt.legend( prop={'size': 20})
-        plt.savefig(dir_path+'/'+ str(hours) +'hr/'+str(k)+'.pdf', bbox_inches="tight");
+        plt.savefig(dir_path + '/' + str(hours) + 'hr/' + str(k) + '.pdf', bbox_inches = "tight");
 
-    file_object  = open(dir_path+'/parameter.info', 'w')
-    note='Simulation of ' + str(num_forecasts)+' forecasts spanning '\
-    + str(N) +' hours.'+ '\n' +'Parameters used are theta= '\
-    +str(theta) + ' and alpha= ' + str(alpha) + '.Generated by '+str(M_test) \
+    file_object  = open(dir_path + '/parameter.info', 'w')
+    note = 'Simulation of ' + str(num_forecasts) + ' Forecasts Spanning '\
+    + str(N) + ' hours.' + '\n' + 'Parameters used are theta= '\
+    + str(theta) + ' and alpha= ' + str(alpha) + '.Generated by '+ str(M_test)\
     + ' simulations.'
     file_object.write(note)
     file_object.close()
     np.save(dir_path + '/forecast_list', list_forecast_number)
 
-
-
-def compute_path_moments(j,N,X,p,theta_adjusted, alpha, send_end):
-    m_1=0  #fix initial condition as zero error in the first point
-    m_2=0
-    dN=1/N
-    L_n=0
+def compute_path_moments(j, N, X, p, theta_adjusted, alpha, send_end):
+    m_1 = 0  #fix initial condition as zero error in the first point
+    m_2 = 0
+    dN  = 1/N
+    L_n = 0
     for i in range(0,N-1): #start from 1 or zero #Implement Tripizoidal scheme
-        m_1=X[j,i]*np.exp(- dN*theta_adjusted[i])
-        m_2=  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
+        m_1 = X[j,i]*np.exp(- dN*theta_adjusted[i])
+        m_2 =  (X[j,i]**2 + 2*dN*( X[j,i]*(alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i])*(1-2*p[j,i] )) + \
                      alpha*theta_adjusted[i]*p[j,i]**2*(1-p[j,i])**2) ) /(  1+ dN*2*(theta_adjusted[i]+alpha*theta_adjusted[i]*p[j,i]*(1-p[j,i]) ))
-        a=m_1;
-        b=m_2- m_1**2;
+        a = m_1;
+        b = m_2 - m_1**2;
 
         if np.isnan(a): print('a is nan')
         if np.isnan(b): print('b is nan')
         if not np.isfinite(a): print('a is infinite')
         if not np.isfinite(b): print('b is infinite')
 
-        if b==0: b=1e-16
-        if b<0:
-            b=1e-16
+        if b == 0: b = 1e-16
+        if b < 0:
+            b = 1e-16
 
         beta_param_alpha = - ( (1+a)*(a**2 + b - 1) )/ (2*b)
         beta_param_beta  = ( (a-1)*(a**2 + b - 1) ) / (2*b)
@@ -2307,26 +2277,6 @@ def compute_path_moments(j,N,X,p,theta_adjusted, alpha, send_end):
          scipy.special.betaln(beta_param_alpha, beta_param_beta)
         L_n = L_n + L_n_current
     send_end.send(L_n)
-
-# def moment_compute(dN, X_prev, X_next, p_prev, theta_current,       alpha_current,send_end ):
-#         m_1=X_prev*np.exp(- dN*theta_current)
-#         m_2=  (X_prev**2 + 2*dN*( X_prev*(alpha_current*theta_current*p_prev*(1-p_prev)*(1-2*p_prev )) + \
-#                      alpha_current*theta_current*p_prev**2*(1-p_prev)**2) ) /(  1+ dN*2*(theta_current+alpha_current*theta_current*p_prev*(1-p_prev) ))
-#         a=m_1;
-#         b=m_2- m_1**2;
-#
-#         if b==0: b=1e-16
-#         if b<0:
-#             b=1e-16
-#
-#         beta_param_alpha= - ( (1+a)*(a**2 +b -1)    )/(2*b)
-#         beta_param_beta= ( (a-1)*(a**2 + b -1)  )  /(2*b)
-#
-#         L_n_current=(beta_param_alpha-1 )*np.log(  (X_next+1)/2 ) +\
-#          (beta_param_beta-1)*np.log(1-( X_next +1)/2 )-\
-#          scipy.special.betaln(beta_param_alpha, beta_param_beta)
-#
-#         send_end.send(L_n_current)
 
 def moment_compute(dN, X_prev, X_next, p_prev,p_next, theta_prev, theta_next,alpha ):
     start=0 ; end=1
@@ -2557,6 +2507,74 @@ def beta_moment(dN, X_prev, X_next, p_prev, p_next, theta_prev, theta_next, alph
     m_2 = sol.y[1,-1]
 
     return(m_1,m_2)
+
+def load_matlab_csv(filename):
+    """Read CSV written by matlab tablewrite into DataFrames
+
+    Each entry in the table can be a scalar or a variable length array.
+    If it is a variable length array, then Matlab generates a set of
+    columns, long enough to hold the longest array. These columns have
+    the variable name with an index appended.
+
+    This function infers which entries are scalars and which are arrays.
+    Arrays are grouped together and sorted by their index.
+
+    Returns: scalar_df, array_df
+        scalar_df : DataFrame of scalar values from the table
+        array_df : DataFrame with MultiIndex on columns
+            The first level is the array name
+            The second level is the index within that array
+    """
+    # Read the CSV file
+    tdf = pandas.read_table(filename, sep=',')
+    cols = list(tdf.columns)
+
+    # Figure out which columns correspond to scalars and which to arrays
+    scalar_cols = [] # scalar column names
+    arr_cols = [] # array column names, without index
+    arrname2idxs = {} # dict of array column name to list of integer indices
+    arrname2colnames = {} # dict of array column name to list of full names
+
+    # Iterate over columns
+    for col in cols:
+        # If the name ends in "_" plus space plus digits, it's probably
+        # from an array
+        if col[-1] in '0123456789' and '_' in col:
+            # Array col
+            # Infer the array name and index
+            colsplit = col.split('_')
+            arr_idx = int(colsplit[-1])
+            arr_name = '_'.join(colsplit[:-1])
+
+            # Store
+            if arr_name in arrname2idxs:
+                arrname2idxs[arr_name].append(arr_idx)
+                arrname2colnames[arr_name].append(col)
+            else:
+                arrname2idxs[arr_name] = [arr_idx]
+                arrname2colnames[arr_name] = [col]
+                arr_cols.append(arr_name)
+
+        else:
+            # Scalar col
+            scalar_cols.append(col)
+
+    # Extract all scalar columns
+    scalar_df = tdf[scalar_cols]
+
+    # Extract each set of array columns into its own dataframe
+    array_df_d = {}
+    for arrname in arr_cols:
+        adf = tdf[arrname2colnames[arrname]].copy()
+        adf.columns = arrname2idxs[arrname]
+        array_df_d[arrname] = adf
+
+    # Concatenate array dataframes
+    array_df = pandas.concat(array_df_d, axis=1)
+
+    return scalar_df, array_df
+
+# Example: scalar_df, array_df = load_matlab_csv("./data/cleansed/Table_Training_Complete.csv")
 
 def linear_lamperti_moment(dN, X_prev, X_next, p_prev, p_next, theta_prev, theta_next, alpha ):
 

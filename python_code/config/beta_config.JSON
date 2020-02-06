@@ -1,6 +1,6 @@
 {
   "likelihood" : "rand_beta_objective",
-  "num_paths" : 830,
+  "num_paths" : 127,
   "theta":
     {
       "start": 0.01,
@@ -20,9 +20,8 @@
     {
       "theta_init": 1,
       "alpha_init": 0.1,
-      "initial_batch_size": 350,
+      "initial_batch_size": 200,
       "batch_multiplier": 2,
       "max_batch_size": 22000
-  }
-
+    }
 }

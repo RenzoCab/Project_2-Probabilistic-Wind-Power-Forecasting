@@ -16,24 +16,28 @@ from shutil import copyfile
 
 warnings.filterwarnings('error', '.*invalid value encountered.*',)
 
-# For the next lines, we follow https://docs.python.org/3/library/argparse.html.
-# This line creates the parser, which contains description, data, and version:
-parser = argparse.ArgumentParser(description = 'Likelihood Evaluator v1.0')
-# This line is for loading the location of the configuration file (.JSON file with the configuration):
-parser.add_argument('-filename', help = ' Config file name or path')
-# The last configuration that worked is: python fit_model.py -f config/beta_config.JSON.
+if 1 == 1: # IGNORE THESE LINES IF WE RUN LINE BY LINE:
+    ## WE CREATE THE PARSER:
+    # For the next lines, we follow https://docs.python.org/3/library/argparse.html.
+    # This line creates the parser, which contains description, data, and version:
+    parser = argparse.ArgumentParser(description = 'Likelihood Evaluator v1.0')
+    # This line is for loading the location of the configuration file (.JSON file with the configuration):
+    parser.add_argument('-filename', help = ' Config file name or path')
+    # The last configuration that worked is: python fit_model.py -f config/beta_config.JSON.
+    # This line is for creating a version command, i.e., python fit_model.py --version:
+    parser.add_argument('--version', action = 'version', version = 'Likelihood Evaluator v1.0')
+    args = parser.parse_args()
 
-# This line is for creating a version command, i.e., python fit_model.py --version:
-parser.add_argument('--version', action = 'version', version = 'Likelihood Evaluator v1.0')
-args = parser.parse_args()
-
-print('Loading Configuration...')
-# We load the filename from args into the variable config_file:
-config_file = open(args.filename)  # filename = config/beta_config.JSON.
-
-# Finally... We read the file called filename where the configuration is.
-setup = config.loadconfig.Test(config_file)
-# Now, the setup variable contains all the variables in beta_config.JSON.
+    ## WE LOAD THE FILE .JSON WITH ALL THE SPECIFICATIONS:
+    print('Loading Configuration...')
+    # We load the filename from args into the variable config_file:
+    config_file = open(args.filename)  # filename = config/beta_config.JSON.
+    # Finally... We read the file called filename where the configuration is.
+    setup = config.loadconfig.Test(config_file)
+    # Now, the setup variable contains all the variables in beta_config.JSON.
+else: # We run these lines if we are running line by line, and we can not insert filename.
+    config_file = open('config/beta_config.JSON')
+    setup = config.loadconfig.Test(config_file)
 
 ######################### Likelihood Background #########################
 
@@ -45,11 +49,11 @@ chosen_folder = 'likelihood_explorer_' + '19-09-11-21-32-05'
 data_path     = base_path+chosen_folder
 
 # Plotting chosen_folder:
-Z_grid = np.load(data_path+'/value.npy')
-X_grid = np.load(data_path+'/theta.npy')
-Y_grid = np.load(data_path+'/alpha.npy')
-M      = np.load(data_path+'/num_paths.npy')
-N      = np.load(data_path+'/interpolation_points.npy')
+Z_grid = np.load(data_path + '/value.npy')
+X_grid = np.load(data_path + '/theta.npy')
+Y_grid = np.load(data_path + '/alpha.npy')
+M      = np.load(data_path + '/num_paths.npy')
+N      = np.load(data_path + '/interpolation_points.npy')
 
 # To make Z positive, we use an offset for plotting
 Z_grid = Z_grid-1*np.min(Z_grid) + 1e-16
@@ -63,24 +67,12 @@ plt.xlabel('$\\theta$');
 plt.ylabel('$\\alpha$');
 ax.set_zlabel('Likelihood')
 
-######################### COMMENTED #########################
-
-# os.chdir(setup.dir_path)
-
-# orig_stdout = sys.stdout
-# f = open( setup.logs_file_name, 'w')
-# sys.stdout = f
-
-# def customwarn(message, category, filename, lineno, file=None, line=None):
-#     sys.stdout.write(warnings.formatwarning(message, category, filename, lineno))
-#
-# warnings.showwarning = customwarn
-
 ######################### Create Folder with Date #########################
 
 warnings.simplefilter("once")
 
 forecast_data_in = np.load(setup.data_path) # We load the data where data_path is pointing.
+
 #forecast_data_inter=data_check_interpolate(forecast_with_data=forecast_with_data)
 now = dtM.datetime.now(); # dtM is the package datetime, and it is inside Base_plus.py.
 current_time = now.strftime("%y-%m-%d-%H-%M-%S")
@@ -93,21 +85,37 @@ print('Data output will be save in ',current_data_dir)
 
 ######################### Create all the paths #########################
 
-# We redefine the length in the transitions-direction for each vector.
-# It was 72 hrs $\approx$ 427 transitions, now (22/11/2019), it is 6 hrs $\approx$ 59 transitions.
-N = forecast_data_inter.shape[2] - 368 # 427 - 368 = 59.
-# We do this model because we only want the first 6 hours for each path to avoid overlapping.
-# If we are considering 3 24-hours paths, notice that N < 72*6 because of the repetition at the boundaries of each day.
+# IMPORTANT: The format for the data is array array: example[2][4] = number.
+
+N  = forecast_data_inter.shape[2] - 368 # 427 - 368 = 59.
 M  = setup.num_paths
-dt = 1
+dt = 1/144; # NOTICE!! Before (28/01/2020) dt = 1.
 p  = forecast_data_inter[2,:setup.num_paths,:N]
 p  = p[::2,:]
-# V = forecast_data_inter[2,:setup.num_paths,:]-forecast_data_inter[1,:setup.num_paths,:]
-V = forecast_data_inter[1,:setup.num_paths,:N] - forecast_data_inter[2,:setup.num_paths,:N]
-V = V[::2,:]
-X = forecast_data_inter[1,:setup.num_paths,:N]
-X = X[::2,:]
-M = V.shape[0]
+V  = forecast_data_inter[1,:setup.num_paths,:N] - forecast_data_inter[2,:setup.num_paths,:N]
+V  = V[::2,:]
+X  = forecast_data_inter[1,:setup.num_paths,:N]
+X  = X[::2,:]
+M  = V.shape[0]
+
+# Now we are going to load the new and corrected data (28/01/2020):
+scalar_df, array_df    = load_matlab_csv("./data/cleansed/Table_Training_Complete.csv")
+Date                   = scalar_df.Date
+Time                   = array_df.Time
+Forecast               = array_df.Forecast
+Forecast_Dot           = array_df.Forecast_Dot
+Real_UTE               = array_df.Real_UTE
+Real_ADME              = array_df.Real_ADME
+Error                  = array_df.Error
+Error_Transitions      = array_df.Error_Transitions
+Error_Lamp             = array_df.Error_Lamp
+Error_Lamp_Transitions = array_df.Error_Lamp_Transitions
+
+M,N = Forecast.shape # M is the number of paths, and N the number of measurements per path.
+p   = Forecast.to_numpy()
+V   = Error.to_numpy()
+X   = Real_ADME.to_numpy()
+dt  = Time[2][1]
 
 # We have p, V, and X. They represent all the data that will be used.
 
@@ -126,31 +134,6 @@ if 1 == 0:
 
 disct_temp = disct(N,dt,M) # We want to follow V = X - P $\implies$ X = V + P.
 # disct is a class from Base_plus. It just contains the number of paths, transitions, and dt.
-
-######################### COMMENTED #########################
-
-# def get_datetime64(time_stamp):
-#     return np.datetime64(int(time_stamp),'s')
-# get_datetime64=np.vectorize(get_datetime64)
-# print(forecast_data_inter[0,:setup.num_paths,0])
-# print(get_datetime64(forecast_data_inter[0,:setup.num_paths,0]))
-######## ToComplete:
-# D=V
-# O=np.sum(np.diff(D, axis= 1 )**2, axis=1)
-# K= np.sum(2*(D+p)*(1-D-p) , axis=1)
-# R= np.mean(O/K )
-# # print( 'HERE ', R, K, O, O/K, D, p)
-# print( 'HERE ', R)
-# aux1 = 0; aux2 = 0; aux3 = 0
-# for j in range(0,M):
-#     for i in range(0,N-1):
-#
-#         aux1 += (D[j,i+1]-D[j,i])**2
-#         aux2 += 2*(D[j,i]+p[j,i])*(1-D[j,i]-p[j,i])
-#
-#     aux3 += aux1 / aux2
-# result = aux3 / M
-# print('HERE ',result)
 
 ######################### If we choose Lamperti: #########################
 
@@ -231,42 +214,9 @@ while current_batch_size <= setup.optimization['max_batch_size']:
 
     file_object.write(result_note)
 
-    # print('Computing Hessian at ', intial_point)
-
-    # width,height,angle, eig_vect_opt,Hess, FAIL = this_model.compute_ellipse(inference=setup.likelihood, param=optim.x, batch_size=current_batch_size, plot=False);
-    #
-    # if FAIL==False:
-    #     print( 'Ellipse ' + ' H: ', height , 'W: ', width )
-    #     #save parameters
-    #     parmeter_convergence=np.vstack((parmeter_convergence,np.hstack((optim.x,optim.fun,current_batch_size, height, width, angle) )));
-    #     hessian_convergance=np.vstack((hessian_convergance, Hess))
-    #     eigen_vect_convergence=np.vstack((eigen_vect_convergence, eig_vect_opt))
-    #
-    #     np.save(current_data_dir+'/parmeter_convergence_' + str(current_batch_size), parmeter_convergence);
-    #     np.save(current_data_dir+'/eig_vect_opt_' + str(current_batch_size), eigen_vect_convergence);
-    #     np.save(current_data_dir+'/Hess_' + str(current_batch_size) , hessian_convergance);
-    #     print(' results save in ' + current_data_dir)
-
     parmeter_convergence_limited = np.vstack((parmeter_convergence_limited,np.hstack((optim.x,optim.fun,current_batch_size))));
     np.save(current_data_dir + '/parmeter_convergence_limited_' + str(current_batch_size), parmeter_convergence_limited);
     print('Results save in ' + current_data_dir)
-
-    # #plot likelihood background
-    # fig = plt.figure(figsize=(8, 5))
-    # ax = plt.axes(projection='3d', elev=50, azim=-50)
-    # ax.plot_surface(X_grid, Y_grid, Z_grid, norm=LogNorm(), rstride=1, cstride=1, edgecolor='none', alpha=.8, cmap=plt.cm.jet)
-    # # ax.plot(10,0.1, 10, 'r*', markersize=10)
-    # line, = ax.plot([], [], [], 'b', label='different Nelder-Mead instances', lw=2)
-    # point, = ax.plot([], [], [], 'bo')
-    # plt.xlabel('$\\theta$');
-    # plt.ylabel('$\\alpha$');
-    # ax.set_zlabel('Likelihood')
-    #animate
-    # path=parmeter_convergence_limited
-    # # path=np.swapaxes(path, 0, 1)
-    # anim = animation.FuncAnimation(fig, lambda i:animate(line, point,path,i) , init_func=lambda: init(line, point), frames=path.shape[1], interval=1000, repeat_delay=5, blit=True)
-    # # writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
-    # anim.save(current_data_dir+'/convergance_'+ str(current_batch_size)  +'.mp4')
 
     #update batch size and intial point
     current_batch_size = current_batch_size * setup.optimization['batch_multiplier']

@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>paper_1line.bcf</file>
@@ -53,18 +53,17 @@
       <file>blx-dm.def</file>
       <file>apa.dbx</file>
       <file>blx-compat.def</file>
-      <file>biblatex.def</file>
-      <file>standard.bbx</file>
+      <file>biblatex_.def</file>
       <file>apa.bbx</file>
+      <file>standard.bbx</file>
       <file>apa.cbx</file>
       <file>biblatex.cfg</file>
+      <file>english-apa.lbx</file>
       <file>english.lbx</file>
       <file>american.lbx</file>
-      <file>american-apa.lbx</file>
-      <file>english-apa.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="0">
+  <external package="biblatex" priority="5" active="1">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>

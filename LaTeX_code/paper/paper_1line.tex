@@ -80,25 +80,47 @@ We use a year long data set from Uruguay based on 1000 observation paths, each o
 In this paper we present the phenomenological underlying model in Section \ref{Section_2} and describe the physical constraints in Section \ref{Section_3} and how these constrains can be met. Then, in Section \ref{Section_4}, we will introduce an alternative formulation of the model in Lamperti space. In Section \ref{Section_5}, we show our parameter estimation procedure and its results in Section \ref{Section_6}. We compare alternative models in Section \ref{Section_7} and different forecast providers in Section \ref{Section_8}.
 
 \begin{figure}
-  \includegraphics[width=60mm,scale=1]{plots/data_1516064400.pdf}
-  \includegraphics[width=60mm,scale=1]{plots/data_1516323600.pdf}\\
+  \includegraphics[width=60mm,scale=1]{plots/5.eps}
+  \includegraphics[width=60mm,scale=1]{plots/245.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/661.eps}
+  \includegraphics[width=60mm,scale=1]{plots/805.eps}
   \caption{Two samples from the Uruguayan of 2018. Each sample compromises of two 72-hour paths. In yellow is an hourly wind power production forecast. In blue is the actual wind power production recorded in 10 minute intervals. {\color{red} New figures with 2019 Uruguayan dataset.}}
   \label{fig:sample_data}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=38mm,scale=1]{plots/hist_low.pdf}
-  \includegraphics[width=38mm,scale=1]{plots/hist_mid.pdf}
-  \includegraphics[width=38mm,scale=1]{plots/hist_high.pdf}
+  \includegraphics[width=60mm,scale=1]{plots/LP_6.eps}
+  \includegraphics[width=60mm,scale=1]{plots/MP_6.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/HP_6.eps}
+  \includegraphics[width=60mm,scale=1]{plots/AP_6.eps}
   \caption{We see that forecast errors exhibit skewness near the boundries (i.e. low and high power production regimes.). Low power is when produced power is less than $0.3$, mid power is when it is between $0.3$ and $0.6$ and high power when is larger than $0.6$.   {\color{red} New figures with 2019 Uruguayan dataset.}}
   \label{fig:skew_data}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=38mm,scale=1]{plots/hist_low_lamperti.pdf}
-  \includegraphics[width=38mm,scale=1]{plots/hist_mid_lamperti.pdf}
-  \includegraphics[width=38mm,scale=1]{plots/hist_high_lamperti.pdf}
+  \includegraphics[width=60mm,scale=1]{plots/LP.eps}
+  \includegraphics[width=60mm,scale=1]{plots/MP.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/HP.eps}
+  \includegraphics[width=60mm,scale=1]{plots/AP.eps}
   \caption{We observe that skewness has been greatly reduced after the Lamperti transformation. This motivates us to use a Gaussian transition density as a proxy density.  {\color{red} New figures with 2019 Uruguayan dataset.}}
+  \label{fig:skew_after_lamperti}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=60mm,scale=1]{plots/LP_t.eps}
+  \includegraphics[width=60mm,scale=1]{plots/MP_t.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/HP_t.eps}
+  \includegraphics[width=60mm,scale=1]{plots/AP_t.eps}
+  \caption{Transitions.}
+  \label{fig:skew_after_lamperti}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=60mm,scale=1]{plots/LP_t_LP.eps}
+  \includegraphics[width=60mm,scale=1]{plots/MP_t_LP.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/HP_t_LP.eps}
+  \includegraphics[width=60mm,scale=1]{plots/AP_t_LP.eps}
+  \caption{Transitions after the Lamperti transform.}
   \label{fig:skew_after_lamperti}
 \end{figure}
 %---END SECTION 1---
@@ -300,7 +322,7 @@ where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$
 To initialize the optimization process for the likelihood function of the process $V$, we solve the following least-squares problem which gives us first estimates of the mean reversion parameter $\theta_0$: {\color{red} Add explanation regarding the motivation for this objective function.}
 
 \begin{equation}
- \arg\min \sum\limits_{i}^M \sum\limits_j^N \left( v_{i+1,j}  - v_{i,j}- \left( - \theta_t v_{i,j}\right) \left(t_{i+1,j} - t_{i,j} \right)  \right)^2 ,
+ \arg\min \sum\limits_{j}^M \sum\limits_i^N \left( v_{i+1,j}  - v_{i,j}- \left( - \theta_t v_{i,j}\right) \left(t_{i+1,j} - t_{i,j} \right)  \right)^2 ,
  \end{equation}
  
  where $v_{i,j}=x_{i,j}-p_{i,j}$,  $x_{i,j}$ is historical wind power production and $p_{i,j}$ is the wind power forecast.
@@ -308,7 +330,7 @@ To initialize the optimization process for the likelihood function of the proces
  By assuming ergodicity {\color{red} not ergodicity, instead simply for the quadratic variation formula.}, we can obtain a first estimate on the product of the parameters as follows,
  
 \begin{equation}
-\theta_0 \alpha = \frac{1}{M} \sum\limits_i^M \frac{ \sum\limits_j^N (x_{i+1,j}  - x_{i,j})^2}{2 \sum\limits_j^N x_{i,j}(1-x_{i,j}) } \,.
+\theta_0 \alpha = \frac{1}{M\Delta t} \sum\limits_j^M \frac{ \sum\limits_i^N (x_{i+1,j}  - x_{i,j})^2}{2 \sum\limits_i^N x_{i,j}(1-x_{i,j}) } \,.
 \end{equation}
 
 Solving for $\alpha$, we have both first estimates to quick start the inference processes given as follows:
