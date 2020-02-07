@@ -56,6 +56,7 @@ Reliable wind power generation forecasting is crucial for applications such as t
 %---BEGIN SECTION 1---
 \section{Introduction}  \label{Section_1}
 
+{\color{red} Show with plots as the use of wind and solar power is increasing.}\\
 Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
 \begin{itemize}
 \item Allocation of energy reserves such as water levels in dams or oil, and gas reserves.
@@ -84,7 +85,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=60mm,scale=1]{plots/245.eps}\\
    \includegraphics[width=60mm,scale=1]{plots/661.eps}
   \includegraphics[width=60mm,scale=1]{plots/805.eps}
-  \caption{Two samples from the Uruguayan of 2018. Each sample compromises of two 72-hour paths. In yellow is an hourly wind power production forecast. In blue is the actual wind power production recorded in 10 minute intervals. {\color{red} New figures with 2019 Uruguayan dataset.}}
+  \caption{Four samples from the Uruguayan data of 2019. Each sample compromises of two 24-hour paths. In blue is an hourly wind power production forecast. In orange is the actual wind power production recorded in 10 minute intervals from the company ADME.}
   \label{fig:sample_data}
 \end{figure}
 
@@ -93,7 +94,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=60mm,scale=1]{plots/MP_6.eps}\\
    \includegraphics[width=60mm,scale=1]{plots/HP_6.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP_6.eps}
-  \caption{We see that forecast errors exhibit skewness near the boundries (i.e. low and high power production regimes.). Low power is when produced power is less than $0.3$, mid power is when it is between $0.3$ and $0.6$ and high power when is larger than $0.6$.   {\color{red} New figures with 2019 Uruguayan dataset.}}
+  \caption{We see that forecast errors exhibit skewness, which is exaggerated as a consequence of curtailing in the production. Low power is when produced power is in $[0,0.3]$, mid-power is when it is in $(0.3,0.6]$, and high power when it is in $(0.6,1]$. We have a total of 363 days to use.}
   \label{fig:skew_data}
 \end{figure}
 
@@ -102,7 +103,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=60mm,scale=1]{plots/MP.eps}\\
    \includegraphics[width=60mm,scale=1]{plots/HP.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP.eps}
-  \caption{We observe that skewness has been greatly reduced after the Lamperti transformation. This motivates us to use a Gaussian transition density as a proxy density.  {\color{red} New figures with 2019 Uruguayan dataset.}}
+  \caption{We observe that skewness has been reduced after removing the days with curtailing. We have a total of 255 days with no curtailing.}
   \label{fig:skew_after_lamperti}
 \end{figure}
 
@@ -111,7 +112,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=60mm,scale=1]{plots/MP_t.eps}\\
    \includegraphics[width=60mm,scale=1]{plots/HP_t.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP_t.eps}
-  \caption{Transitions.}
+  \caption{Transitions in error between forecast and real production. We can observe that they are not totally centered around zero.}
   \label{fig:skew_after_lamperti}
 \end{figure}
 
@@ -120,7 +121,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \includegraphics[width=60mm,scale=1]{plots/MP_t_LP.eps}\\
    \includegraphics[width=60mm,scale=1]{plots/HP_t_LP.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP_t_LP.eps}
-  \caption{Transitions after the Lamperti transform.}
+  \caption{Transitions after the Lamperti transform. The transitions now present a normal Gaussian shape. This effect motivates the use of Gaussian proxies to approximate the process after using the Lamperti transform.}
   \label{fig:skew_after_lamperti}
 \end{figure}
 %---END SECTION 1---
