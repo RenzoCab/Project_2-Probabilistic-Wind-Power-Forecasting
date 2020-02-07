@@ -1,8 +1,9 @@
-\documentclass[11pt,english]{article}
+\documentclass[11pt]{article}
 
 \usepackage{graphicx}
 \usepackage{amssymb, amsmath}
 \usepackage{bm} % more powerful version to get bold
+\usepackage{siunitx}
 
 \usepackage{xcolor}
 
@@ -42,11 +43,11 @@
 
 \begin{abstract}
 
-Reliable wind power generation forecasting is crucial for applications such as the allocation of energy reserves, optimization of electricity price and operation scheduling of conventional power plant. We propose a data driven model based on parametric Stochastic Differential Equations (SDEs) to captures real-world asymmetric dynamics of wind power forecast errors. Our SDE framework incorporates time derivative tracking of the forecast, time-dependent mean reversion parameter and an improved diffusion term. We are able to simulate future wind power production paths and to get sharp confidence bands. The method is forecast technology agnostic and enables the comparison between different forecasting technologies on the basis of information criteria. We apply the model to historical French and Uruguayan wind power production data and forecasts on the period (2017-2018).
+Reliable wind power generation forecasting is crucial for applications such as the allocation of energy reserves, optimization of electricity price and operation scheduling of conventional power plant. We propose a data driven model based on parametric Stochastic Differential Equations (SDEs) to captures real-world asymmetric dynamics of wind power forecast errors. Our SDE framework incorporates time derivative tracking of the forecast, time-dependent mean reversion parameter and an improved diffusion term. We are able to simulate future wind power production paths and to get sharp confidence bands. The method is forecast technology agnostic and enables the comparison between different forecasting technologies on the basis of information criteria. We apply the model to historical Uruguayan wind power production data and forecasts on the year 2019.
 
 \end{abstract}
 
-{\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection, sensitivity.}
+{\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection.}
 
 {\color{red} Add AMS Classification.}
 
@@ -56,8 +57,10 @@ Reliable wind power generation forecasting is crucial for applications such as t
 %---BEGIN SECTION 1---
 \section{Introduction}  \label{Section_1}
 
-{\color{red} Show with plots as the use of wind and solar power is increasing.}\\
-Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
+\begin{figure}
+  \includegraphics[width=120mm,scale=1]{plots/1.png}
+  \caption{Installed wind and solar power over the years. We recall the importance of accurate forecasts to use green energies optimally. {\color{red} We still have to ensure that the source is trusthable (Renzo will do it)}.}
+\end{figure}Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
 \begin{itemize}
 \item Allocation of energy reserves such as water levels in dams or oil, and gas reserves.
 \item Operation scheduling of controlable power plants.
@@ -72,11 +75,11 @@ Many approaches have been taken to evaluate the uncertainty of a given forecast.
 
 We propose to model wind power forecasts errors using parametric stochastic differential equations (SDEs) whose solution defines a stochastic process. This resultant stochastic process describes the time evolution dynamics of wind power forecast errors while capturing properties such as a correlation structure and the inherent asymmetry. Additionally, the model we propose is agnostic of the forecasting technology and serves to complement forecasting procedures by providing a data driven stochastic forecast. Hence, we are able to evaluate wind power forecasts according to their real-world performance and we are able to compare different forecasting technologies. Most notably, we are able to simulate future wind power production given a deterministic wind power forecast. Future wind power production using Monte Carlo methods, as well as the analytic form of the proposed SDE, can be used in optimal control problems involving wind power production.
 
-Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations (SDEs). Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to French and Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2017-2018.
+Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations. Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2019.
 
 {\color{red} Change this paragraph. Discuss with the global dataset, the dataset after removing days when curtailing has been detected, the data set without curtailing and with Lamperti transform.}
-We use a year long data set from Uruguay based on 1000 observation paths, each of which is 72-hours long with observations recorded every 10 min. In total, it is a data set of approximatly half a million data points recorded in 2018. See Figure (\ref{fig:sample_data}). The data is normalized with respect to the maximuim power capacity of wind power production in Uruguay. The asymmetry or skew nature of the data is clear when inspected for different power production levels. We split the aggregated data into a low, meduim and high power range. See Figure (\ref{fig:skew_data}).
-{\color{red} Analysis of the autocorrelation, removing days to achieve independence.} 
+We have available a year long data set from Uruguay based on 363 observation paths, each of which is 24-hours long with observations recorded every 10 min. In total, it is a data set of approximately fifty thousand data points recorded in 2019. See Figure (\ref{fig:sample_data}). The data is normalized with respect to the maximuim power capacity of wind power production in Uruguay, which is $\SI{1474}{\mega\watt}$. However, sometimes the real production is artificially modifies due to curtailing. This effect becomes clear when we inspect for different power production levels. We split the available data into a low, meduim and high power range. See Figure (\ref{fig:data_curtailing}).\\
+We identify and remove the days with curtailing, removing a total of 108 days. From the resulting 255 days, we use 127 days to train the system and 128 to test it. Also, to avoid correlation between days, we intercalate the days we use for training and testing ({\color{red} Show that 24h is enough to ensure independence}).
 
 In this paper we present the phenomenological underlying model in Section \ref{Section_2} and describe the physical constraints in Section \ref{Section_3} and how these constrains can be met. Then, in Section \ref{Section_4}, we will introduce an alternative formulation of the model in Lamperti space. In Section \ref{Section_5}, we show our parameter estimation procedure and its results in Section \ref{Section_6}. We compare alternative models in Section \ref{Section_7} and different forecast providers in Section \ref{Section_8}.
 
@@ -95,7 +98,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
    \includegraphics[width=60mm,scale=1]{plots/HP_6.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP_6.eps}
   \caption{We see that forecast errors exhibit skewness, which is exaggerated as a consequence of curtailing in the production. Low power is when produced power is in $[0,0.3]$, mid-power is when it is in $(0.3,0.6]$, and high power when it is in $(0.6,1]$. We have a total of 363 days to use.}
-  \label{fig:skew_data}
+  \label{fig:data_curtailing}
 \end{figure}
 
 \begin{figure}
@@ -104,7 +107,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
    \includegraphics[width=60mm,scale=1]{plots/HP.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP.eps}
   \caption{We observe that skewness has been reduced after removing the days with curtailing. We have a total of 255 days with no curtailing.}
-  \label{fig:skew_after_lamperti}
+  \label{fig:data_after_clean}
 \end{figure}
 
 \begin{figure}
@@ -113,7 +116,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
    \includegraphics[width=60mm,scale=1]{plots/HP_t.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP_t.eps}
   \caption{Transitions in error between forecast and real production. We can observe that they are not totally centered around zero.}
-  \label{fig:skew_after_lamperti}
+  \label{fig:error_transitions}
 \end{figure}
 
 \begin{figure}
@@ -122,7 +125,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
    \includegraphics[width=60mm,scale=1]{plots/HP_t_LP.eps}
   \includegraphics[width=60mm,scale=1]{plots/AP_t_LP.eps}
   \caption{Transitions after the Lamperti transform. The transitions now present a normal Gaussian shape. This effect motivates the use of Gaussian proxies to approximate the process after using the Lamperti transform.}
-  \label{fig:skew_after_lamperti}
+  \label{fig:LP_transitions}
 \end{figure}
 %---END SECTION 1---
 
@@ -202,7 +205,7 @@ which is satisfied  by choosing a time-dependent  $\theta_t$ as follows,
 \theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0\,. \label{theta_t}
 \end{equation}
 
-{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unkonwn parameter appear in \ref{theta_t}. } 
+{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unkonwn parameter appear in \ref{theta_t}. Recall it is an upped bound for the real inequality. } 
 
 \subsubsection*{Change of Variables:}
 To avoid differentiation of the forecast $p_t$ and simplify, we apply the change of variables $$V_t = X_t - p_t \,.$$ 
@@ -264,7 +267,7 @@ Let $\rho_i(v \vert v_{j, t_{i-1}} ; \bm{\theta})$ denote the conditional probab
 The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the data can be written as the following product of transition densities:  
 %Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
 \begin{equation}
-\mathcal{L}(\bm{\theta}; V^{M,N}) = \prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j, t_i}| V_{j, t_{i-1}}} ; p_{[t_{i-1}, t_{i}]},  \bm{\theta} )  \, \rho_0 (V_{j, t_0}) \,.
+\mathcal{L}(\bm{\theta},\delta; V^{M,N}) = \prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j, t_i}| V_{j, t_{i-1}}} ; p_{[t_{i-1}, t_{i}]},  \bm{\theta} )  \, \rho_0 (V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta) \,.
 \label{likelihood}
 \end{equation}
 
@@ -426,8 +429,8 @@ Formulation   &  parameters $(\theta_0, \alpha)$    \\ \hline
 Without Lamperti transform &   $(12,0.3) \pm (\add , \add) $   \\ \hline
 With Lamperti transform &   $(12,0.29) \pm (\add , \add)  $   \\ \hline
 \end{tabular}
-\caption{We compare the parameters obtained in both the original and Lamperti space. Parameters have been obtained based on \add data points from the Uruguayan pertaining to the year 2018  \add }.
-\label{tab:model_comparison}
+\caption{We compare the parameters obtained in both the original and Lamperti space. Parameters have been obtained based on \add data points from the Uruguayan pertaining to the year 2019\add .}
+\label{tab:model_comparison_2}
 \end{table}
 
 {\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models (if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.)}
@@ -442,19 +445,19 @@ In Figures ()-(), we show point-wise empirical confidence bands for the differen
 \begin{figure}
   \includegraphics[width=56mm,scale=1]{plots/alpha_conv_beta.png}
   \includegraphics[width=56mm,scale=1]{plots/theta_conv_beta.png}
-  \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to  year 2018.{\color{red} Figure with data 2019} }
+  \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to year 2019.}
 \end{figure}
 
     \begin{figure}[h]
       \includegraphics[width=70mm,scale=1]{simulated/24hr/1099.pdf}
       \includegraphics[width=70mm,scale=1]{simulated/24hr/1178.pdf}
-      \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Forecast is from Uruguay pertaining to  year 2018. {\color{red} Figure with data 2019}}
+      \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Forecast is from Uruguay pertaining to  year 2019.}
     \end{figure}
 
     \begin{figure}[h]
       \includegraphics[width=70mm,scale=1]{confidence_intervals/24hr/31.pdf}
       \includegraphics[width=70mm,scale=1]{confidence_intervals/24hr/820.pdf}
-       \caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2018. {\color{red} Figure with data 2019}}
+       \caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
     \end{figure}
 %---END SECTION 7---
 
