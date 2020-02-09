@@ -340,7 +340,15 @@ To initialize the optimization process for the likelihood function of the proces
 \theta_0 \alpha = \frac{1}{M\Delta t} \sum\limits_j^M \frac{ \sum\limits_i^N (x_{i+1,j}  - x_{i,j})^2}{2 \sum\limits_i^N x_{i,j}(1-x_{i,j}) } \,.
 \end{equation}
 
-Solving for $\alpha$, we have both first estimates to quick start the inference processes given as follows:
+Solving for $\alpha$, we have both first estimates and we can also estimate $\delta$ solving the problem
+
+
+\begin{equation}
+\delta\approx\arg\min_{\delta}\mathcal{L}_{\delta}(\bm{\theta},\delta; V^{M,1}) = \arg\min_{\delta}\prod\limits_{j=1}^M \rho_0 (V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta) \,.
+\label{likelihood_delta}
+\end{equation}
+
+With our estimations of $\bm{\theta}$, we can start the inference processes as follows:
 \begin{enumerate}
 \item[Step 1.]  initialize;
 \item[Step 2.]  optimize the log-likelihood function using  Nelder-Mead optimization algorithm on a mini-batch sampled with replacement;
@@ -382,9 +390,9 @@ We compare two candidate models to find the best-fit that maximizes the retained
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-Model   &  parameters $(\theta_0, \alpha)$   & AIC & BIC \\ \hline
+Model   &  parameters $(\theta_0, \alpha,\delta)$   & AIC & BIC \\ \hline
 Model 1 &  $(\add,\add) $    &  \add   &  \add   \\ \hline
-Model 2 &   $(\add,\add)$   &  \add   &   \add    \\ \hline
+Model 2 &   $(1.2,0.1,0.6)$   &  \add   &   \add    \\ \hline
 \end{tabular}
 \caption{We compare the different models based on information criterion. \add }
 \label{tab:model_comparison}
@@ -398,7 +406,7 @@ We compare forecasts from two different companies for the same period.
 \centering
 \begin{tabular}{|c|l|c|c|}
 \hline
-Forecast Provider & parameters $(\theta_0, \alpha)$ & AIC & BIC \\ \hline
+Forecast Provider & parameters $(\theta_0, \alpha,\delta)$ & AIC & BIC \\ \hline
 Provider A  &  $(\add,\add)$      &  \add   & \add    \\ \hline
 Provider B  & $(\add,\add) $  &  \add   &   \add  \\ \hline
 \end{tabular}
@@ -428,8 +436,8 @@ We were able to obtain the following for
 \centering
 \begin{tabular}{|c|c|}
 \hline
-Formulation   &  parameters $(\theta_0, \alpha)$    \\ \hline
-Without Lamperti transform &   $(12,0.3) \pm (\add , \add) $   \\ \hline
+Formulation   &  parameters $(\theta_0, \alpha,\delta)$    \\ \hline
+Without Lamperti transform &   $(1.2,0.1,0.6) \pm (\add , \add) $   \\ \hline
 With Lamperti transform &   $(12,0.29) \pm (\add , \add)  $   \\ \hline
 \end{tabular}
 \caption{We compare the parameters obtained in both the original and Lamperti space. Parameters have been obtained based on \add data points from the Uruguayan pertaining to the year 2019\add .}
@@ -452,15 +460,19 @@ In Figures ()-(), we show point-wise empirical confidence bands for the differen
 \end{figure}
 
     \begin{figure}[h]
-      \includegraphics[width=70mm,scale=1]{simulated/24hr/1099.pdf}
-      \includegraphics[width=70mm,scale=1]{simulated/24hr/1178.pdf}
-      \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Forecast is from Uruguay pertaining to  year 2019.}
+        \includegraphics[width=60mm,scale=1]{plots/paths_testing_days/1.eps}
+  \includegraphics[width=60mm,scale=1]{plots/paths_testing_days/2.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/paths_testing_days/3.eps}
+  \includegraphics[width=60mm,scale=1]{plots/paths_testing_days/4.eps}
+      \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Forecast is from Uruguay pertaining to  year 2019.}
     \end{figure}
 
     \begin{figure}[h]
-      \includegraphics[width=70mm,scale=1]{confidence_intervals/24hr/31.pdf}
-      \includegraphics[width=70mm,scale=1]{confidence_intervals/24hr/820.pdf}
-       \caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha )=(12,0.3)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
+      \includegraphics[width=60mm,scale=1]{plots/bands_testing_days/1.eps}
+  \includegraphics[width=60mm,scale=1]{plots/bands_testing_days/2.eps}\\
+   \includegraphics[width=60mm,scale=1]{plots/bands_testing_days/3.eps}
+  \includegraphics[width=60mm,scale=1]{plots/bands_testing_days/4.eps}
+       \caption{{\color{red}Pending add legend and choose better colors.}We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
     \end{figure}
 %---END SECTION 7---
 
