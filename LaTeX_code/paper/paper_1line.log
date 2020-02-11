@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.8.29)  10 FEB 2020 10:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.8.29)  11 FEB 2020 19:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1319,12 +1319,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 300--301
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package epstopdf Info: Source file: <plots/initial_guess/initial_theta_1.eps>
-(epstopdf)                    date: 2020-02-10 09:15:34
-(epstopdf)                    size: 58356 bytes
+(epstopdf)                    date: 2020-02-11 19:17:17
+(epstopdf)                    size: 60121 bytes
 (epstopdf)             Output file: <plots/initial_guess/initial_theta_1-eps-co
 nverted-to.pdf>
-(epstopdf)                    date: 2020-02-10 09:18:49
-(epstopdf)                    size: 21306 bytes
+(epstopdf)                    date: 2020-02-11 19:31:06
+(epstopdf)                    size: 22373 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/initial_guess/initial
 _theta_1-eps-converted-to.pdf plots/initial_guess/initial_theta_1.eps>
 (epstopdf)             \includegraphics on input line 451.
@@ -1335,243 +1335,357 @@ pdfTeX warning: pdflatex (file ./plots/initial_guess/initial_theta_1-eps-conver
 ted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
 allowed
 
-<plots/initial_guess/initial_theta_1-eps-converted-to.pdf, id=288, 378.41376pt 
-x 323.2075pt>
+<plots/initial_guess/initial_theta_1-eps-converted-to.pdf, id=288, 372.39125pt 
+x 305.14pt>
 File: plots/initial_guess/initial_theta_1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use plots/initial_guess/initial_theta_1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/initial_guess/initial_theta_1-eps-converted-to.p
 df used on input line 451.
-(pdftex.def)             Requested size: 216.0022pt x 184.49156pt.
+(pdftex.def)             Requested size: 161.9989pt x 132.74413pt.
+Package epstopdf Info: Source file: <plots/initial_guess/initial_theta_2.eps>
+(epstopdf)                    date: 2020-02-11 19:17:18
+(epstopdf)                    size: 58483 bytes
+(epstopdf)             Output file: <plots/initial_guess/initial_theta_2-eps-co
+nverted-to.pdf>
+(epstopdf)                    date: 2020-02-11 19:31:07
+(epstopdf)                    size: 23425 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/initial_guess/initial
+_theta_2-eps-converted-to.pdf plots/initial_guess/initial_theta_2.eps>
+(epstopdf)             \includegraphics on input line 451.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./plots/initial_guess/initial_theta_2-eps-conver
+ted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
+allowed
+
+<plots/initial_guess/initial_theta_2-eps-converted-to.pdf, id=289, 370.38374pt 
+x 323.2075pt>
+File: plots/initial_guess/initial_theta_2-eps-converted-to.pdf Graphic file (ty
+pe pdf)
+ <use plots/initial_guess/initial_theta_2-eps-converted-to.pdf>
+Package pdftex.def Info: plots/initial_guess/initial_theta_2-eps-converted-to.p
+df used on input line 451.
+(pdftex.def)             Requested size: 151.19934pt x 131.93892pt.
 
 [16]
+Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood.eps>
+(epstopdf)                    date: 2020-02-11 18:23:24
+(epstopdf)                    size: 54397 bytes
+(epstopdf)             Output file: <plots/likelihood/Log-Likelihood-eps-conver
+ted-to.pdf>
+(epstopdf)                    date: 2020-02-11 18:33:06
+(epstopdf)                    size: 48237 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/likelihood/Log-Likeli
+hood-eps-converted-to.pdf plots/likelihood/Log-Likelihood.eps>
+(epstopdf)             \includegraphics on input line 461.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./plots/likelihood/Log-Likelihood-eps-converted-
+to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allo
+wed
+
+<plots/likelihood/Log-Likelihood-eps-converted-to.pdf, id=293, 434.62375pt x 34
+3.2825pt>
+File: plots/likelihood/Log-Likelihood-eps-converted-to.pdf Graphic file (type p
+df)
+ <use plots/likelihood/Log-Likelihood-eps-converted-to.pdf>
+Package pdftex.def Info: plots/likelihood/Log-Likelihood-eps-converted-to.pdf u
+sed on input line 461.
+(pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
+Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood_refined.ep
+s>
+(epstopdf)                    date: 2020-02-11 18:32:46
+(epstopdf)                    size: 54916 bytes
+(epstopdf)             Output file: <plots/likelihood/Log-Likelihood_refined-ep
+s-converted-to.pdf>
+(epstopdf)                    date: 2020-02-11 18:33:07
+(epstopdf)                    size: 49074 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/likelihood/Log-Likeli
+hood_refined-eps-converted-to.pdf plots/likelihood/Log-Likelihood_refined.eps>
+(epstopdf)             \includegraphics on input line 461.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./plots/likelihood/Log-Likelihood_refined-eps-co
+nverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
+.5> allowed
+
+<plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf, id=294, 434.6237
+5pt x 343.2825pt>
+File: plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf Graphic file
+ (type pdf)
+
+<use plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf>
+Package pdftex.def Info: plots/likelihood/Log-Likelihood_refined-eps-converted-
+to.pdf used on input line 461.
+(pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
+Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood_more_refin
+ed.eps>
+(epstopdf)                    date: 2020-02-11 19:05:05
+(epstopdf)                    size: 59059 bytes
+(epstopdf)             Output file: <plots/likelihood/Log-Likelihood_more_refin
+ed-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-02-11 19:21:55
+(epstopdf)                    size: 53347 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/likelihood/Log-Likeli
+hood_more_refined-eps-converted-to.pdf plots/likelihood/Log-Likelihood_more_ref
+ined.eps>
+(epstopdf)             \includegraphics on input line 462.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./plots/likelihood/Log-Likelihood_more_refined-e
+ps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versi
+on <1.5> allowed
+
+<plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf, id=295, 434
+.62375pt x 343.2825pt>
+File: plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf Graphic
+ file (type pdf)
+
+<use plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf>
+Package pdftex.def Info: plots/likelihood/Log-Likelihood_more_refined-eps-conve
+rted-to.pdf used on input line 462.
+(pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
+
+[17 <./plots/initial_guess/initial_theta_1-eps-converted-to.pdf> <./plots/initi
+al_guess/initial_theta_2-eps-converted-to.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 458.
+               Default added (so using `tbp') on input line 470.
 
-[17 <./plots/initial_guess/initial_theta_1-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 474--476
+
+Underfull \hbox (badness 10000) in paragraph at lines 486--488
 
  []
 
-<plots/alpha_conv_beta.png, id=304, 438.1971pt x 311.2428pt>
+<plots/alpha_conv_beta.png, id=316, 438.1971pt x 311.2428pt>
 File: plots/alpha_conv_beta.png Graphic file (type png)
 
 <use plots/alpha_conv_beta.png>
-Package pdftex.def Info: plots/alpha_conv_beta.png used on input line 480.
+Package pdftex.def Info: plots/alpha_conv_beta.png used on input line 492.
 (pdftex.def)             Requested size: 438.19601pt x 311.24203pt.
 
-<plots/theta_conv_beta.png, id=306, 437.4744pt x 311.7246pt>
+<plots/theta_conv_beta.png, id=318, 437.4744pt x 311.7246pt>
 File: plots/theta_conv_beta.png Graphic file (type png)
 
 <use plots/theta_conv_beta.png>
-Package pdftex.def Info: plots/theta_conv_beta.png used on input line 481.
+Package pdftex.def Info: plots/theta_conv_beta.png used on input line 493.
 (pdftex.def)             Requested size: 437.47331pt x 311.72383pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/1.eps>
-(epstopdf)                    date: 2020-02-10 10:01:20
-(epstopdf)                    size: 44031 bytes
+(epstopdf)                    date: 2020-02-11 19:13:54
+(epstopdf)                    size: 44035 bytes
 (epstopdf)             Output file: <plots/paths_testing_days/1-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:37
-(epstopdf)                    size: 15329 bytes
+(epstopdf)                    date: 2020-02-11 19:30:19
+(epstopdf)                    size: 15154 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/1-
 eps-converted-to.pdf plots/paths_testing_days/1.eps>
-(epstopdf)             \includegraphics on input line 487.
+(epstopdf)             \includegraphics on input line 499.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/paths_testing_days/1-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/paths_testing_days/1-eps-converted-to.pdf, id=307, 374.39874pt x 321.2pt
+<plots/paths_testing_days/1-eps-converted-to.pdf, id=319, 374.39874pt x 321.2pt
 >
 File: plots/paths_testing_days/1-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/paths_testing_days/1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/1-eps-converted-to.pdf used o
-n input line 487.
+n input line 499.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/2.eps>
-(epstopdf)                    date: 2020-02-10 10:01:23
-(epstopdf)                    size: 44022 bytes
+(epstopdf)                    date: 2020-02-11 19:13:55
+(epstopdf)                    size: 44033 bytes
 (epstopdf)             Output file: <plots/paths_testing_days/2-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:37
-(epstopdf)                    size: 15217 bytes
+(epstopdf)                    date: 2020-02-11 19:30:19
+(epstopdf)                    size: 15390 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/2-
 eps-converted-to.pdf plots/paths_testing_days/2.eps>
-(epstopdf)             \includegraphics on input line 488.
+(epstopdf)             \includegraphics on input line 500.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/paths_testing_days/2-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/paths_testing_days/2-eps-converted-to.pdf, id=308, 374.39874pt x 321.2pt
+<plots/paths_testing_days/2-eps-converted-to.pdf, id=320, 374.39874pt x 321.2pt
 >
 File: plots/paths_testing_days/2-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/paths_testing_days/2-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/2-eps-converted-to.pdf used o
-n input line 488.
+n input line 500.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/3.eps>
-(epstopdf)                    date: 2020-02-10 10:01:26
-(epstopdf)                    size: 43982 bytes
+(epstopdf)                    date: 2020-02-11 19:13:56
+(epstopdf)                    size: 44032 bytes
 (epstopdf)             Output file: <plots/paths_testing_days/3-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:37
-(epstopdf)                    size: 15404 bytes
+(epstopdf)                    date: 2020-02-11 19:30:19
+(epstopdf)                    size: 15330 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/3-
 eps-converted-to.pdf plots/paths_testing_days/3.eps>
-(epstopdf)             \includegraphics on input line 489.
+(epstopdf)             \includegraphics on input line 501.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/paths_testing_days/3-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/paths_testing_days/3-eps-converted-to.pdf, id=309, 374.39874pt x 321.2pt
+<plots/paths_testing_days/3-eps-converted-to.pdf, id=321, 374.39874pt x 321.2pt
 >
 File: plots/paths_testing_days/3-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/paths_testing_days/3-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/3-eps-converted-to.pdf used o
-n input line 489.
+n input line 501.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/4.eps>
-(epstopdf)                    date: 2020-02-10 10:01:28
-(epstopdf)                    size: 43898 bytes
+(epstopdf)                    date: 2020-02-11 19:13:57
+(epstopdf)                    size: 44035 bytes
 (epstopdf)             Output file: <plots/paths_testing_days/4-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:38
-(epstopdf)                    size: 15318 bytes
+(epstopdf)                    date: 2020-02-11 19:30:19
+(epstopdf)                    size: 15385 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/4-
 eps-converted-to.pdf plots/paths_testing_days/4.eps>
-(epstopdf)             \includegraphics on input line 490.
+(epstopdf)             \includegraphics on input line 502.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/paths_testing_days/4-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/paths_testing_days/4-eps-converted-to.pdf, id=310, 374.39874pt x 321.2pt
+<plots/paths_testing_days/4-eps-converted-to.pdf, id=322, 374.39874pt x 321.2pt
 >
 File: plots/paths_testing_days/4-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/paths_testing_days/4-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/4-eps-converted-to.pdf used o
-n input line 490.
+n input line 502.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 Package epstopdf Info: Source file: <plots/bands_testing_days/1.eps>
-(epstopdf)                    date: 2020-02-10 10:00:52
-(epstopdf)                    size: 49283 bytes
+(epstopdf)                    date: 2020-02-11 19:13:35
+(epstopdf)                    size: 49108 bytes
 (epstopdf)             Output file: <plots/bands_testing_days/1-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:38
-(epstopdf)                    size: 14891 bytes
+(epstopdf)                    date: 2020-02-11 19:27:05
+(epstopdf)                    size: 14760 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/1-
 eps-converted-to.pdf plots/bands_testing_days/1.eps>
-(epstopdf)             \includegraphics on input line 496.
+(epstopdf)             \includegraphics on input line 508.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/bands_testing_days/1-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/bands_testing_days/1-eps-converted-to.pdf, id=311, 374.39874pt x 321.2pt
+<plots/bands_testing_days/1-eps-converted-to.pdf, id=323, 374.39874pt x 321.2pt
 >
 File: plots/bands_testing_days/1-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/bands_testing_days/1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/1-eps-converted-to.pdf used o
-n input line 496.
+n input line 508.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/bands_testing_days/2.eps>
-(epstopdf)                    date: 2020-02-10 10:00:56
-(epstopdf)                    size: 48813 bytes
+(epstopdf)                    date: 2020-02-11 19:13:37
+(epstopdf)                    size: 49017 bytes
 (epstopdf)             Output file: <plots/bands_testing_days/2-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:38
-(epstopdf)                    size: 14645 bytes
+(epstopdf)                    date: 2020-02-11 19:27:05
+(epstopdf)                    size: 14889 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/2-
 eps-converted-to.pdf plots/bands_testing_days/2.eps>
-(epstopdf)             \includegraphics on input line 497.
+(epstopdf)             \includegraphics on input line 509.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/bands_testing_days/2-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/bands_testing_days/2-eps-converted-to.pdf, id=312, 374.39874pt x 321.2pt
+<plots/bands_testing_days/2-eps-converted-to.pdf, id=324, 374.39874pt x 321.2pt
 >
 File: plots/bands_testing_days/2-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/bands_testing_days/2-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/2-eps-converted-to.pdf used o
-n input line 497.
+n input line 509.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/bands_testing_days/3.eps>
-(epstopdf)                    date: 2020-02-10 10:00:59
-(epstopdf)                    size: 49151 bytes
+(epstopdf)                    date: 2020-02-11 19:13:39
+(epstopdf)                    size: 49067 bytes
 (epstopdf)             Output file: <plots/bands_testing_days/3-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:38
-(epstopdf)                    size: 15051 bytes
+(epstopdf)                    date: 2020-02-11 19:27:06
+(epstopdf)                    size: 14834 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/3-
 eps-converted-to.pdf plots/bands_testing_days/3.eps>
-(epstopdf)             \includegraphics on input line 498.
+(epstopdf)             \includegraphics on input line 510.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/bands_testing_days/3-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/bands_testing_days/3-eps-converted-to.pdf, id=313, 374.39874pt x 321.2pt
+<plots/bands_testing_days/3-eps-converted-to.pdf, id=325, 374.39874pt x 321.2pt
 >
 File: plots/bands_testing_days/3-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/bands_testing_days/3-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/3-eps-converted-to.pdf used o
-n input line 498.
+n input line 510.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/bands_testing_days/4.eps>
-(epstopdf)                    date: 2020-02-10 10:01:02
-(epstopdf)                    size: 48563 bytes
+(epstopdf)                    date: 2020-02-11 19:13:40
+(epstopdf)                    size: 48835 bytes
 (epstopdf)             Output file: <plots/bands_testing_days/4-eps-converted-t
 o.pdf>
-(epstopdf)                    date: 2020-02-10 10:02:39
-(epstopdf)                    size: 14684 bytes
+(epstopdf)                    date: 2020-02-11 19:27:06
+(epstopdf)                    size: 14921 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/4-
 eps-converted-to.pdf plots/bands_testing_days/4.eps>
-(epstopdf)             \includegraphics on input line 499.
+(epstopdf)             \includegraphics on input line 511.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./plots/bands_testing_days/4-eps-converted-to.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<plots/bands_testing_days/4-eps-converted-to.pdf, id=314, 374.39874pt x 321.2pt
+<plots/bands_testing_days/4-eps-converted-to.pdf, id=326, 374.39874pt x 321.2pt
 >
 File: plots/bands_testing_days/4-eps-converted-to.pdf Graphic file (type pdf)
  <use plots/bands_testing_days/4-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/4-eps-converted-to.pdf used o
-n input line 499.
+n input line 511.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>]
+[18]
 
-Package biblatex Warning: Keyword 'Wind-SDE' not found on input line 517.
+Package biblatex Warning: Keyword 'Wind-SDE' not found on input line 529.
 
 
-LaTeX Warning: Empty bibliography on input line 517.
+LaTeX Warning: Empty bibliography on input line 529.
 
-[19 <./plots/paths_testing_days/1-eps-converted-to.pdf> <./plots/paths_testing_
-days/2-eps-converted-to.pdf> <./plots/paths_testing_days/3-eps-converted-to.pdf
-> <./plots/paths_testing_days/4-eps-converted-to.pdf>] [20 <./plots/bands_testi
-ng_days/1-eps-converted-to.pdf> <./plots/bands_testing_days/2-eps-converted-to.
-pdf> <./plots/bands_testing_days/3-eps-converted-to.pdf> <./plots/bands_testing
-_days/4-eps-converted-to.pdf>] (./paper_1line.aux)
+[19] [20 <./plots/likelihood/Log-Likelihood-eps-converted-to.pdf> <./plots/like
+lihood/Log-Likelihood_refined-eps-converted-to.pdf> <./plots/likelihood/Log-Lik
+elihood_more_refined-eps-converted-to.pdf>] [21 <./plots/alpha_conv_beta.png> <
+./plots/theta_conv_beta.png> <./plots/paths_testing_days/1-eps-converted-to.pdf
+> <./plots/paths_testing_days/2-eps-converted-to.pdf> <./plots/paths_testing_da
+ys/3-eps-converted-to.pdf> <./plots/paths_testing_days/4-eps-converted-to.pdf>]
+[22 <./plots/bands_testing_days/1-eps-converted-to.pdf> <./plots/bands_testing_
+days/2-eps-converted-to.pdf> <./plots/bands_testing_days/3-eps-converted-to.pdf
+> <./plots/bands_testing_days/4-eps-converted-to.pdf>] (./paper_1line.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1585,10 +1699,10 @@ Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18470 strings out of 493029
- 362629 string characters out of 6136234
- 747518 words of memory out of 5000000
- 21796 multiletter control sequences out of 15000+600000
+ 18492 strings out of 493029
+ 363760 string characters out of 6136234
+ 747527 words of memory out of 5000000
+ 21813 multiletter control sequences out of 15000+600000
  24513 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,14n,42p,10383b,1054s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1608,10 +1722,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (20 pages, 1451323 bytes).
+Output written on paper_1line.pdf (22 pages, 1616894 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
+ 482 PDF objects out of 1000 (max. 8388607)
+ 230 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

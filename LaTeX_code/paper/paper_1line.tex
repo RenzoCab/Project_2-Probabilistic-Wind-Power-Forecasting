@@ -448,8 +448,20 @@ Following the instruction for the initial guesses from section $\ref{opt_sec}$, 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.6\textwidth]{plots/initial_guess/initial_theta_1.eps}
+\includegraphics[width=0.45\textwidth]{plots/initial_guess/initial_theta_1.eps}\quad\includegraphics[width=0.42\textwidth]{plots/initial_guess/initial_theta_2.eps}
 \caption{Value function from ($\ref{inital_theta}$) as a function of different $\theta_0$ values. We can observe that the function if flat for a wide range.}
+\end{figure}
+
+\subsection{Negative Log-Lihelihood}
+
+We plot the Negative Log-Likelihood as a function of the parameters. The plots can be seen in Figure (\ref{fig:neg-LL}). We used all the training data (127 days of data) to construct and optimize the Negative Log-Likelihood.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood.eps}\quad\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_refined.eps}
+\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_more_refined.eps}
+\caption{Negative Log-Likelihood for different domains.}
+\label{fig:neg-LL}
 \end{figure}
 
 \subsection{Main guesses}
