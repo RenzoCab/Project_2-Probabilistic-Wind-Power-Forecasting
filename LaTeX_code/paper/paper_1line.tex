@@ -249,10 +249,11 @@ that, after applying It\^{o}'s formula on $h(V_t)$, gives the state-independent 
 \begin{equation}
 dZ_t = \left[  \frac{- \theta_t V_t}{ \sqrt{2 \theta_t \alpha (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \theta_t \alpha} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \right] \,dt + dW_t \,. \label{eq:stindepSDE}
 \end{equation}
-After replacing $V_t = \frac{\sin(Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
-\begin{equation}
-dZ_t = \left[ \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t)}{\sqrt{2 \theta_t \alpha} \cos{(Z_t)}} + \frac{\sqrt{2 \theta_t \alpha} \sin{(Z_t)}}{2 \cos{(Z_t)}} \right] \,dt + dW_t \,. 
-\end{equation}
+After replacing $V_t = \frac{\sin(\sqrt{2 \theta_t \alpha} Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
+\begin{align}
+dZ_t & = \left[ \frac{- \theta_t (\sin(\sqrt{2 \theta_t \alpha} Z_t) + 1 - 2 p_t)}{\sqrt{2 \theta_t \alpha} \cos{(\sqrt{2 \theta_t \alpha} Z_t)}} + \frac{\sqrt{2 \theta_t \alpha} \sin{(\sqrt{2 \theta_t \alpha} Z_t)}}{2 \cos{(\sqrt{2 \theta_t \alpha} Z_t)}} \right] \,dt + dW_t \nonumber \\
+&  = \left[  \frac{\sqrt{2 \theta_t} \left( \sin(\sqrt{2 \theta_t \alpha} Z_t) (\alpha - 1) + (2 p_t -1 ) \right)}{2 \sqrt{\alpha} \cos{(\sqrt{2 \theta_t \alpha} Z_t)}}  \right] \,dt + dW_t \,. 
+\end{align}
 
 
 %\begin{align}
