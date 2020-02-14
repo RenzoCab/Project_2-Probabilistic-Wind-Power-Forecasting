@@ -237,21 +237,21 @@ V_0 \!\!\!&=  v_0 \,. \label{VtSDE}
 
 Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. \\
 
-We consider the following Lamperti transformation  {\color{red} (Modify the transformation to obtain an unitary diffusion coefficient in the SDE for $Z$. Remind that in continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
+We consider the following Lamperti transformation  {\color{red} (Remind that in continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
 \begin{equation}
-Z_t = h(V_t) = \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
+Z_t = h(V_t) = \frac{1}{\sqrt{2 \theta_t \alpha}} \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
 \end{equation}
 where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, leads to the process 
 \begin{equation}
-Z_t = h(V_t) = \arcsin (2(V_t + p_t) -1)\,,
+Z_t = h(V_t) = \frac{1}{\sqrt{2 \theta_t \alpha}} \arcsin (2(V_t + p_t) -1)\,,
 \end{equation}
 that, after applying It\^{o}'s formula on $h(V_t)$, gives the state-independent diffusion SDE
 \begin{equation}
-dZ_t = \left[  \frac{- \theta_t V_t}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{2} \frac{\theta_t \alpha \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \right] \,dt + \sqrt{2 \theta_t \alpha}\, dW_t \,. \label{eq:stindepSDE}
+dZ_t = \left[  \frac{- \theta_t V_t}{ \sqrt{2 \theta_t \alpha (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \theta_t \alpha} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \right] \,dt + dW_t \,. \label{eq:stindepSDE}
 \end{equation}
 After replacing $V_t = \frac{\sin(Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
 \begin{equation}
-dZ_t = \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t) + \theta_t \alpha \sin{(Z_t)}}{\cos{(Z_t)}} \,dt + \sqrt{2 \theta_t \alpha}\, dW_t \,. 
+dZ_t = \left[ \frac{- \theta_t (\sin(Z_t) + 1 - 2 p_t)}{\sqrt{2 \theta_t \alpha} \cos{(Z_t)}} + \frac{\sqrt{2 \theta_t \alpha} \sin{(Z_t)}}{2 \cos{(Z_t)}} \right] \,dt + dW_t \,. 
 \end{equation}
 
 
