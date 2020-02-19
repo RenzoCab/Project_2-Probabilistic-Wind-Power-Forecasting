@@ -2,11 +2,32 @@
 
 \usepackage{graphicx}
 \usepackage{amssymb, amsmath}
-\usepackage{bm} % more powerful version to get bold
+\usepackage{bm}
 \usepackage{siunitx}
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{todonotes}
+\usepackage{ulem}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{fancybox}
+
+\theoremstyle{definition}
+\newtheorem{Def}{Definition}[section]
+\newtheorem{Eg}{Example}[section]
+\newtheorem{Rm}{Remark}[section]
+\newtheorem{Ex}{Exercise}[section]
+\newtheorem{Prop}[Def]{Proposition}
+\newtheorem{Lem}[Def]{Lemma}
+\newtheorem{Thm}[Def]{Theorem}
+\newtheorem{Cor}[Def]{Corollary}
+\newtheorem{Rem}[Def]{Remark}
+\newtheorem{Ass}[Def]{Assumption}
+\newtheorem{Met}[Def]{Method}
+\newtheorem{Res}[Def]{Result}
 
 \usepackage[backend=biber, style=apa,autocite=inline]{biblatex} % package for bibliography
 \DeclareLanguageMapping{english}{english-apa}
@@ -59,7 +80,7 @@ Reliable wind power generation forecasting is crucial for applications such as t
 %---BEGIN SECTION 1---
 \section{Introduction}  \label{Section_1}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{plots/wind_and_solar/plot_over_years.eps}
 \caption{Installed wind and solar power over the years \cite{sultana2017review}. We recall the importance of accurate forecasts to use green energies optimally.}
@@ -88,7 +109,7 @@ We identify and remove the days with curtailing, removing a total of 108 days. F
 
 In this paper we present the phenomenological underlying model in Section \ref{Section_2} and describe the physical constraints in Section \ref{Section_3} and how these constrains can be met. Then, in Section \ref{Section_4}, we will introduce an alternative formulation of the model in Lamperti space. In Section \ref{Section_5}, we show our parameter estimation procedure and its results in Section \ref{Section_6}. We compare alternative models in Section \ref{Section_7} and different forecast providers in Section \ref{Section_8}.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/5.eps}
 \includegraphics[width=0.45\textwidth]{plots/245.eps}\\
@@ -98,7 +119,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \label{fig:sample_data}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/LP_6.eps}
 \includegraphics[width=0.45\textwidth]{plots/MP_6.eps}\\
@@ -108,7 +129,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \label{fig:data_curtailing}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/LP.eps}
 \includegraphics[width=0.45\textwidth]{plots/MP.eps}\\
@@ -118,7 +139,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
   \label{fig:data_after_clean}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/LP_t.eps}
 \includegraphics[width=0.45\textwidth]{plots/MP_t.eps}\\
@@ -128,7 +149,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
 \label{fig:error_transitions}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/LP_t_LP.eps}
 \includegraphics[width=0.45\textwidth]{plots/MP_t_LP.eps}\\
@@ -395,7 +416,7 @@ We compare two candidate models to find the best-fit that maximizes the retained
   with $\theta_t$ given by (\ref{theta_t}).
 \end{itemize}
 
-\begin{table}
+\begin{table}[H]
 \centering
 \begin{tabular}{cccc}
 \toprule
@@ -412,7 +433,7 @@ Model 2 &   $(1.2,0.1,0.6)$   &  \add   &   \add    \\
 %---BEGIN SECTION 6---
 \section{Forecast Provider Comparison} \label{Section_6}
 We compare forecasts from two different companies for the same period.
-\begin{table}
+\begin{table}[H]
 \centering
 \begin{tabular}{cccc}
 \toprule
@@ -426,7 +447,7 @@ Provider B  & $(\add,\add) $  &  \add   &   \add  \\
 \end{table}
 In Figure (\add)-(\add), we see that forecast provider A is of better quality than provider B. This is confirmed by both the AIC and BIC information criteria.
 
- \begin{table}[h]
+ \begin{table}[H]
  \centering
  \begin{tabular}{cccc}
  \toprule
@@ -447,7 +468,7 @@ In Figure (\add)-(\add), we see that forecast provider A is of better quality th
 
 Following the instruction for the initial guesses from section $\ref{opt_sec}$, we get the initial guesses $(\theta_0,\alpha,\delta)\approx(1.2,0.1,0.6)$.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/initial_guess/initial_theta_1.eps}\quad\includegraphics[width=0.42\textwidth]{plots/initial_guess/initial_theta_2.eps}
 \caption{Value function from ($\ref{inital_theta}$) as a function of different $\theta_0$ values. We can observe that the function if flat for a wide range.}
@@ -457,7 +478,7 @@ Following the instruction for the initial guesses from section $\ref{opt_sec}$, 
 
 We plot the Negative Log-Likelihood as a function of the parameters. The plots can be seen in Figure (\ref{fig:neg-LL}). We used all the training data (127 days of data) to construct and optimize the Negative Log-Likelihood.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood.eps}\quad\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_refined.eps}
 \includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_more_refined.eps}
@@ -468,7 +489,7 @@ We plot the Negative Log-Likelihood as a function of the parameters. The plots c
 \subsection{Main guesses}
 
 We were able to obtain the following for 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -489,13 +510,13 @@ five possible wind power production paths for each model.\\
 
 In Figures ()-(), we show point-wise empirical confidence bands for the different models.
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=56mm,scale=1]{plots/alpha_conv_beta.png}
   \includegraphics[width=56mm,scale=1]{plots/theta_conv_beta.png}
   \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to year 2019.}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/paths_testing_days/1.eps}
 \includegraphics[width=0.45\textwidth]{plots/paths_testing_days/2.eps}\\
@@ -504,7 +525,7 @@ In Figures ()-(), we show point-wise empirical confidence bands for the differen
 \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Forecast is from Uruguay pertaining to  year 2019.}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/bands_testing_days/1.eps}
 \includegraphics[width=0.45\textwidth]{plots/bands_testing_days/2.eps}\\
@@ -522,6 +543,98 @@ We have proposed a method to produce stochastic wind power forecasts based on pa
 We were also able to compare two different forecast providers with respect to their real-world performance on the aggregated data set and on specific wind farm sites. Finally, the model paves the way for stochastic optimal control methods enabling optimal decision making under uncertainty.
 %---END SECTION 7---
 
+\section{Appendix} \label{Appendix}
+
+\section{The model}
+For a time horizon $T>0$ and  a parameter $\alpha > 0$ and $(\theta_t)_{t\in[0,T]}$ a positive deterministic  function,  let us consider the model  given by
+\begin{align}\label{eq:model}
+dX_t&= \big(\dot p_t - \theta_t(X_t-p_t)  \big)dt  +\sqrt{2\alpha \theta_tX_t(1-X_t)} dW_t\quad t\in[0,T]\\
+X_0&=x_0\in[0,1],\notag
+\end{align}
+where $(p_t)_{t\in[0,T]}$ denotes the prediction function that satisfies $0\le p_t\le 1$ for all $t\in[0,T]$. This prediction function is assumed to be a smooth function of the time so that 
+$$\sup_{t\in[0,T]}\bigl( |p_s| + |\dot p_s|\big) <+\infty .$$
+The following proofs are based on standard arguments for stochastic processes that can be found e.g. in  Alfonsi \cite{Alf} and Karatzas and Shreve \cite{KarShr} that we adapted to the setting of our model \eqref{eq:model}.
+\begin{Thm}\label{thm:exun}
+Assume that    
+\begin{equation}\label{Assumption:1}
+\forall  t\in[0,T],\;\; 0\le \dot p_t +\theta_tp_t\le \theta_t, \;\;\mbox{ and }\;\;
+\sup_{t\in[0,T]}|\theta_t|<+\infty\tag{A}. 
+\end{equation}
+Then, there is a unique strong solution to \eqref{eq:model} s.t.  for all $t\in[0,T]$, $X_t\in[0,1]$ a.s.
+\end{Thm}
+\begin{proof}
+Let us first consider the following SDE for $t\in[0,T]$
+\begin{equation}\label{eq:eds1}
+X_t=x_0+  \int_0^t\big(\dot p_s - \theta_s(X_s-p_s)  \big)ds  + \int_0^t\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s, \quad x_0>0.
+\end{equation}
+According to Proposition 2.13, p. 291 of \cite{KarShr}, under assumption  \eqref{Assumption:1} there is a unique strong solution $X$ to \eqref{eq:eds1}. Moreover, as the diffusion coefficient is of linear growth, we have  for all $p>0$ 
+\begin{equation}\label{prop:fm}
+\mathbb E[ \sup_{t\in[0,T]}|X_t|^p]<\infty.
+\end{equation}
+Then, it remains to show that for all $t\in[0,T]$, $X_t\in[0,1]$ a.s. For this aim, we need to use the so-called Yamada function $\psi_n$ that is a $\mathcal C^2$ function that satisfies a bench of useful properties:
+\begin{align*}
+&|\psi_n(x)|\underset{n\rightarrow+\infty}{\rightarrow}|x|, \;\; x{\psi'}_n(x)\underset{n\rightarrow+\infty}{\rightarrow}|x|, \;\; |\psi_n(x)|\wedge |x{\psi'}_n(x)| \le |x|\\
+&{\psi'}_n(x)\le 1, \;\; \mbox{ and } {\psi''}_n(x)=g_n(|x|)\ge 0\;\; \mbox{ with } \;\; g_n(x)x\le \frac 2n\;\;  \mbox{ for all } x\in \mathbb R .
+\end{align*}
+See the proof of Proposition 2.13, p. 291 of \cite{KarShr} for the construction of such fucntion.
+Applying Itô's formula we get
+\begin{align*}
+\psi_n(X_t)&=\psi_n(x_0) +\int_0^t {\psi'}_n(X_s)(\dot p_s + \theta_s p_s - \theta_sX_s  \big)ds + \int_0^t{\psi'}_n(X_s)\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s\\
+&+ \alpha \int_0^t \theta_sg_n(|X_s|)|X_s(1-X_s)|ds.
+\end{align*}
+Now, thanks to  \eqref{Assumption:1}, \eqref{prop:fm} and to the above properties of $\psi_n$ and $g_n$, we get
+$$
+\mathbb E[\psi_n(X_t)]\le \psi_n(x_0) +\int_0^t \big(\dot p_s + \theta_sp_s -  \theta_s \mathbb E[{\psi'}_n(X_s)X_s] \big)ds + \frac{2\alpha}{n}\int_0^t \theta_s\mathbb E |1-X_s|ds.
+$$
+Therefore, letting $n$ tends to infinity we use Lebesgue's theorem to get
+$$
+\mathbb E[|X_t|]\le x_0 +\int_0^t \big(\dot p_s + \theta_sp_s -  \theta_s \mathbb E|X_s| \big)ds.
+$$
+Besides, taking the expectation of \eqref{eq:eds1}, we get
+$$
+\mathbb E X_t=x_0+  \int_0^t\big(\dot p_s +\theta_sp_s - \theta_s \mathbb EX_s  \big)ds
+$$
+and thus we have 
+$$
+\mathbb E[|X_t| -X_t ]\le \int_0^t \theta_s \mathbb E[|X_s| - X_s ]ds.
+$$
+Then, Gronwall's lemma gives us $\mathbb E[|X_t|]=\mathbb E X_t$ and thus for any $t\in[0,T]$ $X_t\ge0$ a.s. The same arguments work to prove that  for any $t\in[0,T]$ $Y_t:=1-X_t\ge0$  a.s.  since the process $(Y_t)_{t\in[0,T]}$ is solution to 
+$$
+dY_t= \big( \theta_t(1-p_t) -\dot p_t - \theta_tY_t  \big)dt  -\sqrt{2\alpha \theta_tY_t(1-Y_t)} dW_t,
+$$
+Then similarly, we need to assume that $\dot p_t +\theta_tp_t\ge 0$. This completes the proof.
+\end{proof}
+
+\begin{Thm}
+Assume that assumptions of Theorem \ref{thm:exun} hold with $x_0\in]0,1[$.
+Let $\tau_0:=\inf \{t\in[0,T],\; X_t=0\}$ and  $\tau_1:=\inf \{t\in[0,T],\; X_t=1\}$ with the convention that $\inf\emptyset=+\infty$. Assume in addition that
+\begin{equation}\label{Assumption:2}
+0<\alpha < \frac 12\quad \mbox{ and }\quad \forall  t\in[0,T],\;\; \alpha\theta_t\le \dot p_t +\theta_tp_t \le (1-\alpha)\theta_t \tag{B}. 
+\end{equation}
+ Then, $\tau_0=\tau_1=+\infty$ a.s.
+\end{Thm}
+\begin{proof}
+For $t\in[0,\tau_0[$, we have 
+$$
+\frac{dX_t}{X_t}= \frac{\dot p_t +\theta_t p_t}{X_t} - \theta_tdt  +\sqrt{\frac{2\alpha \theta_t(1-X_t)}{X_t}} dW_t 
+$$  
+so that
+$$
+X_t=x_0\exp\Big(\int_0^t \frac{\dot p_s +\theta_s(p_s-\alpha)}{X_s}ds-(1-\alpha)\int_0^t\theta_sds + M_t\Big),
+$$
+where $M_t=\int_0^t\sqrt{\frac{2\alpha \theta_s(1-X_s)}{X_s}} dW_s$ is a continuous martingale. Then as for all $t\in[0,T]$, we have $\dot p_t +\theta_t(p_t-\alpha)\ge0$, we deduce that
+$$
+X_t\ge x_0\exp\Big(-(1-\alpha)\int_0^t\theta_sds + M_t\Big).
+$$
+By way of contradiction let us assume that  $\{\tau_0<\infty\}$, then letting $t\to \tau_0$ we deduce that $\lim_{t\to \infty} \mathbf 1_{\{\tau_0<\infty\}}M_{t\wedge \tau_0}=\mathbf -1_{\{\tau_0<\infty\}}\infty$ a.s. This leads to a contradiction since we know that continuous martingales likewise the Brownian motion cannot converge  almost surely to $+\infty$ or $-\infty$. It follows that $\tau_0=\infty$ almost surely. Next, recalling that  the process $(Y_t)_{t\geq 0}$  given by $Y_t=1-X_t$ is solution to 
+$$
+dY_t= \big( \theta_t(1-p_t) -\dot p_t - \theta_tY_t  \big)dt  -\sqrt{2\alpha \theta_tY_t(1-Y_t)} dW_t 
+$$
+we deduce using similar arguments as above 
+$\tau_1=\infty$ a.s. provided that $\theta_t(1-p_t) -\dot p_t -\alpha \theta_t\ge 0$.
+ \end{proof}
+\textcolor{red}{When using Lamperti, the form }
+
 %---REFERENCES---
 
 \nocite{*}
@@ -530,4 +643,3 @@ We were also able to compare two different forecast providers with respect to th
 \printbibliography[keyword={Wind-SDE},title={References}]
 
 \end{document}
-
