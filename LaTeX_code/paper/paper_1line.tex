@@ -13,6 +13,7 @@
 \usepackage{amssymb}
 \usepackage{float}
 \usepackage{amsthm}
+\usepackage{commath}
 \usepackage{fancybox}
 
 \theoremstyle{definition}
@@ -616,7 +617,7 @@ Let $\tau_0:=\inf \{t\in[0,T],\; X_t=0\}$ and  $\tau_1:=\inf \{t\in[0,T],\; X_t=
 \begin{proof}
 For $t\in[0,\tau_0[$, we have 
 $$
-\frac{dX_t}{X_t}= \frac{\dot p_t +\theta_t p_t}{X_t} - \theta_tdt  +\sqrt{\frac{2\alpha \theta_t(1-X_t)}{X_t}} dW_t 
+\frac{dX_t}{X_t}=\left( \frac{\dot p_t +\theta_t p_t}{X_t} - \theta_t\right)\dif t  +\sqrt{\frac{2\alpha \theta_t(1-X_t)}{X_t}} \dif W_t 
 $$  
 so that
 $$
