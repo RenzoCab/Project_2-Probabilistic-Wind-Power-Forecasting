@@ -1,20 +1,20 @@
 \documentclass[11pt]{article}
 
 \usepackage{graphicx}
-\usepackage{amssymb, amsmath}
 \usepackage{bm}
 \usepackage{siunitx}
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{authblk}
 \usepackage{amsmath}
-\usepackage{todonotes}
-\usepackage{ulem}
 \usepackage{amssymb}
-\usepackage{float}
 \usepackage{amsthm}
+\usepackage{todonotes}
+%\usepackage[normalem]{ulem}
+\usepackage{float}
 \usepackage{commath}
 \usepackage{fancybox}
+\usepackage{url}
 
 \theoremstyle{definition}
 \newtheorem{Def}{Definition}[section]
@@ -30,12 +30,25 @@
 \newtheorem{Met}[Def]{Method}
 \newtheorem{Res}[Def]{Result}
 
-\usepackage[backend=biber, style=apa,autocite=inline]{biblatex} % package for bibliography
-\DeclareLanguageMapping{english}{english-apa}
+\usepackage[backend=biber, style=authoryear, citestyle=authoryear, autocite=inline]{biblatex} % package for bibliography 
+%\DeclareLanguageMapping{english}{english-apa}
 
 \addbibresource{sdewind.bib}
 
-%\usepackage[backend=biber, style=authoryear,autocite=inline]{biblatex}
+%\renewbibmacro*{title}{%
+%  \ifboolexpr{
+%    test {\iffieldundef{title}}
+%    and
+%    test {\iffieldundef{subtitle}}
+%  }
+%    {}
+%    {\printtext{%
+%     \printtext[titlecase]{\usefield{\uline}{title}}%
+%     \setunit{\subtitlepunct}%
+%     \printfield[titlecase]{subtitle}}%
+%     \newunit}%
+%  \printfield{titleaddon}}
+
 
 \newcommand{\add}{\textcolor{red}{[insert]}}
 
@@ -105,7 +118,7 @@ We propose to model wind power forecasts errors using parametric stochastic diff
 Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations. Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2019.
 
 {\color{red} Change this paragraph. Discuss with the global dataset, the dataset after removing days when curtailing has been detected, the data set without curtailing and with Lamperti transform.}
-We have available a year long data set from Uruguay based on 363 observation paths, each of which is 24-hours long with observations recorded every 10 min. In total, it is a data set of approximately fifty thousand data points recorded in 2019. See Figure (\ref{fig:sample_data}). The data is normalized with respect to the maximuim power capacity of wind power production in Uruguay, which is $\SI{1474}{\mega\watt}$. However, sometimes the real production is artificially modifies due to curtailing. This effect becomes clear when we inspect for different power production levels. We split the available data into a low, meduim and high power range. See Figure (\ref{fig:data_curtailing}).\\
+We have available a year long data set from Uruguay based on 363 observation paths, each of which is 24-hours long with observations recorded every 10 min. In total, it is a data set of approximately fifty thousand data points recorded in 2019. See Figure (\ref{fig:sample_data}). Data are normalized with respect to the maximum power capacity of wind power production in Uruguay, which is $\SI{1474}{\mega\watt}$. However, sometimes the real production is artificially modifies due to curtailing. This effect becomes clear when we inspect for different power production levels. We split the available data into a low, meduim and high power range. See Figure (\ref{fig:data_curtailing}).\\
 We identify and remove the days with curtailing, removing a total of 108 days. From the resulting 255 days, we use 127 days to train the system and 128 to test it. Also, to avoid correlation between days, we intercalate the days we use for training and testing ({\color{red} Show that 24h is enough to ensure independence}).
 
 In this paper we present the phenomenological underlying model in Section \ref{Section_2} and describe the physical constraints in Section \ref{Section_3} and how these constrains can be met. Then, in Section \ref{Section_4}, we will introduce an alternative formulation of the model in Lamperti space. In Section \ref{Section_5}, we show our parameter estimation procedure and its results in Section \ref{Section_6}. We compare alternative models in Section \ref{Section_7} and different forecast providers in Section \ref{Section_8}.
@@ -554,7 +567,7 @@ X_0&=x_0\in[0,1],\notag
 \end{align}
 where $(p_t)_{t\in[0,T]}$ denotes the prediction function that satisfies $0\le p_t\le 1$ for all $t\in[0,T]$. This prediction function is assumed to be a smooth function of the time so that 
 $$\sup_{t\in[0,T]}\bigl( |p_s| + |\dot p_s|\big) <+\infty .$$
-The following proofs are based on standard arguments for stochastic processes that can be found e.g. in  Alfonsi \cite{Alf} and Karatzas and Shreve \cite{KarShr} that we adapted to the setting of our model \eqref{eq:model}.
+The following proofs are based on standard arguments for stochastic processes that can be found e.g. in \cite{Alf} and \cite{KarShr} that we adapted to the setting of our model \eqref{eq:model}.
 \begin{Thm}\label{thm:exun}
 Assume that    
 \begin{equation}\label{Assumption:1}
@@ -568,7 +581,7 @@ Let us first consider the following SDE for $t\in[0,T]$
 \begin{equation}\label{eq:eds1}
 X_t=x_0+  \int_0^t\big(\dot p_s - \theta_s(X_s-p_s)  \big)ds  + \int_0^t\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s, \quad x_0>0.
 \end{equation}
-According to Proposition 2.13, p. 291 of \cite{KarShr}, under assumption  \eqref{Assumption:1} there is a unique strong solution $X$ to \eqref{eq:eds1}. Moreover, as the diffusion coefficient is of linear growth, we have  for all $p>0$ 
+According to Proposition 2.13, p.291 of \cite{KarShr}, under assumption  \eqref{Assumption:1} there is a unique strong solution $X$ to \eqref{eq:eds1}. Moreover, as the diffusion coefficient is of linear growth, we have  for all $p>0$ 
 \begin{equation}\label{prop:fm}
 \mathbb E[ \sup_{t\in[0,T]}|X_t|^p]<\infty.
 \end{equation}
@@ -580,8 +593,8 @@ Then, it remains to show that for all $t\in[0,T]$, $X_t\in[0,1]$ a.s. For this a
 See the proof of Proposition 2.13, p. 291 of \cite{KarShr} for the construction of such fucntion.
 Applying Itô's formula we get
 \begin{align*}
-\psi_n(X_t)&=\psi_n(x_0) +\int_0^t {\psi'}_n(X_s)(\dot p_s + \theta_s p_s - \theta_sX_s  \big)ds + \int_0^t{\psi'}_n(X_s)\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s\\
-&+ \alpha \int_0^t \theta_sg_n(|X_s|)|X_s(1-X_s)|ds.
+\psi_n(X_t)&=\psi_n(x_0) +\int_0^t {\psi'}_n(X_s)(\dot p_s + \theta_s p_s - \theta_sX_s  \big)ds \\
+&+ \int_0^t{\psi'}_n(X_s)\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s + \alpha \int_0^t \theta_sg_n(|X_s|)|X_s(1-X_s)|ds.
 \end{align*}
 Now, thanks to  \eqref{Assumption:1}, \eqref{prop:fm} and to the above properties of $\psi_n$ and $g_n$, we get
 $$
