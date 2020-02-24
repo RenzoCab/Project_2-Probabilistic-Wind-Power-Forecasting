@@ -239,9 +239,14 @@ We would like  a diffusion term that vanishes at the boundaries to prevent the p
   \begin{equation}
     b (x; p_t,\bm{\theta} )= \sqrt{2 \theta_t \alpha x (1-x)}
   \end{equation}
-  where $\alpha >0$ is a constant parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and , in particular, it is a Jacobi type diffusion. {\color{red} Add expressions and references for these class of diffusions, for example \cite{iacus1}.}
+  where $\alpha >0$ is a constant parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and, in particular, it is a Jacobi type diffusion. It is useful to recall that (\cite[440]{foso}) a Pearson diffusion is a stationary solution to a stochastic differential equation of the form
+ \begin{equation}
+    dX_t = - \theta (X_t - \mu) dt + \sqrt{2 \theta (a X_t^2 + b X_t + c)} dW_t
+  \end{equation}
+where $\theta>0$, and $a$, $b$ and $c$ are parameters such that the square root is well defined when $X_t$ is in the state space and, together with $\mu$, the mean of the invariant distribution, determine the state space of the diffusion as well as the shape of the invariant distribution. \\ An exhaustive classification of the Pearson diffusions is presented in (\cite[440-443]{foso}) where, in particular, it is discussed the case $a < 0$ and $b(x; \bm{\theta}) = \sqrt{2 \theta a x (x-1)}$, where the invariant distribution is a Beta distribution with parameters $\left( \frac{\mu}{-a}, \frac{1 - \mu}{-a} \right),$ that leads to the so-called Jacobi diffusions because the related eigenfunctions are Jacobi polynomials.
 
-To further ensure that the process does not escape the region $[0,1]$, the mean reversion parameter has to be selected according to the following rule. Observe that the time derivative term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s.  inside the range $[0,1]$. In other words, the zero drift line defined by $a(x; p_t,\bm{\theta}) =0$, which an attractor, must be contained inside the range $[0,1]$. Thus, we must have that
+
+To further ensure that the process does not escape the region $[0,1]$, the mean reversion parameter has to be selected according to the following rule. Observe that the time derivative term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s. inside the range $[0,1]$. In other words, the zero drift line defined by $a(x; p_t,\bm{\theta}) =0$, which is an attractor, must be contained inside the range $[0,1]$. Thus, we must have that
 \begin{equation}
 \frac{- |\dot{p_t}|}{p_t} \leq \theta_t \leq \frac{|\dot{p}_t|}{1- p_t}
 \end{equation}

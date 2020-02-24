@@ -255,6 +255,43 @@
       \endverb
       \keyw{Indirect inference,wind power,probabilistic forecasting,model selection,sensitivity,Wind-SDE}
     \endentry
+    \entry{foso}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=f5cea1f9c9d3a399a271ea02805db6ca}{%
+           family={Forman},
+           familyi={F\bibinitperiod},
+           given={Julie\bibnamedelima Lyng},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7c4d9de31f54a0f88e22b2be626c808c}{%
+           family={Sorensen},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2a48906997e808e4b32962fe5a953c21}
+      \strng{fullhash}{2a48906997e808e4b32962fe5a953c21}
+      \strng{bibnamehash}{2a48906997e808e4b32962fe5a953c21}
+      \strng{authorbibnamehash}{2a48906997e808e4b32962fe5a953c21}
+      \strng{authornamehash}{2a48906997e808e4b32962fe5a953c21}
+      \strng{authorfullhash}{2a48906997e808e4b32962fe5a953c21}
+      \field{sortinit}{F}
+      \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scandinavian Journal of Statistics}
+      \field{number}{3}
+      \field{title}{The {P}earson Diffusions: A Class of Statistically Tractable Diffusion Processes}
+      \field{volume}{35}
+      \field{year}{2008}
+      \true{nocite}
+      \field{pages}{438\bibrangedash 465}
+      \range{pages}{28}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{gieb}{report}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=5b6553e78712d97e429e933f7008fc4b}{%
@@ -557,7 +594,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Scand J of Stat}
+      \field{journaltitle}{Scandinavian Journal of Statistics}
       \field{title}{Estimation of an ergodic diffusion from discrete observations}
       \field{volume}{24}
       \field{year}{1997}
