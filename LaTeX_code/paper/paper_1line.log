@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  23 FEB 2020 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  10 MAR 2020 07:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1948,7 +1948,7 @@ Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 Here is how much of TeX's memory you used:
  34222 strings out of 492162
  689686 string characters out of 6129062
- 1078296 words of memory out of 5000000
+ 1078295 words of memory out of 5000000
  38122 multiletter control sequences out of 15000+600000
  553858 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1971,7 +1971,7 @@ sy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c
 :/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive
 /2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2019/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (27 pages, 1679359 bytes).
+Output written on paper_1line.pdf (27 pages, 1679368 bytes).
 PDF statistics:
  537 PDF objects out of 1000 (max. 8388607)
  261 compressed objects within 3 object streams

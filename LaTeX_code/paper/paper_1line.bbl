@@ -287,7 +287,6 @@
       \field{title}{The {P}earson Diffusions: A Class of Statistically Tractable Diffusion Processes}
       \field{volume}{35}
       \field{year}{2008}
-      \true{nocite}
       \field{pages}{438\bibrangedash 465}
       \range{pages}{28}
       \keyw{Wind-SDE}
@@ -595,6 +594,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Scandinavian Journal of Statistics}
+      \field{number}{2}
       \field{title}{Estimation of an ergodic diffusion from discrete observations}
       \field{volume}{24}
       \field{year}{1997}
