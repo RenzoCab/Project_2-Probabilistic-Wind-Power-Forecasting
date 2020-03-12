@@ -178,44 +178,44 @@ In this paper we present the phenomenological underlying model in Section \ref{S
 %---BEGIN SECTION 2---
 \section{Phenomenological  Model} \label{Section_2}
 
-We consider a general phenomenological model for the normalized wind power generation forecasts is the stochastic process $X = \{X_t, \, t>0\}$  be the   c process is defined by the following stochastic differential equation (SDE)
+In this section, once we analyzed the available dataset, we consider a type of phenomenological model for the normalized wind power generation forecasts which is given, in its most general form, as a stochastic process $X = \{X_t, \, t \in [0,T] \}$  defined by the following stochastic differential equation (SDE):
 
 \begin{equation}
   \left\{
   \begin{array}{@{}rl@{}}
-    dX_t \!\!\!&=  a(X_t; p_t, \dot{p}_t,\bm{\theta}) \,dt + b (X_t; p_t, \bm{\theta} ) \,dW_t  \\
-     X_0  \!\!\!&=  x_0,
+    dX_t \!\!\!&=  a(X_t; p_t, \dot{p}_t,\bm{\theta}) \,dt + b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \,dW_t\,, \quad t \in [0,T]  \\
+     X_0  \!\!\!&=  x_0 \in [0,1],
   \end{array}\right. \label{eq:main}
 \end{equation} 
 
 where
 
 \begin{itemize}
-\item $a(\cdot; p_t, \dot{p}_t,\bm{\theta}):[0,1] \to \mathbb{R} \ $  denotes a drift function,
-\item $b (\cdot;p_t, \bm{\theta} ):[0,1] \to \mathbb{R} \ $  a  diffusion function,
-\item $\bm{\theta}$ is a vector of parameters,
-\item $p_t$ is a time-dependent scalar value and $ \dot{p}_t$ is its time derivative at time $t$,
-\item $\{W_t, \, t >0\}$ is a standard Wiener process in $\mathbb{R}$.
+\item $a(\cdot; p_t, \dot{p}_t, \bm{\theta}): [0,1] \to \mathbb{R} $  denotes a drift function,
+\item $b(\cdot; p_t, \dot{p}_t, \bm{\theta}): [0,1] \to \mathbb{R}^+ $  a  diffusion function,
+\item $\bm{\theta}$ is a vector of unknown parameters,
+\item $(p_t)_{t \in [0,T]}$ is a time-dependent deterministic function $[0,1]$-valued and $ (\dot{p}_t)_{t \in [0,T]}$ is its time derivative,
+\item $\{W_t, \, t \in [0,T] \}$ is a standard real-valued Wiener process.
 \end{itemize}
 
-In this work, $p_t$ is to be considered as a deterministic forecast of the wind power generation at time $t$ which is available from an official source. 
+In this work, $(p_t)_{t \in [0,T]}$ is to be considered as a deterministic forecast for the normalized wind power generation, which is provided by an official source. 
 
-Our goal is to provide a specification of the model (\ref{eq:main}) to follow closely the available wind power forecasts while ensuring its unbiasedness with respect to the forecast. It is straightforward to show that $\mathbb{E} \left[X_t\right] = p_t$, where $p_t$ is the available deterministic wind power forecast for the time $t$.
+Our goal is to achieve a specification of the model (\ref{eq:main}) to follow closely the available normalized wind power forecasts while ensuring its unbiasedness with respect to the forecast. 
 
-\subsection{Physical Constrains}
+\subsection{Physical Constraints}
 
-Let $p_t$ be a numerical wind power forecast, which is an input to this approach. Assume that the wind power generation forecasts are modeled as solutions to the following It\^{o} stochastic differential equation
+Let $(p_t)_{t \in [0,T]}$ be the available prediction function for the normalized wind power, which is an input to this approach. To start with the model specification, first we introduce a time-dependent drift function that features the mean-reverting property as well as derivative tracking:
 \begin{equation}
-  \left\{
-  \begin{array}{@{}rl@{}}
-    dX_t \!\!\!&= \dot{p}_t \ dt - \theta_t (X_t - p_t) \ dt + b (X_t; \bm{\theta} ) \ dW_t\,, \quad t > 0  \\
-   X_0  \!\!\!&=  x_0 \,.
- \end{array}\right.  \label{model:derivative_tracking_X}
+a(X_t; p_t, \dot{p}_t, \bm{\theta}) = \dot{p}_t  - \theta_t (X_t - p_t)\,,  \label{drift:meanrev-derivtrack}
 \end{equation} 
+where $ (\theta_t)_{t \in [0,T]} $ is a positive deterministic function, whose range depends on $\bm{\theta}$, as will be explained shortly.
 
-According to the SDE specification in (\ref{model:derivative_tracking_X}), the process $X_t$ satisfies the two following properties: \begin{itemize}
-\item it is mean reverting to the wind power forecast $p_t$, and 
-\item it tracks the time derivative wind power forecast $\dot{p}_t$.  
+Now, looking at the normalized wind power generation forecast process $X$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$.
+
+ Then, the process defined by (\ref{eq:main}) with drift (\ref{drift:meanrev-derivtrack}) satisfies the two following properties: 
+\begin{itemize}
+\item it reverts to its mean $p_t$, with a time-varying speed $ \theta_t$ that is proportional to the deviation of the process $X$ from its mean,
+\item it tracks the time derivative $\dot{p}_t$.  
 \end{itemize} 
 Observe that a mean reverting model without derivative tracking exhibits consistent lags, as it is shown in Figure (\ref{fig:derivative_tracking}). See Section \ref{Section_7} for comparisons.
 
@@ -225,51 +225,60 @@ Observe that a mean reverting model without derivative tracking exhibits consist
   \label{fig:derivative_tracking}
 \end{figure}
 
-
-We normalize the forecast and production data to Uruguay installed power capacity at the time of observation. Thus our process must be limited to the range $[0,1]$. To enforce this constraint, our  drift and diffusion terms  must satisfy certain rules.
+The forecast and production wind power data of Uruguay are normalized with respect to the installed power capacity during the period of observation. Thus, the mean-reverting level lies in $[0,1]$, and the process $X$  must take values in the same interval,a requirement that is not automatically fulfilled through the derivative tracking. To impose that the state space of $X$ is $[0,1]$, we may choose a convenient diffusion term, and require that the time-varying parameter $ \theta_t$ satisfies an ad-hoc condition.
  
-
-Let $\bm{\theta} = (\theta_0,\alpha)$. We want a process that follow the wind forecast, thus we choose mean reverting drift term which also tracks the derivative of $p_t$, which is an input to our model.
+Let $\bm{\theta} = (\theta_0,\alpha)$, and choose a state-dependent diffusion term that avoids the process exiting from the range $[0,1]$ as follows:
   \begin{equation}
-    a(x; p_t,\bm{\theta})=  \dot{p_t} - \theta_t(x - p_t)
+    b (X_t; \bm{\theta} )= \sqrt{2 \theta_0 \alpha X_t (1 - X_t)}
   \end{equation}
-where $\theta_t>0$ is a time-dependent parameter that controls the speed of reversion. {\color{red} Derivative tracking does not assure that the paths of the process $X$ take values in $[0,1]$.}
-
-
-We would like  a diffusion term that vanishes at the boundaries to prevent the process from escaping the region $[0,1]$.
-  \begin{equation}
-    b (x; p_t,\bm{\theta} )= \sqrt{2 \theta_t \alpha x (1-x)}
-  \end{equation}
-  where $\alpha >0$ is a constant parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and, in particular, it is a Jacobi type diffusion. It is useful to recall that (\cite[440]{foso}) a Pearson diffusion is a stationary solution to a stochastic differential equation of the form
+  where $\alpha >0$ is a unknown parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and, in particular, it defines a Jacobi type diffusion. It is useful to recall that (\cite[440]{foso}) a Pearson diffusion is a stationary solution to a stochastic differential equation of the form
  \begin{equation}
     dX_t = - \theta (X_t - \mu) dt + \sqrt{2 \theta (a X_t^2 + b X_t + c)} dW_t
   \end{equation}
-where $\theta>0$, and $a$, $b$ and $c$ are parameters such that the square root is well defined when $X_t$ is in the state space and, together with $\mu$, the mean of the invariant distribution, determine the state space of the diffusion as well as the shape of the invariant distribution. \\ An exhaustive classification of the Pearson diffusions is presented in (\cite[440-443]{foso}) where, in particular, it is discussed the case $a < 0$ and $b(x; \bm{\theta}) = \sqrt{2 \theta a x (x-1)}$, where the invariant distribution is a Beta distribution with parameters $\left( \frac{\mu}{-a}, \frac{1 - \mu}{-a} \right),$ that leads to the so-called Jacobi diffusions because the related eigenfunctions are Jacobi polynomials.
+where $\theta>0$, and $a$, $b$ and $c$ are parameters such that the square root is well defined when $X_t$ is in the state space. These parameters, together with $\mu$, the mean of the invariant distribution, determine the state space of the diffusion as well as the shape of the invariant distribution. 
 
+An exhaustive classification of the (stationary) Pearson diffusions is presented in (\cite[440-443]{foso}) where, in particular, it is discussed the case $a < 0$ and $b(x; \bm{\theta}) = \sqrt{2 \theta a x (x-1)}$, where the invariant distribution is a Beta distribution with parameters $\left( \frac{\mu}{-a}, \frac{1 - \mu}{-a} \right),$ that leads to the well-known Jacobi diffusions, so-called because the eigenfunctions of the infinitesimal generator of these processes are the Jacobi polynomials (see, for example, \cite[2860-2861]{leph}). 
 
-To further ensure that the process does not escape the region $[0,1]$, the mean reversion parameter has to be selected according to the following rule. Observe that the time derivative term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s. inside the range $[0,1]$. In other words, the zero drift line defined by $a(x; p_t,\bm{\theta}) =0$, which is an attractor, must be contained inside the range $[0,1]$. Thus, we must have that
+It is worth mentioning that Jacobi diffusions have been successfully applied in several disciplines, among them econometrics (see  and references therein) and neuroscience (\cite{dotala}).
+
+However, a distinctive feature in our proposed model 
 \begin{equation}
-\frac{- |\dot{p_t}|}{p_t} \leq \theta_t \leq \frac{|\dot{p}_t|}{1- p_t}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dX_t \!\!\!&= (\dot{p}_t  - \theta_t (X_t - p_t) ) dt +\sqrt{2 \theta_0 \alpha X_t (1 - X_t)} dW_t\,, \quad t \in [0,T]  \\
+   X_0  \!\!\!&=  x_0\in [0,1] \,,
+ \end{array}\right.  \label{ourmodel}
 \end{equation}
-which is satisfied  by choosing a time-dependent  $\theta_t$ as follows,
+
+is that the drift term contains the time-varying parameter $\theta_t$, rendering the solution $X$ to (\ref{ourmodel}) a non-stationary and time-inhomogeneous process. To ensure that the process $X$ be the unique strong solution to (\ref{ourmodel}) for all $t \in [0,T]$ with state space $[0,1]$ a.s., the mean-reversion time-varying parameter must satisfy the following condition:
+%has to be selected according to the following rule. Observe that the time derivative term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s. inside the range $[0,1]$. In other words, the zero drift line defined by $a(x; p_t,\bm{\theta}) =0$, which is an attractor, must be contained inside the range $[0,1]$. Thus, we must have that
+%\begin{equation}
+%\frac{- |\dot{p_t}|}{p_t} \leq \theta_t \leq \frac{|\dot{p}_t|}{1- p_t}
+%\end{equation}
+%which is satisfied  by choosing a time-dependent  $\theta_t$ as follows,
+%\begin{equation}
+%\theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0\,. \label{theta_t}
+%\end{equation}
+\begin{equation}\label{Assumption:3}
+\theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{C}. 
+\end{equation}
+The proof of this theoretical statement is presented in Section \ref{Appendix}.
+
+%{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unknown parameter appear in \ref{theta_t}. Recall it is an upped bound for the real inequality. } 
+
+%\subsubsection*{Change of Variables:}
+\subsection{A model specification for the forecast error}
+ After applying the simple change of variables $$V_t = X_t - p_t \,,$$ we may introduce the following model for the forecast error of the normalized wind power production: 
+
 \begin{equation}
-\theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0\,. \label{theta_t}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dV_t \!\!\!&=  - \theta_t V_t  \, dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \, dW_t\,, \quad t \in [0,T]  \\
+   V_0  \!\!\!&=  v_0\in [-1,1] \,.
+ \end{array}\right.  \label{VtSDE}
 \end{equation}
 
-{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unkonwn parameter appear in \ref{theta_t}. Recall it is an upped bound for the real inequality. } 
 
-\subsubsection*{Change of Variables:}
-To avoid differentiation of the forecast $p_t$ and simplify, we apply the change of variables $$V_t = X_t - p_t \,.$$ 
-
-The  model becomes,
-\begin{equation}
-\begin{cases}
-    \dif V_t &=  - \theta_t V_t \ \dif t + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  \dif W_t \\
-V_0 \!\!\!&=  v_0 \,.\\ 
-%\theta_t &= \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right )
-\end{cases}
-\label{VtSDE}
-\end{equation}
 %---END SECTION 2---
 
 
@@ -563,6 +572,7 @@ We have proposed a method to produce stochastic wind power forecasts based on pa
 We were also able to compare two different forecast providers with respect to their real-world performance on the aggregated data set and on specific wind farm sites. Finally, the model paves the way for stochastic optimal control methods enabling optimal decision making under uncertainty.
 %---END SECTION 7---
 
+%---BEGIN APPENDIX---
 \section{Appendix} \label{Appendix}
 
 \section{The model}

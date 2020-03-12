@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  10 MAR 2020 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.1.21)  12 MAR 2020 15:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -996,7 +996,11 @@ File: biblatex.cfg
 \@quotelevel=\count438
 \@quotereset=\count439
 
-(./paper_1line.aux)
+(./paper_1line.aux
+
+LaTeX Warning: Label `Assumption:3' multiply defined.
+
+)
 \openout1 = `paper_1line.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -1011,8 +1015,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
 LaTeX Font Info:    ... okay on input line 58.
-
-(c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (c:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count440
 \scratchdimen=\dimen282
@@ -1188,33 +1191,12 @@ ype pdf)
 Package pdftex.def Info: plots/wind_and_solar/plot_over_years-eps-converted-to.
 pdf  used on input line 100.
 (pdftex.def)             Requested size: 323.9978pt x 174.98575pt.
-
-LaTeX Warning: Citation 'sultana2017review' on page 1 undefined on input line 1
-01.
-
-
-LaTeX Warning: Citation 'sultana2017review' on page 1 undefined on input line 1
-01.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
-[]\OT1/cmr/m/n/10.95 Figure 1: In-stalled wind and so-lar power over the years
- []
-
 [1
 
 {c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation 'gieb' on page 2 undefined on input line 104.
-
-
-LaTeX Warning: Citation 'chang' on page 2 undefined on input line 104.
-
-
-LaTeX Warning: Citation 'zhbo' on page 2 undefined on input line 104.
-
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
 06.
+
 (c:/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -1227,7 +1209,10 @@ para-met-ric stochas-
  []
 
 
-LaTeX Warning: Citation 'mozuma' on page 3 undefined on input line 119.
+Overfull \hbox (10.5638pt too wide) in paragraph at lines 119--120
+[]\OT1/cmr/m/n/10.95 Previous at-tempt by ([]M^^\ller, Zugno, and Mad-sen 2016)
+ con-sid-ered stochas-
+ []
 
 [3]
 Package epstopdf Info: Source file: <plots/5.eps>
@@ -1559,74 +1544,46 @@ Package pdftex.def Info: plots/AP_t_LP-eps-converted-to.pdf  used on input line
  [8 <./plots/LP_t-eps-converted-to.pdf> <./plots/MP_t-eps-converted-to.pdf> <./
 plots/HP_t-eps-converted-to.pdf> <./plots/AP_t-eps-converted-to.pdf>] [9 <./plo
 ts/LP_t_LP-eps-converted-to.pdf> <./plots/MP_t_LP-eps-converted-to.pdf> <./plot
-s/HP_t_LP-eps-converted-to.pdf> <./plots/AP_t_LP-eps-converted-to.pdf>] [10]
-
-LaTeX Warning: Citation 'foso' on page 11 undefined on input line 243.
-
-
-LaTeX Warning: Citation 'foso' on page 11 undefined on input line 247.
-
-
-Overfull \hbox (7.86177pt too wide) in paragraph at lines 246--248
-\OT1/cmr/m/n/10.95 where, in par-tic-u-lar, it is dis-cussed the case $\OML/cmm
-/m/it/10.95 a < \OT1/cmr/m/n/10.95 0$ and $\OML/cmm/m/it/10.95 b\OT1/cmr/m/n/10
-.95 (\OML/cmm/m/it/10.95 x\OT1/cmr/m/n/10.95 ; \OML/cmm/b/it/10.95 ^^R\OT1/cmr/
-m/n/10.95 ) = []$,
- []
-
-[11]
-Overfull \hbox (4.3962pt too wide) in paragraph at lines 277--277
+s/HP_t_LP-eps-converted-to.pdf> <./plots/AP_t_LP-eps-converted-to.pdf>] [10] [1
+1]
+Overfull \hbox (4.3962pt too wide) in paragraph at lines 286--286
 []\OT1/cmr/bx/n/14.4 State in-de-pen-dent dif-fu-sion: Lam-perti trans-form 
  []
 
 
-LaTeX Warning: Citation 'iacus1' on page 12 undefined on input line 279.
-
-
-LaTeX Warning: Citation 'moma' on page 12 undefined on input line 279.
-
-
-LaTeX Warning: Citation 'saso' on page 12 undefined on input line 279.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
-
-Overfull \hbox (0.45522pt too wide) detected at line 292
+[12]
+Overfull \hbox (0.45522pt too wide) detected at line 301
 \OML/cmm/m/it/10.95 dZ[] \OT1/cmr/m/n/10.95 = []  \OML/cmm/m/it/10.95 dt \OT1/c
 mr/m/n/10.95 + \OML/cmm/m/it/10.95 dW[] :
  []
 
-[12]
 
 LaTeX Warning: Reference `fig:skew_after_lamperti' on page 13 undefined on inpu
-t line 306.
-
-
-LaTeX Warning: Citation 'iacus1' on page 13 undefined on input line 328.
-
-
-LaTeX Warning: Citation 'saso' on page 13 undefined on input line 328.
+t line 315.
 
 [13]
 
-LaTeX Warning: Citation 'iacus1' on page 14 undefined on input line 337.
-
-
-LaTeX Warning: Citation 'hurn' on page 14 undefined on input line 337.
-
-
-LaTeX Warning: Reference `fig:skew_data' on page 14 undefined on input line 342
+LaTeX Warning: Reference `fig:skew_data' on page 14 undefined on input line 351
 .
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
 
  []
 
 [14] [15] [16]
+
+LaTeX Warning: Reference `model:derivative_tracking_X' on page 17 undefined on 
+input line 440.
+
+
+LaTeX Warning: Reference `theta_t' on page 17 undefined on input line 445.
+
+[17]
 Package epstopdf Info: Source file: <plots/initial_guess/initial_theta_1.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
 (epstopdf)                    size: 63826 bytes
@@ -1636,20 +1593,20 @@ nverted-to.pdf>
 (epstopdf)                    size: 22373 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/initial_guess/initia
 l_theta_1-eps-converted-to.pdf plots/initial_guess/initial_theta_1.eps>
-(epstopdf)             \includegraphics on input line 493.
+(epstopdf)             \includegraphics on input line 502.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex.exe (file ./plots/initial_guess/initial_theta_1-eps-co
 nverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
 .5> allowed
-<plots/initial_guess/initial_theta_1-eps-converted-to.pdf, id=319, 372.39125pt 
+<plots/initial_guess/initial_theta_1-eps-converted-to.pdf, id=322, 372.39125pt 
 x 305.14pt>
 File: plots/initial_guess/initial_theta_1-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 <use plots/initial_guess/initial_theta_1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/initial_guess/initial_theta_1-eps-converted-to.p
-df  used on input line 493.
+df  used on input line 502.
 (pdftex.def)             Requested size: 161.9989pt x 132.74413pt.
 Package epstopdf Info: Source file: <plots/initial_guess/initial_theta_2.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1660,22 +1617,21 @@ nverted-to.pdf>
 (epstopdf)                    size: 23425 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/initial_guess/initia
 l_theta_2-eps-converted-to.pdf plots/initial_guess/initial_theta_2.eps>
-(epstopdf)             \includegraphics on input line 493.
+(epstopdf)             \includegraphics on input line 502.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex.exe (file ./plots/initial_guess/initial_theta_2-eps-co
 nverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
 .5> allowed
-<plots/initial_guess/initial_theta_2-eps-converted-to.pdf, id=320, 370.38374pt 
+<plots/initial_guess/initial_theta_2-eps-converted-to.pdf, id=323, 370.38374pt 
 x 323.2075pt>
 File: plots/initial_guess/initial_theta_2-eps-converted-to.pdf Graphic file (ty
 pe pdf)
 <use plots/initial_guess/initial_theta_2-eps-converted-to.pdf>
 Package pdftex.def Info: plots/initial_guess/initial_theta_2-eps-converted-to.p
-df  used on input line 493.
+df  used on input line 502.
 (pdftex.def)             Requested size: 151.19934pt x 131.93892pt.
-[17]
 Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
 (epstopdf)                    size: 55345 bytes
@@ -1685,7 +1641,7 @@ ted-to.pdf>
 (epstopdf)                    size: 48237 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/likelihood/Log-Likel
 ihood-eps-converted-to.pdf plots/likelihood/Log-Likelihood.eps>
-(epstopdf)             \includegraphics on input line 503.
+(epstopdf)             \includegraphics on input line 512.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1698,7 +1654,7 @@ File: plots/likelihood/Log-Likelihood-eps-converted-to.pdf Graphic file (type p
 df)
 <use plots/likelihood/Log-Likelihood-eps-converted-to.pdf>
 Package pdftex.def Info: plots/likelihood/Log-Likelihood-eps-converted-to.pdf  
-used on input line 503.
+used on input line 512.
 (pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
 Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood_refined.ep
 s>
@@ -1711,7 +1667,7 @@ s-converted-to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=plots/likelihood/Log-Likel
 ihood_refined-eps-converted-to.pdf plots/likelihood/Log-Likelihood_refined.eps>
 
-(epstopdf)             \includegraphics on input line 503.
+(epstopdf)             \includegraphics on input line 512.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1724,7 +1680,7 @@ File: plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf Graphic file
  (type pdf)
 <use plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf>
 Package pdftex.def Info: plots/likelihood/Log-Likelihood_refined-eps-converted-
-to.pdf  used on input line 503.
+to.pdf  used on input line 512.
 (pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
 Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood_more_refin
 ed.eps>
@@ -1737,7 +1693,7 @@ ed-eps-converted-to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=plots/likelihood/Log-Likel
 ihood_more_refined-eps-converted-to.pdf plots/likelihood/Log-Likelihood_more_re
 fined.eps>
-(epstopdf)             \includegraphics on input line 504.
+(epstopdf)             \includegraphics on input line 513.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1750,26 +1706,26 @@ File: plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf Graphic
  file (type pdf)
 <use plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf>
 Package pdftex.def Info: plots/likelihood/Log-Likelihood_more_refined-eps-conve
-rted-to.pdf  used on input line 504.
+rted-to.pdf  used on input line 513.
 (pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
 [18 <./plots/initial_guess/initial_theta_1-eps-converted-to.pdf> <./plots/initi
 al_guess/initial_theta_2-eps-converted-to.pdf>] [19 <./plots/likelihood/Log-Lik
 elihood-eps-converted-to.pdf> <./plots/likelihood/Log-Likelihood_refined-eps-co
 nverted-to.pdf> <./plots/likelihood/Log-Likelihood_more_refined-eps-converted-t
 o.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 528--530
+Underfull \hbox (badness 10000) in paragraph at lines 537--539
 
  []
 
 <plots/alpha_conv_beta.png, id=368, 438.1971pt x 311.2428pt>
 File: plots/alpha_conv_beta.png Graphic file (type png)
 <use plots/alpha_conv_beta.png>
-Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 534.
+Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 543.
 (pdftex.def)             Requested size: 438.19601pt x 311.24203pt.
 <plots/theta_conv_beta.png, id=370, 437.4744pt x 311.7246pt>
 File: plots/theta_conv_beta.png Graphic file (type png)
 <use plots/theta_conv_beta.png>
-Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 535.
+Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 544.
 (pdftex.def)             Requested size: 437.47331pt x 311.72383pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/1.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1780,7 +1736,7 @@ o.pdf>
 (epstopdf)                    size: 15154 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/paths_testing_days/1
 -eps-converted-to.pdf plots/paths_testing_days/1.eps>
-(epstopdf)             \includegraphics on input line 541.
+(epstopdf)             \includegraphics on input line 550.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1792,7 +1748,7 @@ ed
 File: plots/paths_testing_days/1-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/paths_testing_days/1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/1-eps-converted-to.pdf  used 
-on input line 541.
+on input line 550.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/2.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1803,7 +1759,7 @@ o.pdf>
 (epstopdf)                    size: 15390 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/paths_testing_days/2
 -eps-converted-to.pdf plots/paths_testing_days/2.eps>
-(epstopdf)             \includegraphics on input line 542.
+(epstopdf)             \includegraphics on input line 551.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1815,7 +1771,7 @@ ed
 File: plots/paths_testing_days/2-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/paths_testing_days/2-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/2-eps-converted-to.pdf  used 
-on input line 542.
+on input line 551.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/3.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1826,7 +1782,7 @@ o.pdf>
 (epstopdf)                    size: 15330 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/paths_testing_days/3
 -eps-converted-to.pdf plots/paths_testing_days/3.eps>
-(epstopdf)             \includegraphics on input line 543.
+(epstopdf)             \includegraphics on input line 552.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1838,7 +1794,7 @@ ed
 File: plots/paths_testing_days/3-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/paths_testing_days/3-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/3-eps-converted-to.pdf  used 
-on input line 543.
+on input line 552.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/paths_testing_days/4.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1849,7 +1805,7 @@ o.pdf>
 (epstopdf)                    size: 15385 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/paths_testing_days/4
 -eps-converted-to.pdf plots/paths_testing_days/4.eps>
-(epstopdf)             \includegraphics on input line 544.
+(epstopdf)             \includegraphics on input line 553.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1861,7 +1817,7 @@ ed
 File: plots/paths_testing_days/4-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/paths_testing_days/4-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths_testing_days/4-eps-converted-to.pdf  used 
-on input line 544.
+on input line 553.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 [20 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>]
 Package epstopdf Info: Source file: <plots/bands_testing_days/1.eps>
@@ -1873,7 +1829,7 @@ o.pdf>
 (epstopdf)                    size: 14760 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/bands_testing_days/1
 -eps-converted-to.pdf plots/bands_testing_days/1.eps>
-(epstopdf)             \includegraphics on input line 550.
+(epstopdf)             \includegraphics on input line 559.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1885,7 +1841,7 @@ ed
 File: plots/bands_testing_days/1-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/bands_testing_days/1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/1-eps-converted-to.pdf  used 
-on input line 550.
+on input line 559.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/bands_testing_days/2.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1896,7 +1852,7 @@ o.pdf>
 (epstopdf)                    size: 14889 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/bands_testing_days/2
 -eps-converted-to.pdf plots/bands_testing_days/2.eps>
-(epstopdf)             \includegraphics on input line 551.
+(epstopdf)             \includegraphics on input line 560.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1908,7 +1864,7 @@ ed
 File: plots/bands_testing_days/2-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/bands_testing_days/2-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/2-eps-converted-to.pdf  used 
-on input line 551.
+on input line 560.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/bands_testing_days/3.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1919,7 +1875,7 @@ o.pdf>
 (epstopdf)                    size: 14834 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/bands_testing_days/3
 -eps-converted-to.pdf plots/bands_testing_days/3.eps>
-(epstopdf)             \includegraphics on input line 552.
+(epstopdf)             \includegraphics on input line 561.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1931,7 +1887,7 @@ ed
 File: plots/bands_testing_days/3-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/bands_testing_days/3-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/3-eps-converted-to.pdf  used 
-on input line 552.
+on input line 561.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 Package epstopdf Info: Source file: <plots/bands_testing_days/4.eps>
 (epstopdf)                    date: 2020-03-10 08:35:57
@@ -1942,7 +1898,7 @@ o.pdf>
 (epstopdf)                    size: 14921 bytes
 (epstopdf)             Command: <repstopdf --outfile=plots/bands_testing_days/4
 -eps-converted-to.pdf plots/bands_testing_days/4.eps>
-(epstopdf)             \includegraphics on input line 553.
+(epstopdf)             \includegraphics on input line 562.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1954,34 +1910,20 @@ ed
 File: plots/bands_testing_days/4-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/bands_testing_days/4-eps-converted-to.pdf>
 Package pdftex.def Info: plots/bands_testing_days/4-eps-converted-to.pdf  used 
-on input line 553.
+on input line 562.
 (pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
 [21 <./plots/paths_testing_days/1-eps-converted-to.pdf> <./plots/paths_testing_
 days/2-eps-converted-to.pdf> <./plots/paths_testing_days/3-eps-converted-to.pdf
 > <./plots/paths_testing_days/4-eps-converted-to.pdf>] [22 <./plots/bands_testi
 ng_days/1-eps-converted-to.pdf> <./plots/bands_testing_days/2-eps-converted-to.
 pdf> <./plots/bands_testing_days/3-eps-converted-to.pdf> <./plots/bands_testing
-_days/4-eps-converted-to.pdf>]
-
-LaTeX Warning: Citation 'Alf' on page 23 undefined on input line 576.
-
-
-LaTeX Warning: Citation 'KarShr' on page 23 undefined on input line 576.
-
-
-LaTeX Warning: Citation 'KarShr' on page 23 undefined on input line 590.
-
-[23]
-
-LaTeX Warning: Citation 'KarShr' on page 24 undefined on input line 599.
-
-
-Overfull \hbox (17.14812pt too wide) detected at line 604
+_days/4-eps-converted-to.pdf>] [23]
+Overfull \hbox (17.14812pt too wide) detected at line 614
 []
  []
 
 
-Overfull \hbox (6.85458pt too wide) detected at line 608
+Overfull \hbox (6.85458pt too wide) detected at line 618
 \U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95  []\OT1/cmr/m/n/10.95
  (\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm
 /m/it/10.95  []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 ) 
@@ -1994,53 +1936,58 @@ it/10.95 X[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 ds:
  []
 
 [24] [25] [26]
+Overfull \hbox (4.912pt too wide) in paragraph at lines 719--719
+\OT1/cmr/m/it/10.95 tion, The-ory and Ap-pli-ca-tions\OT1/cmr/m/n/10.95 . Vol. 
+6. Boc-coni & Springer Se-ries. Springer. 
+ []
 
-Package biblatex Warning: Keyword 'Wind-SDE' not found on input line 709.
 
+Overfull \hbox (2.97662pt too wide) in paragraph at lines 719--719
+\OT1/cmr/m/n/10.95 Mod-els''. In: \OT1/cmr/m/it/10.95 2nd EC-CO-MAS The-matic C
+on-fer-ence on Un-cer-tainty Quan-
+ []
 
-LaTeX Warning: Empty bibliography on input line 709.
-
-[27] (./paper_1line.aux)
+[27] [28] (./paper_1line.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                paper_1line
-(biblatex)                and rerun LaTeX afterwards.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 \openout1 = `paper_1line.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34107 strings out of 492162
- 686762 string characters out of 6129062
- 1077710 words of memory out of 5000000
- 38008 multiletter control sequences out of 15000+600000
- 553557 words of font info for 104 fonts, out of 8000000 for 9000
+ 34236 strings out of 492162
+ 689954 string characters out of 6129062
+ 1079473 words of memory out of 5000000
+ 38136 multiletter control sequences out of 15000+600000
+ 553858 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,14n,83p,1333b,1576s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,14n,83p,1333b,1841s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-b10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c
-:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/
-2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2019/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:
-/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (27 pages, 1650686 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2019/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
+<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2019/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2019/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy6.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c
+:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive
+/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2019/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on paper_1line.pdf (28 pages, 1686969 bytes).
 PDF statistics:
- 529 PDF objects out of 1000 (max. 8388607)
- 255 compressed objects within 3 object streams
+ 540 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  289 words of extra memory for PDF output out of 10000 (max. 10000000)
 
