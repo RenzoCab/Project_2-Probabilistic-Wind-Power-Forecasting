@@ -192,7 +192,7 @@ where
 
 \begin{itemize}
 \item $a(\cdot; p_t, \dot{p}_t, \bm{\theta}): [0,1] \to \mathbb{R} $  denotes a drift function,
-\item $b(\cdot; p_t, \dot{p}_t, \bm{\theta}): [0,1] \to \mathbb{R}^+ $  a  diffusion function,
+\item $b(\cdot; p_t, \dot{p}_t, \bm{\theta}): [0,1] \to \mathbb{R}_+ $  a  diffusion function,
 \item $\bm{\theta}$ is a vector of unknown parameters,
 \item $(p_t)_{t \in [0,T]}$ is a time-dependent deterministic function $[0,1]$-valued and $ (\dot{p}_t)_{t \in [0,T]}$ is its time derivative,
 \item $\{W_t, \, t \in [0,T] \}$ is a standard real-valued Wiener process.
@@ -229,7 +229,7 @@ The forecast and production wind power data of Uruguay are normalized with respe
  
 Let $\bm{\theta} = (\theta_0,\alpha)$, and choose a state-dependent diffusion term that avoids the process exiting from the range $[0,1]$ as follows:
   \begin{equation}
-    b (X_t; \bm{\theta} )= \sqrt{2 \theta_0 \alpha X_t (1 - X_t)}
+    b (X_t; \bm{\theta} )= \sqrt{2 \alpha \theta_0 X_t (1 - X_t)}
   \end{equation}
   where $\alpha >0$ is a unknown parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and, in particular, it defines a Jacobi type diffusion. It is useful to recall that (\cite[440]{foso}) a Pearson diffusion is a stationary solution to a stochastic differential equation of the form
  \begin{equation}
@@ -237,15 +237,15 @@ Let $\bm{\theta} = (\theta_0,\alpha)$, and choose a state-dependent diffusion te
   \end{equation}
 where $\theta>0$, and $a$, $b$ and $c$ are parameters such that the square root is well defined when $X_t$ is in the state space. These parameters, together with $\mu$, the mean of the invariant distribution, determine the state space of the diffusion as well as the shape of the invariant distribution. 
 
-An exhaustive classification of the (stationary) Pearson diffusions is presented in (\cite[440-443]{foso}) where, in particular, it is discussed the case $a < 0$ and $b(x; \bm{\theta}) = \sqrt{2 \theta a x (x-1)}$, where the invariant distribution is a Beta distribution with parameters $\left( \frac{\mu}{-a}, \frac{1 - \mu}{-a} \right),$ that leads to the well-known Jacobi diffusions, so-called because the eigenfunctions of the infinitesimal generator of these processes are the Jacobi polynomials (see, for example, \cite[2860-2861]{leph}). 
+An exhaustive classification of the (stationary) Pearson diffusions is presented in (\cite[440-443]{foso}) where, in particular, it is discussed the case $a < 0$ and $b(x; \bm{\theta}) = \sqrt{2 a \theta x (x-1)}$, where the invariant distribution is a Beta distribution with parameters $\left( \frac{\mu}{-a}, \frac{1 - \mu}{-a} \right),$ that leads to the well-known Jacobi diffusions, so-called because the eigenfunctions of the infinitesimal generator of these processes are the Jacobi polynomials (see, for example, \cite[2860-2861]{leph}). 
 
-It is worth mentioning that Jacobi diffusions have been successfully applied in several disciplines, among them econometrics (see  and references therein) and neuroscience (\cite{dotala}).
+It is worth mentioning that Jacobi diffusions have been successfully applied in several disciplines, among them finance (see \cite{vago} and references therein) and neuroscience (\cite{dotala}).
 
 However, a distinctive feature in our proposed model 
 \begin{equation}
   \left\{
   \begin{array}{@{}rl@{}}
-    dX_t \!\!\!&= (\dot{p}_t  - \theta_t (X_t - p_t) ) dt +\sqrt{2 \theta_0 \alpha X_t (1 - X_t)} dW_t\,, \quad t \in [0,T]  \\
+    dX_t \!\!\!&= (\dot{p}_t  - \theta_t (X_t - p_t) ) dt +\sqrt{2 \alpha \theta_0 X_t (1 - X_t)} dW_t\,, \quad t \in [0,T]  \\
    X_0  \!\!\!&=  x_0\in [0,1] \,,
  \end{array}\right.  \label{ourmodel}
 \end{equation}
@@ -261,20 +261,33 @@ is that the drift term contains the time-varying parameter $\theta_t$, rendering
 %\end{equation}
 \begin{equation}\label{Assumption:3}
 \theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{C}. 
+\end{equation} \label{condC}
+The proof of this theoretical statement is presented in Section \ref{Appendix}. \\
+
+Remark: Condition (C) shows that the time-varying parameter $\theta_t$ becomes unbounded when $p_t = 0$ or $p_t = 1$. Therefore, we consider the following truncated prediction function
+\begin{equation}
+  p_t^{\epsilon} = \left\{
+  \begin{array}{@{}cl@{}}
+    \epsilon \!\!\!&\text{if } p_t  < \epsilon  \\
+    p_t  \!\!\!&\text{if }  \epsilon \leq p_t < 1 - \epsilon \\
+    1 - \epsilon  \!\!\!&\text{if }  p_t \geq 1 - \epsilon
+ \end{array}\right.  \label{corrforecast}
 \end{equation}
-The proof of this theoretical statement is presented in Section \ref{Appendix}.
+that satisfies $p_t^{\epsilon} \in [\epsilon, 1 - \epsilon]$ for any $0 < \epsilon < \frac{1}{2}$ and $t \in [0,T]$, providing that $\theta_t$ is bounded for every $t \in [0,T]$. \\
+From now on, we will keep the notation $p_t$ to denote the truncated prediction function (\ref{corrforecast}) with, unless specified otherwise, $\epsilon = 10^{-2}$.
 
 %{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unknown parameter appear in \ref{theta_t}. Recall it is an upped bound for the real inequality. } 
 
+
 %\subsubsection*{Change of Variables:}
 \subsection{A model specification for the forecast error}
- After applying the simple change of variables $$V_t = X_t - p_t \,,$$ we may introduce the following model for the forecast error of the normalized wind power production: 
+ After applying to (\ref{ourmodel}) the simple change of variables $$V_t = X_t - p_t \,,$$ we may introduce the following model for the forecast error of the normalized wind power production: 
 
 \begin{equation}
   \left\{
   \begin{array}{@{}rl@{}}
-    dV_t \!\!\!&=  - \theta_t V_t  \, dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \, dW_t\,, \quad t \in [0,T]  \\
-   V_0  \!\!\!&=  v_0\in [-1,1] \,.
+    dV_t \!\!\!&=  - \theta_t V_t  \, dt + \sqrt{2 \alpha \theta_0 (V_t +p_t ) (1-V_t-p_t)} \, dW_t\,, \quad t \in [0,T]  \\
+   V_0  \!\!\!&=  v_0\in [-1 + \delta,1 - \delta] \,.
  \end{array}\right.  \label{VtSDE}
 \end{equation}
 
@@ -287,15 +300,16 @@ The proof of this theoretical statement is presented in Section \ref{Appendix}.
 
 Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. \\
 
-We consider the following Lamperti transformation  {\color{red} (Remind that in continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
+We consider the following Lamperti transformation  
+%{\color{red} (Remind that continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
 \begin{equation}
-Z_t = h(V_t) = \frac{1}{\sqrt{2 \theta_t \alpha}} \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
+Z_t = h(V_t, t) = \frac{1}{\sqrt{2 \theta_0 \alpha}} \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
 \end{equation}
 where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, leads to the process 
 \begin{equation}
-Z_t = h(V_t) = \frac{1}{\sqrt{2 \theta_t \alpha}} \arcsin (2(V_t + p_t) -1)\,,
+Z_t = h(V_t, t) = \frac{1}{\sqrt{2 \theta_0 \alpha}} \arcsin (2(V_t + p_t) -1)\,,
 \end{equation}
-that, after applying It\^{o}'s formula on $h(V_t)$, gives the state-independent diffusion SDE
+that, after applying It\^{o}'s formula on $h(V_t, t)$, gives the state-independent diffusion SDE
 \begin{equation}
 dZ_t = \left[  \frac{- \theta_t V_t}{ \sqrt{2 \theta_t \alpha (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \theta_t \alpha} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \right] \,dt + dW_t \,. \label{eq:stindepSDE}
 \end{equation}
@@ -312,8 +326,8 @@ dZ_t & = \left[ \frac{- \theta_t (\sin(\sqrt{2 \theta_t \alpha} Z_t) + 1 - 2 p_t
 %\end{align}
 %where the Lamperti trasform is given by $Z_t = \arcsin \left( \frac{1}{2} \left( V_t+p_t \right) - 1 \right) $. 
 
-We can see in Figure (\ref{fig:skew_after_lamperti}) the effect of the Lamperti transformation upon the forecast error data. 
-The Lamperti transformation has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be adequately approximated through Gaussian densities.
+{\color{red}We can see in Figure (\ref{fig:skew_after_lamperti}) the effect of the Lamperti transformation upon the forecast error data. 
+The Lamperti transformation has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be adequately approximated through Gaussian densities.}
 %---END SECTION 3---
 
 %---BEGIN SECTION 4---
@@ -321,7 +335,7 @@ The Lamperti transformation has greatly reduced the forecast error skewness, ens
 
 \subsection{Likelihood}
 
-Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t >0 \}$ is sampled at $N$ equispaced discrete points with length interval $\Delta_N$, and let $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$ denote this random sample. 
+Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$ is sampled at $N$ equispaced discrete points with length interval $\Delta_N$, and let $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$ denote this random sample. 
 
 Let $\rho_i(v \vert v_{j, t_{i-1}} ; \bm{\theta})$ denote the conditional probability density of $V_{j, t_i}$ given $V_{j, t_{i-1}} = v_{j, t_{i-1}}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
 
@@ -421,11 +435,14 @@ With our estimations of $\bm{\theta}$, we can start the inference processes as f
 We compare two candidate models to find the best-fit that maximizes the retained information,
 \begin{itemize}
   \item Model 1: This model does not feature derivative tracking.
-  \begin{align}
-  dX_t &=  - \theta_0 (p_t-X_t) \  dt + \sqrt{2 \theta \alpha X_t (1-X_t)} \  dW_t   \nonumber \\ %\quad t > 0
-  X_0 & = x_0 \,, \label{M0}
- \end{align}
-  with $\theta_t= \theta_0 $.
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dX_t \!\!\!&=  - \theta_0 (X_t - p_t) dt +\sqrt{2 \alpha \theta_0 X_t (1 - X_t)} dW_t\,, \quad t \in [0,T]  \\
+   X_0  \!\!\!&=  x_0\in [0,1] \,,
+ \end{array}\right.  \label{Model1}
+\end{equation}
+ with $\theta_0 > 0, \, \alpha > 0$.
 
 %  \item Model 1: This model features derivative tracking, i.e. it is equivalent to (\ref{model:derivative_tracking_X}) with a diffusion term that is forecast dependent by including the term $p_t(1-p_t)$.
 %  \begin{equation}
@@ -437,12 +454,21 @@ We compare two candidate models to find the best-fit that maximizes the retained
 %  with $\theta_t$ given by (\ref{theta_t}). This model has been used by [ insert ref ] and [ insert ref ]. Initial interest in this model stems from interest in long-term stationary solution, which may exists  if the forecast is constant. However, this is almost never occurs and thus including the term $p_t(1-p_t)$ is irrelevant. Additionally, the term $p_t(1-p_t)$ leads the model to become deterministic when the forecast is at the boundaries (i.e.$p=1$ or $p=0$)  which is not realistic. We have run computations on this model and the results were not satisfactory. Therefore, we exclude this model from further discussions.
 %  
 
-  \item Model 2: This model features derivative tracking, i.e. it is equivalent to (\ref{model:derivative_tracking_X}).
-  \begin{align}
-  dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t   \nonumber \\ %\quad t > 0
-  V_0 & = v_0 \,, \label{M2}
-  \end{align}
-  with $\theta_t$ given by (\ref{theta_t}).
+  \item Model 2: This model features derivative tracking and time-varying mean-reversion parameter:  
+%i.e. it is equivalent to (\ref{model:derivative_tracking_X}).
+%  \begin{align}
+%  dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t   \nonumber \\ %\quad t > 0
+%  V_0 & = v_0 \,, \label{M2}
+%  \end{align}
+%  with $\theta_t$ given by (\ref{theta_t}).
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    dX_t \!\!\!&= (\dot{p}_t  - \theta_t (X_t - p_t) ) dt +\sqrt{2 \alpha \theta_0 X_t (1 - X_t)} dW_t\,, \quad t \in [0,T]  \\
+   X_0  \!\!\!&=  x_0\in [0,1] \,,
+ \end{array}\right.  \label{Model2}
+\end{equation}
+ with $\theta_0 > 0, \, \alpha > 0$ and .
 \end{itemize}
 
 \begin{table}[H]

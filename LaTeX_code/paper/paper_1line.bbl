@@ -217,7 +217,7 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Chos}
+      \field{journaltitle}{Chaos}
       \field{number}{103119}
       \field{title}{The {J}acobi diffusion process as a neuronal model}
       \field{volume}{28}
@@ -609,7 +609,10 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Brownian {M}otion and {S}tochastic {C}alculus}
-      \field{title}{Brownian motion}
+      \field{edition}{Second Edition}
+      \field{series}{Graduate Texts in Mathematics}
+      \field{title}{Brownian {M}otion}
+      \field{volume}{113}
       \field{year}{1998}
       \field{pages}{47\bibrangedash 127}
       \range{pages}{81}
@@ -1060,6 +1063,38 @@
       \true{nocite}
       \field{pages}{181\bibrangedash 219}
       \range{pages}{39}
+      \keyw{Wind-SDE}
+    \endentry
+    \entry{vago}{misc}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=75d55c61e8c915a5af40c4436ce4270f}{%
+           family={Val{é}ry},
+           familyi={V\bibinitperiod},
+           given={Pascale},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=20adaf73090aa8fb7d2e9dde6db33f0f}{%
+           family={Gouri{é}roux},
+           familyi={G\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cde84a34c30bb17a54c2e84c71f943f0}
+      \strng{fullhash}{cde84a34c30bb17a54c2e84c71f943f0}
+      \strng{bibnamehash}{cde84a34c30bb17a54c2e84c71f943f0}
+      \strng{authorbibnamehash}{cde84a34c30bb17a54c2e84c71f943f0}
+      \strng{authornamehash}{cde84a34c30bb17a54c2e84c71f943f0}
+      \strng{authorfullhash}{cde84a34c30bb17a54c2e84c71f943f0}
+      \field{sortinit}{V}
+      \field{sortinithash}{02432525618c08e2b03cac47c19764af}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Available at \url{https://www.researchgate.net/publication/251252253}}
+      \field{title}{A quasi-likelihood approach based on eigenfunctions for a bounded-valued Jacobi process (Working Paper).}
+      \field{year}{2011}
       \keyw{Wind-SDE}
     \endentry
     \entry{zhbo}{article}{}
