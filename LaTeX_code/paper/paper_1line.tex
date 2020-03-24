@@ -268,13 +268,13 @@ Remark: Condition (C) shows that the time-varying parameter $\theta_t$ becomes u
 \begin{equation}
   p_t^{\epsilon} = \left\{
   \begin{array}{@{}cl@{}}
-    \epsilon \!\!\!&\text{if } p_t  < \epsilon  \\
-    p_t  \!\!\!&\text{if }  \epsilon \leq p_t < 1 - \epsilon \\
-    1 - \epsilon  \!\!\!&\text{if }  p_t \geq 1 - \epsilon
+    \epsilon \!\!\!&\text{if \quad} p_t  < \epsilon  \\
+    p_t  \!\!\!&\text{if \quad}  \epsilon \leq p_t < 1 - \epsilon \\
+    1 - \epsilon  \!\!\!&\text{if \quad}  p_t \geq 1 - \epsilon
  \end{array}\right.  \label{corrforecast}
 \end{equation}
 that satisfies $p_t^{\epsilon} \in [\epsilon, 1 - \epsilon]$ for any $0 < \epsilon < \frac{1}{2}$ and $t \in [0,T]$, providing that $\theta_t$ is bounded for every $t \in [0,T]$. \\
-From now on, we will keep the notation $p_t$ to denote the truncated prediction function (\ref{corrforecast}) with, unless specified otherwise, $\epsilon = 10^{-2}$.
+From now on, we will keep the notation $p_t$ to denote the truncated prediction function (\ref{corrforecast}), unless specified otherwise.
 
 %{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unknown parameter appear in \ref{theta_t}. Recall it is an upped bound for the real inequality. } 
 
@@ -296,35 +296,29 @@ From now on, we will keep the notation $p_t$ to denote the truncated prediction 
 
 
 %---BEGIN SECTION 3---
-\section{State independent diffusion: Lamperti transform} \label{Section_3}
+\section{State independent diffusion term: Lamperti transform} \label{Section_3}
 
-Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. \\
-
-We consider the following Lamperti transformation  
+Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. To this purpose, we consider the following Lamperti transformation  
 %{\color{red} (Remind that continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
-\begin{equation}
-Z_t = h(V_t, t) = \frac{1}{\sqrt{2 \theta_0 \alpha}} \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
-\end{equation}
-where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, leads to the process 
-\begin{equation}
-Z_t = h(V_t, t) = \frac{1}{\sqrt{2 \theta_0 \alpha}} \arcsin (2(V_t + p_t) -1)\,,
-\end{equation}
-that, after applying It\^{o}'s formula on $h(V_t, t)$, gives the state-independent diffusion SDE
-\begin{equation}
-dZ_t = \left[  \frac{- \theta_t V_t}{ \sqrt{2 \theta_t \alpha (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \theta_t \alpha} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \right] \,dt + dW_t \,. \label{eq:stindepSDE}
-\end{equation}
-After replacing $V_t = \frac{\sin(\sqrt{2 \theta_t \alpha} Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
+%\begin{equation}
+%Z_t = h(V_t, t) = \frac{1}{\sqrt{2 \theta_0 \alpha}} \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
+%\end{equation}
+%where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, 
 \begin{align}
-dZ_t & = \left[ \frac{- \theta_t (\sin(\sqrt{2 \theta_t \alpha} Z_t) + 1 - 2 p_t)}{\sqrt{2 \theta_t \alpha} \cos{(\sqrt{2 \theta_t \alpha} Z_t)}} + \frac{\sqrt{2 \theta_t \alpha} \sin{(\sqrt{2 \theta_t \alpha} Z_t)}}{2 \cos{(\sqrt{2 \theta_t \alpha} Z_t)}} \right] \,dt + dW_t \nonumber \\
-&  = \left[  \frac{\sqrt{2 \theta_t} \left( \sin(\sqrt{2 \theta_t \alpha} Z_t) (\alpha - 1) + (2 p_t -1 ) \right)}{2 \sqrt{\alpha} \cos{(\sqrt{2 \theta_t \alpha} Z_t)}}  \right] \,dt + dW_t \,. 
+Z_t = h(V_t, t)  & = \frac{1}{\sqrt{2 \alpha \theta_0 }} \int \frac{1}{\sqrt{(v + p_t)(1 - v - p_t)}} \,dv \Bigg{\vert}_{v = V_t}  \nonumber \\
+& = \frac{1}{\sqrt{2 \alpha \theta_0 }} \arcsin (2(V_t + p_t) -1)
 \end{align}
-
-
-%\begin{align}
-%    dZ_t&= \frac{- \theta_t (1+ \sin(Z_t) - 2p_t) + \alpha \theta_t \sin (Z_t)   }{\cos (Z_t)} \ dt + \sqrt{2 \alpha \theta_t} dW_t \\
-%    Z_0&=z_0 \,,
-%\end{align}
-%where the Lamperti trasform is given by $Z_t = \arcsin \left( \frac{1}{2} \left( V_t+p_t \right) - 1 \right) $. 
+that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent diffusion term
+\begin{align}
+dZ_t = \Bigg[  & \frac{\dot{p}_t}{ \sqrt{2 \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}}  \nonumber \\ 
+& + \frac{- \theta_t V_t}{ \sqrt{2  \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \alpha \theta_0} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \Bigg] \,dt + dW_t \,. \label{eq:stindepSDE}
+\end{align}
+After replacing $V_t = \frac{\sin(\sqrt{2 \alpha \theta_0} Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
+\begin{align}
+dZ_t & = \Bigg[ \frac{2 \dot{p}_t}{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}} + \frac{- \theta_t (\sin(\sqrt{2 \alpha \theta_0} Z_t) + 1 - 2 p_t)}{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}} \nonumber \\
+&  + \frac{\sqrt{2 \alpha \theta_0} \sin{(\sqrt{2 \alpha \theta_0} Z_t)}}{2 \cos{(\sqrt{2 \alpha \theta_0} Z_t)}} \Bigg] \,dt + dW_t \nonumber \\
+&  = \left[  \frac{(\alpha \theta_0 - \theta_t) \sin(\sqrt{2 \alpha \theta_0 } Z_t) - \theta_t (1 - 2 p_t) + 2  \dot{p}_t }{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,. 
+\end{align}
 
 {\color{red}We can see in Figure (\ref{fig:skew_after_lamperti}) the effect of the Lamperti transformation upon the forecast error data. 
 The Lamperti transformation has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be adequately approximated through Gaussian densities.}
