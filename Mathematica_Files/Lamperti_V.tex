@@ -1,0 +1,96 @@
+%% AMS-LaTeX Created with the Wolfram Language : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphics, setspace}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+
+\newcounter{mathematicapage}
+\begin{document}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{sigma}[\text{u$\_$},\text{t$\_$}] = ((u+p[t])*(1-u-p[t])){}^{\wedge}(1/2)*(2*T[t]*a){}^{\wedge}(1/2)}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\sqrt{2} \sqrt{(1-u-p[t]) (u+p[t])} \sqrt{a T[t]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{psi}[\text{u$\_$},\text{t$\_$}] = \text{Integrate}[1/\text{sigma}[u,t],u]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(-\frac{\sqrt{2} \text{ArcSin}\left[\sqrt{1-u-p[t]}\right]}{\sqrt{a T[t]}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{F[\text{e$\_$},\text{v$\_$},\text{t$\_$}] = \text{psi}[v,t]-\text{psi}[e,t]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{\sqrt{2} \text{ArcSin}\left[\sqrt{1-e-p[t]}\right]}{\sqrt{a T[t]}}-\frac{\sqrt{2} \text{ArcSin}\left[\sqrt{1-v-p[t]}\right]}{\sqrt{a
+T[t]}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{F[e,v,t]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{\sqrt{2} \text{ArcSin}\left[\sqrt{1-e-p[t]}\right]}{\sqrt{a T[t]}}-\frac{\sqrt{2} \text{ArcSin}\left[\sqrt{1-v-p[t]}\right]}{\sqrt{a
+T[t]}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{F$\_$v}[\text{v$\_$}]= D[F[e,v,t],v]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{1}{\sqrt{2} \sqrt{1-v-p[t]} \sqrt{v+p[t]} \sqrt{a T[t]}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{F$\_$vv}[\text{v$\_$}]= D[F[e,v,t],\{v,2\}]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(-\frac{\sqrt{2} \left(\frac{1}{4 \sqrt{1-v-p[t]} (v+p[t])^{3/2}}-\frac{1}{4 (1-v-p[t])^{3/2} \sqrt{v+p[t]}}\right)}{\sqrt{a T[t]}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{\text{sigma$\_$v}[\text{v$\_$}]= D[\text{sigma}[v,t],v]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{(1-2 v-2 p[t]) \sqrt{a T[t]}}{\sqrt{2} \sqrt{(1-v-p[t]) (v+p[t])}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{D[F[1,v,t],t]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(-\frac{p'[t]}{\sqrt{2} \sqrt{-p[t]} \sqrt{1+p[t]} \sqrt{a T[t]}}+\frac{p'[t]}{\sqrt{2} \sqrt{1-v-p[t]} \sqrt{v+p[t]} \sqrt{a T[t]}}+\frac{a
+\text{ArcSin}\left[\sqrt{1-v-p[t]}\right] T'[t]}{\sqrt{2} (a T[t])^{3/2}}-\frac{a \text{ArcSin}\left[\sqrt{-p[t]}\right] T'[t]}{\sqrt{2} (a T[t])^{3/2}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{D[\text{psi}[v,t],v]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{1}{\sqrt{2} \sqrt{1-v-p[t]} \sqrt{v+p[t]} \sqrt{a T[t]}}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\pmb{D[\text{psi}[v,t],t]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{p'[t]}{\sqrt{2} \sqrt{1-v-p[t]} \sqrt{v+p[t]} \sqrt{a T[t]}}+\frac{a \text{ArcSin}\left[\sqrt{1-v-p[t]}\right] T'[t]}{\sqrt{2} (a
+T[t])^{3/2}}\)
+\end{doublespace}
+
+\end{document}

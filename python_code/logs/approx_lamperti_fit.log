@@ -1,9 +1,0 @@
- loading configuration 
-Data output will be save in  fit_SDE19-09-12-20-55-52
- Data has been Lamperti transformed 
- optimizing lamperti_likelihood_SDE_approx using Nelder-Mead
-starting optimization
-/home/alhaddwt/Insync/waleedhad@gmail.com/Google Drive/GitLab/wind-power/python_code/Base_plus.py:2212: RuntimeWarning: overflow encountered in double_scalars
-  var_RHS= 2*(theta_func(t)*(2*p_func(t) -1)*np.sin(m[0])/np.cos(m[0])**2 + theta_func(t)*(alpha -1 )/np.cos(m[0])**2  )*m[1] + 2*theta_func(t)*alpha
-/home/alhaddwt/anaconda3/lib/python3.7/site-packages/scipy/integrate/_ivp/rk.py:140: RuntimeWarning: invalid value encountered in maximum
-  scale = atol + np.maximum(np.abs(y), np.abs(y_new)) * rtol
