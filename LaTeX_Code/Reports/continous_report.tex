@@ -1,0 +1,99 @@
+\documentclass[aspectratio=169]{beamer}\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{amsmath,mathtools}
+\usepackage{mathptmx}
+\usepackage[11pt]{moresize}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{lmodern}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\I}{\mathbb{I}}
+
+\setbeamertemplate{caption}[numbered]
+
+\title{On the Uncertainty of Wind Power Generation\\ continuous report}
+\subtitle{ Waleed Alhaddad}
+
+\begin{document}
+\setbeamercolor{background canvas}{bg=blue!1}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}[label=guide]\frametitle{ Reader's Guide }
+List of changes in this iteration:
+\begin{itemize}
+\item Removed the term $p(1-p)$ from the model.
+    \begin{itemize}
+        \item derived the new ODE for the moments.
+        \item simulated and built the confidence intervals.
+        \end{itemize}
+\item Non-academic poster prepared.
+\end{itemize}
+Next steps:
+\begin{itemize}
+\item The french data set
+    \begin{itemize}
+        \item Organize and clean.
+        \item Normalize by the changing installed capacity.
+        \item Obtain the optimal parameters.
+        \item generate paths and build the confidence bands.
+        \item consider seasonality and human intervention.
+    \end{itemize}
+\item Check the performance of the optimization.
+\item simultaneous versus point-wise confidence bands.
+\end{itemize}
+\small{
+Note :
+\begin{itemize}
+\item Green slides: possible future extensions
+\item Red slides: notes to be removed
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}\frametitle{ Moments of the process }
+After removing the term $p_t(1-p_t)$ from the model, the first moment is unaffected and the second moment of the process is now given by,
+\begin{equation*}
+\frac{d m_2 (t)}{dt} = 2 \right( - m_2(t)\theta(1+\alpha) + \alpha\theta m_1(t)( (1-2p_t) + p_t(1-p_t)) \left)
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}\frametitle{ Moments of the process after Lamperti transform }
+After removing the term $p_t(1-p_t)$ from the model, the moments of the process are now given by,
+
+
+\begin{equation*}
+m_1 (t_2) = \arcsin \left(  e^{-\int_{t_1}^{t_2} \theta_t (1-2 \alpha) \ dt  } \left( \int_{t_1}^{t_2} \theta_s (2p_s - 1)e^{ \int_{t_1}^{s} \theta_t (1-2 \alpha) \ dt  } \ ds + \sin (z_{t_1})\right)  \right)
+\end{equation*}
+
+\begin{equation*}
+m_2 (t_2) =  2\alpha \int_{t_1}^{t_2}  \theta_t  \ dt + m_2(t_1)
+\end{equation*}
+
+\end{frame}
+
+\againframe{guide}
+
+
+
+\end{document}
