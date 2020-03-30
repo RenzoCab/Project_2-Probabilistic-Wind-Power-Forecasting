@@ -5,5 +5,4 @@ function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18
         batch(4,i:i+1) = theta_t(theta_0, alpha, batch(1,i), batch(2,i));
     end
     batch_theta = batch;
-%     batch_theta = batch(:,1:end-1);
 end

@@ -2,6 +2,7 @@ close all;
 clear all;
 clc;
 
+likelihood    = 'lamperti'; % 'normal' or 'lamperti'.
 epsilon       = 0.018;
 [Ta_Tra_Comp] = load_data_eps(epsilon);
 
@@ -21,7 +22,7 @@ dt             = Time(1,2);
 [M, N_ini]     = size(Forecast);
 N              = N_ini - 1; % We have N_ini measurements but N samples.
 
-num_days = 127;
+num_days = 15;%127;
 [Table_Training, batch] = new_batch_fixed(Table_Training,num_days,N);
 
 %% Initial parameters:
@@ -37,10 +38,10 @@ alpha_ini     = est/theta_ini;
 val = [];
 ini_theta = 10;
 ini_alpha = 10;
-len_theta = 500;
-len_alpha = 300;
-div_theta = 100; 
-div_alpha = 300;
+len_theta = 250;%500;
+len_alpha = 150;%300;
+div_theta = 25;%100; 
+div_alpha = 75;%300;
 
 for i = ini_theta:1:len_theta
 
@@ -49,8 +50,19 @@ for i = ini_theta:1:len_theta
     parfor j = ini_alpha:len_alpha
         theta          = i/div_theta;
         alpha          = (j-1+ini_alpha)/div_alpha;
-        batch_complete = batch_with_theta(batch, alpha, theta);
-        vec(j)         = -log_LH_evaluation(batch_complete, alpha, dt);
+        
+        if strcmp(likelihood,'normal')
+            
+            batch_complete = batch_with_theta(batch, alpha, theta);
+            vec(j) = -log_LH_evaluation(batch_complete, alpha, dt);
+            
+        elseif strcmp(likelihood,'lamperti')
+            
+            batch_complete = batch_with_theta_L(batch, alpha, theta);
+            vec(j) = -log_LH_evaluation_L(batch_complete, theta, alpha, dt);
+            
+        end
+        
     end
 
     val(i+1-ini_theta,:) = vec(ini_alpha:len_alpha);

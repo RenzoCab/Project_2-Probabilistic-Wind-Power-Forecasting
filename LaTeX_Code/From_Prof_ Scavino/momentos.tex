@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{todonotes}
+%\usepackage[normalem]{ulem}
+\usepackage{float}
+\usepackage{commath}
+\usepackage{fancybox}
+\usepackage{url}
+
+\theoremstyle{definition}
+\newtheorem{Def}{Definition}[section]
+\newtheorem{Eg}{Example}[section]
+\newtheorem{Rm}{Remark}[section]
+\newtheorem{Ex}{Exercise}[section]
+\newtheorem{Prop}[Def]{Proposition}
+\newtheorem{Lem}[Def]{Lemma}
+\newtheorem{Thm}[Def]{Theorem}
+\newtheorem{Cor}[Def]{Corollary}
+\newtheorem{Rem}[Def]{Remark}
+\newtheorem{Ass}[Def]{Assumption}
+\newtheorem{Met}[Def]{Method}
+\newtheorem{Res}[Def]{Result}
+\newcommand{\red}{\textcolor{red}}
+
+\usepackage[backend=biber, style=authoryear, citestyle=authoryear, autocite=inline]{biblatex} % package for bibliography 
+%\DeclareLanguageMapping{english}{english-apa}
+
+\addbibresource{sdewind.bib}
+
+%\renewbibmacro*{title}{%
+%  \ifboolexpr{
+%    test {\iffieldundef{title}}
+%    and
+%    test {\iffieldundef{subtitle}}
+%  }
+%    {}
+%    {\printtext{%
+%     \printtext[titlecase]{\usefield{\uline}{title}}%
+%     \setunit{\subtitlepunct}%
+%     \printfield[titlecase]{subtitle}}%
+%     \newunit}%
+%  \printfield{titleaddon}}
+
+
+\newcommand{\add}{\textcolor{red}{[insert]}}
+
+\setcounter{page}{1}
+
+\begin{document}
+
+\begin{align}
+dZ_t &  = \left[  \frac{(\alpha \theta_0 - \theta_t) \sin(\sqrt{2 \alpha \theta_0 } Z_t) - \theta_t (1 - 2 p_t) + 2  \dot{p}_t }{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,. 
+\end{align}
+
+Now, 
+\begin{equation} \frac{d}{dt} \mu_Z(t) = \mathbb{E} [b(Z_t)] \end{equation}
+The drift $b(\cdot)$ is nonlinear. Expanding the drift around the mean we get 
+ \begin{equation} \frac{d}{dt} \mu_Z(t) = \mathbb{E} [b( \mu_Z(t)) + b^\prime( \mu_Z(t))  (Z_t - \mu_Z(t) ) + \cdots] \end{equation}
+
+An approximation of the mean of $Z(t)$ can be obtained solving the following equation
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+     \frac{d}{dt} \mu_Z(t) \!\!\!&=  b( \mu_Z(t))  \\
+   \mu_Z(0)  \!\!\!&= \mathbb{E} [Z_0] =  \mathbb{E} [ \frac{1}{\sqrt{2 \alpha \theta_0 }} \arcsin (2(V_0 + p_0) -1)]    \,.
+ \end{array}\right.  
+\end{equation}
+
+An approximation of the variance of $Z(t)$, $v_Z(t) = \mathbb{E} [(Z_t - \mu_Z(t))^2] $, can be obtained solving the following equation
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+     \frac{d}{dt} v_Z(t) \!\!\!&=  2 b^\prime( \mu_Z(t)) v_Z(t) + 1  \\
+   v_Z(0)  \!\!\!&=     \,.
+ \end{array}\right.   \label{eq:approxvar}
+\end{equation} 
+
+The first-order linear ODE in (\ref{eq:approxvar}) admits the solution
+\begin{equation}
+v_Z(t) = e^{2 \int b^\prime( \mu_Z(t)) dt}  \int   e^{- 2 \int b^\prime( \mu_Z(t)) dt} dt + C e^{2 \int b^\prime( \mu_Z(t)) dt} \,.
+\end{equation}
+
+\end{document}
+

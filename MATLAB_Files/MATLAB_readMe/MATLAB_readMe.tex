@@ -103,7 +103,7 @@
 
 
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Normalization:}
+\begin{frame}\frametitle{Normalization:}\label{Norm}
 
 Given the SDE
 \begin{equation*}
@@ -126,7 +126,7 @@ for $n\in\{0\dots,m-1\}$, $t_j=t_0+j\Delta s$, $t_0=0$, $t_m=1$, and $\Delta\hat
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE first moment (1/2):} \label{m1}
-
+\alert{Check if still correct for the new model!!!}\\
 Given some measurement $v_{t_{n-1}}$, we want to compute the first moment at time $t_n$. The exact first moment $m_1(s)$ for $s\in[t_{n-1},t_n]$ is the solution of the ODE
 
 \begin{equation*}
@@ -166,6 +166,7 @@ The code is automatically imported from the MATLAB script.
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE second moment (1/2):} \label{m2}
 
+\alert{Check if still correct for the new model!!!}\\
 Given some measurement $v_{t_{n-1}}$, we want to compute the second moment at time $t_n$. The exact second moment $m_2(s)$ for $s\in[t_{n-1},t_n]$ is the solution of the ODE
 
 \begin{equation*}
@@ -199,6 +200,7 @@ We use the same discretization points for both $m_1(s)$ and $m_2(s)$.
 \end{center}
 
 \end{frame}
+
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Density next measurement (1/2):} \label{Tr}
@@ -306,7 +308,7 @@ We load our three tables: \textbf{Table\_Training\_Complete}, \textbf{Table\_Tes
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{From $\theta_0$ to $\theta_t$:}
-{\small
+
 To ensure that the analytical solutions is always in $]0,1[$, we choose the drift parameter to be
 \begin{equation*}
 \theta(t) = \max\left(\theta_0,\frac{\theta_0\alpha+2|\dot{p}^\epsilon(t)|}{2\min(p^\epsilon(t),1-p^\epsilon(t))}\right),\quad\theta_0>0.
@@ -321,7 +323,8 @@ To ensure that the analytical solutions is always in $]0,1[$, we choose the drif
 }\\
 \bottomrule
 \end{tabular}
-\end{center}}
+\end{center}
+{\tiny Recall that we normalized w.r.t. time $T$. The normalized $\hat{\theta}_t$ is $\hat{\theta}_t=\theta_tT$. Notice that in the definition of $\theta_t$, if we use $\hat{\theta}_0=\theta_0T$ and the derivative of $p_t$ w.r.t. $\dif \hat{t}$ instead of w.r.t. $\dif t$, then we automatically have $\hat{\theta}_t$. See slide \ref{Norm}.}
 
 \end{frame}
 
@@ -404,7 +407,8 @@ We call to all this new set of data, the truncated data.
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Create a new batch (1/2):} \label{cre_batch}
 
-\alert{This function is independent of if we are using the real data or the truncated one.} If we take a total of $Z\in\N$ days, the batch corresponding to this days is
+\alert{This function is independent of if we are using the real data or the truncated one.}\\
+If we take a total of $Z\in\N$ days, the batch corresponding to this days is
 \begin{table}[]
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -726,5 +730,165 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 \end{figure}
 \end{frame}
 
+
+\setbeamercolor{background canvas}{bg=green!20}
+\begin{frame}
+
+{\Huge Lamperti Transform}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!20}
+\begin{frame}\frametitle{Two candidates:}
+
+\begin{columns}
+
+\column{.5\textwidth}
+Recall $X_t=V_t+p_t$.\\
+\quad\\
+We have the candidates:
+\begin{itemize}
+
+\item {\color{blue} $Z_t=\frac{1}{\sqrt{2\alpha\theta_0}}\arcsin(2(V_t+p_t)-1)$.}
+\item {\color{red} $Z_t=\sqrt{\frac{2}{\alpha\theta_0}}\arcsin(\sqrt{1-V_t-p_t})$.}
+
+\end{itemize}
+\quad\\
+\quad\\
+They have the same partial derivatives. The main difference appears in the resulting SDE for $Z_t$. In the {\color{blue} first case}, we have a $\sin(\sqrt{2\alpha\theta_0}Z_t)$ in the drift, while in the \alert{second case}, we have $\cos(\sqrt{2\alpha\theta_0}Z_t)$.\\
+\quad\\
+For now, we will use the {\color{blue}first candidate}.
+
+\column{.5\textwidth}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.9\textwidth]{../../Mathematica_Files/new_model/Lamp_Comp.pdf}
+\end{figure}
+
+\end{columns}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Lamperti data:}
+
+We are following the {\color{blue}first candidate}. Then, we caa
+
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Lamperti moments:}
+
+The Lamperti SDE is:
+\begin{align*}
+\dif Z_t= \underbrace{\left[  \frac{(\alpha \theta_0 - \theta_t) {\color{blue}\sin(\sqrt{2 \alpha \theta_0 } Z_t) }- \theta_t (1 - 2 p_t) + 2  \dot{p}_t }{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}}  \right]}_{\coloneqq b(Z_t)} \dif t + \dif W_t . 
+\end{align*}
+Here we follow Bayesian Filtering and Smoothing, Chapter 9. We use the linearization-based approximation for the moments.
+
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{SDE first Lamperti moment (mean) (1/2):}
+Given some measurement $z_{t_{n-1}}$, we want to compute the first moment at time $t_n$. The linearly approximated first moment $\mu_Z(s)$ for $s\in[t_{n-1},t_n]$ is the solution of the ODE
+
+\begin{equation*}
+\begin{cases}
+\dif \mu_L(s)&=b(\mu_L(s))\dif s,\\
+\mu_L(t_{n-1})&=z_{t_{n-1}}.
+\end{cases}
+\end{equation*}
+\quad\\
+We solve numerically the ODE using Forward-Euler:
+\begin{equation*}
+\mu_L(s_{n})=\mu_L(s_{n-1})+b(\mu_L(s_{n-1}))\Delta s.
+\end{equation*}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{SDE first Lamperti moment (mean) (2/2):}
+
+\begin{center}
+\begin{tabular}{|c|}
+\toprule
+{\scriptsize
+\lstinputlisting{../moment_1_L.m}
+}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{SDE Lamperti variance (1/2):}
+Given some measurement $z_{t_{n-1}}$, we want to compute the variance at time $t_n$. The linearly approximated variance $v_Z(s)$ for $s\in[t_{n-1},t_n]$ is the solution of the ODE
+
+\begin{equation*}
+\begin{cases}
+\dif \sigma^2_L(s)&=\left(2\sigma^2_Lb'(\mu_L(s))+1\right)\dif s,\\
+\sigma^2_L(t_{n-1})&=0.
+\end{cases}
+\end{equation*}
+\quad\\
+We solve numerically the ODE using Forward-Euler:
+\begin{equation*}
+\sigma^2_L(s_{n})=\sigma^2_L(s_{n-1})+\left(1+2\sigma^2_L(s_{n-1})b'(\mu_L(s_{n-1}))\right)\Delta s.
+\end{equation*}
+We have that (computed with Mathematica):
+\begin{equation*}
+b'(z)=\frac{\dif b}{\dif z}(z)=\frac{\alpha\theta_0-\theta_t+(2\dot{p}_t+(2p_t-1)\theta_t)\sin(z\sqrt{2\alpha\theta_0}))}{\cos^2(z\sqrt{2\alpha\theta_0})}.
+\end{equation*}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{SDE Lamperti variance (2/2):}
+
+\begin{center}
+\begin{tabular}{|c|}
+\toprule
+{\tiny
+\lstinputlisting{../moment_2_L.m}
+}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Density next measurement:}
+
+We want the next measurement $Z_{t_n}|Z_{t_{n-1}}$ to have a Gaussian with mean $\mu_Z$ and variance $\sigma_Z^2$ ($f_Z(z)=\mathcal{N}(\mu_Z,\sigma^2_Z)$).\\
+\quad\\
+Then, we want the SDE and our new PDF $f_Z(z)$ to have the same moments at each $t\in\{\text{some appropriate domain}\}$, i.e., $\mu_Z(t)=\mu_L(t)$ and $\sigma^2_Z(t)=\sigma^2_L(t)$.\\
+\quad\\
+The density and log-density (natural logarithm) are:
+\begin{equation*}
+f_Z(z)=\frac{e^{-\frac{1}{2}\left(\frac{z-\mu_Z}{\sigma_Z}\right)^2}}{\sigma_Z\sqrt{2\pi}}\iff \log(f_Z(z))=-\frac{1}{2}\left(\frac{z-\mu_Z}{\sigma_Z}\right)^2-\log(\sigma_Z\sqrt{2\pi}).
+\end{equation*}
+
+\begin{center}
+\begin{tabular}{|c|}
+\toprule
+{\tiny
+\lstinputlisting{../log_dist_L.m}
+}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
 
 \end{document}
