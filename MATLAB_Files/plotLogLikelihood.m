@@ -2,7 +2,7 @@ close all;
 clear all;
 clc;
 
-likelihood    = 'lamperti'; % 'normal' or 'lamperti'.
+likelihood    = 'normal'; % 'normal' or 'lamperti'.
 epsilon       = 0.018;
 [Ta_Tra_Comp] = load_data_eps(epsilon);
 
@@ -22,7 +22,7 @@ dt             = Time(1,2);
 [M, N_ini]     = size(Forecast);
 N              = N_ini - 1; % We have N_ini measurements but N samples.
 
-num_days = 15;%127;
+num_days = 127;
 [Table_Training, batch] = new_batch_fixed(Table_Training,num_days,N);
 
 %% Initial parameters:
@@ -36,30 +36,42 @@ alpha_ini     = est/theta_ini;
 %% Log-Likelihood plot:
 
 val = [];
-ini_theta = 10;
-ini_alpha = 10;
-len_theta = 250;%500;
-len_alpha = 150;%300;
-div_theta = 25;%100; 
-div_alpha = 75;%300;
+
+if strcmp(likelihood,'normal')
+    ini_theta = 10;
+    ini_alpha = 10;
+    len_theta = 200;%500;
+    len_alpha = 150;%300;
+    div_theta = 100; 
+    div_alpha = 300;
+    num_divs  = 30;
+elseif strcmp(likelihood,'lamperti')
+    ini_theta = 10;
+    ini_alpha = 5;
+    len_theta = 100;
+    len_alpha = 100;%50;
+    div_theta = 10; 
+    div_alpha = 100;%10;
+    num_divs  = 10000;
+end
 
 for i = ini_theta:1:len_theta
 
     vec = ones(1,len_alpha);
 
     parfor j = ini_alpha:len_alpha
-        theta          = i/div_theta;
-        alpha          = (j-1+ini_alpha)/div_alpha;
+        theta_0 = i/div_theta;
+        alpha   = (j-1+ini_alpha)/div_alpha;
         
         if strcmp(likelihood,'normal')
             
-            batch_complete = batch_with_theta(batch, alpha, theta);
-            vec(j) = -log_LH_evaluation(batch_complete, alpha, dt);
+            batch_complete = batch_with_theta(batch, alpha, theta_0);
+            vec(j) = -log_LH_evaluation(batch_complete, alpha, theta_0, dt);
             
         elseif strcmp(likelihood,'lamperti')
             
-            batch_complete = batch_with_theta_L(batch, alpha, theta);
-            vec(j) = -log_LH_evaluation_L(batch_complete, theta, alpha, dt);
+            batch_complete = batch_with_theta_L(batch, alpha, theta_0);
+            vec(j) = -log_LH_evaluation_L(batch_complete, theta_0, alpha, dt);
             
         end
         
@@ -76,14 +88,18 @@ hold on;
 vec_theta = [ini_theta:len_theta] / div_theta;
 vec_alpha = [ini_alpha:len_alpha] / div_alpha;
 [X,Y] = meshgrid(vec_theta,vec_alpha);
-contourf(X,Y,val',20); colorbar;
+contourf(X,Y,val',num_divs); colorbar;
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
 title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
-plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',15);
-legend('Level sets','Initial guess');
+if strcmp(likelihood,'normal')
+    plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',15);
+    legend('Level sets','Initial guess');
+elseif strcmp(likelihood,'lamperti')
+    legend('Level sets');
+end
 pause(0.1);
-saveas(gcf,[pwd '/Results/likelihood/Log-Likelihood'],'epsc');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
 
 %% Log-Likelihood plot (more refined):
 
@@ -124,7 +140,7 @@ title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
 plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',25);
 legend('Level sets','Initial guess');
 pause(0.1);
-saveas(gcf,[pwd '/Results/likelihood/Log-Likelihood_refined'],'epsc');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_refined'],'epsc');
 
 %% Log-Likelihood plot (more more refined):
 
@@ -162,6 +178,7 @@ contourf(X,Y,val',30); colorbar;
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
 title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
+plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',25);
 legend('Level sets','Initial guess');
 pause(0.1);
-saveas(gcf,[pwd '/Results/likelihood/Log-Likelihood_more_refined'],'epsc');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_more_refined'],'epsc');

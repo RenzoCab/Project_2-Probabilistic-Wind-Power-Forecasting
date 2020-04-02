@@ -126,7 +126,6 @@ for $n\in\{0\dots,m-1\}$, $t_j=t_0+j\Delta s$, $t_0=0$, $t_m=1$, and $\Delta\hat
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE first moment (1/2):} \label{m1}
-\alert{Check if still correct for the new model!!!}\\
 Given some measurement $v_{t_{n-1}}$, we want to compute the first moment at time $t_n$. The exact first moment $m_1(s)$ for $s\in[t_{n-1},t_n]$ is the solution of the ODE
 
 \begin{equation*}
@@ -158,28 +157,24 @@ m_1(s_{n})=m_1(s_{n-1})(1-\theta(s_{n-1})\Delta s).
 \end{tabular}
 \end{center}
 
-The code is automatically imported from the MATLAB script.
-
 \end{frame}
 
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE second moment (1/2):} \label{m2}
 
-\alert{Check if still correct for the new model!!!}\\
 Given some measurement $v_{t_{n-1}}$, we want to compute the second moment at time $t_n$. The exact second moment $m_2(s)$ for $s\in[t_{n-1},t_n]$ is the solution of the ODE
 
 \begin{equation*}
 \begin{cases}
-\dif m_2(s)&=\alert{\left[-2(1+\alpha)m_2(s)\theta(s)+2\alpha\theta(s)m_1(s)(1-2p(s))+2\alpha\theta(s)p(s)(1-p(s))\right]\dif s,}\\
-&=2\theta(s)\left[-(1+\alpha)m_2(s)+\alpha m_1(s)(1-2p(s))+\alpha p(s)(1-p(s))\right]\dif s,\\
+\dif m_2(s)&=\left[\alert{-2m_2(s)(\theta(s)+\alpha\theta_0)}+2\alpha\theta_0m_1(s)(1-2p(s))+{\color{blue}2\alpha\theta_0p(s)(1-p(s))}\right]\dif s,\\
 m_2(t_{n-1})&=v^2_{t_{n-1}}.
 \end{cases}
 \end{equation*}
 We compute a linear interpolation for the functions $\theta(s)$ and $p(s)$. After, we solve the ODE using Forward-Euler:
 {\scriptsize
 \begin{equation*}
-m_2(s_n)=m_2(s_{n-1})+2\theta(s_{n-1})\left[-(1+\alpha)m_2(s_{n-1})+\alpha m_1(s_{n-1})(1-2p(s_{n-1}))+\alpha p(s_{n-1})(1-p(s_{n-1}))\right]\Delta s.
+m_2(s_n)=m_2(s_{n-1})+\left[\alert{-2m_2(s_{n-1})(\theta(s_{n-1})+\alpha\theta_0)}+2\alpha\theta_0m_1(s_{n-1})(1-2p(s_{n-1}))+{\color{blue}2\alpha\theta_0p(s_{n-1})(1-p(s_{n-1}))}\right]\Delta s.
 \end{equation*}}
 We use the same discretization points for both $m_1(s)$ and $m_2(s)$.
 
@@ -192,7 +187,7 @@ We use the same discretization points for both $m_1(s)$ and $m_2(s)$.
 \begin{center}
 \begin{tabular}{|c|}
 \toprule
-{\footnotesize
+{\tiny
 \lstinputlisting{../moment_2.m}
 }\\
 \bottomrule
@@ -311,7 +306,7 @@ We load our three tables: \textbf{Table\_Training\_Complete}, \textbf{Table\_Tes
 
 To ensure that the analytical solutions is always in $]0,1[$, we choose the drift parameter to be
 \begin{equation*}
-\theta(t) = \max\left(\theta_0,\frac{\theta_0\alpha+2|\dot{p}^\epsilon(t)|}{2\min(p^\epsilon(t),1-p^\epsilon(t))}\right),\quad\theta_0>0.
+\theta(t) = \max\left(\theta_0,\frac{\theta_0\alpha+|\dot{p}^\epsilon(t)|}{\min(p^\epsilon(t),1-p^\epsilon(t))}\right),\quad\theta_0>0.
 \end{equation*}
 \quad\\
 \quad\\
@@ -632,9 +627,9 @@ We use $\delta=\SI{5.5}{\hour}$.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.32\textwidth]{../Results/likelihood/Log-Likelihood.eps}
-\includegraphics[width=0.32\textwidth]{../Results/likelihood/Log-Likelihood_refined.eps}
-\includegraphics[width=0.32\textwidth]{../Results/likelihood/Log-Likelihood_more_refined.eps}
+\includegraphics[width=0.32\textwidth]{../Results/likelihood/normal/Log-Likelihood.eps}
+\includegraphics[width=0.32\textwidth]{../Results/likelihood/normal/Log-Likelihood_refined.eps}
+\includegraphics[width=0.32\textwidth]{../Results/likelihood/normal/Log-Likelihood_more_refined.eps}
 \caption{We use the code \textbf{plotLogLikelihood.m} to create this plots. We used about 18 thousand transitions, and we can also see the initial guess.}
 \end{figure}
 
@@ -751,12 +746,12 @@ We have the candidates:
 \begin{itemize}
 
 \item {\color{blue} $Z_t=\frac{1}{\sqrt{2\alpha\theta_0}}\arcsin(2(V_t+p_t)-1)$.}
-\item {\color{red} $Z_t=\sqrt{\frac{2}{\alpha\theta_0}}\arcsin(\sqrt{1-V_t-p_t})$.}
+\item {\color{red} $Z_t=-\sqrt{\frac{2}{\alpha\theta_0}}\arcsin(\sqrt{1-V_t-p_t})$.}
 
 \end{itemize}
 \quad\\
 \quad\\
-They have the same partial derivatives. The main difference appears in the resulting SDE for $Z_t$. In the {\color{blue} first case}, we have a $\sin(\sqrt{2\alpha\theta_0}Z_t)$ in the drift, while in the \alert{second case}, we have $\cos(\sqrt{2\alpha\theta_0}Z_t)$.\\
+They have the same partial derivatives. The main difference appears in the resulting SDE for $Z_t$.\\
 \quad\\
 For now, we will use the {\color{blue}first candidate}.
 
@@ -772,22 +767,15 @@ For now, we will use the {\color{blue}first candidate}.
 
 
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Lamperti data:}
-
-We are following the {\color{blue}first candidate}. Then, we caa
-
-
-\end{frame}
-
-
-\setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Lamperti moments:}
 
 The Lamperti SDE is:
 \begin{align*}
-\dif Z_t= \underbrace{\left[  \frac{(\alpha \theta_0 - \theta_t) {\color{blue}\sin(\sqrt{2 \alpha \theta_0 } Z_t) }- \theta_t (1 - 2 p_t) + 2  \dot{p}_t }{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}}  \right]}_{\coloneqq b(Z_t)} \dif t + \dif W_t . 
+\dif Z_t= \underbrace{\left[  \frac{(\alpha \theta_0 - \theta_t) {\color{black}\sin(\sqrt{2 \alpha \theta_0 } Z_t) }- \theta_t (1 - 2 p_t) + 2  \dot{p}_t }{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}}  \right]}_{\coloneqq b(Z_t)} \dif t + \dif W_t . 
 \end{align*}
-Here we follow Bayesian Filtering and Smoothing, Chapter 9. We use the linearization-based approximation for the moments.
+Here we follow Bayesian Filtering and Smoothing, Chapter 9. We use the linearization-based approximation for the moments.\\
+\quad\\
+As $X_t\in(\alert{0},1)$, we have that $Z_t\in\left(\alert{-\frac{\pi}{2}\frac{1}{\sqrt{2\alpha\theta_0}}},\frac{\pi}{2}\frac{1}{\sqrt{2\alpha\theta_0}}\right)$.
 
 
 \end{frame}
@@ -890,5 +878,34 @@ f_Z(z)=\frac{e^{-\frac{1}{2}\left(\frac{z-\mu_Z}{\sigma_Z}\right)^2}}{\sigma_Z\s
 \end{center}
 
 \end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Lamperti Log-likelihood evaluation (1/2): CODE}
+
+\begin{center}
+\begin{tabular}{|c|}
+\toprule
+{\tiny
+\lstinputlisting{../log_LH_evaluation_L.m}
+}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Lamperti Log-likelihood evaluation (2/2):}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.5\textwidth]{../Results/likelihood/lamperti/Log-Likelihood.eps}
+\caption{We use the code \textbf{plotLogLikelihood.m} to create this plots. We used about 18 thousand transitions.}
+\end{figure}
+
+\end{frame}
+
 
 \end{document}

@@ -2,7 +2,7 @@ close all;
 clear all;
 clc;
 
-likelihood    = 'lamperti'; % 'normal' or 'lamperti'.
+likelihood    = 'normal'; % 'normal' or 'lamperti'.
 epsilon       = 0.018;
 [Ta_Tra_Comp] = load_data_eps(epsilon);
 

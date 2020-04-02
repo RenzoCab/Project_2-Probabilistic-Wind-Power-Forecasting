@@ -7,8 +7,8 @@ Table_Testing_Complete = load_data_eps_test(epsilon);
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 1;
-save     = 1;
+quantil  = 0;
+save     = 0;
 delta    = 22; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
@@ -18,8 +18,8 @@ else
     numPaths = 5;
 end
 
-theta = 1.6290;
-alpha = 0.06;
+theta_0 = 1.6290;
+alpha   = 0.06;
 
 d  = Table_Testing_Complete.Date;
 p  = Table_Testing_Complete.Forecast;
@@ -45,14 +45,14 @@ for i = 1 : height(Table_Testing_Complete)
     P_exten_spline = interp1([0 6*dt],[P(1) P(6)],minus_t,'spline','extrap');
     P_exten_makima = interp1([0 6*dt],[P(1) P(6)],minus_t,'makima','extrap');
     
-    P       = [P_exten_linear,P]; % We extend the forecast.
+    P        = [P_exten_linear,P]; % We extend the forecast.
     for j = 1:length(P)
         P(j) = max(P(j),epsilon);
         P(j) = min(P(j),1-epsilon);
     end
-    P_dot   = (-P(1:end-1) + P(2:end)) / dt; % This starts at 1 end ends at (end - 1).
+    P_dot    = (-P(1:end-1) + P(2:end)) / dt; % This starts at 1 end ends at (end - 1).
     for j = 1:length(P)-1
-        Theta_t(j) = theta_t(theta, alpha, P(j), P_dot(j));
+        Theta_t(j) = theta_t(theta_0, alpha, P(j), P_dot(j));
     end
     
     % We assume that the forecast is perfect one hour before it starts.
@@ -69,8 +69,7 @@ for i = 1 : height(Table_Testing_Complete)
     
     for k = 1:numPaths
         for j = 1 : length(exten_t)-1
-            sim_path(k,j+1) = sim_path(k,j) + (P_dot(j)-Theta_t(j)*(sim_path(k,j)-P(j)))*dt +...
-                sqrt(dt)*sqrt(2*Theta_t(j)*alpha*sim_path(k,j)*(1-sim_path(k,j)))*randn(1);
+            sim_path(k,j+1) = sde_FE(sim_path(k,j),alpha,Theta_t(j),dt,P(j),P_dot(j));
             if sim_path(k,j+1) > 1
                 sim_path(k,j+1) = 1;
             elseif sim_path(k,j+1) < 0
