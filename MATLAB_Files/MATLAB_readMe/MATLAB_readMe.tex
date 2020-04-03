@@ -755,7 +755,7 @@ We have the candidates:
 \quad\\
 They have the same partial derivatives. The main difference appears in the resulting SDE for $Z_t$.\\
 \quad\\
-For now, we will use the {\color{blue}first candidate}.
+For now, we will use the {\color{red}second candidate}. The problem with the {\color{blue} first candidate} is that the mapping $Z_t\to Z_t^2$ is not injective.
 
 \column{.5\textwidth}
 \begin{figure}[ht!]
@@ -769,7 +769,7 @@ For now, we will use the {\color{blue}first candidate}.
 
 
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Lamperti moments:}
+\begin{frame}\frametitle{Lamperti SDE: {\color{blue} first candidate} (this slide may be deleted so soon...)}
 
 The Lamperti SDE is:
 \begin{align*}
@@ -778,7 +778,31 @@ The Lamperti SDE is:
 Here we follow Bayesian Filtering and Smoothing, Chapter 9. We use the linearization-based approximation for the moments.\\
 \quad\\
 As $X_t\in(\alert{0},1)$, we have that $Z_t\in\left(\alert{-\frac{\pi}{2}\frac{1}{\sqrt{2\alpha\theta_0}}},\frac{\pi}{2}\frac{1}{\sqrt{2\alpha\theta_0}}\right)$.
+{
+Also, we have that (computed with Mathematica):
+\begin{equation*}
+b'(z)=\frac{\dif b}{\dif z}(z)=\frac{\alpha\theta_0-\theta_t+(2\dot{p}_t+(2p_t-1)\theta_t)\sin(z\sqrt{2\alpha\theta_0}))}{\cos^2(z\sqrt{2\alpha\theta_0})}.
+\end{equation*}}
 
+
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Lamperti SDE: {\color{red} second candidate}}
+
+The Lamperti SDE is:
+\begin{align*}
+\dif Z_t= \underbrace{\left[\frac{\alpha\theta_0\cos(Z_t\sqrt{2\alpha\theta_0})-\theta_t\cos(Z_t\sqrt{2\alpha\theta_0})+2\theta_tp_t+2\dot{p}_t-\theta_t}{\sqrt{\alpha\theta_0}\sqrt{1-\cos(2Z_t\sqrt{2\alpha\theta_0})}}\right]}_{\coloneqq b(Z_t)} \dif t + \dif W_t . 
+\end{align*}
+Here we follow Bayesian Filtering and Smoothing, Chapter 9. We use the linearization-based approximation for the moments.\\
+\quad\\
+As $X_t\in(\alert{0},1)$, we have that $Z_t({\color{blue}[0},\alert{1]})={\color{blue}\Big[\frac{-\pi}{\sqrt{2\alpha\theta_0}}},\alert{0\Big]}$.
+{
+Also, we have that (computed with Mathematica):
+\begin{equation*}
+b'(z)=\frac{\dif b}{\dif z}(z)=-\frac{\alpha\theta_0-\theta_t+\cos(\sqrt{2\alpha\theta_0}z)(2\dot{p}_t+\theta_t(2p_t-1))}{\left(\sin(\sqrt{2\alpha\theta_0}z)\right)^2}.
+\end{equation*}}
 
 \end{frame}
 
@@ -832,10 +856,6 @@ Given some measurement $z_{t_{n-1}}$, we want to compute the variance at time $t
 We solve numerically the ODE using Forward-Euler:
 \begin{equation*}
 \sigma^2_L(s_{n})=\sigma^2_L(s_{n-1})+\left(1+2\sigma^2_L(s_{n-1})b'(\mu_L(s_{n-1}))\right)\Delta s.
-\end{equation*}
-We have that (computed with Mathematica):
-\begin{equation*}
-b'(z)=\frac{\dif b}{\dif z}(z)=\frac{\alpha\theta_0-\theta_t+(2\dot{p}_t+(2p_t-1)\theta_t)\sin(z\sqrt{2\alpha\theta_0}))}{\cos^2(z\sqrt{2\alpha\theta_0})}.
 \end{equation*}
 
 \end{frame}

@@ -23,7 +23,7 @@ for i = 1:length(p)
         
         disp([num2str(i/length(p)),' and ',num2str(j/length(v))]);
                 
-        z = lamperti_transform(theta_0,alpha,v(j),p(i));
+        z = lamperti_transform(theta_0,alpha,v(j),p(i),2);
         
         P_dot        = (p_end-p(i)) / dt;
         Theta_t      = theta_t(theta_0, alpha, p(i), P_dot);
@@ -31,8 +31,8 @@ for i = 1:length(p)
         Exp_Z   = moment_1_L(z,theta_0,alpha,p(i),p_end,dt,n);
         Exp_Z_2 = moment_2_L(Exp_Z,theta_0,alpha,p(i),p_end,dt,n) + Exp_Z(end)^2;
                 
-        parfor k = 1:100
-            sim_path_z(k)   = sde_Lamperti_FE(z,alpha,theta_0,Theta_t,dt,p(i),P_dot);
+        for k = 1:100
+            sim_path_z(k)   = sde_Lamperti_FE(z,alpha,theta_0,Theta_t,dt,p(i),P_dot,2);
             sim_path_z_2(k) = sde_Lamperti_FE_2(z^2,alpha,theta_0,Theta_t,dt,p(i),P_dot);
         end
         
@@ -98,8 +98,8 @@ saveas(gcf,[pwd '/Results/moments/lamperti/6'],'epsc');
 error_z = []; error_z_2 = [];
 p_end = 0.2:0.1:0.8;
 
-Z_inf = lamperti_transform(theta_0,alpha,0,0) ;
-Z_sup = lamperti_transform(theta_0,alpha,1,0) ;
+Z_inf = lamperti_transform(theta_0,alpha,0,0,2) ;
+Z_sup = lamperti_transform(theta_0,alpha,1,0,2) ;
 Z_100 = (Z_sup-Z_inf)/100;
 
 for l = 1:length(p_end)
@@ -125,7 +125,7 @@ for l = 1:length(p_end)
                 flag    = 1;
             end
             
-            z = lamperti_transform(theta_0,alpha,v_toUse,p(i));
+            z = lamperti_transform(theta_0,alpha,v_toUse,p(i),2);
             
             if z >= Z_sup - Z_100 * 5
                 z = Z_sup - Z_100 * 5;
@@ -149,7 +149,7 @@ for l = 1:length(p_end)
             Exp_Z_2 = Var_Z + Exp_Z(end)^2;
 
             for k = 1:100
-                sim_path_z(k)   = sde_Lamperti_FE(z,alpha,theta_0,Theta_t,dt,p(i),P_dot);
+                sim_path_z(k)   = sde_Lamperti_FE(z,alpha,theta_0,Theta_t,dt,p(i),P_dot,2);
                 sim_path_z_2(k) = sde_Lamperti_FE_2(z^2,alpha,theta_0,Theta_t,dt,p(i),P_dot);
             end
 
@@ -173,30 +173,37 @@ for l = 1:length(p_end)
     figure;
     surf(V,Y,(exp_z_ode)'); 
     title(['First moment ODE P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/fm_ODE_',num2str(l)],'epsc');
     figure;
     surf(V,Y,(exp_z_emp)'); 
     title(['First moment MC P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/fm_MC_',num2str(l)],'epsc');
     figure;
     surf(V,Y,(exp_z_2_ode)');
     title(['Second moment ODE P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/sm_ODE_',num2str(l)],'epsc');
     figure;
     surf(V,Y,(var_z_ode)');
     title(['Variance ODE P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/var_ODE_',num2str(l)],'epsc');
     figure;
     surf(V,Y,(exp_z_emp_2)'); 
     title(['Second moment MC P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/sm_MC_',num2str(l)],'epsc');
     figure;
     contourf(V,Y,(dif_exp_z)',[0:0.1:1]); colorbar;
     title(['Error first moment when P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/fm_',num2str(l)],'epsc');
     figure;
     contourf(V,Y,(dif_exp_z_2)',[0:0.1:1]); colorbar;
     title(['Error second moment when P(t+1)=',num2str(p_end(l))]);
+    xlabel('Prev. Rel. Forecast'); ylabel('Prev. Error (V)');
     saveas(gcf,[pwd '/Results/moments/lamperti/errors/sm_',num2str(l)],'epsc');
     
     figure;

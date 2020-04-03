@@ -8,9 +8,7 @@ function m1 = moment_1_L(z,theta_0,alpha,p1,p2,dt,n)
     for i = 2:n
         Theta_t = theta_t(theta_0, alpha, p_t(i), p_dot);
         m1(i)   = m1(i-1) + ds * ...
-            ((alpha*theta_0-Theta_t) * sin(m1(i-1)*sqrt(2*alpha*theta_0)) - ...
-            Theta_t*(1-2*p_t(i)) + 2*p_dot) / ...
-            (sqrt(2*alpha*theta_0) * cos(m1(i-1)*sqrt(2*alpha*theta_0)));
+            sde_Lamperti_drift_cand2(m1(i-1),alpha,theta_0,Theta_t,p_t(i-1),p_dot);
     end
     
 end

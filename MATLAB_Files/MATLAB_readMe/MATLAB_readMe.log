@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  2 APR 2020 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  3 APR 2020 20:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2312,17 +2312,19 @@ on input line 768.
 
 ] [37
 
+] [38
+
 ] (../moment_1_L.m)
-[38
+[39
 
-] [39
+] [40
 
-] (../moment_2_L.m) [40
+] (../moment_2_L.m) [41
 
-] (../log_dist_L.m) [41
+] (../log_dist_L.m) [42
 
 ]
-(../log_LH_evaluation_L.m) [42
+(../log_LH_evaluation_L.m) [43
 
 ]
 Package epstopdf Info: Source file: <../Results/likelihood/lamperti/Log-Likelih
@@ -2336,22 +2338,22 @@ ood-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/lampe
 rti/Log-Likelihood-eps-converted-to.pdf ../Results/likelihood/lamperti/Log-Like
 lihood.eps>
-(epstopdf)             \includegraphics on input line 910.
+(epstopdf)             \includegraphics on input line 930.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../Results/likelihood/lamperti/Log-Likelihood-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf, id=1464, 4
+<../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf, id=1470, 4
 29.605pt x 317.185pt>
 File: ../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/likelihood/lamperti/Log-Likelihood-eps-conv
-erted-to.pdf  used on input line 910.
+erted-to.pdf  used on input line 930.
 (pdftex.def)             Requested size: 213.39568pt x 157.55637pt.
-[43
+[44
 
  <../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf>]
 \tf@nav=\write6
@@ -2363,12 +2365,12 @@ erted-to.pdf  used on input line 910.
 \tf@snm=\write8
 \openout8 = `MATLAB_readMe.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 933.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 933.
 
 (./MATLAB_readMe.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 933.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 933.
 Package rerunfilecheck Info: File `MATLAB_readMe.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2377,10 +2379,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32157 strings out of 492982
- 621326 string characters out of 6134896
- 821261 words of memory out of 5000000
- 34966 multiletter control sequences out of 15000+600000
+ 32161 strings out of 492982
+ 621361 string characters out of 6134896
+ 821297 words of memory out of 5000000
+ 34968 multiletter control sequences out of 15000+600000
  675275 words of font info for 201 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,55p,10385b,2061s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2403,10 +2405,10 @@ exmf/fonts/type1/public/lm/lmsso9.pfb></usr/share/texlive/texmf-dist/fonts/type
 /public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/us
 yr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb>
-Output written on MATLAB_readMe.pdf (43 pages, 947913 bytes).
+Output written on MATLAB_readMe.pdf (44 pages, 950285 bytes).
 PDF statistics:
- 1575 PDF objects out of 1728 (max. 8388607)
- 1053 compressed objects within 11 object streams
- 97 named destinations out of 1000 (max. 500000)
+ 1580 PDF objects out of 1728 (max. 8388607)
+ 1057 compressed objects within 11 object streams
+ 99 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
