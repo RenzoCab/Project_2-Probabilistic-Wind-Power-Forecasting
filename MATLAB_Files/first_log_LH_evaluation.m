@@ -14,8 +14,10 @@ function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, 
         v0  = 0; v1 = batch_complete(3,1  + i*(N-1)*2);
 
         v_ini(i+1) = v1;
-        m1   = moment_1(v0,th0,th1,delta,n);
-        m2   = moment_2(v0,th0,th1,p0,p1,alpha,m1,delta,n);
+        % (v,theta_0,alpha,th1,th2,p1,p2,dt,n) 
+        m1   = moment_1(v0,theta_0,alpha,th0,th1,p0,p1,delta,n);
+        % (v,theta_0,th1,th2,p1,p2,alpha,m1,dt,n)
+        m2   = moment_2(v0,theta_0,th0,th1,p0,p1,alpha,m1,delta,n);
         mom1(i+1)  = m1(end);
         mom2(i+1)  = m2(end);
         

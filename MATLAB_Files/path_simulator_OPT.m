@@ -7,10 +7,10 @@ Table_Testing_Complete = load_data_eps_test(epsilon);
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 0;
+quantil  = 1;
 save     = 0;
 delta    = 22; % The time is delta*10 minutes.
-xlimit   = 0; % If this in 1, the plots start at time 0. Otherwise, at -delta.
+xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
 if quantil
     numPaths = 5000;
@@ -18,8 +18,8 @@ else
     numPaths = 5;
 end
 
-theta_0 = 3.912;
-alpha   = 0.019308;
+theta_0 = 1.2656;
+alpha   = 0.07052;
 
 d  = Table_Testing_Complete.Date;
 p  = Table_Testing_Complete.Forecast;

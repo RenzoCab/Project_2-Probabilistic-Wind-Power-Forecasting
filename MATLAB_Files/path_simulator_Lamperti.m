@@ -34,8 +34,8 @@ else
     error('Wrong whatToDo script!');
 end
 
-Z_inf = lamperti_transform(theta_0,alpha,0,0) ;
-Z_sup = lamperti_transform(theta_0,alpha,1,0) ;
+Z_inf = lamperti_transform(theta_0,alpha,0,0);
+Z_sup = lamperti_transform(theta_0,alpha,1,0);
 Z_100 = (Z_sup-Z_inf)/100;
 
 d  = Table_Testing_Complete.Date;

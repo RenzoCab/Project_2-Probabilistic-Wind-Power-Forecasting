@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  2 APR 2020 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  2 APR 2020 21:43
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1868,28 +1868,28 @@ ed on input line 74.
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 160.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 162.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 160.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 162.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 160.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 162.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 160.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 162.
 
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <7> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 160.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 162.
 
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <5> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 160.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 162.
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <9> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 160
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 162
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <7> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 160
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 162
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <5> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 160
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 162
 .
  (../moment_1.m
 LaTeX Font Info:    Try loading font information for OMS+lmss on input line 5.
@@ -1921,31 +1921,31 @@ LaTeX Font Warning: Font shape `OMS/lmss/m/n' undefined
 
 ] (../theta_t.m)
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 324.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 326.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <14.4> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 324.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 326.
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 324
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 326
 .
  [16
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 374.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 376.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 374.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 376.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 374.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 376.
 
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <7.4> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 374.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 376.
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 374
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 376
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <7.4> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 374
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 376
 .
  (../pe.m
 LaTeX Font Info:    Try loading font information for OML+lmss on input line 3.
@@ -1957,7 +1957,7 @@ LaTeX Font Warning: Font shape `OML/lmss/m/n' undefined
 (Font)              for symbol `textless' on input line 3.
 
 ) (../pe_dot.m)
-Overfull \hbox (2.13077pt too wide) in paragraph at lines 374--374
+Overfull \hbox (2.13077pt too wide) in paragraph at lines 376--376
  [] 
  []
 
@@ -1995,7 +1995,7 @@ d-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/norma
 l/Log-Likelihood-eps-converted-to.pdf ../Results/likelihood/normal/Log-Likeliho
 od.eps>
-(epstopdf)             \includegraphics on input line 636.
+(epstopdf)             \includegraphics on input line 638.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2008,7 +2008,7 @@ File: ../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf Graphic
 file (type pdf)
 <use ../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/likelihood/normal/Log-Likelihood-eps-conver
-ted-to.pdf  used on input line 636.
+ted-to.pdf  used on input line 638.
 (pdftex.def)             Requested size: 136.57635pt x 100.8382pt.
 Package epstopdf Info: Source file: <../Results/likelihood/normal/Log-Likelihoo
 d_refined.eps>
@@ -2021,7 +2021,7 @@ d_refined-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/norma
 l/Log-Likelihood_refined-eps-converted-to.pdf ../Results/likelihood/normal/Log-
 Likelihood_refined.eps>
-(epstopdf)             \includegraphics on input line 636.
+(epstopdf)             \includegraphics on input line 638.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2034,7 +2034,7 @@ File: ../Results/likelihood/normal/Log-Likelihood_refined-eps-converted-to.pdf
 Graphic file (type pdf)
 <use ../Results/likelihood/normal/Log-Likelihood_refined-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/likelihood/normal/Log-Likelihood_refined-ep
-s-converted-to.pdf  used on input line 636.
+s-converted-to.pdf  used on input line 638.
 (pdftex.def)             Requested size: 136.57635pt x 100.8382pt.
 Package epstopdf Info: Source file: <../Results/likelihood/normal/Log-Likelihoo
 d_more_refined.eps>
@@ -2047,7 +2047,7 @@ d_more_refined-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/norma
 l/Log-Likelihood_more_refined-eps-converted-to.pdf ../Results/likelihood/normal
 /Log-Likelihood_more_refined.eps>
-(epstopdf)             \includegraphics on input line 636.
+(epstopdf)             \includegraphics on input line 638.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2061,7 +2061,7 @@ File: ../Results/likelihood/normal/Log-Likelihood_more_refined-eps-converted-to
 <use ../Results/likelihood/normal/Log-Likelihood_more_refined-eps-converted-to.
 pdf>
 Package pdftex.def Info: ../Results/likelihood/normal/Log-Likelihood_more_refin
-ed-eps-converted-to.pdf  used on input line 636.
+ed-eps-converted-to.pdf  used on input line 638.
 (pdftex.def)             Requested size: 136.57635pt x 100.8382pt.
 [27
 
@@ -2084,7 +2084,7 @@ e/1-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/paths_testing_da
 ys/optimal_value/1-eps-converted-to.pdf ../Results/paths_testing_days/optimal_v
 alue/1.eps>
-(epstopdf)             \includegraphics on input line 691.
+(epstopdf)             \includegraphics on input line 693.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2097,7 +2097,7 @@ File: ../Results/paths_testing_days/optimal_value/1-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/paths_testing_days/optimal_value/1-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/paths_testing_days/optimal_value/1-eps-conv
-erted-to.pdf  used on input line 691.
+erted-to.pdf  used on input line 693.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 Package epstopdf Info: Source file: <../Results/bands_testing_days/optimal_valu
 e/1.eps>
@@ -2110,7 +2110,7 @@ e/1-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/bands_testing_da
 ys/optimal_value/1-eps-converted-to.pdf ../Results/bands_testing_days/optimal_v
 alue/1.eps>
-(epstopdf)             \includegraphics on input line 691.
+(epstopdf)             \includegraphics on input line 693.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2123,7 +2123,7 @@ File: ../Results/bands_testing_days/optimal_value/1-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/bands_testing_days/optimal_value/1-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/bands_testing_days/optimal_value/1-eps-conv
-erted-to.pdf  used on input line 691.
+erted-to.pdf  used on input line 693.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 [30
 
@@ -2140,7 +2140,7 @@ e/2-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/paths_testing_da
 ys/optimal_value/2-eps-converted-to.pdf ../Results/paths_testing_days/optimal_v
 alue/2.eps>
-(epstopdf)             \includegraphics on input line 703.
+(epstopdf)             \includegraphics on input line 705.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2153,7 +2153,7 @@ File: ../Results/paths_testing_days/optimal_value/2-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/paths_testing_days/optimal_value/2-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/paths_testing_days/optimal_value/2-eps-conv
-erted-to.pdf  used on input line 703.
+erted-to.pdf  used on input line 705.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 Package epstopdf Info: Source file: <../Results/bands_testing_days/optimal_valu
 e/2.eps>
@@ -2166,7 +2166,7 @@ e/2-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/bands_testing_da
 ys/optimal_value/2-eps-converted-to.pdf ../Results/bands_testing_days/optimal_v
 alue/2.eps>
-(epstopdf)             \includegraphics on input line 703.
+(epstopdf)             \includegraphics on input line 705.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2179,7 +2179,7 @@ File: ../Results/bands_testing_days/optimal_value/2-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/bands_testing_days/optimal_value/2-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/bands_testing_days/optimal_value/2-eps-conv
-erted-to.pdf  used on input line 703.
+erted-to.pdf  used on input line 705.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 [31
 
@@ -2196,7 +2196,7 @@ e/3-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/paths_testing_da
 ys/optimal_value/3-eps-converted-to.pdf ../Results/paths_testing_days/optimal_v
 alue/3.eps>
-(epstopdf)             \includegraphics on input line 715.
+(epstopdf)             \includegraphics on input line 717.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2209,7 +2209,7 @@ File: ../Results/paths_testing_days/optimal_value/3-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/paths_testing_days/optimal_value/3-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/paths_testing_days/optimal_value/3-eps-conv
-erted-to.pdf  used on input line 715.
+erted-to.pdf  used on input line 717.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 Package epstopdf Info: Source file: <../Results/bands_testing_days/optimal_valu
 e/3.eps>
@@ -2222,7 +2222,7 @@ e/3-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/bands_testing_da
 ys/optimal_value/3-eps-converted-to.pdf ../Results/bands_testing_days/optimal_v
 alue/3.eps>
-(epstopdf)             \includegraphics on input line 715.
+(epstopdf)             \includegraphics on input line 717.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2235,7 +2235,7 @@ File: ../Results/bands_testing_days/optimal_value/3-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/bands_testing_days/optimal_value/3-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/bands_testing_days/optimal_value/3-eps-conv
-erted-to.pdf  used on input line 715.
+erted-to.pdf  used on input line 717.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 [32
 
@@ -2252,7 +2252,7 @@ e/4-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/paths_testing_da
 ys/optimal_value/4-eps-converted-to.pdf ../Results/paths_testing_days/optimal_v
 alue/4.eps>
-(epstopdf)             \includegraphics on input line 726.
+(epstopdf)             \includegraphics on input line 728.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2265,7 +2265,7 @@ File: ../Results/paths_testing_days/optimal_value/4-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/paths_testing_days/optimal_value/4-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/paths_testing_days/optimal_value/4-eps-conv
-erted-to.pdf  used on input line 726.
+erted-to.pdf  used on input line 728.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 Package epstopdf Info: Source file: <../Results/bands_testing_days/optimal_valu
 e/4.eps>
@@ -2278,7 +2278,7 @@ e/4-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/bands_testing_da
 ys/optimal_value/4-eps-converted-to.pdf ../Results/bands_testing_days/optimal_v
 alue/4.eps>
-(epstopdf)             \includegraphics on input line 726.
+(epstopdf)             \includegraphics on input line 728.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2291,7 +2291,7 @@ File: ../Results/bands_testing_days/optimal_value/4-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/bands_testing_days/optimal_value/4-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/bands_testing_days/optimal_value/4-eps-conv
-erted-to.pdf  used on input line 726.
+erted-to.pdf  used on input line 728.
 (pdftex.def)             Requested size: 170.71393pt x 138.79027pt.
 [33
 
@@ -2304,7 +2304,7 @@ t>
 File: ../../Mathematica_Files/new_model/Lamp_Comp.pdf Graphic file (type pdf)
 <use ../../Mathematica_Files/new_model/Lamp_Comp.pdf>
 Package pdftex.def Info: ../../Mathematica_Files/new_model/Lamp_Comp.pdf  used 
-on input line 766.
+on input line 768.
 (pdftex.def)             Requested size: 192.0548pt x 120.56781pt.
  [35
 
@@ -2336,7 +2336,7 @@ ood-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/lampe
 rti/Log-Likelihood-eps-converted-to.pdf ../Results/likelihood/lamperti/Log-Like
 lihood.eps>
-(epstopdf)             \includegraphics on input line 908.
+(epstopdf)             \includegraphics on input line 910.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2349,7 +2349,7 @@ File: ../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf Graphi
 c file (type pdf)
 <use ../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/likelihood/lamperti/Log-Likelihood-eps-conv
-erted-to.pdf  used on input line 908.
+erted-to.pdf  used on input line 910.
 (pdftex.def)             Requested size: 213.39568pt x 157.55637pt.
 [43
 
@@ -2363,12 +2363,12 @@ erted-to.pdf  used on input line 908.
 \tf@snm=\write8
 \openout8 = `MATLAB_readMe.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 911.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 911.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
 
 (./MATLAB_readMe.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 911.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 911.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
 Package rerunfilecheck Info: File `MATLAB_readMe.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2377,10 +2377,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32156 strings out of 492982
- 621315 string characters out of 6134896
- 820261 words of memory out of 5000000
- 34965 multiletter control sequences out of 15000+600000
+ 32157 strings out of 492982
+ 621326 string characters out of 6134896
+ 821261 words of memory out of 5000000
+ 34966 multiletter control sequences out of 15000+600000
  675275 words of font info for 201 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,55p,10385b,2061s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2403,7 +2403,7 @@ exmf/fonts/type1/public/lm/lmsso9.pfb></usr/share/texlive/texmf-dist/fonts/type
 /public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/us
 yr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb>
-Output written on MATLAB_readMe.pdf (43 pages, 947307 bytes).
+Output written on MATLAB_readMe.pdf (43 pages, 947913 bytes).
 PDF statistics:
  1575 PDF objects out of 1728 (max. 8388607)
  1053 compressed objects within 11 object streams

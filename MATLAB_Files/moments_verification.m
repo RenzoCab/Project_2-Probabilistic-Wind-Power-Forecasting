@@ -8,14 +8,14 @@ Table_Testing_Complete = load_data_eps_test(epsilon);
 t  = Table_Testing_Complete.Time(1,:);
 dt = t(2);
 
-theta_0 = 3.912;
-alpha   = 0.019308;
+theta_0 = 1.2656;
+alpha   = 0.07052;
 n       = 100;
 p_end   = 1/2;
 p_lims  = 0.03;
 
 p = p_end-p_lims:0.001:p_end+p_lims;
-v = -0.2:0.001:0.2;
+v = -0.3:0.001:0.3;
 
 for i = 1:length(p)
     for j = 1:length(v)

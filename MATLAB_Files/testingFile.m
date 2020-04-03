@@ -271,3 +271,102 @@ num_days = 127; N = 144;
 [Table_Training, batch] = new_batch(Table_Training,num_days,N);
 Out = likelihood_optimization(batch, theta, alpha, dt);
 disp(num2str(Out));
+
+%% HISTOGRAMS:
+
+close all;
+clear all;
+clc;
+
+epsilon = 0.018;
+Ta_Tra_Comp = load_data_eps(epsilon);
+
+Table_Training = Ta_Tra_Comp; % We copy it so we can modify it.
+
+Date              = Ta_Tra_Comp.Date;
+Time              = Ta_Tra_Comp.Time;
+Forecast          = Ta_Tra_Comp.Forecast;
+Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+Real_ADME         = Ta_Tra_Comp.Real_ADME;
+Error             = Ta_Tra_Comp.Error;
+Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+
+Forecast_Dot = Forecast_Dot(:)*Time(1,2);
+
+histogram(Forecast_Dot);
+
+%% Testing Z^2 computation:
+
+close all;
+clear all;
+clc;
+
+epsilon                = 0.018;
+Table_Testing_Complete = load_data_eps_test(epsilon);
+
+t  = Table_Testing_Complete.Time(1,:);
+dt = t(2);
+
+theta_0 = 1.2656;
+alpha   = 0.07052;
+
+z1 = lamperti_transform(theta_0,alpha,-0.07,0.2-0.03);
+z2 = lamperti_transform(theta_0,alpha,0.02,0.2-0.03);
+
+P_dot        = (-0.03) / dt;
+Theta_t      = theta_t(theta_0, alpha, 0.2-0.03, P_dot);
+
+n = -0.04:0.01:-0.03;
+
+Z_inf = lamperti_transform(theta_0,alpha,0,0)
+Z_sup = lamperti_transform(theta_0,alpha,1,0)
+Z_inf_2 = lamperti_transform(theta_0,alpha,0,0)^2
+Z_sup_2 = lamperti_transform(theta_0,alpha,1,0)^2
+Z_100 = (Z_sup-Z_inf)/100;
+
+for i = 1:length(n)
+    
+    figure(i)
+    figure(i*1000)
+    zz = lamperti_transform(theta_0,alpha,n(i),0.2-0.03);
+    disp(num2str(zz*sqrt(2*alpha*theta_0)/(pi/2)));
+    disp(['i=',num2str(i),', n = ',num2str(n(i)),', z = ',num2str(zz),', and zz^2 = ',num2str(zz^2)]);
+    for k = 1:100
+        sim_path_z_2(k) = sde_Lamperti_FE_2_TEXSTING(zz^2,alpha,theta_0,Theta_t,dt,0.2-0.03,P_dot,i,i*1000);
+    end
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
