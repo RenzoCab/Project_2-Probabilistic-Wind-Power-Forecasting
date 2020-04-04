@@ -2,7 +2,7 @@ close all;
 clear all;
 clc;
 
-likelihood    = 'normal'; % 'normal' or 'lamperti'.
+likelihood    = 'lamperti'; % 'normal' or 'lamperti'.
 epsilon       = 0.018;
 [Ta_Tra_Comp] = load_data_eps(epsilon);
 
@@ -33,26 +33,28 @@ alpha_ini     = est/theta_ini;
 
 %% Optimization:
 
-theta   = theta_ini;
+theta_0 = theta_ini;
 alpha   = alpha_ini;
 
 if strcmp(likelihood,'normal')
     
-    x0      = [theta, alpha];
+    x0      = [theta_0, alpha];
     fun     = @(x) -likelihood_optimization(batch, x(1), x(2), dt);
     options = optimset('PlotFcns',@optimplotfval);
 
     x = fminsearch(fun, x0, options);
-    % Theta = 3.912, Alpha = 0.019308 (20/03/2020).
+    % Theta_0 = 3.91, Alpha = 0.019 (20/03/2020).
+    % Theta_0 = 1.14, Alpha = 0.073 (03/04/2020).
 
 elseif strcmp(likelihood,'lamperti')
     
-    x0      = [theta, alpha];
-    fun     = @(x) -likelihood_optimization_L(batch, x(1), x(2), dt);
-    options = optimset('PlotFcns',@optimplotfval);
+    x0      = [1.14, 0.073];
+            
+    fun     = @(x) likelihood_nested_optimization_L(batch, x, dt);
+    options = optimset('PlotFcns',@optimplotfval,'UseParallel',true);
 
-    x = fminsearch(fun, x0, options);
-    % Theta = 3.912, Alpha = 0.019308 (20/03/2020).
+    x0 = fminsearch(fun, x0, options);
+    % Theta_0 = 1.57, Alpha = 0.034 (04/04/2020).
     
 else
     

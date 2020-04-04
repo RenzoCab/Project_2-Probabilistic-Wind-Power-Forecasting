@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  3 APR 2020 20:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  4 APR 2020 17:49
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1986,12 +1986,12 @@ Overfull \hbox (2.13077pt too wide) in paragraph at lines 376--376
 ]
 Package epstopdf Info: Source file: <../Results/likelihood/normal/Log-Likelihoo
 d.eps>
-(epstopdf)                    date: 2020-04-01 10:56:09
-(epstopdf)                    size: 86255 bytes
+(epstopdf)                    date: 2020-04-04 14:37:31
+(epstopdf)                    size: 53646 bytes
 (epstopdf)             Output file: <../Results/likelihood/normal/Log-Likelihoo
 d-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-01 11:26:45
-(epstopdf)                    size: 153650 bytes
+(epstopdf)                    date: 2020-04-04 17:37:44
+(epstopdf)                    size: 51057 bytes
 (epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/norma
 l/Log-Likelihood-eps-converted-to.pdf ../Results/likelihood/normal/Log-Likeliho
 od.eps>
@@ -2002,75 +2002,20 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/likelihood/normal/Log-Likelihood-eps-
 converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version 
 <1.5> allowed
-<../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf, id=1265, 429
-.605pt x 317.185pt>
+<../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf, id=1265, 422
+.57875pt x 317.185pt>
 File: ../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf Graphic 
 file (type pdf)
 <use ../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf>
 Package pdftex.def Info: ../Results/likelihood/normal/Log-Likelihood-eps-conver
 ted-to.pdf  used on input line 638.
-(pdftex.def)             Requested size: 136.57635pt x 100.8382pt.
-Package epstopdf Info: Source file: <../Results/likelihood/normal/Log-Likelihoo
-d_refined.eps>
-(epstopdf)                    date: 2020-04-01 11:05:59
-(epstopdf)                    size: 72928 bytes
-(epstopdf)             Output file: <../Results/likelihood/normal/Log-Likelihoo
-d_refined-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-01 11:26:45
-(epstopdf)                    size: 70167 bytes
-(epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/norma
-l/Log-Likelihood_refined-eps-converted-to.pdf ../Results/likelihood/normal/Log-
-Likelihood_refined.eps>
-(epstopdf)             \includegraphics on input line 638.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../Results/likelihood/normal/Log-Likelihood_refi
-ned-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most 
-version <1.5> allowed
-<../Results/likelihood/normal/Log-Likelihood_refined-eps-converted-to.pdf, id=1
-266, 429.605pt x 317.185pt>
-File: ../Results/likelihood/normal/Log-Likelihood_refined-eps-converted-to.pdf 
-Graphic file (type pdf)
-<use ../Results/likelihood/normal/Log-Likelihood_refined-eps-converted-to.pdf>
-Package pdftex.def Info: ../Results/likelihood/normal/Log-Likelihood_refined-ep
-s-converted-to.pdf  used on input line 638.
-(pdftex.def)             Requested size: 136.57635pt x 100.8382pt.
-Package epstopdf Info: Source file: <../Results/likelihood/normal/Log-Likelihoo
-d_more_refined.eps>
-(epstopdf)                    date: 2020-04-01 11:15:48
-(epstopdf)                    size: 73958 bytes
-(epstopdf)             Output file: <../Results/likelihood/normal/Log-Likelihoo
-d_more_refined-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-01 11:26:45
-(epstopdf)                    size: 68738 bytes
-(epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/norma
-l/Log-Likelihood_more_refined-eps-converted-to.pdf ../Results/likelihood/normal
-/Log-Likelihood_more_refined.eps>
-(epstopdf)             \includegraphics on input line 638.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../Results/likelihood/normal/Log-Likelihood_more
-_refined-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at 
-most version <1.5> allowed
-<../Results/likelihood/normal/Log-Likelihood_more_refined-eps-converted-to.pdf,
- id=1267, 429.605pt x 317.185pt>
-File: ../Results/likelihood/normal/Log-Likelihood_more_refined-eps-converted-to
-.pdf Graphic file (type pdf)
-<use ../Results/likelihood/normal/Log-Likelihood_more_refined-eps-converted-to.
-pdf>
-Package pdftex.def Info: ../Results/likelihood/normal/Log-Likelihood_more_refin
-ed-eps-converted-to.pdf  used on input line 638.
-(pdftex.def)             Requested size: 136.57635pt x 100.8382pt.
+(pdftex.def)             Requested size: 213.39568pt x 160.17473pt.
 [27
 
- <../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf> <../Results
-/likelihood/normal/Log-Likelihood_refined-eps-converted-to.pdf> <../Results/lik
-elihood/normal/Log-Likelihood_more_refined-eps-converted-to.pdf>] [28
+ <../Results/likelihood/normal/Log-Likelihood-eps-converted-to.pdf>]
+[28
 
-]
-[29
+] [29
 
 ]
 Package epstopdf Info: Source file: <../Results/paths_testing_days/optimal_valu
@@ -2091,7 +2036,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/paths_testing_days/optimal_value/1-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/paths_testing_days/optimal_value/1-eps-converted-to.pdf, id=1301, 3
+<../Results/paths_testing_days/optimal_value/1-eps-converted-to.pdf, id=1287, 3
 70.38374pt x 301.125pt>
 File: ../Results/paths_testing_days/optimal_value/1-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2117,7 +2062,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/bands_testing_days/optimal_value/1-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/bands_testing_days/optimal_value/1-eps-converted-to.pdf, id=1302, 3
+<../Results/bands_testing_days/optimal_value/1-eps-converted-to.pdf, id=1288, 3
 70.38374pt x 301.125pt>
 File: ../Results/bands_testing_days/optimal_value/1-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2147,7 +2092,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/paths_testing_days/optimal_value/2-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/paths_testing_days/optimal_value/2-eps-converted-to.pdf, id=1324, 3
+<../Results/paths_testing_days/optimal_value/2-eps-converted-to.pdf, id=1310, 3
 70.38374pt x 301.125pt>
 File: ../Results/paths_testing_days/optimal_value/2-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2173,7 +2118,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/bands_testing_days/optimal_value/2-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/bands_testing_days/optimal_value/2-eps-converted-to.pdf, id=1325, 3
+<../Results/bands_testing_days/optimal_value/2-eps-converted-to.pdf, id=1311, 3
 70.38374pt x 301.125pt>
 File: ../Results/bands_testing_days/optimal_value/2-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2203,7 +2148,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/paths_testing_days/optimal_value/3-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/paths_testing_days/optimal_value/3-eps-converted-to.pdf, id=1348, 3
+<../Results/paths_testing_days/optimal_value/3-eps-converted-to.pdf, id=1334, 3
 70.38374pt x 301.125pt>
 File: ../Results/paths_testing_days/optimal_value/3-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2229,7 +2174,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/bands_testing_days/optimal_value/3-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/bands_testing_days/optimal_value/3-eps-converted-to.pdf, id=1349, 3
+<../Results/bands_testing_days/optimal_value/3-eps-converted-to.pdf, id=1335, 3
 70.38374pt x 301.125pt>
 File: ../Results/bands_testing_days/optimal_value/3-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2259,7 +2204,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/paths_testing_days/optimal_value/4-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/paths_testing_days/optimal_value/4-eps-converted-to.pdf, id=1371, 3
+<../Results/paths_testing_days/optimal_value/4-eps-converted-to.pdf, id=1357, 3
 70.38374pt x 301.125pt>
 File: ../Results/paths_testing_days/optimal_value/4-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2285,7 +2230,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ../Results/bands_testing_days/optimal_value/4-ep
 s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<../Results/bands_testing_days/optimal_value/4-eps-converted-to.pdf, id=1372, 3
+<../Results/bands_testing_days/optimal_value/4-eps-converted-to.pdf, id=1358, 3
 70.38374pt x 301.125pt>
 File: ../Results/bands_testing_days/optimal_value/4-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -2299,7 +2244,7 @@ erted-to.pdf  used on input line 728.
 ts/bands_testing_days/optimal_value/4-eps-converted-to.pdf>] [34
 
 ]
-<../../Mathematica_Files/new_model/Lamp_Comp.pdf, id=1400, 361.35pt x 226.8475p
+<../../Mathematica_Files/new_model/Lamp_Comp.pdf, id=1386, 361.35pt x 226.8475p
 t>
 File: ../../Mathematica_Files/new_model/Lamp_Comp.pdf Graphic file (type pdf)
 <use ../../Mathematica_Files/new_model/Lamp_Comp.pdf>
@@ -2315,6 +2260,10 @@ on input line 768.
 ] [38
 
 ] (../moment_1_L.m)
+Overfull \hbox (9.31294pt too wide) in paragraph at lines 842--842
+ [] 
+ []
+
 [39
 
 ] [40
@@ -2327,35 +2276,6 @@ on input line 768.
 (../log_LH_evaluation_L.m) [43
 
 ]
-Package epstopdf Info: Source file: <../Results/likelihood/lamperti/Log-Likelih
-ood.eps>
-(epstopdf)                    date: 2020-04-01 18:05:26
-(epstopdf)                    size: 56273 bytes
-(epstopdf)             Output file: <../Results/likelihood/lamperti/Log-Likelih
-ood-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-01 18:05:34
-(epstopdf)                    size: 53077 bytes
-(epstopdf)             Command: <epstopdf --outfile=../Results/likelihood/lampe
-rti/Log-Likelihood-eps-converted-to.pdf ../Results/likelihood/lamperti/Log-Like
-lihood.eps>
-(epstopdf)             \includegraphics on input line 930.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../Results/likelihood/lamperti/Log-Likelihood-ep
-s-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
-n <1.5> allowed
-<../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf, id=1470, 4
-29.605pt x 317.185pt>
-File: ../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf Graphi
-c file (type pdf)
-<use ../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf>
-Package pdftex.def Info: ../Results/likelihood/lamperti/Log-Likelihood-eps-conv
-erted-to.pdf  used on input line 930.
-(pdftex.def)             Requested size: 213.39568pt x 157.55637pt.
-[44
-
- <../Results/likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf>]
 \tf@nav=\write6
 \openout6 = `MATLAB_readMe.nav'.
 
@@ -2365,12 +2285,11 @@ erted-to.pdf  used on input line 930.
 \tf@snm=\write8
 \openout8 = `MATLAB_readMe.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 933.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 933.
-
-(./MATLAB_readMe.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 933.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 933.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 923.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 923.
+ (./MATLAB_readMe.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 923.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 923.
 Package rerunfilecheck Info: File `MATLAB_readMe.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2379,10 +2298,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32161 strings out of 492982
- 621361 string characters out of 6134896
- 821297 words of memory out of 5000000
- 34968 multiletter control sequences out of 15000+600000
+ 32144 strings out of 492982
+ 620357 string characters out of 6134896
+ 821261 words of memory out of 5000000
+ 34956 multiletter control sequences out of 15000+600000
  675275 words of font info for 201 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,55p,10385b,2061s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2405,10 +2324,10 @@ exmf/fonts/type1/public/lm/lmsso9.pfb></usr/share/texlive/texmf-dist/fonts/type
 /public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/us
 yr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb>
-Output written on MATLAB_readMe.pdf (44 pages, 950285 bytes).
+Output written on MATLAB_readMe.pdf (43 pages, 661811 bytes).
 PDF statistics:
- 1580 PDF objects out of 1728 (max. 8388607)
- 1057 compressed objects within 11 object streams
- 99 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1554 PDF objects out of 1728 (max. 8388607)
+ 1047 compressed objects within 11 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
