@@ -226,7 +226,7 @@ Remark: {\color{red} Observe that a mean-reverting model without derivative trac
 
 \begin{figure}[h]
   %\includegraphics[width=26mm,scale=1]{}
-  \caption{Insert Figure showing the difference with and without derivative tracking}
+  \caption{Add Figure showing the difference with and without derivative tracking}
   \label{fig:derivative_tracking}
 \end{figure}
 
@@ -311,18 +311,18 @@ Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends
 %where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, 
 \begin{align}
 Z_t = h(V_t, t)  & = \frac{1}{\sqrt{2 \alpha \theta_0 }} \int \frac{1}{\sqrt{(v + p_t)(1 - v - p_t)}} \,dv \Bigg{\vert}_{v = V_t}  \nonumber \\
-& = \frac{1}{\sqrt{2 \alpha \theta_0 }} \arcsin (2(V_t + p_t) -1)
+& = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t})
 \end{align}
 that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent diffusion term
 \begin{align}
 dZ_t = \Bigg[  & \frac{\dot{p}_t}{ \sqrt{2 \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}}  \nonumber \\ 
 & + \frac{- \theta_t V_t}{ \sqrt{2  \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \alpha \theta_0} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \Bigg] \,dt + dW_t \,. \label{eq:stindepSDE}
 \end{align}
-After replacing $V_t = \frac{\sin(\sqrt{2 \alpha \theta_0} Z_t) + 1}{2} - p_t$ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
+After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \right) $ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
 \begin{align}
-dZ_t & = \Bigg[ \frac{2 \dot{p}_t}{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}} + \frac{- \theta_t (\sin(\sqrt{2 \alpha \theta_0} Z_t) + 1 - 2 p_t)}{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}} \nonumber \\
-&  + \frac{\sqrt{2 \alpha \theta_0} \sin{(\sqrt{2 \alpha \theta_0} Z_t)}}{2 \cos{(\sqrt{2 \alpha \theta_0} Z_t)}} \Bigg] \,dt + dW_t \nonumber \\
-&  = \left[  \frac{(\alpha \theta_0 - \theta_t) \sin(\sqrt{2 \alpha \theta_0 } Z_t) - \theta_t (1 - 2 p_t) + 2  \dot{p}_t }{\sqrt{2 \alpha \theta_0} \cos{(\sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,. 
+dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\sqrt{2 \alpha \theta_0} \cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)}  \nonumber \\
+&  - \frac{1}{4}  \frac{\sqrt{2 \alpha \theta_0} \left(1 - 2 \cos^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)} \Bigg] \,dt + dW_t \nonumber \\
+&  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,. 
 \end{align}
 
 {\color{red}We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
@@ -346,26 +346,27 @@ The Lamperti transformation has greatly reduced the forecast error skewness, ens
 
 \subsection{Likelihood}
 
-Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$ is sampled at $N$ equispaced discrete points with given length interval $\Delta$, and let $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$ denote this random sample. 
+Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$ is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$, and let $ V^{M,N + 1}=\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \}$ denote this random sample, with $V_{t_j^{N + 1}} = \{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \}, \, j = 1, \ldots, M$. 
 
-Let $\rho_i(v \vert v_{j, t_{i-1}} ; \bm{\theta})$ denote the conditional probability density of $V_{j, t_i}$ given $V_{j, t_{i-1}} = v_{j, t_{i-1}}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
+Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha, \epsilon)$ are the unknown model parameters.
 
 The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the data can be written as the following product of transition densities:  
 %Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
 \begin{equation}
-\mathcal{L}(\bm{\theta},\delta; V^{M,N}) = \prod\limits_{j=1}^M \prod\limits_{i=1}^N \rho ( {V_{j, t_i}| V_{j, t_{i-1}}} ; p_{[t_{i-1}, t_{i}]},  \bm{\theta} )  \, \rho_0 (V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta) \,.
+\mathcal{L}(\bm{\theta}; V^{M,N +1}) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )  \,  \right\} \,,
 \label{likelihood}
 \end{equation}
+where $t_{j ,i} \equiv  t_j + i \Delta$ for any $j = 1, \ldots, M$ and $i = 0, \ldots, N$.
 
- {\color{red} In \ref{likelihood} modify the expression for $\rho_0$ contemplating the lag, say $\delta$, between the time when the forecast is done and the first time of forecasting. $\rho_0$ can be written as a conditional density between these two times. Once $\theta_0$ and $\alpha$ have been estimated, one could estimate $\delta$.}
+ {\color{red} Remark: The statistical model (\ref{likelihood}) can be generalized incorporating the transition that occurs during the time interval, say $\delta$, between the time when the forecast is done and the first date of forecasting. In this case, the inner product in  (\ref{likelihood}) must include for any of the $M$ paths an additional factor, say $\rho_0 (V_{j, 0}|V_{j, -\delta};\bm{\theta},\delta)$, expressing the conditional density of this early transition. The parameter $\delta$ can be calibrated after the estimation of $\bm{\theta}$, suggesting an optimal time for the scheduling of the forecasts.}
 
 The exact computation of the likelihood (\ref{likelihood}) relies on the availability of a closed-form expression for the transition densities of $V$ that, on the basis of the Markovian property of $V$, are characterized, for $ t_{j, i-1} < t < t_{j,i}$,  as solutions of the Fokker-Planck-Kolmogorov equation (\cite[36]{iacus1}, \cite[61-68]{saso}):
 
 \begin{align}
-\frac{ \partial f }{\partial t } & \rho_i(v_{j,i} ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} )= - \frac{\partial}{ \partial v} (- \theta_t v \, \rho_i(v ,t_{j,i} \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ) \nonumber \\
-& + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( 2 \theta_t \alpha (v+ p_t) (1 - v- p_t) \, \rho_i(v ,t_{j,i} \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) )\,,  \label{eq:fpk}
+\frac{ \partial f }{\partial t } & \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} )= - \frac{\partial}{ \partial v} (- \theta_t v \, \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ) \nonumber \\
+& + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( 2 \theta_0 \alpha (v+ p_t) (1 - v- p_t) \, \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) )\,,  \label{eq:fpk}
 \end{align}
-subject to the initial conditions $\rho_{i-1}(v , t_{j, i-1} , \bm{\theta} ) = \delta(v - V_{j, t_{i-1}}) \,,$ where $ \delta(v - V_{j, t_{i-1}})$ is the Dirac-delta generalized function centered at $ V_{j, t_{i-1}}\,.$
+subject to the initial conditions $\rho(v , t_{j, i-1} ; \bm{\theta} ) = \delta(v - V_{j, i-1}) \,,$ where $ \delta(v - V_{j, i-1})$ is the Dirac-delta generalized function centered at $ V_{j, i-1}\,.$
 
 Closed-form solutions to initial-boundary value problem for SDEs can be obtained only in a few cases. Besides, in our case solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
 Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.
