@@ -5,24 +5,21 @@ clc;
 epsilon                = 0.018;
 Table_Testing_Complete = load_data_eps_test(epsilon);
 whatToDo               = 'Optimal'; 
+whatToDo               = 'Lamperti_Optimal'; 
 % whatToDo               = 'Initial_Guess'; 
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
 save     = 0;
-delta    = 22; % The time is delta*10 minutes.
+delta    = 21; % The time is delta*10 minutes.
 numPaths = 1;
 
-% Optimal:
-theta_0 = 3.912;
-alpha = 0.019308;
-% Initial guess:
-% theta_0 = 1.6290;
-% alpha   = 0.06;
-
 if  strcmp(whatToDo,'Optimal')
-    theta_0 = 3.912;
-    alpha   = 0.019308;
+    theta_0 = 1.180;
+    alpha   = 0.070;
+elseif  strcmp(whatToDo,'Lamperti_Optimal')
+    theta_0 = 2.200;
+    alpha   = 0.038;
 elseif  strcmp(whatToDo,'Initial_Guess')
     theta_0 = 1.6290;
     alpha   = 0.06;
@@ -67,7 +64,7 @@ for i = 1 : height(Table_Testing_Complete)
     
     for k = 1:numPaths
         for j = 1 : length(exten_t)-1
-            sim_path(k,j+1) = sde_FE(sim_path(k,j),alpha,Theta_t(j),dt,P(j),P_dot(j));
+            sim_path(k,j+1) = sde_FE(sim_path(k,j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j));
             if sim_path(k,j+1) > 1
                 sim_path(k,j+1) = 1;
             elseif sim_path(k,j+1) < 0
@@ -87,8 +84,14 @@ hold on; grid minor; title('Error (Data and Simulated) Transitions');
 h2 = histogram(s_trans);
 h1.Normalization = 'pdf';
 h2.Normalization = 'pdf';
+% h1.FaceAlpha = 1;
+h2.FaceAlpha = 0;
+h2.FaceColor = [0 0 0];
+h2.LineWidth = 2;
+h2.EdgeColor = 'r';
 xlabel('Value of Transition');
 ylabel('Probability');
 xlim([-0.1 0.1]);
 legend('Error Transitions Histogram','Simulated Error Transitions Histogram');
+set(gca,'FontSize',18);
 saveas(gcf,[pwd '/Results/histograms/classic/',whatToDo],'epsc');

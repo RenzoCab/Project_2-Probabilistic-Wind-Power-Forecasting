@@ -23,8 +23,8 @@ elseif we_remove_bad_samples == 1
     [~, batch] = new_batch_fixed_removed_samples(Ta_Tra_Comp,eta,num_days,N);
 end
 
-theta_0 = 1.6290;
-alpha   = 0.06;
+theta_0 = 1.180;
+alpha   = 0.070;
 
 batch_complete = batch_with_theta(batch, alpha, theta_0);
 
@@ -105,8 +105,8 @@ if initial == 1
     theta_0     = 1.6290;
     alpha       = 0.06;
 else
-    theta_0     = 3.912;
-    alpha       = 0.019308;
+    theta_0 = 1.180;
+    alpha   = 0.070;
 end
 
 epsilon     = 0.018;

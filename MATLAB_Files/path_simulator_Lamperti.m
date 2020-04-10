@@ -11,8 +11,8 @@ whatToDo               = 'lamperti_clasic_optimal';
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
 quantil  = 1;
-save     = 0;
-delta    = 22; % The time is delta*10 minutes.
+save     = 1;
+delta    = 21; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
 if quantil
@@ -22,20 +22,20 @@ else
 end
 
 if  strcmp(whatToDo,'lamperti_clasic_optimal')
-    theta_0 = 3.912;
-    alpha   = 0.019308;
+    theta_0 = 1.180;
+    alpha   = 0.070;
 elseif  strcmp(whatToDo,'lamperti_clasic_IG')
     theta_0 = 1.6290;
     alpha   = 0.06;
 elseif  strcmp(whatToDo,'lamperti_optimal')
-    theta_0 = 7.5;
-    alpha   = 0.9;
+    theta_0 = 2.200;
+    alpha   = 0.038;
 else
     error('Wrong whatToDo script!');
 end
 
-Z_inf = lamperti_transform(theta_0,alpha,0,0);
-Z_sup = lamperti_transform(theta_0,alpha,1,0);
+Z_inf = lamperti_transform(theta_0,alpha,0,0,2);
+Z_sup = lamperti_transform(theta_0,alpha,1,0,2);
 Z_100 = (Z_sup-Z_inf)/100;
 
 d  = Table_Testing_Complete.Date;
@@ -56,7 +56,7 @@ for i = 1 : height(Table_Testing_Complete)
 
     X   = x(i,:);
     P   = p(i,:);
-    Z   = lamperti_transform(theta_0,alpha,X-P,P);
+    Z   = lamperti_transform(theta_0,alpha,X-P,P,2);
     
     P_exten_linear = interp1([0 6*dt],[P(1) P(6)],minus_t,'linear','extrap');
     P              = [P_exten_linear,P]; % We extend the forecast.
@@ -69,7 +69,7 @@ for i = 1 : height(Table_Testing_Complete)
     for j = 1:length(P)-1
         Theta_t(j) = theta_t(theta_0, alpha, P(j), P_dot(j));
     end
-    Z_P = lamperti_transform(theta_0,alpha,P,0);
+    Z_P = lamperti_transform(theta_0,alpha,P,0,2);
     % Z_P is the Lamperti transform of the forecast.
     
     % We assume that the forecast is perfect one hour before it starts.
@@ -87,14 +87,13 @@ for i = 1 : height(Table_Testing_Complete)
     for k = 1:numPaths
         for j = 1 : length(exten_t)-1
             
-            sim_path(k,j+1) = sde_Lamperti_FE(sim_path(k,j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j));
-            drift(k,j+1)    = sde_Lamperti_drift(sim_path(k,j),alpha,theta_0,Theta_t(j),P(j),P_dot(j));
+            sim_path(k,j+1) = sde_Lamperti_FE(sim_path(k,j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j),2);
             
-            if sim_path(k,j+1) >= Z_sup - Z_100 * 5
-                sim_path(k,j+1) = sim_path(k,j);
-            elseif sim_path(k,j+1) <= Z_inf + Z_100 * 5
-                sim_path(k,j+1) = sim_path(k,j);
-            end
+%             if sim_path(k,j+1) >= Z_sup - Z_100 * 5
+%                 sim_path(k,j+1) = sim_path(k,j);
+%             elseif sim_path(k,j+1) <= Z_inf + Z_100 * 5
+%                 sim_path(k,j+1) = sim_path(k,j);
+%             end
         end
         
     end

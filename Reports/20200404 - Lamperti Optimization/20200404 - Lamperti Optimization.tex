@@ -48,8 +48,8 @@
 \begin{frame}\frametitle{Description:}
 
 Let $\{\Delta V_i\}_{i=1}^n$ be the set of all error transitions, and $\psi(\theta_0,\alpha,\Delta V)$ the Lamperti transform. Notice that the Lamperti transitions $\{\Delta Z_i\}_{i=1}^n$ depend on $(\theta_0,\alpha)$ because $$\{\Delta Z_i\}_{i=1}^n=\psi(\theta_0,\alpha,\{\Delta V_i\}_{i=1}^n).$$
-Then, if we compute $$\min_{(\theta_0,\alpha)}\mathbf{L}(\theta_0,\alpha,\{\Delta Z_i\}_{i=1}^n),$$
-we are \alert{NOT} computing a MLE in the classical sense. However, we can try to find ${\color{blue}(\theta_0^*,\alpha^*)}$ such that $${\color{blue}(\theta_0^*,\alpha^*)}=\arg\min_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{blue}\theta_0^*},{\color{blue}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).$$
+Then, if we compute $$\max_{(\theta_0,\alpha)}\mathbf{L}(\theta_0,\alpha,\{\Delta Z_i\}_{i=1}^n),$$
+we are \alert{NOT} computing a MLE in the classical sense. However, we can try to find a fixed point ${\color{blue}(\theta_0^*,\alpha^*)}$ such that $${\color{blue}(\theta_0^*,\alpha^*)}=\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{blue}\theta_0^*},{\color{blue}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).$$
 In this point, the likelihood has a maximum for the data set corresponding to that point.
 
 \end{frame}

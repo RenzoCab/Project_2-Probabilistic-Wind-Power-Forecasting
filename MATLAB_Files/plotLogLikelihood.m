@@ -43,12 +43,8 @@ alpha_ini     = est/theta_ini;
 val = [];
 
 if strcmp(likelihood,'normal')
-    ini_theta = 10;
-    ini_alpha = 10;
-    len_theta = 200;
-    len_alpha = 150;
-    div_theta = 100; 
-    div_alpha = 300;
+    vec_theta = 0.1:0.01:2;
+    vec_alpha = 0.01:0.001:0.5;
     num_divs  = 10000;
 elseif strcmp(likelihood,'lamperti')
     ini_theta = 10;
@@ -60,13 +56,14 @@ elseif strcmp(likelihood,'lamperti')
     num_divs  = 100;
 end
 
-for i = ini_theta:1:len_theta
+for i = 1:length(vec_theta)
 
-    vec = ones(1,len_alpha);
+    vec = ones(1,length(vec_alpha));
 
-    parfor j = ini_alpha:len_alpha
-        theta_0 = (i-1+ini_theta)/div_theta;
-        alpha   = (j-1+ini_alpha)/div_alpha;
+    parfor j = 1:length(vec_alpha)
+        
+        theta_0 = vec_theta(i);
+        alpha   = vec_alpha(j);
         
         if strcmp(likelihood,'normal')
             
@@ -82,109 +79,117 @@ for i = ini_theta:1:len_theta
         
     end
 
-    val(i+1-ini_theta,:) = vec(ini_alpha:len_alpha);
+    val(i,:) = vec(:);
 
-    disp(num2str(i/len_theta*100));
+    disp(num2str(i/length(vec_theta)*100));
 
 end
 
-figure;
+theta_0_opt_1 = 1.135;
+alpha_opt_1   = 0.073;
+theta_0_opt_2 = 1.366;
+alpha_opt_2   = 0.061;
+theta_0_opt_3 = 1.628;
+alpha_opt_3   = 0.051;
+
+% To save the matrix with the evaluations, we use:
+% save([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
+% To load the matrix with the evaluations, we use:
+% load([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
+
+minMatrix = min(val(:));
+[row,col] = find(val==minMatrix);
+theta_0_opt_4 = vec_theta(row);
+alpha_opt_4   = vec_alpha(col);
+
+% initial     -> Theta_0 = 1.629, Alpha = 0.060 (05/04/2020).
+% fminsearch  -> Theta_0 = 1.135, Alpha = 0.073 (05/04/2020).
+% fmincon     -> Theta_0 = 1.366, Alpha = 0.061 (05/04/2020).
+% fminunc     -> Theta_0 = 1.628, Alpha = 0.051 (05/04/2020).
+% evaluations -> Theta_0 = 1.180, Alpha = 0.070 (05/04/2020).
+
+figure('Renderer', 'painters', 'Position', [10 10 900 600])
 hold on;
-vec_theta = [ini_theta:len_theta] / div_theta;
-vec_alpha = [ini_alpha:len_alpha] / div_alpha;
 [X,Y] = meshgrid(vec_theta,vec_alpha);
 contourf(X,Y,val',num_divs); colorbar;
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
 title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
 if strcmp(likelihood,'normal')
-    plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',15);
-    legend('Level sets','Initial guess');
+    plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',12);
+    plot(theta_0_opt_1,alpha_opt_1,'-p','MarkerFaceColor','blue','MarkerSize',12);
+    plot(theta_0_opt_2,alpha_opt_2,'-p','MarkerFaceColor','green','MarkerSize',12);
+    plot(theta_0_opt_3,alpha_opt_3,'-p','MarkerFaceColor','yellow','MarkerSize',12);
+    plot(theta_0_opt_4,alpha_opt_4,'-p','MarkerFaceColor','white','MarkerSize',12);
+    legend('Level sets','Initial guess','Optimal value (fminsearch)',...
+        'Optimal value (fmincon)','Optimal value (fminunc)','Optimal value (evaluations)');
 elseif strcmp(likelihood,'lamperti')
     legend('Level sets');
 end
 pause(0.1);
-saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
-save([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
+% To save the plot and change the fonts size, we use:
+% set(gca,'FontSize',16);
+% saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
 
-% %% Log-Likelihood plot (more refined):
-% 
-% val = [];
-% ini_theta = 10;
-% ini_alpha = 10;
-% len_theta = 300;
-% len_alpha = 200;
-% div_theta = 100; 
-% div_alpha = 1000;
-% 
-% for i = ini_theta:1:len_theta
-% 
-%     vec = ones(1,len_alpha);
-% 
-%     parfor j = ini_alpha:len_alpha
-%         theta          = i/div_theta;
-%         alpha          = (j-1+ini_alpha)/div_alpha;
-%         batch_complete = batch_with_theta(batch, alpha, theta);
-%         vec(j)         = -log_LH_evaluation(batch_complete, alpha, dt);
-%     end
-% 
-%     val(i+1-ini_theta,:) = vec(ini_alpha:len_alpha);
-% 
-%     disp(num2str(i/len_theta*100));
-% 
-% end
-% 
-% figure;
-% hold on;
-% vec_theta = [ini_theta:len_theta] / div_theta;
-% vec_alpha = [ini_alpha:len_alpha] / div_alpha;
-% [X,Y] = meshgrid(vec_theta,vec_alpha);
-% contourf(X,Y,val',30); colorbar;
-% xlabel('$\theta_0$','interpreter','latex');
-% ylabel('$\alpha$','interpreter','latex');
-% title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
-% plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',25);
-% legend('Level sets','Initial guess');
-% pause(0.1);
-% saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_refined'],'epsc');
-% 
-% %% Log-Likelihood plot (more more refined):
-% 
-% val = [];
-% ini_theta = 150;
-% ini_alpha = 10;
-% len_theta = 450;
-% len_alpha = 200;
-% div_theta = 100; 
-% div_alpha = 1000;
-% 
-% for i = ini_theta:1:len_theta
-% 
-%     vec = ones(1,len_alpha);
-% 
-%     parfor j = ini_alpha:len_alpha
-%         theta          = i/div_theta;
-%         alpha          = (j-1+ini_alpha)/div_alpha;
-%         batch_complete = batch_with_theta(batch, alpha, theta);
-%         vec(j)         = -log_LH_evaluation(batch_complete, alpha, dt);
-%     end
-% 
-%     val(i+1-ini_theta,:) = vec(ini_alpha:len_alpha);
-% 
-%     disp(num2str(i/len_theta*100));
-% 
-% end
-% 
-% figure;
-% hold on;
-% vec_theta = [ini_theta:len_theta] / div_theta;
-% vec_alpha = [ini_alpha:len_alpha] / div_alpha;
-% [X,Y] = meshgrid(vec_theta,vec_alpha);
-% contourf(X,Y,val',30); colorbar;
-% xlabel('$\theta_0$','interpreter','latex');
-% ylabel('$\alpha$','interpreter','latex');
-% title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
-% plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',25);
-% legend('Level sets','Initial guess');
-% pause(0.1);
-% saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_more_refined'],'epsc');
+%% Plot with zoom:
+
+figure;
+hold on;
+[X,Y] = meshgrid(vec_theta(41:end),vec_alpha(1:91));
+contourf(X,Y,val((41:end),1:91)',num_divs); colorbar;
+xlabel('$\theta_0$','interpreter','latex');
+ylabel('$\alpha$','interpreter','latex');
+title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
+legend('Level sets');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_Zoom'],'epsc');
+
+%% Plot with the important line:
+
+alpha_1 = 0.081./vec_theta;
+alpha_2 = 0.083./vec_theta;
+alpha_3 = 0.085./vec_theta;
+
+figure;
+hold on;
+contourf(X,Y,val',num_divs);
+plot(vec_theta,alpha_1,'g','LineWidth',1)
+plot(vec_theta,alpha_2,'r','LineWidth',1);
+plot(vec_theta,alpha_3,'Color',[0.8500 0.3250 0.0980],'LineWidth',1);
+ylim([min(vec_alpha) max(vec_alpha)]);
+xlabel('$\theta_0$','interpreter','latex');
+ylabel('$\alpha$','interpreter','latex');
+title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
+legend('Level sets','Curve $\theta_0\alpha=0.081$',...
+    'Curve $\theta_0\alpha=0.083$','Curve $\theta_0\alpha=0.085$','Interpreter','Latex');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_Line'],'epsc');
+
+pause(0.1);
+
+parfor i = 1:length(alpha_1)
+    
+    disp(num2str(i/length(alpha_1)*100));
+    
+    batch_complete = batch_with_theta(batch, alpha_1(i), vec_theta(i));
+    vec_1(i) = -log_LH_evaluation(batch_complete, alpha_1(i), vec_theta(i), dt);
+    
+    batch_complete = batch_with_theta(batch, alpha_2(i), vec_theta(i));
+    vec_2(i) = -log_LH_evaluation(batch_complete, alpha_2(i), vec_theta(i), dt);
+    
+    batch_complete = batch_with_theta(batch, alpha_3(i), vec_theta(i));
+    vec_3(i) = -log_LH_evaluation(batch_complete, alpha_3(i), vec_theta(i), dt);
+    
+end
+
+figure;
+plot(vec_theta,vec_1,'g','LineWidth',2);
+hold on;
+plot(vec_theta,vec_2,'r','LineWidth',2);
+plot(vec_theta,vec_3,'Color',[0.8500 0.3250 0.0980],'LineWidth',2);
+title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
+grid minor;
+xlabel('$\theta_0$','interpreter','latex');
+ylabel('Negative Log-Likelihoog evaluation');
+legend('Curve $\theta_0\alpha=0.081$','Curve $\theta_0\alpha=0.083$',...
+    'Curve $\theta_0\alpha=0.085$','Interpreter','Latex');
+xlim([min(vec_theta) max(vec_theta)]);
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_Evaluations'],'epsc');
