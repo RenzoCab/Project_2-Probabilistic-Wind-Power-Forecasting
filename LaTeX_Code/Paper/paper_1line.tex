@@ -213,7 +213,7 @@ Taking expectation on (\ref{eq:tomeanX}) we obtain
 \begin{align}
 \mathbb{E} X_t & = e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 +   \int_{0}^{t}  (\dot{p}_s + \theta_s p_s ) e^{\int_{0}^{s} \theta_u du} ds   \right) \nonumber \\ 
 & =  e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 +   \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u du} ds +  \big[ p_s \, e^{\int_{0}^{s} \theta_u du} \big]^{t}_0  - \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u du} ds  \right) \nonumber \\
-& =  e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 + p_t \, e^{ \int_{0}^{t} \theta_s ds} - p_0 \right) = p_t \,.
+& =  e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 + p_t \, e^{ \int_{0}^{t} \theta_s ds} - p_0 \right) = p_t \,. \label{eq:meanX}
 \end{align}
 
  At this stage, the process defined by (\ref{eq:main}) with drift (\ref{drift:meanrev-derivtrack}) satisfies the two following properties: 
@@ -369,7 +369,8 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 subject to the initial conditions $\rho(v , t_{j, i-1} ; \bm{\theta} ) = \delta(v - V_{j, i-1}) \,,$ where $ \delta(v - V_{j, i-1})$ is the Dirac-delta generalized function centered at $ V_{j, i-1}\,.$
 
 Closed-form solutions to initial-boundary value problem for time-in\-ho\-mo\-geneous diffusions can be obtained only in a few cases. Besides, in our case solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
-Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.
+Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. 
+ {\color{red} Rewrite: Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.}
 
 \subsection{Approximate Likelihood}
 
@@ -377,18 +378,41 @@ Gaussian approximations to the transition densities of nonlinear time-in\-ho\-mo
 
 Therefore, we propose to use a surrogate transition density for $V$ other than Gaussian. The moments of the SDE model (\ref{VtSDE}) are then matched to the moments of the surrogate density. 
 
-Using It\^o's lemma on , we arrive at the following iterative ODEs for the state dependent diffusion formulation (\ref{VtSDE})
+From (\ref{eq:meanX}), we have $m_1(t) \equiv \mathbb{E} V_t = e^{- \int_{t_{j,i-1}}^t \theta_s ds} \,\mathbb{E} V_{t_{j,i-1}}$, for any $t\in [t_{j,i-1}, t_{j, i})$, $j = 1, \ldots, M$ and $i = 1, \ldots, N$ .
+
+For $m \geq 2$, using It\^o's lemma on $g(V_t) = V_t^m$, we obtain
+% arrive at the following iterative ODEs for the state dependent diffusion formulation (\ref{VtSDE})
+\begin{align}
+d(V_t^m) & = \left( - m \theta_t V_t^m + \frac{1}{2} m (m -1) V_t^{m -2} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) \right) dt  \nonumber \\
+& + m V_t^{m-1} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) dW_t \,, \nonumber
+\end{align}
+from which we derive
 \begin{equation}
-\frac{d \mathbb{E}[ V^k_t]}{dt} = - k \theta_t \mathbb{E}[ V^k_t] + \frac{k(k-1)}{2} \mathbb{E}[ V^{k-2}_t  b(V^k_t;\theta_t, \alpha)]
+\frac{d \mathbb{E}[ V^m_t]}{dt} = - m \theta_t \mathbb{E}[ V^m_t] + m (m-1) \alpha \theta_0  \mathbb{E}[ - V_t^m + (1 - 2 p_t) V_t^{m-1} + p_t (1 -p_t) V_t^{m-2} ] \,.
 \end{equation}
 
-For $t\in [t_{n-1}, t]$, the first two moments are given by
-\begin{align}
-\frac{d m_1 (t)}{dt} &= - m_1(t)\theta_t   \nonumber \\
-\frac{d m_2 (t)}{dt} &=  -2 m_2(t)\theta_t(1+\alpha) + 2\alpha\theta_t m_1(t)(1-2p_t)  \nonumber \\
-&\quad + 2 \alpha\theta_t p_t (1-p_t) \,,
-\end{align}
-with initial conditions $m_1(t_{n-1})= v_{n-1}$ and $m_2(t_{n-1})= v_{n-1}^2 \,.$
+For any $t\in [t_{j,i-1}, t_{j, i})$, the first two moments of $V$, $m_1(t)$ and $m_2(t) \equiv \mathbb{E}[V_t^2]$, can be computed by solving the following system
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    \frac{d m_1 (t)}{dt} \!\!\!&=  - m_1(t)\theta_t   \\
+   \frac{d m_2 (t)}{dt}  \!\!\!&=  -2 (\theta_t +\alpha \theta_0) m_2(t) + 2 \alpha\theta_0 (1-2p_t)  m_1(t) + 2 \alpha\theta_0 p_t (1-p_t) 
+ \end{array}\right.  \label{Vtmom}
+\end{equation}
+with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, i-1}^2 \,.$
+
+
+\subsubsection*{ Moment Matching}
+A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. 
+
+To approximate the transition densities of  the process $V$ using a Beta distribution, we equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$ . 
+
+The shape parameters are given by
+\begin{equation}
+\xi_1 = - \frac{(\mu_t + 1 - \epsilon)(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2}\,, \quad \xi_2=  \frac{(\mu_t-1 + \epsilon )(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2} \,, \label{param_transformed_beta}
+\end{equation}
+where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$ \\
+
 
 And for the state independent diffusion formulation, similarly, we  obtain a system of ODEs to determine the centered moments of the Lamperti transformed process $V_t$. Due to the non-linearity in the drift, we can only approximate the centered moments by the following ODEs,
 \begin{align}
@@ -397,16 +421,6 @@ And for the state independent diffusion formulation, similarly, we  obtain a sys
 & \quad + \theta_t (\alpha - 1) \sec^2(m_1 (t))  + 2 \theta_t \alpha \,.
 \end{align}
 
-A suitable candidate for a proxy transition density is a Beta probability distribution as it is compactly supported and can morph into symmetric and asymmetric shapes. {\color{red} Move this sentence to next section.}
-
-\subsubsection*{ Moment Matching}
-To approximate the transition densities of  the process $V_t$ by a Beta distribution, we match its moments with the shape parameters $\xi_1, \xi_2$ of a Beta proxy density on $[-1,1]$. The any moment of the process $V_t$ is  given by solving the corresponding ODE system  for the $k^{th}$  moment,
-
-The shape parameters are given by
-\begin{equation}
-\xi_1 = - \frac{(1+\mu_t )(\mu_t^2 + \sigma_t^2 -1)}{2 \sigma_t^2}\,, \quad \xi_2=  \frac{(\mu_t-1 )(\mu_t^2 + \sigma_t^2 -1)}{2 \sigma_t^2} \,, \label{param_transformed_beta}
-\end{equation}
-where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$
 
 \subsection{Optimization} \label{opt_sec}
 {\color{red} Rewrite the discussion to obtain fast initial estimate for the two unknow parameters.}
