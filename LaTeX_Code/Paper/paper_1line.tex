@@ -201,7 +201,7 @@ a(X_t; p_t, \dot{p}_t, \bm{\theta}) = \dot{p}_t  - \theta_t (X_t - p_t)\,,  \lab
 \end{equation} 
 where $ (\theta_t)_{t \in [0,T]} $ is a positive deterministic function, whose range depends on $\bm{\theta}$, as will be explained shortly.
 
-Now, looking at the normalized wind power generation forecast process $X$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$, given $  \mathbb{E} X_0 = p_0$. The application of  It\^{o}'s lemma on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s ds}$, leads to 
+Now, looking at the normalized wind power generation forecast process $X$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} X_t = p_t$, given $  \mathbb{E} X_0 = p_0$. The application of  It\^{o}'s lemma on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s ds}$, leads to 
 \begin{equation*}
 d \left( X_t e^{\int_{0}^{t} \theta_s ds} \right) = e^{\int_{0}^{t} \theta_s ds} (\dot{p}_t + \theta_t p_t ) dt  + e^{\int_{0}^{t} \theta_s ds}\, b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \,dW_t\,,
 \end{equation*}
@@ -311,9 +311,9 @@ Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends
 %where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, 
 \begin{align}
 Z_t = h(V_t, t)  & = \frac{1}{\sqrt{2 \alpha \theta_0 }} \int \frac{1}{\sqrt{(v + p_t)(1 - v - p_t)}} \,dv \Bigg{\vert}_{v = V_t}  \nonumber \\
-& = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t})
+& = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t}) \label{eq:LampZ}
 \end{align}
-that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent diffusion term
+that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent unit diffusion term
 \begin{align}
 dZ_t = \Bigg[  & \frac{\dot{p}_t}{ \sqrt{2 \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}}  \nonumber \\ 
 & + \frac{- \theta_t V_t}{ \sqrt{2  \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \alpha \theta_0} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \Bigg] \,dt + dW_t \,. \label{eq:stindepSDE}
@@ -322,7 +322,7 @@ After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2
 \begin{align}
 dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\sqrt{2 \alpha \theta_0} \cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)}  \nonumber \\
 &  - \frac{1}{4}  \frac{\sqrt{2 \alpha \theta_0} \left(1 - 2 \cos^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)} \Bigg] \,dt + dW_t \nonumber \\
-&  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,. 
+&  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,.  \label{eq:stindepSDE2}
 \end{align}
 
 {\color{red}We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
@@ -350,8 +350,8 @@ Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} pro
 
 Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha, \epsilon)$ are the unknown model parameters.
 
-The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the data can be written as the following product of transition densities:  
-%Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
+The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the sample $ V^{M,N + 1}$ can be written as the following product of transition densities:  
+
 \begin{equation}
 \mathcal{L}(\bm{\theta}; V^{M,N +1}) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )  \,  \right\} \,,
 \label{likelihood}
@@ -413,14 +413,20 @@ The shape parameters are given by
 \end{equation}
 where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$ \\
 
+The transition density of the process $Z$, which has been defined through the Lamperti transformation (\ref{eq:LampZ}) of $V$, can be conveniently approximated by a Gaussian surrogate density. 
 
-And for the state independent diffusion formulation, similarly, we  obtain a system of ODEs to determine the centered moments of the Lamperti transformed process $V_t$. Due to the non-linearity in the drift, we can only approximate the centered moments by the following ODEs,
-\begin{align}
-\frac{d m_1 (t)}{dt} &= - m_1(t)\theta_t (1-\alpha) - \theta (1-2 p_t) \nonumber \\
-\frac{d var(t)}{dt} &=  2 var(t) \theta_t (2p_t - 1 ) \tan(m_1 (t)) \sec(m_1 (t))   \nonumber \\
-& \quad + \theta_t (\alpha - 1) \sec^2(m_1 (t))  + 2 \theta_t \alpha \,.
-\end{align}
-
+The drift coefficient $a(Z_t; p_t, \dot{p}_t, \bm{\theta}) $ of the process $Z$ that satisfies (\ref{eq:stindepSDE2}) is nonlinear. After linearizing the drift around the mean of $Z$, $\mu_Z(t) \equiv \mathbb{E}Z_t$,  we obtain the following system of ODEs to compute, for any $t\in [t_{j,i-1}, t_{j, i})$, the approximations of the first two central moments of $Z$, say  $\tilde{\mu}_Z(t) \approx \mathbb{E}Z_t$ and $\tilde{v}_Z(t) \approx \text{Var} Z_t$ :\\
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    \frac{d \tilde{\mu}_Z (t)}{dt} \!\!\!&=  a\big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big)   \\
+    \frac{d \tilde{v}_Z (t)}{dt}  \!\!\!&= 2  a^{\prime} \big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big) \tilde{v}_Z (t) + 1
+ \end{array}\right.  \label{Ztmom}
+\end{equation}
+with initial conditions $\tilde{\mu}_Z(t_{j,i-1})= z_{j, i-1}$ and $\tilde{v}_Z(t_{j,i-1})= 0 \,,$ and where 
+\begin{equation*}
+a^{\prime} \big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big) =    \frac{  (\alpha \theta_0 - \theta_t)  - \cos(\sqrt{2 \alpha \theta_0 } Z_t) [ \theta_t (1 - 2 p_t) - 2  \dot{p}_t ] }{\sin^2{(\sqrt{2 \alpha \theta_0} Z_t)}} \,.
+\end{equation*}
 
 \subsection{Optimization} \label{opt_sec}
 {\color{red} Rewrite the discussion to obtain fast initial estimate for the two unknow parameters.}
