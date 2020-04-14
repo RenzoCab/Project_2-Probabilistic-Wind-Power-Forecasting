@@ -222,11 +222,11 @@ Taking expectation on (\ref{eq:tomeanX}) we obtain
 \item it tracks the time derivative $\dot{p}_t$.  
 \end{itemize} 
 
-Remark: {\color{red} Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates paths of two diffusions with and without derivative tracking. }
+Remark: Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates paths of two diffusions with and without derivative tracking. 
 
 \begin{figure}[h]
   %\includegraphics[width=26mm,scale=1]{}
-  \caption{Add Figure showing the difference with and without derivative tracking}
+  \caption{{\color{red} Add Figure showing the difference with and without derivative tracking}}
   \label{fig:derivative_tracking}
 \end{figure}
 
@@ -325,7 +325,7 @@ dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqr
 &  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,.  \label{eq:stindepSDE2}
 \end{align}
 
-{\color{red}We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
+{\color{red} We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
 
 \begin{figure}[H]
 \centering
@@ -413,6 +413,13 @@ The shape parameters are given by
 \end{equation}
 where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$ \\
 
+The approximate log-likelihood $\tilde{\ell}(\cdot ; v^{V, N+1})$ of the observed sample $v^{V, N+1}$ can be expressed as 
+\begin{equation}
+ \tilde{\ell} (\bm{\theta}; v^{M,N +1}) = \sum_{j=1}^M \sum_{i=1}^N \log  \left\{ \frac{1}{2(1 - \epsilon)} \frac{1}{B(\xi_1, \xi_2)} \Big( \frac{z_{j,i} + 1 - \epsilon}{2(1 - \epsilon)} \Big)^{\xi_1 -1}  \Big( \frac{1 - \epsilon - z_{j,i}}{2(1 - \epsilon)} \Big)^{\xi_2 -1} \right\} \,,
+\label{loglikelihoodV}
+\end{equation}
+where the shape parameters $\xi_1$ and $\xi_2$, according to (\ref{param_transformed_beta}), depend on the quantities $\mu(t_{j,i};\bm{\theta} )$ and $\sigma^2(t_{j,i};\bm{\theta} )$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). \\
+
 The transition density of the process $Z$, which has been defined through the Lamperti transformation (\ref{eq:LampZ}) of $V$, can be conveniently approximated by a Gaussian surrogate density. 
 
 The drift coefficient $a(Z_t; p_t, \dot{p}_t, \bm{\theta}) $ of the process $Z$ that satisfies (\ref{eq:stindepSDE2}) is nonlinear. After linearizing the drift around the mean of $Z$, $\mu_Z(t) \equiv \mathbb{E}Z_t$,  we obtain the following system of ODEs to compute, for any $t\in [t_{j,i-1}, t_{j, i})$, the approximations of the first two central moments of $Z$, say  $\tilde{\mu}_Z(t) \approx \mathbb{E}Z_t$ and $\tilde{v}_Z(t) \approx \text{Var} Z_t$ :\\
@@ -427,6 +434,12 @@ with initial conditions $\tilde{\mu}_Z(t_{j,i-1})= z_{j, i-1}$ and $\tilde{v}_Z(
 \begin{equation*}
 a^{\prime} \big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big) =    \frac{  (\alpha \theta_0 - \theta_t)  - \cos(\sqrt{2 \alpha \theta_0 } Z_t) [ \theta_t (1 - 2 p_t) - 2  \dot{p}_t ] }{\sin^2{(\sqrt{2 \alpha \theta_0} Z_t)}} \,.
 \end{equation*}
+
+The approximate log-likelihood $\tilde{\ell}(\cdot ; z^{V, N+1})$ of the observed sample $z^{V, N+1}$ is given by
+\begin{equation}
+\tilde{\ell} (\bm{\theta}; z^{M,N +1}) = \sum_{j=1}^M \sum_{i=1}^N \log \left\{ \frac{1}{\sqrt{2 \pi \tilde{v}_Z(t_{j,i}; \bm{\theta})}} \exp \Bigg( -\frac{(z_{j,i} - \tilde{\mu}_Z(t_{j,i};\bm{\theta} ))^2}{2 \tilde{v}_Z(t_{j,i}; \bm{\theta})} \Bigg) \right\}   \,,   \label{loglikelihoodZ}
+\end{equation}
+where $\tilde{\mu}_Z(t_{j,i};\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i};\bm{\theta} )$ are computed solving numerically the initial-value problem (\ref{Ztmom}). 
 
 \subsection{Optimization} \label{opt_sec}
 {\color{red} Rewrite the discussion to obtain fast initial estimate for the two unknow parameters.}
