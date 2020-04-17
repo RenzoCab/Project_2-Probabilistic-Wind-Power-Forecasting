@@ -46,13 +46,15 @@ for i = 1:len
     
 end
 
-bar(mean_error); grid minor;
+bar([0.05:0.1:0.95],mean_error); grid minor;
 title('Mean Error');
+xlabel('Forecast value');
 saveas(gcf,'../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error','epsc');
 
 figure;
-bar(mean_abs_error); grid minor;
+bar([0.05:0.1:0.95],mean_abs_error); grid minor;
 title('Absolute Mean Error');
+xlabel('Forecast value');
 saveas(gcf,'../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error','epsc');
 
 figure('Renderer', 'painters', 'Position', [10 10 1200 600]);

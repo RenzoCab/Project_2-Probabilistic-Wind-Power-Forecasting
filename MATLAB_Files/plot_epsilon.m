@@ -125,9 +125,9 @@ plot(epsilon, min_value_fun_hard);
 legend('Using fixed k', 'Using analytic minimum', 'Using samples minimum', 'interpreter', 'latex');
 grid minor;
 xlim([min(epsilon) max(epsilon)]);
-title('QMM over $\epsilon$','interpreter','latex');
+title('LSM over $\epsilon$','interpreter','latex');
 xlabel('$\epsilon$','interpreter','latex');
-saveas(gcf,[pwd '/Results/epsilon/QMM'],'epsc');
+saveas(gcf,[pwd '/Results/epsilon/LSM'],'epsc');
 
 figure;
 plot(epsilon, theta_t); grid minor;

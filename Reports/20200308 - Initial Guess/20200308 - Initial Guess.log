@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  28 MAR 2020 18:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  17 APR 2020 20:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1860,11 +1860,11 @@ Package pdftex.def Info: 1.jpg  used on input line 150.
 ]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/theta_0
 .eps>
-(epstopdf)                    date: 2020-03-20 17:59:50
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 51632 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/theta_0
 -eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:29
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 18725 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/theta_0-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/theta_0
@@ -1886,11 +1886,11 @@ ed-to.pdf  used on input line 252.
 (pdftex.def)             Requested size: 170.71393pt x 145.56874pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps_t0.eps>
-(epstopdf)                    date: 2020-03-20 17:59:52
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 54092 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps_t0-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:29
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 19274 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/num_over_eps_t0-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon
@@ -1983,11 +1983,11 @@ Overfull \hbox (19.20665pt too wide) in paragraph at lines 310--310
  <../../MATLAB_Files/Results/epsilon/theta_t-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/QMM.eps
 >
-(epstopdf)                    date: 2020-03-20 17:59:42
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 289605 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/QMM-eps
 -converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:30
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 98176 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/QMM-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/QMM.eps>
@@ -2011,11 +2011,11 @@ o.pdf  used on input line 333.
  <../../MATLAB_Files/Results/epsilon/QMM-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/theta_o
 ver_eps.eps>
-(epstopdf)                    date: 2020-03-20 17:59:44
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 101089 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/theta_o
 ver_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:30
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 31461 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/theta_over_eps-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/
@@ -2040,11 +2040,11 @@ converted-to.pdf  used on input line 348.
  <../../MATLAB_Files/Results/epsilon/theta_over_eps-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps.eps>
-(epstopdf)                    date: 2020-03-20 17:59:46
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 114019 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:30
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 31410 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/num_over_eps-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/nu
@@ -2069,12 +2069,12 @@ nverted-to.pdf  used on input line 364.
  <../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/mean_error.eps>
-(epstopdf)                    date: 2020-03-20 18:00:46
-(epstopdf)                    size: 27150 bytes
+(epstopdf)                    date: 2020-04-13 12:54:43
+(epstopdf)                    size: 22878 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/mean_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:30
-(epstopdf)                    size: 7399 bytes
+(epstopdf)                    date: 2020-04-13 12:54:53
+(epstopdf)                    size: 8021 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/final/mean_error-eps-converted-to.pdf ../../../Pytho
 n/Represas_Data_2/Wind_Data/someResults/final/mean_error.eps>
@@ -2086,22 +2086,22 @@ pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
 sults/final/mean_error-eps-converted-to.pdf): PDF inclusion: found PDF version 
 <1.7>, but at most version <1.5> allowed
 <../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-eps-con
-verted-to.pdf, id=184, 364.36125pt x 287.0725pt>
+verted-to.pdf, id=184, 369.38pt x 306.14375pt>
 File: ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-ep
 s-converted-to.pdf Graphic file (type pdf)
 <use ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-eps
 -converted-to.pdf>
 Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
 final/mean_error-eps-converted-to.pdf  used on input line 377.
-(pdftex.def)             Requested size: 170.71393pt x 134.49919pt.
+(pdftex.def)             Requested size: 170.71393pt x 141.48648pt.
 Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/mean_abs_error.eps>
-(epstopdf)                    date: 2020-03-20 18:00:48
-(epstopdf)                    size: 26057 bytes
+(epstopdf)                    date: 2020-04-13 12:54:44
+(epstopdf)                    size: 21359 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/mean_abs_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:30
-(epstopdf)                    size: 7781 bytes
+(epstopdf)                    date: 2020-04-13 12:54:53
+(epstopdf)                    size: 8148 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/final/mean_abs_error-eps-converted-to.pdf ../../../P
 ython/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error.eps>
@@ -2113,14 +2113,14 @@ pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
 sults/final/mean_abs_error-eps-converted-to.pdf): PDF inclusion: found PDF vers
 ion <1.7>, but at most version <1.5> allowed
 <../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error-eps
--converted-to.pdf, id=185, 360.34625pt x 287.0725pt>
+-converted-to.pdf, id=185, 365.365pt x 307.1475pt>
 File: ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_erro
 r-eps-converted-to.pdf Graphic file (type pdf)
 <use ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error
 -eps-converted-to.pdf>
 Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
 final/mean_abs_error-eps-converted-to.pdf  used on input line 377.
-(pdftex.def)             Requested size: 170.71393pt x 135.99727pt.
+(pdftex.def)             Requested size: 170.71393pt x 143.51105pt.
 [18
 
  <../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-eps-co
@@ -2128,12 +2128,12 @@ nverted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/final/me
 an_abs_error-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/error_over_forecast.eps>
-(epstopdf)                    date: 2020-03-20 18:00:49
-(epstopdf)                    size: 1540698 bytes
+(epstopdf)                    date: 2020-04-13 12:54:45
+(epstopdf)                    size: 1540607 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/error_over_forecast-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-20 18:01:31
-(epstopdf)                    size: 1155717 bytes
+(epstopdf)                    date: 2020-04-13 12:56:48
+(epstopdf)                    size: 1154441 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/final/error_over_forecast-eps-converted-to.pdf ../..
 /../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_forecast.eps>
@@ -2146,14 +2146,14 @@ pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
 sults/final/error_over_forecast-eps-converted-to.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
 <../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_forecas
-t-eps-converted-to.pdf, id=207, 747.79375pt x 410.53375pt>
+t-eps-converted-to.pdf, id=207, 754.82pt x 418.56375pt>
 File: ../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_fo
 recast-eps-converted-to.pdf Graphic file (type pdf)
 <use ../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_for
 ecast-eps-converted-to.pdf>
 Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
 final/error_over_forecast-eps-converted-to.pdf  used on input line 388.
-(pdftex.def)             Requested size: 384.1096pt x 210.87285pt.
+(pdftex.def)             Requested size: 384.1096pt x 212.99844pt.
 [19
 
  <../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_foreca
@@ -2205,7 +2205,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
 share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/symbol/usyr.pfb>
-Output written on "20200308 - Initial Guess.pdf" (20 pages, 5893208 bytes).
+Output written on "20200308 - Initial Guess.pdf" (20 pages, 5892587 bytes).
 PDF statistics:
  291 PDF objects out of 1000 (max. 8388607)
  217 compressed objects within 3 object streams
