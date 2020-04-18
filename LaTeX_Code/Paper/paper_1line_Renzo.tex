@@ -57,7 +57,7 @@
 \newcommand{\add}{\textcolor{red}{[insert]}}
 
 \setcounter{page}{1}
-
+\sloppy
 \begin{document}
 
 \title{ Stochastic Wind Power Forecasting }  % \\  \small{Report}}
@@ -141,6 +141,7 @@ In this paper we present the phenomenological underlying model in Section \ref{S
 \centering
 \includegraphics[width=0.45\textwidth]{plots/LP_6.eps}
 \includegraphics[width=0.45\textwidth]{plots/MP_6.eps}\\
+\quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP_6.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP_6.eps}
 \caption{We see that forecast errors exhibit skewness, which is exaggerated as a consequence of curtailing in the production. Low power is when produced power is in $[0,0.3]$, mid-power is when it is in $(0.3,0.6]$, and high power when it is in $(0.6,1]$. We have a total of 363 days to use.}
@@ -196,7 +197,7 @@ In this work, $(p_t)_{t \in [0,T]}$ is to be considered as a deterministic forec
 
 Our goal is to achieve a specification of the model (\ref{eq:main}) to follow closely the available normalized wind power forecasts while ensuring its unbiasedness with respect to the forecast. 
 
-\subsection{Physical Constraints}
+\subsection{Physical Constraints} \label{Sec: Physical_Constraints}
 
 Let $(p_t)_{t \in [0,T]}$ be the available prediction function for the normalized wind power, which is an input to this approach. To start with the model specification, first we introduce a time-dependent drift function that features the mean-reverting property as well as derivative tracking:
 \begin{equation}
@@ -448,36 +449,36 @@ where $\tilde{\mu}_Z(t_{j,i};\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i};\bm{\theta}
 
 \subsubsection{Initial guess}
 
-To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use \textbf{Lease Square Minimization} and \textbf{Quadratic Variation} to find an initial guess from the data.
+To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use \textbf{Lease Square Minimization} and \textbf{Quadratic Variation} over the data to find an initial guess, and to tune the hyper-parameter $\epsilon\in(0,\frac{1}{2})$.
 
 \begin{itemize}
 
-\item \textbf{Least Square Minimization:} We consider the transition $\Delta V_i=V_{i+1}-V_i$ with $\Delta t=t_{i+1}-t_i$. $(V_{i+1}|V_i)$ is a random variable which conditional mean can be approximated by the solution of the system
+\item \textbf{Least Square Minimization:} We consider a set of transitions $\{\Delta V_i\}_{i}$ with $\Delta V_i=V_{i+1}-V_i$ and $\Delta t=t_{i+1}-t_i$. $(V_{i+1}|V_i)$ is a random variable which conditional mean can be approximated by the solution of the system
 \begin{equation*}
 \begin{cases}
-\dif \E\left[V\right]&=-\theta_t^\epsilon\E\left[V\right]\dif t\\
+\dif \E\left[V\right]&=-\theta_t\E\left[V\right]\dif t\\
 \E\left[V(t_i)\right]&=V_i,
 \end{cases}
 \end{equation*}
-evaluated in $t_{i+1}$ (i.e., $\E\left[V(t_{i+1})\right]$). Then, the random variable $(V_{i+1}-\E\left[V(t_{i+1})\right])$ has approximately zero mean.\\
-If we assume that $\theta_t^\epsilon={\color{red}c}\in\R^+$ for all $t\in[t_i,t_{i+1}]$, then $\E\left[V(t_{i+1})\right]=V_ie^{-{\color{red}c}\Delta t}$. If we have a total of $n$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
+evaluated in $t_{i+1}$ (i.e., $\E\left[V(t_{i+1})\right]$). Then, the random variable $(V_{i+1}-\E\left[V(t_{i+1})\right])$ has approximately zero mean. If we assume that $\theta_t=c\in\R^+$ for all $t\in[t_i,t_{i+1}]$, then $\E\left[V(t_{i+1})\right]=V_ie^{-c\Delta t}$. If we have a total of $n$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
 \begin{equation}
-{\color{red}c}^*\approx\arg\min_{{\color{red}c}\geq0}\left[\sum_{i=1}^n\left(V_{i+1}-\E\left[V(t_{i+1})\right]\right)^2\right]=\arg\min_{{\color{red}c}\geq0}\left[\sum_{i=1}^n\left(V_{i+1}-V_ie^{-{\color{red}c}\Delta t}\right)^2\right].
+c^*\approx\arg\min_{c\geq0}\left[\sum_{i=1}^n\left(V_{i+1}-\E\left[V(t_{i+1})\right]\right)^2\right]=\arg\min_{c\geq0}\left[\sum_{i=1}^n\left(V_{i+1}-V_ie^{-c\Delta t}\right)^2\right].
 \label{Eq-1}
 \end{equation}
+As Equation (\ref{Eq-1}) is convex in $c$ (composition of convex is convex), it is enough to verify the first order optimality conditions.
 \begin{equation*}
 \begin{split}
-\frac{\partial f}{\partial{\color{red}c}}&=\sum_{i=1}^n2(-V_i)(-\Delta t)(V_{i+1}-V_i(1-\theta_0\Delta t))\\
-&=\sum_{i=1}^n2V_i\Delta t(V_{i+1}-V_i(1-{\color{red}c}\Delta t))\\
-&=\sum_{i=1}^n2V_{i+1}V_i\Delta t-2V_i^2\Delta t+2V_i^2\Delta t^2{\color{red}c}.
+\frac{\partial f}{\partial c}&=\sum_{i=1}^n2(-V_i)(-\Delta t)(V_{i+1}-V_i(1-\theta_0\Delta t))\\
+&=\sum_{i=1}^n2V_i\Delta t(V_{i+1}-V_i(1-c\Delta t))\\
+&=\sum_{i=1}^n2V_{i+1}V_i\Delta t-2V_i^2\Delta t+2V_i^2\Delta t^2c.
 \end{split}
 \end{equation*}
-Then, ${\color{red}c}^{**}$ satisfies
+Then, $c^{**}$ satisfies
 \begin{equation}
-{\color{red}c}^{**}\approx\frac{\sum_{i=1}^nV_i(V_i-V_{i+1})}{\Delta t\cdot\sum_{i=1}^n(V_i)^2}.
+c^{**}\approx\frac{\sum_{i=1}^nV_i(V_i-V_{i+1})}{\Delta t\cdot\sum_{i=1}^n(V_i)^2}\quad\text{and}\quad c^*=\max\{c^{**},0\}.
 \label{Eq-4}
 \end{equation}
-Notice that ${\color{red}c}^{**}$ has dimension $\mathbf{time}^{-1}$.
+Notice that $c^{**}$ has dimension $\mathbf{time}^{-1}$.
 
 \item \textbf{Quadratic Variation:} We approximate the SDE by its E-M scheme. In particular, we approximate the It\^o quadratic variation with the discrete one:
 \begin{itemize}
@@ -486,8 +487,7 @@ Notice that ${\color{red}c}^{**}$ has dimension $\mathbf{time}^{-1}$.
 \item Discrete process quadratic variation: $[V]_t=\sum_{0<s\leq t}(\Delta V_s)^2$.
 
 \end{itemize}
-\quad\\
-\quad\\
+
 Then, considering $\Delta t$ the time between measurements, we approximate:
 \begin{equation}
 \theta_0^*\alpha^*\approx\frac{\sum_{i=1}^n(\Delta V_i)^2}{2\Delta t\sum_{i=1}^n(V_i+p_i)(1-V_i-p_i)}.
@@ -496,33 +496,60 @@ Then, considering $\Delta t$ the time between measurements, we approximate:
 
 \end{itemize}
 
-In slide ({\color{blue}\ref{theta_t}}) we defined the parameter $\epsilon$ which has as only condition $0<\epsilon<\frac{1}{2}$. We want to estimate the set of parameters $(\theta_0,\alpha,\epsilon)$, we call to the estimations $(\theta_0^*,\alpha^*,\epsilon^*)$.\\
-\quad\\
-Recall from slide ({\color{blue}\ref{S1}}) that, to use the LSM estimation, we assume $\theta_t^\epsilon={\color{red}c}\in\R^+$. Recall also our definition for $\theta_t^\epsilon$ (equation ({\color{blue}\ref{Eq-11}})):
-\begin{equation*}
-\theta_t^\epsilon=\max\left(\theta_0,\frac{\alpha\theta_0+2|\dot{p}_t^\epsilon|}{2\min(1-p_t^\epsilon,p_t^\epsilon)}\right).
-\end{equation*}
+In section (\ref{Sec: Physical_Constraints}) we defined the parameter $\epsilon$ which has as only condition $0<\epsilon<\frac{1}{2}$. Even when it would be reasonable to choose an arbitrary small $\epsilon>0$, we aim to approximate it using the LSM estimator.\\
+
 Fixed $\epsilon$, we call $\mathcal{V}=\{\Delta V_i^\epsilon\}_{i=1}^n$ to the set of $n$ error transitions where for each measurement $X_i$, we have that $V_i=X_i-p_i^\epsilon$. $\mathcal{P}=\{p_i^\epsilon\}_{i=1}^n$ is the corresponding set of forecasts.\\
-Now, if we also fix $\theta_0$ and $\alpha$, we can define the set of indexes $\mathbf{I}=\{i\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\theta_0\}$ and $\mathbf{J}=\left\{j\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\frac{\theta_0\alpha}{\epsilon}\right\}$.
+If we also fix $\theta_0$ and $\alpha$, we can define the set of indexes $\mathbf{I}=\{i\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\theta_0\}$ and $\mathbf{J}=\left\{j\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\frac{\theta_0\alpha}{\epsilon}\right\}$. From the definition of $\theta_t$, we have that for $\epsilon<<1$, and $p_t=\epsilon$ or $p_t=1-\epsilon$, the approximation $\theta_t\approx\frac{\theta_0\alpha}{\epsilon}$ holds. Then, for $\epsilon$ small enough, $\mathbf{J}$ can be approximated by $$\mathbf{J}\approx\tilde{\mathbf{J}}=\{j\in\{1,\dots,n\}:p_j^\epsilon\in\{\epsilon,1-\epsilon\}\}.$$
+Now, coming back to the definition of $\theta_t$, we have that it is more likely that $\theta_t=\theta_0$ if $p_t^\epsilon\approx\frac{1}{2}$. Then, we can approximate $\mathbf{I}$ by $$\mathbf{I}\approx\tilde{\mathbf{I}}=\left\{i\in\{1,\dots,n\}:p_i\in(\gamma,1-\gamma)\right\},\ \gamma\approx\frac{1}{2},\ \gamma<\frac{1}{2}.$$
+We do not see signification differences in the LSM estimator for all $\gamma\in(0.1,0.3)$. If $\gamma>0.3$, the reduction in the number of samples makes variations in the LSM estimator. As we have an approximated value for $\theta_0\alpha$, if we can estimate $\frac{\theta_0\alpha}{\epsilon}$, then we can estimate $\epsilon$. We showed that for $\epsilon<<1$, the LSM estimation using indexes from $\tilde{\mathbf{J}}$ is an estimator for $\frac{\theta_0\alpha}{\epsilon}$.
 
-From the definition of $\theta_t^\epsilon$: We have that for $\epsilon<<1$, and $p_t=\epsilon$ or $p_t=1-\epsilon$, the approximation $\theta^\epsilon_t\approx\frac{\theta_0\alpha}{\epsilon}$ holds. Then, for $\epsilon$ small enough, $\mathbf{J}$ can be approximated by $$\mathbf{J}\approx\tilde{\mathbf{J}}=\{j\in\{1,\dots,n\}:p_j^\epsilon\in\{\epsilon,1-\epsilon\}\}.$$
-Now, coming back to the definition of $\theta_t^\epsilon$, we have that it is more likely that $\theta_t^\epsilon=\theta_0$ if $p_t^\epsilon\approx\frac{1}{2}$. Then, we can approximate $\mathbf{I}$ by $$\mathbf{I}\approx\tilde{\mathbf{I}}=\left\{i\in\{1,\dots,n\}:p_i\in(\gamma,1-\gamma)\right\},\ \gamma\approx\frac{1}{2},\ \gamma<\frac{1}{2}.$$
+\subsubsection{Negative Log-Likelihood Minimization in $V$ Space} \label{Sec:MinLH}
 
-Recall the quadratic variation estimator ({\color{blue}\ref{Eq-2}}) from slide ({\color{blue}\ref{QV}}). It uses all the transitions $\mathcal{V}$ and estimated the product $\theta_0\alpha$.\\
-\quad\\
-We get ${\color{orange}\theta_0^*\alpha^*\approx0.10}$, from where we calculate ${\color{orange}\alpha^*\approx0.08}$.
-
-As we have an approximated value for $\theta_0\alpha$, if we can estimate $\frac{\theta_0\alpha}{\epsilon}$, then we can estimate $\epsilon$. In slide ({\color{blue}\ref{Slide:Defs}}), we showed that for $\epsilon<<1$, the LSM estimation using indexes from $\tilde{\mathbf{J}}$ is an estimator for $\frac{\theta_0\alpha}{\epsilon}=:k$.\\
-\quad\\
-However, which values of $\epsilon$ satisfies $\epsilon<<1$? We choose an initial guess for $\epsilon$ (call it $\epsilon_0$), and iterating we aim to converge to some local minimum. We proceed with the following steps:
-
+To find the optimal parameters, we minimize the negative log-likelihood using the derivative-free function \textit{fminsearch} from MATLAB R2019b over the parameters $(\theta_0,\alpha)$. At each step of the iteration,  we:
 \begin{itemize}
 
-\item We sample $\epsilon_0$ from $\mathcal{U}[0.01,0.1]$ and load $\epsilon\gets\epsilon_0$.
-\item We create $\tilde{\mathbf{J}}$ and use the LSM estimation to find $k$. If $k<\theta_0^*$, then the assumption $\theta_t^\epsilon={\color{red}c}\in\R^+$ is wrong and we reduce the value of $\epsilon$, i.e., $\epsilon\gets\epsilon*0.999$. If $k\geq\theta_0^*$, we load $\epsilon\gets\frac{\theta_0^*\alpha^*}{k}$ (we allow a maximum relative change of 1\%). We repeat this step *100 times*.
-\item We repeat steps 1 and 2 *500 times*. After, we plot the results.
+\item Use the training dataset to find the SDE first and second moments.
+\item Match the proxy distribution moments with the SDE moments.
+\item Evaluate the negative log-likelihood using the training dataset.
 
 \end{itemize}
+
+\subsubsection{Negative Log-Likelihood Minimization in $Z$ Space} \label{Sec:MinLHL}
+
+Let $\{\Delta V_i\}_{i=1}^n$ be the set of all error transitions, and $\psi(\theta_0,\alpha,\Delta V)$ the Lamperti transform. Notice that the Lamperti transitions $\{\Delta Z_i\}_{i=1}^n$ depend on $(\theta_0,\alpha)$ because $$\{\Delta Z_i\}_{i=1}^n=\psi(\theta_0,\alpha,\{\Delta V_i\}_{i=1}^n).$$
+Then, if we compute $$\max_{(\theta_0,\alpha)}\mathbf{L}(\theta_0,\alpha,\{\Delta Z_i\}_{i=1}^n),$$
+we are not computing a MLE in the classical sense, as the data is changing with the parameters. However, we can try to find a fixed point ${\color{blue}(\theta_0^*,\alpha^*)}$ such that
+\begin{equation}
+{\color{blue}(\theta_0^*,\alpha^*)}=\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{blue}\theta_0^*},{\color{blue}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).
+\label{FP}
+\end{equation}
+In this point, the likelihood has a maximum for the data set corresponding to that point.
+
+We are interested in finding the solution of (\ref{FP}). We have that, if $(\theta_0^*,\alpha^*)$ is a solution of (\ref{FP}), then
+\begin{equation*}
+(\theta_0^*,\alpha^*)-\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{black}\theta_0^*},{\color{black}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right)=0.
+\end{equation*}
+Given a pair $(\theta_0^{*},\alpha^{*})$, we call $(\theta_0^{**},\alpha^{**})$ to the solution of
+\begin{equation*}
+\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{black}\theta_0^*},{\color{black}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).
+\end{equation*}
+For each $(\theta_0^{*},\alpha^{*})$, we define the relative error function
+\begin{equation*}
+\Psi(\theta_0^{*},\alpha^{*})=\frac{|\theta_0^{*}-\theta_0^{**}|}{|\theta_0^{*}|}+\frac{|\alpha^{*}-\alpha^{**}|}{|\alpha^{*}|}
+\end{equation*}
+and claim that $(\theta_0^*,\alpha^*)$ is a fixed point iff $\Psi(\theta_0^*,\alpha^*)=0$.
+
+\subsubsection{Additional Parameter $\delta$}
+
+{\color{red}[I am not sure if we should introduce this parameter here, of in some previous section].} We observe that for each day, the error at time $t=0$ is not zero. However, by construction of the forecast, we may assume that for some time in the past $t_\delta<0$, the error $V_{t_\delta}=0$.\\
+\quad\\
+We extrapolate linearly $p(t)$ considering the truncation at $\epsilon$, so we can evaluate $p(t_{-\delta})$, and assume that $V(t_{-\delta})=0$. Then, for each day $j$, we have an initial transition $(V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta)$. We assume again that it is Beta and apply the same moment matching as for the rest of transitions. With our initial guess for $\bm{\theta}$, we can construct our initial guess for $\delta$ solving the problem
+
+\begin{equation*}
+\delta\approx\arg\min_{\delta}\mathcal{L}_{\delta}(\bm{\theta},\delta; V^{M,1}) = \arg\min_{\delta}\prod\limits_{j=1}^M \rho_0 (V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta) \,.
+\label{likelihood_delta}
+\end{equation*}
+To solve this minimization problem, we repeat the steps described in section (\ref{Sec:MinLH}), with the additional initial step of creating the linear extrapolation.
 
 %---END SECTION 4---
 
@@ -587,11 +614,12 @@ Model 2 &   $(1.2,0.1,0.6)$   &  \add   &   \add    \\
 We compare forecasts from two different companies for the same period.
 \begin{table}[H]
 \centering
-\begin{tabular}{cccc}
+\begin{tabular}{ccc}
 \toprule
-Forecast Provider & parameters $(\theta_0, \alpha,\delta)$ & AIC & BIC \\ \midrule
-Provider A  &  $(\add,\add)$      &  \add   & \add    \\
-Provider B  & $(\add,\add) $  &  \add   &   \add  \\ 
+Forecast Provider & Parameters $(\theta_0, \alpha,\delta)$ & Product $\theta_0\alpha$ \\ \midrule
+Provider A  &  $(\add,\add)$      &  \add    \\
+Provider B  & $(\add,\add) $  &  \add \\ 
+Provider C  & $(\add,\add) $  &  \add \\ 
 \bottomrule
 \end{tabular}
 \caption{\add}
@@ -599,18 +627,6 @@ Provider B  & $(\add,\add) $  &  \add   &   \add  \\
 \end{table}
 In Figure (\add)-(\add), we see that forecast provider A is of better quality than provider B. This is confirmed by both the AIC and BIC information criteria.
 
- \begin{table}[H]
- \centering
- \begin{tabular}{cccc}
- \toprule
- Model & parameters $(\theta_0, \alpha)$  \\
- \midrule
- \begin{tabular}[c]{@{}c@{}}low frequency data\\ (hourly)\end{tabular}               &  $(\add,\add) \pm (\add,\add)$   \\ 
- \begin{tabular}[c]{@{}c@{}}high frequency data\\  (every 10 minutes)\end{tabular} &  $(\add,\add) \pm (\add,\add)$      \\ \bottomrule
- \end{tabular}
- \caption{ \add confidence interval obtained using bootstrap}
- \label{tab:freq_comparison}
- \end{table}
 %---END SECTION 6---
 
 %---BEGIN SECTION 7---
@@ -620,38 +636,52 @@ In Figure (\add)-(\add), we see that forecast provider A is of better quality th
 
 Following the instruction for the initial guesses from section $\ref{opt_sec}$, we get the initial guesses $(\theta_0,\alpha,\delta)\approx(1.2,0.1,0.6)$.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.45\textwidth]{plots/initial_guess/initial_theta_1.eps}\quad\includegraphics[width=0.42\textwidth]{plots/initial_guess/initial_theta_2.eps}
-\caption{Value function from ($\ref{inital_theta}$) as a function of different $\theta_0$ values. We can observe that the function if flat for a wide range.}
-\end{figure}
-
-\subsection{Negative Log-Lihelihood}
+\subsection{Negative Log-Likelihood in $V$ Space}
 
 We plot the Negative Log-Likelihood as a function of the parameters. The plots can be seen in Figure (\ref{fig:neg-LL}). We used all the training data (127 days of data) to construct and optimize the Negative Log-Likelihood.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood.eps}\quad\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_refined.eps}
-\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_more_refined.eps}
-\caption{Negative Log-Likelihood for different domains.}
+\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.jpg}
+\caption{Negative Log-Likelihood {\color{red}[Low quality picture]}.}
 \label{fig:neg-LL}
 \end{figure}
+On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-likelihood. The thick violet band is the region where the function reaches its minimums.\\
+We can see the \textbf{initial guess} point, the result of three different \textbf{optimization tools} from MATLAB, and the minimum point that we found from the \textbf{evaluations} that generate the plot.
+\begin{table}[]
+\centering
+\begin{tabular}{lccc}
+\toprule
+ & $\theta_0$ & $\alpha$ & $\theta_0\alpha$\\
+ \midrule
+ Initial guess & 1.629 & 0.060 & 0.098 \\
+ fminsearch & 1.135 & 0.073 & 0.083 \\
+ fmincon & 1.366 & 0.061 & 0.083 \\
+ fminunc & 1.628 & 0.051 & 0.083 \\
+ evaluations & 1.180 & 0.070 & 0.083 \\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Negative Log-Likelihood in $Z$ Space}
+
+We plot the Negative Log-Likelihood as a function of the parameters. The plots can be seen in Figure (\ref{fig:neg-LL}). We used all the training data (127 days of data) to construct and optimize the Negative Log-Likelihood.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood.eps}
+\caption{Negative Log-Likelihood {\color{red}[Low quality picture]}.}
+\label{fig:neg-LLL}
+\end{figure}
+In Figure (\ref{fig:neg-LLL}), we can see the numerical level sets of the error function $\Psi$.\\
+The center deep green band is the set $\mathbb{A}$ such that $\Psi(\mathbb{A})\in[0.05,0.1]$. We do not achieve relative error smaller than 0.05.\\
+We observe a particular behavior over the curves $\theta_0\alpha=k\in\R^+$. However, it can be a numeric effect.\\
+We also observe that: $$\mathbb{A}\cap\{(\theta_0,\alpha):\theta_0\alpha=0.083\}\neq\emptyset.$$
+On the right, we observe some possible candidates for fixed points, that also satisfies the empirical condition $\theta_0\alpha=0.038$ from the error SDE.\\
+We choose $(\theta_0,\alpha)=(2.200,0.038)$.\\
+We interpret the set $\mathbb{A}$ as "the points where the transformation of the data, does not interfere with MLE".
 
 \subsection{Main guesses}
-
-We were able to obtain the following for 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Formulation   &  parameters $(\theta_0, \alpha,\delta)$    \\ \hline
-Without Lamperti transform &   $(1.2,0.1,0.6) \pm (\add , \add) $   \\ \hline
-With Lamperti transform &   $(12,0.29) \pm (\add , \add)  $   \\ \hline
-\end{tabular}
-\caption{We compare the parameters obtained in both the original and Lamperti space. Parameters have been obtained based on \add data points from the Uruguayan pertaining to the year 2019\add .}
-\label{tab:model_comparison_2}
-\end{table}
 
 {\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models (if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.)}
 
@@ -663,28 +693,33 @@ five possible wind power production paths for each model.\\
 In Figures ()-(), we show point-wise empirical confidence bands for the different models.
 
 \begin{figure}[H]
-  \includegraphics[width=56mm,scale=1]{plots/alpha_conv_beta.png}
-  \includegraphics[width=56mm,scale=1]{plots/theta_conv_beta.png}
-  \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to year 2019.}
-\end{figure}
-
-\begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/1.eps}
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/2.eps}\\
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/3.eps}
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/4.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/2.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/4.eps}
 \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Forecast is from Uruguay pertaining to  year 2019.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/1.eps}
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/2.eps}\\
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/3.eps}
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/4.eps}
-\caption{{\color{red}Pending add legend and choose better colors.}We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/2.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/4.eps}
+\caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
 \end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.48\textwidth]{../../MATLAB_Files/Results/histograms/classic/Optimal.eps}
+\includegraphics[width=0.48\textwidth]{../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal.eps}
+\end{figure}
+
+We can see two histograms for the error transitions. On the left, using $(\theta_0^E,\alpha^E)$, while on the right, using $(\theta_0^L,\alpha^L)$.
+
 %---END SECTION 7---
 
 %---BEGIN SECTION 8---
@@ -804,7 +839,7 @@ In what follows we adapt the proof of the above theorem for the new model
 Assume that assumptions of Theorem \ref{thm:exun} hold with $x_0\in]0,1[$.
 Let $\tau_0:=\inf \{t\in[0,T],\; X_t=0\}$ and  $\tau_1:=\inf \{t\in[0,T],\; X_t=1\}$ with the convention that $\inf\emptyset=+\infty$. Assume in addition that for all $t\in[0,T]$,  $p_t\in]0,1[$ and that
 \red{
-\begin{equation}\label{Assumption:3}
+\begin{equation}
 \theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{C}. 
 \end{equation}
 }
