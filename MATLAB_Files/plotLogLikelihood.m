@@ -8,8 +8,10 @@ clc;
 % which has no sense. See plotLamperti.m.
 
 likelihood    = 'normal'; % 'normal' or 'lamperti'.
+% dataSet can be AWSTP, MTLOG or UTEP5.
+dataSet = 'MTLOG';
 epsilon       = 0.018;
-[Ta_Tra_Comp] = load_data_eps(epsilon);
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet);
 
 Table_Training = Ta_Tra_Comp; % We copy it so we can modify it.
 

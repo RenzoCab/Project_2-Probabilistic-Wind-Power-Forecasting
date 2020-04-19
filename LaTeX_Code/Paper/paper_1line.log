@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  14 APR 2020 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  19 APR 2020 18:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -839,10 +839,36 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@Def=\count303
-\c@Eg=\count304
-\c@Rm=\count305
-\c@Ex=\count306
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count303
+\Gm@cntv=\count304
+\c@Gm@tempcnt=\count305
+\Gm@bindingoffset=\dimen277
+\Gm@wd@mp=\dimen278
+\Gm@odd@mp=\dimen279
+\Gm@even@mp=\dimen280
+\Gm@layoutwidth=\dimen281
+\Gm@layoutheight=\dimen282
+\Gm@layouthoffset=\dimen283
+\Gm@layoutvoffset=\dimen284
+\Gm@dimlist=\toks47
+)
+\c@Def=\count306
+\c@Eg=\count307
+\c@Rm=\count308
+\c@Ex=\count309
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2017/12/19 v3.10 programmable bibliographies (PK/JW/AB)
@@ -861,9 +887,6 @@ Package ifluatex Info: LuaTeX not detected.
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-)
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -871,7 +894,7 @@ Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count307
+\etb@tempcnta=\count310
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
@@ -888,7 +911,7 @@ Package etexcmds Info: Could not find \expanded.
 )))
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count308
+\lrq@indent=\count311
 
 (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -896,49 +919,49 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
 \@xs@message=\write5
-\integerpart=\count309
-\decimalpart=\count310
+\integerpart=\count312
+\decimalpart=\count313
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
-\c@tabx@nest=\count311
-\c@listtotal=\count312
-\c@listcount=\count313
-\c@liststart=\count314
-\c@liststop=\count315
-\c@citecount=\count316
-\c@citetotal=\count317
-\c@multicitecount=\count318
-\c@multicitetotal=\count319
-\c@instcount=\count320
-\c@maxnames=\count321
-\c@minnames=\count322
-\c@maxitems=\count323
-\c@minitems=\count324
-\c@citecounter=\count325
-\c@savedcitecounter=\count326
-\c@uniquelist=\count327
-\c@uniquename=\count328
-\c@refsection=\count329
-\c@refsegment=\count330
-\c@maxextratitle=\count331
-\c@maxextratitleyear=\count332
-\c@maxextradate=\count333
-\c@maxextraalpha=\count334
-\c@abbrvpenalty=\count335
-\c@highnamepenalty=\count336
-\c@lownamepenalty=\count337
-\c@maxparens=\count338
-\c@parenlevel=\count339
-\blx@tempcnta=\count340
-\blx@tempcntb=\count341
-\blx@tempcntc=\count342
-\blx@maxsection=\count343
-\blx@maxsegment@0=\count344
-\blx@notetype=\count345
-\blx@parenlevel@text=\count346
-\blx@parenlevel@foot=\count347
-\blx@sectionciteorder@0=\count348
+\c@tabx@nest=\count314
+\c@listtotal=\count315
+\c@listcount=\count316
+\c@liststart=\count317
+\c@liststop=\count318
+\c@citecount=\count319
+\c@citetotal=\count320
+\c@multicitecount=\count321
+\c@multicitetotal=\count322
+\c@instcount=\count323
+\c@maxnames=\count324
+\c@minnames=\count325
+\c@maxitems=\count326
+\c@minitems=\count327
+\c@citecounter=\count328
+\c@savedcitecounter=\count329
+\c@uniquelist=\count330
+\c@uniquename=\count331
+\c@refsection=\count332
+\c@refsegment=\count333
+\c@maxextratitle=\count334
+\c@maxextratitleyear=\count335
+\c@maxextradate=\count336
+\c@maxextraalpha=\count337
+\c@abbrvpenalty=\count338
+\c@highnamepenalty=\count339
+\c@lownamepenalty=\count340
+\c@maxparens=\count341
+\c@parenlevel=\count342
+\blx@tempcnta=\count343
+\blx@tempcntb=\count344
+\blx@tempcntc=\count345
+\blx@maxsection=\count346
+\blx@maxsegment@0=\count347
+\blx@notetype=\count348
+\blx@parenlevel@text=\count349
+\blx@parenlevel@foot=\count350
+\blx@sectionciteorder@0=\count351
 \labelnumberwidth=\skip66
 \labelalphawidth=\skip67
 \biblabelsep=\skip68
@@ -949,9 +972,9 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 \bibhang=\skip73
 \blx@bcfin=\read4
 \blx@bcfout=\write6
-\c@mincomprange=\count349
-\c@maxcomprange=\count350
-\c@mincompwidth=\count351
+\c@mincomprange=\count352
+\c@maxcomprange=\count353
+\c@mincompwidth=\count354
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -960,74 +983,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'authoryear.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count352
-\c@savedafterword=\count353
-\c@annotator=\count354
-\c@savedannotator=\count355
-\c@author=\count356
-\c@savedauthor=\count357
-\c@bookauthor=\count358
-\c@savedbookauthor=\count359
-\c@commentator=\count360
-\c@savedcommentator=\count361
-\c@editor=\count362
-\c@savededitor=\count363
-\c@editora=\count364
-\c@savededitora=\count365
-\c@editorb=\count366
-\c@savededitorb=\count367
-\c@editorc=\count368
-\c@savededitorc=\count369
-\c@foreword=\count370
-\c@savedforeword=\count371
-\c@holder=\count372
-\c@savedholder=\count373
-\c@introduction=\count374
-\c@savedintroduction=\count375
-\c@namea=\count376
-\c@savednamea=\count377
-\c@nameb=\count378
-\c@savednameb=\count379
-\c@namec=\count380
-\c@savednamec=\count381
-\c@translator=\count382
-\c@savedtranslator=\count383
-\c@shortauthor=\count384
-\c@savedshortauthor=\count385
-\c@shorteditor=\count386
-\c@savedshorteditor=\count387
-\c@labelname=\count388
-\c@savedlabelname=\count389
-\c@institution=\count390
-\c@savedinstitution=\count391
-\c@lista=\count392
-\c@savedlista=\count393
-\c@listb=\count394
-\c@savedlistb=\count395
-\c@listc=\count396
-\c@savedlistc=\count397
-\c@listd=\count398
-\c@savedlistd=\count399
-\c@liste=\count400
-\c@savedliste=\count401
-\c@listf=\count402
-\c@savedlistf=\count403
-\c@location=\count404
-\c@savedlocation=\count405
-\c@organization=\count406
-\c@savedorganization=\count407
-\c@origlocation=\count408
-\c@savedoriglocation=\count409
-\c@origpublisher=\count410
-\c@savedorigpublisher=\count411
-\c@publisher=\count412
-\c@savedpublisher=\count413
-\c@language=\count414
-\c@savedlanguage=\count415
-\c@origlanguage=\count416
-\c@savedoriglanguage=\count417
-\c@pageref=\count418
-\c@savedpageref=\count419
+\c@afterword=\count355
+\c@savedafterword=\count356
+\c@annotator=\count357
+\c@savedannotator=\count358
+\c@author=\count359
+\c@savedauthor=\count360
+\c@bookauthor=\count361
+\c@savedbookauthor=\count362
+\c@commentator=\count363
+\c@savedcommentator=\count364
+\c@editor=\count365
+\c@savededitor=\count366
+\c@editora=\count367
+\c@savededitora=\count368
+\c@editorb=\count369
+\c@savededitorb=\count370
+\c@editorc=\count371
+\c@savededitorc=\count372
+\c@foreword=\count373
+\c@savedforeword=\count374
+\c@holder=\count375
+\c@savedholder=\count376
+\c@introduction=\count377
+\c@savedintroduction=\count378
+\c@namea=\count379
+\c@savednamea=\count380
+\c@nameb=\count381
+\c@savednameb=\count382
+\c@namec=\count383
+\c@savednamec=\count384
+\c@translator=\count385
+\c@savedtranslator=\count386
+\c@shortauthor=\count387
+\c@savedshortauthor=\count388
+\c@shorteditor=\count389
+\c@savedshorteditor=\count390
+\c@labelname=\count391
+\c@savedlabelname=\count392
+\c@institution=\count393
+\c@savedinstitution=\count394
+\c@lista=\count395
+\c@savedlista=\count396
+\c@listb=\count397
+\c@savedlistb=\count398
+\c@listc=\count399
+\c@savedlistc=\count400
+\c@listd=\count401
+\c@savedlistd=\count402
+\c@liste=\count403
+\c@savedliste=\count404
+\c@listf=\count405
+\c@savedlistf=\count406
+\c@location=\count407
+\c@savedlocation=\count408
+\c@organization=\count409
+\c@savedorganization=\count410
+\c@origlocation=\count411
+\c@savedoriglocation=\count412
+\c@origpublisher=\count413
+\c@savedorigpublisher=\count414
+\c@publisher=\count415
+\c@savedpublisher=\count416
+\c@language=\count417
+\c@savedlanguage=\count418
+\c@origlanguage=\count419
+\c@savedoriglanguage=\count420
+\c@pageref=\count421
+\c@savedpageref=\count422
 \shorthandwidth=\skip74
 \shortjournalwidth=\skip75
 \shortserieswidth=\skip76
@@ -1045,13 +1068,13 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2017/12/19 v3.10 biblatex compatibility (PK/JW/AB)
-\c@textcitecount=\count420
-\c@textcitetotal=\count421
-\c@textcitemaxnames=\count422
-\c@biburlnumpenalty=\count423
-\c@biburlucpenalty=\count424
-\c@biburllcpenalty=\count425
-\c@smartand=\count426
+\c@textcitecount=\count423
+\c@textcitetotal=\count424
+\c@textcitemaxnames=\count425
+\c@biburlnumpenalty=\count426
+\c@biburlucpenalty=\count427
+\c@biburllcpenalty=\count428
+\c@smartand=\count429
 )
 Package biblatex Info: Trying to load bibliography style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.bbx' found.
@@ -1063,8 +1086,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2017/12/19 v3.10 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count427
-\c@bbx:relatedtotal=\count428
+\c@bbx:relatedcount=\count430
+\c@bbx:relatedtotal=\count431
 ))
 Package biblatex Info: Trying to load citation style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.cbx' found.
@@ -1091,8 +1114,8 @@ Package biblatex Info: ... file 'english.lbx' found.
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 )
-\@quotelevel=\count429
-\@quotereset=\count430
+\@quotelevel=\count432
+\@quotereset=\count433
 
 (./paper_1line.aux
 
@@ -1101,31 +1124,31 @@ LaTeX Warning: Label `Assumption:3' multiply defined.
 )
 \openout1 = `paper_1line.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count431
-\scratchdimen=\dimen277
+\scratchcounter=\count434
+\scratchdimen=\dimen285
 \scratchbox=\box66
-\nofMPsegments=\count432
-\nofMParguments=\count433
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count434
-\MPscratchDim=\dimen278
-\MPnumerator=\count435
-\makeMPintoPDFobject=\count436
-\everyMPtoPDFconversion=\toks48
+\nofMPsegments=\count435
+\nofMParguments=\count436
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count437
+\MPscratchDim=\dimen286
+\MPnumerator=\count438
+\makeMPintoPDFobject=\count439
+\everyMPtoPDFconversion=\toks49
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1154,6 +1177,40 @@ Dictionary: translator-basic-dictionary, Language: English
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
 ABD: EveryShipout initializing macros
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(36.135pt, 542.02501pt, 36.135pt)
+* v-part:(T,H,B)=(36.135pt, 722.7pt, 36.135pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=542.02501pt
+* \textheight=722.7pt
+* \oddsidemargin=-36.135pt
+* \evensidemargin=-36.135pt
+* \topmargin=-73.135pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
 Package biblatex Info: No input encoding detected.
 (biblatex)             Assuming 'ascii'.
 Package biblatex Info: Automatic encoding selection.
@@ -1161,219 +1218,25 @@ Package biblatex Info: Automatic encoding selection.
 \openout6 = `paper_1line.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-
-
-Package biblatex Warning: File 'paper_1line.bbl' is wrong format version - expe
-cted 2.9.
-
-Package biblatex Info: ... file 'paper_1line.bbl' found.
-(./paper_1line.bbl
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.36     \endentry
-                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.121     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.153     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.300     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.504     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.545     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.580     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.651     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.680     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.831     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.868     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.904     \endentry
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1030     \endentry
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1067     \endentry
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-)
-Package biblatex Info: Reference section=0 on input line 58.
-Package biblatex Info: Reference segment=0 on input line 58.
-\c__siunitx_mathsf_int=\count437
-LaTeX Font Info:    Try loading font information for U+msa on input line 58.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+Package biblatex Info: ... file 'paper_1line.bbl' not found.
+No file paper_1line.bbl.
+Package biblatex Info: Reference section=0 on input line 61.
+Package biblatex Info: Reference segment=0 on input line 61.
+\c__siunitx_mathsf_int=\count440
+LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 58.
+LaTeX Font Info:    Try loading font information for U+msb on input line 61.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-\c__siunitx_mathtt_int=\count438
+\c__siunitx_mathtt_int=\count441
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no © in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no © in font cmr12!
-
-Overfull \hbox (15.91705pt too wide) in paragraph at lines 88--89
-[]\OT1/cmr/m/n/10.95 Keywords: In-di-rect in-fer-ence, wind power, prob-a-bilis
--tic fore-cast-ing, stochas-
- []
-
 Package epstopdf Info: Source file: <plots/wind_and_solar/plot_over_years.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 34534 bytes
@@ -1383,7 +1246,7 @@ onverted-to.pdf>
 (epstopdf)                    size: 10114 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/wind_and_solar/plot_o
 ver_years-eps-converted-to.pdf plots/wind_and_solar/plot_over_years.eps>
-(epstopdf)             \includegraphics on input line 100.
+(epstopdf)             \includegraphics on input line 103.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -1396,133 +1259,42 @@ File: plots/wind_and_solar/plot_over_years-eps-converted-to.pdf Graphic file (t
 ype pdf)
 <use plots/wind_and_solar/plot_over_years-eps-converted-to.pdf>
 Package pdftex.def Info: plots/wind_and_solar/plot_over_years-eps-converted-to.
-pdf  used on input line 100.
-(pdftex.def)             Requested size: 323.9978pt x 174.98575pt.
+pdf  used on input line 103.
+(pdftex.def)             Requested size: 487.8192pt x 263.46382pt.
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.101 ...recasts to use green energies optimally.}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'sultana2017review' on page 1 undefined on input line 1
+04.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+LaTeX Warning: Citation 'sultana2017review' on page 1 undefined on input line 1
+04.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.101 ...recasts to use green energies optimally.}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+
+LaTeX Warning: Citation 'gieb' on page 1 undefined on input line 107.
+
+
+LaTeX Warning: Citation 'chang' on page 1 undefined on input line 107.
+
+
+LaTeX Warning: Citation 'zhbo' on page 1 undefined on input line 107.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./plots/wind_and_solar/plo
+t_over_years-eps-converted-to.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.104 ...ations (see, for example, \cite[5]{gieb},
-                                                   \cite[162]{chang}, \cite{...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.104 ...ample, \cite[5]{gieb}, \cite[162]{chang},
-                                                   \cite{zhbo}):
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.104 ...5]{gieb}, \cite[162]{chang}, \cite{zhbo})
-                                                  :
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 106.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
- [2 <./plots/wind_and_solar/plot_over_years-eps-converted-to.pdf>]
-Overfull \hbox (7.46118pt too wide) in paragraph at lines 117--118
-[]\OT1/cmr/m/n/10.95 We pro-pose to model wind power fore-casts er-rors us-ing 
-para-met-ric stochas-
- []
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+LaTeX Warning: Citation 'mozuma' on page 2 undefined on input line 122.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 Previous attempt by (\cite{mozuma})
-                                          considered stochastic wind power f...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¸ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 Previous attempt by (\cite{mozuma})
-                                          considered stochastic wind power f...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.119 Previous attempt by (\cite{mozuma})
-                                          considered stochastic wind power f...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (5.08879pt too wide) in paragraph at lines 119--120
-[]\OT1/cmr/m/n/10.95 Previous at-tempt by ([]Mller, Zugno, and Mad-sen 2016) co
-n-sid-ered stochas-
- []
-
-[3]
+[2]
 Package epstopdf Info: Source file: <plots/5.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 22239 bytes
@@ -1531,13 +1303,13 @@ Package epstopdf Info: Source file: <plots/5.eps>
 (epstopdf)                    size: 9734 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/5-eps-converted-to.pd
 f plots/5.eps>
-(epstopdf)             \includegraphics on input line 129.
+(epstopdf)             \includegraphics on input line 132.
 Package epstopdf Info: Output file is already uptodate.
-<plots/5-eps-converted-to.pdf, id=31, 490.83376pt x 408.52625pt>
+<plots/5-eps-converted-to.pdf, id=28, 490.83376pt x 408.52625pt>
 File: plots/5-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/5-eps-converted-to.pdf>
-Package pdftex.def Info: plots/5-eps-converted-to.pdf  used on input line 129.
-(pdftex.def)             Requested size: 161.9989pt x 134.83278pt.
+Package pdftex.def Info: plots/5-eps-converted-to.pdf  used on input line 132.
+(pdftex.def)             Requested size: 243.90959pt x 203.00966pt.
 Package epstopdf Info: Source file: <plots/245.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 22248 bytes
@@ -1546,14 +1318,14 @@ Package epstopdf Info: Source file: <plots/245.eps>
 (epstopdf)                    size: 10028 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/245-eps-converted-to.
 pdf plots/245.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 133.
 Package epstopdf Info: Output file is already uptodate.
-<plots/245-eps-converted-to.pdf, id=32, 490.83376pt x 408.52625pt>
+<plots/245-eps-converted-to.pdf, id=29, 490.83376pt x 408.52625pt>
 File: plots/245-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/245-eps-converted-to.pdf>
-Package pdftex.def Info: plots/245-eps-converted-to.pdf  used on input line 130
+Package pdftex.def Info: plots/245-eps-converted-to.pdf  used on input line 133
 .
-(pdftex.def)             Requested size: 161.9989pt x 134.83278pt.
+(pdftex.def)             Requested size: 243.90959pt x 203.00966pt.
 Package epstopdf Info: Source file: <plots/661.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 22208 bytes
@@ -1562,14 +1334,14 @@ Package epstopdf Info: Source file: <plots/661.eps>
 (epstopdf)                    size: 9945 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/661-eps-converted-to.
 pdf plots/661.eps>
-(epstopdf)             \includegraphics on input line 131.
+(epstopdf)             \includegraphics on input line 134.
 Package epstopdf Info: Output file is already uptodate.
-<plots/661-eps-converted-to.pdf, id=33, 490.83376pt x 408.52625pt>
+<plots/661-eps-converted-to.pdf, id=30, 490.83376pt x 408.52625pt>
 File: plots/661-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/661-eps-converted-to.pdf>
-Package pdftex.def Info: plots/661-eps-converted-to.pdf  used on input line 131
+Package pdftex.def Info: plots/661-eps-converted-to.pdf  used on input line 134
 .
-(pdftex.def)             Requested size: 161.9989pt x 134.83278pt.
+(pdftex.def)             Requested size: 243.90959pt x 203.00966pt.
 Package epstopdf Info: Source file: <plots/805.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 22196 bytes
@@ -1578,15 +1350,14 @@ Package epstopdf Info: Source file: <plots/805.eps>
 (epstopdf)                    size: 9729 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/805-eps-converted-to.
 pdf plots/805.eps>
-(epstopdf)             \includegraphics on input line 132.
+(epstopdf)             \includegraphics on input line 135.
 Package epstopdf Info: Output file is already uptodate.
-<plots/805-eps-converted-to.pdf, id=34, 490.83376pt x 408.52625pt>
+<plots/805-eps-converted-to.pdf, id=31, 490.83376pt x 408.52625pt>
 File: plots/805-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/805-eps-converted-to.pdf>
-Package pdftex.def Info: plots/805-eps-converted-to.pdf  used on input line 132
+Package pdftex.def Info: plots/805-eps-converted-to.pdf  used on input line 135
 .
-(pdftex.def)             Requested size: 161.9989pt x 134.83278pt.
- [4]
+(pdftex.def)             Requested size: 243.90959pt x 203.00966pt.
 Package epstopdf Info: Source file: <plots/LP_6.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 66478 bytes
@@ -1595,14 +1366,14 @@ Package epstopdf Info: Source file: <plots/LP_6.eps>
 (epstopdf)                    size: 60687 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/LP_6-eps-converted-to
 .pdf plots/LP_6.eps>
-(epstopdf)             \includegraphics on input line 139.
+(epstopdf)             \includegraphics on input line 142.
 Package epstopdf Info: Output file is already uptodate.
-<plots/LP_6-eps-converted-to.pdf, id=38, 563.10374pt x 422.57875pt>
+<plots/LP_6-eps-converted-to.pdf, id=32, 563.10374pt x 422.57875pt>
 File: plots/LP_6-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/LP_6-eps-converted-to.pdf>
-Package pdftex.def Info: plots/LP_6-eps-converted-to.pdf  used on input line 13
-9.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+Package pdftex.def Info: plots/LP_6-eps-converted-to.pdf  used on input line 14
+2.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/MP_6.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 69804 bytes
@@ -1611,14 +1382,14 @@ Package epstopdf Info: Source file: <plots/MP_6.eps>
 (epstopdf)                    size: 63857 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/MP_6-eps-converted-to
 .pdf plots/MP_6.eps>
-(epstopdf)             \includegraphics on input line 140.
+(epstopdf)             \includegraphics on input line 143.
 Package epstopdf Info: Output file is already uptodate.
-<plots/MP_6-eps-converted-to.pdf, id=39, 563.10374pt x 422.57875pt>
+<plots/MP_6-eps-converted-to.pdf, id=33, 563.10374pt x 422.57875pt>
 File: plots/MP_6-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/MP_6-eps-converted-to.pdf>
 Package pdftex.def Info: plots/MP_6-eps-converted-to.pdf  used on input line 14
-0.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+3.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/HP_6.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 63336 bytes
@@ -1627,14 +1398,14 @@ Package epstopdf Info: Source file: <plots/HP_6.eps>
 (epstopdf)                    size: 56636 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/HP_6-eps-converted-to
 .pdf plots/HP_6.eps>
-(epstopdf)             \includegraphics on input line 141.
+(epstopdf)             \includegraphics on input line 144.
 Package epstopdf Info: Output file is already uptodate.
-<plots/HP_6-eps-converted-to.pdf, id=40, 563.10374pt x 422.57875pt>
+<plots/HP_6-eps-converted-to.pdf, id=34, 563.10374pt x 422.57875pt>
 File: plots/HP_6-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/HP_6-eps-converted-to.pdf>
 Package pdftex.def Info: plots/HP_6-eps-converted-to.pdf  used on input line 14
-1.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+4.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/AP_6.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 63909 bytes
@@ -1643,15 +1414,15 @@ Package epstopdf Info: Source file: <plots/AP_6.eps>
 (epstopdf)                    size: 57978 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/AP_6-eps-converted-to
 .pdf plots/AP_6.eps>
-(epstopdf)             \includegraphics on input line 142.
+(epstopdf)             \includegraphics on input line 145.
 Package epstopdf Info: Output file is already uptodate.
-<plots/AP_6-eps-converted-to.pdf, id=41, 563.10374pt x 422.57875pt>
+<plots/AP_6-eps-converted-to.pdf, id=35, 563.10374pt x 422.57875pt>
 File: plots/AP_6-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/AP_6-eps-converted-to.pdf>
 Package pdftex.def Info: plots/AP_6-eps-converted-to.pdf  used on input line 14
-2.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
- [5 <./plots/5-eps-converted-to.pdf> <./plots/245-eps-converted-to.pdf> <./plot
+5.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
+ [3 <./plots/5-eps-converted-to.pdf> <./plots/245-eps-converted-to.pdf> <./plot
 s/661-eps-converted-to.pdf> <./plots/805-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <plots/LP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
@@ -1661,14 +1432,14 @@ Package epstopdf Info: Source file: <plots/LP.eps>
 (epstopdf)                    size: 61063 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/LP-eps-converted-to.p
 df plots/LP.eps>
-(epstopdf)             \includegraphics on input line 149.
+(epstopdf)             \includegraphics on input line 152.
 Package epstopdf Info: Output file is already uptodate.
-<plots/LP-eps-converted-to.pdf, id=77, 563.10374pt x 422.57875pt>
+<plots/LP-eps-converted-to.pdf, id=71, 563.10374pt x 422.57875pt>
 File: plots/LP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/LP-eps-converted-to.pdf>
-Package pdftex.def Info: plots/LP-eps-converted-to.pdf  used on input line 149.
+Package pdftex.def Info: plots/LP-eps-converted-to.pdf  used on input line 152.
 
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/MP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 61209 bytes
@@ -1677,14 +1448,14 @@ Package epstopdf Info: Source file: <plots/MP.eps>
 (epstopdf)                    size: 53887 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/MP-eps-converted-to.p
 df plots/MP.eps>
-(epstopdf)             \includegraphics on input line 150.
+(epstopdf)             \includegraphics on input line 153.
 Package epstopdf Info: Output file is already uptodate.
-<plots/MP-eps-converted-to.pdf, id=78, 563.10374pt x 422.57875pt>
+<plots/MP-eps-converted-to.pdf, id=72, 563.10374pt x 422.57875pt>
 File: plots/MP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/MP-eps-converted-to.pdf>
-Package pdftex.def Info: plots/MP-eps-converted-to.pdf  used on input line 150.
+Package pdftex.def Info: plots/MP-eps-converted-to.pdf  used on input line 153.
 
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/HP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 61828 bytes
@@ -1693,14 +1464,14 @@ Package epstopdf Info: Source file: <plots/HP.eps>
 (epstopdf)                    size: 53059 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/HP-eps-converted-to.p
 df plots/HP.eps>
-(epstopdf)             \includegraphics on input line 151.
+(epstopdf)             \includegraphics on input line 154.
 Package epstopdf Info: Output file is already uptodate.
-<plots/HP-eps-converted-to.pdf, id=79, 563.10374pt x 422.57875pt>
+<plots/HP-eps-converted-to.pdf, id=73, 563.10374pt x 422.57875pt>
 File: plots/HP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/HP-eps-converted-to.pdf>
-Package pdftex.def Info: plots/HP-eps-converted-to.pdf  used on input line 151.
+Package pdftex.def Info: plots/HP-eps-converted-to.pdf  used on input line 154.
 
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/AP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 57794 bytes
@@ -1709,15 +1480,15 @@ Package epstopdf Info: Source file: <plots/AP.eps>
 (epstopdf)                    size: 50724 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/AP-eps-converted-to.p
 df plots/AP.eps>
-(epstopdf)             \includegraphics on input line 152.
+(epstopdf)             \includegraphics on input line 155.
 Package epstopdf Info: Output file is already uptodate.
-<plots/AP-eps-converted-to.pdf, id=80, 563.10374pt x 422.57875pt>
+<plots/AP-eps-converted-to.pdf, id=74, 563.10374pt x 422.57875pt>
 File: plots/AP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/AP-eps-converted-to.pdf>
-Package pdftex.def Info: plots/AP-eps-converted-to.pdf  used on input line 152.
+Package pdftex.def Info: plots/AP-eps-converted-to.pdf  used on input line 155.
 
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
- [6 <./plots/LP_6-eps-converted-to.pdf> <./plots/MP_6-eps-converted-to.pdf> <./
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
+ [4 <./plots/LP_6-eps-converted-to.pdf> <./plots/MP_6-eps-converted-to.pdf> <./
 plots/HP_6-eps-converted-to.pdf> <./plots/AP_6-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <plots/LP_t.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
@@ -1727,14 +1498,14 @@ Package epstopdf Info: Source file: <plots/LP_t.eps>
 (epstopdf)                    size: 51137 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/LP_t-eps-converted-to
 .pdf plots/LP_t.eps>
-(epstopdf)             \includegraphics on input line 159.
+(epstopdf)             \includegraphics on input line 162.
 Package epstopdf Info: Output file is already uptodate.
-<plots/LP_t-eps-converted-to.pdf, id=125, 563.10374pt x 422.57875pt>
+<plots/LP_t-eps-converted-to.pdf, id=119, 563.10374pt x 422.57875pt>
 File: plots/LP_t-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/LP_t-eps-converted-to.pdf>
-Package pdftex.def Info: plots/LP_t-eps-converted-to.pdf  used on input line 15
-9.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+Package pdftex.def Info: plots/LP_t-eps-converted-to.pdf  used on input line 16
+2.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/MP_t.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 66491 bytes
@@ -1743,14 +1514,14 @@ Package epstopdf Info: Source file: <plots/MP_t.eps>
 (epstopdf)                    size: 58582 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/MP_t-eps-converted-to
 .pdf plots/MP_t.eps>
-(epstopdf)             \includegraphics on input line 160.
+(epstopdf)             \includegraphics on input line 163.
 Package epstopdf Info: Output file is already uptodate.
-<plots/MP_t-eps-converted-to.pdf, id=126, 563.10374pt x 422.57875pt>
+<plots/MP_t-eps-converted-to.pdf, id=120, 563.10374pt x 422.57875pt>
 File: plots/MP_t-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/MP_t-eps-converted-to.pdf>
 Package pdftex.def Info: plots/MP_t-eps-converted-to.pdf  used on input line 16
-0.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+3.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/HP_t.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 66738 bytes
@@ -1759,14 +1530,14 @@ Package epstopdf Info: Source file: <plots/HP_t.eps>
 (epstopdf)                    size: 59204 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/HP_t-eps-converted-to
 .pdf plots/HP_t.eps>
-(epstopdf)             \includegraphics on input line 161.
+(epstopdf)             \includegraphics on input line 164.
 Package epstopdf Info: Output file is already uptodate.
-<plots/HP_t-eps-converted-to.pdf, id=127, 563.10374pt x 422.57875pt>
+<plots/HP_t-eps-converted-to.pdf, id=121, 563.10374pt x 422.57875pt>
 File: plots/HP_t-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/HP_t-eps-converted-to.pdf>
 Package pdftex.def Info: plots/HP_t-eps-converted-to.pdf  used on input line 16
-1.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
+4.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
 Package epstopdf Info: Source file: <plots/AP_t.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 59472 bytes
@@ -1775,248 +1546,49 @@ Package epstopdf Info: Source file: <plots/AP_t.eps>
 (epstopdf)                    size: 52174 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/AP_t-eps-converted-to
 .pdf plots/AP_t.eps>
-(epstopdf)             \includegraphics on input line 162.
+(epstopdf)             \includegraphics on input line 165.
 Package epstopdf Info: Output file is already uptodate.
-<plots/AP_t-eps-converted-to.pdf, id=128, 563.10374pt x 422.57875pt>
+<plots/AP_t-eps-converted-to.pdf, id=122, 563.10374pt x 422.57875pt>
 File: plots/AP_t-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/AP_t-eps-converted-to.pdf>
 Package pdftex.def Info: plots/AP_t-eps-converted-to.pdf  used on input line 16
-2.
-(pdftex.def)             Requested size: 161.9989pt x 121.57104pt.
- [7 <./plots/LP-eps-converted-to.pdf> <./plots/MP-eps-converted-to.pdf> <./plot
-s/HP-eps-converted-to.pdf> <./plots/AP-eps-converted-to.pdf>] [8 <./plots/LP_t-
+5.
+(pdftex.def)             Requested size: 243.90959pt x 183.04005pt.
+ [5 <./plots/LP-eps-converted-to.pdf> <./plots/MP-eps-converted-to.pdf> <./plot
+s/HP-eps-converted-to.pdf> <./plots/AP-eps-converted-to.pdf>] [6 <./plots/LP_t-
 eps-converted-to.pdf> <./plots/MP_t-eps-converted-to.pdf> <./plots/HP_t-eps-con
-verted-to.pdf> <./plots/AP_t-eps-converted-to.pdf>] [9]
+verted-to.pdf> <./plots/AP_t-eps-converted-to.pdf>]
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 ... useful to recall that (\cite[440]{foso})
-                                                   a Pearson diffusion is a ...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'foso' on page 7 undefined on input line 242.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 ... useful to recall that (\cite[440]{foso})
-                                                   a Pearson diffusion is a ...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'foso' on page 7 undefined on input line 248.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+LaTeX Warning: Citation 'leph' on page 7 undefined on input line 248.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.245 ...ns is presented in (\cite[440-443]{foso})
-                                                   where, in particular, it ...
+[7]
 
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'vago' on page 8 undefined on input line 250.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.245 ...ns is presented in (\cite[440-443]{foso})
-                                                   where, in particular, it ...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'dotala' on page 8 undefined on input line 250.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.245 ...see, for example, \cite[2860-2861]{leph})
-                                                  .
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.245 ...see, for example, \cite[2860-2861]{leph})
-                                                  .
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[10]
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247 ...nes, among them finance (see \cite{vago} 
-                                                  and references therein) an...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247 ...nes, among them finance (see \cite{vago} 
-                                                  and references therein) an...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247 ...therein) and neuroscience (\cite{dotala})
-                                                  .
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247 ...therein) and neuroscience (\cite{dotala})
-                                                  .
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.247 ...therein) and neuroscience (\cite{dotala})
-                                                  .
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--271
+Underfull \hbox (badness 10000) in paragraph at lines 272--274
 
  []
 
-[11]
-Overfull \hbox (14.03786pt too wide) in paragraph at lines 304--304
-[]\OT1/cmr/bx/n/14.4 State in-de-pen-dent dif-fu-sion term: Lam-perti trans-
- []
+
+LaTeX Warning: Citation 'iacus1' on page 8 undefined on input line 309.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.306 ...rti transform (see \cite[40--41]{iacus1},
-                                                   \cite{moma}, \cite[98--10...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'moma' on page 8 undefined on input line 309.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+LaTeX Warning: Citation 'saso' on page 8 undefined on input line 309.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.306 ... (see \cite[40--41]{iacus1}, \cite{moma},
-                                                   \cite[98--100]{saso}) to ...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¸ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.306 ... (see \cite[40--41]{iacus1}, \cite{moma},
-                                                   \cite[98--100]{saso}) to ...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.306 ...cus1}, \cite{moma}, \cite[98--100]{saso})
-                                                   to the process $V$ to obt...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.306 ...cus1}, \cite{moma}, \cite[98--100]{saso})
-                                                   to the process $V$ to obt...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (18.06067pt too wide) detected at line 320
-[]
- []
-
-[12]
+[8]
 Package epstopdf Info: Source file: <plots/LP_t_LP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 42058 bytes
@@ -2025,14 +1597,14 @@ Package epstopdf Info: Source file: <plots/LP_t_LP.eps>
 (epstopdf)                    size: 42782 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/LP_t_LP-eps-converted
 -to.pdf plots/LP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 332.
+(epstopdf)             \includegraphics on input line 335.
 Package epstopdf Info: Output file is already uptodate.
-<plots/LP_t_LP-eps-converted-to.pdf, id=236, 429.605pt x 317.185pt>
+<plots/LP_t_LP-eps-converted-to.pdf, id=224, 429.605pt x 317.185pt>
 File: plots/LP_t_LP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/LP_t_LP-eps-converted-to.pdf>
 Package pdftex.def Info: plots/LP_t_LP-eps-converted-to.pdf  used on input line
- 332.
-(pdftex.def)             Requested size: 161.9989pt x 119.60713pt.
+ 335.
+(pdftex.def)             Requested size: 243.90959pt x 180.08586pt.
 Package epstopdf Info: Source file: <plots/MP_t_LP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 40646 bytes
@@ -2041,14 +1613,14 @@ Package epstopdf Info: Source file: <plots/MP_t_LP.eps>
 (epstopdf)                    size: 39959 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/MP_t_LP-eps-converted
 -to.pdf plots/MP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 333.
+(epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
-<plots/MP_t_LP-eps-converted-to.pdf, id=237, 429.605pt x 317.185pt>
+<plots/MP_t_LP-eps-converted-to.pdf, id=225, 429.605pt x 317.185pt>
 File: plots/MP_t_LP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/MP_t_LP-eps-converted-to.pdf>
 Package pdftex.def Info: plots/MP_t_LP-eps-converted-to.pdf  used on input line
- 333.
-(pdftex.def)             Requested size: 161.9989pt x 119.60713pt.
+ 336.
+(pdftex.def)             Requested size: 243.90959pt x 180.08586pt.
 Package epstopdf Info: Source file: <plots/HP_t_LP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 43398 bytes
@@ -2057,14 +1629,14 @@ Package epstopdf Info: Source file: <plots/HP_t_LP.eps>
 (epstopdf)                    size: 40973 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/HP_t_LP-eps-converted
 -to.pdf plots/HP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 334.
+(epstopdf)             \includegraphics on input line 337.
 Package epstopdf Info: Output file is already uptodate.
-<plots/HP_t_LP-eps-converted-to.pdf, id=238, 429.605pt x 317.185pt>
+<plots/HP_t_LP-eps-converted-to.pdf, id=226, 429.605pt x 317.185pt>
 File: plots/HP_t_LP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/HP_t_LP-eps-converted-to.pdf>
 Package pdftex.def Info: plots/HP_t_LP-eps-converted-to.pdf  used on input line
- 334.
-(pdftex.def)             Requested size: 161.9989pt x 119.60713pt.
+ 337.
+(pdftex.def)             Requested size: 243.90959pt x 180.08586pt.
 Package epstopdf Info: Source file: <plots/AP_t_LP.eps>
 (epstopdf)                    date: 2020-04-14 16:32:23
 (epstopdf)                    size: 34266 bytes
@@ -2073,1191 +1645,464 @@ Package epstopdf Info: Source file: <plots/AP_t_LP.eps>
 (epstopdf)                    size: 32860 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/AP_t_LP-eps-converted
 -to.pdf plots/AP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 335.
+(epstopdf)             \includegraphics on input line 338.
 Package epstopdf Info: Output file is already uptodate.
-<plots/AP_t_LP-eps-converted-to.pdf, id=239, 429.605pt x 317.185pt>
+<plots/AP_t_LP-eps-converted-to.pdf, id=227, 429.605pt x 317.185pt>
 File: plots/AP_t_LP-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/AP_t_LP-eps-converted-to.pdf>
 Package pdftex.def Info: plots/AP_t_LP-eps-converted-to.pdf  used on input line
- 335.
-(pdftex.def)             Requested size: 161.9989pt x 119.60713pt.
- [13 <./plots/LP_t_LP-eps-converted-to.pdf> <./plots/MP_t_LP-eps-converted-to.p
-df> <./plots/HP_t_LP-eps-converted-to.pdf> <./plots/AP_t_LP-eps-converted-to.pd
-f>]
+ 338.
+(pdftex.def)             Requested size: 243.90959pt x 180.08586pt.
+ [9 <./plots/LP_t_LP-eps-converted-to.pdf> <./plots/MP_t_LP-eps-converted-to.pd
+f> <./plots/HP_t_LP-eps-converted-to.pdf> <./plots/AP_t_LP-eps-converted-to.pdf
+>]
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.363 ...k-Kolmogorov equation (\cite[36]{iacus1},
-                                                   \cite[61-68]{saso}):
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'iacus1' on page 10 undefined on input line 366.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+LaTeX Warning: Citation 'saso' on page 10 undefined on input line 366.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.363 ...n (\cite[36]{iacus1}, \cite[61-68]{saso})
-                                                  :
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
+LaTeX Warning: Citation 'iacus1' on page 10 undefined on input line 376.
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.363 ...n (\cite[36]{iacus1}, \cite[61-68]{saso})
-                                                  :
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'hurn' on page 10 undefined on input line 376.
+
+
+LaTeX Warning: Citation 'saso' on page 10 undefined on input line 380.
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 416--418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
+
+ []
+
+[11]
+
+LaTeX Warning: Reference `Sec: Physical_Constraints' on page 12 undefined on in
+put line 498.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
+
+ []
+
+[12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 543--546
+
+ []
 
 [14]
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.373 ...resented in \autocite[Chapter 3]{iacus1},
-                                                   and a survey of estimatio...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+<../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.jpg, id=274, 903.3
+75pt x 602.25pt>
+File: ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.jpg Graphic f
+ile (type jpg)
+<use ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.jpg>
+Package pdftex.def Info: ../../MATLAB_Files/Results/likelihood/normal/Log-Likel
+ihood.jpg  used on input line 643.
+(pdftex.def)             Requested size: 271.0125pt x 180.67639pt.
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 649.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.373 ...te times is presented in \autocite{hurn}.
-                                                  }
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.373 ...te times is presented in \autocite{hurn}.
-                                                  }
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.373 ...te times is presented in \autocite{hurn}.
-                                                  }
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.377 ...t algorithms  \autocite[Chapter 9]{saso}.
-                                                   However, as Figure (\ref{...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.377 ...t algorithms  \autocite[Chapter 9]{saso}.
-                                                   However, as Figure (\ref{...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (10.94385pt too wide) detected at line 392
-[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 m^^R[]\U/msb
-/m/n/10.95 E\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ] + \
-OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m \OMS/cmsy/m/n/10.
-95 ^^@ \OT1/cmr/m/n/10.95 1)\OML/cmm/m/it/10.95 ^^R[]\U/msb/m/n/10.95 E\OT1/cm
-r/m/n/10.95 [\OMS/cmsy/m/n/10.95 ^^@\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 
-+ (1 \OMS/cmsy/m/n/10.95 ^^@ \OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 p[]\OT1/cm
-r/m/n/10.95 )\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 + \OML/cmm/m/it/10.95 p
-[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 p[]\OT1/cmr
-/m/n/10.95 )\OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 ] \OML/cmm/m/it/10.95 :
- []
-
-[15]
-Overfull \hbox (24.04831pt too wide) detected at line 413
-\OML/cmm/m/it/10.95 ^^X[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ^^@[] \OML/c
-mm/m/it/10.95 ;  ^^X[] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 ;
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 413--415
-
- []
-
-
-Overfull \hbox (3.12085pt too wide) in paragraph at lines 416--417
-[]\OT1/cmr/m/n/10.95 The ap-prox-i-mate log-likelihood $[](\OMS/cmsy/m/n/10.95 
-^^A\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 v[]\OT1/cmr/m/n/10.95 )$ of the ob-
-served sam-ple $\OML/cmm/m/it/10.95 v[]$
- []
-
-
-Overfull \hbox (43.80151pt too wide) detected at line 420
-[]\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 ^^R\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it
-/10.95 v[]\OT1/cmr/m/n/10.95 ) = [] [] [] []  \OML/cmm/m/it/10.95 ;
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 420--422
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
-
- []
-
-[16]
-Overfull \hbox (2.8674pt too wide) in paragraph at lines 438--439
-[]\OT1/cmr/m/n/10.95 The ap-prox-i-mate log-likelihood $[](\OMS/cmsy/m/n/10.95 
-^^A\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 z[]\OT1/cmr/m/n/10.95 )$ of the ob-
-served sam-ple $\OML/cmm/m/it/10.95 z[]$
- []
-
-
-Overfull \hbox (3.37592pt too wide) detected at line 441
-[]\OT1/cmr/m/n/10.95 (\OML/cmm/b/it/10.95 ^^R\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it
-/10.95 z[]\OT1/cmr/m/n/10.95 ) = [] [] [] []  \OML/cmm/m/it/10.95 ;
- []
-
-[17] [18]
-Package epstopdf Info: Source file: <plots/initial_guess/initial_theta_1.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 60121 bytes
-(epstopdf)             Output file: <plots/initial_guess/initial_theta_1-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 22373 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/initial_guess/initial
-_theta_1-eps-converted-to.pdf plots/initial_guess/initial_theta_1.eps>
-(epstopdf)             \includegraphics on input line 574.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/likelihood/lamp
+erti/Log-Likelihood.eps>
+(epstopdf)                    date: 2020-04-07 20:15:53
+(epstopdf)                    size: 779509 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/likelihood/lamp
+erti/Log-Likelihood-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 20:16:37
+(epstopdf)                    size: 163595 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/likelihood/lamperti/Log-Likelihood.eps>
+(epstopdf)             \includegraphics on input line 670.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./plots/initial_guess/initial_theta_1-eps-conver
-ted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
-allowed
-<plots/initial_guess/initial_theta_1-eps-converted-to.pdf, id=285, 372.39125pt 
-x 305.14pt>
-File: plots/initial_guess/initial_theta_1-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-<use plots/initial_guess/initial_theta_1-eps-converted-to.pdf>
-Package pdftex.def Info: plots/initial_guess/initial_theta_1-eps-converted-to.p
-df  used on input line 574.
-(pdftex.def)             Requested size: 161.9989pt x 132.74413pt.
-Package epstopdf Info: Source file: <plots/initial_guess/initial_theta_2.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 58483 bytes
-(epstopdf)             Output file: <plots/initial_guess/initial_theta_2-eps-co
-nverted-to.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 23425 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/initial_guess/initial
-_theta_2-eps-converted-to.pdf plots/initial_guess/initial_theta_2.eps>
-(epstopdf)             \includegraphics on input line 574.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/initial_guess/initial_theta_2-eps-conver
-ted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
-allowed
-<plots/initial_guess/initial_theta_2-eps-converted-to.pdf, id=286, 370.38374pt 
-x 323.2075pt>
-File: plots/initial_guess/initial_theta_2-eps-converted-to.pdf Graphic file (ty
-pe pdf)
-<use plots/initial_guess/initial_theta_2-eps-converted-to.pdf>
-Package pdftex.def Info: plots/initial_guess/initial_theta_2-eps-converted-to.p
-df  used on input line 574.
-(pdftex.def)             Requested size: 151.19934pt x 131.93892pt.
-[19]
-Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 54397 bytes
-(epstopdf)             Output file: <plots/likelihood/Log-Likelihood-eps-conver
-ted-to.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 48237 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/likelihood/Log-Likeli
-hood-eps-converted-to.pdf plots/likelihood/Log-Likelihood.eps>
-(epstopdf)             \includegraphics on input line 584.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/likelihood/Log-Likelihood-eps-converted-
-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allo
-wed
-<plots/likelihood/Log-Likelihood-eps-converted-to.pdf, id=291, 434.62375pt x 34
-3.2825pt>
-File: plots/likelihood/Log-Likelihood-eps-converted-to.pdf Graphic file (type p
-df)
-<use plots/likelihood/Log-Likelihood-eps-converted-to.pdf>
-Package pdftex.def Info: plots/likelihood/Log-Likelihood-eps-converted-to.pdf  
-used on input line 584.
-(pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
-Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood_refined.ep
-s>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 54916 bytes
-(epstopdf)             Output file: <plots/likelihood/Log-Likelihood_refined-ep
-s-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 49074 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/likelihood/Log-Likeli
-hood_refined-eps-converted-to.pdf plots/likelihood/Log-Likelihood_refined.eps>
-(epstopdf)             \includegraphics on input line 584.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/likelihood/Log-Likelihood_refined-eps-co
-nverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
-.5> allowed
-<plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf, id=292, 434.6237
-5pt x 343.2825pt>
-File: plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf Graphic file
- (type pdf)
-<use plots/likelihood/Log-Likelihood_refined-eps-converted-to.pdf>
-Package pdftex.def Info: plots/likelihood/Log-Likelihood_refined-eps-converted-
-to.pdf  used on input line 584.
-(pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
-Package epstopdf Info: Source file: <plots/likelihood/Log-Likelihood_more_refin
-ed.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 59059 bytes
-(epstopdf)             Output file: <plots/likelihood/Log-Likelihood_more_refin
-ed-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 53347 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/likelihood/Log-Likeli
-hood_more_refined-eps-converted-to.pdf plots/likelihood/Log-Likelihood_more_ref
-ined.eps>
-(epstopdf)             \includegraphics on input line 585.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/likelihood/Log-Likelihood_more_refined-e
-ps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versi
-on <1.5> allowed
-<plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf, id=293, 434
-.62375pt x 343.2825pt>
-File: plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf Graphic
- file (type pdf)
-<use plots/likelihood/Log-Likelihood_more_refined-eps-converted-to.pdf>
-Package pdftex.def Info: plots/likelihood/Log-Likelihood_more_refined-eps-conve
-rted-to.pdf  used on input line 585.
-(pdftex.def)             Requested size: 216.0022pt x 170.60892pt.
-[20 <./plots/initial_guess/initial_theta_1-eps-converted-to.pdf> <./plots/initi
-al_guess/initial_theta_2-eps-converted-to.pdf>] [21 <./plots/likelihood/Log-Lik
-elihood-eps-converted-to.pdf> <./plots/likelihood/Log-Likelihood_refined-eps-co
-nverted-to.pdf> <./plots/likelihood/Log-Likelihood_more_refined-eps-converted-t
-o.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 609--611
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/likelihood/lamperti/L
+og-Likelihood-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-converted-to
+.pdf, id=275, 382.42876pt x 302.12875pt>
+File: ../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/likelihood/lamperti/Log-Lik
+elihood-eps-converted-to.pdf  used on input line 670.
+(pdftex.def)             Requested size: 271.0125pt x 214.11644pt.
+[15 <../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 688--690
 
  []
 
-<plots/alpha_conv_beta.png, id=335, 438.1971pt x 311.2428pt>
-File: plots/alpha_conv_beta.png Graphic file (type png)
-<use plots/alpha_conv_beta.png>
-Package pdftex.def Info: plots/alpha_conv_beta.png  used on input line 615.
-(pdftex.def)             Requested size: 438.19601pt x 311.24203pt.
-<plots/theta_conv_beta.png, id=337, 437.4744pt x 311.7246pt>
-File: plots/theta_conv_beta.png Graphic file (type png)
-<use plots/theta_conv_beta.png>
-Package pdftex.def Info: plots/theta_conv_beta.png  used on input line 616.
-(pdftex.def)             Requested size: 437.47331pt x 311.72383pt.
-Package epstopdf Info: Source file: <plots/paths_testing_days/1.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 44035 bytes
-(epstopdf)             Output file: <plots/paths_testing_days/1-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 15154 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/1-
-eps-converted-to.pdf plots/paths_testing_days/1.eps>
-(epstopdf)             \includegraphics on input line 622.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/1.eps>
+(epstopdf)                    date: 2020-04-07 17:58:15
+(epstopdf)                    size: 42199 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/1-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 17:58:45
+(epstopdf)                    size: 15118 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+paths_testing_days/optimal_value/1-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/paths_testing_days/optimal_value/1.eps>
+(epstopdf)             \includegraphics on input line 695.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./plots/paths_testing_days/1-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/paths_testing_days/1-eps-converted-to.pdf, id=338, 374.39874pt x 321.2pt
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
+timal_value/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-converted-to
+.pdf, id=279, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
+value/1-eps-converted-to.pdf  used on input line 695.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/2.eps>
+(epstopdf)                    date: 2020-04-07 17:58:16
+(epstopdf)                    size: 42182 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/2-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 17:59:05
+(epstopdf)                    size: 15348 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+paths_testing_days/optimal_value/2-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/paths_testing_days/optimal_value/2.eps>
+(epstopdf)             \includegraphics on input line 696.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
+timal_value/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-converted-to
+.pdf, id=280, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
+value/2-eps-converted-to.pdf  used on input line 696.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/3.eps>
+(epstopdf)                    date: 2020-04-07 17:58:16
+(epstopdf)                    size: 42180 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/3-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 17:59:05
+(epstopdf)                    size: 15217 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+paths_testing_days/optimal_value/3-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/paths_testing_days/optimal_value/3.eps>
+(epstopdf)             \includegraphics on input line 698.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
+timal_value/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-eps-converted-to
+.pdf, id=281, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
+value/3-eps-converted-to.pdf  used on input line 698.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/4.eps>
+(epstopdf)                    date: 2020-04-07 17:58:17
+(epstopdf)                    size: 42197 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/4-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 17:59:05
+(epstopdf)                    size: 15305 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+paths_testing_days/optimal_value/4-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/paths_testing_days/optimal_value/4.eps>
+(epstopdf)             \includegraphics on input line 699.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
+timal_value/4-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/paths_testing_days/optimal_value/4-eps-converted-to
+.pdf, id=282, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/4-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/4-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
+value/4-eps-converted-to.pdf  used on input line 699.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+[16 <../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-converte
+d-to.pdf>]
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/1.eps>
+(epstopdf)                    date: 2020-04-07 21:39:46
+(epstopdf)                    size: 62028 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/1-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 21:40:12
+(epstopdf)                    size: 19004 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+bands_testing_days/optimal_value/1-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/bands_testing_days/optimal_value/1.eps>
+(epstopdf)             \includegraphics on input line 705.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
+timal_value/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-converted-to
+.pdf, id=295, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/optimal_
+value/1-eps-converted-to.pdf  used on input line 705.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/2.eps>
+(epstopdf)                    date: 2020-04-07 21:39:48
+(epstopdf)                    size: 61885 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/2-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 21:40:13
+(epstopdf)                    size: 19134 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+bands_testing_days/optimal_value/2-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/bands_testing_days/optimal_value/2.eps>
+(epstopdf)             \includegraphics on input line 706.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
+timal_value/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-converted-to
+.pdf, id=296, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/optimal_
+value/2-eps-converted-to.pdf  used on input line 706.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/3.eps>
+(epstopdf)                    date: 2020-04-07 21:39:49
+(epstopdf)                    size: 61903 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/3-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 21:40:13
+(epstopdf)                    size: 19003 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+bands_testing_days/optimal_value/3-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/bands_testing_days/optimal_value/3.eps>
+(epstopdf)             \includegraphics on input line 708.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
+timal_value/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-eps-converted-to
+.pdf, id=297, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/optimal_
+value/3-eps-converted-to.pdf  used on input line 708.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/4.eps>
+(epstopdf)                    date: 2020-04-07 21:39:50
+(epstopdf)                    size: 61361 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/4-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 21:40:13
+(epstopdf)                    size: 18963 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+bands_testing_days/optimal_value/4-eps-converted-to.pdf ../../MATLAB_Files/Resu
+lts/bands_testing_days/optimal_value/4.eps>
+(epstopdf)             \includegraphics on input line 709.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
+timal_value/4-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
+t at most version <1.5> allowed
+<../../MATLAB_Files/Results/bands_testing_days/optimal_value/4-eps-converted-to
+.pdf, id=298, 370.38374pt x 301.125pt>
+File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/4-eps-convert
+ed-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/4-eps-converte
+d-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/optimal_
+value/4-eps-converted-to.pdf  used on input line 709.
+(pdftex.def)             Requested size: 243.90959pt x 198.302pt.
+[17 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-converte
+d-to.pdf> <../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-co
+nverted-to.pdf> <../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-
+eps-converted-to.pdf> <../../MATLAB_Files/Results/paths_testing_days/optimal_va
+lue/4-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
+sic/Optimal.eps>
+(epstopdf)                    date: 2020-04-07 21:34:12
+(epstopdf)                    size: 52746 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
+sic/Optimal-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 21:34:39
+(epstopdf)                    size: 13137 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+histograms/classic/Optimal-eps-converted-to.pdf ../../MATLAB_Files/Results/hist
+ograms/classic/Optimal.eps>
+(epstopdf)             \includegraphics on input line 715.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/classic/Op
+timal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at mos
+t version <1.5> allowed
+<../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf, id
+=335, 946.53625pt x 625.33624pt>
+File: ../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pd
+f Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf
 >
-File: plots/paths_testing_days/1-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/paths_testing_days/1-eps-converted-to.pdf>
-Package pdftex.def Info: plots/paths_testing_days/1-eps-converted-to.pdf  used 
-on input line 622.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-Package epstopdf Info: Source file: <plots/paths_testing_days/2.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 44033 bytes
-(epstopdf)             Output file: <plots/paths_testing_days/2-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 15390 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/2-
-eps-converted-to.pdf plots/paths_testing_days/2.eps>
-(epstopdf)             \includegraphics on input line 623.
+Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Optimal-
+eps-converted-to.pdf  used on input line 715.
+(pdftex.def)             Requested size: 260.16968pt x 171.87735pt.
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
+sic/Lamperti_Optimal.eps>
+(epstopdf)                    date: 2020-04-07 21:34:17
+(epstopdf)                    size: 52873 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
+sic/Lamperti_Optimal-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-07 21:35:09
+(epstopdf)                    size: 13181 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+histograms/classic/Lamperti_Optimal-eps-converted-to.pdf ../../MATLAB_Files/Res
+ults/histograms/classic/Lamperti_Optimal.eps>
+(epstopdf)             \includegraphics on input line 716.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./plots/paths_testing_days/2-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/paths_testing_days/2-eps-converted-to.pdf, id=339, 374.39874pt x 321.2pt
->
-File: plots/paths_testing_days/2-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/paths_testing_days/2-eps-converted-to.pdf>
-Package pdftex.def Info: plots/paths_testing_days/2-eps-converted-to.pdf  used 
-on input line 623.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-Package epstopdf Info: Source file: <plots/paths_testing_days/3.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 44032 bytes
-(epstopdf)             Output file: <plots/paths_testing_days/3-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 15330 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/3-
-eps-converted-to.pdf plots/paths_testing_days/3.eps>
-(epstopdf)             \includegraphics on input line 624.
-Package epstopdf Info: Output file is already uptodate.
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/classic/La
+mperti_Optimal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, b
+ut at most version <1.5> allowed
+<../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-converted-t
+o.pdf, id=336, 946.53625pt x 625.33624pt>
+File: ../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-conver
+ted-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-convert
+ed-to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Lamperti
+_Optimal-eps-converted-to.pdf  used on input line 716.
+(pdftex.def)             Requested size: 260.16968pt x 171.87735pt.
+[18 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-converte
+d-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-co
+nverted-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-
+eps-converted-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/optimal_va
+lue/4-eps-converted-to.pdf> <../../MATLAB_Files/Results/histograms/classic/Opti
+mal-eps-converted-to.pdf> <../../MATLAB_Files/Results/histograms/classic/Lamper
+ti_Optimal-eps-converted-to.pdf>]
+
+LaTeX Warning: Citation 'Alf' on page 19 undefined on input line 745.
 
 
-pdfTeX warning: pdflatex (file ./plots/paths_testing_days/3-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/paths_testing_days/3-eps-converted-to.pdf, id=340, 374.39874pt x 321.2pt
->
-File: plots/paths_testing_days/3-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/paths_testing_days/3-eps-converted-to.pdf>
-Package pdftex.def Info: plots/paths_testing_days/3-eps-converted-to.pdf  used 
-on input line 624.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-Package epstopdf Info: Source file: <plots/paths_testing_days/4.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 44035 bytes
-(epstopdf)             Output file: <plots/paths_testing_days/4-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 15385 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/paths_testing_days/4-
-eps-converted-to.pdf plots/paths_testing_days/4.eps>
-(epstopdf)             \includegraphics on input line 625.
-Package epstopdf Info: Output file is already uptodate.
+LaTeX Warning: Citation 'KarShr' on page 19 undefined on input line 745.
 
 
-pdfTeX warning: pdflatex (file ./plots/paths_testing_days/4-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/paths_testing_days/4-eps-converted-to.pdf, id=341, 374.39874pt x 321.2pt
->
-File: plots/paths_testing_days/4-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/paths_testing_days/4-eps-converted-to.pdf>
-Package pdftex.def Info: plots/paths_testing_days/4-eps-converted-to.pdf  used 
-on input line 625.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-[22 <./plots/alpha_conv_beta.png> <./plots/theta_conv_beta.png>]
-Package epstopdf Info: Source file: <plots/bands_testing_days/1.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 49108 bytes
-(epstopdf)             Output file: <plots/bands_testing_days/1-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 14760 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/1-
-eps-converted-to.pdf plots/bands_testing_days/1.eps>
-(epstopdf)             \includegraphics on input line 631.
-Package epstopdf Info: Output file is already uptodate.
+LaTeX Warning: Citation 'KarShr' on page 19 undefined on input line 759.
 
 
-pdfTeX warning: pdflatex (file ./plots/bands_testing_days/1-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/bands_testing_days/1-eps-converted-to.pdf, id=347, 374.39874pt x 321.2pt
->
-File: plots/bands_testing_days/1-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/bands_testing_days/1-eps-converted-to.pdf>
-Package pdftex.def Info: plots/bands_testing_days/1-eps-converted-to.pdf  used 
-on input line 631.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-Package epstopdf Info: Source file: <plots/bands_testing_days/2.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 49017 bytes
-(epstopdf)             Output file: <plots/bands_testing_days/2-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 14889 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/2-
-eps-converted-to.pdf plots/bands_testing_days/2.eps>
-(epstopdf)             \includegraphics on input line 632.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/bands_testing_days/2-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/bands_testing_days/2-eps-converted-to.pdf, id=348, 374.39874pt x 321.2pt
->
-File: plots/bands_testing_days/2-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/bands_testing_days/2-eps-converted-to.pdf>
-Package pdftex.def Info: plots/bands_testing_days/2-eps-converted-to.pdf  used 
-on input line 632.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-Package epstopdf Info: Source file: <plots/bands_testing_days/3.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 49067 bytes
-(epstopdf)             Output file: <plots/bands_testing_days/3-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 14834 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/3-
-eps-converted-to.pdf plots/bands_testing_days/3.eps>
-(epstopdf)             \includegraphics on input line 633.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/bands_testing_days/3-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/bands_testing_days/3-eps-converted-to.pdf, id=349, 374.39874pt x 321.2pt
->
-File: plots/bands_testing_days/3-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/bands_testing_days/3-eps-converted-to.pdf>
-Package pdftex.def Info: plots/bands_testing_days/3-eps-converted-to.pdf  used 
-on input line 633.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-Package epstopdf Info: Source file: <plots/bands_testing_days/4.eps>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 48835 bytes
-(epstopdf)             Output file: <plots/bands_testing_days/4-eps-converted-t
-o.pdf>
-(epstopdf)                    date: 2020-04-14 16:32:23
-(epstopdf)                    size: 14921 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/bands_testing_days/4-
-eps-converted-to.pdf plots/bands_testing_days/4.eps>
-(epstopdf)             \includegraphics on input line 634.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./plots/bands_testing_days/4-eps-converted-to.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/bands_testing_days/4-eps-converted-to.pdf, id=350, 374.39874pt x 321.2pt
->
-File: plots/bands_testing_days/4-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/bands_testing_days/4-eps-converted-to.pdf>
-Package pdftex.def Info: plots/bands_testing_days/4-eps-converted-to.pdf  used 
-on input line 634.
-(pdftex.def)             Requested size: 161.9989pt x 138.9808pt.
-[23 <./plots/paths_testing_days/1-eps-converted-to.pdf> <./plots/paths_testing_
-days/2-eps-converted-to.pdf> <./plots/paths_testing_days/3-eps-converted-to.pdf
-> <./plots/paths_testing_days/4-eps-converted-to.pdf>] [24 <./plots/bands_testi
-ng_days/1-eps-converted-to.pdf> <./plots/bands_testing_days/2-eps-converted-to.
-pdf> <./plots/bands_testing_days/3-eps-converted-to.pdf> <./plots/bands_testing
-_days/4-eps-converted-to.pdf>]
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.661 ...ses that can be found e.g. in \cite{Alf} 
-                                                  and \cite{KarShr} that we ...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.661 ...und e.g. in \cite{Alf} and \cite{KarShr} 
-                                                  that we adapted to the set...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.661 ...und e.g. in \cite{Alf} and \cite{KarShr} 
-                                                  that we adapted to the set...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.675 ...Proposition 2.13, p.291 of \cite{KarShr},
-                                                   under assumption  \eqref{...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.675 ...Proposition 2.13, p.291 of \cite{KarShr},
-                                                   under assumption  \eqref{...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[25]
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.684 ...roposition 2.13, p. 291 of \cite{KarShr} 
-                                                  for the construction of su...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.684 ...roposition 2.13, p. 291 of \cite{KarShr} 
-                                                  for the construction of su...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: Citation 'KarShr' on page 19 undefined on input line 768.
 
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ´ in font cmr10!
-
-Overfull \hbox (17.14812pt too wide) detected at line 689
-[]
- []
-
-
-Overfull \hbox (6.85458pt too wide) detected at line 693
-\U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95  []\OT1/cmr/m/n/10.95
- (\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 )] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm
-/m/it/10.95  []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 ) 
-+ [][] [][] + \OML/cmm/m/it/10.95 ^^R[]p[] \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/i
-t/10.95 ^^R[]\U/msb/m/n/10.95 E\OT1/cmr/m/n/10.95 [[][](\OML/cmm/m/it/10.95 X[]
-\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 X[]\OT1/cmr/m/n/10.95 ][]\OML/cmm/m/it/
-10.95 ds \OT1/cmr/m/n/10.95 + [] [][] \OML/cmm/m/it/10.95 ^^R[]\U/msb/m/n/10.95
- E\OMS/cmsy/m/n/10.95 j\OT1/cmr/m/n/10.95 1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/
-it/10.95 X[]\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 ds:
- []
-
-[26] [27] [28]
+[19] [20]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ´ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ´ in font cmr10!
 
 
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
+Package biblatex Warning: Keyword 'Wind-SDE' not found on input line 881.
 
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
+LaTeX Warning: Empty bibliography on input line 881.
 
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
+[21] (./paper_1line.aux)
 
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+LaTeX Warning: There were undefined references.
 
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no º in font cmr10!
-
-Overfull \hbox (3.61224pt too wide) in paragraph at lines 797--797
-[][]\OT1/cmr/m/n/10.95 Elkantassi, Soumaya, Evan-gelia Kalli-gian-naki, and Ral
- Tem-pone (June 2017).
- []
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[29]
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¸ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¸ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¤ in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package etoolbox Error: Toggle 'abx@bool@nocite' undefined.
-
-See the etoolbox package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-[30]
-
-! Package xkeyval Error: `un' undefined in families `blx@opt@name'.
-
-See the xkeyval package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.797 ...hy[keyword={Wind-SDE},title={References}]
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[31] (./paper_1line.aux)
 
 LaTeX Warning: There were multiply-defined labels.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                paper_1line
+(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'paper_1line.run.xml'.
 \openout1 = `paper_1line.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30909 strings out of 492982
- 629744 string characters out of 6134896
- 971097 words of memory out of 5000000
- 34027 multiletter control sequences out of 15000+600000
- 551792 words of font info for 103 fonts, out of 8000000 for 9000
+ 31248 strings out of 492982
+ 634480 string characters out of 6134896
+ 986392 words of memory out of 5000000
+ 34362 multiletter control sequences out of 15000+600000
+ 551491 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,14n,59p,10383b,1793s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,68p,10383b,1550s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb>
-Output written on paper_1line.pdf (31 pages, 1621124 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on paper_1line.pdf (21 pages, 1485263 bytes).
 PDF statistics:
- 514 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
+ 459 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 193 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

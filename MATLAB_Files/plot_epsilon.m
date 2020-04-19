@@ -2,7 +2,9 @@ close all;
 clear all;
 clc;
 
-[Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = load_data();
+% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
+dataSet = 'UTEP5';
+[Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = load_data(dataSet);
 
 figure(1); figure(2); 
 

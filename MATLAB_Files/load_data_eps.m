@@ -1,8 +1,8 @@
-function [Table_Training_Complete] = load_data_eps(ep)
+function [Table_Training_Complete] = load_data_eps(ep,dataSet)
     
-    % 18/03/2020 10:41
+    % 19/04/2020 15:45
 
-    [Table_Training_Complete, ~, ~] = load_data();
+    [Table_Training_Complete, ~, ~] = load_data(dataSet);
 
     Time      = Table_Training_Complete.Time;
     Forecast  = Table_Training_Complete.Forecast;
