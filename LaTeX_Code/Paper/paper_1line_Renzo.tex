@@ -597,11 +597,21 @@ We compare two candidate models to find the best-fit that maximizes the retained
 
 \begin{table}[H]
 \centering
-\begin{tabular}{cccc}
+\begin{tabular}{cccccc}
 \toprule
-Model   &  parameters $(\theta_0, \alpha,\delta)$   & AIC & BIC \\ \midrule
-Model 1 &  $(\add,\add) $    &  \add   &  \add   \\
-Model 2 &   $(1.2,0.1,0.6)$   &  \add   &   \add    \\ 
+Model & Forecast Provider & Method & Product $\theta_0\alpha$   & AIC & BIC \\ \midrule
+Model 1 & Provider A & Gaussian Proxy & 0.105 & -58226 & -58211 \\
+ &  & Shoji-Ozaki & 0.104 & -58226 & -58211 \\
+ &  & Beta Proxy & 0.104 & -58286 & -58271 \\
+ & Provider B & Gaussian Proxy & 0.105 & -58226   & -58211 \\
+ &  & Shoji-Ozaki & 0.104 & -58226 & -58211 \\
+ &  & Beta Proxy & 0.104 & -58288 & -58273 \\
+ & Provider C & Gaussian Proxy & 0.105 & -58226 & -58211 \\
+ &  & Shoji-Ozaki & 0.104 & -58226 & -58211 \\
+ &  & Beta Proxy & 0.104 & -58286 & -58271 \\
+Model 2 & Provider A & Beta Proxy & 0.097 & -73700   & -73685 \\ 
+ & Provider B & Beta Proxy & 0.098 &  -73502 & -73487 \\ 
+ & Provider C & Beta Proxy & 0.108 & -72518 & -72503 \\ 
 \bottomrule
 \end{tabular}
 \caption{We compare the different models based on information criterion. \add }
@@ -617,12 +627,12 @@ We compare forecasts from two different companies for the same period.
 \begin{tabular}{ccc}
 \toprule
 Forecast Provider & Parameters $(\theta_0, \alpha)$ & Product $\theta_0\alpha$ \\ \midrule
-Provider A  &  $(1.180,0.070)$      &  0.083    \\
-Provider B  & $(0.766,0.117) $  &  0.090 \\ 
-Provider C  & $(1.347,0.073) $  &  0.099 \\ 
+Provider A  & $(1.930,0.050)$  &  0.097 \\
+Provider B  & $(1.420,0.069) $  &  0.098 \\ 
+Provider C  & $(1.380,0.078) $  &  0.108 \\ 
 \bottomrule
 \end{tabular}
-\caption{\add}
+\caption{Optimal parameters for different providers using Model 2 with Beta proxies.}
 \label{tab:forcast_comparison}
 \end{table}
 
@@ -653,13 +663,14 @@ We can see the \textbf{initial guess} point, the result of three different \text
 \toprule
  & $\theta_0$ & $\alpha$ & $\theta_0\alpha$\\
  \midrule
- Initial guess & 1.629 & 0.060 & 0.098 \\
- fminsearch & 1.135 & 0.073 & 0.083 \\
- fmincon & 1.366 & 0.061 & 0.083 \\
- fminunc & 1.628 & 0.051 & 0.083 \\
- evaluations & 1.180 & 0.070 & 0.083 \\
+ Initial guess & 1.544 & 0.072 & 0.111 \\
+ fminsearch & 1.278 & 0.076 & 0.097 \\
+ fmincon & 1.577 & 0.062 & 0.097 \\
+ fminunc & 1.544 & 0.063 & 0.097 \\
+ evaluations & 1.930 & 0.050 & 0.097 \\
  \bottomrule
 \end{tabular}
+\caption{Different important points for provider A using model 2 and beta proxies.}
 \end{table}
 
 \subsection{Negative Log-Likelihood in $Z$ Space}

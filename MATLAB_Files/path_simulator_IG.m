@@ -2,8 +2,11 @@ close all;
 clear all;
 clc;
 
-epsilon                = 0.018;
-Table_Testing_Complete = load_data_eps_test(epsilon);
+% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
+dataSet = 'MTLOG';
+% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
+epsilon = 0.018;
+Table_Testing_Complete = load_data_eps_test(epsilon,dataSet);
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);

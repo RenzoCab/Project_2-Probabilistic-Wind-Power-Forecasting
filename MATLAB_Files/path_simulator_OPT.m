@@ -2,15 +2,20 @@ close all;
 clear all;
 clc;
 
-epsilon                = 0.018;
-Table_Testing_Complete = load_data_eps_test(epsilon);
+% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
+dataSet = 'MTLOG';
+% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
+epsilon = 0.018;
+% dataKind can be classic or comparable.
+dataKind = 'comparable';
+Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 whatToDo               = 'optimal_value'; 
 % whatToDo               = 'Optimal_Lamperti'; 
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 1;
-save     = 1;
+quantil  = 0;
+save     = 0;
 delta    = 21; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
@@ -21,8 +26,8 @@ else
 end
 
 if  strcmp(whatToDo,'optimal_value')
-    theta_0 = 1.18;
-    alpha   = 0.07;
+    theta_0 = 1.93;
+    alpha   = 0.05;
 elseif  strcmp(whatToDo,'Optimal_Lamperti')
     theta_0 = 2.200;
     alpha   = 0.038;

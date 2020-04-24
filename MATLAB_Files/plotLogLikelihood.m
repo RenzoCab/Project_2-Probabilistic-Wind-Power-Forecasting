@@ -10,8 +10,21 @@ clc;
 likelihood    = 'normal'; % 'normal' or 'lamperti'.
 % dataSet can be AWSTP, MTLOG or UTEP5.
 dataSet = 'MTLOG';
+% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
 epsilon       = 0.018;
-[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet);
+% dataKind can be classic or comparable.
+dataKind = 'comparable';
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
+
+% AWSTP) (B)
+% T_0 = 1.42, Alpha = 0.069, prod = 0.0980, f = -36753.
+% AIC = -73502, BIA = -73487.
+% MTLOG) (A)
+% T_0 = 1.93, Alpha = 0.050, prod = 0.0965, f = -36852.
+% AIC = -73700, BIA = -73685.
+% UTEP5) (B)
+% T_0 = 1.38, Alpha = 0.078, prod = 0.1076, f = -36261.
+% AIC = -72518, BIA = -72503.
 
 Table_Training = Ta_Tra_Comp; % We copy it so we can modify it.
 
@@ -29,7 +42,7 @@ dt             = Time(1,2);
 [M, N_ini]     = size(Forecast);
 N              = N_ini - 1; % We have N_ini measurements but N samples.
 
-num_days = 127;
+num_days = height(Ta_Tra_Comp); % Maximum 127 for MTLOG.
 [Table_Training, batch] = new_batch_fixed(Table_Training,num_days,N);
 
 %% Initial parameters:

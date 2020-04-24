@@ -4,10 +4,12 @@ clc;
 
 likelihood    = 'normal'; % 'normal' or 'lamperti'.
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'UTEP5';
+dataSet = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon       = 0.028;
-[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet);
+epsilon       = 0.018;
+% dataKind can be classic or comparable.
+dataKind = 'comparable';
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
 
 Date              = Ta_Tra_Comp.Date;
 Time              = Ta_Tra_Comp.Time;
@@ -33,9 +35,9 @@ gamma         = 0.35;
 samples_gamma = create_samples_minus_eps(Forecast, Error, gamma);
 theta_ini     = mean_regression_eps(samples_gamma, dt);
 alpha_ini     = est/theta_ini;
-% (A) Theta = 1.2627, Alpha = 0.0779, prod = 0.0983.
-% (B) Theta = 0.7398, Alpha = 0.1383, prod = 0.1023.
-% (C) Theta = 1.4666, Alpha = 0.0717, prod = 0.1051.
+% (A) Theta = 1.5441, Alpha = 0.0717, prod = 0.1107.
+% (B) Theta = 1.0657, Alpha = 0.1039, prod = 0.1107.
+% (C) Theta = 1.1625, Alpha = 0.0953, prod = 0.1108.
 
 %% Optimization:
 
@@ -47,106 +49,11 @@ if strcmp(likelihood,'normal')
     x0    = [theta_0, alpha];
     fun   = @(x) -likelihood_optimization(batch, x(1), x(2), dt);
     
-    x = fminsearch(fun, x0);
-    % fminsearch:
-    % (A) Theta = 0.95907, Alpha = 0.086308, eps = 0.018, prod = 0.0828.
-    % (B) Theta = 0.76586, Alpha = 0.11728,  eps = 0.035, prod = 0.0898.
-    % (C) Theta = 1.347,   Alpha = 0.073388, eps = 0.028, prod = 0.0989.
+    [x,f] = fminunc(fun, x0);
     
-    
-    % fminsearch -> Theta_0 = 1.135, Alpha = 0.073 (05/04/2020).
-    % fmincon    -> Theta_0 = 1.366, Alpha = 0.061 (05/04/2020).
-    % fminunc    -> Theta_0 = 1.628, Alpha = 0.051 (05/04/2020).
-    
-%     D_theta_0 = 4;
-%     D_alpha   = 1;
-%     div_fact  = 10;
-%     x_end = [theta_0, alpha];  
-%     opt   = x_end;
-%     circ_fact = 1;
-%        
-%     for k = 1:50
-% 
-%         disp('=============================');
-%         disp(x_end);
-%         disp(k);
-%         disp('=============================');
-%         x0 = [0 0];
-%         
-%         while not(isequal(x0,x_end))
-%             
-%             x0   = x_end;
-%             eval = fun(x0);
-%             
-%             x1 = x0 + [0 D_alpha/(div_fact*sqrt(k))];
-%             
-%             x2 = x0 + [D_theta_0*circ_fact/(div_fact*sqrt(k)) D_alpha*circ_fact/(div_fact*sqrt(k))];
-%             
-%             x3 = x0 + [D_theta_0/(div_fact*sqrt(k)) 0];
-%             
-%             x4 = x0 + [D_theta_0*circ_fact/(div_fact*sqrt(k)) -D_alpha*circ_fact/(div_fact*sqrt(k))];
-%             
-%             x5 = x0 + [0 -D_alpha/(div_fact*sqrt(k))];
-%             
-%             x6 = x0 + [-D_theta_0*circ_fact/(div_fact*sqrt(k)) -D_alpha*circ_fact/(div_fact*sqrt(k))];
-%             
-%             x7 = x0 + [-D_theta_0/(div_fact*sqrt(k)) 0];
-%             
-%             x8 = x0 + [-D_theta_0*circ_fact/(div_fact*sqrt(k)) D_alpha*circ_fact/(div_fact*sqrt(k))];
-%             
-%             eval1 = fun(x1);
-%             if eval1 < eval
-%                 eval = eval1;
-%                 x_end   = x1;
-%             end
-%             
-%             eval2 = fun(x2);
-%             if eval2 < eval
-%                 eval = eval2;
-%                 x_end   = x2;
-%             end
-%             
-%             eval3 = fun(x3);
-%             if eval3 < eval
-%                 eval = eval3;
-%                 x_end   = x3;
-%             end
-%             
-%             eval4 = fun(x4);
-%             if eval4 < eval
-%                 eval = eval4;
-%                 x_end   = x4;
-%             end
-%             
-%             eval5 = fun(x5);
-%             if eval5 < eval
-%                 eval = eval5;
-%                 x_end   = x5;
-%             end
-%             
-%             eval6 = fun(x6);
-%             if eval6 < eval
-%                 eval = eval6;
-%                 x_end   = x6;
-%             end
-%             
-%             eval7 = fun(x7);
-%             if eval7 < eval
-%                 eval = eval7;
-%                 x_end   = x7;
-%             end
-%             
-%             eval8 = fun(x8);
-%             if eval8 < eval
-%                 eval = eval8;
-%                 x_end   = x8;
-%             end
-%             
-%             opt(end+1,:) = x_end;
-%             
-%         end
-%         
-%     end
+    % fminsearch -> Theta_0 = 1.278, Alpha = 0.0760, prod = 0.0971 (24/04/2020).
+    % fmincon    -> Theta_0 = 1.577, Alpha = 0.0615, prod = 0.0970 (24/04/2020).
+    % fminunc    -> Theta_0 = 1.544, Alpha = 0.0628, prod = 0.0970 (24/04/2020).
     
 elseif strcmp(likelihood,'lamperti')
     

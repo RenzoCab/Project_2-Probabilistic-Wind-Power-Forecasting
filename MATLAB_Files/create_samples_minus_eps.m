@@ -8,7 +8,6 @@ function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)
     minus_eps_samples  = -1*ones(M*10,N_ini);
     eps_forecast       = -1*ones(M*10,N_ini); % For testing.
     
-   
     counter1     = 0;
     max_count_2  = 0;
     only_one     = 0; 
@@ -44,5 +43,6 @@ function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)
     end
     
     minus_eps_samples  = minus_eps_samples(1:counter1, 1:max_count_2-1);
+    eps_forecast       = eps_forecast(1:counter1, 1:max_count_2-1);
 
 end

@@ -320,10 +320,10 @@ Theta_t      = theta_t(theta_0, alpha, 0.2-0.03, P_dot);
 
 n = -0.04:0.01:-0.03;
 
-Z_inf = lamperti_transform(theta_0,alpha,0,0)
-Z_sup = lamperti_transform(theta_0,alpha,1,0)
-Z_inf_2 = lamperti_transform(theta_0,alpha,0,0)^2
-Z_sup_2 = lamperti_transform(theta_0,alpha,1,0)^2
+Z_inf = lamperti_transform(theta_0,alpha,0,0);
+Z_sup = lamperti_transform(theta_0,alpha,1,0);
+Z_inf_2 = lamperti_transform(theta_0,alpha,0,0)^2;
+Z_sup_2 = lamperti_transform(theta_0,alpha,1,0)^2;
 Z_100 = (Z_sup-Z_inf)/100;
 
 for i = 1:length(n)
@@ -339,10 +339,22 @@ for i = 1:length(n)
 
 end
 
+%% Testing Plot Likelihood for Model 1 and only 1 transition:
 
+xx = 0:0.01:1;
 
+for i = 1:length(xx)
+    
+    dist_to_plot(i) = log_dist_L(xx(i),m1(end),sqrt(m2(end)-m1(end)^2));
+    
+end
 
+dist_to_plot_val = log_dist_L(x2,m1(end),sqrt(m2(end)-m1(end)^2));
 
+figure;
+plot(xx,dist_to_plot);
+hold on;
+plot(x2,dist_to_plot_val,'x');
 
 
 

@@ -3,9 +3,9 @@ clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'UTEP5';
+dataSet = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon       = 0.028;
+epsilon       = 0.018;
 [Ta_Tra_Comp] = load_data_eps(epsilon,dataSet);
 
 Date              = Ta_Tra_Comp.Date;
@@ -41,7 +41,7 @@ alpha_ini     = est/theta_ini;
 theta_0 = theta_ini;
 alpha   = alpha_ini;
     
-x0    = [theta_0, alpha, 0.2];
+x0    = [theta_0, alpha, 0.15];
 fun   = @(x) -likelihood_optimization_all(batch, x(1), x(2), x(3), dt, N);
 
 x = fminsearch(fun, x0);

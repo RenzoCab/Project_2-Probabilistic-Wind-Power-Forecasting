@@ -6,7 +6,7 @@ function [val] = likelihood_optimization_all(batch, theta_0, alpha, delta, dt, N
         val = - Inf;
     else
         val = log_LH_evaluation(batch_complete, alpha, theta_0, dt) - ...
-            144*first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, 1e6, 1e6);
+            first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, 1e6, 1e6);
     end
 
 end

@@ -3,7 +3,7 @@ clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'UTEP5';
+dataSet = 'MTLOG';
 [Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = load_data(dataSet);
 
 figure(1); figure(2); 
@@ -145,7 +145,7 @@ title('Number of samples over $\epsilon$','interpreter','latex');
 xlabel('$\epsilon$','interpreter','latex');
 saveas(gcf,[pwd '/Results/epsilon/num_over_eps'],'epsc');
 
-%% Plor theta_0:
+%% Plot theta_0:
 
 epsilon = [0.01:0.001:0.49];
 accum   = [];

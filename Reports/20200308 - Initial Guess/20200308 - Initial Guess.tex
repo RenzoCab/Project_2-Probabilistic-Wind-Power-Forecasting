@@ -387,6 +387,7 @@ Number of elements in $\tilde{\mathbf{J}}$ as a function of $\epsilon$.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\setbeamercolor{background canvas}{bg=white!20}
 \begin{frame}\frametitle{How do we ensure $\dot{p}^\epsilon_i=0$ in $\tilde{\mathbf{J}}$?}
@@ -401,6 +402,64 @@ To guarantee that $\dot{p}^\delta_{t_i}=0$, we need that $p_{t_i}=p_{t_{i+1}}$. 
 \includegraphics[width=0.9\columnwidth]{2.jpg}
 
 \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=green!20}
+\begin{frame}
+
+{\Huge Model 1}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!20}
+\begin{frame}\frametitle{Least square minimization (LSM)}
+
+We consider the transition $\Delta X_i=X_{i+1}-X_i$ with $\Delta t=t_{i+1}-t_i$. $(X_{i+1}|X_i)$ is a random variable which conditional mean can be approximated by the solution of the system
+\begin{equation*}
+\begin{cases}
+\dif \E\left[X\right]&=-\theta_0\left(\E\left[X\right]-p_t\right)\dif t\\
+\E\left[X(t_i)\right]&=X_i,
+\end{cases}
+\end{equation*}
+evaluated in $t_{i+1}$ (i.e., $\E\left[X(t_{i+1})\right]$). Then, the random variable $(X_{i+1}-\E\left[X(t_{i+1})\right])$ has approximately zero mean.\\
+\quad\\
+We consider the IVP $\dif x=-\theta_0(x-p_t)\dif t$ with initial conditions $x(t_i)=x_i$. Also, from now we will assume $t_i=0$.
+\begin{theorem}
+The ODE $\dot{y}=a(t)y+b(t)$ has solution $y(t)=ce^{A(t)}+e^{A(t)}\int e^{-A(t)}b(t)\dif t$ where $c\in\R$ and $A(t)=\int a(t)\dif t$.
+\end{theorem}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!20}
+\begin{frame}\frametitle{Least square minimization (LSM) and Quadratic Variation}
+
+$x(t)=ce^{-\theta_0 t}+e^{-\theta_0 t}\int e^{\theta_0 t}\theta_0p_t\dif t$ using the theorem. Now, recall that $p=p_i+\frac{(p_{i+1}-p_i)}{\Delta t}y=n+m\cdot y$ (we define $n$ and $m$ for simplicity).\\
+\quad\\
+Then: $x(t)=x_ie^{-\theta_0t}+\theta_0e^{-\theta_0t}\left[\frac{m+(e^{\theta_0t}-1)n\theta_0+e^{\theta_0t}m(\theta_0t-1)}{\theta_0^2}\right]$, where $x(t_{i+1})=\E\left[X(t_{i+1})\right]$.
+
+\begin{equation*}
+\theta_0^*\approx\arg\min_{\theta_0\geq0}\left[\sum_{i=1}^n\left(X_{i+1}-\E\left[X(t_{i+1})\right]\right)^2\right].
+\end{equation*}\\
+\quad\\
+\quad\\
+Quadratic Variation: To estimate $\theta_0\alpha$, we use equation (\ref{Eq-2}) but using $\Delta X$ instead of $\Delta V$, $X$ instead of $V$, and $0$ instead of $p$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!20}
+\begin{frame}\frametitle{Why $\theta_0<0$?}
+
+\includegraphics[width=0.7\columnwidth]{20200422_205641.jpg}
+
 
 \end{frame}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  17 APR 2020 21:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  22 APR 2020 21:01
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1860,69 +1860,56 @@ Package pdftex.def Info: 1.jpg  used on input line 150.
 ]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/theta_0
 .eps>
-(epstopdf)                    date: 2020-04-17 20:54:46
-(epstopdf)                    size: 48712 bytes
+(epstopdf)                    date: 2020-04-19 16:37:29
+(epstopdf)                    size: 52508 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/theta_0
 -eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 18725 bytes
+(epstopdf)                    date: 2020-04-21 20:35:32
+(epstopdf)                    size: 18451 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/theta_0-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/theta_0
 .eps>
 (epstopdf)             \includegraphics on input line 252.
-runsystem(epstopdf --outfile=../../MATLAB_Files/Results/epsilon/theta_0-eps-con
-verted-to.pdf ../../MATLAB_Files/Results/epsilon/theta_0.eps)...executed.
-
-Package epstopdf Info: Result file: <../../MATLAB_Files/Results/epsilon/theta_0
--eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:29
-(epstopdf)                    size: 18713 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/theta_0-eps-c
 onverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <
 1.5> allowed
 <../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf, id=94, 357.33
-5pt x 309.155pt>
+5pt x 302.12875pt>
 File: ../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf Graphic f
 ile (type pdf)
 <use ../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/theta_0-eps-convert
 ed-to.pdf  used on input line 252.
-(pdftex.def)             Requested size: 170.71393pt x 147.69453pt.
+(pdftex.def)             Requested size: 170.71393pt x 144.33784pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps_t0.eps>
-(epstopdf)                    date: 2020-04-17 20:54:46
-(epstopdf)                    size: 47905 bytes
+(epstopdf)                    date: 2020-04-19 16:37:29
+(epstopdf)                    size: 51905 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps_t0-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 19274 bytes
+(epstopdf)                    date: 2020-04-21 20:35:32
+(epstopdf)                    size: 18928 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/num_over_eps_t0-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon
 /num_over_eps_t0.eps>
 (epstopdf)             \includegraphics on input line 252.
-runsystem(epstopdf --outfile=../../MATLAB_Files/Results/epsilon/num_over_eps_t0
--eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/num_over_eps_t0.eps)..
-.executed.
-
-Package epstopdf Info: Result file: <../../MATLAB_Files/Results/epsilon/num_ove
-r_eps_t0-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:30
-(epstopdf)                    size: 19054 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/num_over_eps_
 t0-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most v
 ersion <1.5> allowed
 <../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf, id=95
-, 357.335pt x 309.155pt>
+, 369.38pt x 302.12875pt>
 File: ../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf G
 raphic file (type pdf)
 <use ../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps
 -converted-to.pdf  used on input line 252.
-(pdftex.def)             Requested size: 170.71393pt x 147.69453pt.
+(pdftex.def)             Requested size: 170.71393pt x 139.63094pt.
 [10
 
  <../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf> <../../MATLA
@@ -2024,73 +2011,59 @@ o.pdf  used on input line 333.
  <../../MATLAB_Files/Results/epsilon/QMM-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/theta_o
 ver_eps.eps>
-(epstopdf)                    date: 2020-04-17 20:54:41
-(epstopdf)                    size: 97804 bytes
+(epstopdf)                    date: 2020-04-19 16:39:35
+(epstopdf)                    size: 64652 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/theta_o
 ver_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 31461 bytes
+(epstopdf)                    date: 2020-04-21 20:35:32
+(epstopdf)                    size: 21337 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/theta_over_eps-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/
 theta_over_eps.eps>
 (epstopdf)             \includegraphics on input line 348.
-runsystem(epstopdf --outfile=../../MATLAB_Files/Results/epsilon/theta_over_eps-
-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/theta_over_eps.eps)...e
-xecuted.
-
-Package epstopdf Info: Result file: <../../MATLAB_Files/Results/epsilon/theta_o
-ver_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:30
-(epstopdf)                    size: 33273 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/theta_over_ep
 s-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most ve
 rsion <1.5> allowed
 <../../MATLAB_Files/Results/epsilon/theta_over_eps-eps-converted-to.pdf, id=162
-, 358.33875pt x 306.14375pt>
+, 366.36874pt x 300.12125pt>
 File: ../../MATLAB_Files/Results/epsilon/theta_over_eps-eps-converted-to.pdf Gr
 aphic file (type pdf)
 <use ../../MATLAB_Files/Results/epsilon/theta_over_eps-eps-converted-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/theta_over_eps-eps-
 converted-to.pdf  used on input line 348.
-(pdftex.def)             Requested size: 192.0548pt x 164.08191pt.
+(pdftex.def)             Requested size: 192.0548pt x 157.32788pt.
 [16
 
  <../../MATLAB_Files/Results/epsilon/theta_over_eps-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps.eps>
-(epstopdf)                    date: 2020-04-17 20:54:41
-(epstopdf)                    size: 110912 bytes
+(epstopdf)                    date: 2020-04-19 16:39:36
+(epstopdf)                    size: 108684 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/num_ove
 r_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 31410 bytes
+(epstopdf)                    date: 2020-04-21 20:35:33
+(epstopdf)                    size: 22980 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 epsilon/num_over_eps-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/nu
 m_over_eps.eps>
 (epstopdf)             \includegraphics on input line 364.
-runsystem(epstopdf --outfile=../../MATLAB_Files/Results/epsilon/num_over_eps-ep
-s-converted-to.pdf ../../MATLAB_Files/Results/epsilon/num_over_eps.eps)...execu
-ted.
-
-Package epstopdf Info: Result file: <../../MATLAB_Files/Results/epsilon/num_ove
-r_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:30
-(epstopdf)                    size: 30828 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/num_over_eps-
 eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most vers
 ion <1.5> allowed
 <../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf, id=173, 
-372.39125pt x 306.14375pt>
+353.32pt x 300.12125pt>
 File: ../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf Grap
 hic file (type pdf)
 <use ../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/num_over_eps-eps-co
 nverted-to.pdf  used on input line 364.
-(pdftex.def)             Requested size: 192.0548pt x 157.89235pt.
+(pdftex.def)             Requested size: 192.0548pt x 163.13924pt.
 [17
 
  <../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf>]
@@ -2100,20 +2073,13 @@ someResults/final/mean_error.eps>
 (epstopdf)                    size: 22878 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/mean_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-13 12:54:53
+(epstopdf)                    date: 2020-04-17 21:02:30
 (epstopdf)                    size: 8021 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/final/mean_error-eps-converted-to.pdf ../../../Pytho
 n/Represas_Data_2/Wind_Data/someResults/final/mean_error.eps>
 (epstopdf)             \includegraphics on input line 377.
-runsystem(epstopdf --outfile=../../../Python/Represas_Data_2/Wind_Data/someResu
-lts/final/mean_error-eps-converted-to.pdf ../../../Python/Represas_Data_2/Wind_
-Data/someResults/final/mean_error.eps)...executed.
-
-Package epstopdf Info: Result file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/mean_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:30
-(epstopdf)                    size: 8021 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
@@ -2134,20 +2100,13 @@ someResults/final/mean_abs_error.eps>
 (epstopdf)                    size: 21359 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/mean_abs_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-13 12:54:53
+(epstopdf)                    date: 2020-04-17 21:02:31
 (epstopdf)                    size: 8148 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/final/mean_abs_error-eps-converted-to.pdf ../../../P
 ython/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error.eps>
 (epstopdf)             \includegraphics on input line 377.
-runsystem(epstopdf --outfile=../../../Python/Represas_Data_2/Wind_Data/someResu
-lts/final/mean_abs_error-eps-converted-to.pdf ../../../Python/Represas_Data_2/W
-ind_Data/someResults/final/mean_abs_error.eps)...executed.
-
-Package epstopdf Info: Result file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/mean_abs_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:31
-(epstopdf)                    size: 8148 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
@@ -2173,21 +2132,14 @@ someResults/final/error_over_forecast.eps>
 (epstopdf)                    size: 1540607 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/error_over_forecast-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-13 12:56:48
+(epstopdf)                    date: 2020-04-17 21:02:32
 (epstopdf)                    size: 1154441 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/final/error_over_forecast-eps-converted-to.pdf ../..
 /../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_forecast.eps>
 
 (epstopdf)             \includegraphics on input line 388.
-runsystem(epstopdf --outfile=../../../Python/Represas_Data_2/Wind_Data/someResu
-lts/final/error_over_forecast-eps-converted-to.pdf ../../../Python/Represas_Dat
-a_2/Wind_Data/someResults/final/error_over_forecast.eps)...executed.
-
-Package epstopdf Info: Result file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/error_over_forecast-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:32
-(epstopdf)                    size: 1154441 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
@@ -2209,11 +2161,25 @@ st-eps-converted-to.pdf>]
 <2.jpg, id=222, 3108.61375pt x 1650.165pt>
 File: 2.jpg Graphic file (type jpg)
 <use 2.jpg>
-Package pdftex.def Info: 2.jpg  used on input line 405.
+Package pdftex.def Info: 2.jpg  used on input line 406.
 (pdftex.def)             Requested size: 192.0548pt x 101.92644pt.
  [20
 
- <./2.jpg>]
+ <./2.jpg>] [21
+
+] [22
+
+] [23
+
+]
+<20200422_205641.jpg, id=245, 3015.265pt x 2054.67625pt>
+File: 20200422_205641.jpg Graphic file (type jpg)
+<use 20200422_205641.jpg>
+Package pdftex.def Info: 20200422_205641.jpg  used on input line 464.
+(pdftex.def)             Requested size: 298.75264pt x 203.5672pt.
+ [24
+
+ <./20200422_205641.jpg>]
 \tf@nav=\write6
 \openout6 = `"20200308 - Initial Guess.nav"'.
 
@@ -2223,21 +2189,21 @@ Package pdftex.def Info: 2.jpg  used on input line 405.
 \tf@snm=\write8
 \openout8 = `"20200308 - Initial Guess.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 466.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 466.
  (./20200308 - Initial Guess.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 466.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 466.
 Package rerunfilecheck Info: File `"20200308 - Initial Guess".out' has not chan
 ged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29395 strings out of 492982
- 585494 string characters out of 6134896
+ 29445 strings out of 492982
+ 586346 string characters out of 6134896
  632165 words of memory out of 5000000
- 32364 multiletter control sequences out of 15000+600000
- 633204 words of font info for 134 fonts, out of 8000000 for 9000
+ 32401 multiletter control sequences out of 15000+600000
+ 640536 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,55p,10377b,721s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist
@@ -2245,18 +2211,19 @@ Here is how much of TeX's memory you used:
 /type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmsso12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/symbol/usyr.pfb>
-Output written on "20200308 - Initial Guess.pdf" (20 pages, 5893619 bytes).
+ype1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
+symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb>
+
+Output written on "20200308 - Initial Guess.pdf" (24 pages, 8917098 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 217 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 319 PDF objects out of 1000 (max. 8388607)
+ 239 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 
