@@ -2,13 +2,16 @@ close all;
 clear all;
 clc;
 
-epsilon                = 0.018;
-Table_Testing_Complete = load_data_eps_test(epsilon);
+% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
+dataSet = 'MTLOG';
+% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
+epsilon = 0.018;
+Table_Testing_Complete = load_data_eps_test(epsilon,dataSet);
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 0;
-save     = 1;
+quantil  = 1;
+save     = 0;
 delta    = 22; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
@@ -18,8 +21,12 @@ else
     numPaths = 5;
 end
 
-theta = 3.912;
-alpha = 0.019308;
+% (A) Theta = 0.02081, Alpha = 4.4421, eps = 0.018, prod = 0.0924, f = -52305.
+% (B) Theta = 0.02584, Alpha = 3.7390, eps = 0.035, prod = 0.0966, f = -30347.
+% (C) Theta = 0.02479, Alpha = 3.9996, eps = 0.028, prod = 0.0992, f = -50455.
+
+theta = 1.2201;
+alpha = 0.075142;
 
 d  = Table_Testing_Complete.Date;
 p  = Table_Testing_Complete.Forecast;

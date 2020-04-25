@@ -12,6 +12,8 @@ function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, 
         th1 = batch_complete(4,1  + i*(N-1)*2);
         th0 = theta_t(theta_0, alpha, p0, (p1-p0)/(delta));
         v0  = 0; v1 = batch_complete(3,1  + i*(N-1)*2);
+        
+        if abs(v1) < 0.1
 
         v_ini(i+1) = v1;
         % (v,theta_0,alpha,th1,th2,p1,p2,dt,n) 
@@ -24,6 +26,10 @@ function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, 
         [xi1(i+1),xi2(i+1)] = moments_matching(m1(end),m2(end));
         sig2(i+1) = 1/(4*(xi1(i+1)*2+1));
         val(i+1)   = -log_dist(v1,xi1(i+1),xi2(i+1));
+        
+        else
+            val(i+1) = 0;
+        end
     
     end
 

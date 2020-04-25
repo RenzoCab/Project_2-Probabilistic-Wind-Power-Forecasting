@@ -1,8 +1,12 @@
-function [Table_Testing_Complete] = load_data_eps_test(ep)
+function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind)
     
     % 18/03/2020 10:41
 
-    [~, Table_Testing_Complete, ~] = load_data();
+    if strcmp(dataKind,'classic')
+        [~, Table_Testing_Complete, ~] = load_data(dataSet);
+    elseif strcmp(dataKind,'comparable')
+        [~, Table_Testing_Complete, ~] = load_data_comparable(dataSet);
+    end
 
     Time      = Table_Testing_Complete.Time;
     Forecast  = Table_Testing_Complete.Forecast;

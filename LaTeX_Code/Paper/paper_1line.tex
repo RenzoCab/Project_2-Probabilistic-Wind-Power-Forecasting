@@ -15,6 +15,7 @@
 \usepackage{commath}
 \usepackage{fancybox}
 \usepackage{url}
+\usepackage[margin=0.5in]{geometry}
 
 \theoremstyle{definition}
 \newtheorem{Def}{Definition}[section]
@@ -30,6 +31,8 @@
 \newtheorem{Met}[Def]{Method}
 \newtheorem{Res}[Def]{Result}
 \newcommand{\red}{\textcolor{red}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
 
 \usepackage[backend=biber, style=authoryear, citestyle=authoryear, autocite=inline]{biblatex} % package for bibliography 
 %\DeclareLanguageMapping{english}{english-apa}
@@ -201,7 +204,7 @@ a(X_t; p_t, \dot{p}_t, \bm{\theta}) = \dot{p}_t  - \theta_t (X_t - p_t)\,,  \lab
 \end{equation} 
 where $ (\theta_t)_{t \in [0,T]} $ is a positive deterministic function, whose range depends on $\bm{\theta}$, as will be explained shortly.
 
-Now, looking at the normalized wind power generation forecast process $X$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$, given $  \mathbb{E} X_0 = p_0$. The application of  It\^{o}'s lemma on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s ds}$, leads to 
+Now, looking at the normalized wind power generation forecast process $X$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} X_t = p_t$, given $  \mathbb{E} X_0 = p_0$. The application of  It\^{o}'s lemma on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s ds}$, leads to 
 \begin{equation*}
 d \left( X_t e^{\int_{0}^{t} \theta_s ds} \right) = e^{\int_{0}^{t} \theta_s ds} (\dot{p}_t + \theta_t p_t ) dt  + e^{\int_{0}^{t} \theta_s ds}\, b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \,dW_t\,,
 \end{equation*}
@@ -213,7 +216,7 @@ Taking expectation on (\ref{eq:tomeanX}) we obtain
 \begin{align}
 \mathbb{E} X_t & = e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 +   \int_{0}^{t}  (\dot{p}_s + \theta_s p_s ) e^{\int_{0}^{s} \theta_u du} ds   \right) \nonumber \\ 
 & =  e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 +   \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u du} ds +  \big[ p_s \, e^{\int_{0}^{s} \theta_u du} \big]^{t}_0  - \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u du} ds  \right) \nonumber \\
-& =  e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 + p_t \, e^{ \int_{0}^{t} \theta_s ds} - p_0 \right) = p_t \,.
+& =  e^{ - \int_{0}^{t} \theta_s ds} \left(  \mathbb{E} X_0 + p_t \, e^{ \int_{0}^{t} \theta_s ds} - p_0 \right) = p_t \,. \label{eq:meanX}
 \end{align}
 
  At this stage, the process defined by (\ref{eq:main}) with drift (\ref{drift:meanrev-derivtrack}) satisfies the two following properties: 
@@ -222,11 +225,11 @@ Taking expectation on (\ref{eq:tomeanX}) we obtain
 \item it tracks the time derivative $\dot{p}_t$.  
 \end{itemize} 
 
-Remark: {\color{red} Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates paths of two diffusions with and without derivative tracking. }
+Remark: Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates paths of two diffusions with and without derivative tracking. 
 
 \begin{figure}[h]
   %\includegraphics[width=26mm,scale=1]{}
-  \caption{Add Figure showing the difference with and without derivative tracking}
+  \caption{{\color{red} Add Figure showing the difference with and without derivative tracking}}
   \label{fig:derivative_tracking}
 \end{figure}
 
@@ -311,9 +314,9 @@ Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends
 %where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, 
 \begin{align}
 Z_t = h(V_t, t)  & = \frac{1}{\sqrt{2 \alpha \theta_0 }} \int \frac{1}{\sqrt{(v + p_t)(1 - v - p_t)}} \,dv \Bigg{\vert}_{v = V_t}  \nonumber \\
-& = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t})
+& = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t}) \label{eq:LampZ}
 \end{align}
-that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent diffusion term
+that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent unit diffusion term
 \begin{align}
 dZ_t = \Bigg[  & \frac{\dot{p}_t}{ \sqrt{2 \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}}  \nonumber \\ 
 & + \frac{- \theta_t V_t}{ \sqrt{2  \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \alpha \theta_0} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \Bigg] \,dt + dW_t \,. \label{eq:stindepSDE}
@@ -322,10 +325,10 @@ After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2
 \begin{align}
 dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\sqrt{2 \alpha \theta_0} \cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)}  \nonumber \\
 &  - \frac{1}{4}  \frac{\sqrt{2 \alpha \theta_0} \left(1 - 2 \cos^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)} \Bigg] \,dt + dW_t \nonumber \\
-&  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,. 
+&  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,.  \label{eq:stindepSDE2}
 \end{align}
 
-{\color{red}We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
+{\color{red} We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
 
 \begin{figure}[H]
 \centering
@@ -350,8 +353,8 @@ Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} pro
 
 Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha, \epsilon)$ are the unknown model parameters.
 
-The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the data can be written as the following product of transition densities:  
-%Consider the set of $M$ paths with $N$ observations each, $ V^{M,N}=\{ V_{t_1^{M,N}} , V_{t_2^{M,N}} ,\ldots , V_{t_N^{M,N}} \}$, observed in $\Delta_N$ intervals.
+The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the sample $ V^{M,N + 1}$ can be written as the following product of transition densities:  
+
 \begin{equation}
 \mathcal{L}(\bm{\theta}; V^{M,N +1}) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )  \,  \right\} \,,
 \label{likelihood}
@@ -369,7 +372,8 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 subject to the initial conditions $\rho(v , t_{j, i-1} ; \bm{\theta} ) = \delta(v - V_{j, i-1}) \,,$ where $ \delta(v - V_{j, i-1})$ is the Dirac-delta generalized function centered at $ V_{j, i-1}\,.$
 
 Closed-form solutions to initial-boundary value problem for time-in\-ho\-mo\-geneous diffusions can be obtained only in a few cases. Besides, in our case solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
-Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.
+Therefore, under the likelihood-based inferential paradigma, many techniques have been devised to obtain approximate maximum likelihood estimates for the unknown parameters of continuous-time SDE models with discrete observations. 
+ {\color{red} Rewrite: Parametric estimation problems for diffusion processes sampled at discrete times are presented in \autocite[Chapter 3]{iacus1}, and a survey of estimation methods for the parameter vector of the general one-dimensional, time-homogeneous SDE from a single sample of observations at discrete times is presented in \autocite{hurn}.}
 
 \subsection{Approximate Likelihood}
 
@@ -377,69 +381,175 @@ Gaussian approximations to the transition densities of nonlinear time-in\-ho\-mo
 
 Therefore, we propose to use a surrogate transition density for $V$ other than Gaussian. The moments of the SDE model (\ref{VtSDE}) are then matched to the moments of the surrogate density. 
 
-Using It\^o's lemma on , we arrive at the following iterative ODEs for the state dependent diffusion formulation (\ref{VtSDE})
+From (\ref{eq:meanX}), we have $m_1(t) \equiv \mathbb{E} V_t = e^{- \int_{t_{j,i-1}}^t \theta_s ds} \,\mathbb{E} V_{t_{j,i-1}}$, for any $t\in [t_{j,i-1}, t_{j, i})$, $j = 1, \ldots, M$ and $i = 1, \ldots, N$ .
+
+For $m \geq 2$, using It\^o's lemma on $g(V_t) = V_t^m$, we obtain
+% arrive at the following iterative ODEs for the state dependent diffusion formulation (\ref{VtSDE})
+\begin{align}
+d(V_t^m) & = \left( - m \theta_t V_t^m + \frac{1}{2} m (m -1) V_t^{m -2} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) \right) dt  \nonumber \\
+& + m V_t^{m-1} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) dW_t \,, \nonumber
+\end{align}
+from which we derive
 \begin{equation}
-\frac{d \mathbb{E}[ V^k_t]}{dt} = - k \theta_t \mathbb{E}[ V^k_t] + \frac{k(k-1)}{2} \mathbb{E}[ V^{k-2}_t  b(V^k_t;\theta_t, \alpha)]
+\frac{d \mathbb{E}[ V^m_t]}{dt} = - m \theta_t \mathbb{E}[ V^m_t] + m (m-1) \alpha \theta_0  \mathbb{E}[ - V_t^m + (1 - 2 p_t) V_t^{m-1} + p_t (1 -p_t) V_t^{m-2} ] \,.
 \end{equation}
 
-For $t\in [t_{n-1}, t]$, the first two moments are given by
-\begin{align}
-\frac{d m_1 (t)}{dt} &= - m_1(t)\theta_t   \nonumber \\
-\frac{d m_2 (t)}{dt} &=  -2 m_2(t)\theta_t(1+\alpha) + 2\alpha\theta_t m_1(t)(1-2p_t)  \nonumber \\
-&\quad + 2 \alpha\theta_t p_t (1-p_t) \,,
-\end{align}
-with initial conditions $m_1(t_{n-1})= v_{n-1}$ and $m_2(t_{n-1})= v_{n-1}^2 \,.$
+For any $t\in [t_{j,i-1}, t_{j, i})$, the first two moments of $V$, $m_1(t)$ and $m_2(t) \equiv \mathbb{E}[V_t^2]$, can be computed by solving the following system
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    \frac{d m_1 (t)}{dt} \!\!\!&=  - m_1(t)\theta_t   \\
+   \frac{d m_2 (t)}{dt}  \!\!\!&=  -2 (\theta_t +\alpha \theta_0) m_2(t) + 2 \alpha\theta_0 (1-2p_t)  m_1(t) + 2 \alpha\theta_0 p_t (1-p_t) 
+ \end{array}\right.  \label{Vtmom}
+\end{equation}
+with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, i-1}^2 \,.$
 
-And for the state independent diffusion formulation, similarly, we  obtain a system of ODEs to determine the centered moments of the Lamperti transformed process $V_t$. Due to the non-linearity in the drift, we can only approximate the centered moments by the following ODEs,
-\begin{align}
-\frac{d m_1 (t)}{dt} &= - m_1(t)\theta_t (1-\alpha) - \theta (1-2 p_t) \nonumber \\
-\frac{d var(t)}{dt} &=  2 var(t) \theta_t (2p_t - 1 ) \tan(m_1 (t)) \sec(m_1 (t))   \nonumber \\
-& \quad + \theta_t (\alpha - 1) \sec^2(m_1 (t))  + 2 \theta_t \alpha \,.
-\end{align}
-
-A suitable candidate for a proxy transition density is a Beta probability distribution as it is compactly supported and can morph into symmetric and asymmetric shapes. {\color{red} Move this sentence to next section.}
 
 \subsubsection*{ Moment Matching}
-To approximate the transition densities of  the process $V_t$ by a Beta distribution, we match its moments with the shape parameters $\xi_1, \xi_2$ of a Beta proxy density on $[-1,1]$. The any moment of the process $V_t$ is  given by solving the corresponding ODE system  for the $k^{th}$  moment,
+A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. 
+
+To approximate the transition densities of  the process $V$ using a Beta distribution, we equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$ . 
 
 The shape parameters are given by
 \begin{equation}
-\xi_1 = - \frac{(1+\mu_t )(\mu_t^2 + \sigma_t^2 -1)}{2 \sigma_t^2}\,, \quad \xi_2=  \frac{(\mu_t-1 )(\mu_t^2 + \sigma_t^2 -1)}{2 \sigma_t^2} \,, \label{param_transformed_beta}
+\xi_1 = - \frac{(\mu_t + 1 - \epsilon)(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2}\,, \quad \xi_2=  \frac{(\mu_t-1 + \epsilon )(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2} \,, \label{param_transformed_beta}
 \end{equation}
-where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$
+where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$ \\
+
+The approximate log-likelihood $\tilde{\ell}(\cdot ; v^{V, N+1})$ of the observed sample $v^{V, N+1}$ can be expressed as 
+\begin{equation}
+ \tilde{\ell} (\bm{\theta}; v^{M,N +1}) = \sum_{j=1}^M \sum_{i=1}^N \log  \left\{ \frac{1}{2(1 - \epsilon)} \frac{1}{B(\xi_1, \xi_2)} \Big( \frac{z_{j,i} + 1 - \epsilon}{2(1 - \epsilon)} \Big)^{\xi_1 -1}  \Big( \frac{1 - \epsilon - z_{j,i}}{2(1 - \epsilon)} \Big)^{\xi_2 -1} \right\} \,,
+\label{loglikelihoodV}
+\end{equation}
+where the shape parameters $\xi_1$ and $\xi_2$, according to (\ref{param_transformed_beta}), depend on the quantities $\mu(t_{j,i};\bm{\theta} )$ and $\sigma^2(t_{j,i};\bm{\theta} )$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). \\
+
+The transition density of the process $Z$, which has been defined through the Lamperti transformation (\ref{eq:LampZ}) of $V$, can be conveniently approximated by a Gaussian surrogate density. 
+
+The drift coefficient $a(Z_t; p_t, \dot{p}_t, \bm{\theta}) $ of the process $Z$ that satisfies (\ref{eq:stindepSDE2}) is nonlinear. After linearizing the drift around the mean of $Z$, $\mu_Z(t) \equiv \mathbb{E}Z_t$,  we obtain the following system of ODEs to compute, for any $t\in [t_{j,i-1}, t_{j, i})$, the approximations of the first two central moments of $Z$, say  $\tilde{\mu}_Z(t) \approx \mathbb{E}Z_t$ and $\tilde{v}_Z(t) \approx \text{Var} Z_t$ :\\
+\begin{equation}
+  \left\{
+  \begin{array}{@{}rl@{}}
+    \frac{d \tilde{\mu}_Z (t)}{dt} \!\!\!&=  a\big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big)   \\
+    \frac{d \tilde{v}_Z (t)}{dt}  \!\!\!&= 2  a^{\prime} \big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big) \tilde{v}_Z (t) + 1
+ \end{array}\right.  \label{Ztmom}
+\end{equation}
+with initial conditions $\tilde{\mu}_Z(t_{j,i-1})= z_{j, i-1}$ and $\tilde{v}_Z(t_{j,i-1})= 0 \,,$ and where 
+\begin{equation*}
+a^{\prime} \big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big) =    \frac{  (\alpha \theta_0 - \theta_t)  - \cos(\sqrt{2 \alpha \theta_0 } Z_t) [ \theta_t (1 - 2 p_t) - 2  \dot{p}_t ] }{\sin^2{(\sqrt{2 \alpha \theta_0} Z_t)}} \,.
+\end{equation*}
+
+The approximate log-likelihood $\tilde{\ell}(\cdot ; z^{V, N+1})$ of the observed sample $z^{V, N+1}$ is given by
+\begin{equation}
+\tilde{\ell} (\bm{\theta}; z^{M,N +1}) = \sum_{j=1}^M \sum_{i=1}^N \log \left\{ \frac{1}{\sqrt{2 \pi \tilde{v}_Z(t_{j,i}; \bm{\theta})}} \exp \Bigg( -\frac{(z_{j,i} - \tilde{\mu}_Z(t_{j,i};\bm{\theta} ))^2}{2 \tilde{v}_Z(t_{j,i}; \bm{\theta})} \Bigg) \right\}   \,,   \label{loglikelihoodZ}
+\end{equation}
+where $\tilde{\mu}_Z(t_{j,i};\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i};\bm{\theta} )$ are computed solving numerically the initial-value problem (\ref{Ztmom}). 
 
 \subsection{Optimization} \label{opt_sec}
-{\color{red} Rewrite the discussion to obtain fast initial estimate for the two unknow parameters.}
 
-To initialize the optimization process for the likelihood function of the process $V$, we solve the following least-squares problem which gives us first estimates of the mean reversion parameter $\theta_0$: {\color{red} Add explanation regarding the motivation for this objective function.}
+\subsubsection{Initial guess}
 
+To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use \textbf{Lease Square Minimization} and \textbf{Quadratic Variation} over the data to find an initial guess, and to tune the hyper-parameter $\epsilon\in(0,\frac{1}{2})$.
+
+\begin{itemize}
+
+\item \textbf{Least Square Minimization:} We consider a set of transitions $\{\Delta V_i\}_{i}$ with $\Delta V_i=V_{i+1}-V_i$ and $\Delta t=t_{i+1}-t_i$. $(V_{i+1}|V_i)$ is a random variable which conditional mean can be approximated by the solution of the system
+\begin{equation*}
+\begin{cases}
+\dif \E\left[V\right]&=-\theta_t\E\left[V\right]\dif t\\
+\E\left[V(t_i)\right]&=V_i,
+\end{cases}
+\end{equation*}
+evaluated in $t_{i+1}$ (i.e., $\E\left[V(t_{i+1})\right]$). Then, the random variable $(V_{i+1}-\E\left[V(t_{i+1})\right])$ has approximately zero mean. If we assume that $\theta_t=c\in\R^+$ for all $t\in[t_i,t_{i+1}]$, then $\E\left[V(t_{i+1})\right]=V_ie^{-c\Delta t}$. If we have a total of $n$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
 \begin{equation}
-\theta_0\approx\arg\min_{\theta} \sum\limits_{j}^M \sum\limits_i^N \left( v_{i+1,j}  - v_{i,j}- \left( - \theta_t v_{i,j}\right) \left(t_{i+1,j} - t_{i,j} \right)  \right)^2,
-\label{inital_theta}
+c^*\approx\arg\min_{c\geq0}\left[\sum_{i=1}^n\left(V_{i+1}-\E\left[V(t_{i+1})\right]\right)^2\right]=\arg\min_{c\geq0}\left[\sum_{i=1}^n\left(V_{i+1}-V_ie^{-c\Delta t}\right)^2\right].
+\label{Eq-1}
 \end{equation}
- 
- where $v_{i,j}=x_{i,j}-p_{i,j}$,  $x_{i,j}$ is historical wind power production and $p_{i,j}$ is the wind power forecast.
- 
- By assuming ergodicity {\color{red} not ergodicity, instead simply for the \textbf{quadratic variation formula}.}, we can obtain a first estimate on the product of the parameters as follows,
- 
+As Equation (\ref{Eq-1}) is convex in $c$ (composition of convex is convex), it is enough to verify the first order optimality conditions.
+\begin{equation*}
+\begin{split}
+\frac{\partial f}{\partial c}&=\sum_{i=1}^n2(-V_i)(-\Delta t)(V_{i+1}-V_i(1-\theta_0\Delta t))\\
+&=\sum_{i=1}^n2V_i\Delta t(V_{i+1}-V_i(1-c\Delta t))\\
+&=\sum_{i=1}^n2V_{i+1}V_i\Delta t-2V_i^2\Delta t+2V_i^2\Delta t^2c.
+\end{split}
+\end{equation*}
+Then, $c^{**}$ satisfies
 \begin{equation}
-\theta_0 \alpha \approx \frac{1}{2M\Delta t} \sum\limits_j^M \frac{ \sum\limits_i^N (x_{i+1,j}  - x_{i,j})^2}{ \sum\limits_i^N x_{i,j}(1-x_{i,j}) } \,.
+c^{**}\approx\frac{\sum_{i=1}^nV_i(V_i-V_{i+1})}{\Delta t\cdot\sum_{i=1}^n(V_i)^2}\quad\text{and}\quad c^*=\max\{c^{**},0\}.
+\label{Eq-4}
+\end{equation}
+Notice that $c^{**}$ has dimension $\mathbf{time}^{-1}$.
+
+\item \textbf{Quadratic Variation:} We approximate the SDE by its E-M scheme. In particular, we approximate the It\^o quadratic variation with the discrete one:
+\begin{itemize}
+
+\item It\^o process quadratic variation: $[V]_t=\int_0^t\sigma_s^2\dif s$.
+\item Discrete process quadratic variation: $[V]_t=\sum_{0<s\leq t}(\Delta V_s)^2$.
+
+\end{itemize}
+
+Then, considering $\Delta t$ the time between measurements, we approximate:
+\begin{equation}
+\theta_0^*\alpha^*\approx\frac{\sum_{i=1}^n(\Delta V_i)^2}{2\Delta t\sum_{i=1}^n(V_i+p_i)(1-V_i-p_i)}.
+\label{Eq-2}
 \end{equation}
 
-Solving for $\alpha$, we have both first estimates and we can also estimate $\delta$ solving the problem
+\end{itemize}
 
+In section (\ref{Sec: Physical_Constraints}) we defined the parameter $\epsilon$ which has as only condition $0<\epsilon<\frac{1}{2}$. Even when it would be reasonable to choose an arbitrary small $\epsilon>0$, we aim to approximate it using the LSM estimator.\\
 
+Fixed $\epsilon$, we call $\mathcal{V}=\{\Delta V_i^\epsilon\}_{i=1}^n$ to the set of $n$ error transitions where for each measurement $X_i$, we have that $V_i=X_i-p_i^\epsilon$. $\mathcal{P}=\{p_i^\epsilon\}_{i=1}^n$ is the corresponding set of forecasts.\\
+If we also fix $\theta_0$ and $\alpha$, we can define the set of indexes $\mathbf{I}=\{i\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\theta_0\}$ and $\mathbf{J}=\left\{j\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\frac{\theta_0\alpha}{\epsilon}\right\}$. From the definition of $\theta_t$, we have that for $\epsilon<<1$, and $p_t=\epsilon$ or $p_t=1-\epsilon$, the approximation $\theta_t\approx\frac{\theta_0\alpha}{\epsilon}$ holds. Then, for $\epsilon$ small enough, $\mathbf{J}$ can be approximated by $$\mathbf{J}\approx\tilde{\mathbf{J}}=\{j\in\{1,\dots,n\}:p_j^\epsilon\in\{\epsilon,1-\epsilon\}\}.$$
+Now, coming back to the definition of $\theta_t$, we have that it is more likely that $\theta_t=\theta_0$ if $p_t^\epsilon\approx\frac{1}{2}$. Then, we can approximate $\mathbf{I}$ by $$\mathbf{I}\approx\tilde{\mathbf{I}}=\left\{i\in\{1,\dots,n\}:p_i\in(\gamma,1-\gamma)\right\},\ \gamma\approx\frac{1}{2},\ \gamma<\frac{1}{2}.$$
+We do not see signification differences in the LSM estimator for all $\gamma\in(0.1,0.3)$. If $\gamma>0.3$, the reduction in the number of samples makes variations in the LSM estimator. As we have an approximated value for $\theta_0\alpha$, if we can estimate $\frac{\theta_0\alpha}{\epsilon}$, then we can estimate $\epsilon$. We showed that for $\epsilon<<1$, the LSM estimation using indexes from $\tilde{\mathbf{J}}$ is an estimator for $\frac{\theta_0\alpha}{\epsilon}$.
+
+\subsubsection{Negative Log-Likelihood Minimization in $V$ Space} \label{Sec:MinLH}
+
+To find the optimal parameters, we minimize the negative log-likelihood using the derivative-free function \textit{fminsearch} from MATLAB R2019b over the parameters $(\theta_0,\alpha)$. At each step of the iteration,  we:
+\begin{itemize}
+
+\item Use the training dataset to find the SDE first and second moments.
+\item Match the proxy distribution moments with the SDE moments.
+\item Evaluate the negative log-likelihood using the training dataset.
+
+\end{itemize}
+
+\subsubsection{Negative Log-Likelihood Minimization in $Z$ Space} \label{Sec:MinLHL}
+
+Let $\{\Delta V_i\}_{i=1}^n$ be the set of all error transitions, and $\psi(\theta_0,\alpha,\Delta V)$ the Lamperti transform. Notice that the Lamperti transitions $\{\Delta Z_i\}_{i=1}^n$ depend on $(\theta_0,\alpha)$ because $$\{\Delta Z_i\}_{i=1}^n=\psi(\theta_0,\alpha,\{\Delta V_i\}_{i=1}^n).$$
+Then, if we compute $$\max_{(\theta_0,\alpha)}\mathbf{L}(\theta_0,\alpha,\{\Delta Z_i\}_{i=1}^n),$$
+we are not computing a MLE in the classical sense, as the data is changing with the parameters. However, we can try to find a fixed point ${\color{blue}(\theta_0^*,\alpha^*)}$ such that
 \begin{equation}
+{\color{blue}(\theta_0^*,\alpha^*)}=\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{blue}\theta_0^*},{\color{blue}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).
+\label{FP}
+\end{equation}
+In this point, the likelihood has a maximum for the data set corresponding to that point.
+
+We are interested in finding the solution of (\ref{FP}). We have that, if $(\theta_0^*,\alpha^*)$ is a solution of (\ref{FP}), then
+\begin{equation*}
+(\theta_0^*,\alpha^*)-\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{black}\theta_0^*},{\color{black}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right)=0.
+\end{equation*}
+Given a pair $(\theta_0^{*},\alpha^{*})$, we call $(\theta_0^{**},\alpha^{**})$ to the solution of
+\begin{equation*}
+\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{black}\theta_0^*},{\color{black}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).
+\end{equation*}
+For each $(\theta_0^{*},\alpha^{*})$, we define the relative error function
+\begin{equation*}
+\Psi(\theta_0^{*},\alpha^{*})=\frac{|\theta_0^{*}-\theta_0^{**}|}{|\theta_0^{*}|}+\frac{|\alpha^{*}-\alpha^{**}|}{|\alpha^{*}|}
+\end{equation*}
+and claim that $(\theta_0^*,\alpha^*)$ is a fixed point iff $\Psi(\theta_0^*,\alpha^*)=0$.
+
+\subsubsection{Additional Parameter $\delta$}
+
+{\color{red}[I am not sure if we should introduce this parameter here, of in some previous section].} We observe that for each day, the error at time $t=0$ is not zero. However, by construction of the forecast, we may assume that for some time in the past $t_\delta<0$, the error $V_{t_\delta}=0$.\\
+\quad\\
+We extrapolate linearly $p(t)$ considering the truncation at $\epsilon$, so we can evaluate $p(t_{-\delta})$, and assume that $V(t_{-\delta})=0$. Then, for each day $j$, we have an initial transition $(V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta)$. We assume again that it is Beta and apply the same moment matching as for the rest of transitions. With our initial guess for $\bm{\theta}$, we can construct our initial guess for $\delta$ solving the problem
+
+\begin{equation*}
 \delta\approx\arg\min_{\delta}\mathcal{L}_{\delta}(\bm{\theta},\delta; V^{M,1}) = \arg\min_{\delta}\prod\limits_{j=1}^M \rho_0 (V_{j, t_0}|V_{j, t_{-\delta}};\bm{\theta},\delta) \,.
 \label{likelihood_delta}
-\end{equation}
+\end{equation*}
+To solve this minimization problem, we repeat the steps described in section (\ref{Sec:MinLH}), with the additional initial step of creating the linear extrapolation.
 
-With our estimations of $\bm{\theta}$, we can start the inference processes as follows:
-\begin{enumerate}
-\item[Step 1.]  initialize;
-\item[Step 2.]  optimize the log-likelihood function using  Nelder-Mead optimization algorithm on a mini-batch sampled with replacement;
-\item[Step 3.] check if  accuracy threshold is reached. Else, re-initialize the optimization with the most recent result on a larger mini-batch.
-\end{enumerate}
 %---END SECTION 4---
 
 %---BEGIN SECTION 5---
@@ -486,11 +596,21 @@ We compare two candidate models to find the best-fit that maximizes the retained
 
 \begin{table}[H]
 \centering
-\begin{tabular}{cccc}
+\begin{tabular}{cccccc}
 \toprule
-Model   &  parameters $(\theta_0, \alpha,\delta)$   & AIC & BIC \\ \midrule
-Model 1 &  $(\add,\add) $    &  \add   &  \add   \\
-Model 2 &   $(1.2,0.1,0.6)$   &  \add   &   \add    \\ 
+Model & Forecast Provider & Method & Product $\theta_0\alpha$   & AIC & BIC \\ \midrule
+Model 1 & Provider A & Gaussian Proxy & 0.105 & -58226 & -58211 \\
+ &  & Shoji-Ozaki & 0.104 & -58226 & -58211 \\
+ &  & Beta Proxy & 0.104 & -58286 & -58271 \\
+ & Provider B & Gaussian Proxy & 0.105 & -58226   & -58211 \\
+ &  & Shoji-Ozaki & 0.104 & -58226 & -58211 \\
+ &  & Beta Proxy & 0.104 & -58288 & -58273 \\
+ & Provider C & Gaussian Proxy & 0.105 & -58226 & -58211 \\
+ &  & Shoji-Ozaki & 0.104 & -58226 & -58211 \\
+ &  & Beta Proxy & 0.104 & -58286 & -58271 \\
+Model 2 & Provider A & Beta Proxy & 0.097 & -73700   & -73685 \\ 
+ & Provider B & Beta Proxy & 0.098 &  -73502 & -73487 \\ 
+ & Provider C & Beta Proxy & 0.108 & -72518 & -72503 \\ 
 \bottomrule
 \end{tabular}
 \caption{We compare the different models based on information criterion. \add }
@@ -503,30 +623,18 @@ Model 2 &   $(1.2,0.1,0.6)$   &  \add   &   \add    \\
 We compare forecasts from two different companies for the same period.
 \begin{table}[H]
 \centering
-\begin{tabular}{cccc}
+\begin{tabular}{ccc}
 \toprule
-Forecast Provider & parameters $(\theta_0, \alpha,\delta)$ & AIC & BIC \\ \midrule
-Provider A  &  $(\add,\add)$      &  \add   & \add    \\
-Provider B  & $(\add,\add) $  &  \add   &   \add  \\ 
+Forecast Provider & Parameters $(\theta_0, \alpha)$ & Product $\theta_0\alpha$ \\ \midrule
+Provider A  & $(1.930,0.050)$  &  0.097 \\
+Provider B  & $(1.420,0.069) $  &  0.098 \\ 
+Provider C  & $(1.380,0.078) $  &  0.108 \\ 
 \bottomrule
 \end{tabular}
-\caption{\add}
+\caption{Optimal parameters for different providers using Model 2 with Beta proxies.}
 \label{tab:forcast_comparison}
 \end{table}
-In Figure (\add)-(\add), we see that forecast provider A is of better quality than provider B. This is confirmed by both the AIC and BIC information criteria.
 
- \begin{table}[H]
- \centering
- \begin{tabular}{cccc}
- \toprule
- Model & parameters $(\theta_0, \alpha)$  \\
- \midrule
- \begin{tabular}[c]{@{}c@{}}low frequency data\\ (hourly)\end{tabular}               &  $(\add,\add) \pm (\add,\add)$   \\ 
- \begin{tabular}[c]{@{}c@{}}high frequency data\\  (every 10 minutes)\end{tabular} &  $(\add,\add) \pm (\add,\add)$      \\ \bottomrule
- \end{tabular}
- \caption{ \add confidence interval obtained using bootstrap}
- \label{tab:freq_comparison}
- \end{table}
 %---END SECTION 6---
 
 %---BEGIN SECTION 7---
@@ -536,38 +644,52 @@ In Figure (\add)-(\add), we see that forecast provider A is of better quality th
 
 Following the instruction for the initial guesses from section $\ref{opt_sec}$, we get the initial guesses $(\theta_0,\alpha,\delta)\approx(1.2,0.1,0.6)$.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.45\textwidth]{plots/initial_guess/initial_theta_1.eps}\quad\includegraphics[width=0.42\textwidth]{plots/initial_guess/initial_theta_2.eps}
-\caption{Value function from ($\ref{inital_theta}$) as a function of different $\theta_0$ values. We can observe that the function if flat for a wide range.}
-\end{figure}
-
-\subsection{Negative Log-Lihelihood}
+\subsection{Negative Log-Likelihood in $V$ Space}
 
 We plot the Negative Log-Likelihood as a function of the parameters. The plots can be seen in Figure (\ref{fig:neg-LL}). We used all the training data (127 days of data) to construct and optimize the Negative Log-Likelihood.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood.eps}\quad\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_refined.eps}
-\includegraphics[width=0.6\textwidth]{plots/likelihood/Log-Likelihood_more_refined.eps}
-\caption{Negative Log-Likelihood for different domains.}
+\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.jpg}
+\caption{Negative Log-Likelihood {\color{red}[Low quality picture]}.}
 \label{fig:neg-LL}
 \end{figure}
+On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-likelihood. The thick violet band is the region where the function reaches its minimums.\\
+We can see the \textbf{initial guess} point, the result of three different \textbf{optimization tools} from MATLAB, and the minimum point that we found from the \textbf{evaluations} that generate the plot.
+\begin{table}[]
+\centering
+\begin{tabular}{lccc}
+\toprule
+ & $\theta_0$ & $\alpha$ & $\theta_0\alpha$\\
+ \midrule
+ Initial guess & 1.629 & 0.060 & 0.098 \\
+ fminsearch & 1.135 & 0.073 & 0.083 \\
+ fmincon & 1.366 & 0.061 & 0.083 \\
+ fminunc & 1.628 & 0.051 & 0.083 \\
+ evaluations & 1.180 & 0.070 & 0.083 \\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Negative Log-Likelihood in $Z$ Space}
+
+We plot the Negative Log-Likelihood as a function of the parameters. The plots can be seen in Figure (\ref{fig:neg-LL}). We used all the training data (127 days of data) to construct and optimize the Negative Log-Likelihood.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood.eps}
+\caption{Negative Log-Likelihood {\color{red}[Low quality picture]}.}
+\label{fig:neg-LLL}
+\end{figure}
+In Figure (\ref{fig:neg-LLL}), we can see the numerical level sets of the error function $\Psi$.\\
+The center deep green band is the set $\mathbb{A}$ such that $\Psi(\mathbb{A})\in[0.05,0.1]$. We do not achieve relative error smaller than 0.05.\\
+We observe a particular behavior over the curves $\theta_0\alpha=k\in\R^+$. However, it can be a numeric effect.\\
+We also observe that: $$\mathbb{A}\cap\{(\theta_0,\alpha):\theta_0\alpha=0.083\}\neq\emptyset.$$
+On the right, we observe some possible candidates for fixed points, that also satisfies the empirical condition $\theta_0\alpha=0.038$ from the error SDE.\\
+We choose $(\theta_0,\alpha)=(2.200,0.038)$.\\
+We interpret the set $\mathbb{A}$ as "the points where the transformation of the data, does not interfere with MLE".
 
 \subsection{Main guesses}
-
-We were able to obtain the following for 
-\begin{table}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Formulation   &  parameters $(\theta_0, \alpha,\delta)$    \\ \hline
-Without Lamperti transform &   $(1.2,0.1,0.6) \pm (\add , \add) $   \\ \hline
-With Lamperti transform &   $(12,0.29) \pm (\add , \add)  $   \\ \hline
-\end{tabular}
-\caption{We compare the parameters obtained in both the original and Lamperti space. Parameters have been obtained based on \add data points from the Uruguayan pertaining to the year 2019\add .}
-\label{tab:model_comparison_2}
-\end{table}
 
 {\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models (if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.)}
 
@@ -579,28 +701,33 @@ five possible wind power production paths for each model.\\
 In Figures ()-(), we show point-wise empirical confidence bands for the different models.
 
 \begin{figure}[H]
-  \includegraphics[width=56mm,scale=1]{plots/alpha_conv_beta.png}
-  \includegraphics[width=56mm,scale=1]{plots/theta_conv_beta.png}
-  \caption{We show self-convergence of our algorithm applied to model $2$. We conlcude that the rate  matches that of of Monte Carlo. Data is from Uruguay pertaining to year 2019.}
-\end{figure}
-
-\begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/1.eps}
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/2.eps}\\
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/3.eps}
-\includegraphics[width=0.45\textwidth]{plots/paths_testing_days/4.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/2.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/4.eps}
 \caption{We simulate following model 2  five possible future wind power production paths using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Forecast is from Uruguay pertaining to  year 2019.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/1.eps}
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/2.eps}\\
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/3.eps}
-\includegraphics[width=0.45\textwidth]{plots/bands_testing_days/4.eps}
-\caption{{\color{red}Pending add legend and choose better colors.}We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/2.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/4.eps}
+\caption{We obtain confidence intervals following model 2  for future wind power production using the obtained optimal parameters $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Actual production plotted in retrospect. Forecast and data is from Uruguay pertaining to  year 2019.}
 \end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.48\textwidth]{../../MATLAB_Files/Results/histograms/classic/Optimal.eps}
+\includegraphics[width=0.48\textwidth]{../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal.eps}
+\end{figure}
+
+We can see two histograms for the error transitions. On the left, using $(\theta_0^E,\alpha^E)$, while on the right, using $(\theta_0^L,\alpha^L)$.
+
 %---END SECTION 7---
 
 %---BEGIN SECTION 8---

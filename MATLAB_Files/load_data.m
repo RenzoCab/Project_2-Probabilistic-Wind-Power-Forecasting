@@ -1,10 +1,10 @@
-function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data()
+function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)
     
-    % 03/02/2020 12:17
-
-    load('../../Python/Represas_Data_2/Wind_Data/MTLOG_0100_and_Real_24h_Training_Data.mat');
-    load('../../Python/Represas_Data_2/Wind_Data/MTLOG_0100_and_Real_24h_Testing_Data.mat');
-    load('../../Python/Represas_Data_2/Wind_Data/MTLOG_0100_and_Real_24h_Complete_Data.mat');
+    % 19/04/2020 15:45
+    % dataSet can be AWSTP, MTLOG or UTEP5.
+    load(['../../Python/Represas_Data_2/Wind_Data/',dataSet,'_0100_and_Real_24h_Training_Data.mat']);
+    load(['../../Python/Represas_Data_2/Wind_Data/',dataSet,'_0100_and_Real_24h_Testing_Data.mat']);
+    load(['../../Python/Represas_Data_2/Wind_Data/',dataSet,'_0100_and_Real_24h_Complete_Data.mat']);
 
 %     Date              = Table_Training_Complete.Date;
 %     Time              = Table_Training_Complete.Time;

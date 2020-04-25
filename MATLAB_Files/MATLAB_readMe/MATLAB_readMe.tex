@@ -218,7 +218,7 @@ $\mu(t)$ and $\sigma^2(t)$ refers to the mean and variance of $V_{t_n}|V_{t_{n-1
 
 
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Density next measurement (2/2):}
+\begin{frame}\frametitle{Density next measurement (2/2):}\label{Tr2}
 
 For each measurement $V_{t_{n-1}}$, we can find the analytical moments for the SDE at time $t_n$ solving the ODEs from slides {\color{blue}\ref{m1}} and {\color{blue}\ref{m2}}. Then, we can find the parameters $\xi_1$ and $\xi_2$ such that both the SDE and the PDF of $V_{t_n}|V_{t_{n-1}}$ have the same first and second moments at time $t_n$.
 \begin{itemize}
@@ -436,6 +436,7 @@ with dimensions $3\times(2Z(N-1))$. As an example: If we have 145 measurements (
 We call it \textbf{fixed} because, at some point, we were going to optimize the Likelihood taking random batches and increasing the size at each iteration. This idea was discarded since we have computational power enough to use all data at once.
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Complete batch:}
@@ -466,6 +467,7 @@ $\theta(t_{n-1})$      & $\theta(t_{n})$      & $\theta(t_{n-1})$      & $\theta
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\setbeamercolor{background canvas}{bg=red!20}
 %\begin{frame}\frametitle{Initial guess for $\theta_0\cdot\alpha$:}
@@ -521,6 +523,7 @@ $\theta(t_{n-1})$      & $\theta(t_{n})$      & $\theta(t_{n-1})$      & $\theta
 %
 %\end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!20}
 \begin{frame}\frametitle{Initial guess for $\theta_0\cdot\alpha$: Quadratic variation}
@@ -543,6 +546,7 @@ X_t:\theta_0^*\alpha^*\approx \frac{1}{2M\Delta t} \sum\limits_{j=1}^M \frac{ \s
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Initial guess for $\theta_0$ (1/2): Mean least squares} \label{VF}
@@ -569,6 +573,7 @@ As problem (\ref{Eq-1}) is convex, we can formulate the equivalent problem using
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Initial guess for $\theta_0$ (2/2): Mean least squares}
@@ -588,6 +593,7 @@ To create this specific data sets, we use the functions \textbf{create\_samples\
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Initial guess for $\delta$:}
@@ -607,6 +613,7 @@ We use $\delta=\SI{5.5}{\hour}$.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Log-likelihood evaluation (1/2): CODE}
@@ -623,13 +630,14 @@ We use $\delta=\SI{5.5}{\hour}$.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Log-likelihood evaluation (2/2):}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.5\textwidth]{../Results/likelihood/normal/Log-Likelihood.eps}
+\includegraphics[width=0.5\textwidth]{../Results/likelihood/normal/Log-Likelihood.jpg}
 %\includegraphics[width=0.32\textwidth]{../Results/likelihood/normal/Log-Likelihood_refined.eps}
 %\includegraphics[width=0.32\textwidth]{../Results/likelihood/normal/Log-Likelihood_more_refined.eps}
 \caption{We use the code \textbf{plotLogLikelihood.m} to create this plots. We used about 18 thousand transitions, and we can also see the initial guess.}
@@ -637,6 +645,7 @@ We use $\delta=\SI{5.5}{\hour}$.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Summing-up:}
@@ -653,6 +662,7 @@ Finally, using the pair $(\hat{\theta}_0,\hat{\alpha})$, we can obtain $\hat{\et
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Values for the parameters:}
@@ -680,6 +690,7 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Paths and bands for optimal values (1/4):}
@@ -692,6 +703,7 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Paths and bands for optimal values (2/4):}
@@ -704,6 +716,7 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Paths and bands for optimal values (3/4):}
@@ -716,6 +729,7 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Paths and bands for optimal values (4/4):}
@@ -727,6 +741,7 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 \end{figure}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=green!20}
 \begin{frame}
@@ -735,6 +750,7 @@ Notice that $\hat{\delta}=\delta^*$. However, to obtain $\delta^*$ we had to rem
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!20}
 \begin{frame}\frametitle{Two candidates:}
@@ -767,6 +783,7 @@ For now, we will use the {\color{red}second candidate}. The problem with the {\c
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Lamperti SDE: {\color{blue} first candidate} (this slide may be deleted so soon...)}
@@ -784,9 +801,9 @@ Also, we have that (computed with Mathematica):
 b'(z)=\frac{\dif b}{\dif z}(z)=\frac{\alpha\theta_0-\theta_t+(2\dot{p}_t+(2p_t-1)\theta_t)\sin(z\sqrt{2\alpha\theta_0}))}{\cos^2(z\sqrt{2\alpha\theta_0})}.
 \end{equation*}}
 
-
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Lamperti SDE: {\color{red} second candidate}}
@@ -806,6 +823,7 @@ b'(z)=\frac{\dif b}{\dif z}(z)=-\frac{\alpha\theta_0-\theta_t+\cos(\sqrt{2\alpha
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE first Lamperti moment (mean) (1/2):}
@@ -825,6 +843,7 @@ We solve numerically the ODE using Forward-Euler:
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE first Lamperti moment (mean) (2/2):}
@@ -841,6 +860,7 @@ We solve numerically the ODE using Forward-Euler:
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{SDE Lamperti variance (1/2):}
@@ -876,9 +896,10 @@ We solve numerically the ODE using Forward-Euler:
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Density next measurement:}
+\begin{frame}\frametitle{Density next measurement:}\label{lamp_LH}
 
 We want the next measurement $Z_{t_n}|Z_{t_{n-1}}$ to have a Gaussian with mean $\mu_Z$ and variance $\sigma_Z^2$ ($f_Z(z)=\mathcal{N}(\mu_Z,\sigma^2_Z)$).\\
 \quad\\
@@ -901,6 +922,7 @@ f_Z(z)=\frac{e^{-\frac{1}{2}\left(\frac{z-\mu_Z}{\sigma_Z}\right)^2}}{\sigma_Z\s
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercolor{background canvas}{bg=white!10}
 \begin{frame}\frametitle{Lamperti Log-likelihood evaluation: CODE}
@@ -917,6 +939,127 @@ f_Z(z)=\frac{e^{-\frac{1}{2}\left(\frac{z-\mu_Z}{\sigma_Z}\right)^2}}{\sigma_Z\s
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=green!20}
+\begin{frame}
+
+{\Huge Model 1}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Model 1 SDE:}
+
+Given the SDE
+\begin{equation*}
+\dif X_t=\underbrace{-\theta_0\left(X_t-p_t\right)}_{:=\mu_t}\dif t+\underbrace{\sqrt{2\theta_0\alpha X_t(1-X_t)}}_{:=\sigma_t}\dif W_t,
+\end{equation*}
+we want to approximate its moments. Trivially, we have an exact ODE for the first moment for $t\in[t_0,t_1]$:
+\begin{equation*}
+\begin{cases}
+\dif \E\left[X_t\right]=-\theta_0\left(\E\left[X_t\right]-p_t\right)\dif t\\
+\E\left[X_{t_0}\right]=x_{t_0}.
+\end{cases}
+\end{equation*}
+Now, we can define the process $f_t=f(X_t,t)=X^2_t$ and apply It\^o's lemma. We reach that
+\begin{equation*}
+\dif f_t=\left(\frac{\partial f}{\partial t}+\mu_t\frac{\partial f}{\partial x}+\frac{\sigma^2_t}{2}\frac{\partial^2f}{\partial x^2}\right)\dif t+\sigma_t\frac{\partial f}{\partial x}\dif W_t,
+\end{equation*}
+where $\frac{\partial f}{\partial x}=2x$, $\frac{\partial^2 f}{\partial x^2}=2$, and $\frac{\partial f}{\partial t}=0$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Model 1 SDE:}
+
+Doing SOME substitutions, we reach
+\begin{equation*}
+\dif f_t=2\theta_0\left(X_t(\alpha+p_t)-X^2_t(1+\alpha)\right)\dif t+\sigma_t\frac{\partial f}{\partial x}\dif W_t.
+\end{equation*}
+Now, if we apply the expected value operator $\E[\cdot]$, we get
+\begin{equation*}
+\dif\E\left[X^2_t\right]=2\theta_0\left(\E\left[X_t\right](\alpha+p_t)-\E\left[X^2_t\right](1+\alpha)\right)\dif t,
+\end{equation*}
+which is the second moment ODE with IV $\E\left[X^2_t\right]=x_{t_0}^2$ for $t\in[t_0,t_1]$. Recall that $\V\left[X_t\right]=\E\left[X_t^2\right]-\E\left[X_t\right]^2$. As we will assume Gaussian proxies, we will use the Likelihood described in Slide {\color{blue}\ref{lamp_LH}}.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Model 1 SDE:}
+
+The forward Euler schemes are:
+\begin{enumerate}
+
+\item $m_1(s_{n})=m_1(s_{n-1})-\theta_0(m_1(s_{n-1})-p_{s_{n-1}})\Delta s.$
+
+\item $m_2(s_{n})=m_2(s_{n-1})+2\theta_0\left(m_1(s_{n-1})(\alpha+p_{s_{n-1}})-m_2(s_{n-1})(1+\alpha)\right)\Delta s.$
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{|c|}
+\toprule
+{\tiny
+\lstinputlisting{../moment_1_M1.m}
+}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{|c|}
+\toprule
+{\tiny
+\lstinputlisting{../moment_2_M1.m}
+}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Model 1 SDE: Shoji-Ozaki method}
+{\footnotesize
+An extension of the method to Ozaki the more general case where the drift is allowed to depend on the time variable t, and also the diffusion coefficient can be varied is the method Shoji and Ozaki. Consider the stochastic differential equation:
+\begin{equation*}
+\dif X_t=f(t,X_t,\bm{\theta})\dif t+q(X_t,\bm{\theta})\dif W_t,\quad t\geq0,X_0=x_0,
+\end{equation*}
+the transition density for the Shoji-Ozaki method is Gaussian, we have that: $X_{t+\Delta t}|X_t=x\sim\mathcal{N}\left(A_{(t,x)}x,B^2_{(t,x)}\right)$, where:
+\begin{equation*}
+A_{(t,x)}=1+\frac{f(t,x)}{xL_t}\left(e^{L_t\Delta t}-1\right)+\frac{M_t}{xL^2_t}\left(e^{L_t\Delta t}-1-L_t\Delta t\right),
+\end{equation*}
+\begin{equation*}
+B_{(t,x)}=g(x)\sqrt{\frac{e^{2L_t\Delta t}-1}{2L_t}},
+\end{equation*}
+with:
+\begin{equation*}
+L_t=\partial_xf(t,x)\quad\text{and}\quad M_t=\frac{g^2(x)}{2}\partial_{xx}f(t,x)+\partial_tf(t,x).
+\end{equation*}}
+{\tiny
+\url{https://cran.r-project.org/web/packages/Sim.DiffProc/vignettes/fitsde.html}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Model 1 SDE: Beta as proxy}
+
+Following the same idea as in Slides (\ref{Tr}) and (\ref{Tr2}), but using $[a,b]=[0,1]$, we get the moments matching:
+\begin{itemize}
+\item $\xi_1=\frac{-\mu\sigma^2+\mu^2-\mu^3}{\sigma^2}$ all evaluated at time $t_n$ (verified in \textbf{Mathematica 11.0}\footnote{File: {\color{blue}Model1\_Beta.nb}.}).
+\item $\xi_2=\frac{(\mu-1)(\sigma^2-\mu+\mu^2)}{\sigma^2}$ all evaluated at time $t_n$ (verified in \textbf{Mathematica 11.0}).
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

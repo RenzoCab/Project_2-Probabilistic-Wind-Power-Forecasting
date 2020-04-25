@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[activeacute, english]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{algpseudocode}
+
+% \usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\usepackage[onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposición}
+\newenvironment{definition}[1][Definición]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Ejemplo]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Nota]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\negr}[1]{\textit{\textbf{#1}}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+
+\begin{document}
+\title{Notes and To-Do:}
+\maketitle
+
+\begin{itemize}
+
+\item Complete section 4.3.
+\item Optimize model 1.
+\item Try third transformation.
+\item Speed reversion parameter analysis.
+\item Threshold $\eta$.
+\item Optimize with $a=-1+\epsilon$ and $b=1-\epsilon$.
+\item Try to optimize using only data with few error, to check if we reduce the variance and the histograms matches better.
+\item Try to do a double optimization for Lamperti.
+
+\end{itemize}
+
+\subsubsection*{Meeting with Marco:}
+
+\begin{itemize}
+
+\item Algun intervalo se escapa? Si se escapa, podemos hacer Euler adaptativo.
+\item Intervalo de confianza puntual.
+\item Trabajar con el maximo y minimo de la trayectoria.
+\item La variabilidad no cambia en el tiempo. Es una limitacion de este modelo.
+\item Preguntar a Ahmed donde es importante $\theta_t<\infty$.
+
+\end{itemize}
+
+\end{document}

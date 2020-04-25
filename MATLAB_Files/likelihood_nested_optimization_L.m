@@ -1,4 +1,4 @@
-function [fval] = likelihood_nested_optimization_L(batch, x0, dt)
+function [x0,fval] = likelihood_nested_optimization_L(batch, x0, dt)
 
     disp('================================================');
     disp(['Initial values: Theta_0 = ',num2str(x0(1)),' and alpha = ',num2str(x0(2))]);

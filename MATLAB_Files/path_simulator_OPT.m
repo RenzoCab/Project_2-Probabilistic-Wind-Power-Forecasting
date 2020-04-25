@@ -2,14 +2,21 @@ close all;
 clear all;
 clc;
 
-epsilon                = 0.018;
-Table_Testing_Complete = load_data_eps_test(epsilon);
+% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
+dataSet = 'MTLOG';
+% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
+epsilon = 0.018;
+% dataKind can be classic or comparable.
+dataKind = 'comparable';
+Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
+whatToDo               = 'optimal_value'; 
+% whatToDo               = 'Optimal_Lamperti'; 
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 1;
+quantil  = 0;
 save     = 0;
-delta    = 22; % The time is delta*10 minutes.
+delta    = 21; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
 if quantil
@@ -18,8 +25,15 @@ else
     numPaths = 5;
 end
 
-theta_0 = 1.2656;
-alpha   = 0.07052;
+if  strcmp(whatToDo,'optimal_value')
+    theta_0 = 1.93;
+    alpha   = 0.05;
+elseif  strcmp(whatToDo,'Optimal_Lamperti')
+    theta_0 = 2.200;
+    alpha   = 0.038;
+else
+    error('Wrong whatToDo script!');
+end
 
 d  = Table_Testing_Complete.Date;
 p  = Table_Testing_Complete.Forecast;
@@ -102,7 +116,7 @@ for i = 1 : height(Table_Testing_Complete)
         date = d(i);
         title(date{1});
         if save == 1
-            saveas(gcf,[pwd '/Results/bands_testing_days/optimal_value/',num2str(i)],'epsc');
+            saveas(gcf,[pwd '/Results/bands_testing_days/',whatToDo,'/',num2str(i)],'epsc');
         end
         
     else
@@ -117,7 +131,7 @@ for i = 1 : height(Table_Testing_Complete)
         box;
         pause(0.1); box;
         if save == 1
-            saveas(gcf,[pwd '/Results/paths_testing_days/optimal_value/',num2str(i)],'epsc');
+            saveas(gcf,[pwd '/Results/paths_testing_days/',whatToDo,'/',num2str(i)],'epsc');
         end
         
     end
