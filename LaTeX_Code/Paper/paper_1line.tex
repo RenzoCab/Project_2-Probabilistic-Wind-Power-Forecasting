@@ -196,7 +196,7 @@ In this work, $(p_t)_{t \in [0,T]}$ is to be considered as a deterministic forec
 
 Our goal is to achieve a specification of the model (\ref{eq:main}) to follow closely the available normalized wind power forecasts while ensuring its unbiasedness with respect to the forecast. 
 
-\subsection{Physical Constraints}
+\subsection{Physical Constraints} \label{Physical_Constraints}
 
 Let $(p_t)_{t \in [0,T]}$ be the available prediction function for the normalized wind power, which is an input to this approach. To start with the model specification, first we introduce a time-dependent drift function that features the mean-reverting property as well as derivative tracking:
 \begin{equation}
@@ -313,18 +313,15 @@ Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends
 %\end{equation}
 %where $\xi$ is an arbitrary point of the state space of the process $V$. The choice of $\xi = \frac{1}{2} - p_t$, where $p_t$ is a known input, 
 \begin{align}
-Z_t = h(V_t, t)  & = \frac{1}{\sqrt{2 \alpha \theta_0 }} \int \frac{1}{\sqrt{(v + p_t)(1 - v - p_t)}} \,dv \Bigg{\vert}_{v = V_t}  \nonumber \\
-& = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t}) \label{eq:LampZ}
+Z_t = h(V_t, t)  & = \frac{1}{\sqrt{2 \alpha \theta_0 }} \int \frac{1}{\sqrt{(v + p_t)(1 - v - p_t)}} \,dv \Bigg{\vert}_{v = V_t}   = - \sqrt{ \frac{2}{ \alpha \theta_0 }} \arcsin (\sqrt{ 1 - V_t - p_t}) \label{eq:LampZ}
 \end{align}
 that, after applying It\^{o}'s formula on $h(V_t, t)$, leads to the following SDE with state independent unit diffusion term
 \begin{align}
-dZ_t = \Bigg[  & \frac{\dot{p}_t}{ \sqrt{2 \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}}  \nonumber \\ 
-& + \frac{- \theta_t V_t}{ \sqrt{2  \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \alpha \theta_0} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \Bigg] \,dt + dW_t \,. \label{eq:stindepSDE}
+dZ_t = \Bigg[  & \frac{\dot{p}_t}{ \sqrt{2 \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}}  + \frac{- \theta_t V_t}{ \sqrt{2  \alpha \theta_0 (V_t + p_t)(1 - V_t - p_t)}} - \frac{1}{4} \frac{\sqrt{2 \alpha \theta_0} \left( 1 - 2 (V_t + p_t)\right)}{\sqrt{(V_t + p_t)(1 - V_t - p_t)}}  \Bigg] \,dt + dW_t \,. \label{eq:stindepSDE}
 \end{align}
 After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \right) $ in (\ref{eq:stindepSDE}), we obtain that the  process $Z$ satisfies the SDE
 \begin{align}
-dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\sqrt{2 \alpha \theta_0} \cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)}  \nonumber \\
-&  - \frac{1}{4}  \frac{\sqrt{2 \alpha \theta_0} \left(1 - 2 \cos^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)} \Bigg] \,dt + dW_t \nonumber \\
+dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\sqrt{2 \alpha \theta_0} \cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)}   - \frac{1}{4}  \frac{\sqrt{2 \alpha \theta_0} \left(1 - 2 \cos^2 \Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big) \right) }{\cos\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)  \sin\Big(- \sqrt{ \frac{ \alpha \theta_0}{2} } Z_t \Big)} \Bigg] \,dt + dW_t \nonumber \\
 &  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \,dt + dW_t \,.  \label{eq:stindepSDE2}
 \end{align}
 
@@ -495,7 +492,7 @@ Then, considering $\Delta t$ the time between measurements, we approximate:
 
 \end{itemize}
 
-In section (\ref{Sec: Physical_Constraints}) we defined the parameter $\epsilon$ which has as only condition $0<\epsilon<\frac{1}{2}$. Even when it would be reasonable to choose an arbitrary small $\epsilon>0$, we aim to approximate it using the LSM estimator.\\
+In Subsection (\ref{Physical_Constraints}) we defined the parameter $\epsilon$ which has as only condition $0<\epsilon<\frac{1}{2}$. Even when it would be reasonable to choose an arbitrary small $\epsilon>0$, we aim to approximate it using the LSM estimator.\\
 
 Fixed $\epsilon$, we call $\mathcal{V}=\{\Delta V_i^\epsilon\}_{i=1}^n$ to the set of $n$ error transitions where for each measurement $X_i$, we have that $V_i=X_i-p_i^\epsilon$. $\mathcal{P}=\{p_i^\epsilon\}_{i=1}^n$ is the corresponding set of forecasts.\\
 If we also fix $\theta_0$ and $\alpha$, we can define the set of indexes $\mathbf{I}=\{i\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\theta_0\}$ and $\mathbf{J}=\left\{j\in\{1,\dots,n\}:\text{ the LSM estimation will estimate }\frac{\theta_0\alpha}{\epsilon}\right\}$. From the definition of $\theta_t$, we have that for $\epsilon<<1$, and $p_t=\epsilon$ or $p_t=1-\epsilon$, the approximation $\theta_t\approx\frac{\theta_0\alpha}{\epsilon}$ holds. Then, for $\epsilon$ small enough, $\mathbf{J}$ can be approximated by $$\mathbf{J}\approx\tilde{\mathbf{J}}=\{j\in\{1,\dots,n\}:p_j^\epsilon\in\{\epsilon,1-\epsilon\}\}.$$
