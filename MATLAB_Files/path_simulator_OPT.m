@@ -1,22 +1,23 @@
 close all;
+
 clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'MTLOG';
-% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon = 0.018;
+dataSet  = 'MTLOG';
+% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).
+epsilon  = 0.020;
 % dataKind can be classic or comparable.
 dataKind = 'comparable';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
-whatToDo               = 'optimal_value'; 
-% whatToDo               = 'Optimal_Lamperti'; 
+whatToDo = 'optimal_value'; 
+% whatToDo = 'Optimal_Lamperti'; 
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
 quantil  = 0;
-save     = 0;
-delta    = 21; % The time is delta*10 minutes.
+save     = 1;
+delta    = 130; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 
 if quantil

@@ -10,9 +10,9 @@ clc;
 % dataSet can be 1 (Gaussian Proxy), 2 (Shoji-Ozaki) or 3 (Beta Proxy).
 approx        = 3;
 % dataSet can be AWSTP, MTLOG or UTEP5.
-dataSet       = 'UTEP5';
-% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon       = 0.028;
+dataSet       = 'MTLOG';
+% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).
+epsilon       = 0.020;
 % dataKind can be classic or comparable.
 dataKind = 'comparable';
 [Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);

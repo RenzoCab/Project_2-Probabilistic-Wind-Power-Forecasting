@@ -3,12 +3,14 @@ clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet               = 'AWSTP';
-% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon               = 0.035;
+dataSet               = 'MTLOG';
+% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).
+epsilon               = 0.020;
 eta                   = 0.1;
 we_remove_bad_samples = 1;
-Ta_Tra_Comp           = load_data_eps(epsilon,dataSet);
+% dataKind can be classic or comparable.
+dataKind = 'comparable';
+Ta_Tra_Comp           = load_data_eps(epsilon,dataSet,dataKind);
 save_plots            = 0;
 
 Time     = Ta_Tra_Comp.Time;
@@ -101,27 +103,28 @@ close all;
 clear all;
 clc;
 
-initial     = 0;
-save_plots  = 1;
+initial    = 1;
+save_plots = 1;
 
 if initial == 1
-    theta_0     = 1.6290;
-    alpha       = 0.06;
+    theta_0 = 1.5441;
+    alpha   = 0.0717;
+    % Delta = 105 --> We round in 110.
 else
-    % (A) Theta = 0.95907, Alpha = 0.086308, eps = 0.018, prod = 0.0828.
-    % (B) Theta = 0.76586, Alpha = 0.11728,  eps = 0.035, prod = 0.0898.
-    % (C) Theta = 1.347,   Alpha = 0.073388, eps = 0.028, prod = 0.0989.
-    theta_0 = 0.95907;
-    alpha   = 0.086308;
+    theta_0 = 1.93;
+    alpha   = 0.05;
+    % Delta = 125 --> We round in 130.
 end
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet               = 'MTLOG';
+dataSet  = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon               = 0.018;
-eta         = 0.005:0.005:0.2;
+epsilon  = 0.018;
+eta      = 0.005:0.005:0.2;
+% dataKind can be classic or comparable.
+dataKind = 'comparable';
 
-Ta_Tra_Comp = load_data_eps(epsilon,dataSet);
+Ta_Tra_Comp = load_data_eps(epsilon,dataSet,dataKind);
 Time        = Ta_Tra_Comp.Time;
 Forecast    = Ta_Tra_Comp.Forecast;
 num_days    = height(Ta_Tra_Comp); % Maximum 127 for MTLOG.

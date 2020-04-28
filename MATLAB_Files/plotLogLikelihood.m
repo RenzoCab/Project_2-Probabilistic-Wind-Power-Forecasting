@@ -9,9 +9,9 @@ clc;
 
 likelihood    = 'normal'; % 'normal' or 'lamperti'.
 % dataSet can be AWSTP, MTLOG or UTEP5.
-dataSet = 'MTLOG';
+dataSet = 'UTEP5';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon       = 0.018;
+epsilon       = 0.028;
 % dataKind can be classic or comparable.
 dataKind = 'comparable';
 [Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
@@ -52,6 +52,12 @@ gamma         = 0.35;
 samples_gamma = create_samples_minus_eps(Forecast, Error, gamma);
 theta_ini     = mean_regression_eps(samples_gamma, dt);
 alpha_ini     = est/theta_ini;
+% AWSTP) (B)
+% T_0 = 1.0657, Alpha = 0.1039, prod = 0.1108.
+% MTLOG) (A)
+% T_0 = 1.5441, Alpha = 0.0717, prod = 0.1108.
+% UTEP5) (B)
+% T_0 = 1.1625, Alpha = 0.0953, prod = 0.1108.
 
 %% Log-Likelihood plot:
 
@@ -100,12 +106,12 @@ for i = 1:length(vec_theta)
 
 end
 
-theta_0_opt_1 = 1.135;
-alpha_opt_1   = 0.073;
-theta_0_opt_2 = 1.366;
-alpha_opt_2   = 0.061;
-theta_0_opt_3 = 1.628;
-alpha_opt_3   = 0.051;
+theta_0_opt_1 = 1.278;
+alpha_opt_1   = 0.076;
+theta_0_opt_2 = 1.577;
+alpha_opt_2   = 0.062;
+theta_0_opt_3 = 1.544;
+alpha_opt_3   = 0.063;
 
 % To save the matrix with the evaluations, we use:
 % save([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
@@ -116,12 +122,6 @@ minMatrix = min(val(:));
 [row,col] = find(val==minMatrix);
 theta_0_opt_4 = vec_theta(row);
 alpha_opt_4   = vec_alpha(col);
-
-% initial     -> Theta_0 = 1.629, Alpha = 0.060 (05/04/2020).
-% fminsearch  -> Theta_0 = 1.135, Alpha = 0.073 (05/04/2020).
-% fmincon     -> Theta_0 = 1.366, Alpha = 0.061 (05/04/2020).
-% fminunc     -> Theta_0 = 1.628, Alpha = 0.051 (05/04/2020).
-% evaluations -> Theta_0 = 1.180, Alpha = 0.070 (05/04/2020).
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600])
 hold on;
@@ -143,8 +143,8 @@ elseif strcmp(likelihood,'lamperti')
 end
 pause(0.1);
 % To save the plot and change the fonts size, we use:
-% set(gca,'FontSize',16);
-% saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
+set(gca,'FontSize',16);
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
 
 %% Plot with zoom:
 

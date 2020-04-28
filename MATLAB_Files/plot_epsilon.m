@@ -3,15 +3,15 @@ clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'MTLOG';
-[Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = load_data(dataSet);
+dataSet  = 'MTLOG';
+[Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = load_data_comparable(dataSet);
 
 figure(1); figure(2); 
 
-Time              = Ta_Tra_Comp.Time;
-Forecast          = Ta_Tra_Comp.Forecast;
-Error             = Ta_Tra_Comp.Error;
-Real_ADME         = Ta_Tra_Comp.Real_ADME;
+Time      = Ta_Tra_Comp.Time;
+Forecast  = Ta_Tra_Comp.Forecast;
+Error     = Ta_Tra_Comp.Error;
+Real_ADME = Ta_Tra_Comp.Real_ADME;
 
 dt             = Time(1,2);
 [M, N_ini]     = size(Forecast);
