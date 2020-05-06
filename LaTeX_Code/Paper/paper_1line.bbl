@@ -227,6 +227,47 @@
       \endverb
       \keyw{Wind-SDE}
     \endentry
+    \entry{eglix}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=b64a2d27dcce85828f3114b9bf223525}{%
+           family={Egorov},
+           familyi={E\bibinitperiod},
+           given={Alexei\bibnamedelima V.},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2b2e4fb833b9d7101b582bca3225fbb9}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Haitao},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3b3e3ae7ee26e574d2e3dbd0ae3e57d0}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Yuewu},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ad7f17d67fd0019374f0d5304c0b1f15}
+      \strng{fullhash}{ad7f17d67fd0019374f0d5304c0b1f15}
+      \strng{bibnamehash}{ad7f17d67fd0019374f0d5304c0b1f15}
+      \strng{authorbibnamehash}{ad7f17d67fd0019374f0d5304c0b1f15}
+      \strng{authornamehash}{ad7f17d67fd0019374f0d5304c0b1f15}
+      \strng{authorfullhash}{ad7f17d67fd0019374f0d5304c0b1f15}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Econometrics}
+      \field{title}{Maximum likelihood estimation of time-inhomogeneous diffusions}
+      \field{volume}{114}
+      \field{year}{2003}
+      \field{pages}{107\bibrangedash 139}
+      \range{pages}{33}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{elkate}{incollection}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=fd67f5a2aaf810bd85caa7802edffe1d}{%
@@ -794,6 +835,42 @@
       \range{pages}{17}
       \keyw{Wind-SDE}
     \endentry
+    \entry{prewo}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b1e6f8bda74753aa0605aaec096273ef}{%
+           family={Preston},
+           familyi={P\bibinitperiod},
+           given={S.P.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7061adbd654ad98686aee6fabf372932}{%
+           family={Wood},
+           familyi={W\bibinitperiod},
+           given={Andrew\bibnamedelima T.A.},
+           giveni={A\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b7dcbbdff4d9394aac4f18095ad15f4b}
+      \strng{fullhash}{b7dcbbdff4d9394aac4f18095ad15f4b}
+      \strng{bibnamehash}{b7dcbbdff4d9394aac4f18095ad15f4b}
+      \strng{authorbibnamehash}{b7dcbbdff4d9394aac4f18095ad15f4b}
+      \strng{authornamehash}{b7dcbbdff4d9394aac4f18095ad15f4b}
+      \strng{authorfullhash}{b7dcbbdff4d9394aac4f18095ad15f4b}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistics and Computing}
+      \field{title}{Approximation of transition densities of stochastic differential equations by saddlepoint methods applied to small-time Ito--Taylor sample-path expansions}
+      \field{volume}{22}
+      \field{year}{2012}
+      \true{nocite}
+      \field{pages}{205\bibrangedash 217}
+      \range{pages}{13}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{erre}{manual}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=dcdebb6b35bff7c0568bf8c50ef8626d}{%
@@ -936,6 +1013,77 @@
       \field{year}{2019}
       \keyw{Wind-SDE}
     \endentry
+    \entry{shoz}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a052e38331551f9115724b5f0ad043c6}{%
+           family={Shoji},
+           familyi={S\bibinitperiod},
+           given={Isao},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=379902bcf93e33f3f3707c58423dcd3c}{%
+           family={Ozaki},
+           familyi={O\bibinitperiod},
+           given={Tohru},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{84479b8ff98c9fa3eafe382372ea4631}
+      \strng{fullhash}{84479b8ff98c9fa3eafe382372ea4631}
+      \strng{bibnamehash}{84479b8ff98c9fa3eafe382372ea4631}
+      \strng{authorbibnamehash}{84479b8ff98c9fa3eafe382372ea4631}
+      \strng{authornamehash}{84479b8ff98c9fa3eafe382372ea4631}
+      \strng{authorfullhash}{84479b8ff98c9fa3eafe382372ea4631}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Stochastic Analysis and Applications}
+      \field{number}{4}
+      \field{title}{Estimation for nonlinear stochastic differential equations by a local linearization method}
+      \field{volume}{16}
+      \field{year}{1998}
+      \true{nocite}
+      \field{pages}{733\bibrangedash 752}
+      \range{pages}{20}
+      \keyw{Wind-SDE}
+    \endentry
+    \entry{Sor}{incollection}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c5846513e0670fd59e4ef3ab7d79ee1d}{%
+           family={S{ø}rensen},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Chapman \& Hall/CRC}%
+      }
+      \strng{namehash}{c5846513e0670fd59e4ef3ab7d79ee1d}
+      \strng{fullhash}{c5846513e0670fd59e4ef3ab7d79ee1d}
+      \strng{bibnamehash}{c5846513e0670fd59e4ef3ab7d79ee1d}
+      \strng{authorbibnamehash}{c5846513e0670fd59e4ef3ab7d79ee1d}
+      \strng{authornamehash}{c5846513e0670fd59e4ef3ab7d79ee1d}
+      \strng{authorfullhash}{c5846513e0670fd59e4ef3ab7d79ee1d}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Statistical {M}ethods for {S}tochastic {D}ifferential {E}quations}
+      \field{series}{Monographs on Statistics and Applied Probability}
+      \field{title}{Estimating functions for diffusion-type processes}
+      \field{volume}{124}
+      \field{year}{2012}
+      \true{nocite}
+      \field{pages}{1\bibrangedash 107}
+      \range{pages}{107}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{sultana2017review}{article}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=f82d90a5101ceaeaa521bd3ac537ea68}{%
@@ -1063,7 +1211,6 @@
       \true{nocite}
       \field{pages}{181\bibrangedash 219}
       \range{pages}{39}
-      \keyw{Wind-SDE}
     \endentry
     \entry{vago}{misc}{}
       \name{author}{2}{}{%
