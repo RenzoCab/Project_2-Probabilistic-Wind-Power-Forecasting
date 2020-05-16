@@ -34,7 +34,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\R}{\mathbb{R}}
 
-\usepackage[backend=biber, style=authoryear, citestyle=authoryear, autocite=inline]{biblatex} % package for bibliography 
+\usepackage[backend=biber, style=authoryear, citestyle=authoryear, autocite=inline, isbn=true]{biblatex} % package for bibliography 
 %\DeclareLanguageMapping{english}{english-apa}
 
 \addbibresource{sdewind.bib}
@@ -128,10 +128,16 @@ Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast mo
 %---BEGIN SECTION 2---
 \section{Wind power production data in Uruguay and forecast providers } \label{Section_2}
 
-{\color{red} Description of the global 2019 dataset, then the dataset after removing the days with curtailment (curtailment detection and removal), analysis of the dataset without curtailment.}
-We have available a year long data set from Uruguay based on 363 observation paths, each of which is 24-hours long with observations recorded every 10 min. In total, it is a data set of approximately fifty thousand data points recorded in 2019. See Figure (\ref{fig:sample_data}). Data are normalized with respect to the maximum power capacity of wind power production in Uruguay, which is $\SI{1474}{\mega\watt}$. However, sometimes the real production is artificially modifies due to curtailing. This effect becomes clear when we inspect for different power production levels. We split the available data into low, medium and high power range. See Figure (\ref{fig:data_curtailing}).\\
-We identify and remove the days with curtailing, removing a total of 108 days. From the resulting 255 days, we use 127 days to train the system and 128 to test it. Also, to avoid correlation between days, we intercalate the days we use for training and testing ({\color{red} Show that 24h is enough to ensure independence}).
+In recent years, Uruguay has triggered a remarkable change in its energy matrix. In (\cite{irena}, p.23) Uruguay is among those countries showcasing innovation, like Denmark, Ireland, Germany, Portugal, and Spain, with proven feasibility of managing annual variable renewable energy higher than 25\% in power systems. 
 
+According to (\cite{ren21}, pp.118-119), in 2018, Uruguay achieved 36\% of its electricity production from variable wind energy and solar PV, raising the share of generation from wind energy more than five-fold in just four years, from 6.2\% in 2014 to 33\% in 2018. 
+
+At present, Uruguay is fostering even higher levels of wind penetration by boosting regional power trading with Argentina and Brazil. 
+In this rapidly evolving scenario, it is essential to analyze national data on wind power production joint with wind power short-term forecastings to orientate and assess the strategies and decisions of wind energy actors and businesses. 
+
+Our study is based on publicly available data (source: Administrator of Electric Market) on the wind power production in Uruguay for the period March-December 2019, that we adequately normalized with respect to the present $\SI{1474}{\mega\watt}$ maximum installed wind power capacity. Each day, wind power production recordings are available every ten minutes.  In this work, we have also considered data from three different forecast providers, available each day starting at 1 pm.
+
+The next Figure \ref{fig:sample_data} shows the wind power real production during four segments 24-hour long selected from the observation period together with their corresponding hourly short-term forecast, computed by a forecast provider. For the sake of visualization clarity, this Section relies only on forecasts from one provider, called "provider A" from now on, ranked as the most accurate forecast provider, as it emerged from our posterior analysis. 
 
 \begin{figure}[H]
 \centering
@@ -139,9 +145,11 @@ We identify and remove the days with curtailing, removing a total of 108 days. F
 \includegraphics[width=0.35\textwidth]{plots/245.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/661.eps}
 \includegraphics[width=0.35\textwidth]{plots/805.eps}
-\caption{Four samples from the Uruguayan data of 2019. Each sample compromises of two 24-hour paths. In blue is an hourly wind power production forecast. In orange is the actual wind power production recorded in 10 minute intervals.}
+\caption{Four 24-hour segments with the wind power real production in Uruguay (orange line) recorded every ten minutes, and the hourly wind power production forecasted by provider A (blu line).}
   \label{fig:sample_data}
 \end{figure}
+
+A global view of the discrepancy between the real production and the forecasted production, the forecast error, during the nine months observation period, is displayed in the following Figure \ref{fig:data_curtailing}, where we also partitioned the forecast errors according to three contiguous categories of normalized generated power. Low normalized generated power corresponds to the range $[0,0.3]$, mid-power refers to the range $(0.3,0.6]$, and high-power to the range $(0.6,1]$.
 
 \begin{figure}[H]
 \centering
@@ -149,9 +157,15 @@ We identify and remove the days with curtailing, removing a total of 108 days. F
 \includegraphics[width=0.35\textwidth]{plots/MP_6.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/HP_6.eps}
 \includegraphics[width=0.35\textwidth]{plots/AP_6.eps}
-\caption{We see that forecast errors exhibit skewness, which is exaggerated as a consequence of curtailing in the production. Low power is when produced power is in $[0,0.3]$, mid-power is when it is in $(0.3,0.6]$, and high power when it is in $(0.6,1]$. We have a total of 363 days to use.}
+\caption{Wind production forecast error histograms during the period March-December 2019: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:data_curtailing}
 \end{figure}
+
+We may observe that all the histograms in the Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The analysis of the dataset highlighted that, during several 24-hour segments, the system operators decided to reduce, or even cease the wind power production {\color{red} add why curtailment and references}. 
+
+The curtailment of the wind power production imposed by the system operators has a strong influence on the forecast error. To build a model that, driven by the available forecast, allows to include the true power production with a prescribed degree of uncertainty, it is necessary to remove the data segments affected by wind curtailment.
+
+Once we removed all the 24-hour segments associated with wind curtailment, we kept 147 segments. In the absence of the curtailment effect, the forecast error histograms are shown in Figure \ref{fig:data_after_clean} below, where it is appreciable the reduction of skewness.
 
 \begin{figure}[H]
 \centering
@@ -159,9 +173,12 @@ We identify and remove the days with curtailing, removing a total of 108 days. F
 \includegraphics[width=0.35\textwidth]{plots/MP.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/HP.eps}
 \includegraphics[width=0.35\textwidth]{plots/AP.eps}
-\caption{We observe that skewness has been reduced after removing the days with curtailing. We have a total of 255 days with no curtailing.}
+\caption{Wind production forecast error histograms during the period March-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:data_after_clean}
 \end{figure}
+
+In this stage of data preprocessing, we obtain another useful result by applying the first-order difference operator to the forecast errors. 
+The forecast error transition histograms, displayed in the next Figure \ref{fig:error_transitions}, will constitute later a reference for the visual assessment of the global fit of the proposed models.
 
 \begin{figure}[H]
 \centering
@@ -169,16 +186,21 @@ We identify and remove the days with curtailing, removing a total of 108 days. F
 \includegraphics[width=0.35\textwidth]{plots/MP_t.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/HP_t.eps}
 \includegraphics[width=0.35\textwidth]{plots/AP_t.eps}
-\caption{Transitions in error between forecast and real production. We can observe that they are not totally centered around zero.}
+\caption{Forecast error transition histograms during the period March-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
 \label{fig:error_transitions}
 \end{figure}
+
+ {\color{red}  We can observe the lack of gaussianity.}
+
+ ({\color{red} MOVE THIS COMMENT. We use 73 days to train the system and 74 to test it. Also, to avoid correlation between days, we intercalate the days we use for training and testing. Show that 24h is enough to ensure independence}).
+
 
 %---END SECTION 2---
 
 %---BEGIN SECTION 3---
 \section{Phenomenological  Model} \label{Section_3}
 
-In this section, once we analyzed the available dataset, we consider a type of phenomenological model for the normalized wind power generation forecasts which is given, in its most general form, as a stochastic process $X = \{X_t, \, t \in [0,T] \}$  defined by the following stochastic differential equation (SDE):
+After analyzing the available dataset, we are now in the condition to build a type of phenomenological model for the normalized wind power generation forecasts that, in its most general form, is a stochastic process $X = \{X_t, \, t \in [0, T] \}$  defined by the following stochastic differential equation (SDE):
 
 \begin{equation}
   \left\{
@@ -274,11 +296,11 @@ is that the drift term contains the time-varying parameter $\theta_t$, rendering
 %\theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0\,. \label{theta_t}
 %\end{equation}
 \begin{equation}\label{Assumption:3}
-\theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{C}. 
-\end{equation} \label{condC}
+\theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{B}. 
+\end{equation} \label{condB}
 The proof of this theoretical statement is presented in Section \ref{Appendix}. \\
 
-Remark: Condition (C) shows that the time-varying parameter $\theta_t$ becomes unbounded when $p_t = 0$ or $p_t = 1$. Therefore, we consider the following truncated prediction function
+Remark: Condition (B) shows that the time-varying parameter $\theta_t$ becomes unbounded when $p_t = 0$ or $p_t = 1$. Therefore, we consider the following truncated prediction function
 \begin{equation}
   p_t^{\epsilon} = \left\{
   \begin{array}{@{}cl@{}}
@@ -751,7 +773,7 @@ For a time horizon $T>0$ and  a parameter $\alpha > 0$ and $(\theta_t)_{t\in[0,T
 \begin{equation}
   \left\{
   \begin{array}{@{}rl@{}}
-    dX_t \!\!\!&= \big(\dot p_t - \theta_t (X_t-p_t)  \big)dt  +\sqrt{2 \alpha \theta_t X_t (1-X_t)} dW_t\,, \quad t\in[0,T] \\
+    dX_t \!\!\!&= \big(\dot p_t - \theta_t (X_t-p_t)  \big)dt  +\sqrt{2 \alpha \theta_0 X_t (1-X_t)} dW_t\,, \quad t\in[0,T] \\
    X_0  \!\!\!&=  x_0\in [0,1] \,,
  \end{array}\right.  \label{eq:model}
 \end{equation}
@@ -769,7 +791,7 @@ Then, there is a unique strong solution to \eqref{eq:model} s.t.  for all $t\in[
 \begin{proof}
 Let us first consider the following SDE for $t\in[0,T]$
 \begin{equation}\label{eq:eds1}
-X_t=x_0+  \int_0^t\big(\dot p_s - \theta_s(X_s-p_s)  \big)ds  + \int_0^t\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s, \quad x_0>0.
+X_t=x_0+  \int_0^t\big(\dot p_s - \theta_s(X_s-p_s)  \big)ds  + \int_0^t\sqrt{2\alpha \theta_0 |X_s(1-X_s)|} dW_s, \quad x_0>0.
 \end{equation}
 According to Proposition 2.13, p.291 of \cite{KarShr}, under assumption  \eqref{Assumption:1} there is a unique strong solution $X$ to \eqref{eq:eds1}. Moreover, as the diffusion coefficient is of linear growth, we have  for all $p>0$ 
 \begin{equation}\label{prop:fm}
@@ -784,11 +806,11 @@ See the proof of Proposition 2.13, p. 291 of \cite{KarShr} for the construction 
 Applying Itô's formula we get
 \begin{align*}
 \psi_n(X_t)&=\psi_n(x_0) +\int_0^t {\psi'}_n(X_s)(\dot p_s + \theta_s p_s - \theta_sX_s  \big)ds \\
-&+ \int_0^t{\psi'}_n(X_s)\sqrt{2\alpha \theta_s|X_s(1-X_s)|} dW_s + \alpha \int_0^t \theta_sg_n(|X_s|)|X_s(1-X_s)|ds.
+&+ \int_0^t{\psi'}_n(X_s)\sqrt{2\alpha \theta_0 |X_s(1-X_s)|} dW_s + \alpha \theta_0 \int_0^t  g_n(|X_s|) |X_s(1-X_s)|ds.
 \end{align*}
 Now, thanks to  \eqref{Assumption:1}, \eqref{prop:fm} and to the above properties of $\psi_n$ and $g_n$, we get
 $$
-\mathbb E[\psi_n(X_t)]\le \psi_n(x_0) +\int_0^t \big(\dot p_s + \theta_sp_s -  \theta_s \mathbb E[{\psi'}_n(X_s)X_s] \big)ds + \frac{2\alpha}{n}\int_0^t \theta_s\mathbb E |1-X_s|ds.
+\mathbb E[\psi_n(X_t)]\le \psi_n(x_0) +\int_0^t \big(\dot p_s + \theta_sp_s -  \theta_s \mathbb E[{\psi'}_n(X_s)X_s] \big)ds + \frac{2\alpha  \theta_0}{n}\int_0^t \mathbb E |1-X_s|ds.
 $$
 Therefore, letting $n$ tends to infinity we use Lebesgue's theorem to get
 $$
@@ -800,7 +822,7 @@ $$
 $$
 and thus we have 
 $$
-\mathbb E[|X_t| -X_t ]\le \int_0^t \theta_s \mathbb E[|X_s| - X_s ]ds.
+\mathbb E[|X_t| -X_t ]\le \int_0^t \theta_s \mathbb E[ X_s - |X_s| ]ds.
 $$
 Then, Gronwall's lemma gives us $\mathbb E[|X_t|]=\mathbb E X_t$ and thus for any $t\in[0,T]$ $X_t\ge0$ a.s. The same arguments work to prove that  for any $t\in[0,T]$ $Y_t:=1-X_t\ge0$  a.s.  since the process $(Y_t)_{t\in[0,T]}$ is solution to 
 $$
@@ -809,51 +831,12 @@ $$
 Then similarly, we need to assume that $\dot p_t +\theta_tp_t\ge 0$. This completes the proof.
 \end{proof}
 
-\begin{Thm}
-Assume that assumptions of Theorem \ref{thm:exun} hold with $x_0\in]0,1[$.
-Let $\tau_0:=\inf \{t\in[0,T],\; X_t=0\}$ and  $\tau_1:=\inf \{t\in[0,T],\; X_t=1\}$ with the convention that $\inf\emptyset=+\infty$. Assume in addition that
-\begin{equation}\label{Assumption:2}
-0<\alpha < \frac 12\quad \mbox{ and }\quad \forall  t\in[0,T],\;\; \alpha\theta_t\le \dot p_t +\theta_tp_t \le (1-\alpha)\theta_t \tag{B}. 
-\end{equation}
- Then, $\tau_0=\tau_1=+\infty$ a.s.
-\end{Thm}
-\begin{proof}
-For $t\in[0,\tau_0[$, we have 
-$$
-\frac{dX_t}{X_t}=\left( \frac{\dot p_t +\theta_t p_t}{X_t} - \theta_t\right)\dif t  +\sqrt{\frac{2\alpha \theta_t(1-X_t)}{X_t}} \dif W_t 
-$$  
-so that
-$$
-X_t=x_0\exp\Big(\int_0^t \frac{\dot p_s +\theta_s(p_s-\alpha)}{X_s}ds-(1-\alpha)\int_0^t\theta_sds + M_t\Big),
-$$
-where $M_t=\int_0^t\sqrt{\frac{2\alpha \theta_s(1-X_s)}{X_s}} dW_s$ is a continuous martingale. Then as for all $t\in[0,T]$, we have $\dot p_t +\theta_t(p_t-\alpha)\ge0$, we deduce that
-$$
-X_t\ge x_0\exp\Big(-(1-\alpha)\int_0^t\theta_sds + M_t\Big).
-$$
-By way of contradiction let us assume that  $\{\tau_0<\infty\}$, then letting $t\to \tau_0$ we deduce that $\lim_{t\to \infty} \mathbf 1_{\{\tau_0<\infty\}}M_{t\wedge \tau_0}=\mathbf -1_{\{\tau_0<\infty\}}\infty$ a.s. This leads to a contradiction since we know that continuous martingales likewise the Brownian motion cannot converge  almost surely to $+\infty$ or $-\infty$. It follows that $\tau_0=\infty$ almost surely. Next, recalling that  the process $(Y_t)_{t\geq 0}$  given by $Y_t=1-X_t$ is solution to 
-$$
-dY_t= \big( \theta_t(1-p_t) -\dot p_t - \theta_tY_t  \big)dt  -\sqrt{2\alpha \theta_tY_t(1-Y_t)} dW_t 
-$$
-we deduce using similar arguments as above 
-$\tau_1=\infty$ a.s. provided that $\theta_t(1-p_t) -\dot p_t -\alpha \theta_t\ge 0$.
-\end{proof}
-
-\subsection{New model}
-In what follows we adapt the proof of the above theorem for the new model 
-\begin{equation}
-  \left\{
-  \begin{array}{@{}rl@{}}
-    dX_t \!\!\!&= \big(\dot p_t - \theta_t (X_t-p_t)  \big)dt  +\sqrt{2 \alpha \red{\theta_0} X_t (1-X_t)} dW_t\,, \quad t\in[0,T] \\
-   X_0  \!\!\!&=  x_0\in [0,1] \,,
- \end{array}\right.  \label{eq:model2}
-\end{equation}
-
 \begin{Thm}\label{thm:mod2}
 Assume that assumptions of Theorem \ref{thm:exun} hold with $x_0\in]0,1[$.
 Let $\tau_0:=\inf \{t\in[0,T],\; X_t=0\}$ and  $\tau_1:=\inf \{t\in[0,T],\; X_t=1\}$ with the convention that $\inf\emptyset=+\infty$. Assume in addition that for all $t\in[0,T]$,  $p_t\in]0,1[$ and that
 \red{
 \begin{equation}\label{Assumption:3}
-\theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{C}. 
+\theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{B}. 
 \end{equation}
 }
  Then, $\tau_0=\tau_1=+\infty$ a.s.
@@ -866,9 +849,9 @@ $$
 $$  
 so that
 $$
-X_t=x_0\exp\Big(\int_0^t \frac{\dot p_s +\theta_sp_s- \red{\theta_0}\alpha)}{X_s}ds+\alpha\red{\theta_0}t-  \int_0^t\theta_sds + M_t\Big),
+X_t=x_0\exp\Big(\int_0^t \frac{\dot p_s +\theta_sp_s- \red{\theta_0}\alpha}{X_s}ds+\alpha\red{\theta_0}t-  \int_0^t\theta_sds + M_t\Big),
 $$
-where $M_t=\int_0^t\sqrt{\frac{2\alpha \theta_s(1-X_s)}{X_s}} dW_s$ is a continuous martingale. Then as for all $t\in[0,T]$, we have $\dot p_t +\theta_tp_t- \red{\theta_0}\alpha\ge0$, we deduce that
+where $M_t=\int_0^t\sqrt{\frac{2\alpha \theta_0 (1-X_s)}{X_s}} dW_s$ is a continuous martingale. Then as for all $t\in[0,T]$, we have $\dot p_t +\theta_tp_t- \red{\theta_0}\alpha\ge0$, we deduce that
 $$
 X_t\ge x_0\exp\Big(\alpha\red{\theta_0}t-  \int_0^t\theta_sds + M_t\Big).
 $$
@@ -878,15 +861,10 @@ dY_t= \big( \theta_t(1-p_t) -\dot p_t - \theta_tY_t  \big)dt  -\sqrt{2\alpha \re
 $$
 we deduce using similar arguments as above 
 $\tau_1=\infty$ a.s. provided that $\theta_t(1-p_t) -\dot p_t -\alpha \red{\theta_0}\ge 0$.
- \end{proof}
- \section{Answers to Renzo's questions} 
-{\color{blue}So, Theorem \ref{thm:mod2} answers the second question in slide 11.} The new condition \eqref{Assumption:3} that guarantees  for $(X_t)_{t\ge0}$ to stay in $]0,1[$ depends now on $\alpha$. I would keep condition \eqref{Assumption:3} as we have a proof for it.  Moreover, if condition \eqref{Assumption:3} is satisfied, then  the orange condition in slide 8 is also satisfied 
-since we have 
-$$
-\max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\ge \max\left(\frac{\frac{\alpha\theta_0}{2}+\dot p_t}{1-p_t},\frac{\frac{\alpha\theta_0}{2}-\dot p_t}{p_t}\right)
-$$
-which ensures that $Z$ don't hit the boundaries too according to Renzo's intuitive arguments.\\ 
-{\color{blue}Concerning, the first question on slide 11:} we can't apply Itô's formula, unless we are sure that the process don't hit the boundaries, that's why we have to assume  \eqref{Assumption:3} before using Itô's formula.  In addition, as the diffusion coefficient of $X$  given by  $x\mapsto \sqrt{\frac{2\alpha \red{\theta_0}(1-x)}{x}}$  is strictly positive for all $x$ in the state space of $X$, namely $]0,1[$ under assumption \eqref{Assumption:3},  this is enough to ensure that the transformation between $Z$ and $X$ is bijective so that we deduce the existence and uniqueness of $Z$ from those of $X$. Otherwise the Lamperti transform is not valid if the state space of $X$ is $[0,1]$.
+ \end{proof} 
+
+Remark: As the diffusion coefficient of $X$  given by  $x \mapsto \sqrt{2 \alpha \theta_0 x(1-x)}$  is strictly positive for all $x \in  ]0,1[$, the condition \eqref{Assumption:3}  ensures that the transformation between $Z$ and $X$ is bijective, so that we deduce the properties of existence and uniqueness of $Z$ from those of $X$. The application of  It\^{o}'s formula in Section \ref{Section_4} is subjected to the condition \eqref{Assumption:3} that avoids the process $X$ hits the boundaries of the interval $ ]0,1[$, otherwise the Lamperti transform is not applicable. 
+
 %---END APPENDIX---
 
 %---REFERENCES---

@@ -508,6 +508,35 @@
       \field{year}{2008}
       \keyw{Wind-SDE}
     \endentry
+    \entry{irena}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b4f3a3711fe4df2b64d17bf2d72d90c0}{%
+           family={IRENA},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Abu Dhabi}%
+      }
+      \list{organization}{1}{%
+        {International Renewable Energy Agency}%
+      }
+      \strng{namehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{fullhash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{bibnamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{authorbibnamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{authornamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{authorfullhash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-92-9260-111-9}
+      \field{title}{Innovation landscape for a renewable-powered future: Solutions to integrate variable renewables}
+      \field{year}{2019}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{kauc}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=24ccbab5954553d8f9516215df82cffb}{%
@@ -942,6 +971,35 @@
       \verb 10.1109/PMAPS.2006.360291
       \endverb
       \keyw{Wind power forecasting,criteria,prognosis,Wind-SDE}
+    \endentry
+    \entry{ren21}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=107f9fe219e3c3af54c6810d1ab4e0b2}{%
+           family={REN21},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Paris}%
+      }
+      \list{organization}{1}{%
+        {REN21}%
+      }
+      \strng{namehash}{107f9fe219e3c3af54c6810d1ab4e0b2}
+      \strng{fullhash}{107f9fe219e3c3af54c6810d1ab4e0b2}
+      \strng{bibnamehash}{107f9fe219e3c3af54c6810d1ab4e0b2}
+      \strng{authorbibnamehash}{107f9fe219e3c3af54c6810d1ab4e0b2}
+      \strng{authornamehash}{107f9fe219e3c3af54c6810d1ab4e0b2}
+      \strng{authorfullhash}{107f9fe219e3c3af54c6810d1ab4e0b2}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-9818911-7-1}
+      \field{title}{Renewables 2019 Global Status Report}
+      \field{year}{2019}
+      \keyw{Wind-SDE}
     \endentry
     \entry{dimi}{article}{}
       \name{author}{1}{}{%

@@ -18,37 +18,43 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Installed wind and solar power over the years \cite {sultana2017review}. We recall the importance of accurate forecasts to use green energies optimally.}}{1}\protected@file@percent }
 \abx@aux@cite{mozuma}
 \abx@aux@segm{0}{0}{mozuma}
+\abx@aux@cite{irena}
+\abx@aux@segm{0}{0}{irena}
 \abx@aux@page{3}{2}
 \abx@aux@page{4}{2}
 \abx@aux@page{5}{2}
 \abx@aux@page{6}{2}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Wind power production data in Uruguay and forecast providers }{2}\protected@file@percent }
 \newlabel{Section_2}{{2}{2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Four samples from the Uruguayan data of 2019. Each sample compromises of two 24-hour paths. In blue is an hourly wind power production forecast. In orange is the actual wind power production recorded in 10 minute intervals.}}{3}\protected@file@percent }
+\abx@aux@page{7}{2}
+\abx@aux@cite{ren21}
+\abx@aux@segm{0}{0}{ren21}
+\abx@aux@page{8}{3}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Four 24-hour segments with the wind power real production in Uruguay (orange line) recorded every ten minutes, and the hourly wind power production forecasted by provider A (blu line).}}{3}\protected@file@percent }
 \newlabel{fig:sample_data}{{2}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces We see that forecast errors exhibit skewness, which is exaggerated as a consequence of curtailing in the production. Low power is when produced power is in $[0,0.3]$, mid-power is when it is in $(0.3,0.6]$, and high power when it is in $(0.6,1]$. We have a total of 363 days to use.}}{4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Wind production forecast error histograms during the period March-December 2019: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}}{4}\protected@file@percent }
 \newlabel{fig:data_curtailing}{{3}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces We observe that skewness has been reduced after removing the days with curtailing. We have a total of 255 days with no curtailing.}}{4}\protected@file@percent }
-\newlabel{fig:data_after_clean}{{4}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Transitions in error between forecast and real production. We can observe that they are not totally centered around zero.}}{5}\protected@file@percent }
-\newlabel{fig:error_transitions}{{5}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Phenomenological Model}{5}\protected@file@percent }
-\newlabel{Section_3}{{3}{5}}
-\newlabel{eq:main}{{1}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Physical Constraints}{5}\protected@file@percent }
-\newlabel{Physical_Constraints}{{3.1}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Wind production forecast error histograms during the period March-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}}{5}\protected@file@percent }
+\newlabel{fig:data_after_clean}{{4}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Forecast error transition histograms during the period March-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}}{6}\protected@file@percent }
+\newlabel{fig:error_transitions}{{5}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Phenomenological Model}{6}\protected@file@percent }
+\newlabel{Section_3}{{3}{6}}
+\newlabel{eq:main}{{1}{6}}
 \abx@aux@cite{foso}
 \abx@aux@segm{0}{0}{foso}
 \abx@aux@cite{foso}
 \abx@aux@segm{0}{0}{foso}
 \abx@aux@cite{leph}
 \abx@aux@segm{0}{0}{leph}
-\newlabel{drift:meanrev-derivtrack}{{2}{6}}
-\newlabel{eq:tomeanX}{{3}{6}}
-\newlabel{eq:meanX}{{4}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces {\color {red} Add Figure showing the difference with and without derivative tracking}}}{6}\protected@file@percent }
-\newlabel{fig:derivative_tracking}{{6}{6}}
-\abx@aux@page{7}{6}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Physical Constraints}{7}\protected@file@percent }
+\newlabel{Physical_Constraints}{{3.1}{7}}
+\newlabel{drift:meanrev-derivtrack}{{2}{7}}
+\newlabel{eq:tomeanX}{{3}{7}}
+\newlabel{eq:meanX}{{4}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces {\color {red} Add Figure showing the difference with and without derivative tracking}}}{7}\protected@file@percent }
+\newlabel{fig:derivative_tracking}{{6}{7}}
+\abx@aux@page{9}{7}
 \abx@aux@cite{vago}
 \abx@aux@segm{0}{0}{vago}
 \abx@aux@cite{dotala}
@@ -59,29 +65,26 @@
 \abx@aux@segm{0}{0}{moma}
 \abx@aux@cite{saso}
 \abx@aux@segm{0}{0}{saso}
-\abx@aux@page{8}{7}
-\abx@aux@page{9}{7}
-\abx@aux@page{10}{7}
-\abx@aux@page{11}{7}
-\newlabel{ourmodel}{{7}{7}}
-\newlabel{Assumption:3}{{{C}}{7}}
-\newlabel{condC}{{3.1}{7}}
-\newlabel{corrforecast}{{8}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}A model specification for the forecast error}{7}\protected@file@percent }
-\newlabel{VtSDE}{{9}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}State independent diffusion term: Lamperti transform}{7}\protected@file@percent }
-\newlabel{Section_4}{{4}{7}}
-\abx@aux@page{12}{7}
-\abx@aux@page{13}{7}
-\abx@aux@page{14}{7}
-\newlabel{eq:LampZ}{{10}{7}}
-\newlabel{eq:stindepSDE}{{11}{8}}
-\newlabel{eq:stindepSDE2}{{12}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Transitions after the Lamperti transform. The transitions now present a normal Gaussian shape. This effect motivates the use of Gaussian proxies to approximate the process after using the Lamperti transform.}}{8}\protected@file@percent }
-\newlabel{fig:LP_transitions}{{7}{8}}
-\@writefile{toc}{\contentsline {section}{\numberline {5} Likelihood functions of the forecast errors data and optimization algorithm}{8}\protected@file@percent }
-\newlabel{Section_5}{{5}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Likelihood in the $V-$space}{8}\protected@file@percent }
+\abx@aux@page{10}{8}
+\abx@aux@page{11}{8}
+\abx@aux@page{12}{8}
+\abx@aux@page{13}{8}
+\newlabel{ourmodel}{{7}{8}}
+\newlabel{Assumption:3}{{{B}}{8}}
+\newlabel{condB}{{3.1}{8}}
+\newlabel{corrforecast}{{8}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}A model specification for the forecast error}{8}\protected@file@percent }
+\newlabel{VtSDE}{{9}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}State independent diffusion term: Lamperti transform}{8}\protected@file@percent }
+\newlabel{Section_4}{{4}{8}}
+\abx@aux@page{14}{8}
+\abx@aux@page{15}{8}
+\abx@aux@page{16}{8}
+\newlabel{eq:LampZ}{{10}{9}}
+\newlabel{eq:stindepSDE}{{11}{9}}
+\newlabel{eq:stindepSDE2}{{12}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Transitions after the Lamperti transform. The transitions now present a normal Gaussian shape. This effect motivates the use of Gaussian proxies to approximate the process after using the Lamperti transform.}}{9}\protected@file@percent }
+\newlabel{fig:LP_transitions}{{7}{9}}
 \abx@aux@cite{iacus1}
 \abx@aux@segm{0}{0}{iacus1}
 \abx@aux@cite{saso}
@@ -94,59 +97,62 @@
 \abx@aux@segm{0}{0}{hurn}
 \abx@aux@cite{saso}
 \abx@aux@segm{0}{0}{saso}
-\newlabel{likelihood}{{13}{9}}
-\abx@aux@page{15}{9}
-\abx@aux@page{16}{9}
-\newlabel{eq:fpk}{{14}{9}}
-\abx@aux@page{17}{9}
-\abx@aux@page{18}{9}
-\abx@aux@page{19}{9}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Approximate likelihood in the $V-$space}{9}\protected@file@percent }
-\abx@aux@page{20}{9}
-\newlabel{Vtmom}{{16}{10}}
-\newlabel{param_transformed_beta}{{17}{10}}
-\newlabel{loglikelihoodV}{{18}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Approximate likelihood in the $Z-$space}{10}\protected@file@percent }
-\newlabel{Ztmom}{{19}{10}}
-\newlabel{loglikelihoodZ}{{20}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Algorithm for the approximate maximum likelihood estimations}{11}\protected@file@percent }
-\newlabel{opt_sec}{{5.4}{11}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Initial guess}{11}\protected@file@percent }
-\newlabel{Eq-1}{{21}{11}}
-\newlabel{Eq-4}{{22}{11}}
-\newlabel{Eq-2}{{23}{11}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Negative log-likelihood minimization in the $V-$space}{12}\protected@file@percent }
-\newlabel{Sec:MinLH}{{5.4.2}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3}Negative log-likelihood minimization in the $Z-$space}{12}\protected@file@percent }
-\newlabel{Sec:MinLHL}{{5.4.3}{12}}
-\newlabel{FP}{{24}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4}Additional Parameter $\delta $}{13}\protected@file@percent }
-\newlabel{likelihood_delta}{{5.4.4}{13}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Applications to the Uruguay wind and forecast dataset}{13}\protected@file@percent }
-\newlabel{Section_6}{{6}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Calibration of the approximate negative log-likelihood in the $V-$space}{13}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Negative Log-Likelihood {\color {red}[Low quality picture]}.}}{13}\protected@file@percent }
-\newlabel{fig:neg-LL}{{8}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Calibration of the approximate negative log-likelihood in the $Z-$space}{13}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Negative Log-Likelihood {\color {red}[Low quality picture]}.}}{14}\protected@file@percent }
-\newlabel{fig:neg-LLL}{{9}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Model comparison}{14}\protected@file@percent }
-\newlabel{Model_Comp}{{6.3}{14}}
-\newlabel{Model1}{{25}{14}}
-\newlabel{Model2}{{26}{14}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces We compare the different models based on information criterion. \leavevmode {\color {red}[insert]}}}{15}\protected@file@percent }
-\newlabel{tab:model_comparison}{{1}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Forecast providers comparison}{15}\protected@file@percent }
-\newlabel{Forecast_Comp}{{6.4}{15}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Optimal parameters for different providers using Model 2 with Beta proxies.}}{15}\protected@file@percent }
-\newlabel{tab:forcast_comparison}{{2}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Calibration of Model 2 with additional parameter $\delta $ TO DO}{15}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Five simulated wind power production paths using the approximate MLEs for Model 2 $(\theta _0, \alpha ,\delta )=(1.2,0.1,0.6)$. }}{15}\protected@file@percent }
-\newlabel{fig:simulation_paths}{{10}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Empirical pointwise confidence bands for the wind power production using the approximate MLEs for Model 2 $(\theta _0, \alpha ,\delta )=(1.2,0.1,0.6)$. Blue line: real production.}}{16}\protected@file@percent }
-\newlabel{fig:confidence_bands}{{11}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{16}\protected@file@percent }
-\newlabel{Section_7}{{7}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {5} Likelihood functions of the forecast errors data and optimization algorithm}{10}\protected@file@percent }
+\newlabel{Section_5}{{5}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Likelihood in the $V-$space}{10}\protected@file@percent }
+\newlabel{likelihood}{{13}{10}}
+\abx@aux@page{17}{10}
+\abx@aux@page{18}{10}
+\newlabel{eq:fpk}{{14}{10}}
+\abx@aux@page{19}{10}
+\abx@aux@page{20}{10}
+\abx@aux@page{21}{10}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Approximate likelihood in the $V-$space}{10}\protected@file@percent }
+\abx@aux@page{22}{10}
+\newlabel{Vtmom}{{16}{11}}
+\newlabel{param_transformed_beta}{{17}{11}}
+\newlabel{loglikelihoodV}{{18}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Approximate likelihood in the $Z-$space}{11}\protected@file@percent }
+\newlabel{Ztmom}{{19}{11}}
+\newlabel{loglikelihoodZ}{{20}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Algorithm for the approximate maximum likelihood estimations}{12}\protected@file@percent }
+\newlabel{opt_sec}{{5.4}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Initial guess}{12}\protected@file@percent }
+\newlabel{Eq-1}{{21}{12}}
+\newlabel{Eq-4}{{22}{12}}
+\newlabel{Eq-2}{{23}{12}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Negative log-likelihood minimization in the $V-$space}{13}\protected@file@percent }
+\newlabel{Sec:MinLH}{{5.4.2}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.3}Negative log-likelihood minimization in the $Z-$space}{13}\protected@file@percent }
+\newlabel{Sec:MinLHL}{{5.4.3}{13}}
+\newlabel{FP}{{24}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.4}Additional Parameter $\delta $}{14}\protected@file@percent }
+\newlabel{likelihood_delta}{{5.4.4}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Applications to the Uruguay wind and forecast dataset}{14}\protected@file@percent }
+\newlabel{Section_6}{{6}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Calibration of the approximate negative log-likelihood in the $V-$space}{14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Negative Log-Likelihood {\color {red}[Low quality picture]}.}}{14}\protected@file@percent }
+\newlabel{fig:neg-LL}{{8}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Calibration of the approximate negative log-likelihood in the $Z-$space}{14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Negative Log-Likelihood {\color {red}[Low quality picture]}.}}{15}\protected@file@percent }
+\newlabel{fig:neg-LLL}{{9}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Model comparison}{15}\protected@file@percent }
+\newlabel{Model_Comp}{{6.3}{15}}
+\newlabel{Model1}{{25}{15}}
+\newlabel{Model2}{{26}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces We compare the different models based on information criterion. \leavevmode {\color {red}[insert]}}}{16}\protected@file@percent }
+\newlabel{tab:model_comparison}{{1}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Forecast providers comparison}{16}\protected@file@percent }
+\newlabel{Forecast_Comp}{{6.4}{16}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Optimal parameters for different providers using Model 2 with Beta proxies.}}{16}\protected@file@percent }
+\newlabel{tab:forcast_comparison}{{2}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Calibration of Model 2 with additional parameter $\delta $ TO DO}{16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Five simulated wind power production paths using the approximate MLEs for Model 2 $(\theta _0, \alpha ,\delta )=(1.2,0.1,0.6)$. }}{16}\protected@file@percent }
+\newlabel{fig:simulation_paths}{{10}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Empirical pointwise confidence bands for the wind power production using the approximate MLEs for Model 2 $(\theta _0, \alpha ,\delta )=(1.2,0.1,0.6)$. Blue line: real production.}}{17}\protected@file@percent }
+\newlabel{fig:confidence_bands}{{11}{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{17}\protected@file@percent }
+\newlabel{Section_7}{{7}{17}}
 \abx@aux@cite{Alf}
 \abx@aux@segm{0}{0}{Alf}
 \abx@aux@cite{KarShr}
@@ -155,26 +161,20 @@
 \abx@aux@segm{0}{0}{KarShr}
 \abx@aux@cite{KarShr}
 \abx@aux@segm{0}{0}{KarShr}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Appendix}{17}\protected@file@percent }
-\newlabel{Appendix}{{8}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}The model}{17}\protected@file@percent }
-\newlabel{eq:model}{{27}{17}}
-\abx@aux@page{21}{17}
-\abx@aux@page{22}{17}
-\newlabel{thm:exun}{{8.1}{17}}
-\newlabel{Assumption:1}{{{A}}{17}}
-\newlabel{eq:eds1}{{28}{17}}
-\abx@aux@page{23}{17}
-\newlabel{prop:fm}{{29}{17}}
-\abx@aux@page{24}{17}
-\newlabel{Assumption:2}{{{B}}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}New model}{19}\protected@file@percent }
-\newlabel{eq:model2}{{30}{19}}
-\newlabel{thm:mod2}{{8.3}{19}}
-\newlabel{Assumption:3}{{{C}}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Answers to Renzo's questions}{19}\protected@file@percent }
-\abx@aux@page{25}{20}
-\abx@aux@page{26}{20}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Appendix}{18}\protected@file@percent }
+\newlabel{Appendix}{{8}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}The model}{18}\protected@file@percent }
+\newlabel{eq:model}{{27}{18}}
+\abx@aux@page{23}{18}
+\abx@aux@page{24}{18}
+\newlabel{thm:exun}{{8.1}{18}}
+\newlabel{Assumption:1}{{{A}}{18}}
+\newlabel{eq:eds1}{{28}{18}}
+\abx@aux@page{25}{18}
+\newlabel{prop:fm}{{29}{18}}
+\abx@aux@page{26}{18}
+\newlabel{thm:mod2}{{8.2}{19}}
+\newlabel{Assumption:3}{{{B}}{19}}
 \abx@aux@page{27}{20}
 \abx@aux@page{28}{20}
 \abx@aux@page{29}{20}
@@ -194,6 +194,9 @@
 \abx@aux@page{43}{20}
 \abx@aux@page{44}{20}
 \abx@aux@page{45}{20}
+\abx@aux@page{46}{20}
+\abx@aux@page{47}{20}
+\abx@aux@page{48}{20}
 \abx@aux@refcontextdefaultsdone
 \abx@aux@defaultrefcontext{0}{Alf}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{bani}{nyt/global//global/global}
@@ -205,6 +208,7 @@
 \abx@aux@defaultrefcontext{0}{gieb}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{hurn}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{iacus1}{nyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{irena}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{KarShr}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{kes}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{leph}{nyt/global//global/global}
@@ -212,11 +216,13 @@
 \abx@aux@defaultrefcontext{0}{mozuma}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{prewo}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{ravn:06:icpmaps}{nyt/global//global/global}
+\abx@aux@defaultrefcontext{0}{ren21}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{saso}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{shoz}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{Sor}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{sultana2017review}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{vago}{nyt/global//global/global}
 \abx@aux@defaultrefcontext{0}{zhbo}{nyt/global//global/global}
-\abx@aux@page{46}{21}
-\abx@aux@page{47}{21}
+\abx@aux@page{49}{21}
+\abx@aux@page{50}{21}
+\abx@aux@page{51}{21}
