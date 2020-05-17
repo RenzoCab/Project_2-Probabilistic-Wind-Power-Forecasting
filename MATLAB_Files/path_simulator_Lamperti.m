@@ -3,10 +3,11 @@ clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'MTLOG';
+dataSet  = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon = 0.018;
-Table_Testing_Complete = load_data_eps_test(epsilon,dataSet);
+epsilon  = 0.018;
+dataKind = 'comparable';
+Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 whatToDo               = 'lamperti_clasic_optimal';
 % whatToDo               = 'lamperti_clasic_IG';
 % whatToDo               = 'lamperti_optimal';

@@ -3,11 +3,12 @@ clear all;
 clc;
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
-dataSet = 'MTLOG';
+dataSet  = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon       = 0.018;
-approx        = 1;
-[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet);
+epsilon  = 0.018;
+approx   = 1;
+dataKind = 'comparable';
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
 
 Date              = Ta_Tra_Comp.Date;
 Time              = Ta_Tra_Comp.Time;

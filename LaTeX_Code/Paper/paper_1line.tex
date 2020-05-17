@@ -143,10 +143,11 @@ The next Figure \ref{fig:sample_data} shows the wind power real production durin
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{plots/5.eps}
-\includegraphics[width=0.35\textwidth]{plots/245.eps}\\
-\includegraphics[width=0.35\textwidth]{plots/661.eps}
-\includegraphics[width=0.35\textwidth]{plots/805.eps}
+\includegraphics[width=0.45\textwidth]{plots/four_days/377.eps}
+\includegraphics[width=0.45\textwidth]{plots/four_days/417.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{plots/four_days/437.eps}
+\includegraphics[width=0.45\textwidth]{plots/four_days/477.eps}
 \caption{Four 24-hour segments with the wind power real production in Uruguay (orange line) recorded every ten minutes, and the hourly wind power production forecasted by provider A (blu line).}
   \label{fig:sample_data}
 \end{figure}
@@ -155,10 +156,11 @@ A global view of the discrepancy between the real production and the forecasted 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{plots/LP_6.eps}
-\includegraphics[width=0.35\textwidth]{plots/MP_6.eps}\\
-\includegraphics[width=0.35\textwidth]{plots/HP_6.eps}
-\includegraphics[width=0.35\textwidth]{plots/AP_6.eps}
+\includegraphics[width=0.45\textwidth]{plots/LP_6.eps}
+\includegraphics[width=0.45\textwidth]{plots/MP_6.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{plots/HP_6.eps}
+\includegraphics[width=0.45\textwidth]{plots/AP_6.eps}
 \caption{Wind production forecast error histograms during the period April-December 2019: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:data_curtailing}
 \end{figure}
@@ -171,10 +173,11 @@ Once we removed all the 24-hour segments associated with wind curtailment, we ke
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{plots/LP.eps}
-\includegraphics[width=0.35\textwidth]{plots/MP.eps}\\
-\includegraphics[width=0.35\textwidth]{plots/HP.eps}
-\includegraphics[width=0.35\textwidth]{plots/AP.eps}
+\includegraphics[width=0.45\textwidth]{plots/LP.eps}
+\includegraphics[width=0.45\textwidth]{plots/MP.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{plots/HP.eps}
+\includegraphics[width=0.45\textwidth]{plots/AP.eps}
 \caption{Wind production forecast error histograms during the period April-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:data_after_clean}
 \end{figure}
@@ -184,10 +187,11 @@ The forecast error transition histograms, displayed in the next Figure \ref{fig:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{plots/LP_t.eps}
-\includegraphics[width=0.35\textwidth]{plots/MP_t.eps}\\
-\includegraphics[width=0.35\textwidth]{plots/HP_t.eps}
-\includegraphics[width=0.35\textwidth]{plots/AP_t.eps}
+\includegraphics[width=0.45\textwidth]{plots/LP_t.eps}
+\includegraphics[width=0.45\textwidth]{plots/MP_t.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{plots/HP_t.eps}
+\includegraphics[width=0.45\textwidth]{plots/AP_t.eps}
 \caption{Forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
 \label{fig:error_transitions}
 \end{figure}
@@ -255,7 +259,8 @@ Taking expectation on (\ref{eq:tomeanX}) we obtain
 Remark: Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates paths of two diffusions with and without derivative tracking. 
 
 \begin{figure}[h]
-  %\includegraphics[width=26mm,scale=1]{}
+\centering
+  \includegraphics[width=0.45\textwidth]{plots/31.eps}\includegraphics[width=0.45\textwidth]{plots/31_2.eps}
   \caption{{\color{red} Add Figure showing the difference with and without derivative tracking}}
   \label{fig:derivative_tracking}
 \end{figure}
@@ -348,10 +353,11 @@ dZ_t & = \Bigg[ \frac{ \dot{p}_t  - \theta_t  \left(1 - p_t - \sin^2 \Big(- \sqr
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{plots/LP_t_LP.eps}
-\includegraphics[width=0.35\textwidth]{plots/MP_t_LP.eps}\\
-\includegraphics[width=0.35\textwidth]{plots/HP_t_LP.eps}
-\includegraphics[width=0.35\textwidth]{plots/AP_t_LP.eps}
+\includegraphics[width=0.45\textwidth]{plots/LP_t_LP.eps}
+\includegraphics[width=0.45\textwidth]{plots/MP_t_LP.eps}\\
+\quad\\
+\includegraphics[width=0.45\textwidth]{plots/HP_t_LP.eps}
+\includegraphics[width=0.45\textwidth]{plots/AP_t_LP.eps}
 \caption{Transitions after the Lamperti transform. The transitions now present a normal Gaussian shape. This effect motivates the use of Gaussian proxies to approximate the process after using the Lamperti transform.}
   \label{fig:LP_transitions}
 \end{figure}
@@ -720,11 +726,11 @@ After calibrating Model 2 on the training set, we can generate simulations of th
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.18\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/1.eps}
-\includegraphics[width=0.18\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/2.eps}\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/2.eps}\\
 \quad\\
-\includegraphics[width=0.18\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/3.eps}
-\includegraphics[width=0.18\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/4.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/4.eps}
 \caption{Five simulated wind power production paths using the approximate MLEs for Model 2 $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. }
 \label{fig:simulation_paths}
 \end{figure}
@@ -733,19 +739,19 @@ On the basis of the approximate MLEs for Model 2, we can obtain empirical pointw
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.35\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/1.eps}
-\includegraphics[width=0.35\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/2.eps}\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/2.eps}\\
 \quad\\
-\includegraphics[width=0.35\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/3.eps}
-\includegraphics[width=0.35\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/4.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/4.eps}
 \caption{Empirical pointwise confidence bands for the wind power production using the approximate MLEs for Model 2 $(\theta_0, \alpha ,\delta)=(1.2,0.1,0.6)$. Blue line: real production.}
 \label{fig:confidence_bands}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.48\textwidth]{../../MATLAB_Files/Results/histograms/classic/Optimal.eps}
-\includegraphics[width=0.48\textwidth]{../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/histograms/classic/Optimal.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal.eps}
 \end{figure}
 
 We can see two histograms for the error transitions. On the left, using $(\theta_0^E,\alpha^E)$, while on the right, using $(\theta_0^L,\alpha^L)$.

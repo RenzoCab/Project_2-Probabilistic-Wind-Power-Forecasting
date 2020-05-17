@@ -356,11 +356,33 @@ plot(xx,dist_to_plot);
 hold on;
 plot(x2,dist_to_plot_val,'x');
 
+%% Testing datetick:
 
+load count.dat;
+n = length(count);
+year = repmat(1995,1,n);
+month = repmat(4,1,n);
+day = repmat(18,1,n);
+hour = [1:n];
+minutes = zeros(1,n);
+sdate = datenum(year,month,day,hour,minutes,minutes);
+bar3(sdate,count);
+datetick('y','HHPM');
 
+%% Testing datetick:
 
+close all;
+clear all;
+clc;
 
-
+y = rand(25,1);
+x = [13:37]/24;
+plot(x,y);
+xticks(x);
+datetick('x','HHPM','keepticks');
+grid minor;
+xlim([min(x) max(x)]);
+xtickangle(90);
 
 
 
