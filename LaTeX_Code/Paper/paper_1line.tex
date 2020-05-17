@@ -119,9 +119,11 @@ Many approaches have been taken to evaluate the uncertainty of a given forecast.
 
 We propose to model wind power forecasts errors using parametric stochastic differential equations (SDEs) whose solution defines a stochastic process. This resultant stochastic process describes the time evolution dynamics of wind power forecast errors while capturing properties such as a correlation structure and the inherent asymmetry. Additionally, the model we propose is agnostic of the forecasting technology and serves to complement forecasting procedures by providing a data driven stochastic forecast. Hence, we are able to evaluate wind power forecasts according to their real-world performance and we are able to compare different forecasting technologies. Most notably, we are able to simulate future wind power production given a deterministic wind power forecast. Future wind power production using Monte Carlo methods, as well as the analytic form of the proposed SDE, can be used in optimal control problems involving wind power production.
 
-Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations. Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2019.
+Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations. Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion and non-Gaussian approximations. We apply the model to Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2019. \\
 
-{\color{red} REWRITE In this paper we present the phenomenological model based on SDE approach in Section \ref{Section_3} and describe the physical constraints in and how these constrains can be met. Then, in Section \ref{Section_4}, we will introduce an alternative formulation of the model in Lamperti space. In Section \ref{Section_6}, we show our parameter estimation procedure and its results in Section \ref{Section_7}. We compare alternative models in Section \ref{Section_8} and different forecast providers in Section \ref{Section_9}.}
+In Section \ref{Section_2}, we introduce the main characteristics of a real data set encompassing the normalized wind power production in Uruguay during the period April-December 2019, joint with the most accurate predictions, as highlighted in our posterior analysis, performed by one out of the three sources of forecast providers. The significant steps for constructing phenomenological models of the normalized wind power production and the forecast error based on stochastic differential equations are described in Section \ref{Section_3}. After reformulating the SDE for the forecast error in Section \ref{Section_4}, by applying the Lamperti transform that leads to a unit diffusion coefficient, we write down in Section \ref{Section_5} the expressions for the likelihood functions of the forecast error in its original space and in the Lamperti space. We also derive simple approximations of the likelihood functions. Section \ref{Section_5} concludes with the description of the optimization algorithm to compute approximate maximum likelihood estimates, including the case where we expand the model comprising an initial transition from the time the forecast is performed to the time of the first forecast.  
+In Section \ref{Section_6}, we apply our proposed parametric estimation procedure to the Uruguay wind and forecast dataset, comparing two alternative models and assessing, for the best candidate model, the performance of three different forecast providers.
+The proofs of the existence, strong uniqueness, and boundedness of the solutions of the SDE used to model normalized wind power production and its forecast error are given in the Appendix.
 
 %---END SECTION 1---
 
@@ -135,7 +137,7 @@ According to (\cite{ren21}, pp.118-119), in 2018, Uruguay achieved 36\% of its e
 At present, Uruguay is fostering even higher levels of wind penetration by boosting regional power trading with Argentina and Brazil. 
 In this rapidly evolving scenario, it is essential to analyze national data on wind power production joint with wind power short-term forecastings to orientate and assess the strategies and decisions of wind energy actors and businesses. 
 
-Our study is based on publicly available data (source: Administrator of Electric Market) on the wind power production in Uruguay for the period March-December 2019, that we adequately normalized with respect to the present $\SI{1474}{\mega\watt}$ maximum installed wind power capacity. Each day, wind power production recordings are available every ten minutes.  In this work, we have also considered data from three different forecast providers, available each day starting at 1 pm.
+Our study is based on publicly available data (source: Administrator of Electric Market) on the wind power production in Uruguay for the period April-December 2019, that we adequately normalized with respect to the present $\SI{1474}{\mega\watt}$ maximum installed wind power capacity. Each day, wind power production recordings are available every ten minutes.  In this work, we have also considered data from three different forecast providers, available each day starting at 1 pm.
 
 The next Figure \ref{fig:sample_data} shows the wind power real production during four segments 24-hour long selected from the observation period together with their corresponding hourly short-term forecast, computed by a forecast provider. For the sake of visualization clarity, this Section relies only on forecasts from one provider, called "provider A" from now on, ranked as the most accurate forecast provider, as it emerged from our posterior analysis. 
 
@@ -157,11 +159,11 @@ A global view of the discrepancy between the real production and the forecasted 
 \includegraphics[width=0.35\textwidth]{plots/MP_6.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/HP_6.eps}
 \includegraphics[width=0.35\textwidth]{plots/AP_6.eps}
-\caption{Wind production forecast error histograms during the period March-December 2019: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Wind production forecast error histograms during the period April-December 2019: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:data_curtailing}
 \end{figure}
 
-We may observe that all the histograms in the Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The analysis of the dataset highlighted that, during several 24-hour segments, the system operators decided to reduce, or even cease the wind power production {\color{red} add why curtailment and references}. 
+We may observe that all the histograms in the Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The analysis of the dataset highlighted that, during several 24-hour segments, the system operators decided to reduce, or even cease the wind power production {\color{red} add more on curtailment and references}. 
 
 The curtailment of the wind power production imposed by the system operators has a strong influence on the forecast error. To build a model that, driven by the available forecast, allows to include the true power production with a prescribed degree of uncertainty, it is necessary to remove the data segments affected by wind curtailment.
 
@@ -173,7 +175,7 @@ Once we removed all the 24-hour segments associated with wind curtailment, we ke
 \includegraphics[width=0.35\textwidth]{plots/MP.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/HP.eps}
 \includegraphics[width=0.35\textwidth]{plots/AP.eps}
-\caption{Wind production forecast error histograms during the period March-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Wind production forecast error histograms during the period April-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:data_after_clean}
 \end{figure}
 
@@ -186,14 +188,11 @@ The forecast error transition histograms, displayed in the next Figure \ref{fig:
 \includegraphics[width=0.35\textwidth]{plots/MP_t.eps}\\
 \includegraphics[width=0.35\textwidth]{plots/HP_t.eps}
 \includegraphics[width=0.35\textwidth]{plots/AP_t.eps}
-\caption{Forecast error transition histograms during the period March-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
 \label{fig:error_transitions}
 \end{figure}
 
- {\color{red}  We can observe the lack of gaussianity.}
-
- ({\color{red} MOVE THIS COMMENT. We use 73 days to train the system and 74 to test it. Also, to avoid correlation between days, we intercalate the days we use for training and testing. Show that 24h is enough to ensure independence}).
-
+The lack of gaussianity is a characteristic trait of the histograms depicted in Figure \ref{fig:error_transitions}, which provides an initial orientation for the model building stage. Later, we will also propose transforming data as a strategy that naturally leads to an alternative model.
 
 %---END SECTION 2---
 
@@ -287,14 +286,7 @@ However, a distinctive feature in our proposed model
 \end{equation}
 
 is that the drift term contains the time-varying parameter $\theta_t$, rendering the solution $X$ to (\ref{ourmodel}) a non-stationary and time-inhomogeneous process. To ensure that the process $X$ be the unique strong solution to (\ref{ourmodel}) for all $t \in [0,T]$ with state space $[0,1]$ a.s., the mean-reversion time-varying parameter must satisfy the following condition:
-%has to be selected according to the following rule. Observe that the time derivative term $\dot{p}_t $ is not controlled to maintain that $X_t$ stays a.s. inside the range $[0,1]$. In other words, the zero drift line defined by $a(x; p_t,\bm{\theta}) =0$, which is an attractor, must be contained inside the range $[0,1]$. Thus, we must have that
-%\begin{equation}
-%\frac{- |\dot{p_t}|}{p_t} \leq \theta_t \leq \frac{|\dot{p}_t|}{1- p_t}
-%\end{equation}
-%which is satisfied  by choosing a time-dependent  $\theta_t$ as follows,
-%\begin{equation}
-%\theta_t = \max \left( \theta_0 \ , \ \frac{|\dot{p}_t|}{\min (p_t, 1-p_t)}  \right ),  \quad \theta_0 >0\,. \label{theta_t}
-%\end{equation}
+
 \begin{equation}\label{Assumption:3}
 \theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{B}. 
 \end{equation} \label{condB}
@@ -310,12 +302,11 @@ Remark: Condition (B) shows that the time-varying parameter $\theta_t$ becomes u
  \end{array}\right.  \label{corrforecast}
 \end{equation}
 that satisfies $p_t^{\epsilon} \in [\epsilon, 1 - \epsilon]$ for any $0 < \epsilon < \frac{1}{2}$ and $t \in [0,T]$, providing that $\theta_t$ is bounded for every $t \in [0,T]$. \\
-From now on, we will keep the notation $p_t$ to denote the truncated prediction function (\ref{corrforecast}), unless specified otherwise.
 
-%{\color{red} The expression for $\theta_t$ is important: $\theta_t$ depens on $t$ through $\dot{p_t}$ and $p_t$. Besides it is parsimonious because only one unknown parameter appear in \ref{theta_t}. Recall it is an upped bound for the real inequality. } 
+Remark: In this work, the analysis of the three different forecast datasets shows that there exists, for any forecast provider, a small $\epsilon >0$ to define the truncated prediction function fulfilling the above condition. \\
 
+From now on, we will keep the notation $p_t$ to denote the truncated prediction function (\ref{corrforecast}), unless specified otherwise. 
 
-%\subsubsection*{Change of Variables:}
 \subsection{A model specification for the forecast error}
  After applying to (\ref{ourmodel}) the simple change of variables $$V_t = X_t - p_t \,,$$ we may introduce the following model for the forecast error of the normalized wind power production: 
 
@@ -584,7 +575,11 @@ To solve this minimization problem, we repeat the steps described in section (\r
 %---END SECTION 5---
 
 %---BEGIN SECTION 6---
-\section{Applications to the Uruguay wind and forecast dataset} \label{Section_6}
+\section{Application to the April-December 2019 Uruguay wind and forecast dataset} \label{Section_6}
+
+Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hour long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models.
+
+{ \color{red} Show that 24h is enough to ensure independence?}
 
 Following the instruction for the initial guesses from section $\ref{opt_sec}$, we get the initial guesses $(\theta_0,\alpha,\delta)\approx(1.2,0.1,0.6)$.
 
@@ -834,33 +829,31 @@ Then similarly, we need to assume that $\dot p_t +\theta_tp_t\ge 0$. This comple
 \begin{Thm}\label{thm:mod2}
 Assume that assumptions of Theorem \ref{thm:exun} hold with $x_0\in]0,1[$.
 Let $\tau_0:=\inf \{t\in[0,T],\; X_t=0\}$ and  $\tau_1:=\inf \{t\in[0,T],\; X_t=1\}$ with the convention that $\inf\emptyset=+\infty$. Assume in addition that for all $t\in[0,T]$,  $p_t\in]0,1[$ and that
-\red{
 \begin{equation}\label{Assumption:3}
 \theta_t\geq \max\left(\frac{\alpha\theta_0+\dot p_t}{1-p_t},\frac{\alpha\theta_0-\dot p_t}{p_t}\right)\tag{B}. 
 \end{equation}
-}
  Then, $\tau_0=\tau_1=+\infty$ a.s.
 \end{Thm}
 
 \begin{proof}
 For $t\in[0,\tau_0[$, we have 
 $$
-\frac{dX_t}{X_t}= \left(\frac{\dot p_t +\theta_t p_t}{X_t} - \theta_t\right)dt  +\sqrt{\frac{2\alpha \red{\theta_0}(1-X_t)}{X_t}} dW_t 
+\frac{dX_t}{X_t}= \left(\frac{\dot p_t +\theta_t p_t}{X_t} - \theta_t\right)dt  +\sqrt{\frac{2\alpha \theta_0 (1-X_t)}{X_t}} dW_t 
 $$  
 so that
 $$
-X_t=x_0\exp\Big(\int_0^t \frac{\dot p_s +\theta_sp_s- \red{\theta_0}\alpha}{X_s}ds+\alpha\red{\theta_0}t-  \int_0^t\theta_sds + M_t\Big),
+X_t=x_0\exp\Big(\int_0^t \frac{\dot p_s +\theta_sp_s- \theta_0 \alpha}{X_s}ds+\alpha\theta_0 t-  \int_0^t\theta_sds + M_t\Big),
 $$
-where $M_t=\int_0^t\sqrt{\frac{2\alpha \theta_0 (1-X_s)}{X_s}} dW_s$ is a continuous martingale. Then as for all $t\in[0,T]$, we have $\dot p_t +\theta_tp_t- \red{\theta_0}\alpha\ge0$, we deduce that
+where $M_t=\int_0^t\sqrt{\frac{2\alpha \theta_0 (1-X_s)}{X_s}} dW_s$ is a continuous martingale. Then as for all $t\in[0,T]$, we have $\dot p_t +\theta_tp_t- \theta_0 \alpha\ge0$, we deduce that
 $$
-X_t\ge x_0\exp\Big(\alpha\red{\theta_0}t-  \int_0^t\theta_sds + M_t\Big).
+X_t\ge x_0\exp\Big(\alpha\theta_0 t-  \int_0^t\theta_sds + M_t\Big).
 $$
 By way of contradiction let us assume that  $\{\tau_0<\infty\}$, then letting $t\to \tau_0$ we deduce that $\lim_{t\to \infty} \mathbf 1_{\{\tau_0<\infty\}}M_{t\wedge \tau_0}=\mathbf -1_{\{\tau_0<\infty\}}\infty$ a.s. This leads to a contradiction since we know that continuous martingales likewise the Brownian motion cannot converge  almost surely to $+\infty$ or $-\infty$. It follows that $\tau_0=\infty$ almost surely. Next, recalling that  the process $(Y_t)_{t\geq 0}$  given by $Y_t=1-X_t$ is solution to 
 $$
-dY_t= \big( \theta_t(1-p_t) -\dot p_t - \theta_tY_t  \big)dt  -\sqrt{2\alpha \red{\theta_0}Y_t(1-Y_t)} dW_t 
+dY_t= \big( \theta_t(1-p_t) -\dot p_t - \theta_tY_t  \big)dt  -\sqrt{2\alpha \theta_0 Y_t(1-Y_t)} dW_t 
 $$
 we deduce using similar arguments as above 
-$\tau_1=\infty$ a.s. provided that $\theta_t(1-p_t) -\dot p_t -\alpha \red{\theta_0}\ge 0$.
+$\tau_1=\infty$ a.s. provided that $\theta_t(1-p_t) -\dot p_t -\alpha \theta_0 \ge 0$.
  \end{proof} 
 
 Remark: As the diffusion coefficient of $X$  given by  $x \mapsto \sqrt{2 \alpha \theta_0 x(1-x)}$  is strictly positive for all $x \in  ]0,1[$, the condition \eqref{Assumption:3}  ensures that the transformation between $Z$ and $X$ is bijective, so that we deduce the properties of existence and uniqueness of $Z$ from those of $X$. The application of  It\^{o}'s formula in Section \ref{Section_4} is subjected to the condition \eqref{Assumption:3} that avoids the process $X$ hits the boundaries of the interval $ ]0,1[$, otherwise the Lamperti transform is not applicable. 
