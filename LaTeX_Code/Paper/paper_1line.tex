@@ -130,7 +130,7 @@ The proofs of the existence, strong uniqueness, and boundedness of the solutions
 %---BEGIN SECTION 2---
 \section{Wind power production data in Uruguay and forecast providers } \label{Section_2}
 
-In recent years, Uruguay has triggered a remarkable change in its energy matrix. In (\cite{irena}, p.23) Uruguay is among those countries showcasing innovation, like Denmark, Ireland, Germany, Portugal, and Spain, with proven feasibility of managing annual variable renewable energy higher than 25\% in power systems. 
+In recent years, Uruguay has triggered a remarkable change in its energy matrix. In (\cite{irena}, p.23) Uruguay is among those countries showcasing innovation, like Denmark, Ireland, Germany, Portugal, and Spain, with proven feasibility of managing annual variable renewable energy (VRE) higher than 25\% in power systems. 
 
 According to (\cite{ren21}, pp.118-119), in 2018, Uruguay achieved 36\% of its electricity production from variable wind energy and solar PV, raising the share of generation from wind energy more than five-fold in just four years, from 6.2\% in 2014 to 33\% in 2018. 
 
@@ -152,7 +152,7 @@ The next Figure \ref{fig:sample_data} shows the wind power real production durin
   \label{fig:sample_data}
 \end{figure}
 
-A global view of the discrepancy between the real production and the forecasted production, the forecast error, during the nine months observation period, is displayed in the following Figure \ref{fig:data_curtailing}, where we also partitioned the forecast errors according to three contiguous categories of normalized generated power. Low normalized generated power corresponds to the range $[0,0.3]$, mid-power refers to the range $(0.3,0.6]$, and high-power to the range $(0.6,1]$.
+A view of the global discrepancy between the real production and the forecasted production, during the nine months observation period, is summarized through the forecast error histograms, Figure \ref{fig:data_curtailing}, where we also partitioned the forecast errors according to three contiguous categories of normalized generated power. Low normalized generated power corresponds to the range $[0,0.3]$, mid-power refers to the range $(0.3,0.6]$, and high-power to the range $(0.6,1]$.
 
 \begin{figure}[H]
 \centering
@@ -165,11 +165,12 @@ A global view of the discrepancy between the real production and the forecasted 
   \label{fig:data_curtailing}
 \end{figure}
 
-We may observe that all the histograms in the Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The analysis of the dataset highlighted that, during several 24-hour segments, the system operators decided to reduce, or even cease the wind power production {\color{red} add more on curtailment and references}. 
-
+We may observe that all the histograms in the Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The analysis of the dataset highlighted that, during several 24-hour segments, the system operators decided to reduce, or even cease the wind power production. Indeed, as recalled in (\cite{irena2}, p.3), ``Uruguay experiences high curtailment levels because generation exceeds demand.'' Despite the large country’s interconnection capacity with Argentina and Brazil, there is no active cross-border market, the energy is traded via ad hoc short-term agreements. ``Even with interconnection capacity exceeding peak demand, the power system experiences high VRE curtailment, mostly at night when wind generation exceeds demand.''
+  
 The curtailment of the wind power production imposed by the system operators has a strong influence on the forecast error. To build a model that, driven by the available forecast, allows to include the true power production with a prescribed degree of uncertainty, it is necessary to remove the data segments affected by wind curtailment.
 
-Once we removed all the 24-hour segments associated with wind curtailment, we kept 147 segments. In the absence of the curtailment effect, the forecast error histograms are shown in Figure \ref{fig:data_after_clean} below, where it is appreciable the reduction of skewness.
+Once we removed all the 24-hour segments showing wind curtailment, we set up a dataset containing 147 daily segments. 
+In the absence of the curtailment intervention, the forecast error histograms are shown below in Figure \ref{fig:data_after_clean}, where it can be appreciated skewness reduction, except for low power forecast errors histogram.
 
 \begin{figure}[H]
 \centering
@@ -196,7 +197,8 @@ The forecast error transition histograms, displayed in the next Figure \ref{fig:
 \label{fig:error_transitions}
 \end{figure}
 
-The lack of gaussianity is a characteristic trait of the histograms depicted in Figure \ref{fig:error_transitions}, which provides an initial orientation for the model building stage. Later, we will also propose transforming data as a strategy that naturally leads to an alternative model.
+The histograms in Figure \ref{fig:error_transitions} feature a non-Gaussianity trait and provide initial input for the model-building stage, which is described in Section next.
+Later, in Section \ref{Section_4}, guided from inferring the unknown model parameters, we will also propose transforming data as a strategy that naturally leads to an alternative model.
 
 %---END SECTION 2---
 
@@ -256,12 +258,12 @@ Taking expectation on (\ref{eq:tomeanX}) we obtain
 \item it tracks the time derivative $\dot{p}_t$.  
 \end{itemize} 
 
-Remark: Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates paths of two diffusions with and without derivative tracking. 
+Remark: Observe that a mean-reverting model without derivative tracking shows a delayed path behavior. For instance, consider the diffusion model (\ref{eq:main}) with $a(X_t; p_t, \bm{\theta}) = - \theta_0 (X_t - p_t)\,, \theta_0 > 0$. In this case, given  $ \mathbb{E} X_0 = p_0$, the diffusion has mean $\mathbb{E} X_t = p_t - e^{- \theta_0 t } \int_0^t \dot{p}_s  e^{\theta_0 s} ds$. The next Figure (\ref{fig:derivative_tracking}) illustrates how different behave the estimated confidence bands for two diffusion models with and without derivative tracking, fitting the same daily segment. 
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.45\textwidth]{plots/31.eps}\includegraphics[width=0.45\textwidth]{plots/31_2.eps}
-  \caption{{\color{red} Add Figure showing the difference with and without derivative tracking}}
+  \caption{Pointwise confidence bands fitted, for the same daily segment, through diffusion models without derivative tracking (graph on the left) and with derivative tracking (graph on the right).}
   \label{fig:derivative_tracking}
 \end{figure}
 

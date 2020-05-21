@@ -508,6 +508,36 @@
       \field{year}{2008}
       \keyw{Wind-SDE}
     \endentry
+    \entry{irena2}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b4f3a3711fe4df2b64d17bf2d72d90c0}{%
+           family={IRENA},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Abu Dhabi}%
+      }
+      \list{organization}{1}{%
+        {International Renewable Energy Agency}%
+      }
+      \strng{namehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{fullhash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{bibnamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{authorbibnamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{authornamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \strng{authorfullhash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \field{extraname}{1}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-92-9260-086-0}
+      \field{title}{Uruguay $P$ower $S$ystem $F$lexibility assessment: IRENA $F$lex$T$ool $C$ase $S$tudy}
+      \field{year}{2018}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{irena}{book}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=b4f3a3711fe4df2b64d17bf2d72d90c0}{%
@@ -526,6 +556,7 @@
       \strng{authorbibnamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
       \strng{authornamehash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
       \strng{authorfullhash}{b4f3a3711fe4df2b64d17bf2d72d90c0}
+      \field{extraname}{2}
       \field{sortinit}{I}
       \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
       \field{extradatescope}{labelyear}
