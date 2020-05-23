@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  7 APR 2020 23:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  21 MAY 2020 20:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1838,8 +1838,8 @@ LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <14.4> not available
 ]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/likelihood/norm
 al/Log-Likelihood.eps>
-(epstopdf)                    date: 2020-04-06 12:41:35
-(epstopdf)                    size: 30725137 bytes
+(epstopdf)                    date: 2020-05-20 16:53:39
+(epstopdf)                    size: 31259023 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/likelihood/norm
 al/Log-Likelihood-eps-converted-to.pdf>
 (epstopdf)                    date: 2020-04-06 12:41:52
@@ -1848,21 +1848,28 @@ al/Log-Likelihood-eps-converted-to.pdf>
 likelihood/normal/Log-Likelihood-eps-converted-to.pdf ../../MATLAB_Files/Result
 s/likelihood/normal/Log-Likelihood.eps>
 (epstopdf)             \includegraphics on input line 92.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=../../MATLAB_Files/Results/likelihood/normal/Log-L
+ikelihood-eps-converted-to.pdf ../../MATLAB_Files/Results/likelihood/normal/Log
+-Likelihood.eps)...executed.
+
+Package epstopdf Info: Result file: <../../MATLAB_Files/Results/likelihood/norm
+al/Log-Likelihood-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-21 20:20:01
+(epstopdf)                    size: 3862266 bytes.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/likelihood/normal/Log
 -Likelihood-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but 
 at most version <1.5> allowed
 <../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood-eps-converted-to.p
-df, id=30, 607.26875pt x 433.62pt>
+df, id=30, 594.22pt x 433.62pt>
 File: ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood-eps-converted
 -to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood-eps-converted-
 to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/likelihood/normal/Log-Likel
 ihood-eps-converted-to.pdf  used on input line 92.
-(pdftex.def)             Requested size: 181.38762pt x 129.51797pt.
+(pdftex.def)             Requested size: 181.38762pt x 132.36307pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <5> not available
@@ -1895,7 +1902,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/likelihood/normal/Log
 -Likelihood_Line-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Line-eps-converted
--to.pdf, id=54, 429.605pt x 317.185pt>
+-to.pdf, id=53, 429.605pt x 317.185pt>
 File: ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Line-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Line-eps-conve
@@ -1922,7 +1929,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/likelihood/normal/Log
 -Likelihood_Evaluations-eps-converted-to.pdf): PDF inclusion: found PDF version
  <1.7>, but at most version <1.5> allowed
 <../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Evaluations-eps-co
-nverted-to.pdf, id=55, 389.455pt x 302.12875pt>
+nverted-to.pdf, id=54, 389.455pt x 302.12875pt>
 File: ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Evaluations-e
 ps-converted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Evaluations-ep
@@ -1937,12 +1944,12 @@ d-to.pdf> <../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_Evaluati
 ons-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/1.eps>
-(epstopdf)                    date: 2020-04-07 17:58:15
-(epstopdf)                    size: 42199 bytes
+(epstopdf)                    date: 2020-05-17 19:04:40
+(epstopdf)                    size: 58407 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:58:45
-(epstopdf)                    size: 15118 bytes
+(epstopdf)                    date: 2020-05-17 19:23:12
+(epstopdf)                    size: 17097 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/1-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/1.eps>
@@ -1954,22 +1961,22 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
 timal_value/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-converted-to
-.pdf, id=75, 370.38374pt x 301.125pt>
+.pdf, id=74, 372.39125pt x 304.13625pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/1-eps-converted-to.pdf  used on input line 140.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/2.eps>
-(epstopdf)                    date: 2020-04-07 17:58:16
-(epstopdf)                    size: 42182 bytes
+(epstopdf)                    date: 2020-05-17 19:04:41
+(epstopdf)                    size: 58152 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:59:05
-(epstopdf)                    size: 15348 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 16956 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/2-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/2.eps>
@@ -1981,22 +1988,22 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
 timal_value/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-converted-to
-.pdf, id=76, 370.38374pt x 301.125pt>
+.pdf, id=75, 372.39125pt x 304.13625pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/2-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/2-eps-converted-to.pdf  used on input line 140.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/3.eps>
-(epstopdf)                    date: 2020-04-07 17:58:16
-(epstopdf)                    size: 42180 bytes
+(epstopdf)                    date: 2020-05-17 19:04:42
+(epstopdf)                    size: 58432 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:59:05
-(epstopdf)                    size: 15217 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 17164 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/3-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/3.eps>
@@ -2008,22 +2015,22 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
 timal_value/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-eps-converted-to
-.pdf, id=77, 370.38374pt x 301.125pt>
+.pdf, id=76, 372.39125pt x 304.13625pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/3-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/3-eps-converted-to.pdf  used on input line 140.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/4.eps>
-(epstopdf)                    date: 2020-04-07 17:58:17
-(epstopdf)                    size: 42197 bytes
+(epstopdf)                    date: 2020-05-17 19:04:42
+(epstopdf)                    size: 58437 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/4-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:59:05
-(epstopdf)                    size: 15305 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 17100 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/4-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/4.eps>
@@ -2035,18 +2042,18 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
 timal_value/4-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/4-eps-converted-to
-.pdf, id=78, 370.38374pt x 301.125pt>
+.pdf, id=77, 372.39125pt x 304.13625pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/4-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/4-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/4-eps-converted-to.pdf  used on input line 140.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/5.eps>
-(epstopdf)                    date: 2020-04-07 17:58:19
-(epstopdf)                    size: 42187 bytes
+(epstopdf)                    date: 2020-05-17 19:04:43
+(epstopdf)                    size: 58427 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/5-eps-converted-to.pdf>
 (epstopdf)                    date: 2020-04-07 17:59:05
@@ -2055,25 +2062,32 @@ ays/optimal_value/5-eps-converted-to.pdf>
 paths_testing_days/optimal_value/5-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/5.eps>
 (epstopdf)             \includegraphics on input line 140.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=../../MATLAB_Files/Results/paths_testing_days/opti
+mal_value/5-eps-converted-to.pdf ../../MATLAB_Files/Results/paths_testing_days/
+optimal_value/5.eps)...executed.
+
+Package epstopdf Info: Result file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/5-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-21 20:20:01
+(epstopdf)                    size: 16862 bytes.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
 timal_value/5-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/5-eps-converted-to
-.pdf, id=79, 370.38374pt x 301.125pt>
+.pdf, id=78, 372.39125pt x 304.13625pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/5-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/5-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/5-eps-converted-to.pdf  used on input line 140.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/6.eps>
-(epstopdf)                    date: 2020-04-07 17:58:19
-(epstopdf)                    size: 42197 bytes
+(epstopdf)                    date: 2020-05-17 19:04:45
+(epstopdf)                    size: 58356 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/6-eps-converted-to.pdf>
 (epstopdf)                    date: 2020-04-07 17:59:05
@@ -2082,21 +2096,28 @@ ays/optimal_value/6-eps-converted-to.pdf>
 paths_testing_days/optimal_value/6-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/6.eps>
 (epstopdf)             \includegraphics on input line 140.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=../../MATLAB_Files/Results/paths_testing_days/opti
+mal_value/6-eps-converted-to.pdf ../../MATLAB_Files/Results/paths_testing_days/
+optimal_value/6.eps)...executed.
+
+Package epstopdf Info: Result file: <../../MATLAB_Files/Results/paths_testing_d
+ays/optimal_value/6-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-21 20:20:01
+(epstopdf)                    size: 17000 bytes.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/op
 timal_value/6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/optimal_value/6-eps-converted-to
-.pdf, id=80, 370.38374pt x 301.125pt>
+.pdf, id=79, 372.39125pt x 304.13625pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/optimal_value/6-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/optimal_value/6-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/6-eps-converted-to.pdf  used on input line 140.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 [6
 
  <../../MATLAB_Files/Results/paths_testing_days/optimal_value/1-eps-converted-t
@@ -2108,12 +2129,12 @@ _value/5-eps-converted-to.pdf> <../../MATLAB_Files/Results/paths_testing_days/o
 ptimal_value/6-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/1.eps>
-(epstopdf)                    date: 2020-04-07 21:39:46
-(epstopdf)                    size: 62028 bytes
+(epstopdf)                    date: 2020-05-17 19:00:45
+(epstopdf)                    size: 61926 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:12
-(epstopdf)                    size: 19004 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 19977 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/1-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/1.eps>
@@ -2125,7 +2146,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
 timal_value/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-converted-to
-.pdf, id=134, 370.38374pt x 301.125pt>
+.pdf, id=133, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/1-eps-converte
@@ -2135,12 +2156,12 @@ value/1-eps-converted-to.pdf  used on input line 157.
 (pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/2.eps>
-(epstopdf)                    date: 2020-04-07 21:39:48
-(epstopdf)                    size: 61885 bytes
+(epstopdf)                    date: 2020-05-17 19:00:46
+(epstopdf)                    size: 60780 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:13
-(epstopdf)                    size: 19134 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 19518 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/2-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/2.eps>
@@ -2152,7 +2173,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
 timal_value/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-converted-to
-.pdf, id=135, 370.38374pt x 301.125pt>
+.pdf, id=134, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/2-eps-converte
@@ -2162,12 +2183,12 @@ value/2-eps-converted-to.pdf  used on input line 157.
 (pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/3.eps>
-(epstopdf)                    date: 2020-04-07 21:39:49
-(epstopdf)                    size: 61903 bytes
+(epstopdf)                    date: 2020-05-17 19:00:48
+(epstopdf)                    size: 61257 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:13
-(epstopdf)                    size: 19003 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 19690 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/3-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/3.eps>
@@ -2179,7 +2200,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
 timal_value/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-eps-converted-to
-.pdf, id=136, 370.38374pt x 301.125pt>
+.pdf, id=135, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/3-eps-converte
@@ -2189,12 +2210,12 @@ value/3-eps-converted-to.pdf  used on input line 157.
 (pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/4.eps>
-(epstopdf)                    date: 2020-04-07 21:39:50
-(epstopdf)                    size: 61361 bytes
+(epstopdf)                    date: 2020-05-17 18:56:19
+(epstopdf)                    size: 78674 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/4-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:13
-(epstopdf)                    size: 18963 bytes
+(epstopdf)                    date: 2020-05-17 19:23:14
+(epstopdf)                    size: 24934 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/4-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/4.eps>
@@ -2206,18 +2227,18 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
 timal_value/4-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/4-eps-converted-to
-.pdf, id=137, 370.38374pt x 301.125pt>
+.pdf, id=136, 369.38pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/4-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/4-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/optimal_
 value/4-eps-converted-to.pdf  used on input line 157.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.37987pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/5.eps>
-(epstopdf)                    date: 2020-04-07 21:39:52
-(epstopdf)                    size: 62017 bytes
+(epstopdf)                    date: 2020-05-17 18:56:21
+(epstopdf)                    size: 78545 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/5-eps-converted-to.pdf>
 (epstopdf)                    date: 2020-04-07 21:40:13
@@ -2226,25 +2247,32 @@ ays/optimal_value/5-eps-converted-to.pdf>
 bands_testing_days/optimal_value/5-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/5.eps>
 (epstopdf)             \includegraphics on input line 157.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=../../MATLAB_Files/Results/bands_testing_days/opti
+mal_value/5-eps-converted-to.pdf ../../MATLAB_Files/Results/bands_testing_days/
+optimal_value/5.eps)...executed.
+
+Package epstopdf Info: Result file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/5-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-21 20:20:01
+(epstopdf)                    size: 24454 bytes.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
 timal_value/5-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/5-eps-converted-to
-.pdf, id=138, 370.38374pt x 301.125pt>
+.pdf, id=137, 369.38pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/5-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/5-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/optimal_
 value/5-eps-converted-to.pdf  used on input line 157.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.37987pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/6.eps>
-(epstopdf)                    date: 2020-04-07 21:39:54
-(epstopdf)                    size: 61572 bytes
+(epstopdf)                    date: 2020-04-25 13:16:29
+(epstopdf)                    size: 61446 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/6-eps-converted-to.pdf>
 (epstopdf)                    date: 2020-04-07 21:40:14
@@ -2253,14 +2281,21 @@ ays/optimal_value/6-eps-converted-to.pdf>
 bands_testing_days/optimal_value/6-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/6.eps>
 (epstopdf)             \includegraphics on input line 157.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=../../MATLAB_Files/Results/bands_testing_days/opti
+mal_value/6-eps-converted-to.pdf ../../MATLAB_Files/Results/bands_testing_days/
+optimal_value/6.eps)...executed.
+
+Package epstopdf Info: Result file: <../../MATLAB_Files/Results/bands_testing_d
+ays/optimal_value/6-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-21 20:20:02
+(epstopdf)                    size: 19019 bytes.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/op
 timal_value/6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/optimal_value/6-eps-converted-to
-.pdf, id=139, 370.38374pt x 301.125pt>
+.pdf, id=138, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/optimal_value/6-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/optimal_value/6-eps-converte
@@ -2279,12 +2314,12 @@ _value/5-eps-converted-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/o
 ptimal_value/6-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
 sic/Optimal.eps>
-(epstopdf)                    date: 2020-04-07 21:34:12
-(epstopdf)                    size: 52746 bytes
+(epstopdf)                    date: 2020-05-21 20:07:50
+(epstopdf)                    size: 51560 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
 sic/Optimal-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:34:39
-(epstopdf)                    size: 13137 bytes
+(epstopdf)                    date: 2020-05-21 20:16:11
+(epstopdf)                    size: 49194 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 histograms/classic/Optimal-eps-converted-to.pdf ../../MATLAB_Files/Results/hist
 ograms/classic/Optimal.eps>
@@ -2296,14 +2331,14 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/classic/Op
 timal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at mos
 t version <1.5> allowed
 <../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf, id
-=195, 946.53625pt x 625.33624pt>
+=194, 429.605pt x 317.185pt>
 File: ../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pd
 f Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf
 >
 Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Optimal-
 eps-converted-to.pdf  used on input line 181.
-(pdftex.def)             Requested size: 256.07741pt x 169.177pt.
+(pdftex.def)             Requested size: 256.07741pt x 189.0686pt.
 [8
 
  <../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf>] 
@@ -2316,31 +2351,38 @@ eps-converted-to.pdf  used on input line 181.
 ]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/likelihood/lamp
 erti/Log-Likelihood.eps>
-(epstopdf)                    date: 2020-04-07 20:15:53
-(epstopdf)                    size: 779509 bytes
+(epstopdf)                    date: 2020-05-20 17:11:12
+(epstopdf)                    size: 1911492 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/likelihood/lamp
 erti/Log-Likelihood-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 20:16:37
-(epstopdf)                    size: 163595 bytes
+(epstopdf)                    date: 2020-05-20 16:46:38
+(epstopdf)                    size: 226455 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 likelihood/lamperti/Log-Likelihood-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/likelihood/lamperti/Log-Likelihood.eps>
 (epstopdf)             \includegraphics on input line 253.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(epstopdf --outfile=../../MATLAB_Files/Results/likelihood/lamperti/Log
+-Likelihood-eps-converted-to.pdf ../../MATLAB_Files/Results/likelihood/lamperti
+/Log-Likelihood.eps)...executed.
+
+Package epstopdf Info: Result file: <../../MATLAB_Files/Results/likelihood/lamp
+erti/Log-Likelihood-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-21 20:20:02
+(epstopdf)                    size: 510462 bytes.
 
 
 pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/likelihood/lamperti/L
 og-Likelihood-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, bu
 t at most version <1.5> allowed
 <../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-converted-to
-.pdf, id=230, 382.42876pt x 302.12875pt>
+.pdf, id=227, 609.27625pt x 433.62pt>
 File: ../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-convert
 ed-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-converte
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/likelihood/lamperti/Log-Lik
 elihood-eps-converted-to.pdf  used on input line 253.
-(pdftex.def)             Requested size: 213.39568pt x 168.58702pt.
+(pdftex.def)             Requested size: 213.39568pt x 151.87514pt.
 [12
 
  <../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood-eps-converted-t
@@ -2364,7 +2406,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/likelihood/lamperti/L
 og-Likelihood_2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, 
 but at most version <1.5> allowed
 <../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood_2-eps-converted-
-to.pdf, id=247, 429.605pt x 316.18124pt>
+to.pdf, id=244, 429.605pt x 316.18124pt>
 File: ../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood_2-eps-conve
 rted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/likelihood/lamperti/Log-Likelihood_2-eps-conver
@@ -2378,11 +2420,11 @@ elihood_2-eps-converted-to.pdf  used on input line 277.
 -to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/1.eps>
-(epstopdf)                    date: 2020-04-07 21:08:32
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 40264 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 14822 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/lamperti_optimal/1-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2395,7 +2437,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
 mperti_optimal/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-converted
--to.pdf, id=263, 364.36125pt x 301.125pt>
+-to.pdf, id=260, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-conve
@@ -2405,11 +2447,11 @@ _optimal/1-eps-converted-to.pdf  used on input line 294.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/2.eps>
-(epstopdf)                    date: 2020-04-07 21:08:33
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 40262 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 15018 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/lamperti_optimal/2-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2422,7 +2464,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
 mperti_optimal/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps-converted
--to.pdf, id=264, 364.36125pt x 301.125pt>
+-to.pdf, id=261, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps-conve
@@ -2432,11 +2474,11 @@ _optimal/2-eps-converted-to.pdf  used on input line 294.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/3.eps>
-(epstopdf)                    date: 2020-04-07 21:08:34
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 40256 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 14899 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/lamperti_optimal/3-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2449,7 +2491,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
 mperti_optimal/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/3-eps-converted
--to.pdf, id=265, 364.36125pt x 301.125pt>
+-to.pdf, id=262, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/3-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/3-eps-conve
@@ -2459,11 +2501,11 @@ _optimal/3-eps-converted-to.pdf  used on input line 294.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/4.eps>
-(epstopdf)                    date: 2020-04-07 21:08:35
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 40262 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/4-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 15043 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/lamperti_optimal/4-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2476,7 +2518,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
 mperti_optimal/4-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/4-eps-converted
--to.pdf, id=266, 364.36125pt x 301.125pt>
+-to.pdf, id=263, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/4-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/4-eps-conve
@@ -2486,11 +2528,11 @@ _optimal/4-eps-converted-to.pdf  used on input line 294.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/5.eps>
-(epstopdf)                    date: 2020-04-07 21:07:24
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 40256 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/5-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 14924 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/lamperti_optimal/5-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2503,7 +2545,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
 mperti_optimal/5-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/5-eps-converted
--to.pdf, id=267, 364.36125pt x 301.125pt>
+-to.pdf, id=264, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/5-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/5-eps-conve
@@ -2513,11 +2555,11 @@ _optimal/5-eps-converted-to.pdf  used on input line 294.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/6.eps>
-(epstopdf)                    date: 2020-04-07 21:07:25
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 40269 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/lamperti_optimal/6-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 14897 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/lamperti_optimal/6-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2530,7 +2572,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
 mperti_optimal/6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/6-eps-converted
--to.pdf, id=268, 364.36125pt x 301.125pt>
+-to.pdf, id=265, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/6-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/6-eps-conve
@@ -2549,11 +2591,11 @@ days/lamperti_optimal/5-eps-converted-to.pdf> <../../MATLAB_Files/Results/paths
 _testing_days/lamperti_optimal/6-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/1.eps>
-(epstopdf)                    date: 2020-04-07 21:08:49
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 61207 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:13
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 18951 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/lamperti_optimal/1-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2566,7 +2608,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
 mperti_optimal/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-converted
--to.pdf, id=323, 364.36125pt x 301.125pt>
+-to.pdf, id=319, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-conve
@@ -2576,11 +2618,11 @@ _optimal/1-eps-converted-to.pdf  used on input line 311.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/2.eps>
-(epstopdf)                    date: 2020-04-07 21:08:51
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 60851 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:14
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 19018 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/lamperti_optimal/2-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2593,7 +2635,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
 mperti_optimal/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps-converted
--to.pdf, id=324, 364.36125pt x 301.125pt>
+-to.pdf, id=320, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps-conve
@@ -2603,11 +2645,11 @@ _optimal/2-eps-converted-to.pdf  used on input line 311.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/3.eps>
-(epstopdf)                    date: 2020-04-07 21:08:52
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 61411 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:14
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 19086 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/lamperti_optimal/3-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2620,7 +2662,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
 mperti_optimal/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/3-eps-converted
--to.pdf, id=325, 364.36125pt x 301.125pt>
+-to.pdf, id=321, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/3-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/3-eps-conve
@@ -2630,11 +2672,11 @@ _optimal/3-eps-converted-to.pdf  used on input line 311.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/4.eps>
-(epstopdf)                    date: 2020-04-07 21:08:54
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 61567 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/4-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:14
+(epstopdf)                    date: 2020-04-14 11:27:47
 (epstopdf)                    size: 19268 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/lamperti_optimal/4-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2647,7 +2689,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
 mperti_optimal/4-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/4-eps-converted
--to.pdf, id=326, 364.36125pt x 301.125pt>
+-to.pdf, id=322, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/4-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/4-eps-conve
@@ -2657,11 +2699,11 @@ _optimal/4-eps-converted-to.pdf  used on input line 311.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/5.eps>
-(epstopdf)                    date: 2020-04-07 21:08:56
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 60915 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/5-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:14
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 18952 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/lamperti_optimal/5-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2674,7 +2716,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
 mperti_optimal/5-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/5-eps-converted
--to.pdf, id=327, 364.36125pt x 301.125pt>
+-to.pdf, id=323, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/5-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/5-eps-conve
@@ -2684,11 +2726,11 @@ _optimal/5-eps-converted-to.pdf  used on input line 311.
 (pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/6.eps>
-(epstopdf)                    date: 2020-04-07 21:06:50
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 61491 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/lamperti_optimal/6-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:14
+(epstopdf)                    date: 2020-04-14 11:27:48
 (epstopdf)                    size: 19148 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/lamperti_optimal/6-eps-converted-to.pdf ../../MATLAB_Files/R
@@ -2701,7 +2743,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
 mperti_optimal/6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/6-eps-converted
--to.pdf, id=328, 364.36125pt x 301.125pt>
+-to.pdf, id=324, 364.36125pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/6-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/6-eps-conve
@@ -2720,12 +2762,12 @@ days/lamperti_optimal/5-eps-converted-to.pdf> <../../MATLAB_Files/Results/bands
 _testing_days/lamperti_optimal/6-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/lamp
 erti/Optimal_Lamperti.eps>
-(epstopdf)                    date: 2020-04-07 20:37:49
-(epstopdf)                    size: 64821 bytes
+(epstopdf)                    date: 2020-05-21 20:14:52
+(epstopdf)                    size: 50119 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/lamp
 erti/Optimal_Lamperti-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:10:15
-(epstopdf)                    size: 14453 bytes
+(epstopdf)                    date: 2020-05-21 20:17:36
+(epstopdf)                    size: 47967 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 histograms/lamperti/Optimal_Lamperti-eps-converted-to.pdf ../../MATLAB_Files/Re
 sults/histograms/lamperti/Optimal_Lamperti.eps>
@@ -2737,14 +2779,14 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/lamperti/O
 ptimal_Lamperti-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, 
 but at most version <1.5> allowed
 <../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-converted-
-to.pdf, id=382, 923.45pt x 625.33624pt>
+to.pdf, id=379, 429.605pt x 317.185pt>
 File: ../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-conve
 rted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-conver
 ted-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/lamperti/Optimal
 _Lamperti-eps-converted-to.pdf  used on input line 333.
-(pdftex.def)             Requested size: 256.07741pt x 173.40404pt.
+(pdftex.def)             Requested size: 256.07741pt x 189.0686pt.
 [16
 
  <../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-converted
@@ -2757,12 +2799,12 @@ _Lamperti-eps-converted-to.pdf  used on input line 333.
 ]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
 sic/Optimal.eps>
-(epstopdf)                    date: 2020-04-07 21:34:12
-(epstopdf)                    size: 52746 bytes
+(epstopdf)                    date: 2020-05-21 20:07:50
+(epstopdf)                    size: 51560 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
 sic/Optimal-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:34:39
-(epstopdf)                    size: 13137 bytes
+(epstopdf)                    date: 2020-05-21 20:16:11
+(epstopdf)                    size: 49194 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 histograms/classic/Optimal-eps-converted-to.pdf ../../MATLAB_Files/Results/hist
 ograms/classic/Optimal.eps>
@@ -2774,15 +2816,15 @@ f Graphic file (type pdf)
 >
 Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Optimal-
 eps-converted-to.pdf  used on input line 393.
-(pdftex.def)             Requested size: 204.85802pt x 135.33206pt.
+(pdftex.def)             Requested size: 204.85802pt x 151.25005pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
 sic/Lamperti_Optimal.eps>
-(epstopdf)                    date: 2020-04-07 21:34:17
-(epstopdf)                    size: 52873 bytes
+(epstopdf)                    date: 2020-05-21 20:03:58
+(epstopdf)                    size: 51593 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
 sic/Lamperti_Optimal-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:35:09
-(epstopdf)                    size: 13181 bytes
+(epstopdf)                    date: 2020-05-21 20:16:11
+(epstopdf)                    size: 49289 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 histograms/classic/Lamperti_Optimal-eps-converted-to.pdf ../../MATLAB_Files/Res
 ults/histograms/classic/Lamperti_Optimal.eps>
@@ -2794,26 +2836,26 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/classic/La
 mperti_Optimal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, b
 ut at most version <1.5> allowed
 <../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-converted-t
-o.pdf, id=412, 946.53625pt x 625.33624pt>
+o.pdf, id=407, 429.605pt x 317.185pt>
 File: ../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-conver
 ted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-convert
 ed-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Lamperti
 _Optimal-eps-converted-to.pdf  used on input line 393.
-(pdftex.def)             Requested size: 204.85802pt x 135.33206pt.
+(pdftex.def)             Requested size: 204.85802pt x 151.25005pt.
 [20
 
  <../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-converted-
 to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/1.eps>
-(epstopdf)                    date: 2020-04-07 21:39:46
-(epstopdf)                    size: 62028 bytes
+(epstopdf)                    date: 2020-05-17 19:00:45
+(epstopdf)                    size: 61926 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:12
-(epstopdf)                    size: 19004 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 19977 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/1-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/1.eps>
@@ -2828,12 +2870,12 @@ value/1-eps-converted-to.pdf  used on input line 410.
 (pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/2.eps>
-(epstopdf)                    date: 2020-04-07 21:39:48
-(epstopdf)                    size: 61885 bytes
+(epstopdf)                    date: 2020-05-17 19:00:46
+(epstopdf)                    size: 60780 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:13
-(epstopdf)                    size: 19134 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 19518 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/2-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/2.eps>
@@ -2848,12 +2890,12 @@ value/2-eps-converted-to.pdf  used on input line 410.
 (pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/3.eps>
-(epstopdf)                    date: 2020-04-07 21:39:49
-(epstopdf)                    size: 61903 bytes
+(epstopdf)                    date: 2020-05-17 19:00:48
+(epstopdf)                    size: 61257 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
 ays/optimal_value/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 21:40:13
-(epstopdf)                    size: 19003 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 19690 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 bands_testing_days/optimal_value/3-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/bands_testing_days/optimal_value/3.eps>
@@ -2885,7 +2927,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/Op
 timal_Lamperti/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/1-eps-converted
--to.pdf, id=426, 370.38374pt x 301.125pt>
+-to.pdf, id=419, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/1-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/1-eps-conve
@@ -2912,7 +2954,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/Op
 timal_Lamperti/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/2-eps-converted
--to.pdf, id=427, 370.38374pt x 301.125pt>
+-to.pdf, id=420, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/2-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/2-eps-conve
@@ -2939,7 +2981,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/Op
 timal_Lamperti/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/3-eps-converted
--to.pdf, id=428, 370.38374pt x 301.125pt>
+-to.pdf, id=421, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/3-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/3-eps-conve
@@ -2955,12 +2997,12 @@ d-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/Optimal_Lamperti/2-eps
 rti/3-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/1.eps>
-(epstopdf)                    date: 2020-04-07 17:58:15
-(epstopdf)                    size: 42199 bytes
+(epstopdf)                    date: 2020-05-17 19:04:40
+(epstopdf)                    size: 58407 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:58:45
-(epstopdf)                    size: 15118 bytes
+(epstopdf)                    date: 2020-05-17 19:23:12
+(epstopdf)                    size: 17097 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/1-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/1.eps>
@@ -2972,15 +3014,15 @@ ed-to.pdf Graphic file (type pdf)
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/1-eps-converted-to.pdf  used on input line 427.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/2.eps>
-(epstopdf)                    date: 2020-04-07 17:58:16
-(epstopdf)                    size: 42182 bytes
+(epstopdf)                    date: 2020-05-17 19:04:41
+(epstopdf)                    size: 58152 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:59:05
-(epstopdf)                    size: 15348 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 16956 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/2-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/2.eps>
@@ -2992,15 +3034,15 @@ ed-to.pdf Graphic file (type pdf)
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/2-eps-converted-to.pdf  used on input line 427.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/3.eps>
-(epstopdf)                    date: 2020-04-07 17:58:16
-(epstopdf)                    size: 42180 bytes
+(epstopdf)                    date: 2020-05-17 19:04:42
+(epstopdf)                    size: 58432 bytes
 (epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
 ays/optimal_value/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-07 17:59:05
-(epstopdf)                    size: 15217 bytes
+(epstopdf)                    date: 2020-05-17 19:23:13
+(epstopdf)                    size: 17164 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
 paths_testing_days/optimal_value/3-eps-converted-to.pdf ../../MATLAB_Files/Resu
 lts/paths_testing_days/optimal_value/3.eps>
@@ -3012,7 +3054,7 @@ ed-to.pdf Graphic file (type pdf)
 d-to.pdf>
 Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/optimal_
 value/3-eps-converted-to.pdf  used on input line 427.
-(pdftex.def)             Requested size: 128.0387pt x 104.09499pt.
+(pdftex.def)             Requested size: 128.0387pt x 104.57442pt.
 Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
 ays/Optimal_Lamperti/1.eps>
 (epstopdf)                    date: 2020-04-07 21:38:45
@@ -3032,7 +3074,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/Op
 timal_Lamperti/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/1-eps-converted
--to.pdf, id=458, 370.38374pt x 301.125pt>
+-to.pdf, id=451, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/1-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/1-eps-conve
@@ -3059,7 +3101,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/Op
 timal_Lamperti/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/2-eps-converted
--to.pdf, id=459, 370.38374pt x 301.125pt>
+-to.pdf, id=452, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/2-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/2-eps-conve
@@ -3086,7 +3128,7 @@ pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/Op
 timal_Lamperti/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
  but at most version <1.5> allowed
 <../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/3-eps-converted
--to.pdf, id=460, 370.38374pt x 301.125pt>
+-to.pdf, id=453, 370.38374pt x 301.125pt>
 File: ../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/3-eps-conv
 erted-to.pdf Graphic file (type pdf)
 <use ../../MATLAB_Files/Results/paths_testing_days/Optimal_Lamperti/3-eps-conve
@@ -3145,11 +3187,11 @@ fb></usr/share/texmf/fonts/type1/public/lm/lmsso17.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmsso8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol
 /usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on "20200406 - Summary of Advances.pdf" (25 pages, 4799488 bytes
+Output written on "20200406 - Summary of Advances.pdf" (25 pages, 5320683 bytes
 ).
 PDF statistics:
- 567 PDF objects out of 1000 (max. 8388607)
- 397 compressed objects within 4 object streams
+ 560 PDF objects out of 1000 (max. 8388607)
+ 385 compressed objects within 4 object streams
  53 named destinations out of 1000 (max. 500000)
  233 words of extra memory for PDF output out of 10000 (max. 10000000)
 

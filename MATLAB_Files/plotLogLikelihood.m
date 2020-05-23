@@ -9,9 +9,9 @@ clc;
 
 likelihood    = 'normal'; % 'normal' or 'lamperti'.
 % dataSet can be AWSTP, MTLOG or UTEP5.
-dataSet = 'UTEP5';
+dataSet = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
-epsilon       = 0.028;
+epsilon       = 0.018;
 % dataKind can be classic or comparable.
 dataKind = 'comparable';
 [Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
@@ -118,6 +118,8 @@ alpha_opt_3   = 0.063;
 % To load the matrix with the evaluations, we use:
 % load([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
 
+val_norm = (val-min(min(val)))/max(max((val-min(min(val)))));
+
 minMatrix = min(val(:));
 [row,col] = find(val==minMatrix);
 theta_0_opt_4 = vec_theta(row);
@@ -126,13 +128,15 @@ alpha_opt_4   = vec_alpha(col);
 figure('Renderer', 'painters', 'Position', [10 10 900 600])
 hold on;
 [X,Y] = meshgrid(vec_theta,vec_alpha);
-contourf(X,Y,val',num_divs); colorbar;
+% contourf(X,Y,val',num_divs); % colorbar;
+contourf(X,Y,val',[-36853 -36835 -36815 -36835 -36795 -36775]); colorbar;
+% contourf(X,Y,val'); colorbar;
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
 title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
 if strcmp(likelihood,'normal')
     plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',12);
-    plot(theta_0_opt_1,alpha_opt_1,'-p','MarkerFaceColor','blue','MarkerSize',12);
+    plot(theta_0_opt_1,alpha_opt_1,'-p','MarkerFaceColor','cyan','MarkerSize',12);
     plot(theta_0_opt_2,alpha_opt_2,'-p','MarkerFaceColor','green','MarkerSize',12);
     plot(theta_0_opt_3,alpha_opt_3,'-p','MarkerFaceColor','yellow','MarkerSize',12);
     plot(theta_0_opt_4,alpha_opt_4,'-p','MarkerFaceColor','white','MarkerSize',12);
@@ -145,6 +149,8 @@ pause(0.1);
 % To save the plot and change the fonts size, we use:
 set(gca,'FontSize',16);
 saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'bmp');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'png');
 
 %% Plot with zoom:
 

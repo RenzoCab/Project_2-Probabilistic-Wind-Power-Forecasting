@@ -103,17 +103,21 @@ close all;
 clear all;
 clc;
 
-initial    = 1;
-save_plots = 1;
+initial    = 1; % Lamperti values --> 0.
+save_plots = 0;
 
 if initial == 1
     theta_0 = 1.5441;
     alpha   = 0.0717;
     % Delta = 105 --> We round in 110.
-else
+elseif initial == 0
     theta_0 = 1.93;
     alpha   = 0.05;
     % Delta = 125 --> We round in 130.
+elseif initial == 2
+    theta_0 = 2.450;
+    alpha   = 0.097/2.450;
+    % Delta = 128 --> We round in 130.
 end
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
@@ -142,7 +146,8 @@ for j = 1:length(eta)
     for delta = 1:1:norm*times
         disp(num2str(delta/(norm*times)));
 
-        [val(delta),m2(delta),xi1(delta),sig2(delta)] = ...
+%         [val(delta),m2(delta),xi1(delta),sig2(delta)] = ...
+        val(delta) = ...
             first_log_LH_evaluation(batch_complete, theta_0, alpha, delta/norm, dt, N, norm, times);
     end
 
@@ -175,3 +180,69 @@ if save_plots == 1
         saveas(gcf,[pwd '/Results/delta/eta_min_opt'],'epsc');
     end
 end
+
+%% Experiment: Delta w.r.t. the product theta_0*alpha
+
+close all;
+clear all;
+clc;
+
+% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
+dataSet     = 'MTLOG';
+% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
+epsilon     = 0.018;
+eta         = 0.2;
+% dataKind can be classic or comparable.
+dataKind    = 'comparable';
+Ta_Tra_Comp = load_data_eps(epsilon,dataSet,dataKind);
+Time        = Ta_Tra_Comp.Time;
+Forecast    = Ta_Tra_Comp.Forecast;
+num_days    = height(Ta_Tra_Comp); % Maximum 127 for MTLOG.
+dt          = Time(1,2);
+[M, N_ini]  = size(Forecast);
+N           = N_ini - 1; % We have N_ini measurements but N samples.
+norm        = 1000;
+times       = 1;
+
+prod    = [0.07:0.0001:0.11];
+theta_0 = [1:0.005:3];
+
+for i = 1:length(prod)
+    parfor j = 1:length(theta_0)
+        
+        theta = theta_0(j);
+        alpha = prod(i)/theta;
+
+        [~, batch]     = new_batch_fixed_removed_samples(Ta_Tra_Comp,eta,num_days,N);
+        batch_complete = batch_with_theta(batch, alpha, theta);
+
+        val = [];
+        
+        for delta = 1:1:norm*times
+            val(delta) = first_log_LH_evaluation(batch_complete, theta, alpha, delta/norm, dt, N, norm, times);
+        end
+
+        [min_val,min_index] = min(val);
+        min_delta(i,j) = min_index/norm*60*24;
+
+    end
+end
+
+% To save the matrix with the evaluations, we use:
+% save([pwd '/Results/delta/min_delta.mat'],'min_delta');
+% save([pwd '/Results/delta/min_delta_v2.mat'],'min_delta');
+% To load the matrix with the evaluations, we use:
+% load([pwd '/Results/delta/min_delta.mat'],'min_delta');
+% load([pwd '/Results/delta/min_delta_v2.mat'],'min_delta');
+
+figure('Renderer', 'painters', 'Position', [10 10 900 600])
+[X,Y] = meshgrid(prod,theta_0);
+contourf(X,Y,min_delta',200,'edgecolor','none'); colorbar;
+xlabel('$\theta_0\alpha$','interpreter','latex');
+ylabel('$\theta_0$','interpreter','latex');
+title(['Optimal Initial Time']);
+legend('Value of $\delta$ (minutes)','interpreter','latex');
+set(gca,'FontSize',16);
+saveas(gcf,[pwd '/Results/delta/contour_delta'],'epsc');
+saveas(gcf,[pwd '/Results/delta/contour_delta'],'bmp');
+saveas(gcf,[pwd '/Results/delta/contour_delta'],'png');

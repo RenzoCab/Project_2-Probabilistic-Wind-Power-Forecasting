@@ -1,5 +1,5 @@
-function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times) 
-
+% function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times) 
+function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times) 
     % 09/02/2020 18:35
 
     for i = 0:length(batch_complete(1,:))/((N-1)*2)-1
@@ -48,8 +48,8 @@ function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, 
     end
     
     value = sum(val);
-    m2    = mean(mom2);
-    xi1   = mean(xi1);
-    sig2  = mean(sig2);
+%     m2    = mean(mom2);
+%     xi1   = mean(xi1);
+%     sig2  = mean(sig2);
                 
 end

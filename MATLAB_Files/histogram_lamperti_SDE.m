@@ -3,7 +3,9 @@ clear all;
 clc;
 
 epsilon                = 0.018;
-Table_Testing_Complete = load_data_eps_test(epsilon);
+dataKind               = 'comparable';
+dataSet                = 'MTLOG';
+Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 % whatToDo               = 'Optimal'; 
 whatToDo               = 'Optimal_Lamperti'; 
 
@@ -90,12 +92,13 @@ for i = 1 : height(Table_Testing_Complete)
         new_Transform(n-1) = (Z(n)-Z(n-1)) / sqrt(dt);
     end
     
-    new_Transform_trans(i,:) = Delta_new_Transform;
+    new_Transform_trans(i,:)   = Delta_new_Transform;
     new_Transform_allData(i,:) = new_Transform;
         
 end
 
-figure('Renderer', 'painters', 'Position', [10 10 1500 900]);
+% figure('Renderer', 'painters', 'Position', [10 10 1500 900]);
+figure;
 h1 = histogram(z_trans);
 hold on; grid minor;
 title('Lamperti (Data and Simulated) Transitions');
@@ -106,16 +109,19 @@ h2.FaceAlpha = 0;
 h2.FaceColor = [0 0 0];
 h2.LineWidth = 2;
 h2.EdgeColor = 'r';
+xlim([-0.5 0.5]);
 xlabel('Value of Transition');
 ylabel('Probability');
 % xlim([-0.4 0.4]);
 % xlim([-1 1]);
-set(gca,'FontSize',18);
+set(gca,'FontSize',12);
 legend('Lamperti Transitions Histogram','Simulated Lamperti Transitions Histogram');
 saveas(gcf,[pwd '/Results/histograms/lamperti/',whatToDo],'epsc');
 
-figure('Renderer', 'painters', 'Position', [10 10 1500 900]);
+% figure('Renderer', 'painters', 'Position', [10 10 1500 900]);
+figure;
 h3 = histogram(new_Transform_allData);
 h3.Normalization = 'pdf';
+set(gca,'FontSize',12);
 disp(['Mean of the second transformation: ',num2str(mean(new_Transform_trans(:)))]);
 disp(['Variance of the second transformation: ',num2str(var(new_Transform_trans(:)))]);

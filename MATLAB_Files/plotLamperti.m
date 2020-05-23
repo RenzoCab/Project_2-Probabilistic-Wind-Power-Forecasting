@@ -75,6 +75,9 @@ end
 
 % load([pwd '/Results/likelihood/',likelihood,'/val_theta_0.mat'],'val_theta_0');
 % load([pwd '/Results/likelihood/',likelihood,'/val_alpha.mat'],'val_alpha');
+% load([pwd '/Results/likelihood/',likelihood,'/val_fval.mat'],'val_fval');
+% load([pwd '/Results/likelihood/',likelihood,'/val_fval_2.mat'],'val_fval_2');
+
 % save([pwd '/Results/likelihood/',likelihood,'/val_theta_0.mat'],'val_theta_0');
 % save([pwd '/Results/likelihood/',likelihood,'/val_alpha.mat'],'val_alpha');
 % save([pwd '/Results/likelihood/',likelihood,'/val_fval.mat'],'val_fval');
@@ -89,19 +92,21 @@ end
 
 total_change = rel_change_theta_0 + rel_change_alpha;
 
-figure;
+figure('Renderer', 'painters', 'Position', [10 10 900 600])
 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
 hold on;
 contourf(X,Y,total_change',[0:0.05:1]); colorbar;
-% colormap summer;
+colormap summer;
 plot(vec_theta_0,new_alpha,'LineWidth',2,'Color','r');
 ylim([min(vec_alpha) max(vec_alpha)]);
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
 title(['Fixed-Point Lamperti ',num2str(num_days),' days']);
+set(gca,'FontSize',16);
 legend('Level sets','Curve $\theta_0\alpha=0.097$','Interpreter','Latex');
 pause(0.1);
 saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
+saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'png');
 
 figure;
 [X,Y] = meshgrid(vec_theta_0,vec_alpha);

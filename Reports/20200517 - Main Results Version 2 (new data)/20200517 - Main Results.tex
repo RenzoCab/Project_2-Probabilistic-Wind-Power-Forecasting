@@ -465,4 +465,56 @@ We used the Lamperti optimal parameters to simulate the Lamperti SDE. We have re
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Optimal $\delta$:}
+
+\begin{columns}
+
+\column{.5\textwidth}
+Files: \textbf{MATLAB\_Files/Results/delta} (initial\_time.m).\\
+\quad\\
+We can see that the optimal $\delta$ is highly dependent on the product $\theta_0\alpha$. This is because, that product represents the diffusion, which is predominant in the estimation of $\delta$.
+
+\column{.5\textwidth}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1\textwidth]{../../MATLAB_Files/Results/delta/contour_delta.eps}
+\end{figure}
+
+\end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Error transitions histograms:}
+Files: \textbf{MATLAB\_Files/Results/histograms/classic} (histogram\_classic\_SDE.m).\\
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.4\textwidth]{../../MATLAB_Files/Results/histograms/classic/Optimal.eps}
+\includegraphics[width=0.4\textwidth]{../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal.eps}
+\end{figure}
+
+We can see two histograms for the error transitions. On the left, using $(\theta_0^E,\alpha^E)$, while on the right, using $(\theta_0^L,\alpha^L)$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Error transitions histograms:}
+Files: \textbf{MATLAB\_Files/Results/histograms/lamperti} (histogram\_lamperti\_SDE.m).\\
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.4\textwidth]{../../MATLAB_Files/Results/histograms/lamperti/Optimal.eps}
+\includegraphics[width=0.4\textwidth]{../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti.eps}
+\end{figure}
+
+We can see two histograms for the error transitions. On the left, using $(\theta_0^E,\alpha^E)$, while on the right, using $(\theta_0^L,\alpha^L)$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \end{document}

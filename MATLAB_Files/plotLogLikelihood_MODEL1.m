@@ -107,14 +107,14 @@ alpha_plot    = theta_0_opt_4*alpha_opt_4 ./ vec_theta;
 figure('Renderer', 'painters', 'Position', [10 10 900 600])
 hold on;
 [X,Y] = meshgrid(vec_theta,vec_alpha);
-contourf(X,Y,val',num_divs); colorbar;
+contourf(X,Y,val',num_divs); % colorbar;
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
 title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);
 plot(vec_theta,alpha_plot,'LineWidth',2);
 % plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',12);
 plot(theta_0_opt_4,alpha_opt_4,'-p','MarkerFaceColor','white','MarkerSize',12);
-legend('Level sets','Optimal value (evaluations)','Curve $\theta_0\alpha=C$',...
+legend('Level sets','Curve $\theta_0\alpha=C$','Optimal value (evaluations)',...
     'interpreter','Latex');
 ylim([min(vec_alpha) max(vec_alpha)]);
 pause(0.1);

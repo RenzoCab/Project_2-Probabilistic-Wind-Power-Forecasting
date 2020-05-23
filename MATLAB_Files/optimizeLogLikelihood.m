@@ -54,6 +54,7 @@ if strcmp(likelihood,'normal')
     % fminsearch -> Theta_0 = 1.278, Alpha = 0.0760, prod = 0.0971 (24/04/2020).
     % fmincon    -> Theta_0 = 1.577, Alpha = 0.0615, prod = 0.0970 (24/04/2020).
     % fminunc    -> Theta_0 = 1.544, Alpha = 0.0628, prod = 0.0970 (24/04/2020).
+    % eval       -> Theta_0 = 1.930, Alpha = 0.0500, prod = 0.0965 (20/05/2020).
     
 elseif strcmp(likelihood,'lamperti')
     
