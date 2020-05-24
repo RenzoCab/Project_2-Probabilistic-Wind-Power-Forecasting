@@ -548,7 +548,7 @@ is not totally defined as the data $\{\Delta z_{j,i}\}_{j=1,i=1}^{M,N}$ depend o
 \bm{\theta}^*=\arg\max_{\bm{\theta}}\mathcal{L}_L\left(\bm{\theta};\{\psi(\bm{\theta}^*;\Delta v_{j,i})\}_{j=1,i=1}^{M,N}\right).
 \label{FP}
 \end{equation}
-{\color{red}In this point, the likelihood has a maximum for the data set corresponding to that point. (HOW CAN WE WRITE THIS BETTER?)}
+{\color{red}In this point, the likelihood has a maximum for the data set corresponding to that point.}
 We are interested in finding solutions for (\ref{FP}). If $\bm{\theta}^*$ solves (\ref{FP}), then
 \begin{equation*}
 \bm{\theta}^*-\arg\max_{\bm{\theta}}\mathcal{L}_L\left(\bm{\theta};\{\psi(\bm{\theta}^*;\Delta v_{j,i})\}_{j=1,i=1}^{M,N}\right)=0.
@@ -592,11 +592,11 @@ As we can construct initial guesses for $\bm{\theta}$ and $\delta$, we have a st
 Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hour long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models.
 
 { \color{red} Show that 24h is enough to ensure independence?}
-All the following results involving a single provider refer to Provider A. Following the instruction for the initial guesses from section $\ref{opt_sec}$, we obtain the initial guess $(\theta_0,\alpha,\delta)\approx(1.54,0.072,073)$.
+All the following results involving a single provider refer to Provider A. Also, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from section $\ref{opt_sec}$, we obtain the initial guess $(\theta_0,\alpha,\delta)\approx(1.54,0.072,073)$.
 
 \subsection{Calibration of the approximate negative log-likelihood in the $V-$space}
 
-As an auxiliary verification, we plot the negative log-likelihood (negative version of (\ref{eq:loglikelihoodV})) as a function of the parameters, and we use extra minimization functions from MATLAB R2019b.
+As an auxiliary verification, we plot the negative log-likelihood (negative version of (\ref{eq:loglikelihoodV})) as a function of the parameters, and we use additional minimization functions from MATLAB R2019b.
 
 \begin{figure}[H]
 \centering
@@ -625,7 +625,7 @@ Observe that all the local (possibly global) minimizers are located in curve $\t
 
 \subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
 
-As we are working in a low dimensional space, we can evaluate the relative error function (\ref{eq:rel_error}) in all the space of interest.
+{\color{red} This part still may change.} As we are working in a low dimensional space, we can evaluate the relative error function (\ref{eq:rel_error}) in all the space of interest.
 
 \begin{figure}[H]
 \centering
@@ -637,7 +637,7 @@ In Figure (\ref{fig:neg-LLL}), we can see the numerical level sets for the relat
 We observe some possible candidates for fixed points, that also satisfies the empirical condition $\theta_0\alpha=0.097$ from the error SDE. We choose $(\theta_0^L,\alpha^L)=(2.45,0.040)$.\\
 {\color{red}We interpret the set $\mathbb{A}$ as "the points where the transformation of the data, does not interfere with MLE".}\\
 \quad\\
-To verify and compare this two vector of parameters, (i.e., $(\theta_0^E,\alpha^E)$ and $(\theta_0^L,\alpha^L)$), we simulate error paths in the $V-$space. We simulate five error paths for each day in the test set and construct histograms with the transitions. The histoframs can be seen in Figure (\ref{fig:hists}).
+To verify and compare this two vector of parameters, (i.e., $(\theta_0^E,\alpha^E)$ and $(\theta_0^L,\alpha^L)$), we simulate error paths in the $V-$space. We simulate five error paths for each day in the test set and construct histograms with the transitions. The histograms can be seen in Figure (\ref{fig:hists}). We do not observe any particular change in the behavior of the solution for there parameters.
 
 \begin{figure}[ht!]
 \centering
@@ -730,20 +730,19 @@ Provider C  & $(1.380,0.078) $  &  0.108 \\
 
 \subsection{Calibration of Model 2 with additional parameter $\delta$}
 
-After calibrating Model 2 on the training set using the complete likelihood (\ref{eq:complete_LH}), we can generate simulations of the wind power production for the time horizon of interest. Figure \ref{fig:simulation_paths} shows five simulated paths of the wind power production for each day of interest, assuming Model 2 specification and a given forecaster.
+After calibrating Model 2 on the training set using the complete likelihood (\ref{eq:complete_LH}), we can generate simulations of the wind power production for the time horizon of interest. Figure (\ref{fig:simulation_paths}) shows five simulated paths of the wind power production for each day of interest.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/1.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/2.eps}\\
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/1.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/2.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/3.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/4.eps}
-\caption{Five simulated wind power production paths using the approximate MLEs for Model 2 $(\theta_0, \alpha ,\delta)=(1.93,0.050,0.090)$. }
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/3.eps}
+\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/4.eps}
+\caption{Four arbitrary days with five simulated wind power production paths each. }
 \label{fig:simulation_paths}
 \end{figure}
-
-On the basis of the approximate MLEs for Model 2, we can obtain empirical pointwise confidence bands for the wind power production. The next Figure \ref{fig:confidence_bands} shows the empirical pointwise confidence bands for the wind power production for each day of interest, assuming Model 2 specification and a given forecaster.
+On the basis of the approximate MLEs for Model 2, we can obtain empirical pointwise confidence bands for the wind power production. Figure \ref{fig:confidence_bands} shows the empirical pointwise confidence bands for the wind power production for each day of interest, assuming Model 2 specification and a given forecaster.
 
 \begin{figure}[H]
 \centering

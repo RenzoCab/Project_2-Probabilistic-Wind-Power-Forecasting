@@ -37,9 +37,13 @@ val_alpha   = [];
 val_fval    = [];
 val_fval_2  = [];
 
-vec_theta_0 = 0.5:0.005:3;
-vec_alpha   = 0.01:0.001:0.1;
-num_divs    = 20;
+% vec_theta_0 = 0.5:0.005:3;
+% vec_alpha   = 0.01:0.001:0.1;
+% num_divs    = 20;
+% new_alpha   = 0.0965./vec_theta_0;
+
+vec_theta_0 = 0.5:0.05:10;
+vec_alpha   = 0.01:0.01:1;
 new_alpha   = 0.0965./vec_theta_0;
 
 for i = 1:length(vec_theta_0)
@@ -87,15 +91,20 @@ for i = 1:length(vec_theta_0)
     for j = 1:length(vec_alpha)
         rel_change_theta_0(i,j) = abs(vec_theta_0(i)-val_theta_0(i,j)) / abs(vec_theta_0(i));
         rel_change_alpha(i,j)   = abs(vec_alpha(j)-val_alpha(i,j)) / abs(vec_alpha(j));
+        
+        rel_change_prod(i,j) = abs(vec_theta_0(i)*vec_alpha(j)-val_theta_0(i,j)*val_alpha(i,j)) / ...
+            abs(vec_theta_0(i)*vec_alpha(j));
     end
 end
 
 total_change = rel_change_theta_0 + rel_change_alpha;
+total_change = rel_change_prod;
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600])
 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
 hold on;
-contourf(X,Y,total_change',[0:0.05:1]); colorbar;
+% contourf(X,Y,total_change',[0:0.05:1]); colorbar;
+contourf(X,Y,total_change'); colorbar;
 colormap summer;
 plot(vec_theta_0,new_alpha,'LineWidth',2,'Color','r');
 ylim([min(vec_alpha) max(vec_alpha)]);

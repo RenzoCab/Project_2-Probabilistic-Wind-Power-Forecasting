@@ -14,7 +14,7 @@ whatToDo = 'optimal_value';
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 1;
+quantil  = 0;
 save     = 1;
 delta    = 13; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
@@ -28,8 +28,10 @@ else
 end
 
 if  strcmp(whatToDo,'optimal_value')
-    theta_0 = 1.93;
-    alpha   = 0.05;
+%     theta_0 = 1.93;
+%     alpha   = 0.05;
+    theta_0 = 2.2210;
+    alpha   = 0.0436;
 elseif  strcmp(whatToDo,'Optimal_Lamperti')
     theta_0 = 2.200;
     alpha   = 0.038;
