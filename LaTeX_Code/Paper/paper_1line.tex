@@ -387,10 +387,11 @@ The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the 
 \mathcal{L}(\bm{\theta}; V^{M,N +1}) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )  \,  \right\},
 \label{likelihood}
 \end{equation}
-where $t_{j ,i} \equiv  t_j + i \Delta$ for any $j = 1, \ldots, M$ and $i = 0, \ldots, N$.
+where $t_{j ,i} \equiv  t_j + i \Delta$ for any $j = 1, \ldots, M$ and $i = 0, \ldots, N$. \\
 
- {\color{red} Remark: The statistical model (\ref{likelihood}) can be generalized incorporating the transition that occurs during the time interval, say $\delta$, between the time when the forecast is done and the first date of forecasting. In this case, the inner product in  (\ref{likelihood}) must include for any of the $M$ paths an additional factor, say $\rho_0 (V_{j, 0}|V_{j, -\delta};\bm{\theta},\delta)$, expressing the conditional density of this early transition. The parameter $\delta$ can be calibrated after the estimation of $\bm{\theta}$, suggesting an optimal time for the scheduling of the forecasts.}
-
+ Remark: In the last subsection of this Section, we will extend the statistical model (\ref{likelihood}) by adding the transition that occurs during the time interval, say of length $\delta$, between the epoch when the forecast is done and the first epoch (1 pm) of each day-ahead forecast. 
+To this purpose, the likelihood function (\ref{likelihood}) must include for any of the $M$ paths an additional factor, say $\rho_0 (V_{j, 0}|V_{j, -\delta};\bm{\theta},\delta)$, expressing the conditional density of the early transition. The parameter $\delta$ can be calibrated after the estimation of $\bm{\theta}$, suggesting an optimal time for the scheduling of the forecasts. \\
+ 
 The exact computation of the likelihood (\ref{likelihood}) relies on the availability of a closed-form expression for the transition densities of $V$ that, on the basis of the Markovian property of $V$, are characterized, for $ t_{j, i-1} < t < t_{j,i}$,  as solutions of the Fokker-Planck-Kolmogorov equation (\cite[36]{iacus1}, \cite[61-68]{saso}):
 
 \begin{align}
@@ -568,24 +569,24 @@ For each $\bm{\theta}^*$, we define the relative error function
 \end{equation}
 and remark that $\bm{\theta}^*$ is a fixed point if and only if $\Psi(\bm{\theta}^*)=0$.
 
-\subsubsection{Additional Parameter $\delta$}
+\subsection{Model specification with the additional parameter $\delta$}
 
-We observe that for most days, the error at time $t_{j,0}=0$ is not zero. By forecasts construction, we assume that for some time in the past $t_{j,\delta}<t_{j,0}$, the error $V_{j,\delta}=0$.\\
-\quad\\
-We extrapolate linearly $p_t$ considering the truncation at $\epsilon$, so we have a value for $p_{j,\delta}$, and set $v(t_{j,\delta})=0$. Then, for each $j$, we have an initial transition $(V_{j, 0}|v_{j,\delta};\bm{\theta},\delta)$. We assume again that it is Beta and apply the same moment matching as for the rest of transitions. With our initial guess for $\bm{\theta}$, we can construct our initial guess for $\delta$ solving the problem
+We observe that for most days, the forecast error at time $t_{j,0}=0$ is not zero. According to the forecasts procedure, we may assume that there is a time in the past $t_{j,-\delta}<t_{j,0}$, such that the forecast error $V_{j,-\delta}=0$.\\
 
+For any $j=1, \ldots, M$, we extrapolate linearly the truncated prediction function to get the value for $p_{j,-\delta}$, and set $v(t_{j,-\delta})=0$. In this way, we consider the initial transition $(V_{j, 0}|v_{j,-\delta};\bm{\theta},\delta)$. 
+We assume that this initial transition has a Beta distribution and apply the same moment matching method as for the rest of the transitions described above. Given an initial guess for $\bm{\theta}$, we obtain the initial estimation for $\delta$ solving the following problem
 \begin{equation}
-\delta\approx\arg\max_{\delta}\mathcal{L}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right) = \arg\max_{\delta}\prod\limits_{j=1}^M \rho_0 \left(v_{j, 0}|v_{j,\delta};\bm{\theta},\delta\right),
+\delta\approx\arg\max_{\delta}\mathcal{L}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right) = \arg\max_{\delta}\prod\limits_{j=1}^M \rho_0 \left(v_{j, 0}|v_{j,-\delta};\bm{\theta},\delta\right),
 \label{eq:likelihood_delta}
 \end{equation}
-where $\mathcal{L}_\delta$ is the $\delta-$likelihood. To solve this problem, we repeat the steps described in section (\ref{Sec:MinLH}), with the additional initial step of creating the linear extrapolation for $p_{j,\delta}$.\\
+where $\mathcal{L}_\delta$ is the $\delta-$likelihood. To solve this problem, we repeat the steps described in subsection (\ref{Sec:MinLH}), with the additional initial step of creating the linear extrapolation for $p_{j,-\delta}$.\\
 \quad\\
-We can extend the likelihood (\ref{likelihood}) to include this extra parameter. The complete likelihood, $\mathcal{L}_c$, is given by
+As remarked, we can extend the statistical model (\ref{likelihood}) to include the extra parameter $\delta$. The complete likelihood, $\mathcal{L}_c$, is given by
 \begin{equation}
 \mathcal{L}_c\left(\bm{\theta},\delta; v^{M,N +1}\right)=\mathcal{L}\left(\bm{\theta}; v^{M,N +1}\right)\mathcal{L}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right).
 \label{eq:complete_LH}
 \end{equation}
-As we can construct initial guesses for $\bm{\theta}$ and $\delta$, we have a staring point for the maximization of (\ref{eq:complete_LH}).
+As we may provide initial guesses for $\bm{\theta}$ and $\delta$, we have a starting point for the maximization of (\ref{eq:complete_LH}).
 
 %---END SECTION 5---
 
