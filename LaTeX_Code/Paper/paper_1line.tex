@@ -329,7 +329,11 @@ V_0&=  v_0\in [-1 + p_0,1 - p_0].
 
 \section{State independent diffusion term: Lamperti transform} \label{Section_4}
 
-Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. To estimate the unknown model parameters, a recommended technique is to modify the SDE (\ref{VtSDE}) by applying the so-called Lamperti transform (see \cite[40--41]{iacus1}, \cite{moma}, \cite[98--100]{saso}) to the process $V$ to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. To this purpose, we consider the following Lamperti transformation  
+Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. Under the conditions that permit to use It\^{o}'s formula on a well-chosen transformation of the process $V$, John Lamperti (\cite{lamp}) first showed that the transformed process is again a diffusion that is solution to a SDE with unit coefficient for the diffusion term. 
+A vast literature refers nowadays to this result as the so-called Lamperti transform (see, for example, \cite[40--41]{iacus1}, \cite{moma}, \cite[199--203]{pani}, \cite[98--100]{saso}), which is a basic tool to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. A remarkable effect of removing the state dependency from the random noise term is to increase the numerical stability of the simulated paths of the transformed process. 
+For this reason, some estimation methods of the unknown parameters of non-linear SDE models incorporated the use on the Lamperti's change of variable as part of a more complex approximation procedure (for example, the local linearization method in  \cite{shoz}, or the expansion method in \cite{ait}, later extended to multivariate diffusion in \cite{ait2}).
+
+We consider the following Lamperti transformation  
 %{\color{red} (Remind that continuous-time models with different diffusion term are singular and the likelihood cannot be written down. Besides, it can be unstable to work with low frequency. If the frequency of the data is too low, the Lamperti transform helps to detect this problem (in principle, it is not clear how to determine the right frequency for estimation. )}
 %\begin{equation}
 %Z_t = h(V_t, t) = \frac{1}{\sqrt{2 \theta_0 \alpha}} \int_{\xi}^{x} \frac{1}{\sqrt{(u + p_t)(1 - u - p_t)}} \,du \Bigg{\vert}_{x = V_t} \,,
@@ -348,7 +352,7 @@ After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2
 &  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \dif t + \dif W_t.  \label{eq:stindepSDE2}
 \end{align}
 
-{\color{red} We can see in Figure (\ref{fig:LP_transitions}) the effect of the Lamperti transformation upon the forecast error data. 
+We can see in Figure (\ref{fig:LP_transitions}) how the Lamperti transformation modifies the forecast error transition histogram without curtailment displayed in Figure (\ref{fig:error_transitions}). 
 
 \begin{figure}[H]
 \centering
@@ -357,11 +361,11 @@ After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2
 \quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP_t_LP.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP_t_LP.eps}
-\caption{Transitions after the Lamperti transform. The transitions now present a normal Gaussian shape. This effect motivates the use of Gaussian proxies to approximate the process after using the Lamperti transform.}
+\caption{Lamperti transformed forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
   \label{fig:LP_transitions}
 \end{figure}
 
-The Lamperti transformation has greatly reduced the forecast error skewness, ensuring that the process stays in the range $[0,1]$. Therefore, in this case, the transition densities of the process Z can be adequately approximated through Gaussian densities.}
+The shape of the forecast error transition histograms after the Lamperti transformation has much resemblance with a Gaussian distribution, motivating toward the use of Gaussian-like approximations of the unknown density transition functions of the process Z.
 
 %{\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models, that is if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.}
 

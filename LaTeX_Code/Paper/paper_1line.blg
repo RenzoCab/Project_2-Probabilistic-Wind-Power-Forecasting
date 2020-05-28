@@ -1,23 +1,20 @@
-[0] Config.pm:302> INFO - This is Biber 2.9
-[1] Config.pm:305> INFO - Logfile is 'paper_1line.blg'
-[22] biber:313> INFO - === Sat May 23, 2020, 14:51:53
-[36] Biber.pm:371> INFO - Reading 'paper_1line.bcf'
-[77] Biber.pm:854> INFO - Using all citekeys in bib section 0
-[86] Biber.pm:3981> INFO - Processing section 0
-[93] Biber.pm:4154> INFO - Looking for bibtex format file 'sdewind.bib' for section 0
-[95] bibtex.pm:1468> INFO - LaTeX decoding ...
-[127] bibtex.pm:1294> INFO - Found BibTeX data source 'sdewind.bib'
-[299] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[299] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[299] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[299] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
-[328] bbl.pm:617> INFO - Writing 'paper_1line.bbl' with encoding 'ascii'
-[330] Utils.pm:169> WARN - The entry 'Alf' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[335] Utils.pm:169> WARN - The entry 'elkate' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[344] Utils.pm:169> WARN - The entry 'moma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[345] Utils.pm:169> WARN - The entry 'mozuma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[348] Utils.pm:169> WARN - The entry 'saso' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[351] Utils.pm:169> WARN - The entry 'Sor' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[354] Utils.pm:169> WARN - The entry 'vago' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[356] bbl.pm:720> INFO - Output to paper_1line.bbl
-[356] Biber.pm:110> INFO - WARNINGS: 7
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'paper_1line.blg'
+[80] biber-MSWIN32:322> INFO - === 
+[101] Biber.pm:415> INFO - Reading 'paper_1line.bcf'
+[225] Biber.pm:940> INFO - Using all citekeys in bib section 0
+[245] Biber.pm:4256> INFO - Processing section 0
+[245] Utils.pm:75> INFO - Globbing data source 'sdewind.bib'
+[257] Utils.pm:91> INFO - Globbed data source 'sdewind.bib' to sdewind.bib
+[273] Biber.pm:4455> INFO - Looking for bibtex format file 'sdewind.bib' for section 0
+[278] bibtex.pm:1653> INFO - LaTeX decoding ...
+[369] bibtex.pm:1471> INFO - Found BibTeX data source 'sdewind.bib'
+[373] Utils.pm:304> WARN - Duplicate entry key: 'lamp' in file 'sdewind.bib', skipping ...
+[596] Utils.pm:304> WARN - BibTeX subsystem: C:\Users\Marco\AppData\Local\Temp\biber_tmp_7dLc\sdewind.bib_10956.utf8, line 309, warning: 100 characters of junk seen at toplevel
+[683] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[683] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[683] Biber.pm:4084> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[683] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[742] bbl.pm:652> INFO - Writing 'paper_1line.bbl' with encoding 'UTF-8'
+[773] bbl.pm:755> INFO - Output to paper_1line.bbl
+[775] Biber.pm:128> INFO - WARNINGS: 2
