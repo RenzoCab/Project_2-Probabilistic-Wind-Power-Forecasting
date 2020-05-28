@@ -13,7 +13,7 @@
 \BOOKMARK [3][-]{subsubsection.5.4.1}{Initial guess}{subsection.5.4}% 13
 \BOOKMARK [3][-]{subsubsection.5.4.2}{Negative log-likelihood minimization in the V-space}{subsection.5.4}% 14
 \BOOKMARK [3][-]{subsubsection.5.4.3}{Negative log-likelihood minimization in the Z-space}{subsection.5.4}% 15
-\BOOKMARK [3][-]{subsubsection.5.4.4}{Additional Parameter }{subsection.5.4}% 16
+\BOOKMARK [2][-]{subsection.5.5}{Model specification with the additional parameter }{section.5}% 16
 \BOOKMARK [1][-]{section.6}{Application to the April-December 2019 Uruguay wind and forecast dataset}{}% 17
 \BOOKMARK [2][-]{subsection.6.1}{Calibration of the approximate negative log-likelihood in the V-space}{section.6}% 18
 \BOOKMARK [2][-]{subsection.6.2}{Calibration of the approximate negative log-likelihood in the Z-space}{section.6}% 19
