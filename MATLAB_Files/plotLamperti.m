@@ -37,11 +37,12 @@ val_alpha   = [];
 val_fval    = [];
 val_fval_2  = [];
 
-% vec_theta_0 = 0.5:0.005:3;
-% vec_alpha   = 0.01:0.001:0.1;
-% num_divs    = 20;
-% new_alpha   = 0.0965./vec_theta_0;
+vec_theta_0 = 0.5:0.005:3;
+vec_alpha   = 0.01:0.001:0.1;
+num_divs    = 20;
+new_alpha   = 0.0965./vec_theta_0;
 
+% Version 2:
 vec_theta_0 = 0.5:0.05:10;
 vec_alpha   = 0.01:0.01:1;
 new_alpha   = 0.0965./vec_theta_0;
@@ -82,10 +83,20 @@ end
 % load([pwd '/Results/likelihood/',likelihood,'/val_fval.mat'],'val_fval');
 % load([pwd '/Results/likelihood/',likelihood,'/val_fval_2.mat'],'val_fval_2');
 
+% load([pwd '/Results/likelihood/',likelihood,'/val_theta_0_V2.mat'],'val_theta_0');
+% load([pwd '/Results/likelihood/',likelihood,'/val_alpha_V2.mat'],'val_alpha');
+% load([pwd '/Results/likelihood/',likelihood,'/val_fval_V2.mat'],'val_fval');
+% load([pwd '/Results/likelihood/',likelihood,'/val_fval_2_V2.mat'],'val_fval_2');
+
 % save([pwd '/Results/likelihood/',likelihood,'/val_theta_0.mat'],'val_theta_0');
 % save([pwd '/Results/likelihood/',likelihood,'/val_alpha.mat'],'val_alpha');
 % save([pwd '/Results/likelihood/',likelihood,'/val_fval.mat'],'val_fval');
 % save([pwd '/Results/likelihood/',likelihood,'/val_fval_2.mat'],'val_fval_2');
+
+% save([pwd '/Results/likelihood/',likelihood,'/val_theta_0_V2.mat'],'val_theta_0');
+% save([pwd '/Results/likelihood/',likelihood,'/val_alpha_V2.mat'],'val_alpha');
+% save([pwd '/Results/likelihood/',likelihood,'/val_fval_V2.mat'],'val_fval');
+% save([pwd '/Results/likelihood/',likelihood,'/val_fval_2_V2.mat'],'val_fval_2');
 
 for i = 1:length(vec_theta_0)
     for j = 1:length(vec_alpha)
@@ -94,11 +105,14 @@ for i = 1:length(vec_theta_0)
         
         rel_change_prod(i,j) = abs(vec_theta_0(i)*vec_alpha(j)-val_theta_0(i,j)*val_alpha(i,j)) / ...
             abs(vec_theta_0(i)*vec_alpha(j));
+        
+        rel_change_tot(i,j) = rel_change_theta_0(i,j) + rel_change_alpha(i,j) + rel_change_prod(i,j);
     end
 end
 
 total_change = rel_change_theta_0 + rel_change_alpha;
 total_change = rel_change_prod;
+total_change = rel_change_tot;
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600])
 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
