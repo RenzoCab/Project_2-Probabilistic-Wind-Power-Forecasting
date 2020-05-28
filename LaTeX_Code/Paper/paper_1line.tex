@@ -87,7 +87,7 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 {\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection.}
 
-{\color{red} Add AMS Classification.}
+{\color{red} 2020 AMS Subject Classification: 60H10}
 
 %%%%%%%%% BODY TEXT
 
@@ -484,7 +484,7 @@ To guarantee the good behave for our optimization algorithm, we aim to start the
 
 \begin{itemize}
 
-\item \textbf{Least Square Minimization:} We consider the observed data $v^{M,N+1}$ with $\Delta v_{j,i}=v_{j,i+1}-v_{j,i}$ and length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. $(V_{j,i+1}|v_{j,i})$ is a random variable which conditional mean can be approximated by the solution of the system
+\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with $\Delta v_{j,i}=v_{j,i+1}-v_{j,i}$ and length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. $(V_{j,i+1}|v_{j,i})$ is a random variable which conditional mean can be approximated by the solution of the system
 \begin{equation*}
 \begin{cases}
 \dif \E\left[V\right]_{j,i}&=-\theta_t\E\left[V\right]_{j,i}\dif t\\
@@ -504,26 +504,25 @@ As Equation (\ref{Eq-1}) is convex in $c$ (composition of convex is convex), it 
 \begin{equation*}
 \frac{\partial}{\partial c}\left[\sum_{j=1}^M\sum_{i=0}^{N-1}\left(v_{j,i+1}-v_{j,i}(1-c\Delta)\right)^2\right]=\sum_{j=1}^M\sum_{i=0}^{N-1}2v_{j,i}\Delta\left(v_{j,i+1}-v_{j,i}(1-c\Delta)\right),
 \end{equation*}
-follows that
+it follows that
 \begin{equation}
 c^{*}=\frac{\sum_{j=1}^M\sum_{i=0}^{N-1}v_{j,i}(v_{j,i}-v_{j,i+1})}{\Delta\cdot\sum_{j=1}^M\sum_{i=0}^{N-1}(v_{j,i})^2}.
 \label{Eq-4}
 \end{equation}
 
-\item \textbf{Quadratic Variation:} We approximate the SDE by its E-M scheme. In particular, we approximate the It\^o quadratic variation with the discrete one:
-\begin{itemize}
+\item \textbf{Quadratic variation:} We use the numerical Euler-Maruyama (E-M) scheme to approximate the solution to the SDE  \eqref{VtSDE}. In particular, we approximate the quadratic variation of the  It\^{o}'s  process $V$
+\begin{equation*}
+[V]_t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
+\sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)}\,,
+\end{equation*}
+with the discrete sum $\sum_{0< t_{j, i-1} \leq t}(V_{t_{j, i}} - V_{t_{j, i-1}})^2$.
 
-\item It\^o process quadratic variation: $[V]_t=\int_0^t\sigma_s^2\dif s$.
-\item Discrete process quadratic variation: $[V]_t=\sum_{0<s\leq t}(\Delta V_s)^2$.
-
-\end{itemize}
-
-Then, considering $\Delta$ the time between measurements, we approximate:
+As initial guess for the diffusion variability coefficient $\theta_0 \alpha$, we choose
 \begin{equation}
-\theta_0^*\alpha^*\approx\frac{\sum_{j=1}^M\sum_{i=1}^N(\Delta v_{j,i})^2}{2\Delta\cdot\sum_{j=1}^M\sum_{i=1}^N(v_{j,i}+p_{j,i})(1-v_{j,i}-p_{j,i})}.
+\theta_0^*\alpha^*\approx\frac{\sum_{j=1}^M\sum_{i=1}^N(v_{j,i} - v_{j,i-1})^2}{2\Delta\cdot\sum_{j=1}^M\sum_{i=1}^N(v_{j,i}+p_{j,i})(1-v_{j,i}-p_{j,i})}\,,
 \label{Eq-2}
 \end{equation}
-
+where $\Delta$ is the length of the time interval between two consecutive measurements.
 \end{itemize}
 
 %In Subsection (\ref{Physical_Constraints}) we defined the parameter $\epsilon$ which has as only condition $0<\epsilon<\frac{1}{2}$. Even when it would be reasonable to choose an arbitrary small $\epsilon>0$, we aim to approximate it using the LSM estimator.\\
@@ -564,7 +563,7 @@ Given $\bm{\theta}^*=(\theta_0^*,\alpha^*)$, we call $\bm{\theta}^{**}=(\theta_0
 \end{equation*}
 For each $\bm{\theta}^*$, we define the relative error function
 \begin{equation}
-\Psi(\bm{\theta}^*)=\frac{|\theta_0^{*}-\theta_0^{**}|}{|\theta_0^{*}|}+\frac{|\alpha^{*}-\alpha^{**}|}{|\alpha^{*}|},
+\Psi(\bm{\theta}^*)=\frac{|\theta_0^*\alpha^*-\theta_0^{**}\alpha^{**}|}{|\theta_0^*\alpha^*|},
 \label{eq:rel_error}
 \end{equation}
 and remark that $\bm{\theta}^*$ is a fixed point if and only if $\Psi(\bm{\theta}^*)=0$.
@@ -573,20 +572,20 @@ and remark that $\bm{\theta}^*$ is a fixed point if and only if $\Psi(\bm{\theta
 
 We observe that for most days, the forecast error at time $t_{j,0}=0$ is not zero. According to the forecasts procedure, we may assume that there is a time in the past $t_{j,-\delta}<t_{j,0}$, such that the forecast error $V_{j,-\delta}=0$.\\
 
-For any $j=1, \ldots, M$, we extrapolate linearly the truncated prediction function to get the value for $p_{j,-\delta}$, and set $v(t_{j,-\delta})=0$. In this way, we consider the initial transition $(V_{j, 0}|v_{j,-\delta};\bm{\theta},\delta)$. 
-We assume that this initial transition has a Beta distribution and apply the same moment matching method as for the rest of the transitions described above. Given an initial guess for $\bm{\theta}$, we obtain the initial estimation for $\delta$ solving the following problem
+For any $j=1, \ldots, M$, we extrapolate backward linearly the truncated prediction function to get its value at time $-\delta$,$p_{j,-\delta}$, and set $v_{t_{j,-\delta}}=0$. We assume that the initial transition $(V_{j, 0}|v_{j,-\delta};\bm{\theta},\delta)$ 
+has a Beta distribution and apply to it the same moment matching method used above. Given a starting value for $\bm{\theta}$, we obtain the initial estimation for $\delta$ solving the following problem
 \begin{equation}
 \delta\approx\arg\max_{\delta}\mathcal{L}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right) = \arg\max_{\delta}\prod\limits_{j=1}^M \rho_0 \left(v_{j, 0}|v_{j,-\delta};\bm{\theta},\delta\right),
 \label{eq:likelihood_delta}
 \end{equation}
 where $\mathcal{L}_\delta$ is the $\delta-$likelihood. To solve this problem, we repeat the steps described in subsection (\ref{Sec:MinLH}), with the additional initial step of creating the linear extrapolation for $p_{j,-\delta}$.\\
 \quad\\
-As remarked, we can extend the statistical model (\ref{likelihood}) to include the extra parameter $\delta$. The complete likelihood, $\mathcal{L}_c$, is given by
+As remarked, we extend the statistical model (\ref{likelihood}) to include the extra parameter $\delta$. The complete likelihood, $\mathcal{L}_c$, is given by
 \begin{equation}
 \mathcal{L}_c\left(\bm{\theta},\delta; v^{M,N +1}\right)=\mathcal{L}\left(\bm{\theta}; v^{M,N +1}\right)\mathcal{L}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right).
 \label{eq:complete_LH}
 \end{equation}
-As we may provide initial guesses for $\bm{\theta}$ and $\delta$, we have a starting point for the maximization of (\ref{eq:complete_LH}).
+As we may provide initial guesses for $\bm{\theta}$ and $\delta$, we have a starting point for the numerical optimization of the complete likelihood (\ref{eq:complete_LH}).
 
 %---END SECTION 5---
 
@@ -626,7 +625,7 @@ On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-lik
 \caption{Value points from Figure \ref{fig:neg-LL}.}
 \label{tab:optimal_values}
 \end{table}
-Observe that all the local (possibly global) minimizers are located in curve $\theta_0,\alpha=0.097$. We will explain this effect later, but it is a consequence of Markovianity and the indistinguishable observed transitions.
+Observe that all the local (possibly global) minimizers are located in curve $\theta_0\alpha=0.097$. We will explain this effect later, but it is a consequence of Markovianity and the indistinguishable observed transitions.
 
 \subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
 
@@ -688,7 +687,7 @@ X_0&=x_0\in (0,1),
 X_0&=x_0\in (0,1) \,,
 \end{cases}.  \label{Model2}
 \end{equation}
- with $\theta_0 > 0, \, \alpha > 0$ and .
+ with $\theta_0 > 0, \, \alpha > 0$ and $\theta_t$ satisfying the condition \eqref{Assumption:3} .
 \end{itemize}
 To show the better performance of Model 2, we calculate the Akaike information criterion (AIC) and Bayesian information criterion (BIC) for each provider, each model, and different proxies densities. Table (\ref{tab:model_comparison}) summarizes this computations. We can observe that the best fitting is achieved with Model 2 and Beta proxies.
 
@@ -771,7 +770,7 @@ We choose as domain the most significant values of $\theta_0$ and $\theta_0\alph
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{../../MATLAB_Files/Results/delta/contour_delta.png}
+\includegraphics[width=0.7\textwidth]{../../MATLAB_Files/Results/delta/contour_delta.eps}
 \caption{Initial value for $\delta$ as a function of the elements of the parameter vector $\bm{\theta}$.}
 \label{fig:delta}
 \end{figure}
