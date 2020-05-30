@@ -87,7 +87,7 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 {\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection.}
 
-{\color{red} 2020 AMS Subject Classification: 60H10}
+{\color{red} 2020 AMS Subject Classification: 60H10, 62M20}
 
 %%%%%%%%% BODY TEXT
 
@@ -652,7 +652,7 @@ To verify and compare this two vector of parameters, (i.e., $(\theta_0^V,\alpha^
 \label{fig:hists}
 \end{figure}
 
-\subsection{Model comparison and forecast providers comparison} \label{Model_Comp}
+\subsection{Model comparison and assessment of the forecast providers} \label{Model_Comp}
 
 We compare two candidate models to find the best-fit that maximizes the retained information:
 \begin{itemize}
@@ -732,7 +732,7 @@ Provider C  & $(1.380,0.078) $  &  0.108 \\
 \label{tab:forcast_comparison}
 \end{table}
 
-{\color{red} Discuss to which extent it is needed more accuracy in the estimation of $\bm{\theta}$. How much data do we need to achieve enough accuracy for the estimates of the two parameters? Generally, such accuracy is application dependent.}
+%{\color{red} Discuss to which extent it is needed more accuracy in the estimation of $\bm{\theta}$. How much data do we need to achieve enough accuracy for the estimates of the two parameters? Generally, such accuracy is application dependent.}
 
 \subsection{Calibration of Model 2 with additional parameter $\delta$}
 
@@ -748,7 +748,7 @@ After calibrating Model 2 on the training set using the complete likelihood (\re
 \caption{Four arbitrary days with five simulated wind power production paths each. }
 \label{fig:simulation_paths}
 \end{figure}
-Once derived optimal estimates of the parameters of the complete likelihood for Model 2, we obtain empirical pointwise confidence bands for wind power production. Figure \ref{fig:confidence_bands} shows the empirical pointwise confidence bands for wind power production for each day of interest, assuming Model 2 specification and a given forecaster.
+Once derived optimal estimates of the parameters of the complete likelihood for Model 2, we obtain empirical pointwise confidence bands for wind power production. Figure \ref{fig:confidence_bands} shows the empirical pointwise confidence bands for wind power production for each day of interest, assuming Model 2 specification, a given forecaster, and 5000 simulations per day.
 
 \begin{figure}[H]
 \centering
