@@ -17,9 +17,10 @@
 \BOOKMARK [1][-]{section.6}{Application to the April-December 2019 Uruguay wind and forecast dataset}{}% 17
 \BOOKMARK [2][-]{subsection.6.1}{Calibration of the approximate negative log-likelihood in the V-space}{section.6}% 18
 \BOOKMARK [2][-]{subsection.6.2}{Calibration of the approximate negative log-likelihood in the Z-space}{section.6}% 19
-\BOOKMARK [2][-]{subsection.6.3}{Model comparison and forecast providers comparison}{section.6}% 20
-\BOOKMARK [2][-]{subsection.6.4}{Calibration of Model 2 with additional parameter }{section.6}% 21
-\BOOKMARK [3][-]{subsubsection.6.4.1}{Value of }{subsection.6.4}% 22
-\BOOKMARK [1][-]{section.7}{Conclusions}{}% 23
-\BOOKMARK [1][-]{section.8}{Appendix}{}% 24
-\BOOKMARK [2][-]{subsection.8.1}{The model}{section.8}% 25
+\BOOKMARK [2][-]{subsection.6.3}{Model comparison}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.4}{Forecast providers comparison}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.5}{Calibration of Model 2 with additional parameter }{section.6}% 22
+\BOOKMARK [3][-]{subsubsection.6.5.1}{Value of }{subsection.6.5}% 23
+\BOOKMARK [1][-]{section.7}{Conclusions}{}% 24
+\BOOKMARK [1][-]{section.8}{Appendix}{}% 25
+\BOOKMARK [2][-]{subsection.8.1}{The model}{section.8}% 26

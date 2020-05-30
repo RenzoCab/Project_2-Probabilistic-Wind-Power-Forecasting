@@ -1,27 +1,26 @@
-[0] Config.pm:343> INFO - This is Biber 2.5
-[0] Config.pm:346> INFO - Logfile is 'paper_1line.blg'
-[48] biber-darwin:290> INFO - === Thu May 28, 2020, 21:22:43
-[69] Biber.pm:351> INFO - Reading 'paper_1line.bcf'
-[170] Biber.pm:773> INFO - Using all citekeys in bib section 0
-[197] Biber.pm:3493> INFO - Processing section 0
-[216] Biber.pm:3657> INFO - Looking for bibtex format file 'sdewind.bib' for section 0
-[304] bibtex.pm:1187> INFO - Decoding LaTeX character macros into UTF-8
-[326] bibtex.pm:1048> INFO - Found BibTeX data source 'sdewind.bib'
-[520] Utils.pm:149> WARN - Duplicate entry key: 'lamp' in file 'sdewind.bib', skipping ...
-[580] Utils.pm:149> WARN - BibTeX subsystem: /var/folders/84/g63tqbtd0wj8wzpr72c4ssl10jwrg_/T/cipBOHxmb1/sdewind.bib_9532.utf8, line 309, warning: 110 characters of junk seen at toplevel
-[702] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[702] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[702] Biber.pm:3306> INFO - Sorting list 'nyt/global/' of type 'entry' with scheme 'nyt' and locale 'en-US'
-[703] Biber.pm:3310> INFO - No sort tailoring available for locale 'en-US'
-[755] bbl.pm:526> INFO - Writing 'paper_1line.bbl' with encoding 'ascii'
-[757] Utils.pm:149> WARN - The entry 'ait' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[758] Utils.pm:149> WARN - The entry 'ait2' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[759] Utils.pm:149> WARN - The entry 'Alf' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[762] Utils.pm:149> WARN - The entry 'elkate' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[766] Utils.pm:149> WARN - The entry 'moma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[768] Utils.pm:149> WARN - The entry 'mozuma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[770] Utils.pm:149> WARN - The entry 'saso' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[771] Utils.pm:149> WARN - The entry 'Sor' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[773] Utils.pm:149> WARN - The entry 'vago' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[774] bbl.pm:619> INFO - Output to paper_1line.bbl
-[774] Biber.pm:108> INFO - WARNINGS: 11
+[0] Config.pm:302> INFO - This is Biber 2.9
+[1] Config.pm:305> INFO - Logfile is 'paper_1line.blg'
+[25] biber:313> INFO - === Sat May 30, 2020, 15:32:50
+[40] Biber.pm:371> INFO - Reading 'paper_1line.bcf'
+[80] Biber.pm:854> INFO - Using all citekeys in bib section 0
+[89] Biber.pm:3981> INFO - Processing section 0
+[96] Biber.pm:4154> INFO - Looking for bibtex format file 'sdewind.bib' for section 0
+[98] bibtex.pm:1468> INFO - LaTeX decoding ...
+[134] bibtex.pm:1294> INFO - Found BibTeX data source 'sdewind.bib'
+[136] Utils.pm:169> WARN - Duplicate entry key: 'lamp' in file 'sdewind.bib', skipping ...
+[319] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[319] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[319] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[319] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[353] bbl.pm:617> INFO - Writing 'paper_1line.bbl' with encoding 'ascii'
+[355] Utils.pm:169> WARN - The entry 'ait' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[356] Utils.pm:169> WARN - The entry 'ait2' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[357] Utils.pm:169> WARN - The entry 'Alf' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[363] Utils.pm:169> WARN - The entry 'elkate' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[372] Utils.pm:169> WARN - The entry 'moma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[374] Utils.pm:169> WARN - The entry 'mozuma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[378] Utils.pm:169> WARN - The entry 'saso' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[380] Utils.pm:169> WARN - The entry 'Sor' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[384] Utils.pm:169> WARN - The entry 'vago' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[386] bbl.pm:720> INFO - Output to paper_1line.bbl
+[386] Biber.pm:110> INFO - WARNINGS: 10

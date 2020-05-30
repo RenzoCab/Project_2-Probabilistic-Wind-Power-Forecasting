@@ -12,7 +12,7 @@ Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
 quantil  = 1;
-save     = 1;
+save     = 0;
 delta    = 22; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 norm_lim = 0; % If 1, x=[0,1], if 0, x=[1PM 1PM].
@@ -145,6 +145,9 @@ for i = 1 : height(Table_Testing_Complete)
             J = plot(t,X,'b'); J.LineWidth = 2;
             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...
                 'Forecast', 'Real production'});
+%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...
+%             	'Forecast', 'Real production'},'location','southeast');
+
             
             xticks(t_ticks);
             datetick('x','HHPM','keepticks');

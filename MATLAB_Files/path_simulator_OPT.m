@@ -10,12 +10,12 @@ epsilon  = 0.020;
 dataKind = 'comparable';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 whatToDo = 'optimal_value'; 
-% whatToDo = 'Optimal_Lamperti'; 
+whatToDo = 'Optimal_Lamperti'; 
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
-quantil  = 0;
-save     = 1;
+quantil  = 1;
+save     = 0;
 delta    = 13; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 norm_lim = 0; % If 1, x=[0,1], if 0, x=[1PM 1PM].
@@ -33,8 +33,11 @@ if  strcmp(whatToDo,'optimal_value')
     theta_0 = 2.2210;
     alpha   = 0.0436;
 elseif  strcmp(whatToDo,'Optimal_Lamperti')
-    theta_0 = 2.200;
-    alpha   = 0.038;
+%     theta_0 = 2.200;
+%     alpha   = 0.038;
+% V2:
+    theta_0 = 1.8708;
+    alpha   = 0.0431;    
 else
     error('Wrong whatToDo script!');
 end
@@ -151,6 +154,12 @@ for i = 1 : height(Table_Testing_Complete)
             J = plot(t,X,'b'); J.LineWidth = 2;
             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...
                 'Forecast', 'Real production'});
+%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...
+%                 'Forecast', 'Real production'},'location','southeast');
+%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...
+%                 'Forecast', 'Real production'},'location','northwest');
+%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...
+%                 'Forecast', 'Real production'},'location','southwest');
             
             xticks(t_ticks);
             datetick('x','HHPM','keepticks');

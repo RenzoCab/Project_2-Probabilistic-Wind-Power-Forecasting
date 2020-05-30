@@ -6,8 +6,8 @@ epsilon                = 0.020;
 dataKind               = 'comparable';
 dataSet                = 'MTLOG';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
-% whatToDo               = 'Optimal'; 
-whatToDo               = 'Lamperti_Optimal'; 
+whatToDo               = 'Optimal'; 
+% whatToDo               = 'Lamperti_Optimal'; 
 % whatToDo               = 'Initial_Guess'; 
 
 % PARAMETERS:
@@ -21,6 +21,10 @@ if  strcmp(whatToDo,'Optimal')
 elseif  strcmp(whatToDo,'Lamperti_Optimal')
     theta_0 = 2.450;
     alpha   = 0.097/2.450;
+    % V1: 
+    theta_0 = 2.8150; alpha = 0.1276;
+    % V2: 
+    theta_0 = 1.8708; alpha = 0.0431;
 elseif  strcmp(whatToDo,'Initial_Guess')
     theta_0 = 1.6290;
     alpha   = 0.06;
@@ -142,6 +146,10 @@ if  strcmp(whatToDo,'Optimal')
 elseif  strcmp(whatToDo,'Lamperti_Optimal')
     theta_0 = 2.450;
     alpha   = 0.097/theta_0;
+% V1: 
+%     theta_0 = 2.8150; alpha = 0.1276;
+% V2: 
+    theta_0 = 1.8708; alpha = 0.0431;
 elseif  strcmp(whatToDo,'Initial_Guess')
     theta_0 = 1.6290;
     alpha   = 0.06;

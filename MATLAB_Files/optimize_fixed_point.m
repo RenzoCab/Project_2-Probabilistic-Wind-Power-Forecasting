@@ -49,3 +49,5 @@ fun   = @(x) fixed_point_function(batch, x, dt);
 %     Thet_0 Alpha  Eval   Prod
 % V1: 2.8150 0.1276 0.0487 0.3592
 % V2: 1.8708 0.0431 0.0667 0.0806
+
+% The values for V2 are also fixed points of V1 (see level sets plot).
