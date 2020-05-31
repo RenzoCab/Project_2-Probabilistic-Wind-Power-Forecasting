@@ -570,6 +570,16 @@
       \field{year}{2008}
       \keyw{Wind-SDE}
     \endentry
+    \entry{IEA}{misc}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.iea.org/news/global-energy-demand-to-plunge-this-year-as-a-result-of-the-biggest-shock-since-the-second-world-war}}
+      \field{note}{Accessed: 2020-05-30}
+      \field{title}{{IEA} Press release}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{irena2}{book}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=b4f3a3711fe4df2b64d17bf2d72d90c0}{%
