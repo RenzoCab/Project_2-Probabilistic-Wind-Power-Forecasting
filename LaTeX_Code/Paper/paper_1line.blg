@@ -1,0 +1,19 @@
+[0] Config.pm:304> INFO - This is Biber 2.14
+[0] Config.pm:307> INFO - Logfile is 'paper_1line.blg'
+[88] biber-MSWIN32:322> INFO - === 
+[110] Biber.pm:415> INFO - Reading 'paper_1line.bcf'
+[249] Biber.pm:940> INFO - Using all citekeys in bib section 0
+[269] Biber.pm:4256> INFO - Processing section 0
+[270] Utils.pm:75> INFO - Globbing data source 'sdewind.bib'
+[284] Utils.pm:91> INFO - Globbed data source 'sdewind.bib' to sdewind.bib
+[301] Biber.pm:4455> INFO - Looking for bibtex format file 'sdewind.bib' for section 0
+[306] bibtex.pm:1653> INFO - LaTeX decoding ...
+[407] bibtex.pm:1471> INFO - Found BibTeX data source 'sdewind.bib'
+[411] Utils.pm:304> WARN - Duplicate entry key: 'lamp' in file 'sdewind.bib', skipping ...
+[761] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[761] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[761] Biber.pm:4084> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[761] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[830] bbl.pm:652> INFO - Writing 'paper_1line.bbl' with encoding 'UTF-8'
+[864] bbl.pm:755> INFO - Output to paper_1line.bbl
+[866] Biber.pm:128> INFO - WARNINGS: 1

@@ -85,9 +85,9 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 \end{abstract}
 
-{\color{red}Keywords: Indirect inference, wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, model selection.}
+Keywords: Wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, numerical optimizaton, model selection.
 
-{\color{red} 2020 AMS Subject Classification: 60H10, 62M20}
+2020 AMS Subject Classification: 60H10, 62M20.
 
 %%%%%%%%% BODY TEXT
 
@@ -150,7 +150,7 @@ The next Figure \ref{fig:sample_data} shows the wind power real production durin
   \label{fig:sample_data}
 \end{figure}
 
-A view of the global discrepancy between the real production and the forecasted production, during the nine months observation period, is summarized through the forecast error histograms, Figure \ref{fig:data_curtailing}, where we also partitioned the forecast errors according to three contiguous categories of normalized generated power. Low normalized generated power corresponds to the range $[0,0.3]$, mid-power refers to the range $(0.3,0.6]$, and high-power to the range $(0.6,1]$.
+A view of the global discrepancy between the real production and the forecasted production, during the nine months observation period, is summarized through the forecast error histograms in Figure \ref{fig:data_curtailing}, where we also partitioned the forecast errors according to three contiguous categories of normalized generated power. Low normalized generated power corresponds to the range $[0,0.3]$, mid-power refers to the range $(0.3,0.6]$, and high-power to the range $(0.6,1]$.
 
 \begin{figure}[H]
 \centering
@@ -159,7 +159,7 @@ A view of the global discrepancy between the real production and the forecasted 
 \quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP_6.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP_6.eps}
-\caption{Wind production forecast error histograms during the period April-December 2019: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Wind production forecast error histograms during the period April-December 2019: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:data_curtailing}
 \end{figure}
 
@@ -177,7 +177,7 @@ In the absence of the curtailment intervention, the forecast error histograms ar
 \quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP.eps}
-\caption{Wind production forecast error histograms during the period April-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Wind production forecast error histograms during the period April-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:data_after_clean}
 \end{figure}
 
@@ -191,7 +191,7 @@ The forecast error transition histograms, displayed in the next Figure \ref{fig:
 \quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP_t.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP_t.eps}
-\caption{Forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
 \label{fig:error_transitions}
 \end{figure}
 
@@ -262,7 +262,7 @@ Remark: Observe that a mean-reverting model without derivative tracking shows a 
 \begin{figure}[H]
 \centering
   \includegraphics[width=0.45\textwidth]{plots/31.eps}\includegraphics[width=0.45\textwidth]{plots/31_2.eps}
-  \caption{Pointwise confidence bands fitted, for the same daily segment, through diffusion models without derivative tracking (graph on the left) and with derivative tracking (graph on the right).}
+  \caption{Pointwise confidence bands fitted, for the same daily segment, through diffusion models without derivative tracking (plot on the left) and with derivative tracking (plot on the right).}
   \label{fig:derivative_tracking}
 \end{figure}
 
@@ -353,7 +353,9 @@ After replacing $V_t = 1 - p_t - \sin^2 \left(- \sqrt{ \frac{ \alpha \theta_0}{2
 &  = \left[  \frac{  2  \dot{p}_t - \theta_t (1 - 2 p_t)  + (\alpha \theta_0 - \theta_t) \cos(- \sqrt{2 \alpha \theta_0 } Z_t) }{\sqrt{2 \alpha \theta_0} \sin{(- \sqrt{2 \alpha \theta_0} Z_t)}}  \right] \dif t + \dif W_t.  \label{eq:stindepSDE2}
 \end{align}
 
-We can see in Figure (\ref{fig:LP_transitions}) how the Lamperti transform modifies the forecast error transition histogram without curtailment displayed in Figure (\ref{fig:error_transitions}). 
+To summarize visually the effect of the Lamperti transform, we can see in the next Figure (\ref{fig:LP_transitions}) how the forecast error transition histograms (without curtailment) modify in comparison with Figure (\ref{fig:error_transitions}).
+
+In this case, the Lamperti transform has been applied using the optimal estimates of the parameters in the SDE model (\ref{VtSDE}), obtained applying our numerical procedure detailed later in subsection (\ref{opt_sec}).  
 
 \begin{figure}[H]
 \centering
@@ -362,7 +364,7 @@ We can see in Figure (\ref{fig:LP_transitions}) how the Lamperti transform modif
 \quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP_t_LP.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP_t_LP.eps}
-\caption{Lamperti transformed forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left graph), mid-power (upper-right graph), high-power (lower-left graph), and the global range of power (lower-right graph).}
+\caption{Lamperti transformed forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:LP_transitions}
 \end{figure}
 
@@ -783,9 +785,17 @@ We choose as domain the most significant values of $\theta_0$ and $\theta_0\alph
 
 \section{Conclusions} \label{Section_7}
 
-We have proposed a method to produce stochastic wind power forecasts based on parametric SDEs. This method is agnostic of the wind power forecasting technology. Using this method, we were able to simulate future wind power production paths and obtain confidence bands. We conclude that Model 2 is a best-fit model. It features time-derivative tracking of the forecast, time-dependent mean reversion parameter, and a more natural diffusion term. Moreover, the model preserves the asymmetry of wind power forecast errors and their correlation structure.
+In this work, we propose a method to assess the short-term forecast of the normalized wind power, which is agnostic of the wind power forecast technology. 
 
-We were also able to compare three different forecast providers with respect to their real-world performance on the aggregated data set and on specific wind farm sites. Finally, the model paves the way for stochastic optimal control methods enabling optimal decision making under uncertainty.
+To this purpose, we built a phenomenological stochastic differential equation model for the forecast error of the normalized wind power production, with time-varying mean-reversion parameter in the linear drift coefficient, and state-dependent and time non-homogenous diffusion coefficient. We also used the Lamperti transform with unknown parameters to provide a version of the proposed model with a unit diffusion coefficient, increasing its stability properties.
+
+We used approximate likelihood-based methods for the calibration of the models, developing original algorithms to derive optimal estimates of the unknown parameters.
+The likelihood approach has allowed extending the SDE models in a very effective way, incorporating an early transition with an additional parameter that accounts for the uncertainty of the forecast at the beginning of each future period. As a result, we obtained a robust procedure for synthetic data generation that, using the available forecast input, allows embracing the future wind power production paths through empirical pointwise bands with prescribed confidence. 
+
+On the basis of historical data of wind power production and forecast from different sources, our method comes up with an objective tool for forecast assessment and comparison, by performing the model selection stage.
+The application of the procedure of modeling, inference through numerical optimization, and model selection through information criteria, to the wind power production real dataset in Uruguay during April-December 2019, with three different providers, shown the excellent performance of our proposed model, that preserves the asymmetry of wind power forecast errors and their correlation structure.
+ 
+ We conclude that our SDE model, featuring the time-derivative tracking of the forecast prediction function, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward managing of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrix.
 
 %---END SECTION 7---
 
