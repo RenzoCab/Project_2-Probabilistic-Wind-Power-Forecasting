@@ -23,12 +23,6 @@ norm_lim = 0; % If 1, x=[0,1], if 0, x=[1PM 1PM].
 new_time = [13-(1/6)*delta:1/6:37]/24;
 counting = zeros(4,1);
 
-% 31/05/2020:
-% 1.0000
-% 0.8946 --> 99%
-% 0.7661 --> 90%
-% 0.3840 --> 50%
-
 if quantil
     numPaths = 5000;
 else
@@ -202,7 +196,7 @@ for i = 1 : height(Table_Testing_Complete)
                     counting(4) = counting(4) + 1;
                 end
             end
-            disp(num2str(counting/counting(1)));
+            disp(nu)
             
         end
         

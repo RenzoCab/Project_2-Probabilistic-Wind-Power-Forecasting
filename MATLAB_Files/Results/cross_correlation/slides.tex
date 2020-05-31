@@ -33,7 +33,7 @@
 \newcommand{\T}{\mathbb{T}}
 \newcommand{\I}{\mathbb{I}}
 
-\title{Autocorrelation Function}
+\title{Cross Correlation Function}
 \subtitle{Renzo Miguel Caballero Rosas}
 
 \begin{document}
@@ -42,24 +42,54 @@
 \titlepage
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Autocorrelation Function for the error observations $\{v_{j,i}\}_{j=1,i=1}^{M,N}$:}
+\begin{frame}\frametitle{Cross-correlation Function for the error observations $\{v_{j,i}\}_{j=1,i=1}^{M,N}$:}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.6\textwidth]{../../MATLAB_Files/Results/Autocorrelation/observations.eps}
+\includegraphics[width=0.6\textwidth]{obs_alldata.eps}
 \end{figure}
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \setbeamercolor{background canvas}{bg=white!10}
-\begin{frame}\frametitle{Autocorrelation Function for the error transitions $\{\Delta v_{j,i}\}_{j=1,i=0}^{M,N}$:}
+\begin{frame}\frametitle{Cross-correlation Function for the error observations $\{v_{j,i}\}_{j=1,i=1}^{M,N}$:}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.6\textwidth]{../../MATLAB_Files/Results/Autocorrelation/transitions.eps}
+\includegraphics[width=0.6\textwidth]{obs_training.eps}
 \end{figure}
 
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Cross-correlation Function for the transitions $\{\Delta v_{j,i}\}_{j=1,i=1}^{M,N}$:}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{tran_alldata.eps}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Cross-correlation Function for the transitions $\{\Delta v_{j,i}\}_{j=1,i=1}^{M,N}$:}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{tran_training.eps}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

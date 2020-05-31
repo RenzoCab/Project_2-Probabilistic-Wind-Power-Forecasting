@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  21 MAY 2020 20:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  31 MAY 2020 18:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1489,21 +1489,21 @@ Package: l3keys2e 2018/02/21 LaTeX2e option processing using LaTeX3 keys
 (./20200517 - Main Results.aux)
 \openout1 = `"20200517 - Main Results.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 40.
 
  (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1574,7 +1574,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box77
-Package hyperref Info: Link coloring OFF on input line 41.
+Package hyperref Info: Link coloring OFF on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1584,76 +1584,76 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count347
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
-LaTeX Info: Redefining \nameref on input line 41.
+LaTeX Info: Redefining \ref on input line 40.
+LaTeX Info: Redefining \pageref on input line 40.
+LaTeX Info: Redefining \nameref on input line 40.
 
 (./20200517 - Main Results.out) (./20200517 - Main Results.out)
 \@outlinefile=\write5
 \openout5 = `"20200517 - Main Results.out"'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/ztmcm/m/n --> OT1/cmss/m/n on input line 41.
+(Font)                  OT1/ztmcm/m/n --> OT1/cmss/m/n on input line 40.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ztmcm/m/n --> OT1/cmss/bx/n on input line 41.
+(Font)                  OT1/ztmcm/m/n --> OT1/cmss/bx/n on input line 40.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 41.
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 40.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 41.
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 40.
 \symnumbers=\mathgroup10
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 41.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 40.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/lmss/m/it on input line 4
-1.
+0.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/bx/sl --> OT1/lmss/m/it on input line 
-41.
+40.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmss/m/n --> OT1/ptm/m/n on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 41.
+(Font)                  OT1/lmss/m/n --> OT1/ptm/m/n on input line 40.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/ptm/bx/n --> OT1/lmss/bx/n on input line 41.
+(Font)                  OT1/ptm/bx/n --> OT1/lmss/bx/n on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/ptm/bx/n --> OT1/lmss/bx/n on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 41.
+(Font)                  OT1/ptm/bx/n --> OT1/lmss/bx/n on input line 40.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/m/n on input line 41.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/m/n on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> OT1/lmss/m/n on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 41.
+(Font)                  OT1/lmss/bx/n --> OT1/lmss/m/n on input line 40.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/ptm/m/it --> OT1/lmss/m/it on input line 41.
+(Font)                  OT1/ptm/m/it --> OT1/lmss/m/it on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/ptm/m/it --> OT1/lmss/m/it on input line 41.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 41.
+(Font)                  OT1/ptm/m/it --> OT1/lmss/m/it on input line 40.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 41.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 41.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/m/n on input line 40.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 41.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 40.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/lmss/m/it --> OT1/lmss/bx/it on input line 41.
+(Font)                  OT1/lmss/m/it --> OT1/lmss/bx/it on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmss/bx/n --> OT1/ptm/bx/n on input line 41.
+(Font)                  OT1/lmss/bx/n --> OT1/ptm/bx/n on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> OT1/lmss/bx/n on input line 41.
+(Font)                  OT1/lmss/bx/n --> OT1/lmss/bx/n on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 41.
+(Font)                  OT1/lmss/m/n --> OT1/lmss/bx/n on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmss/m/it --> OT1/lmss/bx/it on input line 41.
+(Font)                  OT1/lmss/m/it --> OT1/lmss/bx/it on input line 40.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/bx/n on input line 41.
-LaTeX Font Info:    Redeclaring symbol font `boldpureletters' on input line 41.
+(Font)                  OT1/lmtt/m/n --> OT1/lmtt/bx/n on input line 40.
+LaTeX Font Info:    Redeclaring symbol font `boldpureletters' on input line 40.
 
 LaTeX Font Info:    Overwriting symbol font `boldpureletters' in version `norma
 l'
 (Font)                  OT1/mathkerncmss/bx/sl --> OT1/lmss/bx/it on input line
- 41.
+ 40.
 LaTeX Font Info:    Overwriting symbol font `boldpureletters' in version `bold'
 
 (Font)                  OT1/mathkerncmss/bx/sl --> OT1/lmss/bx/it on input line
- 41.
+ 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1758,799 +1758,72 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
 (./20200517 - Main Results.nav)
 \c__siunitx_mathsf_int=\count348
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 41
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 40
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 41
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 40
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 41
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 40
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 41.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <6> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 40.
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 40.
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <8> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 40.
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <6> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 40.
 
 \c__siunitx_mathtt_int=\count349
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 41.
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 40.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2
-
 ]
 Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/curt_and_error.eps>
-(epstopdf)                    date: 2020-05-17 19:35:21
-(epstopdf)                    size: 22798 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/curt_and_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:54
-(epstopdf)                    size: 10296 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/curt_and_error-eps-converted-to.pdf ../../.
-./Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_error.eps>
-(epstopdf)             \includegraphics on input line 70.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/curt_and_error-eps-converted-to.pdf): PDF inclusion: found PDF v
-ersion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_error-
-eps-converted-to.pdf, id=28, 386.44376pt x 308.15125pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_e
-rror-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_er
-ror-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/curt_and_error-eps-converted-to.pdf  used on input line 70.
-(pdftex.def)             Requested size: 170.71393pt x 136.12769pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/curt_and_error_corr.eps>
-(epstopdf)                    date: 2020-05-17 19:35:22
-(epstopdf)                    size: 22815 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/curt_and_error_corr-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:54
-(epstopdf)                    size: 10322 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/curt_and_error_corr-eps-converted-to.pdf ..
-/../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_error_cor
-r.eps>
-(epstopdf)             \includegraphics on input line 70.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/curt_and_error_corr-eps-converted-to.pdf): PDF inclusion: found 
-PDF version <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_error_
-corr-eps-converted-to.pdf, id=29, 386.44376pt x 308.15125pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_e
-rror_corr-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_er
-ror_corr-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/curt_and_error_corr-eps-converted-to.pdf  used on input line 70.
-(pdftex.def)             Requested size: 170.71393pt x 136.12769pt.
-[3
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/curt_and_error
--eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/f
-orPaper/curt_and_error_corr-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/all2019.eps>
-(epstopdf)                    date: 2020-04-13 10:23:08
-(epstopdf)                    size: 37994 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/all2019-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-13 10:59:40
-(epstopdf)                    size: 37277 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/all2019-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/forPaper/all2019.eps>
-(epstopdf)             \includegraphics on input line 85.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/all2019-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/all2019-eps-con
-verted-to.pdf, id=52, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/all2019-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/all2019-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/all2019-eps-converted-to.pdf  used on input line 85.
-(pdftex.def)             Requested size: 170.71393pt x 126.03929pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/partially2019.eps>
-(epstopdf)                    date: 2020-04-13 10:23:10
-(epstopdf)                    size: 41858 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/partially2019-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-13 10:59:40
-(epstopdf)                    size: 39819 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/partially2019-eps-converted-to.pdf ../../..
-/Python/Represas_Data_2/Wind_Data/someResults/forPaper/partially2019.eps>
-(epstopdf)             \includegraphics on input line 85.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/partially2019-eps-converted-to.pdf): PDF inclusion: found PDF ve
-rsion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/partially2019-e
-ps-converted-to.pdf, id=53, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/partially2
-019-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/partially20
-19-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/partially2019-eps-converted-to.pdf  used on input line 85.
-(pdftex.def)             Requested size: 170.71393pt x 126.03929pt.
-[4
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/all2019-eps-co
-nverted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper
-/partially2019-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_6.eps>
-(epstopdf)                    date: 2020-05-17 20:15:39
-(epstopdf)                    size: 37899 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_6-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:54
-(epstopdf)                    size: 34073 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/LP_6-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/LP_6.eps>
-(epstopdf)             \includegraphics on input line 109.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/LP_6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_6-eps-conver
-ted-to.pdf, id=71, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_6-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_6-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/LP_6-eps-converted-to.pdf  used on input line 109.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_6.eps>
-(epstopdf)                    date: 2020-05-17 20:15:40
-(epstopdf)                    size: 41025 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_6-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:54
-(epstopdf)                    size: 36564 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/MP_6-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/MP_6.eps>
-(epstopdf)             \includegraphics on input line 109.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/MP_6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_6-eps-conver
-ted-to.pdf, id=72, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_6-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_6-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/MP_6-eps-converted-to.pdf  used on input line 109.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_6.eps>
-(epstopdf)                    date: 2020-05-17 20:15:41
-(epstopdf)                    size: 43795 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_6-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:54
-(epstopdf)                    size: 39218 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/HP_6-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/HP_6.eps>
-(epstopdf)             \includegraphics on input line 109.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/HP_6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_6-eps-conver
-ted-to.pdf, id=73, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_6-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_6-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/HP_6-eps-converted-to.pdf  used on input line 109.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_6.eps>
-(epstopdf)                    date: 2020-05-17 20:15:42
-(epstopdf)                    size: 36203 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_6-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:55
-(epstopdf)                    size: 33435 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/AP_6-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/AP_6.eps>
-(epstopdf)             \includegraphics on input line 109.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/AP_6-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_6-eps-conver
-ted-to.pdf, id=74, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_6-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_6-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/AP_6-eps-converted-to.pdf  used on input line 109.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-[5
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_6-eps-conve
-rted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP
-_6-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults
-/forPaper/HP_6-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data
-/someResults/forPaper/AP_6-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:07
-(epstopdf)                    size: 37519 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:07
-(epstopdf)                    size: 32723 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/LP-eps-converted-to.pdf ../../../Python/Rep
-resas_Data_2/Wind_Data/someResults/forPaper/LP.eps>
-(epstopdf)             \includegraphics on input line 133.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/LP-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>
-, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP-eps-converte
-d-to.pdf, id=106, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP-eps-con
-verted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP-eps-conv
-erted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/LP-eps-converted-to.pdf  used on input line 133.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:08
-(epstopdf)                    size: 36453 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:07
-(epstopdf)                    size: 33605 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/MP-eps-converted-to.pdf ../../../Python/Rep
-resas_Data_2/Wind_Data/someResults/forPaper/MP.eps>
-(epstopdf)             \includegraphics on input line 133.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/MP-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>
-, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP-eps-converte
-d-to.pdf, id=107, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP-eps-con
-verted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP-eps-conv
-erted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/MP-eps-converted-to.pdf  used on input line 133.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:09
-(epstopdf)                    size: 44413 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:07
-(epstopdf)                    size: 41144 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/HP-eps-converted-to.pdf ../../../Python/Rep
-resas_Data_2/Wind_Data/someResults/forPaper/HP.eps>
-(epstopdf)             \includegraphics on input line 133.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/HP-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>
-, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP-eps-converte
-d-to.pdf, id=108, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP-eps-con
-verted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP-eps-conv
-erted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/HP-eps-converted-to.pdf  used on input line 133.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:10
-(epstopdf)                    size: 33832 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:08
-(epstopdf)                    size: 30261 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/AP-eps-converted-to.pdf ../../../Python/Rep
-resas_Data_2/Wind_Data/someResults/forPaper/AP.eps>
-(epstopdf)             \includegraphics on input line 133.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/AP-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>
-, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP-eps-converte
-d-to.pdf, id=109, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP-eps-con
-verted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP-eps-conv
-erted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/AP-eps-converted-to.pdf  used on input line 133.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-[6
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP-eps-convert
-ed-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP-e
-ps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/for
-Paper/HP-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someR
-esults/forPaper/AP-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:11
-(epstopdf)                    size: 38681 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:08
-(epstopdf)                    size: 31667 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/LP_LP-eps-converted-to.pdf ../../../Python/
-Represas_Data_2/Wind_Data/someResults/forPaper/LP_LP.eps>
-(epstopdf)             \includegraphics on input line 157.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/LP_LP-eps-converted-to.pdf): PDF inclusion: found PDF version <1
-.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_LP-eps-conve
-rted-to.pdf, id=139, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_LP-eps-
-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_LP-eps-c
-onverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/LP_LP-eps-converted-to.pdf  used on input line 157.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:13
-(epstopdf)                    size: 47330 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:08
-(epstopdf)                    size: 41088 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/MP_LP-eps-converted-to.pdf ../../../Python/
-Represas_Data_2/Wind_Data/someResults/forPaper/MP_LP.eps>
-(epstopdf)             \includegraphics on input line 157.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/MP_LP-eps-converted-to.pdf): PDF inclusion: found PDF version <1
-.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_LP-eps-conve
-rted-to.pdf, id=140, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_LP-eps-
-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_LP-eps-c
-onverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/MP_LP-eps-converted-to.pdf  used on input line 157.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:14
-(epstopdf)                    size: 39421 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:08
-(epstopdf)                    size: 35885 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/HP_LP-eps-converted-to.pdf ../../../Python/
-Represas_Data_2/Wind_Data/someResults/forPaper/HP_LP.eps>
-(epstopdf)             \includegraphics on input line 157.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/HP_LP-eps-converted-to.pdf): PDF inclusion: found PDF version <1
-.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_LP-eps-conve
-rted-to.pdf, id=141, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_LP-eps-
-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_LP-eps-c
-onverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/HP_LP-eps-converted-to.pdf  used on input line 157.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:15
-(epstopdf)                    size: 41932 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:08
-(epstopdf)                    size: 37087 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/AP_LP-eps-converted-to.pdf ../../../Python/
-Represas_Data_2/Wind_Data/someResults/forPaper/AP_LP.eps>
-(epstopdf)             \includegraphics on input line 157.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/AP_LP-eps-converted-to.pdf): PDF inclusion: found PDF version <1
-.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_LP-eps-conve
-rted-to.pdf, id=142, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_LP-eps-
-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_LP-eps-c
-onverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/AP_LP-eps-converted-to.pdf  used on input line 157.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-[7
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_LP-eps-conv
-erted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/M
-P_LP-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResul
-ts/forPaper/HP_LP-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_D
-ata/someResults/forPaper/AP_LP-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_t.eps>
-(epstopdf)                    date: 2020-05-21 20:11:16
-(epstopdf)                    size: 39476 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_t-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:09
-(epstopdf)                    size: 37651 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/LP_t-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/LP_t.eps>
-(epstopdf)             \includegraphics on input line 181.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/LP_t-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t-eps-conver
-ted-to.pdf, id=173, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/LP_t-eps-converted-to.pdf  used on input line 181.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_t.eps>
-(epstopdf)                    date: 2020-05-21 20:11:17
-(epstopdf)                    size: 38439 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_t-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:09
-(epstopdf)                    size: 37738 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/MP_t-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/MP_t.eps>
-(epstopdf)             \includegraphics on input line 181.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/MP_t-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t-eps-conver
-ted-to.pdf, id=174, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/MP_t-eps-converted-to.pdf  used on input line 181.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_t.eps>
-(epstopdf)                    date: 2020-05-21 20:11:19
-(epstopdf)                    size: 36610 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_t-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:09
-(epstopdf)                    size: 33575 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/HP_t-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/HP_t.eps>
-(epstopdf)             \includegraphics on input line 181.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/HP_t-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t-eps-conver
-ted-to.pdf, id=175, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/HP_t-eps-converted-to.pdf  used on input line 181.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_t.eps>
-(epstopdf)                    date: 2020-05-21 20:11:20
-(epstopdf)                    size: 35565 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_t-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:09
-(epstopdf)                    size: 33026 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/AP_t-eps-converted-to.pdf ../../../Python/R
-epresas_Data_2/Wind_Data/someResults/forPaper/AP_t.eps>
-(epstopdf)             \includegraphics on input line 181.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/AP_t-eps-converted-to.pdf): PDF inclusion: found PDF version <1.
-7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t-eps-conver
-ted-to.pdf, id=176, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t-eps-c
-onverted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t-eps-co
-nverted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/AP_t-eps-converted-to.pdf  used on input line 181.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-[8
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t-eps-conve
-rted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP
-_t-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults
-/forPaper/HP_t-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data
-/someResults/forPaper/AP_t-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_t_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:21
-(epstopdf)                    size: 39013 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/LP_t_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:09
-(epstopdf)                    size: 38773 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/LP_t_LP-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 207.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/LP_t_LP-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t_LP-eps-con
-verted-to.pdf, id=206, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t_LP-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t_LP-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/LP_t_LP-eps-converted-to.pdf  used on input line 207.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_t_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:22
-(epstopdf)                    size: 36799 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/MP_t_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:09
-(epstopdf)                    size: 35553 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/MP_t_LP-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 207.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/MP_t_LP-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t_LP-eps-con
-verted-to.pdf, id=207, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t_LP-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/MP_t_LP-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/MP_t_LP-eps-converted-to.pdf  used on input line 207.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_t_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:23
-(epstopdf)                    size: 38182 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/HP_t_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:10
-(epstopdf)                    size: 34932 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/HP_t_LP-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 207.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/HP_t_LP-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t_LP-eps-con
-verted-to.pdf, id=208, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t_LP-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/HP_t_LP-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/HP_t_LP-eps-converted-to.pdf  used on input line 207.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_t_LP.eps>
-(epstopdf)                    date: 2020-05-21 20:11:24
-(epstopdf)                    size: 31509 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/AP_t_LP-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:10
-(epstopdf)                    size: 29524 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/AP_t_LP-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t_LP.eps>
-(epstopdf)             \includegraphics on input line 207.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/AP_t_LP-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t_LP-eps-con
-verted-to.pdf, id=209, 429.605pt x 317.185pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t_LP-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/AP_t_LP-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/AP_t_LP-eps-converted-to.pdf  used on input line 207.
-(pdftex.def)             Requested size: 115.23404pt x 85.07967pt.
-[9
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/LP_t_LP-eps-co
-nverted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper
-/MP_t_LP-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someR
-esults/forPaper/HP_t_LP-eps-converted-to.pdf> <../../../Python/Represas_Data_2/
-Wind_Data/someResults/forPaper/AP_t_LP-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/Gauss_Approx.eps>
-(epstopdf)                    date: 2020-05-21 20:12:54
-(epstopdf)                    size: 114161 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/Gauss_Approx-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:10
-(epstopdf)                    size: 25622 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/Gauss_Approx-eps-converted-to.pdf ../../../
-Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx.eps>
-(epstopdf)             \includegraphics on input line 219.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/Gauss_Approx-eps-converted-to.pdf): PDF inclusion: found PDF ver
-sion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx-ep
-s-converted-to.pdf, id=239, 946.53625pt x 625.33624pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Appr
-ox-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Appro
-x-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/Gauss_Approx-eps-converted-to.pdf  used on input line 219.
-(pdftex.def)             Requested size: 277.41176pt x 183.27031pt.
-[10
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx-e
-ps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/forPaper/Gauss_Approx_Err.eps>
-(epstopdf)                    date: 2020-05-21 20:12:55
+(epstopdf)                    date: 2020-05-28 18:48:14
 (epstopdf)                    size: 45046 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/forPaper/Gauss_Approx_Err-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:13:54
+(epstopdf)                    date: 2020-05-31 18:01:31
 (epstopdf)                    size: 43632 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/forPaper/Gauss_Approx_Err-eps-converted-to.pdf ../..
 /../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx_Err.eps>
 
-(epstopdf)             \includegraphics on input line 232.
+(epstopdf)             \includegraphics on input line 231.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2558,27 +1831,27 @@ pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
 sults/forPaper/Gauss_Approx_Err-eps-converted-to.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
 <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx_Er
-r-eps-converted-to.pdf, id=254, 429.605pt x 317.185pt>
+r-eps-converted-to.pdf, id=22, 429.605pt x 317.185pt>
 File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Appr
 ox_Err-eps-converted-to.pdf Graphic file (type pdf)
 <use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Appro
 x_Err-eps-converted-to.pdf>
 Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/Gauss_Approx_Err-eps-converted-to.pdf  used on input line 232.
+forPaper/Gauss_Approx_Err-eps-converted-to.pdf  used on input line 231.
 (pdftex.def)             Requested size: 204.85802pt x 151.25005pt.
 Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/forPaper/Gauss_Approx_Lam.eps>
-(epstopdf)                    date: 2020-05-21 20:12:57
+(epstopdf)                    date: 2020-05-28 18:48:15
 (epstopdf)                    size: 45497 bytes
 (epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/forPaper/Gauss_Approx_Lam-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:13:54
+(epstopdf)                    date: 2020-05-31 18:01:32
 (epstopdf)                    size: 43532 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
 ta_2/Wind_Data/someResults/forPaper/Gauss_Approx_Lam-eps-converted-to.pdf ../..
 /../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx_Lam.eps>
 
-(epstopdf)             \includegraphics on input line 232.
+(epstopdf)             \includegraphics on input line 231.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2586,199 +1859,19 @@ pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
 sults/forPaper/Gauss_Approx_Lam-eps-converted-to.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
 <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx_La
-m-eps-converted-to.pdf, id=255, 429.605pt x 317.185pt>
+m-eps-converted-to.pdf, id=23, 429.605pt x 317.185pt>
 File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Appr
 ox_Lam-eps-converted-to.pdf Graphic file (type pdf)
 <use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Appro
 x_Lam-eps-converted-to.pdf>
 Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/Gauss_Approx_Lam-eps-converted-to.pdf  used on input line 232.
+forPaper/Gauss_Approx_Lam-eps-converted-to.pdf  used on input line 231.
 (pdftex.def)             Requested size: 204.85802pt x 151.25005pt.
-[11
+[2
 
  <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/Gauss_Approx_E
 rr-eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults
 /forPaper/Gauss_Approx_Lam-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/allDaysPlots/1.eps>
-(epstopdf)                    date: 2020-05-17 19:43:53
-(epstopdf)                    size: 40297 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/allDaysPlots/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:58
-(epstopdf)                    size: 11843 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/allDaysPlots/1-eps-converted-to.pdf ../../.
-./Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlots/1.eps>
-(epstopdf)             \includegraphics on input line 246.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/allDaysPlots/1-eps-converted-to.pdf): PDF inclusion: found PDF v
-ersion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlots/1-
-eps-converted-to.pdf, id=273, 378.41376pt x 307.1475pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlo
-ts/1-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlot
-s/1-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/allDaysPlots/1-eps-converted-to.pdf  used on input line 246.
-(pdftex.def)             Requested size: 170.71393pt x 138.5619pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/allDaysPlots/2.eps>
-(epstopdf)                    date: 2020-05-17 19:43:56
-(epstopdf)                    size: 40292 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/allDaysPlots/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:58
-(epstopdf)                    size: 11945 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/allDaysPlots/2-eps-converted-to.pdf ../../.
-./Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlots/2.eps>
-(epstopdf)             \includegraphics on input line 246.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/allDaysPlots/2-eps-converted-to.pdf): PDF inclusion: found PDF v
-ersion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlots/2-
-eps-converted-to.pdf, id=274, 378.41376pt x 307.1475pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlo
-ts/2-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlot
-s/2-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/allDaysPlots/2-eps-converted-to.pdf  used on input line 246.
-(pdftex.def)             Requested size: 170.71393pt x 138.5619pt.
-[12
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/allDaysPlots/1
--eps-converted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/f
-orPaper/allDaysPlots/2-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/seasons.eps>
-(epstopdf)                    date: 2020-05-21 20:11:04
-(epstopdf)                    size: 31179 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/seasons-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:10
-(epstopdf)                    size: 12282 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/seasons-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/forPaper/seasons.eps>
-(epstopdf)             \includegraphics on input line 268.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/seasons-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/seasons-eps-con
-verted-to.pdf, id=296, 361.35pt x 304.13625pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/seasons-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/seasons-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/seasons-eps-converted-to.pdf  used on input line 268.
-(pdftex.def)             Requested size: 230.4681pt x 193.97826pt.
-[13
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/seasons-eps-co
-nverted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/hourlyEffect.eps>
-(epstopdf)                    date: 2020-05-21 20:11:06
-(epstopdf)                    size: 25411 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/forPaper/hourlyEffect-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:10
-(epstopdf)                    size: 10195 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/forPaper/hourlyEffect-eps-converted-to.pdf ../../../
-Python/Represas_Data_2/Wind_Data/someResults/forPaper/hourlyEffect.eps>
-(epstopdf)             \includegraphics on input line 290.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/forPaper/hourlyEffect-eps-converted-to.pdf): PDF inclusion: found PDF ver
-sion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/hourlyEffect-ep
-s-converted-to.pdf, id=311, 367.3725pt x 303.1325pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/hourlyEffe
-ct-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/hourlyEffec
-t-eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-forPaper/hourlyEffect-eps-converted-to.pdf  used on input line 290.
-(pdftex.def)             Requested size: 230.4681pt x 190.16966pt.
-[14
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/forPaper/hourlyEffect-e
-ps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/mean_error.eps>
-(epstopdf)                    date: 2020-04-17 20:53:22
-(epstopdf)                    size: 22878 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/mean_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:30
-(epstopdf)                    size: 8021 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/final/mean_error-eps-converted-to.pdf ../../../Pytho
-n/Represas_Data_2/Wind_Data/someResults/final/mean_error.eps>
-(epstopdf)             \includegraphics on input line 304.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/final/mean_error-eps-converted-to.pdf): PDF inclusion: found PDF version 
-<1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-eps-con
-verted-to.pdf, id=325, 369.38pt x 306.14375pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-ep
-s-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-eps
--converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-final/mean_error-eps-converted-to.pdf  used on input line 304.
-(pdftex.def)             Requested size: 170.71393pt x 141.48648pt.
-Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/mean_abs_error.eps>
-(epstopdf)                    date: 2020-04-17 20:53:23
-(epstopdf)                    size: 21359 bytes
-(epstopdf)             Output file: <../../../Python/Represas_Data_2/Wind_Data/
-someResults/final/mean_abs_error-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-17 21:02:31
-(epstopdf)                    size: 8148 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../../Python/Represas_Da
-ta_2/Wind_Data/someResults/final/mean_abs_error-eps-converted-to.pdf ../../../P
-ython/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error.eps>
-(epstopdf)             \includegraphics on input line 304.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
-sults/final/mean_abs_error-eps-converted-to.pdf): PDF inclusion: found PDF vers
-ion <1.7>, but at most version <1.5> allowed
-<../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error-eps
--converted-to.pdf, id=326, 365.365pt x 307.1475pt>
-File: ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_erro
-r-eps-converted-to.pdf Graphic file (type pdf)
-<use ../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_abs_error
--eps-converted-to.pdf>
-Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-final/mean_abs_error-eps-converted-to.pdf  used on input line 304.
-(pdftex.def)             Requested size: 170.71393pt x 143.51105pt.
-[15
-
- <../../../Python/Represas_Data_2/Wind_Data/someResults/final/mean_error-eps-co
-nverted-to.pdf> <../../../Python/Represas_Data_2/Wind_Data/someResults/final/me
-an_abs_error-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <../../../Python/Represas_Data_2/Wind_Data/
 someResults/final/error_over_forecast.eps>
 (epstopdf)                    date: 2020-04-17 20:53:25
@@ -2791,7 +1884,7 @@ someResults/final/error_over_forecast-eps-converted-to.pdf>
 ta_2/Wind_Data/someResults/final/error_over_forecast-eps-converted-to.pdf ../..
 /../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_forecast.eps>
 
-(epstopdf)             \includegraphics on input line 316.
+(epstopdf)             \includegraphics on input line 315.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -2799,699 +1892,149 @@ pdfTeX warning: pdflatex (file ../../../Python/Represas_Data_2/Wind_Data/someRe
 sults/final/error_over_forecast-eps-converted-to.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
 <../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_forecas
-t-eps-converted-to.pdf, id=349, 754.82pt x 418.56375pt>
+t-eps-converted-to.pdf, id=42, 754.82pt x 418.56375pt>
 File: ../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_fo
 recast-eps-converted-to.pdf Graphic file (type pdf)
 <use ../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_for
 ecast-eps-converted-to.pdf>
 Package pdftex.def Info: ../../../Python/Represas_Data_2/Wind_Data/someResults/
-final/error_over_forecast-eps-converted-to.pdf  used on input line 316.
+final/error_over_forecast-eps-converted-to.pdf  used on input line 315.
 (pdftex.def)             Requested size: 320.0935pt x 177.49445pt.
-[16
+[3
 
  <../../../Python/Represas_Data_2/Wind_Data/someResults/final/error_over_foreca
 st-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/othe
-rs/forecast_transitions.eps>
-(epstopdf)                    date: 2020-04-20 20:57:21
-(epstopdf)                    size: 44131 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/othe
-rs/forecast_transitions-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:52
-(epstopdf)                    size: 42084 bytes
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/Autocorrelation
+/observations.eps>
+(epstopdf)                    date: 2020-05-31 01:40:10
+(epstopdf)                    size: 129788 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/Autocorrelation
+/observations-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-31 18:11:29
+(epstopdf)                    size: 92730 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/others/forecast_transitions-eps-converted-to.pdf ../../MATLAB_Files/
-Results/histograms/others/forecast_transitions.eps>
-(epstopdf)             \includegraphics on input line 333.
+Autocorrelation/observations-eps-converted-to.pdf ../../MATLAB_Files/Results/Au
+tocorrelation/observations.eps>
+(epstopdf)             \includegraphics on input line 528.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/others/for
-ecast_transitions-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>
-, but at most version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/others/forecast_transitions-eps-converte
-d-to.pdf, id=363, 429.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/histograms/others/forecast_transitions-eps-con
-verted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/others/forecast_transitions-eps-conv
-erted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/others/forecast_
-transitions-eps-converted-to.pdf  used on input line 333.
-(pdftex.def)             Requested size: 132.30428pt x 97.68262pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/othe
-rs/error_measurement.eps>
-(epstopdf)                    date: 2020-04-20 20:57:22
-(epstopdf)                    size: 37021 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/othe
-rs/error_measurement-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:53
-(epstopdf)                    size: 34539 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/others/error_measurement-eps-converted-to.pdf ../../MATLAB_Files/Res
-ults/histograms/others/error_measurement.eps>
-(epstopdf)             \includegraphics on input line 333.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/others/err
-or_measurement-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, b
-ut at most version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/others/error_measurement-eps-converted-t
-o.pdf, id=364, 429.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/histograms/others/error_measurement-eps-conver
-ted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/others/error_measurement-eps-convert
-ed-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/others/error_mea
-surement-eps-converted-to.pdf  used on input line 333.
-(pdftex.def)             Requested size: 132.30428pt x 97.68262pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/othe
-rs/error_and_forecast.eps>
-(epstopdf)                    date: 2020-04-20 20:57:24
-(epstopdf)                    size: 2035645 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/othe
-rs/error_and_forecast-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:54
-(epstopdf)                    size: 518082 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/others/error_and_forecast-eps-converted-to.pdf ../../MATLAB_Files/Re
-sults/histograms/others/error_and_forecast.eps>
-(epstopdf)             \includegraphics on input line 333.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/others/err
-or_and_forecast-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, 
-but at most version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/others/error_and_forecast-eps-converted-
-to.pdf, id=365, 390.45876pt x 293.095pt>
-File: ../../MATLAB_Files/Results/histograms/others/error_and_forecast-eps-conve
-rted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/others/error_and_forecast-eps-conver
-ted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/others/error_and
-_forecast-eps-converted-to.pdf  used on input line 333.
-(pdftex.def)             Requested size: 132.30428pt x 99.31108pt.
-[17
-
- <../../MATLAB_Files/Results/histograms/others/forecast_transitions-eps-convert
-ed-to.pdf> <../../MATLAB_Files/Results/histograms/others/error_measurement-eps-
-converted-to.pdf> <../../MATLAB_Files/Results/histograms/others/error_and_forec
-ast-eps-converted-to.pdf>] [18
-
-]
-<../../Mathematica_Files/Range_Z.pdf, id=394, 361.35pt x 220.825pt>
-File: ../../Mathematica_Files/Range_Z.pdf Graphic file (type pdf)
-<use ../../Mathematica_Files/Range_Z.pdf>
-Package pdftex.def Info: ../../Mathematica_Files/Range_Z.pdf  used on input lin
-e 364.
-(pdftex.def)             Requested size: 170.71718pt x 104.32687pt.
- [19
-
- <../../Mathematica_Files/Range_Z.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/theta_0
-.eps>
-(epstopdf)                    date: 2020-04-25 13:13:48
-(epstopdf)                    size: 52466 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/theta_0
--eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:54
-(epstopdf)                    size: 18534 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-epsilon/theta_0-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/theta_0
-.eps>
-(epstopdf)             \includegraphics on input line 381.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/theta_0-eps-c
-onverted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <
-1.5> allowed
-<../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf, id=430, 354.3
-2375pt x 302.12875pt>
-File: ../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf Graphic f
-ile (type pdf)
-<use ../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/theta_0-eps-convert
-ed-to.pdf  used on input line 381.
-(pdftex.def)             Requested size: 128.0387pt x 109.17656pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/num_ove
-r_eps_t0.eps>
-(epstopdf)                    date: 2020-04-25 13:13:48
-(epstopdf)                    size: 52011 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/num_ove
-r_eps_t0-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:54
-(epstopdf)                    size: 19093 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-epsilon/num_over_eps_t0-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon
-/num_over_eps_t0.eps>
-(epstopdf)             \includegraphics on input line 381.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/num_over_eps_
-t0-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most v
-ersion <1.5> allowed
-<../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf, id=43
-1, 369.38pt x 302.12875pt>
-File: ../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf G
-raphic file (type pdf)
-<use ../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/num_over_eps_t0-eps
--converted-to.pdf  used on input line 381.
-(pdftex.def)             Requested size: 128.0387pt x 104.7278pt.
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/Autocorrelation/obser
+vations-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at m
+ost version <1.5> allowed
+<../../MATLAB_Files/Results/Autocorrelation/observations-eps-converted-to.pdf, 
+id=56, 374.39874pt x 304.13625pt>
+File: ../../MATLAB_Files/Results/Autocorrelation/observations-eps-converted-to.
+pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/Autocorrelation/observations-eps-converted-to.p
+df>
+Package pdftex.def Info: ../../MATLAB_Files/Results/Autocorrelation/observation
+s-eps-converted-to.pdf  used on input line 528.
+(pdftex.def)             Requested size: 170.71393pt x 138.67456pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 381.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 528.
 LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <14.4> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 381.
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 528.
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 381
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 528
 .
-[20
+[4
 
- <../../MATLAB_Files/Results/epsilon/theta_0-eps-converted-to.pdf> <../../MATLA
-B_Files/Results/epsilon/num_over_eps_t0-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/LSM.eps
->
-(epstopdf)                    date: 2020-04-25 13:14:26
-(epstopdf)                    size: 225471 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/LSM-eps
--converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:54
-(epstopdf)                    size: 72459 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-epsilon/LSM-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/LSM.eps>
-(epstopdf)             \includegraphics on input line 398.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/LSM-eps-conve
-rted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5>
- allowed
-<../../MATLAB_Files/Results/epsilon/LSM-eps-converted-to.pdf, id=447, 354.32375
-pt x 300.12125pt>
-File: ../../MATLAB_Files/Results/epsilon/LSM-eps-converted-to.pdf Graphic file 
-(type pdf)
-<use ../../MATLAB_Files/Results/epsilon/LSM-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/LSM-eps-converted-t
-o.pdf  used on input line 398.
-(pdftex.def)             Requested size: 128.0387pt x 108.45114pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/epsilon/num_ove
-r_eps.eps>
-(epstopdf)                    date: 2020-04-25 13:14:27
-(epstopdf)                    size: 110492 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/epsilon/num_ove
-r_eps-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 16:06:54
-(epstopdf)                    size: 26247 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-epsilon/num_over_eps-eps-converted-to.pdf ../../MATLAB_Files/Results/epsilon/nu
-m_over_eps.eps>
-(epstopdf)             \includegraphics on input line 398.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/epsilon/num_over_eps-
-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most vers
-ion <1.5> allowed
-<../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf, id=448, 
-365.365pt x 300.12125pt>
-File: ../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf Grap
-hic file (type pdf)
-<use ../../MATLAB_Files/Results/epsilon/num_over_eps-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/epsilon/num_over_eps-eps-co
-nverted-to.pdf  used on input line 398.
-(pdftex.def)             Requested size: 128.0387pt x 105.17223pt.
-[21
-
- <../../MATLAB_Files/Results/epsilon/LSM-eps-converted-to.pdf> <../../MATLAB_Fi
-les/Results/epsilon/num_over_eps-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/delta/eta_min_i
-ni.eps>
-(epstopdf)                    date: 2020-05-21 14:55:21
-(epstopdf)                    size: 35630 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/delta/eta_min_i
-ni-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:59
-(epstopdf)                    size: 13474 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-delta/eta_min_ini-eps-converted-to.pdf ../../MATLAB_Files/Results/delta/eta_min
-_ini.eps>
-(epstopdf)             \includegraphics on input line 413.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/delta/eta_min_ini-eps
--converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version
- <1.5> allowed
-<../../MATLAB_Files/Results/delta/eta_min_ini-eps-converted-to.pdf, id=464, 377
-.41pt x 302.12875pt>
-File: ../../MATLAB_Files/Results/delta/eta_min_ini-eps-converted-to.pdf Graphic
- file (type pdf)
-<use ../../MATLAB_Files/Results/delta/eta_min_ini-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/delta/eta_min_ini-eps-conve
-rted-to.pdf  used on input line 413.
-(pdftex.def)             Requested size: 128.0387pt x 102.4965pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/delta/eta_min_o
-pt.eps>
-(epstopdf)                    date: 2020-05-21 14:57:44
-(epstopdf)                    size: 36156 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/delta/eta_min_o
-pt-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:51:59
-(epstopdf)                    size: 13493 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-delta/eta_min_opt-eps-converted-to.pdf ../../MATLAB_Files/Results/delta/eta_min
-_opt.eps>
-(epstopdf)             \includegraphics on input line 413.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/delta/eta_min_opt-eps
--converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version
- <1.5> allowed
-<../../MATLAB_Files/Results/delta/eta_min_opt-eps-converted-to.pdf, id=465, 377
-.41pt x 302.12875pt>
-File: ../../MATLAB_Files/Results/delta/eta_min_opt-eps-converted-to.pdf Graphic
- file (type pdf)
-<use ../../MATLAB_Files/Results/delta/eta_min_opt-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/delta/eta_min_opt-eps-conve
-rted-to.pdf  used on input line 413.
-(pdftex.def)             Requested size: 128.0387pt x 102.4965pt.
-[22
-
- <../../MATLAB_Files/Results/delta/eta_min_ini-eps-converted-to.pdf> <../../MAT
-LAB_Files/Results/delta/eta_min_opt-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
-ays/model_1/1.eps>
-(epstopdf)                    date: 2020-03-30 14:42:36
-(epstopdf)                    size: 61483 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
-ays/model_1/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-30 14:48:24
-(epstopdf)                    size: 18790 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-bands_testing_days/model_1/1-eps-converted-to.pdf ../../MATLAB_Files/Results/ba
-nds_testing_days/model_1/1.eps>
-(epstopdf)             \includegraphics on input line 430.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/mo
-del_1/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at m
-ost version <1.5> allowed
-<../../MATLAB_Files/Results/bands_testing_days/model_1/1-eps-converted-to.pdf, 
-id=481, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/bands_testing_days/model_1/1-eps-converted-to.
-pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/bands_testing_days/model_1/1-eps-converted-to.p
-df>
-Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/model_1/
-1-eps-converted-to.pdf  used on input line 430.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
-ays/model_1/2.eps>
-(epstopdf)                    date: 2020-03-30 14:42:38
-(epstopdf)                    size: 61856 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
-ays/model_1/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-30 14:48:24
-(epstopdf)                    size: 18932 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-bands_testing_days/model_1/2-eps-converted-to.pdf ../../MATLAB_Files/Results/ba
-nds_testing_days/model_1/2.eps>
-(epstopdf)             \includegraphics on input line 430.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/mo
-del_1/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at m
-ost version <1.5> allowed
-<../../MATLAB_Files/Results/bands_testing_days/model_1/2-eps-converted-to.pdf, 
-id=482, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/bands_testing_days/model_1/2-eps-converted-to.
-pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/bands_testing_days/model_1/2-eps-converted-to.p
-df>
-Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/model_1/
-2-eps-converted-to.pdf  used on input line 430.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
-ays/model_1/3.eps>
-(epstopdf)                    date: 2020-03-30 14:42:39
-(epstopdf)                    size: 61582 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
-ays/model_1/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-30 14:48:24
-(epstopdf)                    size: 18849 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-bands_testing_days/model_1/3-eps-converted-to.pdf ../../MATLAB_Files/Results/ba
-nds_testing_days/model_1/3.eps>
-(epstopdf)             \includegraphics on input line 430.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/mo
-del_1/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at m
-ost version <1.5> allowed
-<../../MATLAB_Files/Results/bands_testing_days/model_1/3-eps-converted-to.pdf, 
-id=483, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/bands_testing_days/model_1/3-eps-converted-to.
-pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/bands_testing_days/model_1/3-eps-converted-to.p
-df>
-Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/model_1/
-3-eps-converted-to.pdf  used on input line 430.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-[23
-
- <../../MATLAB_Files/Results/bands_testing_days/model_1/1-eps-converted-to.pdf>
- <../../MATLAB_Files/Results/bands_testing_days/model_1/2-eps-converted-to.pdf>
- <../../MATLAB_Files/Results/bands_testing_days/model_1/3-eps-converted-to.pdf>
+ <../../MATLAB_Files/Results/Autocorrelation/observations-eps-converted-to.pdf>
 ]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
-ays/lamperti_optimal/1.eps>
-(epstopdf)                    date: 2020-04-14 11:27:47
-(epstopdf)                    size: 61207 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
-ays/lamperti_optimal/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:47
-(epstopdf)                    size: 18951 bytes
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/Autocorrelation
+/transitions.eps>
+(epstopdf)                    date: 2020-05-31 01:40:12
+(epstopdf)                    size: 129825 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/Autocorrelation
+/transitions-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-31 18:11:29
+(epstopdf)                    size: 92220 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-bands_testing_days/lamperti_optimal/1-eps-converted-to.pdf ../../MATLAB_Files/R
-esults/bands_testing_days/lamperti_optimal/1.eps>
-(epstopdf)             \includegraphics on input line 447.
+Autocorrelation/transitions-eps-converted-to.pdf ../../MATLAB_Files/Results/Aut
+ocorrelation/transitions.eps>
+(epstopdf)             \includegraphics on input line 540.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
-mperti_optimal/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
- but at most version <1.5> allowed
-<../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-converted
--to.pdf, id=513, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-conv
-erted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-conve
-rted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/lamperti
-_optimal/1-eps-converted-to.pdf  used on input line 447.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
-ays/lamperti_optimal/2.eps>
-(epstopdf)                    date: 2020-04-14 11:27:47
-(epstopdf)                    size: 60851 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
-ays/lamperti_optimal/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:47
-(epstopdf)                    size: 19018 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-bands_testing_days/lamperti_optimal/2-eps-converted-to.pdf ../../MATLAB_Files/R
-esults/bands_testing_days/lamperti_optimal/2.eps>
-(epstopdf)             \includegraphics on input line 447.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
-mperti_optimal/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
- but at most version <1.5> allowed
-<../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps-converted
--to.pdf, id=514, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps-conv
-erted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps-conve
-rted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/lamperti
-_optimal/2-eps-converted-to.pdf  used on input line 447.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/bands_testing_d
-ays/lamperti_optimal/3.eps>
-(epstopdf)                    date: 2020-04-14 11:27:47
-(epstopdf)                    size: 61411 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/bands_testing_d
-ays/lamperti_optimal/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:47
-(epstopdf)                    size: 19086 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-bands_testing_days/lamperti_optimal/3-eps-converted-to.pdf ../../MATLAB_Files/R
-esults/bands_testing_days/lamperti_optimal/3.eps>
-(epstopdf)             \includegraphics on input line 447.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/bands_testing_days/la
-mperti_optimal/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
- but at most version <1.5> allowed
-<../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/3-eps-converted
--to.pdf, id=515, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/3-eps-conv
-erted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/3-eps-conve
-rted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/bands_testing_days/lamperti
-_optimal/3-eps-converted-to.pdf  used on input line 447.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-[24
-
- <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/1-eps-converte
-d-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/lamperti_optimal/2-eps
--converted-to.pdf> <../../MATLAB_Files/Results/bands_testing_days/lamperti_opti
-mal/3-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
-ays/lamperti_optimal/1.eps>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 40264 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
-ays/lamperti_optimal/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 14822 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-paths_testing_days/lamperti_optimal/1-eps-converted-to.pdf ../../MATLAB_Files/R
-esults/paths_testing_days/lamperti_optimal/1.eps>
-(epstopdf)             \includegraphics on input line 464.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
-mperti_optimal/1-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
- but at most version <1.5> allowed
-<../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-converted
--to.pdf, id=545, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-conv
-erted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-conve
-rted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/lamperti
-_optimal/1-eps-converted-to.pdf  used on input line 464.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
-ays/lamperti_optimal/2.eps>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 40262 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
-ays/lamperti_optimal/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 15018 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-paths_testing_days/lamperti_optimal/2-eps-converted-to.pdf ../../MATLAB_Files/R
-esults/paths_testing_days/lamperti_optimal/2.eps>
-(epstopdf)             \includegraphics on input line 464.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
-mperti_optimal/2-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
- but at most version <1.5> allowed
-<../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps-converted
--to.pdf, id=546, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps-conv
-erted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps-conve
-rted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/lamperti
-_optimal/2-eps-converted-to.pdf  used on input line 464.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/paths_testing_d
-ays/lamperti_optimal/3.eps>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 40256 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/paths_testing_d
-ays/lamperti_optimal/3-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-04-14 11:27:48
-(epstopdf)                    size: 14899 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-paths_testing_days/lamperti_optimal/3-eps-converted-to.pdf ../../MATLAB_Files/R
-esults/paths_testing_days/lamperti_optimal/3.eps>
-(epstopdf)             \includegraphics on input line 464.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/paths_testing_days/la
-mperti_optimal/3-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>,
- but at most version <1.5> allowed
-<../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/3-eps-converted
--to.pdf, id=547, 364.36125pt x 301.125pt>
-File: ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/3-eps-conv
-erted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/3-eps-conve
-rted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/paths_testing_days/lamperti
-_optimal/3-eps-converted-to.pdf  used on input line 464.
-(pdftex.def)             Requested size: 128.0387pt x 105.81345pt.
-[25
-
- <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/1-eps-converte
-d-to.pdf> <../../MATLAB_Files/Results/paths_testing_days/lamperti_optimal/2-eps
--converted-to.pdf> <../../MATLAB_Files/Results/paths_testing_days/lamperti_opti
-mal/3-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/delta/contour_d
-elta.eps>
-(epstopdf)                    date: 2020-05-21 15:49:47
-(epstopdf)                    size: 90709 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/delta/contour_d
-elta-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 19:56:26
-(epstopdf)                    size: 78163 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-delta/contour_delta-eps-converted-to.pdf ../../MATLAB_Files/Results/delta/conto
-ur_delta.eps>
-(epstopdf)             \includegraphics on input line 486.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/delta/contour_delta-e
-ps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at most versi
-on <1.5> allowed
-<../../MATLAB_Files/Results/delta/contour_delta-eps-converted-to.pdf, id=579, 4
-29.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/delta/contour_delta-eps-converted-to.pdf Graph
-ic file (type pdf)
-<use ../../MATLAB_Files/Results/delta/contour_delta-eps-converted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/delta/contour_delta-eps-con
-verted-to.pdf  used on input line 486.
-(pdftex.def)             Requested size: 213.39568pt x 157.55637pt.
-[26
-
- <../../MATLAB_Files/Results/delta/contour_delta-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
-sic/Optimal.eps>
-(epstopdf)                    date: 2020-05-21 20:07:50
-(epstopdf)                    size: 51560 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
-sic/Optimal-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:11
-(epstopdf)                    size: 49194 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/classic/Optimal-eps-converted-to.pdf ../../MATLAB_Files/Results/hist
-ograms/classic/Optimal.eps>
-(epstopdf)             \includegraphics on input line 501.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/classic/Op
-timal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at mos
-t version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf, id
-=591, 429.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pd
-f Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf
->
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Optimal-
-eps-converted-to.pdf  used on input line 501.
-(pdftex.def)             Requested size: 170.71393pt x 126.03929pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/clas
-sic/Lamperti_Optimal.eps>
-(epstopdf)                    date: 2020-05-21 20:03:58
-(epstopdf)                    size: 51593 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/clas
-sic/Lamperti_Optimal-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:11
-(epstopdf)                    size: 49289 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/classic/Lamperti_Optimal-eps-converted-to.pdf ../../MATLAB_Files/Res
-ults/histograms/classic/Lamperti_Optimal.eps>
-(epstopdf)             \includegraphics on input line 501.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/classic/La
-mperti_Optimal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, b
-ut at most version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-converted-t
-o.pdf, id=592, 429.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-conver
-ted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-convert
-ed-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/classic/Lamperti
-_Optimal-eps-converted-to.pdf  used on input line 501.
-(pdftex.def)             Requested size: 170.71393pt x 126.03929pt.
-[27
-
- <../../MATLAB_Files/Results/histograms/classic/Optimal-eps-converted-to.pdf> <
-../../MATLAB_Files/Results/histograms/classic/Lamperti_Optimal-eps-converted-to
-.pdf>]
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/lamp
-erti/Optimal.eps>
-(epstopdf)                    date: 2020-05-21 20:14:41
-(epstopdf)                    size: 49895 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/lamp
-erti/Optimal-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:16:41
-(epstopdf)                    size: 47872 bytes
-(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/lamperti/Optimal-eps-converted-to.pdf ../../MATLAB_Files/Results/his
-tograms/lamperti/Optimal.eps>
-(epstopdf)             \includegraphics on input line 516.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/lamperti/O
-ptimal-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at mo
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/Autocorrelation/trans
+itions-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at mo
 st version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/lamperti/Optimal-eps-converted-to.pdf, i
-d=610, 429.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/histograms/lamperti/Optimal-eps-converted-to.p
+<../../MATLAB_Files/Results/Autocorrelation/transitions-eps-converted-to.pdf, i
+d=74, 374.39874pt x 304.13625pt>
+File: ../../MATLAB_Files/Results/Autocorrelation/transitions-eps-converted-to.p
 df Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/lamperti/Optimal-eps-converted-to.pd
+<use ../../MATLAB_Files/Results/Autocorrelation/transitions-eps-converted-to.pd
 f>
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/lamperti/Optimal
--eps-converted-to.pdf  used on input line 516.
-(pdftex.def)             Requested size: 170.71393pt x 126.03929pt.
-Package epstopdf Info: Source file: <../../MATLAB_Files/Results/histograms/lamp
-erti/Optimal_Lamperti.eps>
-(epstopdf)                    date: 2020-05-21 20:14:52
-(epstopdf)                    size: 50119 bytes
-(epstopdf)             Output file: <../../MATLAB_Files/Results/histograms/lamp
-erti/Optimal_Lamperti-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-21 20:17:36
-(epstopdf)                    size: 47967 bytes
+Package pdftex.def Info: ../../MATLAB_Files/Results/Autocorrelation/transitions
+-eps-converted-to.pdf  used on input line 540.
+(pdftex.def)             Requested size: 170.71393pt x 138.67456pt.
+[5
+
+ <../../MATLAB_Files/Results/Autocorrelation/transitions-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_alldata.eps>
+(epstopdf)                    date: 2020-05-31 03:00:51
+(epstopdf)                    size: 162245 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_alldata-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-31 03:01:06
+(epstopdf)                    size: 212429 bytes
 (epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
-histograms/lamperti/Optimal_Lamperti-eps-converted-to.pdf ../../MATLAB_Files/Re
-sults/histograms/lamperti/Optimal_Lamperti.eps>
-(epstopdf)             \includegraphics on input line 516.
+cross_correlation/obs_alldata-eps-converted-to.pdf ../../MATLAB_Files/Results/c
+ross_correlation/obs_alldata.eps>
+(epstopdf)             \includegraphics on input line 552.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/histograms/lamperti/O
-ptimal_Lamperti-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, 
-but at most version <1.5> allowed
-<../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-converted-
-to.pdf, id=611, 429.605pt x 317.185pt>
-File: ../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-conve
-rted-to.pdf Graphic file (type pdf)
-<use ../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-conver
-ted-to.pdf>
-Package pdftex.def Info: ../../MATLAB_Files/Results/histograms/lamperti/Optimal
-_Lamperti-eps-converted-to.pdf  used on input line 516.
-(pdftex.def)             Requested size: 170.71393pt x 126.03929pt.
-[28
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/cross_correlation/obs
+_alldata-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at 
+most version <1.5> allowed
+<../../MATLAB_Files/Results/cross_correlation/obs_alldata-eps-converted-to.pdf,
+ id=88, 605.26125pt x 428.60126pt>
+File: ../../MATLAB_Files/Results/cross_correlation/obs_alldata-eps-converted-to
+.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/cross_correlation/obs_alldata-eps-converted-to.
+pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/cross_correlation/obs_allda
+ta-eps-converted-to.pdf  used on input line 552.
+(pdftex.def)             Requested size: 170.71393pt x 120.88388pt.
+[6
 
- <../../MATLAB_Files/Results/histograms/lamperti/Optimal-eps-converted-to.pdf> 
-<../../MATLAB_Files/Results/histograms/lamperti/Optimal_Lamperti-eps-converted-
-to.pdf>]
+ <../../MATLAB_Files/Results/cross_correlation/obs_alldata-eps-converted-to.pdf
+>]
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_training.eps>
+(epstopdf)                    date: 2020-05-31 03:00:48
+(epstopdf)                    size: 115715 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_training-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-31 03:01:06
+(epstopdf)                    size: 132552 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+cross_correlation/obs_training-eps-converted-to.pdf ../../MATLAB_Files/Results/
+cross_correlation/obs_training.eps>
+(epstopdf)             \includegraphics on input line 565.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/cross_correlation/obs
+_training-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but at
+ most version <1.5> allowed
+<../../MATLAB_Files/Results/cross_correlation/obs_training-eps-converted-to.pdf
+, id=104, 605.26125pt x 428.60126pt>
+File: ../../MATLAB_Files/Results/cross_correlation/obs_training-eps-converted-t
+o.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/cross_correlation/obs_training-eps-converted-to
+.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/cross_correlation/obs_train
+ing-eps-converted-to.pdf  used on input line 565.
+(pdftex.def)             Requested size: 170.71393pt x 120.88388pt.
+[7
+
+ <../../MATLAB_Files/Results/cross_correlation/obs_training-eps-converted-to.pd
+f>]
 \tf@nav=\write6
 \openout6 = `"20200517 - Main Results.nav"'.
 
@@ -3501,36 +2044,34 @@ to.pdf>]
 \tf@snm=\write8
 \openout8 = `"20200517 - Main Results.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 520.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 520.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 569.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 569.
  (./20200517 - Main Results.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 520.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 520.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 569.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 569.
 Package rerunfilecheck Info: File `"20200517 - Main Results".out' has not chang
 ed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29553 strings out of 492982
- 603754 string characters out of 6134896
- 629943 words of memory out of 5000000
- 32494 multiletter control sequences out of 15000+600000
- 607620 words of font info for 97 fonts, out of 8000000 for 9000
+ 29187 strings out of 492982
+ 582186 string characters out of 6134896
+ 625849 words of memory out of 5000000
+ 32227 multiletter control sequences out of 15000+600000
+ 584576 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,11n,55p,10376b,721s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 ss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmss9.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/symbol/usyr.pfb>
-Output written on "20200517 - Main Results.pdf" (28 pages, 3385655 bytes).
+onts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsso12.pfb>
+Output written on "20200517 - Main Results.pdf" (7 pages, 1864554 bytes).
 PDF statistics:
- 680 PDF objects out of 1000 (max. 8388607)
- 394 compressed objects within 4 object streams
- 57 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 155 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 15 named destinations out of 1000 (max. 500000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
