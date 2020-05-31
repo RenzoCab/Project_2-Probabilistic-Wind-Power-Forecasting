@@ -81,13 +81,15 @@
 
 \begin{abstract}
 
-Reliable wind power generation forecasting is crucial for applications such as the allocation of energy reserves, optimization of electricity price and operation scheduling of conventional power plant. We propose a data driven model based on parametric Stochastic Differential Equations (SDEs) to captures real-world asymmetric dynamics of wind power forecast errors. Our SDE framework incorporates time derivative tracking of the forecast, time-dependent mean reversion parameter and an improved diffusion term. We are able to simulate future wind power production paths and to get sharp confidence bands. The method is forecast technology agnostic and enables the comparison between different forecasting technologies on the basis of information criteria. We apply the model to historical Uruguayan wind power production data and forecasts on the year 2019.
+Reliable wind power generation forecasting is crucial for applications such as the allocation of energy reserves, optimization of electricity price, and operation scheduling of conventional power plants. We propose a data-driven model based on parametric Stochastic Differential Equations (SDEs) to capture the real asymmetric dynamics of wind power forecast errors. Our SDE framework features time-derivative tracking of the forecast, time-varying mean-reversion parameter, and an improved state-dependent diffusion term. The methodology we developed allows the simulation of future wind power production paths and to obtain sharp empirical confidence bands. All the procedure is agnostic of the forecasting technology and enables comparing different forecast providers. We apply the model to historical Uruguayan wind power production data and forecasts during the period April-December 2019.
 
 \end{abstract}
 
-Keywords: Wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, numerical optimizaton, model selection.
+Keywords: Wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, 
 
-2020 AMS Subject Classification: 60H10, 62M20.
+numerical optimizaton, model selection.
+
+2020 AMS Subject Classification: 60H10, 62M20, 65K10.
 
 %%%%%%%%% BODY TEXT
 
@@ -785,7 +787,7 @@ We choose as domain the most significant values of $\theta_0$ and $\theta_0\alph
 
 \section{Conclusions} \label{Section_7}
 
-In this work, we propose a method to assess the short-term forecast of the normalized wind power, which is agnostic of the wind power forecast technology. 
+In this work, we propose a methodology to assess the short-term forecast of the normalized wind power, which is agnostic of the wind power forecasting technology. 
 
 To this purpose, we built a phenomenological stochastic differential equation model for the forecast error of the normalized wind power production, with time-varying mean-reversion parameter in the linear drift coefficient, and state-dependent and time non-homogenous diffusion coefficient. We also used the Lamperti transform with unknown parameters to provide a version of the proposed model with a unit diffusion coefficient, increasing its stability properties.
 
@@ -795,7 +797,7 @@ The likelihood approach has allowed extending the SDE models in a very effective
 On the basis of historical data of wind power production and forecast from different sources, our method comes up with an objective tool for forecast assessment and comparison, by performing the model selection stage.
 The application of the procedure of modeling, inference through numerical optimization, and model selection through information criteria, to the wind power production real dataset in Uruguay during April-December 2019, with three different providers, shown the excellent performance of our proposed model, that preserves the asymmetry of wind power forecast errors and their correlation structure.
  
- We conclude that our SDE model, featuring the time-derivative tracking of the forecast prediction function, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward managing of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrix.
+ We conclude that our SDE model, featuring the time-derivative tracking of the forecast, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward managing of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrix.
 
 %---END SECTION 7---
 
