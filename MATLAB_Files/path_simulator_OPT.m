@@ -9,8 +9,8 @@ epsilon  = 0.020;
 % dataKind can be classic or comparable.
 dataKind = 'comparable';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
-whatToDo = 'optimal_value'; 
-whatToDo = 'Optimal_Lamperti'; 
+whatToDo = 'optimal_value';
+whatToDo = 'Optimal_Lamperti';
 
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
@@ -21,7 +21,8 @@ xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 norm_lim = 0; % If 1, x=[0,1], if 0, x=[1PM 1PM].
 % Also, when norm_lim = 0, we check the real accuracy for the bands.
 new_time = [13-(1/6)*delta:1/6:37]/24;
-counting = zeros(4,1);
+counting   = zeros(4,1);
+counting_2 = zeros(4,1);
 
 % 31/05/2020:
 % 1.0000
@@ -190,18 +191,26 @@ for i = 1 : height(Table_Testing_Complete)
             end
             
             % We check the real accuracy for the bands:
+            aux    = ones(4,1);
             for k = 1:145
                 counting(1) = counting(1) + 1;
                 if quant(k+delta,1) < X(k) && quant(k+delta,6) > X(k)
                     counting(2) = counting(2) + 1;
+                else
+                    aux(2)      = 0;
                 end
                 if quant(k+delta,2) < X(k) && quant(k+delta,5) > X(k)
                     counting(3) = counting(3) + 1;
+                else
+                    aux(3)      = 0;
                 end
                 if quant(k+delta,3) < X(k) && quant(k+delta,4) > X(k)
                     counting(4) = counting(4) + 1;
+                else
+                    aux(4)      = 0;
                 end
             end
+            counting_2 = counting_2 + aux;
             disp(num2str(counting/counting(1)));
             
         end

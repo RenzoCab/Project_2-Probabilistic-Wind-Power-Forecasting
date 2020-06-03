@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  31 MAY 2020 18:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  31 MAY 2020 22:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2035,6 +2035,68 @@ ing-eps-converted-to.pdf  used on input line 565.
 
  <../../MATLAB_Files/Results/cross_correlation/obs_training-eps-converted-to.pd
 f>]
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_alldata_L.eps>
+(epstopdf)                    date: 2020-05-31 22:25:20
+(epstopdf)                    size: 153774 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_alldata_L-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-31 22:26:04
+(epstopdf)                    size: 192826 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+cross_correlation/obs_alldata_L-eps-converted-to.pdf ../../MATLAB_Files/Results
+/cross_correlation/obs_alldata_L.eps>
+(epstopdf)             \includegraphics on input line 577.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/cross_correlation/obs
+_alldata_L-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but a
+t most version <1.5> allowed
+<../../MATLAB_Files/Results/cross_correlation/obs_alldata_L-eps-converted-to.pd
+f, id=121, 601.24625pt x 428.60126pt>
+File: ../../MATLAB_Files/Results/cross_correlation/obs_alldata_L-eps-converted-
+to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/cross_correlation/obs_alldata_L-eps-converted-t
+o.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/cross_correlation/obs_allda
+ta_L-eps-converted-to.pdf  used on input line 577.
+(pdftex.def)             Requested size: 170.71393pt x 121.69482pt.
+[8
+
+ <../../MATLAB_Files/Results/cross_correlation/obs_alldata_L-eps-converted-to.p
+df>]
+Package epstopdf Info: Source file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_training_L.eps>
+(epstopdf)                    date: 2020-05-31 22:25:17
+(epstopdf)                    size: 109247 bytes
+(epstopdf)             Output file: <../../MATLAB_Files/Results/cross_correlati
+on/obs_training_L-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-05-31 22:26:04
+(epstopdf)                    size: 119435 bytes
+(epstopdf)             Command: <epstopdf --outfile=../../MATLAB_Files/Results/
+cross_correlation/obs_training_L-eps-converted-to.pdf ../../MATLAB_Files/Result
+s/cross_correlation/obs_training_L.eps>
+(epstopdf)             \includegraphics on input line 590.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ../../MATLAB_Files/Results/cross_correlation/obs
+_training_L-eps-converted-to.pdf): PDF inclusion: found PDF version <1.7>, but 
+at most version <1.5> allowed
+<../../MATLAB_Files/Results/cross_correlation/obs_training_L-eps-converted-to.p
+df, id=137, 601.24625pt x 428.60126pt>
+File: ../../MATLAB_Files/Results/cross_correlation/obs_training_L-eps-converted
+-to.pdf Graphic file (type pdf)
+<use ../../MATLAB_Files/Results/cross_correlation/obs_training_L-eps-converted-
+to.pdf>
+Package pdftex.def Info: ../../MATLAB_Files/Results/cross_correlation/obs_train
+ing_L-eps-converted-to.pdf  used on input line 590.
+(pdftex.def)             Requested size: 170.71393pt x 121.69482pt.
+[9
+
+ <../../MATLAB_Files/Results/cross_correlation/obs_training_L-eps-converted-to.
+pdf>]
 \tf@nav=\write6
 \openout6 = `"20200517 - Main Results.nav"'.
 
@@ -2044,20 +2106,20 @@ f>]
 \tf@snm=\write8
 \openout8 = `"20200517 - Main Results.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 569.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 569.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 594.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 594.
  (./20200517 - Main Results.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 569.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 569.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 594.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 594.
 Package rerunfilecheck Info: File `"20200517 - Main Results".out' has not chang
 ed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 29187 strings out of 492982
- 582186 string characters out of 6134896
- 625849 words of memory out of 5000000
- 32227 multiletter control sequences out of 15000+600000
+ 29205 strings out of 492982
+ 583009 string characters out of 6134896
+ 626849 words of memory out of 5000000
+ 32239 multiletter control sequences out of 15000+600000
  584576 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,11n,55p,10376b,721s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2068,10 +2130,10 @@ ss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmsso12.pfb>
-Output written on "20200517 - Main Results.pdf" (7 pages, 1864554 bytes).
+Output written on "20200517 - Main Results.pdf" (9 pages, 2184473 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 15 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 188 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 

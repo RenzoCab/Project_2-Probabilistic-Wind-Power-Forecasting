@@ -12,10 +12,11 @@ train_data             = load_data_eps(epsilon,dataSet,dataKind);
 test_data              = load_data_eps_test(epsilon,dataSet,dataKind);
 [~, ~, table_complete] = load_data(dataSet);
 lag                    = 150;
+font_size              = 14;
 
-train_error = transpose(train_data.Error);
-test_error  = transpose(test_data.Error);
-all_error   = transpose(table_complete.Error);
+train_error = transpose(train_data.Error_Lamp);
+test_error  = transpose(test_data.Error_Lamp);
+all_error   = transpose(table_complete.Error_Lamp);
 
 [N1,M1]   = size(train_error);
 [N2,M2]   = size(test_error);
@@ -46,7 +47,8 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 imagesc(X1,Y,train_xcorr); colorbar;
 title('Sample xcorr Function (observatios - training)');
 xlabel('Day'); ylabel('Lag');
-saveas(gcf,[pwd '/Results/cross_correlation/obs_training'],'epsc');
+set(gca,'FontSize',font_size);
+saveas(gcf,[pwd '/Results/cross_correlation/obs_training_L'],'epsc');
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 contour(x2,y2,test_xcorr); colorbar;
@@ -54,7 +56,8 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 imagesc(X2,Y,test_xcorr); colorbar;
 title('Sample xcorr Function (observatios - testing)');
 xlabel('Day'); ylabel('Lag');
-saveas(gcf,[pwd '/Results/cross_correlation/obs_testing'],'epsc');
+set(gca,'FontSize',font_size);
+saveas(gcf,[pwd '/Results/cross_correlation/obs_testing_L'],'epsc');
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 contour(x3,y3,all_xcorr); colorbar;
@@ -62,13 +65,14 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 imagesc(X3,Y,all_xcorr); colorbar;
 title('Sample xcorr Function (observatios - all data)');
 xlabel('Day'); ylabel('Lag');
-saveas(gcf,[pwd '/Results/cross_correlation/obs_alldata'],'epsc');
+set(gca,'FontSize',font_size);
+saveas(gcf,[pwd '/Results/cross_correlation/obs_alldata_L'],'epsc');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-train_tran = transpose(train_data.Error_Transitions);
-test_tran  = transpose(test_data.Error_Transitions);
-all_tran   = transpose(table_complete.Error_Transitions);
+train_tran = transpose(train_data.Error_Lamp_Transitions);
+test_tran  = transpose(test_data.Error_Lamp_Transitions);
+all_tran   = transpose(table_complete.Error_Lamp_Transitions);
 
 [N1,M1]   = size(train_tran);
 [N2,M2]   = size(test_tran);
@@ -97,8 +101,8 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 imagesc(X1,Y,train_xcorr); colorbar;
 title('Sample xcorr Function (transitions - training)');
 xlabel('Day'); ylabel('Lag');
-
-saveas(gcf,[pwd '/Results/cross_correlation/tran_training'],'epsc');
+set(gca,'FontSize',font_size);
+saveas(gcf,[pwd '/Results/cross_correlation/tran_training_L'],'epsc');
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 contour(x2,y2,test_xcorr); colorbar;
@@ -106,8 +110,8 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 imagesc(X2,Y,test_xcorr); colorbar;
 title('Sample xcorr Function (transitions - testing)');
 xlabel('Day'); ylabel('Lag');
-set(gca,'FontSize',12);
-saveas(gcf,[pwd '/Results/cross_correlation/tran_testing'],'epsc');
+set(gca,'FontSize',font_size);
+saveas(gcf,[pwd '/Results/cross_correlation/tran_testing_L'],'epsc');
 
 figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 contour(x3,y3,all_xcorr); colorbar;
@@ -115,5 +119,5 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600]);
 imagesc(X3,Y,all_xcorr); colorbar;
 title('Sample xcorr Function (transitions - all data)');
 xlabel('Day'); ylabel('Lag');
-set(gca,'FontSize',12);
-saveas(gcf,[pwd '/Results/cross_correlation/tran_alldata'],'epsc');
+set(gca,'FontSize',font_size);
+saveas(gcf,[pwd '/Results/cross_correlation/tran_alldata_L'],'epsc');
