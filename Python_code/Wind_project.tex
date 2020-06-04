@@ -1,0 +1,437 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{default}     
+  \usecolortheme{default} 
+  \usefonttheme{default} 
+} 
+
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{pgffor}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{ragged2e}
+
+
+\apptocmd{\frame}{}{\justifying}{}
+
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{frametitle}{\color{blue}\textbf{\small\insertframetitle}}
+%\setbeamerfont{frametitle}{size=\small}
+\setbeamertemplate{footline}{% 
+  \hfill% 
+  \usebeamercolor[fg]{page number in head/foot}% 
+  \usebeamerfont{page number in head/foot}% 
+  \insertframenumber%
+  %\,/\,\inserttotalframenumber
+  \kern1em\vskip2pt% 
+}
+\graphicspath{{C:/Users/HP/Desktop/plots/}}}
+
+}
+
+\title[Title]{Wind project inference}
+\author{Khaoula Ben Chaabane}
+\institute{Ecole Polytechnique de Tunisie}
+\date{02/06/2020}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \thispagestyle{empty}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Introduction}
+\justifying
+In these slides, I will explain the inference process with which we estimate the parameters of our model.
+\end{frame}
+
+\section{Model}
+\begin{frame}{Model}
+\justifying
+The wind power production is modeled as follows, where $X_{t}$ is the normalized real production:$$\\ 
+\left\{\begin{array}{l}
+d X_{t}=\left(\dot{p}_{t}-\theta_{t}\left(X_{t}-p_{t}\right)\right) d t+\sqrt{2 \alpha \theta_{0} X_{t}\left(1-X_{t}\right)} d W_{t}, \quad t \in[0, T] \\
+X_{0}=x_{0} \in[0,1]
+\end{array}\right.$$$$\\
+We may introduce the following model for the forcecast error of the normalized wind power production where $X_{t}$ is the real production, $p_{t}$ the forecast and $V_{t}=X_{t}-p_{t}$  is the error:
+$$
+\begin{equation}
+\left\{\begin{array}{l}
+d V_{t}=-\theta_{t} V_{t} d t+\sqrt{2 \alpha \theta_{0}\left(V_{t}+p_{t}\right)\left(1-V_{t}-p_{t}\right)} d W_{t}, \quad t \in[0, T] \\
+V_{0}=v_{0} \in[-1+\varepsilon, 1-\varepsilon]
+\end{array}\right.
+\end{equation}
+\end{frame}
+
+\begin{frame}{Model}
+To guarantee a unique solution for the process $X_{t},$ $\theta_{t}$ needs to be bounded for $t \in[0, T]$. We have that:
+$$$$
+\theta_{t}=\max \left(\theta_{0}, \frac{\alpha \theta_{0}+\left|\dot{p}_{t}\right|}{ \min \left(1-p_{t}, p_{t}\right)}\right)
+$$$$
+This is not true for $\theta_{t}$ if $p_{t} \rightarrow 0^{+}$ or $p_{t} \rightarrow 1^{-} .$ Therefore we need to ensure that $p_{t} \in[\varepsilon, 1-\varepsilon]$ for some $0<\varepsilon<\frac{1}{2}$, $\forall$ $t \in[0, T]$.
+\end{frame}
+
+\begin{frame}{Model}
+We define then the corrected forecast:
+$$
+p_{t}^{\varepsilon}=\left\{\begin{array}{ll}
+\varepsilon & \text { if } \quad p_{t}<\varepsilon \\
+p_{t} & \text { if } \quad \varepsilon \leq p_{t}<1-\varepsilon \\
+1-\varepsilon & \text { if } \quad p_{t} \geq 1-\varepsilon
+\end{array}\right.
+$$\\
+and the corrected (and bounded) drift coefficient is therefore:
+$$
+\theta_{t}^{\varepsilon}=\max \left(\theta_{0}, \frac{\alpha \theta_{0}+\left|\dot{p}_{t}^{\varepsilon}\right|}{ \min \left(1-p_{t}^{\varepsilon}, p_{t}^{\varepsilon}\right)}\right)
+$$
+\end{frame}
+
+\section{Likelihood}
+
+\begin{frame}{Likelihood}
+\justifying
+We sample each of our M continuous-time Itô process $V=(V_{t})_{t \in[0, T]}$  at $N+1$ equidistant discrete points with a given length interval $\Delta$.
+\\ $V^{M, N+1}=\left\{V_{t_{1}}^{N+1}, V_{t_{2}}^{N+1}, \ldots, V_{t_{M+1}}^{N+1}\right\}$ denotes this random sample, with $V_{t_{j}}^{N+1}=\left\{V_{t_{j}+i \Delta}, i=0, \ldots, N\right\}, \forall j\in\left\{1, \ldots, M\right\}.$
+\vskip 0.5cm
+\\Let $\rho\left(v | v_{j, i-1} ; \boldsymbol{\theta}\right)$ be the conditional probability density of $V_{t_{j}+i \Delta} \equiv V_{j, i}$,  given $V_{j, i-1}$  where $\boldsymbol{\theta}=\left(\theta_{0}, \alpha\right)$ are the unknown model parameters.
+\vskip 0.5cm
+The Itô process $V$ defined by the SDE (1) is Markovian, then the likelihood function of the sample $V^{M, N+1}$ can be written as follows:
+\[
+\mathcal{L}\left(\boldsymbol{\theta} ; V^{M, N+1}\right)=\prod_{j=1}^{M}\left\{\prod_{i=1}^{N} \rho\left(V_{j, i} | V_{j, i-1} ; p_{\left[t_{j, i-1}, t_{j, i}\right]}, \boldsymbol{\theta}\right)\right\}
+\]
+where $t_{j, i} \equiv t_{j}+i \Delta$ for any $j\in\left\{1, \ldots, M\right\}$ and $i\in\left\{0, \ldots, N\right\}$
+\end{frame}
+
+\begin{frame}{Likelihood approximation}
+\justifying
+In order to compute the exact likelihood function, we need a closed-form expression of the transition probability of V which can be found using the Fokker-Planck equation:
+\vskip 0.5cm
+ \begin{array}{l}
+\frac{\partial f}{\partial t} \rho\left(v, t | v_{j, i-1}, t_{j, i-1} ; \theta\right)=-\frac{\partial}{\partial v}\left(-\theta_{t} v \rho\left(v, t | v_{j, i-1}, t_{j, i-1} ; \theta\right)\right) \\
+\quad+\frac{1}{2} \frac{\partial^{2}}{\partial v^{2}}\left(2 \theta_{0} \alpha\left(v+p_{t}\right)\left(1-v-p_{t}\right) \rho\left(v, t | v_{j, i-1}, t_{j, i-1} ; \theta\right)\right)
+\end{array}\vskip 0.5cm
+However, solving this equation is not always possible and is computationally costly. For this reason, we approximated the likelihood using a proxy distribution for V. \\In our case we used a Beta distribution $\Beta(\xi_{1},\xi_{2})$ as for the family of diffusion term in our SDE (1) (Pearson diffusion), it has been proved to be the best approximation. In order to find the parameters $(\xi_{1},\xi_{2})$ of this proxy distribution we will match its first and second moments with the ones of the exact distribution deduced from the SDE (1).
+\end{frame}
+
+\begin{frame}{Moment matching: First moment}
+\justifying
+For a time s $\in \left[t_{n},t_{n+1}\right]$ the exact first moment $m_{1}(s)$ deduced from the SDE (1) is the solution of the following ODE:\\
+\left\{\begin{array}{l}
+\mathrm{d} m_{1}(s)=\left[-m_{1}(s) \theta(s)\right] \mathrm{d} s \\
+m_{1}\left(t_{n-1}\right)=v_{t_{n-1}}
+\end{array}\right.
+\vskip 0.5cm
+We want to compute $m_{1}(t_{n})$:
+\begin{itemize}
+\item If $\theta(t_{n})=\theta(t_{n+1})=\theta$ then the exact solution is : $m_{1}(t_{n})=m_{1}(t_{n-1})\exp(-\theta(t_{n}-t_{n-1}))$
+\item else, we compute a linear approximation of $\theta(s)$ and approximate the ODE using Forward-Euler:
+\vskip 0.5cm
+$m_{1}\left(s_{n}\right)=m_{1}\left(s_{n-1}\right)\left(1-\theta\left(s_{n-1}\right) \Delta s\right)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Moment matching: Second moment}
+\justifying
+Using Ito's formula, we find, for a time s $\in \left[t_{n},t_{n+1}\right]$, the exact second moment $m_{2}(s)$ deduced from the SDE (1) is the solution of the following ODE:
+\vskip 0.5cm
+$\left\{\begin{array}{ll}
+\mathrm{d}m_{2}(s)=\left[-2 m_{2}(s)\left(\theta(s)+\alpha\theta_{0}\right)+2 \alpha\theta_{0} m_{1}(s)(1-2 p(s))\\+2\alpha \theta_{0}p(s)(1-p(s))\right]\mathrm{d}s\\
+m_{2}\left(t_{n-1}\right)=v_{t_{n-1}}^{2}
+\end{array}$.
+\vskip 0.5cm
+We compute a linear interpolation for the functions $\theta(s)$ and $p(s)$. After, we solve the ODE using Forward-Euler:\\
+$m_{2}\left(s_{n}\right)=m_{2}\left(s_{n-1}\right)+\left[-2 m_{2}\left(s_{n-1}\right)\left(\theta\left(s_{n-1}\right)+\alpha \theta_{0}\right)\\+2 \alpha \theta_{0} m_{1}\left(s_{n-1}\right)\left(1-2 p\left(s_{n-1}\right)\right)+2 \alpha \theta_{0} p\left(s_{n-1}\right)\left(1-p\left(s_{n-1}\right)\right)\right] \Delta s
+$\vskip 0.5cm
+We use the same discretization points for both $m_{1}(s)$ and $m_{2}(s)$.
+\end{frame}
+
+\begin{frame}{Moment matching}
+\justifying
+V is approximated by a new proxy random variable: $V=a+(b-a) X$ with support in $[a,b]=[-1,1],$ where $X \sim \beta\left(\xi_{1}, \xi_{2}\right)$ and $\operatorname{PDF} f_{V}(v)$.
+We find the two first moments:
+\vskip 0.5cm
+\begin{itemize}
+\item $\mathbb{E}[V]=a+(b-a) \mathbb{E}[X]=a+(b-a) \frac{\xi_{1}}{\xi_{1}+\xi_{2}}=\mu_{V}$
+\item $\mathbb{V}[V]=(b-a)^{2} \mathbb{V}[X]=\frac{(b-a)^{2} \xi_{1} \xi_{2}}{\left(\xi_{1}+\xi_{2}\right)^{2}\left(\xi_{1}+\xi_{2}+1\right)}=\sigma_{V}^{2}$
+\end{itemize}
+\vskip 0.5cm
+We want the first two moments of the true random variable and its approximation to be equal $\forall t$. \\Therefore, $\mu(t)=m_{1}(t)$ and $\sigma^{2}(t)=m_{2}(t)-m_{1}^{2}(t)$. 
+\vskip 0.5cm
+For each measurement $V_{t_{n-1}},$ we can find the analytical moments at time $t_{n}$ solving the ODEs from the previous slides. We can then find the parameters $\xi_{1}$ and $\xi_{2}$ of the proxy.
+\end{frame}
+
+\begin{frame}{Evaluation of $(\xi_{1},\xi_{2})$}
+\begin{itemize}
+\item $\xi_{1}=-\frac{(1+\mu)\left(\mu^{2}+\sigma^{2}-1\right)}{2 \sigma^{2}}$.
+\item $\xi_{2}=\frac{(\mu-1)\left(\mu^{2}+\sigma^{2}-1\right)}{2 \sigma^{2}}$.
+\end{itemize}
+\vskip 0.5cm
+ all evaluated at time $t_{n}$
+\end{frame}
+
+\begin{frame}{Log-density of the proxy random variable V}
+\justifying
+We want to compute the PDF $f_{V}(v)$ of the random variable:\\ $V=a+(b-a)X$. 
+\vskip 0.5cm
+ For $[a, b]=[-1,1],$ we have that: \\
+$f_{V}(v)=f_{X}\left(g^{-1}(v)\right)\left|\frac{\mathrm{d}}{\mathrm{d} v} g^{-1}(v)\right| \quad$ where $\quad f_{X}(x)=\operatorname{Beta}\left(\xi_{1}, \xi_{2}\right) \quad$ and $\quad g(x)=a+(b-a) x$.
+\vskip 0.5cm
+Then, 
+\\$f_{V}(v)=\frac{1}{|(b-a)|} \frac{1}{B\left(\xi_{1}, \xi_{2}\right)}\left(\frac{v-a}{b-a}\right)^{\xi_{1}-1}\left(1-\frac{v-a}{b-a}\right)^{\xi_{2}-1}$, because \\$g^{-1}(v)=\frac{v-a}{b-a}$.\vskip 0.5cm
+Therefore:\\
+$\log \left(f_{V}(v)\right)=\log \left(\frac{1}{B\left(\xi_{1}, \xi_{2}\right)}\right)+\left(\xi_{1}-1\right) \log \left(\frac{v-a}{b-a}\right)+\left(\xi_{2}-1\right) \log \left(\frac{b-v}{b-a}\right)$
+\end{frame}
+\begin{frame}{Log-likelihood}
+\justifying
+We introduce the number of paths (days) $M,$ and the number of measurements per path $N+1(N$ transitions). We have a total of $M \times N$ samples. 	The log-likelihood is:
+\[
+\mathfrak{L}\left(\{V\}_{M, N}\right)=\sum_{i=1}^{M} \sum_{j=2}^{N+1} \log \left[\rho_{i, j}\left(V_{i, j} | V_{i, j-1}\right)\right]
+\]
+where $\rho_{i, j}\left(V_{i, j} | V_{i, j-1}\right)=\rho_{i, j}\left(V_{i, j} | V_{i, j-1} ; \xi_{1, j}, \xi_{2, j}\right)$.
+\end{frame}
+
+
+\section{Initial Estimation of the parameters}
+
+\begin{frame}{Initial Estimation of the parameters}
+\justifying
+In order to evaluate the initial parameters of our model we apply the least square method on the forecast error $V_{t}$.\\ We consider the transition $\Delta V_{i}=V_{i+1}-V_{i}$ with $\Delta t=t_{i+1}-t_{i}.\\
+\left(V_{i+1} | V_{i}\right)$ is a random variable which conditional mean can be approximated by the solution of the following system:
+\vskip 0.5cm
+\left\{\begin{array}{l}
+\mathrm{d} \mathbb{E}[V]=-\theta_{t}^{\varepsilon} \mathbb{E}[V] \mathrm{d} t \\
+\mathbb{E}\left[V\left(t_{i}\right)\right]=V_{i}
+\end{array}\right.
+
+evaluated in $t_{i+1}$ (i.e., $\mathbb{E}\left[V\left(t_{i+1}\right)\right]$ ).
+\end{frame}
+\section{LSM}
+\begin{frame}{Least Square Minimization: LSM}
+\justifying
+ Then, the random variable $\left(V_{i+1}-\mathbb{E}\left[V\left(t_{i+1}\right)\right]\right)$ has a mean equal to 0 approximately.\\
+If we assume that $\theta_{t}^{\varepsilon}=c \in \mathbb{R}^{+}$ for all $t \in\left[t_{i}, t_{i+1}\right],$ then $\mathbb{E}\left[V\left(t_{i+1}\right)\right]=V_{i} e^{-c \Delta t} .$ \\If we have a total of $n$ transitions, we can write the regression problem for the conditional mean with $L^{2}$ loss function as:\\$$
+\begin{equation}
+%\begin{aligned}
+c^{*} \approx \arg \min _{c \geq 0}\left[\sum_{i=1}^{n}\left(V_{i+1}-\mathbb{E}\left[V\left(t_{i+1}\right)\right]\right)^{2}\right]\\&$$=\arg \min _{c \geq 0}\left[\sum_{i=1}^{n}\left(V_{i+1}-V_{i} e^{-c \Delta t}\right)^{2}\right]
+%\end{aligned}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Least Square Minimization: LSM}
+\justifying
+We take the first order approximation of $e^{-c \Delta t}$  w.r.t. $c$: 
+$$
+e^{-c \Delta t}=1-c \Delta t+\mathscr{O}\left((c \Delta t)^{2}\right)
+$$
+and introduce it in equation $(1) .$ We get
+$$
+c^{*} \approx \arg \min _{c \geq 0} \underbrace{\left[\sum_{i=1}^{n}\left(V_{i+1}-V_{i}(1-c \Delta t)\right)^{2}\right]}_{=f(c)}
+$$
+As $f(c)$ is convex in $c,$ solving (5) (finding $c^{*}$ ) is equivalent to solving
+$$
+\frac{\partial f}{\partial c}\left(c^{* }\right)=0
+$$
+\end{frame}
+
+\begin{frame}{Least Square Minimization: LSM}
+\justifying
+$$
+\begin{aligned}
+\frac{\partial f}{\partial c} &=\sum_{i=1}^{n} 2\left(-V_{i}\right)(-\Delta t)\left(V_{i+1}-V_{i}\left(1-\theta_{0} \Delta t\right)\right) \\
+&=\sum_{i=1}^{n} 2 V_{i} \Delta t\left(V_{i+1}-V_{i}(1-c \Delta t)\right) \\
+&=\sum_{i=1}^{n} 2 V_{i+1} V_{i} \Delta t-2 V_{i}^{2} \Delta t+2 V_{i}^{2} \Delta t^{2} c
+\end{aligned}
+$$
+Then, $c^{* }$ satisfies the following: 
+$$
+c^{ *} \approx \frac{\sum_{i=1}^{n} V_{i}\left(V_{i}-V_{i+1}\right)}{\Delta t \cdot \sum_{i=1}^{n}\left(V_{i}\right)^{2}}
+$$
+\end{frame}
+
+\section{Quadratic variation}
+\begin{frame}{Quadratic variation}
+\justifying
+We approximate the SDE by its E-M scheme. In particular, we approximate the Itô quadratic variation with the discrete one:
+\begin{itemize}
+\item ltô process quadratic variation: $[V]_{t}=\int_{0}^{t} \sigma_{s}^{2} \mathrm{d} s$
+\item Discrete process quadratic variation: $[V]_{t}=\Sigma_{0<s \leq t}\left(\Delta V_{s}\right)^{2}$
+\end{itemize}$$$$\\
+Then, considering $\Delta t$ the time between the measurements, we approximate:
+$$
+\theta_{0}^{*} \alpha^{*} \approx \frac{\sum_{i=1}^{n}\left(\Delta V_{i}\right)^{2}}{2 \Delta t \sum_{i=1}^{n}\left(V_{i}+p_{i}\right)\left(1-V_{i}-p_{i}\right)}
+$$
+\end{frame}
+
+\section{\text { Estimation of} $\left(\theta_{0}, \alpha, \varepsilon\right)$}
+\begin{frame}{\text { Estimation of} $\left(\theta_{0}, \alpha, \varepsilon\right)$}
+\justifying
+In this section, we will use the approximation made previously to estimate the parameters $\left(\theta_{0}, \alpha, \varepsilon\right)$ of the SDE. Let us define $\left(\theta_{0}^{*}, \alpha^{*}, \varepsilon^{*}\right)$ as their estimators.$$\\
+\text{If we fix} $\varepsilon,$ we define the forecast error $\forall i \in {1...n}$ $V_{i}=X_{i}-p_{i}^{\varepsilon}$. \\ 
+If we also fix $\theta_{0}$ and $\alpha,$ we can define the set of indexes: $$ \\
+$\mathbf{I}=\left\{i \in\{1, \ldots, n\}: \text { the LSM estimation will estimate } \theta_{0}\right\}$ \\ $\mathbf{J}=\left\{j \in\{1, \ldots, n\}: \text { the } L S M \text { estimation will estimate } \frac{\theta_{0} \alpha}{\varepsilon}\right\}$ \\
+We will proceed then to approximate these sets in order to estimate our parameters. 
+\end{frame}
+
+\begin{frame}{\text { Estimation of} $\left(\theta_{0}, \alpha, \varepsilon\right)$}
+\justifying
+To use the LSM estimation, we assumed that $\theta_{t}^{\varepsilon}=c \in \mathbb{R}^{+}, $ and we defined $\theta_{t}^{\varepsilon}$:
+$$
+\theta_{t}^{\varepsilon}=\max \left(\theta_{0}, \frac{\alpha \theta_{0}+\left|\dot{p}_{t}^{\varepsilon}\right|}{\min \left(1-p_{t}^{\varepsilon}, p_{t}^{\varepsilon}\right)}\right)
+$$
+From the definition of $\theta_{t}^{\varepsilon}:$ We have that for $\varepsilon<<1,$ and $p_{t}=\varepsilon$ or $p_{t}=1-\varepsilon,$ the approximation $\theta_{t}^{\varepsilon} \approx \frac{\theta_{0} \alpha}{\varepsilon}$ holds. Then, for $\varepsilon$ small enough, $\mathrm{J}$ can be approximated by the following:
+$$
+\mathbf{J} \approx \mathbf{J}=\left\{j \in\{1, \ldots, n\}: p_{j}^{\varepsilon} \in\{\varepsilon, 1-\varepsilon\}\right\}
+$$
+We have that it is more likely that $\theta_{t}^{\varepsilon}=\theta_{0}$ if $p_{t}^{\varepsilon} \approx \frac{1}{2} .$ Then, we can approximate I by
+$$
+\mathbf{I} \approx \tilde{\mathbf{I}}=\left\{i \in\{1, \ldots, n\}: p_{i} \in(\gamma, 1-\gamma)\right\}, \gamma \approx \frac{1}{2}, \gamma<\frac{1}{2}
+$$
+\end{frame}
+
+
+ \begin{frame}{Estimation of $\alpha^{*}$}
+\justifying
+\\ With the previous approximation made of the quadratic variation we can estimate $\color{red} \theta_{0}*\alpha*=0.094$ therefore, with our given estimation of $\theta_{0}*$ we find that: $\color{red} \alpha*=0.08$
+\end{frame}
+ 
+ \begin{frame}{Estimation of $\varepsilon^{*}$}
+\justifying
+Now that we have an approximated value of $\theta_{0} \alpha,$ if we can estimate $\frac{\theta_{0} \alpha}{\varepsilon},$ then we can estimate $\varepsilon$.
+We showed previously that for $\varepsilon<<1$, the LSM estimation using indexes from $\mathbf{J}$ is an estimator for $\frac{\theta_{0} \alpha}{\varepsilon}=: k$
+
+The goal is to find values for $\varepsilon$ that satisfy $\varepsilon<<1$. For that we start by randomly choosing a small initial value for $\varepsilon$ (that we will call $\varepsilon_{0}$ ), and iterating we aim to converge to some local minimum. We proceed with the following steps:
+\begin{itemize}
+\justifying
+\item We sample $\varepsilon_{0}$ from $\mathscr{U}[0.01,0.1]$ and load $\varepsilon \leftarrow \varepsilon_{0}$
+\item We create $\tilde{J}$ and use the LSM estimation to find $k$. 
+\begin{itemize}
+\item If $k<\theta_{0}^{*},$ then the assumption $\theta_{t}^{\varepsilon}=c \in \mathbb{R}^{+}$ is wrong and we reduce the value of $\varepsilon,$ i.e., $\varepsilon \leftarrow \varepsilon * 0.999 .$ 
+\item If $k \geq \theta_{0}^{*},$ we load $\varepsilon \leftarrow \frac{\theta_{0}^{*} \alpha^{*}}{k}(\text { we allow a maximum relative change of } 1 \%) .$
+\end{itemize}
+ We repeat this step 100 times.
+\item We repeat steps 1 and 2, 50 times.
+\end{itemize}
+ \end{frame}	
+ 
+ \begin{frame}{Initial parameters estimation}
+\justifying
+ To conclude, the estimations of the SDE parameters that we found are: $\left(\theta_{0}^{*}, \alpha^{*}, \varepsilon^{*}\right)=(1.25,0.08,0.018).$
+ \vskip 0.5cm
+ The code computing this process can be found in the file\\  \textbf{Wind\_}\textbf{project\_}\textbf{intial\_}\textbf{guess.ipynb}.
+ \end{frame}
+ 
+ \begin{frame}{Log-likelihood optimization}
+\justifying
+ I minimized the negative log-likelihood using the function \textbold{fmin} from the library \textbold{scipy.optimize} in Python to estimate the parameters $(\theta_{0},\alpha)$. I found the following results for the different datasets provided:\\
+ \begin{table}
+\centering
+\begin{tabular}{|l|l|l|l|} 
+\hline
+\textbf{Data providers} & $\theta_{0}$ & $\alpha$ & $\theta_{0}\alpha$  \\ 
+\hline
+First dataset                & 1.161                            & 0.0718                    & 0.083                                                  \\ 
+\hline
+UTEP5                   & 1.357                            & 0.0809                    & 0.108                                                  \\ 
+\hline
+MTLOG                   & 1.175                            & 0.0856                    & 0.100                                                  \\ 
+\hline
+AWSTEP                  & 1.196                            & 0.0846                    & 0.101                                                  \\
+\hline
+\end{tabular}
+\end{table}
+ \vskip 0.5cm
+ The code of this optimization can be found in the file\\ \textbf{Wind\_project\_optimization.ipynb}
+ \end{frame}
+ 
+ \section{$\delta$}
+ \begin{frame}{Time parameter $\delta$}
+ In order to have $E(X)=p$ at all times, our SDE (1) needs to have a starting point where $V=0$ $(X=p)$.\\ \vspace{0.5cm}
+ However, we noticed that with our data, the error $V$ at $t=0$ is not 0. Therefore, to still unsure we have this property, we suppose that there existed a time $t_{\delta}<0$ in the past where the condition $X=p$ was verified. (This can be justified as we assume that the forecast providers had at some point perfect information on the data).  \\ \vspace{0.5cm}.
+ \end{frame}
+ 
+ \begin{frame}{Time parameter $\delta$}
+ To do this, we will linearly interpolate the forecast to a time $t_{\delta}$ $(t_{0}-t_{\delta}=\delta)$, and for the transition $V^{i}_{t_{0}}|V^{i}_{t_{\delta}}$ $\forall i\in \{1,\dots, M\}$  we will solve the following problem: 
+\[
+\delta \approx \arg \min _{\delta} \mathcal{L}_{\delta}\left(\boldsymbol{\theta}, \delta ; V^{M, 1}\right)=\arg \min _{\delta} \prod_{j=1}^{M} \rho_{0}\left(V^{i}_{t_{0}} |V^{i}_{t_{\delta}} ; \boldsymbol{\theta}, \delta\right) \]\\
+We will approximate again the density with a $\Beta$ distribution and redo the same steps as before of moment matching to find its parameters.\\ \vspace{0.5cm}
+
+We finally find that $\delta=0.0837=120$ minutes.
+
+ \end{frame}
+ 
+ \begin{frame}{Path simulation}
+ I plotted the path for the real production, the forecast and some simulations of the production using the model.
+\begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{paths0.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ \begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{paths45.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ \begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{paths80.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ \begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{paths105.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ 
+ \begin{frame}{Confidence intervals}
+ I plotted the 99\%, 90\% and 50\% confidence intervals using 100 simulations per day.
+\begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{bands0.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ \begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{bands45.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ \begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{bands80.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ \begin{figure}[ht] 
+\centering
+    \centering
+    \includegraphics[width=1\linewidth]{bands105.eps} 
+    \label{fig:dynamics}
+ \end{figure}
+ \end{frame}
+ 
+ 
+
+\end{document}
+

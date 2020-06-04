@@ -1,0 +1,9 @@
+\babel@toc {french}{}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Model}{3}{0}{2}
+\beamer@sectionintoc {3}{Likelihood}{6}{0}{3}
+\beamer@sectionintoc {4}{Initial Estimation of the parameters}{14}{0}{4}
+\beamer@sectionintoc {5}{LSM}{15}{0}{5}
+\beamer@sectionintoc {6}{Quadratic variation}{18}{0}{6}
+\beamer@sectionintoc {7}{\text { Estimation of} $\left (\theta _{0}, \alpha , \varepsilon \right )$}{19}{0}{7}
+\beamer@sectionintoc {8}{$\delta $}{25}{0}{8}
