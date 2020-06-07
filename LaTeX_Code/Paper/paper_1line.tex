@@ -244,20 +244,25 @@ a(X_t; p_t, \dot{p}_t, \bm{\theta}) = \dot{p}_t  - \theta_t (X_t - p_t),  \label
 \end{equation} 
 where $ (\theta_t)_{t \in [0,T]} $ is a positive deterministic function, whose range depends on $\bm{\theta}$, as will be explained shortly.
 
-Now, looking at the normalized wind power generation forecast process $X_t$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$, given $  \mathbb{E}\left[X_0\right] = p_0$. The application of  It\^{o}'s lemma on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s \dif s}$, leads to 
-\begin{equation*}
-\dif \left( X_t e^{\int_{0}^{t} \theta_s \dif s} \right) = e^{\int_{0}^{t} \theta_s \dif s} (\dot{p}_t + \theta_t p_t ) \dif t  + e^{\int_{0}^{t} \theta_s \dif s}b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \dif W_t,
-\end{equation*}
-whose integral form is
+Now, looking at the normalized wind power generation forecast process $X_t$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$, given $  \mathbb{E}\left[X_0\right] = p_0$. The application of  It\^{o}'s lemma % on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s \dif s}$, leads to 
+leads to
+%\begin{equation*}
+%\dif \left( X_t e^{\int_{0}^{t} \theta_s \dif s} \right) = e^{\int_{0}^{t} \theta_s \dif s} (\dot{p}_t + \theta_t p_t ) \dif t  + e^{\int_{0}^{t} \theta_s \dif s}b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \dif W_t,
+%\end{equation*}
+%whose integral form is
 \begin{equation}
 e^{\int_{0}^{t} \theta_s \dif s}  X_t - X_0 = \int_{0}^{t}  (\dot{p}_s + \theta_s p_s ) e^{\int_{0}^{s} \theta_u \dif u} \dif s + \int_{0}^{t}  b (X_s; p_s, \dot{p}_s, \bm{\theta} )  e^{\int_{0}^{s} \theta_u \dif u}\dif  W_s.   \label{eq:tomeanX}
 \end{equation} 
 Taking expectation on (\ref{eq:tomeanX}) we obtain
-\begin{align}
-\mathbb{E} \left[X_t\right] & = e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E} \left[X_0\right] +   \int_{0}^{t}  (\dot{p}_s + \theta_s p_s ) e^{\int_{0}^{s} \theta_u \dif u} \dif s   \right) \nonumber \\ 
-& =  e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E} \left[X_0\right] +   \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u \dif u} \dif s +  \big[ p_s \, e^{\int_{0}^{s} \theta_u \dif u} \big]^{t}_0  - \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u \dif u} \dif s  \right) \nonumber \\
-& =  e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E}\left[ X_0\right] + p_t \, e^{ \int_{0}^{t} \theta_s \dif s} - p_0 \right) = p_t. \label{eq:meanX}
-\end{align}
+%\begin{align}
+%\mathbb{E} \left[X_t\right] & = e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E} \left[X_0\right] +   \int_{0}^{t}  (\dot{p}_s + \theta_s p_s ) e^{\int_{0}^{s} \theta_u \dif u} \dif s   \right) \nonumber \\ 
+%& =  e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E} \left[X_0\right] +   \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u \dif u} \dif s +  \big[ p_s \, e^{\int_{0}^{s} \theta_u \dif u} \big]^{t}_0  - \int_{0}^{t}  \dot{p}_s e^{\int_{0}^{s} \theta_u \dif u} \dif s  \right) \nonumber \\
+%& =  e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E}\left[ X_0\right] + p_t \, e^{ \int_{0}^{t} \theta_s \dif s} - p_0 \right) = p_t. \label{eq:meanX}
+%\end{align}
+\begin{equation}
+\mathbb{E} \left[X_t\right] =  e^{ - \int_{0}^{t} \theta_s \dif s} \left(  \mathbb{E}\left[ X_0\right] + p_t \, e^{ \int_{0}^{t} \theta_s \dif s} - p_0 \right) = p_t.
+\label{eq:meanX}
+\end{equation}
 
  At this stage, the process defined by (\ref{eq:main}) with drift (\ref{drift:meanrev-derivtrack}) satisfies the two following properties: 
 \begin{itemize}
@@ -282,6 +287,7 @@ Let $\bm{\theta} = (\theta_0,\alpha)$, and choose a state-dependent diffusion te
   \end{equation}
   where $\alpha >0$ is an unknown parameter that controls the path variability. This diffusion term belongs to the Pearson diffusion family and, in particular, it defines a Jacobi type diffusion. It is useful to recall that (\cite[440]{foso}) a Pearson diffusion is a stationary solution to a stochastic differential equation of the form \begin{equation}
     \dif X_t = - \theta (X_t - \mu)\dif t + \sqrt{2 \theta \left(a X_t^2 + b X_t + c\right)} \dif W_t
+    \label{eq:poly_diff}
   \end{equation}
 where $\theta>0$, and $a$, $b$, and $c$ are parameters such that the square root is well defined when $X_t$ is in the state space. These parameters, together with $\mu$, the mean of the invariant distribution, determine the state space of the diffusion as well as the shape of the invariant distribution.
 
@@ -377,6 +383,8 @@ In this case, the Lamperti transform has been applied using the optimal estimate
 
 The shape of the forecast error transition histograms after applying the Lamperti transform has much resemblance with a Gaussian distribution, motivating toward the use of Gaussian-like approximations of the unknown density transition functions of the process $Z_t$.
 
+Remark: Moreover, this obtained Gaussian distribution supports the validity of the choice of our model diffusion coefficient given by (\ref{eq:poly_diff}). 
+
 %{\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models, that is if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.}
 
 %---END SECTION 4---
@@ -387,14 +395,14 @@ The shape of the forecast error transition histograms after applying the Lampert
 
 \subsection{Likelihood in the $V-$space}
 
-Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$ is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$, and let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}, \, j = 1, \ldots, M$. 
+Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at time $t_j$ with $j = 1, \dots, M$, is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$. 
 
 Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
 
 The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the sample $ V^{M,N + 1}$ can be written as the following product of transition densities:  
 
 \begin{equation}
-\mathcal{L}(\bm{\theta}; V^{M,N +1}) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )  \,  \right\},
+\mathcal{L}\left(\bm{\theta}; V^{M,N +1}\right) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )    \right\},
 \label{likelihood}
 \end{equation}
 where $t_{j ,i} \equiv  t_j + i \Delta$ for any $j = 1, \ldots, M$ and $i = 0, \ldots, N$. \\
@@ -406,7 +414,7 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 
 \begin{align}
 \frac{ \partial f }{\partial t } & \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} )= - \frac{\partial}{ \partial v} (- \theta_t v \, \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ) \nonumber \\
-& + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( 2 \theta_0 \alpha (v+ p_t) (1 - v- p_t) \, \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) )\,,  \label{eq:fpk}
+& + \frac{1}{2} \frac{\partial^2}{ \partial v^2} ( 2 \theta_0 \alpha (v+ p_t) (1 - v- p_t) \, \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ),  \label{eq:fpk}
 \end{align}
 subject to the initial conditions $\rho(v , t_{j, i-1} ; \bm{\theta} ) = \delta(v - V_{j, i-1}) \,,$ where $ \delta(v - V_{j, i-1})$ is the Dirac-delta generalized function centered at $ V_{j, i-1}\,.$
 
@@ -421,15 +429,16 @@ Therefore, we propose to use a surrogate transition density for $V$ other than G
 
 From (\ref{eq:meanX}), we have $m_1(t) \equiv \mathbb{E} \left[V_t\right] = e^{- \int_{t_{j,i-1}}^t \theta_s \dif s} \,\mathbb{E} \left[V_{t_{j,i-1}}\right]$, for any $t\in [t_{j,i-1}, t_{j, i}[$, $j = 1, \ldots, M$ and $i = 1, \ldots, N$ .
 
-For $m \geq 2$, using It\^o's lemma on $g(V_t) = V_t^m$, we obtain
+For $m \geq 2$, using It\^o's lemma % on $g(V_t) = V_t^m$, we obtain
 % arrive at the following iterative ODEs for the state dependent diffusion formulation (\ref{VtSDE})
-\begin{align}
-\dif (V_t^m) & = \left( - m \theta_t V_t^m + \frac{1}{2} m (m -1) V_t^{m -2} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) \right) \dif t  \nonumber \\
-& + m V_t^{m-1} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) \dif W_t \,, \nonumber
-\end{align}
-from which we derive
+%\begin{align}
+%\dif (V_t^m) & = \left( - m \theta_t V_t^m + \frac{1}{2} m (m -1) V_t^{m -2} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) \right) \dif t  \nonumber \\
+%& + m V_t^{m-1} 2 \alpha \theta_0 (V_t + p_t) (1 - V_t - p_t) \dif W_t \,, \nonumber
+%\end{align}
+%from which we derive
+we derive
 \begin{equation}
-\frac{\dif  \mathbb{E}\left[ V^m_t\right]}{\dif t} = - m \theta_t \mathbb{E}\left[ V^m_t\right] + m (m-1) \alpha \theta_0  \mathbb{E}\left[ - V_t^m + (1 - 2 p_t) V_t^{m-1} + p_t (1 -p_t) V_t^{m-2} \right] \,.
+\frac{\dif  \mathbb{E}\left[ V^m_t\right]}{\dif t} = - m \theta_t \mathbb{E}\left[ V^m_t\right] + m (m-1) \alpha \theta_0  \mathbb{E}\left[ - V_t^m + (1 - 2 p_t) V_t^{m-1} + p_t (1 -p_t) V_t^{m-2} \right] .
 \end{equation}
 
 For any $t\in [t_{j,i-1}, t_{j, i}[$, the first two moments of $V$, $m_1(t)$ and $m_2(t) \equiv \mathbb{E}\left[V_t^2\right]$, can be computed by solving the following system
@@ -445,28 +454,28 @@ with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, 
 
 \subsubsection{Moment Matching}
 
-A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. 
+A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes. 
 
-To approximate the transition densities of the process $V$ using a Beta distribution, we equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
+For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
 
 The shape parameters are given by
 \begin{equation}
-\xi_1 = - \frac{(\mu_t + 1 - \epsilon)(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2}, \quad \xi_2=  \frac{(\mu_t-1 + \epsilon )(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2} , \label{param_transformed_beta}
+\xi_1(t) = - \frac{(\mu_t + 1 - \epsilon)(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2}, \quad \xi_2(t)=  \frac{(\mu_t-1 + \epsilon )(\mu_t^2 + \sigma_t^2 - (1- \epsilon)^2)}{2 (1 - \epsilon) \sigma_t^2} , \label{param_transformed_beta}
 \end{equation}
 where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$ \\
 
-The approximate log-likelihood $\tilde{\ell}(\cdot ; v^{V, N+1})$ of the observed sample $v^{V, N+1}$ can be expressed as 
+The approximate log-likelihood $\tilde{\ell}(\cdot ; v^{M, N+1})$ of the observed sample $v^{M, N+1}$ can be expressed as 
 \begin{equation}
- \tilde{\ell} \left(\bm{\theta}; v^{M,N +1}\right) = \sum_{j=1}^M \sum_{i=1}^N \log  \left\{ \frac{1}{2(1 - \epsilon)} \frac{1}{B(\xi_1, \xi_2)} \left( \frac{v_{j,i} + 1 - \epsilon}{2(1 - \epsilon)} \right)^{\xi_1 -1}  \left( \frac{1 - \epsilon - v_{j,i}}{2(1 - \epsilon)} \right)^{\xi_2 -1} \right\},
+ \tilde{\ell} \left(\bm{\theta}; v^{M,N +1}\right) = \sum_{j=1}^M \sum_{i=1}^N \log  \left\{ \frac{1}{2(1 - \epsilon)} \frac{1}{B(\xi_1(t_{j,i}), \xi_2(t_{j,i}))} \left( \frac{v_{j,i} + 1 - \epsilon}{2(1 - \epsilon)} \right)^{\xi_1(t_{j,i}) -1}  \left( \frac{1 - \epsilon - v_{j,i}}{2(1 - \epsilon)} \right)^{\xi_2(t_{j,i}) -1} \right\},
 \label{eq:loglikelihoodV}
 \end{equation}
-where the shape parameters $\xi_1$ and $\xi_2$, according to (\ref{param_transformed_beta}), depend on the quantities $\mu(t_{j,i};\bm{\theta} )$ and $\sigma^2(t_{j,i};\bm{\theta} )$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). 
+where the shape parameters $\xi_1(t_{j,i})$ and $\xi_2(t_{j,i})$, according to (\ref{param_transformed_beta}), depend on the quantities $\mu(t_{j,i};\bm{\theta} )$ and $\sigma^2(t_{j,i};\bm{\theta} )$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). $B(\xi_1,\xi_1)$ denotes the Beta distribution with parameters $\xi_1$ and $\xi_2$.
 
 \subsection{Approximate likelihood  in the $Z-$space}
 
 The transition density of the process $Z$, which has been defined through the Lamperti transformation (\ref{eq:LampZ}) of $V$, can be conveniently approximated by a Gaussian surrogate density. 
 
-The drift coefficient $a(Z_t; p_t, \dot{p}_t, \bm{\theta}) $ of the process $Z$ that satisfies (\ref{eq:stindepSDE2}) is nonlinear. After linearizing the drift around the mean of $Z$, $\mu_Z(t) \equiv \mathbb{E}\left[Z_t\right]$,  we obtain the following system of ODEs to compute, for any $t\in [t_{j,i-1}, t_{j, i}[$, the approximations of the first two central moments of $Z$, say  $\tilde{\mu}_Z(t) \approx \mathbb{E}\left[Z_t\right]$ and $\tilde{v}_Z(t) \approx \text{Var} \left[Z_t\right]$ :\\
+The drift coefficient $a(Z_t; p_t, \dot{p}_t, \bm{\theta}) $ of the process $Z$ that satisfies (\ref{eq:stindepSDE2}) is nonlinear. After linearizing the drift around the mean of $Z$, $\mu_Z(t) \equiv \mathbb{E}\left[Z_t\right]$,  we obtain the following system of ODEs to compute, for any $t\in [t_{j,i-1}, t_{j, i}[$, the approximations of the first two central moments of $Z$, say  $\tilde{\mu}_Z(t) \approx \mathbb{E}\left[Z_t\right]$ and $\tilde{v}_Z(t) \approx \text{Var} \left[Z_t\right]$:
 \begin{equation}
 \begin{cases}
 \frac{\dif  \tilde{\mu}_Z (t)}{\dif t}&=  a\big( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \big)   \\
@@ -489,18 +498,18 @@ where $\tilde{\mu}_Z(t_{j,i};\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i};\bm{\theta}
 
 \subsubsection{Initial guess}
 
-To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use \textbf{Least Square Minimization} and \textbf{Quadratic Variation} over the data to find an initial guess.
+To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use \textbf{Least Square Minimization} and \textbf{Quadratic Variation} over the data to find an initial guess $(\theta_0^*,\alpha^*)$.
 
 \begin{itemize}
 
-\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. $(V_{j,i}|v_{j,i-1})$ is a random variable which conditional mean can be approximated for any $t\in [t_{j,i-1}, t_{j, i}[$ by the solution of the system
+\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. For any $t\in [t_{j,i-1}, t_{j, i}[$, we can approximate the first moment of $V$ by the solution of the system
 \begin{equation*}
 \begin{cases}
-\dif \E\left[V\right]&=-\theta_t\E\left[V\right]\dif t\\
+\dif \E\left[V\right](t)&=-\theta_t\E\left[V\right](t)\dif t\\
 \E\left[V\right](t_{j,i-1})&=v_{j,i-1},
 \end{cases}
 \end{equation*}
-evaluated in $t_{j,i}$, i.e., $\E\left[V\right](t_{j,i})$. Then, the random variable $(V_{j,i}-\E\left[V\right](t_{j,i}))$ has zero mean. If we assume that $\theta_t=c\in\R^+$ for all $t\in[t_{j,i-1},t_{j,i}[$, then $\E\left[V(t_{j,i})\right]=v_{j,i-1}e^{-c\Delta}$. If we have a total of $M\times N$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
+evaluated in $t_{j,i}$, i.e., $\E\left[V\right](t_{j,i})$. Then, the random variable $(V_{j,i}-\E\left[V\right](t_{j,i}))$ has zero mean. If we assume that $\theta_t=c\in\R^+$ for all $t\in[t_{j,i-1},t_{j,i}[$, then $\E\left[V\right](t_{j,i})=v_{j,i-1}e^{-c\Delta}$. If we have a total of $M\times N$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
 \begin{equation}
 \begin{split}
 c^*&\approx\arg\min_{c\ \geq\ 0}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-\E\left[V\right](t_{j,i})\right)^2\right]\\
@@ -509,7 +518,7 @@ c^*&\approx\arg\min_{c\ \geq\ 0}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-\E
 \end{split}
 \label{Eq-1}
 \end{equation}
-As Equation (\ref{Eq-1}) is convex in $c$ (composition of convex is convex), it is enough to verify the first order optimality conditions. From
+As Equation (\ref{Eq-1}) is convex in $c$, it is enough to verify the first order optimality conditions. From
 \begin{equation*}
 \frac{\partial}{\partial c}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-v_{j,i-1}(1-c\Delta)\right)^2\right]=\sum_{j=1}^M\sum_{i=1}^{N}2v_{j,i-1}\Delta\left(v_{j,i}-v_{j,i-1}(1-c\Delta)\right),
 \end{equation*}
@@ -518,8 +527,9 @@ it follows that
 c^{*}=\frac{\sum_{j=1}^M\sum_{i=1}^{N}v_{j,i-1}(v_{j,i-1}-v_{j,i})}{\Delta\cdot\sum_{j=1}^M\sum_{i=1}^{N}(v_{j,i-1})^2}.
 \label{Eq-4}
 \end{equation}
+We are going to use Equation (\ref{Eq-4}) to approximate $\theta_0$ setting $\theta_0^*=c^*$.
 
-\item \textbf{Quadratic variation:} We use the numerical Euler-Maruyama (E-M) scheme to approximate the solution to the SDE  \eqref{VtSDE}. In particular, we approximate the quadratic variation of the  It\^{o}'s  process $V$
+\item \textbf{Quadratic variation:} We approximate the quadratic variation of the  It\^{o}'s  process $V$
 \begin{equation*}
 [V]_t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
 \sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)}\,,
@@ -605,7 +615,7 @@ Our statistical analysis starts with partitioning the 147 segments of normalized
 
 All the following results involving a single provider refer to provider A. Also, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$, we obtain the initial guess $(\theta_0,\alpha,\delta)\approx(1.54,0.072,073)$.
 
-\subsection{Calibration of the approximate negative log-likelihood in the $V-$space}
+\subsection{Calibration of the approximate negative log-likelihood in $V$-space and $Z$-space}
 
 As an auxiliary verification, we plot the negative log-likelihood (negative version of (\ref{eq:loglikelihoodV})) as a function of the parameters, and we use additional minimization functions from MATLAB R2019b.
 
@@ -632,9 +642,9 @@ On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-lik
 \caption{Value points from Figure \ref{fig:neg-LL}.}
 \label{tab:optimal_values}
 \end{table}
-Observe that all the local (possibly global) minimizers are located in curve $\theta_0\alpha=0.097$. {\color{red}This is a consequence of Markovianity and the indistinguishable observed transitions.}
+Observe that all the local (possibly global) minimizers are located in curve $\theta_0\alpha=0.097$.
 
-\subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
+%\subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
 
 %{\color{red} This part still may change.} As we are working in a low dimensional space, we can evaluate the relative error function (\ref{eq:rel_error}) in all the space of interest.
 %
