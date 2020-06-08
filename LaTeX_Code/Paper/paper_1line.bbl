@@ -181,6 +181,89 @@
       \range{pages}{6}
       \keyw{Wind-SDE}
     \endentry
+    \entry{bggk}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=d8ddf0d9cbffc9cc5e259674d368769d}{%
+           family={Badosa},
+           familyi={B\bibinitperiod},
+           given={Jordi},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=13ae338686e9b8f9d070801e8c6aa4ed}{%
+           family={Gobet},
+           familyi={G\bibinitperiod},
+           given={Emmanuel},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aeceabf2218e950b3e083daa92c5bd5c}{%
+           family={Grangereau},
+           familyi={G\bibinitperiod},
+           given={Maxime},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0133f41f008368dcf5d30962057440a0}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Daeyoung},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=b66a9ddf2937806b94b378e667f4fed3}{%
+           family={Drobinski},
+           familyi={D\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod}}}%
+        {{hash=ba8d9752ccaf52f23b71c1f5fb805aee}{%
+           family={Mougeot},
+           familyi={M\bibinitperiod},
+           given={Mathilde},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cc754a7d53721514aad6c105bb981ada}{%
+           family={Picard},
+           familyi={P\bibinitperiod},
+           given={Dominique},
+           giveni={D\bibinitperiod}}}%
+        {{hash=45ae8bc708abf4d8d9eea041c4e703d6}{%
+           family={Plougonven},
+           familyi={P\bibinitperiod},
+           given={Riwal},
+           giveni={R\bibinitperiod}}}%
+        {{hash=382299cc9d6c0ec5abe5a7caafcacbc6}{%
+           family={Tankov},
+           familyi={T\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing}%
+      }
+      \strng{namehash}{d60206a36e6a35e8934db1da931084ab}
+      \strng{fullhash}{b0b95cb970ff8f5170cdb88ec5c89fe3}
+      \strng{bibnamehash}{d60206a36e6a35e8934db1da931084ab}
+      \strng{authorbibnamehash}{d60206a36e6a35e8934db1da931084ab}
+      \strng{authornamehash}{d60206a36e6a35e8934db1da931084ab}
+      \strng{authorfullhash}{b0b95cb970ff8f5170cdb88ec5c89fe3}
+      \strng{editorbibnamehash}{2806b89bebdce23cba0441061f083bcf}
+      \strng{editornamehash}{2806b89bebdce23cba0441061f083bcf}
+      \strng{editorfullhash}{1d00262cfd18985385843bf2bbd8816b}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Renewable Energy: Forecasting and Risk Management}
+      \field{isbn}{978-3-319-99052-1}
+      \field{title}{Day-Ahead Probabilistic Forecast of Solar Irradiance: A Stochastic Differential Equation Approach}
+      \field{year}{2018}
+      \field{pages}{73\bibrangedash 93}
+      \range{pages}{21}
+      \keyw{Wind-SDE}
+    \endentry
     \entry{boot}{manual}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=d08ae34a098a6e23f6980202b02e9c27}{%
@@ -393,7 +476,6 @@
       \field{month}{06}
       \field{title}{Inference and {S}ensitivity in {S}tochastic {W}ind {P}ower {F}orecast {M}odels}
       \field{year}{2017}
-      \true{nocite}
       \field{pages}{381\bibrangedash 393}
       \range{pages}{13}
       \verb{doi}
@@ -638,6 +720,57 @@
       \field{isbn}{978-92-9260-111-9}
       \field{title}{Innovation landscape for a renewable-powered future: Solutions to integrate variable renewables}
       \field{year}{2019}
+      \keyw{Wind-SDE}
+    \endentry
+    \entry{immm}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=e367f2716ee01872aed221c4cbcd57ef}{%
+           family={Iversen},
+           familyi={I\bibinitperiod},
+           given={Emil\bibnamedelima B.},
+           giveni={E\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1ad1a3cf42ddbc09f577b64b66413a0b}{%
+           family={Morales},
+           familyi={M\bibinitperiod},
+           given={Juan\bibnamedelima M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=de341522d92c0810968059270c804930}{%
+           family={M{ø}ller},
+           familyi={M\bibinitperiod},
+           given={Jan\bibnamedelima Kloppenborg},
+           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ac5d1263fca18a1f2d85317607e7d734}{%
+           family={Madsen},
+           familyi={M\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{159af8a6b052788904dffe498c9580ae}
+      \strng{fullhash}{2c42bb950eb641841e2e2fefd3dd23e3}
+      \strng{bibnamehash}{159af8a6b052788904dffe498c9580ae}
+      \strng{authorbibnamehash}{159af8a6b052788904dffe498c9580ae}
+      \strng{authornamehash}{159af8a6b052788904dffe498c9580ae}
+      \strng{authorfullhash}{2c42bb950eb641841e2e2fefd3dd23e3}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Environmetrics}
+      \field{number}{3}
+      \field{title}{Probabilistic forecasts of solar irradiance using stochastic differential equations}
+      \field{volume}{25}
+      \field{year}{2014}
+      \field{pages}{152\bibrangedash 164}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1002/10.1002/env.2267
+      \endverb
       \keyw{Wind-SDE}
     \endentry
     \entry{kauc}{article}{}
