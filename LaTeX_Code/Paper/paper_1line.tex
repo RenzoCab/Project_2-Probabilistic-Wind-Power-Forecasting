@@ -66,7 +66,7 @@
 \author[4]{ Ra\'ul  Tempone}
 %\author[2]{Corresponding Author\thanks{email@2nduniversity.com}}
 \affil[1,4]{CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia}
-\affil[2]{{\color{red}Université Paris 13, Sorbonne Paris Cité, LAGA, CNRS (UMR 7539), Villetaneuse, France}}
+\affil[2]{Universit\'e Sorbonne Paris Nord, LAGA, CNRS, UMR 7539, F-93430, Villetaneuse, France}
 \affil[3]{Universidad de la Rep\'ublica, Instituto de Estad\'{\i}stica (IESTA), Montevideo, Uruguay}
 \affil[4]{Alexander von Humboldt Professor, RWTH Aachen University, Germany}
 
@@ -471,7 +471,7 @@ The approximate log-likelihood $\tilde{\ell}(\cdot ; v^{M, N+1})$ of the observe
 \end{equation}
 where the shape parameters $\xi_1(t_{j,i})$ and $\xi_2(t_{j,i})$, according to (\ref{param_transformed_beta}), depend on the quantities $\mu(t_{j,i};\bm{\theta} )$ and $\sigma^2(t_{j,i};\bm{\theta} )$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). $B(\xi_1,\xi_1)$ denotes the Beta distribution with parameters $\xi_1$ and $\xi_2$.
 
-\subsection{Approximate likelihood  in the $Z-$space}
+\subsection{Approximate likelihood  in the $Z-$space} \label{moments_ODEs_Z}
 
 The transition density of the process $Z$, which has been defined through the Lamperti transformation (\ref{eq:LampZ}) of $V$, can be conveniently approximated by a Gaussian surrogate density. 
 
@@ -671,7 +671,7 @@ To verify and compare this two vector of parameters, (i.e., $(\theta_0^V,\alpha^
 
 \subsection{Model comparison and assessment of the forecast providers} \label{Model_Comp}
 
-We compare two candidate models to find the best-fit that maximizes the retained information:
+We compare two candidate models to find the best-fit that maximizes the retained information, {\color{red} the Model 1, introduced in (\cite{elkate}, p.383), and our proposed model  (\ref{ourmodel}), from hereafter called Model 2.}
 \begin{itemize}
   \item Model 1: This model does not feature derivative tracking:
 \begin{equation}
@@ -707,7 +707,8 @@ X_0&=x_0\in [0,1],
 \end{equation}
  with $\theta_0 > 0$, $\alpha > 0$ and $\theta_t$ satisfying condition \eqref{Assumption:3} .
 \end{itemize}
-To show the better performance of Model 2, we have computed the Akaike information criterion (AIC) and the Bayesian information criterion (BIC) for the two considered models, and any combination of the three different forecast providers with the three approximate likelihood methods. Table (\ref{tab:model_comparison}) summarizes these results, also reporting the estimate of the variability diffusion coefficient $\alpha \theta_0$. 
+To show the better performance of Model 2, we have computed the Akaike information criterion (AIC) and the Bayesian information criterion (BIC) for the two considered models, and any combination of the three different forecast providers with  {\color{red} three approximate likelihood methods, the one based on the Beta surrogate density in the$V$-space (Subsection \ref{moments_ODEs}), the one based on the Gaussian surrogate density in the $Z$-space (Subsection \ref{moments_ODEs_Z}), and the Shoji-Ozaki local linearization method (\cite{shoz}).} 
+Table (\ref{tab:model_comparison}) summarizes these results, also reporting the estimate of the variability diffusion coefficient $\alpha \theta_0$. 
 It is worth observing that the best fitting is achieved with Model 2 and adopting Beta distributions as proxies of the transition densities.
 
 \begin{table}[H]
