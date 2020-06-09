@@ -249,7 +249,7 @@ a(X_t; p_t, \dot{p}_t, \bm{\theta}) = \dot{p}_t  - \theta_t (X_t - p_t),  \label
 where $ (\theta_t)_{t \in [0,T]} $ is a positive deterministic function, whose range depends on $\bm{\theta}$, as will be explained shortly.
 
 Now, looking at the normalized wind power generation forecast process $X_t$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$, given $  \mathbb{E}\left[X_0\right] = p_0$. The application of  It\^{o}'s lemma % on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s \dif s}$, leads to 
-leads to \red{(here we reduced the step-by-step...)}
+leads to
 %\begin{equation*}
 %\dif \left( X_t e^{\int_{0}^{t} \theta_s \dif s} \right) = e^{\int_{0}^{t} \theta_s \dif s} (\dot{p}_t + \theta_t p_t ) \dif t  + e^{\int_{0}^{t} \theta_s \dif s}b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \dif W_t,
 %\end{equation*}
@@ -460,7 +460,7 @@ with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, 
 
 A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. \red{Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.} 
 
-For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$. \red{(See new notation for $\xi_1$ and $\xi_2$...)}
+For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
 
 The shape parameters are given by
 \begin{equation}
@@ -535,7 +535,7 @@ it follows that
 \end{equation}
 \red{We approximate $\theta_0$ by Equation (\ref{Eq-4}) setting $\theta_0^*=\hat{c}$.}
 
-\item \textbf{Quadratic variation:} \red{(Does this sentence have sense now?)} We approximate the quadratic variation of the  It\^{o}'s  process $V$
+\item \textbf{Quadratic variation:} We approximate the quadratic variation of the  It\^{o}'s  process $V$
 \begin{equation*}
 \langle V\rangle _t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
 \sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)},

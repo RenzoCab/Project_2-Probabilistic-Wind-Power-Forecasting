@@ -456,7 +456,7 @@ with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, 
 
 A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$.{\color{red} Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.}
 
-For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$. {\color{red}See new notation for $\xi_1$ and $\xi_2$.}
+For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
 
 The shape parameters are given by
 \begin{equation}
@@ -529,7 +529,7 @@ c^{*}=\frac{\sum_{j=1}^M\sum_{i=1}^{N}v_{j,i-1}(v_{j,i-1}-v_{j,i})}{\Delta\cdot\
 \end{equation}
 We are going to use Equation (\ref{Eq-4}) to approximate $\theta_0$ setting $\theta_0^*=c^*$.
 
-\item \textbf{Quadratic variation:} {\color{red}(removed E-M scheme stuff...)} We approximate the quadratic variation of the  It\^{o}'s  process $V$
+\item \textbf{Quadratic variation:}  We approximate the quadratic variation of the  It\^{o}'s  process $V$
 \begin{equation*}
 [V]_t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
 \sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)}\,,
