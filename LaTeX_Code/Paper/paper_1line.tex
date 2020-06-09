@@ -406,7 +406,7 @@ Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability dens
 The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the sample $ V^{M,N + 1}$ can be written as the following product of transition densities:  
 
 \begin{equation}
-\mathcal{L}\left(\bm{\theta}; V^{M,N +1}\right) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho ( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} )    \right\},
+\mathcal{L}\left(\bm{\theta}; V^{M,N +1}\right) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho \left( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} \right)    \right\},
 \label{likelihood}
 \end{equation}
 where $t_{j ,i} \equiv  t_j + i \Delta$ for any $j = 1, \ldots, M$ and $i = 0, \ldots, N$. \\
@@ -470,10 +470,10 @@ where $\mu_t = m_1 (t)$ and $\sigma_t^2= m_2 (t)- m_1 (t)^2\,.$ \\
 
 The approximate log-likelihood $\tilde{\ell}(\cdot ; v^{M, N+1})$ of the observed sample $v^{M, N+1}$ can be expressed as 
 \begin{equation}
- \tilde{\ell} \left(\bm{\theta}; v^{M,N +1}\right) = \sum_{j=1}^M \sum_{i=1}^N \log  \left\{ \frac{1}{2(1 - \epsilon)} \frac{1}{B(\xi_1(t_{j,i}), \xi_2(t_{j,i}))} \left( \frac{v_{j,i} + 1 - \epsilon}{2(1 - \epsilon)} \right)^{\xi_1(t_{j,i}) -1}  \left( \frac{1 - \epsilon - v_{j,i}}{2(1 - \epsilon)} \right)^{\xi_2(t_{j,i}) -1} \right\},
+ \tilde{\ell} \left(\bm{\theta}; v^{M,N +1}\right) = \sum_{j=1}^M \sum_{i=1}^N \log  \left\{ \frac{1}{2(1 - \epsilon)} \frac{1}{B(\xi_1(t_{j,i}^-), \xi_2(t_{j,i}^-))} \left( \frac{v_{j,i} + 1 - \epsilon}{2(1 - \epsilon)} \right)^{\xi_1(t_{j,i}^-) -1}  \left( \frac{1 - \epsilon - v_{j,i}}{2(1 - \epsilon)} \right)^{\xi_2(t_{j,i}^-) -1} \right\},
 \label{eq:loglikelihoodV}
 \end{equation}
-where the shape parameters $\xi_1(t_{j,i})$ and $\xi_2(t_{j,i})$, according to (\ref{param_transformed_beta}), depend on the quantities $\mu(t_{j,i};\bm{\theta} )$ and $\sigma^2(t_{j,i};\bm{\theta} )$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). $B(\xi_1,\xi_1)$ denotes the Beta distribution with parameters $\xi_1$ and $\xi_2$.
+where the shape parameters $\xi_1(t_{j,i}^-)$ and $\xi_2(t_{j,i}^-)$, according to (\ref{param_transformed_beta}), depend on the limit quantities $\mu(t_{j,i}^-;\bm{\theta} )$ and $\sigma^2(t_{j,i}^-;\bm{\theta} )$ as $t\uparrow t_{j,i}$ that are computed solving numerically the initial-value problem (\ref{Vtmom}). $B(\xi_1,\xi_2)$ denotes the Beta distribution with parameters $\xi_1$ and $\xi_2$.
 
 \subsection{Approximate likelihood  in the $Z-$space} \label{moments_ODEs_Z}
 
@@ -493,12 +493,14 @@ a^{\prime} \left( \tilde{\mu}_Z (t) ; p_t, \dot{p}_t, \bm{\theta} \right) =    \
 \end{equation*}
 The approximate Lamperti log-likelihood $\tilde{\ell}_Z\left(\cdot ; z^{M, N+1}\right)$ for the observed sample $z^{M, N+1}$ is given by
 \begin{equation}
-\tilde{\ell}_Z \left(\bm{\theta}; z^{M,N +1}\right) = \sum_{j=1}^M \sum_{i=1}^N \log \left\{ \frac{1}{\sqrt{2 \pi \tilde{v}_Z(t_{j,i}; \bm{\theta})}} \exp \Bigg( -\frac{(z_{j,i} - \tilde{\mu}_Z(t_{j,i};\bm{\theta} ))^2}{2 \tilde{v}_Z(t_{j,i}; \bm{\theta})} \Bigg) \right\},
+\tilde{\ell}_Z \left(\bm{\theta}; z^{M,N +1}\right) = \sum_{j=1}^M \sum_{i=1}^N \log \left\{ \frac{1}{\sqrt{2 \pi \tilde{v}_Z(t_{j,i}^-; \bm{\theta})}} \exp \Bigg( -\frac{(z_{j,i} - \tilde{\mu}_Z(t_{j,i}^-;\bm{\theta} ))^2}{2 \tilde{v}_Z(t_{j,i}^-; \bm{\theta})} \Bigg) \right\},
 \label{loglikelihoodZ}
 \end{equation}
-where $\tilde{\mu}_Z(t_{j,i};\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i};\bm{\theta} )$ are computed solving numerically the initial-value problem (\ref{Ztmom}). 
+where the limits $\tilde{\mu}_Z(t_{j,i}^-;\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i}^-;\bm{\theta} )$ are computed solving numerically the initial-value problem (\ref{Ztmom}). 
 
 \subsection{Algorithm for the approximate maximum likelihood estimations} \label{opt_sec}
+
+\red{In this Subsection, we aim to infer the model's parameters using optimization techniques. We start by finding an initial guess close enough to the optimal value, and from that point, start the optimization.}
 
 \subsubsection{Initial guess}
 
@@ -513,10 +515,10 @@ To guarantee the good behave for our optimization algorithm, we aim to start the
 \E\left[V\right](t_{j,i-1})&=v_{j,i-1},
 \end{cases}
 \end{equation*}
-evaluated in $t_{j,i}$, i.e., $\E\left[V\right](t_{j,i})$. Then, the random variable $(V_{j,i}-\E\left[V\right](t_{j,i}))$ has zero mean. If we assume that $\theta_t=c\in\R^+$ for all $t\in[t_{j,i-1},t_{j,i}[$, then $\E\left[V\right](t_{j,i})=v_{j,i-1}e^{-c\Delta}$. If we have a total of $M\times N$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
+in the limit $t\uparrow t_{j,i}$, i.e., $\E\left[V\right](t_{j,i}^-)$. Then, the random variable $(V_{j,i}-\E\left[V\right](t_{j,i}^-))$ has zero mean. If we assume that $\theta_t=c\in\R^+$ for all $t\in[t_{j,i-1},t_{j,i}[$, then $\E\left[V\right](t_{j,i}^-)=v_{j,i-1}e^{-c\Delta}$. If we have a total of $M\times N$ transitions, we can write the regression problem for the conditional mean with $L^2$ loss function as
 \begin{equation}
 \begin{split}
-c^*&\approx\arg\min_{c\ \geq\ 0}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-\E\left[V\right](t_{j,i})\right)^2\right]\\
+\hat{c}&=\arg\min_{c\ \geq\ 0}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-\E\left[V\right](t_{j,i}^-)\right)^2\right]\\
 &=\arg\min_{c\ \geq\ 0}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-v_{j,i-1}e^{-c\Delta}\right)^2\right]\\
 &\approx\arg\min_{c\ \geq\ 0}\left[\sum_{j=1}^M\sum_{i=1}^{N}\left(v_{j,i}-v_{j,i-1}(1-c\Delta)\right)^2\right].
 \end{split}
@@ -528,10 +530,10 @@ As Equation (\ref{Eq-1}) is convex in $c$, it is enough to verify the first orde
 \end{equation*}
 it follows that
 \begin{equation}
-c^{*}=\frac{\sum_{j=1}^M\sum_{i=1}^{N}v_{j,i-1}(v_{j,i-1}-v_{j,i})}{\Delta\cdot\sum_{j=1}^M\sum_{i=1}^{N}(v_{j,i-1})^2}.
+\hat{c}\approx\frac{\sum_{j=1}^M\sum_{i=1}^{N}v_{j,i-1}(v_{j,i-1}-v_{j,i})}{\Delta\cdot\sum_{j=1}^M\sum_{i=1}^{N}(v_{j,i-1})^2}.
 \label{Eq-4}
 \end{equation}
-\red{We approximate $\theta_0$ by Equation (\ref{Eq-4}) setting $\theta_0^*=c^*$.}
+\red{We approximate $\theta_0$ by Equation (\ref{Eq-4}) setting $\theta_0^*=\hat{c}$.}
 
 \item \textbf{Quadratic variation:} \red{(Does this sentence have sense now?)} We approximate the quadratic variation of the  It\^{o}'s  process $V$
 \begin{equation*}
@@ -568,7 +570,7 @@ To find the optimal parameters, we minimize the negative log-likelihood (negativ
 
 \subsubsection{Negative log-likelihood minimization in the $Z-$space} \label{Sec:MinLHL}
 
-Let $v^{M,N+1}$ be the observed data, and $h( v_{j,i},t_{j,i};\bm{\theta})$ the Lamperti transform of the observation $v_{j,i}$. The transformed observations $z^{M,N+1}$ depend on the parameter $\bm{\theta}$.\\
+Let $v^{M,N+1}$ be the observed data, and $h( v_{j,i},t_{j,i};\bm{\theta})$ the Lamperti transform of the observation $v_{j,i}$. As we can see in Section \ref{Section_4}, the transformed observations $z^{M,N+1}$ depend on the vector $\bm{\theta}$.\\
 The problem of maximizing the approximated Lamperti log-likelihood (\ref{loglikelihoodZ}), i.e.,  $$\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta}; z^{M,N+1}\right),$$
 is not totally defined as the data $z^{M,N+1}$ depend on $\bm{\theta}$. However, we propose to find a fixed point $\bm{\theta}^\star $ such that
 \begin{equation}
@@ -597,7 +599,7 @@ We observe that for most days, the forecast error at time $t_{j,0}=0$ is not zer
 For any $j=1, \ldots, M$, we extrapolate backward linearly the truncated prediction function to get its value at time $t_{j,-\delta}$, $p_{j,-\delta}$, and set $v_{t_{j,-\delta}}=0$. We assume that the initial transition $(V_{j, 0}|v_{j,-\delta};\bm{\theta},\delta)$ 
 has a Beta distribution and apply to it the same moment matching method used above. Given a vector of parameters $\bm{\theta}$, we estimate $\delta$ solving the following problem
 \begin{equation}
-\delta\approx\arg\max_{\delta}\tilde{\mathcal{L}}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right) = \arg\max_{\delta}\prod\limits_{j=1}^M \rho_0 \left(v_{j, 0}|v_{j,-\delta};\bm{\theta},\delta\right),
+\arg\max_{\delta}\tilde{\mathcal{L}}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right) = \arg\max_{\delta}\prod\limits_{j=1}^M \rho_0 \left(v_{j, 0}|v_{j,-\delta};\bm{\theta},\delta\right),
 \label{eq:likelihood_delta}
 \end{equation}
 where $\tilde{\mathcal{L}}_\delta$ is the approximated $\delta-$likelihood. To solve this problem, we repeat the steps described in Subsection \ref{Sec:MinLH}, with the additional initial step of creating the linear extrapolation for $p_{j,-\delta}$ at each $j\in\{1,2,\dots,M\}$.\\
@@ -607,7 +609,7 @@ As remarked, we extend the statistical model (\ref{likelihood}) to include the e
 \tilde{\mathcal{L}}_c\left(\bm{\theta},\delta; v^{M,N +1}\right)=\tilde{\mathcal{L}}\left(\bm{\theta}; v^{M,N +1}\right)\tilde{\mathcal{L}}_{\delta}\left(\bm{\theta},\delta; v^{M,1}\right),
 \label{eq:complete_LH}
 \end{equation}
-where $\tilde{\mathcal{L}}\left(\bm{\theta}; v^{M,N +1}\right)$ is the non-log version of (\ref{likelihood}). As we may provide initial guesses for $\bm{\theta}$ and $\delta$, we have a starting point for the numerical optimization of the approximated complete likelihood (\ref{eq:complete_LH}).
+where $\tilde{\mathcal{L}}\left(\bm{\theta}; v^{M,N +1}\right)$ is the non-log version of (\ref{likelihood}). As we can provide initial guesses for $\bm{\theta}$ and $\delta$, we have a starting point for the numerical optimization of the approximated complete likelihood (\ref{eq:complete_LH}).
 
 %---END SECTION 5---
 
@@ -625,11 +627,11 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.eps}\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_testing.eps}
+\includegraphics[width=0.5\textwidth]{plots/LL/Log-Likelihood.eps}\includegraphics[width=0.5\textwidth]{plots/LL/Log-Likelihood_testing.eps}
 \caption{\red{Negative log-likelihood's level sets for the training sets (plot on the left), and for the test sets (plot on the right). All optimal values are located over the curve $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively.}}
 \label{fig:neg-LL}
 \end{figure}
-\red{On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-likelihood for both training and test sets.} The numerical values of each relevant point can be seen in Table (\ref{tab:optimal_values}). We set $(\theta_0^V,\alpha^V)=(1.93,0.050)$, as it is where the negative log-likelihood for the training sets reaches its minimum value.
+\red{On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-likelihood for both training and test sets.} The numerical values of each relevant point can be seen in Table (\ref{tab:optimal_values}). We set the optimal parameters in the $V$-space $(\theta_0^V,\alpha^V)=(1.93,0.050)$, as it is where the negative log-likelihood for the training sets reaches its minimum value.
 \begin{table}[H]
 \centering
 \begin{tabular}{lcccccc}
@@ -638,7 +640,7 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
  \midrule
  & $\theta_0$ & $\alpha$ & $\theta_0\alpha$ & $\theta_0$ & $\alpha$ & $\theta_0\alpha$\\
  \midrule
- Initial guess & 1.54 & 0.070 & 0.111 & 1.96 & 0.053 & 0.104 \\
+ Initial guess & 1.54 & 0.072 & 0.111 & 1.96 & 0.053 & 0.104 \\
  fminsearch & 1.14 & 0.076 & 0.097 & 1.64 & 0.054 & 0.089 \\
  fmincon & 1.58 & 0.062 & 0.097 & 1.63 & 0.055 & 0.089 \\
  fminunc & 1.54 & 0.063 & 0.097 & 1.96 & 0.045 & 0.089 \\
@@ -648,7 +650,7 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
 \caption{Value points from Figure \ref{fig:neg-LL}.}
 \label{tab:optimal_values}
 \end{table}
-Observe that all the local (possibly global) minimizers are located over the curves $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively.
+\red{Observe that all the local (possibly global) minimizers are located over the curves $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively. This effect shows that the optimization is more sensitive to the diffusion than to the drift.}\\
 
 %\subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
 
@@ -663,14 +665,14 @@ Observe that all the local (possibly global) minimizers are located over the cur
 %In Figure (\ref{fig:neg-LLL}), we can see the numerical level sets for the relative error function (\ref{eq:rel_error}). The center deep green band is the set $\mathbb{A}$ such that $\Psi(\bm{\theta})<0.1$ if $\bm{\theta}\in\mathbb{A}$, it is the set of fixes-points candidates. The set of fixed-points candidates which also satisfies the condition of lying over the line $\theta_0\alpha=0.097$ is non-empty, i.e., $$\mathbb{A}\cap\{(\theta_0,\alpha):\theta_0\alpha=0.097\}\neq\emptyset.$$
 
 
-We obtain $(\theta_0^Z,\alpha^Z)=(1.87,0.043)$ as a minimizer for the relative error function (\ref{eq:rel_error}) using \textit{fminsearch} from MATLAB R2019b.\\
-\quad\\
+In the $Z$-space, we obtain the optimal parameters $(\theta_0^Z,\alpha^Z)=(1.87,0.043)$ as a minimizer for the relative error function (\ref{eq:rel_error}) using \textit{fminsearch} from MATLAB R2019b and the training sets.\\
+
 To verify and compare this two vector of parameters, (i.e., $(\theta_0^V,\alpha^V)$ and $(\theta_0^Z,\alpha^Z)$), we simulate error paths in the $V-$space. We simulate five error paths for each day in the test set and construct histograms with the transitions. The histograms can be seen in Figure (\ref{fig:hists}). We observe a slightly better approximation using $(\theta^Z_0,\alpha^Z)$.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/histograms/classic_noDelta/Optimal.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/histograms/classic_noDelta/Lamperti_Optimal.eps}
+\includegraphics[width=0.45\textwidth]{plots/classic_noDelta/Optimal.eps}
+\includegraphics[width=0.45\textwidth]{plots/classic_noDelta/Lamperti_Optimal.eps}
 \caption{Probability histograms for the error transitions. Using provider A, we overlap the real transitions from the test set with the simulated ones from the $V-$space SDE. On the left, simulations using $(\theta_0^V,\alpha^V)$. On the right, simulations using $(\theta_0^Z,\alpha^Z)$.}
 \label{fig:hists}
 \end{figure}
@@ -747,9 +749,9 @@ The optimal estimates of the parameters of Model 2, for the three forecast provi
 \begin{tabular}{ccc}
 \toprule
 Forecast Provider & Parameters $(\theta_0, \alpha)$ & Product $\theta_0\alpha$ \\ \midrule
-Provider A  & $(1.930,0.050)$  &  0.097 \\
-Provider B  & $(1.420,0.069) $  &  0.098 \\ 
-Provider C  & $(1.380,0.078) $  &  0.108 \\ 
+Provider A  & $(1.93,0.050)$  &  0.097 \\
+Provider B  & $(1.42,0.069) $  &  0.098 \\ 
+Provider C  & $(1.38,0.078) $  &  0.108 \\ 
 \bottomrule
 \end{tabular}
 \caption{Optimal parameters for the three different forecast providers using Model 2 with Beta proxies.}
@@ -764,11 +766,11 @@ After calibrating Model 2 on the training set using the complete likelihood (\re
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/1.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/2.eps}\\
+\includegraphics[width=0.45\textwidth]{plots/paths/1.eps}
+\includegraphics[width=0.45\textwidth]{plots/paths/2.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/3.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/paths_testing_days/optimal_value/withDate/4.eps}
+\includegraphics[width=0.45\textwidth]{plots/paths/3.eps}
+\includegraphics[width=0.45\textwidth]{plots/paths/4.eps}
 \caption{Four arbitrary days with five simulated wind power production paths each.}
 \label{fig:simulation_paths}
 \end{figure}
@@ -776,17 +778,17 @@ Once derived optimal estimates of the parameters of the complete likelihood for 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/1.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/2.eps}\\
+\includegraphics[width=0.45\textwidth]{plots/bands/1.eps}
+\includegraphics[width=0.45\textwidth]{plots/bands/2.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/3.eps}
-\includegraphics[width=0.45\textwidth]{../../MATLAB_Files/Results/bands_testing_days/optimal_value/withDate/4.eps}
+\includegraphics[width=0.45\textwidth]{plots/bands/3.eps}
+\includegraphics[width=0.45\textwidth]{plots/bands/4.eps}
 \caption{Empirical pointwise confidence bands for the wind power production using the approximate MLEs for Model 2 $(\theta_0, \alpha ,\delta)=(2.22,0.044,0.054)$. Blue line: real production.}
 \label{fig:confidence_bands}
 \end{figure}
 
 \subsubsection{Value of $\delta$}
-As a final verification, we study the behavior of $\delta$ as a function of $\bm{\theta}$. Given a vector of parameters, we calculate an initial guess for $\delta$ solving problem (\ref{eq:likelihood_delta}). Even when it is a guess, it helps us to understand the meaning of this additional parameter qualitatively.\\
+As a final verification, we study the behavior of $\delta$ as a function of the vector $\bm{\theta}$. Given a vector of parameters, we calculate an initial guess for $\delta$ solving problem (\ref{eq:likelihood_delta}). Even when it is a guess, it helps us to understand the meaning of this additional parameter qualitatively.\\
 \quad\\
 We choose as domain the most significant values of $\theta_0$ and $\theta_0\alpha$, regarding the previous numerical results. In Figure (\ref{fig:delta}) we can observe that:
 \begin{itemize}
@@ -795,7 +797,7 @@ We choose as domain the most significant values of $\theta_0$ and $\theta_0\alph
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{../../MATLAB_Files/Results/delta/contour_delta.eps}
+\includegraphics[width=0.7\textwidth]{plots/delta/contour_delta.eps}
 \caption{Initial value for $\delta$ as a function of the elements of the parameter vector $\bm{\theta}$.}
 \label{fig:delta}
 \end{figure}

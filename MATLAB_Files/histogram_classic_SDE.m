@@ -144,12 +144,11 @@ if  strcmp(whatToDo,'Optimal')
     theta_0 = 1.930;
     alpha   = 0.050;
 elseif  strcmp(whatToDo,'Lamperti_Optimal')
-    theta_0 = 2.450;
-    alpha   = 0.097/theta_0;
+
 % V1: 
 %     theta_0 = 2.8150; alpha = 0.1276;
 % V2: 
-    theta_0 = 1.8708; alpha = 0.0431;
+%     theta_0 = 1.8708; alpha = 0.0431;
 elseif  strcmp(whatToDo,'Initial_Guess')
     theta_0 = 1.6290;
     alpha   = 0.06;

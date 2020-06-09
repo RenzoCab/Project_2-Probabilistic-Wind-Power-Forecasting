@@ -9,7 +9,7 @@ dataSet       = 'MTLOG';
 epsilon       = 0.020;
 % dataKind can be classic or comparable.
 dataKind      = 'comparable';
-dataNumber    = 'testing';
+dataNumber    = 'training';
 [Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind,dataNumber);
 
 Date              = Ta_Tra_Comp.Date;
