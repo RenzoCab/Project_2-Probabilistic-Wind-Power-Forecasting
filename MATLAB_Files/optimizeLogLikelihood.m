@@ -9,7 +9,8 @@ dataSet       = 'MTLOG';
 epsilon       = 0.020;
 % dataKind can be classic or comparable.
 dataKind      = 'comparable';
-[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
+dataNumber    = 'testing';
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind,dataNumber);
 
 Date              = Ta_Tra_Comp.Date;
 Time              = Ta_Tra_Comp.Time;
@@ -55,6 +56,13 @@ if strcmp(likelihood,'normal')
     % fmincon    -> Theta_0 = 1.577, Alpha = 0.0615, prod = 0.0970 (24/04/2020).
     % fminunc    -> Theta_0 = 1.544, Alpha = 0.0628, prod = 0.0970 (24/04/2020).
     % eval       -> Theta_0 = 1.930, Alpha = 0.0500, prod = 0.0965 (20/05/2020).
+    
+    % For the testing data:
+    % Initial    -> Theta_0 = 1.963, Alpha = 0.0527, prod = 0.1036 (09/06/2020).
+    % fminsearch -> Theta_0 = 1.642, Alpha = 0.0542, prod = 0.0890 (08/06/2020).
+    % fmincon    -> Theta_0 = 1.632, Alpha = 0.0545, prod = 0.0890 (08/06/2020).
+    % fminunc    -> Theta_0 = 1.963, Alpha = 0.0454, prod = 0.0891 (08/06/2020).
+    % eval       -> Theta_0 = 1.590, Alpha = 0.0560, prod = 0.0890 (08/06/2020).
     
 elseif strcmp(likelihood,'lamperti')
     

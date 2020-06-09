@@ -13,8 +13,9 @@ dataSet = 'MTLOG';
 % epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).
 epsilon       = 0.018;
 % dataKind can be classic or comparable.
-dataKind = 'comparable';
-[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
+dataKind   = 'comparable';
+dataNumber = 'testing';
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind,dataNumber);
 
 % AWSTP) (B)
 % T_0 = 1.42, Alpha = 0.069, prod = 0.0980, f = -36753.
@@ -106,17 +107,35 @@ for i = 1:length(vec_theta)
 
 end
 
-theta_0_opt_1 = 1.278;
-alpha_opt_1   = 0.076;
-theta_0_opt_2 = 1.577;
-alpha_opt_2   = 0.062;
-theta_0_opt_3 = 1.544;
-alpha_opt_3   = 0.063;
+if strcmp(dataNumber,'training')
+
+    theta_0_opt_1 = 1.278;
+    alpha_opt_1   = 0.076;
+    theta_0_opt_2 = 1.577;
+    alpha_opt_2   = 0.062;
+    theta_0_opt_3 = 1.544;
+    alpha_opt_3   = 0.063;
+
+elseif strcmp(dataNumber,'testing')
+    
+    theta_0_opt_1 = 1.642;
+    alpha_opt_1   = 0.0542;
+    theta_0_opt_2 = 1.632;
+    alpha_opt_2   = 0.0545;
+    theta_0_opt_3 = 1.963;
+    alpha_opt_3   = 0.0454;
+    
+end
 
 % To save the matrix with the evaluations, we use:
 % save([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
 % To load the matrix with the evaluations, we use:
 % load([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood.mat'],'val');
+
+% To save the matrix with the evaluations, we use:
+% save([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_testing.mat'],'val');
+% To load the matrix with the evaluations, we use:
+% load([pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_testing.mat'],'val');
 
 val_norm = (val-min(min(val)))/max(max((val-min(min(val)))));
 
@@ -129,7 +148,7 @@ figure('Renderer', 'painters', 'Position', [10 10 900 600])
 hold on;
 [X,Y] = meshgrid(vec_theta,vec_alpha);
 % contourf(X,Y,val',num_divs); % colorbar;
-contourf(X,Y,val',[-36853 -36835 -36815 -36835 -36795 -36775]); colorbar;
+contourf(X,Y,val',[-37737 -37735 -37717 -37697 -37677 -37657]); colorbar;
 % contourf(X,Y,val'); colorbar;
 xlabel('$\theta_0$','interpreter','latex');
 ylabel('$\alpha$','interpreter','latex');
@@ -148,9 +167,15 @@ end
 pause(0.1);
 % To save the plot and change the fonts size, we use:
 set(gca,'FontSize',16);
-saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
-saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'bmp');
-saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'png');
+if strcmp(dataNumber,'training')
+    saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'epsc');
+    saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'bmp');
+    saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood'],'png');
+elseif strcmp(dataNumber,'testing')
+    saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_testing'],'epsc');
+    saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_testing'],'bmp');
+    saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_testing'],'png');
+end
 
 %% Plot with zoom:
 

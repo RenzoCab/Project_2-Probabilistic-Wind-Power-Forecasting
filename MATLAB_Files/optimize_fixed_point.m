@@ -9,7 +9,8 @@ dataSet       = 'MTLOG';
 epsilon       = 0.020;
 % dataKind can be classic or comparable.
 dataKind      = 'comparable';
-[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind);
+dataNumber    = 'testing';
+[Ta_Tra_Comp] = load_data_eps(epsilon,dataSet,dataKind,dataNumber);
 
 Date              = Ta_Tra_Comp.Date;
 Time              = Ta_Tra_Comp.Time;
@@ -49,5 +50,9 @@ fun   = @(x) fixed_point_function(batch, x, dt);
 %     Thet_0 Alpha  Eval   Prod
 % V1: 2.8150 0.1276 0.0487 0.3592
 % V2: 1.8708 0.0431 0.0667 0.0806
+
+%     Thet_0 Alpha  Eval   Prod (testing data - 08/06/2020)
+% V1: 2.5656 0.1276 0.0324 0.0831
+% V2: 3.9657 0.0431 0.0371 0.1471
 
 % The values for V2 are also fixed points of V1 (see level sets plot).

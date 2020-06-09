@@ -66,7 +66,7 @@
 \author[4]{ Ra\'ul  Tempone}
 %\author[2]{Corresponding Author\thanks{email@2nduniversity.com}}
 \affil[1,4]{CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia}
-\affil[2]{Universit\'e Sorbonne Paris Nord, LAGA, CNRS, UMR 7539, F-93430, Villetaneuse, France}
+\affil[2]{\red{Universit\'e Sorbonne Paris Nord, LAGA, CNRS, UMR 7539, F-93430, Villetaneuse, France}}
 \affil[3]{Universidad de la Rep\'ublica, Instituto de Estad\'{\i}stica (IESTA), Montevideo, Uruguay}
 \affil[4]{Alexander von Humboldt Professor, RWTH Aachen University, Germany}
 
@@ -249,7 +249,7 @@ a(X_t; p_t, \dot{p}_t, \bm{\theta}) = \dot{p}_t  - \theta_t (X_t - p_t),  \label
 where $ (\theta_t)_{t \in [0,T]} $ is a positive deterministic function, whose range depends on $\bm{\theta}$, as will be explained shortly.
 
 Now, looking at the normalized wind power generation forecast process $X_t$, modeled as solution to the It\^{o} stochastic differential equation (\ref{eq:main}) with the drift specified in (\ref{drift:meanrev-derivtrack}), it is straightforward to check that $\mathbb{E} \left[X_t\right] = p_t$, given $  \mathbb{E}\left[X_0\right] = p_0$. The application of  It\^{o}'s lemma % on $g(X_t, t) = X_t e^{\int_{0}^{t} \theta_s \dif s}$, leads to 
-leads to
+leads to \red{(here we reduced the step-by-step...)}
 %\begin{equation*}
 %\dif \left( X_t e^{\int_{0}^{t} \theta_s \dif s} \right) = e^{\int_{0}^{t} \theta_s \dif s} (\dot{p}_t + \theta_t p_t ) \dif t  + e^{\int_{0}^{t} \theta_s \dif s}b (X_t; p_t, \dot{p}_t, \bm{\theta} ) \dif W_t,
 %\end{equation*}
@@ -387,8 +387,8 @@ In this case, the Lamperti transform has been applied using the optimal estimate
 
 The shape of the forecast error transition histograms after applying the Lamperti transform has much resemblance with a Gaussian distribution, motivating toward the use of Gaussian-like approximations of the unknown density transition functions of the process $Z_t$.
 
-Remark: Moreover, this obtained Gaussian distribution supports the validity of the choice of our model diffusion coefficient given by (\ref{eq:poly_diff}). 
-
+\red{Remark: Moreover, this obtained Gaussian distribution supports the validity of the choice of our model diffusion coefficient given by (\ref{eq:poly_diff}). 
+}
 %{\color{red} Remind that Lamperti transform has the purpose tho check the consistency of the models, that is if the estimation of $\bm{\theta}$ with $V$ and $Z$ differs it is alarming.}
 
 %---END SECTION 4---
@@ -399,7 +399,7 @@ Remark: Moreover, this obtained Gaussian distribution supports the validity of t
 
 \subsection{Likelihood in the $V-$space}
 
-Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at time $t_j$ with $j = 1, \dots, M$, is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$. 
+\red{Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at a different time $t_j$ with $j = 1, \dots, M$, is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$.}
 
 Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
 
@@ -458,9 +458,9 @@ with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, 
 
 \subsubsection{Moment Matching}
 
-A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes. 
+A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. \red{Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.} 
 
-For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
+For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$. \red{(See new notation for $\xi_1$ and $\xi_2$...)}
 
 The shape parameters are given by
 \begin{equation}
@@ -506,7 +506,7 @@ To guarantee the good behave for our optimization algorithm, we aim to start the
 
 \begin{itemize}
 
-\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. For any $t\in [t_{j,i-1}, t_{j, i}[$, we can approximate the first moment of $V$ by the solution of the system
+\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. \red{For any $t\in [t_{j,i-1}, t_{j, i}[$, the random variable $(V_{j,i}|v_{j,i-1})$ has a conditional mean that can be approximate by the solution of the system}
 \begin{equation*}
 \begin{cases}
 \dif \E\left[V\right](t)&=-\theta_t\E\left[V\right](t)\dif t\\
@@ -531,18 +531,18 @@ it follows that
 c^{*}=\frac{\sum_{j=1}^M\sum_{i=1}^{N}v_{j,i-1}(v_{j,i-1}-v_{j,i})}{\Delta\cdot\sum_{j=1}^M\sum_{i=1}^{N}(v_{j,i-1})^2}.
 \label{Eq-4}
 \end{equation}
-We are going to use Equation (\ref{Eq-4}) to approximate $\theta_0$ setting $\theta_0^*=c^*$.
+\red{We approximate $\theta_0$ by Equation (\ref{Eq-4}) setting $\theta_0^*=c^*$.}
 
-\item \textbf{Quadratic variation:} We approximate the quadratic variation of the  It\^{o}'s  process $V$
+\item \textbf{Quadratic variation:} \red{(Does this sentence have sense now?)} We approximate the quadratic variation of the  It\^{o}'s  process $V$
 \begin{equation*}
-[V]_t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
-\sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)}\,,
+\langle V\rangle _t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
+\sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)},
 \end{equation*}
 with the discrete sum $\sum_{0< t_{j, i-1} \leq t}\left(V_{t_{j, i}} - V_{t_{j, i-1}}\right)^2$.
 
 As initial guess for the diffusion variability coefficient $\theta_0 \alpha$, we choose
 \begin{equation}
-\theta_0^*\alpha^*\approx\frac{\sum_{j=1}^M\sum_{i=1}^N(v_{j,i} - v_{j,i-1})^2}{2\Delta\cdot\sum_{j=1}^M\sum_{i=1}^N(v_{j,i}+p_{j,i})(1-v_{j,i}-p_{j,i})}\,,
+\theta_0^*\alpha^*=\frac{\sum_{j=1}^M\sum_{i=1}^N(v_{j,i} - v_{j,i-1})^2}{2\Delta\cdot\sum_{j=1}^M\sum_{i=1}^N(v_{j,i}+p_{j,i})(1-v_{j,i}-p_{j,i})},
 \label{Eq-2}
 \end{equation}
 where $\Delta$ is the length of the time interval between two consecutive measurements.
@@ -570,25 +570,25 @@ To find the optimal parameters, we minimize the negative log-likelihood (negativ
 
 Let $v^{M,N+1}$ be the observed data, and $h( v_{j,i},t_{j,i};\bm{\theta})$ the Lamperti transform of the observation $v_{j,i}$. The transformed observations $z^{M,N+1}$ depend on the parameter $\bm{\theta}$.\\
 The problem of maximizing the approximated Lamperti log-likelihood (\ref{loglikelihoodZ}), i.e.,  $$\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta}; z^{M,N+1}\right),$$
-is not totally defined as the data $z^{M,N+1}$ depend on $\bm{\theta}$. However, we propose to find a fixed point $\bm{\theta}^*$ such that
+is not totally defined as the data $z^{M,N+1}$ depend on $\bm{\theta}$. However, we propose to find a fixed point $\bm{\theta}^\star $ such that
 \begin{equation}
-\bm{\theta}^*=\arg\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta};\{h( v_{j,i},t_{j,i};\bm{\theta}^*)\}_{j=1,i=0}^{M,N}\right).
+\bm{\theta}^\star=\arg\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta};\{h( v_{j,i},t_{j,i};\bm{\theta}^\star )\}_{j=1,i=0}^{M,N}\right).
 \label{FP}
 \end{equation}
-At a fixed point, the likelihood has a maximum for the data set corresponding to that point. We are interested in finding solutions for (\ref{FP}). If $\bm{\theta}^*$ solves (\ref{FP}), then
+At a fixed point, the likelihood has a maximum for the data set corresponding to that point. We are interested in finding solutions for (\ref{FP}). If $\bm{\theta}^\star $ solves (\ref{FP}), then
 \begin{equation*}
-\bm{\theta}^*-\arg\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta};\{h( v_{j,i},t_{j,i};\bm{\theta}^*)\}_{j=1,i=0}^{M,N}\right)=0.
+\bm{\theta}^\star -\arg\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta};\{h( v_{j,i},t_{j,i};\bm{\theta}^\star )\}_{j=1,i=0}^{M,N}\right)=0.
 \end{equation*}
-Given $\bm{\theta}^*=(\theta_0^*,\alpha^*)$, we call $\bm{\theta}^{**}=(\theta_0^{**},\alpha^{**})$ to the solution of
+Given $\bm{\theta}^\star =(\theta_0^\star ,\alpha^\star )$, we call $\bm{\theta}^{\star \star }=(\theta_0^{\star \star },\alpha^{\star \star })$ to the solution of
 \begin{equation*}
-\arg\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta};\{h( v_{j,i},t_{j,i};\bm{\theta}^*)\}_{j=1,i=0}^{M,N}\right).
+\arg\max_{\bm{\theta}}\tilde{\ell}_Z\left(\bm{\theta};\{h( v_{j,i},t_{j,i};\bm{\theta}^\star )\}_{j=1,i=0}^{M,N}\right).
 \end{equation*}
-For each $\bm{\theta}^*$, we define the relative error function $\Psi:\R^+\times\R^+\to\R^+$ as
+For each $\bm{\theta}^\star $, we define the relative error function $\Psi:\R^+\times\R^+\to\R^+$ as
 \begin{equation}
-\Psi(\bm{\theta}^*)=\frac{|\theta_0^*-\theta_0^{**}|}{|\theta_0^*|}+\frac{|\alpha^*-\alpha^{**}|}{|\alpha^*|},
+\Psi(\bm{\theta}^\star )=\frac{|\theta_0^\star -\theta_0^{\star \star }|}{|\theta_0^\star |}+\frac{|\alpha^\star -\alpha^{\star \star }|}{|\alpha^\star |},
 \label{eq:rel_error}
 \end{equation}
-and remark that $\bm{\theta}^*$ is a fixed point if and only if $\Psi(\bm{\theta}^*)=0$. To find minimizers for $\Psi$, we proceed in the same way as described in Subsection \ref{Sec:MinLH}, but using Gaussian surrogate densities.
+and remark that $\bm{\theta}^\star $ is a fixed point if and only if $\Psi(\bm{\theta}^\star )=0$. To find minimizers for $\Psi$, we proceed in the same way as described in Subsection \ref{Sec:MinLH}, but using Gaussian surrogate densities.
 
 \subsection{Model specification with the additional parameter $\delta$}
 
@@ -615,38 +615,40 @@ where $\tilde{\mathcal{L}}\left(\bm{\theta}; v^{M,N +1}\right)$ is the non-log v
 
 \section{Application to the April-December 2019 Uruguay wind and forecast dataset} \label{Section_6}
 
-Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hour long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models.
+Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hour long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models. \red{Additional cross-correlation tests were performed to ensure this assumption.}
 
-All the following results involving a single provider refer to provider A. Also, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$, we obtain the initial guess $(\theta_0,\alpha,\delta)\approx(1.54,0.072,073)$.
+All the following results involving a single provider refer to provider A. Also, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$, we obtain the initial guess $(\theta_0^*,\alpha^*,\delta^*)\approx(1.54,0.072,073)$.
 
 \subsection{Calibration of the approximate negative log-likelihood in $V$-space and $Z$-space}
 
-As an auxiliary verification, we plot the negative log-likelihood (negative version of (\ref{eq:loglikelihoodV})) as a function of the parameters, and we use additional minimization functions from MATLAB R2019b.
+As an auxiliary verification, we plot the negative log-likelihood (negative version of (\ref{eq:loglikelihoodV})) as a function of the parameters, and we use additional minimization functions from MATLAB R2019b. \red{Moreover, we realized an additional inference utilizing the test sets to guarantee the robustness of our numerical methods.}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.eps}
-\caption{Negative log-likelihood's level sets. All optimal values are located over the curve $\theta_0\alpha=0.097$.}
+\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood.eps}\includegraphics[width=0.5\textwidth]{../../MATLAB_Files/Results/likelihood/normal/Log-Likelihood_testing.eps}
+\caption{\red{Negative log-likelihood's level sets for the training sets (plot on the left), and for the test sets (plot on the right). All optimal values are located over the curve $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively.}}
 \label{fig:neg-LL}
 \end{figure}
-On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-likelihood. The numerical values of each relevant point can be seen in Table (\ref{tab:optimal_values}). We set $(\theta_0^V,\alpha^V)=(1.93,0.050)$, as it is where the negative log-likelihood reaches its minimum value.
+\red{On Figure (\ref{fig:neg-LL}), we can see the level sets for the negative log-likelihood for both training and test sets.} The numerical values of each relevant point can be seen in Table (\ref{tab:optimal_values}). We set $(\theta_0^V,\alpha^V)=(1.93,0.050)$, as it is where the negative log-likelihood for the training sets reaches its minimum value.
 \begin{table}[H]
 \centering
-\begin{tabular}{lccc}
+\begin{tabular}{lcccccc}
 \toprule
- & $\theta_0$ & $\alpha$ & $\theta_0\alpha$\\
+ & \multicolumn{3}{c}{Training sets} & \multicolumn{3}{c}{Test sets} \\
  \midrule
- Initial guess & 1.54 & 0.070 & 0.111 \\
- fminsearch & 1.14 & 0.076 & 0.097 \\
- fmincon & 1.58 & 0.062 & 0.097 \\
- fminunc & 1.54 & 0.063 & 0.097 \\
- evaluations & 1.93 & 0.050 & 0.097 \\
+ & $\theta_0$ & $\alpha$ & $\theta_0\alpha$ & $\theta_0$ & $\alpha$ & $\theta_0\alpha$\\
+ \midrule
+ Initial guess & 1.54 & 0.070 & 0.111 & 1.96 & 0.053 & 0.104 \\
+ fminsearch & 1.14 & 0.076 & 0.097 & 1.64 & 0.054 & 0.089 \\
+ fmincon & 1.58 & 0.062 & 0.097 & 1.63 & 0.055 & 0.089 \\
+ fminunc & 1.54 & 0.063 & 0.097 & 1.96 & 0.045 & 0.089 \\
+ evaluations & 1.93 & 0.050 & 0.097 & 1.59 & 0.056 & 0.089 \\
  \bottomrule
 \end{tabular}
 \caption{Value points from Figure \ref{fig:neg-LL}.}
 \label{tab:optimal_values}
 \end{table}
-Observe that all the local (possibly global) minimizers are located in curve $\theta_0\alpha=0.097$.
+Observe that all the local (possibly global) minimizers are located over the curves $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively.
 
 %\subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
 
