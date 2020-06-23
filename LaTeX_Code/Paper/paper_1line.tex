@@ -33,7 +33,7 @@
 \newtheorem{Ass}[Def]{Assumption}
 \newtheorem{Met}[Def]{Method}
 \newtheorem{Res}[Def]{Result}
-\newcommand{\red}{\textcolor{red}}
+\newcommand{\red}{\textcolor{black}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\R}{\mathbb{R}}
 
@@ -63,7 +63,7 @@
 \author[1]{Renzo Caballero}
 \author[2]{Ahmed Kebaier}
 \author[3]{Marco Scavino}
-\author[4]{ Ra\'ul  Tempone}
+\author[4]{ Ra\'ul Tempone}
 %\author[2]{Corresponding Author\thanks{email@2nduniversity.com}}
 \affil[1,4]{CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia}
 \affil[2]{\red{Universit\'e Sorbonne Paris Nord, LAGA, CNRS, UMR 7539, F-93430, Villetaneuse, France}}
@@ -81,13 +81,11 @@
 
 \begin{abstract}
 
-Reliable wind power generation forecasting is crucial for applications such as the allocation of energy reserves, optimization for electricity price, and operation scheduling of conventional power plants. We propose a data-driven model based on parametric Stochastic Differential Equations (SDEs) to capture the real asymmetric dynamics of wind power forecast errors. Our SDE framework features time-derivative tracking of the forecast, time-varying mean-reversion parameter, and an improved state-dependent diffusion term. The methodology we developed allows the simulation of future wind power production paths and to obtain sharp empirical confidence bands. All the procedure is agnostic of the forecasting technology and enables comparing different forecast providers. We apply the model to historical Uruguayan wind power production data and forecasts during the period April-December 2019.
+Reliable wind power generation forecasting is crucial for applications such as the allocation of energy reserves, optimization for electricity price, and operation scheduling of conventional power plants. We propose a data-driven model based on parametric Stochastic Differential Equations (SDEs) to capture the real asymmetric dynamics of wind power forecast errors. Our SDE framework features time-derivative tracking of the forecast, time-varying mean-reversion parameter, and an improved state-dependent diffusion term. The methodology we developed allows the simulation of future wind power production paths and to obtain sharp empirical confidence bands. All the procedures are agnostic of the forecasting technology, and they enable comparisons between different forecast providers. We apply the model to historical Uruguayan wind power production data and forecasts between April and December 2019.
 
 \end{abstract}
 
-Keywords: Wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, 
-
-numerical optimization, model selection.
+Keywords: wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, numerical optimization, model selection
 
 2020 AMS Subject Classification: 60H10, 62M20, 65K10.
 
@@ -97,9 +95,9 @@ numerical optimization, model selection.
 
 \section{Introduction}  \label{Section_1}
 
-Despite the Covid-19 pandemic caused ``the biggest shock to the global energy system in more than seven decades'' and the recent report released on April 30, 2020, by the International Energy Agency (\url{https://www.iea.org/reports/global-energy-review-2020}) stresses that projections of energy demand will fall 6\% in 2020 - seven times the decline after the 2008 global financial crisis - it is emphasized that ``renewables are set to be the only energy source that will grow in 2020, with their share of global electricity generation projected to jump thanks to their priority access to grids and low operating cost'' (\cite{IEA}). 
+Despite the Covid-19 pandemic causing ``the biggest shock to the global energy system in more than seven decades'' the recent report released on April 30, 2020, by the International Energy Agency (\url{https://www.iea.org/reports/global-energy-review-2020}) stresses that projections of energy demand will fall 6\% in 2020 -- seven times the decline after the 2008 global financial crisis -- It is emphasized that ``renewables are set to be the only energy source that will grow in 2020, with their share of global electricity generation projected to jump thanks to their priority access to grids and low operating cost'' (\cite{IEA}). 
 
-Although the growth of renewables in electricity generation in 2020 is set to be lower than in previous years,  solar PV and wind are on track to help lift renewable electricity generation by 5\% in 2020, aided by higher output from hydropower. \\
+Although the growth of renewables in electricity generation in 2020 is set to be lower than in previous years,  solar photo-voltaic (PV) and wind are on track to help lift renewable electricity generation by 5\% in 2020, aided by higher output from hydropower. \\
 
 Wind and solar energy are expanding renewable generation capacity, experiencing record growth in the last years.
 
@@ -127,10 +125,10 @@ Many approaches have been taken to evaluate the uncertainty of a given forecast.
 We propose to model wind power forecast errors using parametric stochastic differential equations (SDEs) whose solution defines a stochastic process. This resultant stochastic process describes the time evolution dynamics of wind power forecast errors while capturing properties such as a correlation structure and the inherent asymmetry. Additionally, the model we propose is agnostic of the forecasting technology and serves to complement forecasting procedures by providing a data-driven stochastic forecast. Hence, we can evaluate wind power forecasts according to their real-world performance, and we can compare different forecasting technologies. Most notably, we can simulate future wind power production given a deterministic wind power forecast. Future wind power production using Monte Carlo methods, as well as the analytic form of the proposed SDE, can be used in optimal control problems involving wind power production.
 
 %Previous attempt by (\cite{mozuma}) considered stochastic wind power forecast models based on stochastic differential equations.
- {\color{red} Some interesting works have been devoted to probabilistic forecasting related to renewable energies based on stochastic differential equations, among them (\cite{mozuma}) on wind power forecast, (\cite{immm}) and (\cite{bggk}) on forecasts of solar irradiance.}
+ {\color{black} Some interesting works have been devoted to probabilistic forecasting related to renewable energies based on stochastic differential equations, among them (\cite{mozuma}) on wind power forecast, (\cite{immm}) and (\cite{bggk}) on forecasts of solar irradiance.}
 Here, we propose an improved model featuring time derivative tracking of the forecast, time-dependent mean reversion, modified diffusion, and non-Gaussian approximations. We apply the model to Uruguayan wind power forecasts together with historical wind power production data pertaining to the year 2019. \\
 
-The rest of the paper is organized as follows. In Section \ref{Section_2}, we introduce the main characteristics of a real data set encompassing the normalized wind power production in Uruguay during the period April-December 2019, joint with the most accurate predictions, as highlighted in our posterior analysis, performed by one out of the three sources of forecast providers. The significant steps for constructing phenomenological models of the normalized wind power production and the forecast error based on stochastic differential equations are described in Section \ref{Section_3}. The application of the Lamperti transform with unknown parameters in Section \ref{Section_4} leads to model the forecast error through a stochastic differential equation with a unit diffusion coefficient. In Section \ref{Section_5}, we write down the expressions for the likelihood functions of the forecast error in its original space and the Lamperti space. We also derive simple approximations of the likelihood functions. Section \ref{Section_5} concludes with the description of the optimization algorithm to compute approximate maximum likelihood estimates, including the case where we expand the model comprising an initial transition from the time the forecast is performed to the time of the first forecast.
+The rest of the paper is organized as follows. In Section \ref{Section_2}, we introduce the main characteristics of a real data set encompassing the normalized wind power production in Uruguay between April and December 2019, with the most accurate predictions, as highlighted in our posterior analysis, performed by one out of the three sources of forecast providers. The significant steps for constructing phenomenological models of the normalized wind power production and the forecast error based on stochastic differential equations are described in Section \ref{Section_3}. The application of the Lamperti transform with unknown parameters in Section \ref{Section_4} leads to model the forecast error through a stochastic differential equation with a unit diffusion coefficient. In Section \ref{Section_5}, we write down the expressions for the likelihood functions of the forecast error in its original space and the Lamperti space. We also derive simple approximations of the likelihood functions. Section \ref{Section_5} concludes with the description of the optimization algorithm to compute approximate maximum likelihood estimates, including the case where we expand the model comprising an initial transition from the time the forecast is performed to the time of the first forecast.
 
 In Section \ref{Section_6}, we apply our proposed numerical estimation procedures to the Uruguay wind and forecast dataset, comparing two alternative models and assessing, for the best candidate model, the performance of three different forecast providers. Section \ref{Section_7} concludes the paper. 
 The proofs of the existence, strong uniqueness, and boundedness of the SDE solutions used to model normalized wind power production and its forecast error are given in the Appendix.
@@ -141,16 +139,16 @@ The proofs of the existence, strong uniqueness, and boundedness of the SDE solut
 
 \section{Wind power production data in Uruguay and forecast providers } \label{Section_2}
 
-In recent years, Uruguay has triggered a remarkable change in its energy matrix. In (\cite{irena}, p.23), Uruguay is among those countries showcasing innovation, like Denmark, Ireland, Germany, Portugal, and Spain, with proven feasibility of managing annual variable renewable energy (VRE) higher than 25\% in power systems. 
+In recent years, Uruguay has triggered a remarkable change in its energy matrix. In (\cite{irena}, p.23), Uruguay was among those countries showcasing innovation, like Denmark, Ireland, Germany, Portugal, and Spain, with proven feasibility of managing annual variable renewable energy (VRE) higher than 25\% in power systems. 
 
-According to (\cite{ren21}, pp.118-119), in 2018, Uruguay achieved 36\% of its electricity production from variable wind energy and solar PV, raising the share of generation from wind energy more than five-fold in just four years, from 6.2\% in 2014 to 33\% in 2018. 
+According to (\cite{ren21}, pp.118--119), in 2018, Uruguay achieved 36\% of its electricity production from variable wind energy and solar PV, raising the share of generation from wind energy more than five-fold in just four years, from 6.2\% in 2014 to 33\% in 2018. 
 
 At present, Uruguay is fostering even higher levels of wind penetration by boosting regional power trading with Argentina and Brazil. 
-In this rapidly evolving scenario, it is essential to analyze national data on wind power production joint with wind power short-term forecastings to orientate and assess the strategies and decisions of wind energy actors and businesses. 
+In this rapidly evolving scenario, it is essential to analyze national data on wind power production with wind power short-term forecastings to orientate and assess the strategies and decisions of wind energy actors and businesses. 
 
-Our study is based on publicly available data (source: Administrator of Electric Market) on the wind power production in Uruguay for the period April-December 2019, that we adequately normalized with respect to the present $\SI{1474}{\mega\watt}$ maximum installed wind power capacity. Each day, wind power production recordings are available every ten minutes.  In this work, we have also considered data from three different forecast providers, available each day starting at 1 pm.
+Our study is based on publicly available data (source: Administrator of Electric Market) on the wind power production in Uruguay between April and December 2019, that we adequately normalized with respect to the present $\SI{1474}{\mega\watt}$ maximum installed wind power capacity. Each day, wind power production recordings are available every ten minutes.  In this work, we also considered data from three different forecast providers, available each day starting at 1 pm.
 
-The next Figure \ref{fig:sample_data} shows the wind power real production during four segments 24-hour long selected from the observation period together with their corresponding hourly short-term forecast, computed by a forecast provider. For the sake of visualization clarity, this Section relies only on forecasts from one provider, called "provider A" from now on, ranked as the most accurate forecast provider, as it emerged from our posterior analysis.
+The next Figure \ref{fig:sample_data} shows the wind power real production during four segments 24 hours selected from the observation period together with their corresponding hourly short-term forecast, computed by a forecast provider. For the sake of visualization clarity, this section relies only on forecasts from one provider, called ``provider A'' from now on, ranked as the most accurate forecast provider, as it emerged from our posterior analysis.
 
 \begin{figure}[H]
 \centering
@@ -181,7 +179,7 @@ We may observe that all the histograms in Figure \ref{fig:data_curtailing} exhib
 The curtailment of the wind power production imposed by the system operators has a strong influence on the forecast error. To build a model that, driven by the available forecast, allows the inclusion of true power production with a prescribed degree of uncertainty, it is necessary to remove the data segments affected by wind curtailment.
 
 Once we removed all the 24-hour segments showing wind curtailment, we set up a dataset containing 147 daily segments. 
-In the absence of the curtailment intervention, the forecast error histograms are shown below in Figure \ref{fig:data_after_clean}, where it can be appreciated skewness reduction, except for low power forecast errors histogram.
+In the absence of the curtailment intervention, the forecast error histograms shown below in Figure \ref{fig:data_after_clean}, can appreciate skewness reduction, except for low power forecast error histogram.
 
 \begin{figure}[H]
 \centering
@@ -195,7 +193,7 @@ In the absence of the curtailment intervention, the forecast error histograms ar
 \end{figure}
 
 In this stage of data preprocessing, we obtain another useful result by applying the first-order difference operator to the forecast errors. 
-The forecast error transition histograms, displayed in the next Figure \ref{fig:error_transitions}, will constitute later a reference for the visual assessment of the global fit of the proposed models.
+The forecast error transition histograms, displayed in the next Figure \ref{fig:error_transitions}, will later constitute a reference for the visual assessment of the global fit of the proposed models.
 
 \begin{figure}[H]
 \centering
@@ -208,7 +206,7 @@ The forecast error transition histograms, displayed in the next Figure \ref{fig:
 \label{fig:error_transitions}
 \end{figure}
 
-The histograms in Figure \ref{fig:error_transitions} feature a non-Gaussianity trait and provide initial input for the model-building stage, which is described in Section next.
+The histograms in Figure \ref{fig:error_transitions} feature a non-Gaussianity trait and provide initial input for the model-building stage, which is described in the next section.
 Later, in Section \ref{Section_4}, guided from inferring the unknown model parameters, we will also propose transforming data as a strategy that naturally leads to an alternative model.
 
 %---END SECTION 2---
@@ -237,7 +235,7 @@ where
 \item $\{W_t, \, t \in [0,T] \}$ is a standard real-valued Wiener process.
 \end{itemize}
 
-In this work, $(p_t)_{t \in [0,T]}$ is to be considered as a deterministic forecast for the normalized wind power generation, which is provided by an official source. 
+In this work, $(p_t)_{t \in [0,T]}$ is to be considered a deterministic forecast for the normalized wind power generation, which is provided by an official source. 
 
 Our goal is to achieve a specification of the model (\ref{eq:main}) to follow the available normalized wind power forecasts closely while ensuring its unbiasedness with respect to the forecast.
 
@@ -346,8 +344,8 @@ V_0&=  v_0\in [-1 + p_0,1 - p_0].
 
 \section{State independent diffusion term: Lamperti transform} \label{Section_4}
 
-Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. Under the conditions that permit to use It\^{o}'s formula on a well-chosen transformation of the process $V$, John Lamperti (\cite{lamp}) first showed that the transformed process is again a diffusion that is solution to a SDE with unit coefficient for the diffusion term. 
-A vast literature refers nowadays to this result as the so-called Lamperti transform (see, for example, \cite[40--41]{iacus1}, \cite{moma}, \cite[199--203]{pani}, \cite[98--100]{saso}), which is a basic tool to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. A remarkable effect of removing the state dependency from the random noise term is to increase the numerical stability of the simulated paths of the transformed process. 
+Our model (\ref{VtSDE}) for the forecast error has a diffusion term that depends on the state variable $V_t$. Under the conditions that permit the use of It\^{o}'s formula on a well-chosen transformation of the process $V$, John Lamperti (\cite{lamp}) first showed that the transformed process is again a diffusion process that is solution to a SDE with unit coefficient for the diffusion term. 
+The vast literature nowadays refers to this result as the so-called Lamperti transform (see, for example, \cite[40--41]{iacus1}; \cite{moma}; \cite[199--203]{pani}; \cite[98--100]{saso}), which is a basic tool to obtain a SDE for the transformed process whose diffusion term does not depend anymore on the state variable. A remarkable effect of removing the state dependency from the random noise term is to increase the numerical stability of the simulated paths of the transformed process. 
 For this reason, some estimation methods of the unknown parameters of non-linear SDE models incorporated the Lamperti's change of variable as part of a more complex approximation procedure (for example, in the case of one-dimensional diffusions, the local linearization method in  \cite{shoz}, or the expansion method in \cite{ait}, later extended to time-inhomogeneous SDEs in \cite{eglix}).
 % later extended to multivariate diffusion in \cite{ait2}).
 
@@ -381,11 +379,11 @@ In this case, the Lamperti transform has been applied using the optimal estimate
 \quad\\
 \includegraphics[width=0.45\textwidth]{plots/HP_t_LP.eps}
 \includegraphics[width=0.45\textwidth]{plots/AP_t_LP.eps}
-\caption{Lamperti transformed forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
+\caption{Lamperti transformed forecast error transition histograms between April and December 2019 without wind power production curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:LP_transitions}
 \end{figure}
 
-The shape of the forecast error transition histograms after applying the Lamperti transform has much resemblance with a Gaussian distribution, motivating toward the use of Gaussian-like approximations of the unknown density transition functions of the process $Z_t$.
+The shape of the forecast error transition histograms after applying the Lamperti transform has similarities with the Gaussian distribution, motivating toward the use of Gaussian-like approximations of the unknown density transition functions of the process $Z_t$.
 
 \red{Remark: Moreover, this obtained Gaussian distribution supports the validity of the choice of our model diffusion coefficient given by (\ref{eq:poly_diff}). 
 }
@@ -399,7 +397,7 @@ The shape of the forecast error transition histograms after applying the Lampert
 
 \subsection{Likelihood in the $V-$space}
 
-\red{Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at a different time $t_j$ with $j = 1, \dots, M$, is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$.}
+\red{Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at a different time $t_j$ with $j = 1, \dots, M$, sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$.}
 
 Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
 
@@ -411,10 +409,10 @@ The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the 
 \end{equation}
 where $t_{j ,i} \equiv  t_j + i \Delta$ for any $j = 1, \ldots, M$ and $i = 0, \ldots, N$. \\
 
-Remark: In the last Subsection of this Section, we will extend the statistical model (\ref{likelihood}) by adding the transition that occurs during the time interval, say of length $\delta$, between the epoch when the forecast is done and the first epoch (1 pm) of each day-ahead forecast. 
+Remark: In the last subsection of this section, we will extend the statistical model (\ref{likelihood}) by adding the transition that occurs during the time interval, say of length $\delta$, between the epoch when the forecast is done and the first epoch (1 pm) of each day-ahead forecast. 
 To this purpose, the likelihood function (\ref{likelihood}) must include for any of the $M$ paths an additional factor, say $\rho_0 (V_{j, 0}|V_{j, -\delta};\bm{\theta},\delta)$, expressing the conditional density of the early transition. The parameter $\delta$ can be calibrated together or after the estimation of $\bm{\theta}$, suggesting an optimal time for the scheduling of the forecasts.\\
  
-The exact computation of the likelihood (\ref{likelihood}) relies on the availability of a closed-form expression for the transition densities of $V$ that, on the basis of the Markovian property of $V$, are characterized for $ t_{j, i-1} < t < t_{j,i}$,  as solutions of the Fokker-Planck-Kolmogorov equation (\cite[36]{iacus1}, \cite[61-68]{saso}):
+The exact computation of the likelihood (\ref{likelihood}) relies on the availability of a closed-form expression for the transition densities of $V$ that, on the basis of the Markovian property of $V$, are characterized for $ t_{j, i-1} < t < t_{j,i}$,  as solutions of the Fokker-Planck-Kolmogorov equation (\cite[36]{iacus1}; \cite[61-68]{saso}):
 
 \begin{align}
 \frac{ \partial f }{\partial t } & \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} )= - \frac{\partial}{ \partial v} (- \theta_t v \, \rho(v ,t \vert v_{j,i-1} ,  t_{j,i-1} ; \bm{\theta} ) ) \nonumber \\
@@ -422,8 +420,8 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 \end{align}
 subject to the initial conditions $\rho(v , t_{j, i-1} ; \bm{\theta} ) = \delta(v - V_{j, i-1}) \,,$ where $ \delta(v - V_{j, i-1})$ is the Dirac-delta generalized function centered at $ V_{j, i-1}\,.$
 
-However, closed-form solutions to initial-boundary value problem for time-inhomogeneous diffusions can be obtained only in a few cases (see, for example, \autocite[Section 3.1]{eglix}). Besides, in our case, solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
-Several numerical techniques have been devised to obtain estimates for the unknown parameters of continuous-time SDE models with discrete observations (see, for example, \cite{prewo} for likelihood-based inference techniques, \cite{Sor} for an estimating function approach, to mention a few contributions). As explained in the next Subsection, we have considered approximate likelihood methods, similar in spirit to \autocite[Section 11.4]{saso}.
+However, closed-form solutions to initial-boundary value problems for time-inhomogeneous diffusions can be obtained only in a few cases (see, for example, \autocite[Section 3.1]{eglix}). In our case, solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
+Several numerical techniques have been devised to obtain estimates for the unknown parameters of continuous-time SDE models with discrete observations (see, for example, \cite{prewo} for likelihood-based inference techniques, \cite{Sor} for an estimating function approach). As explained in the next subsection, we have considered approximate likelihood methods, similar in spirit to \autocite[Section 11.4]{saso}.
 
 \subsection{Approximate likelihood  in the $V-$space} \label{moments_ODEs}
 
@@ -458,7 +456,7 @@ with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, 
 
 \subsubsection{Moment Matching}
 
-A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape real parameters, $\xi_1, \xi_2$. \red{Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.} 
+A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive real-valued shape parameters, $\xi_1, \xi_2$. \red{Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.} 
 
 For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
 
@@ -500,7 +498,7 @@ where the limits $\tilde{\mu}_Z(t_{j,i}^-;\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i
 
 \subsection{Algorithm for the approximate maximum likelihood estimations} \label{opt_sec}
 
-\red{In this Subsection, we aim to infer the model's parameters using optimization techniques. We start by finding an initial guess close enough to the optimal value, and from that point, start the optimization.}
+\red{In this subsection, we aim to infer the model's parameters using optimization techniques. We start by finding an initial guess close enough to the optimal value, and from that point, start the optimization.}
 
 \subsubsection{Initial guess}
 
@@ -508,7 +506,7 @@ To guarantee the good behave for our optimization algorithm, we aim to start the
 
 \begin{itemize}
 
-\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. \red{For any $t\in [t_{j,i-1}, t_{j, i}[$, the random variable $(V_{j,i}|v_{j,i-1})$ has a conditional mean that can be approximate by the solution of the system}
+\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. \red{For any $t\in [t_{j,i-1}, t_{j, i}[$, the random variable $(V_{j,i}|v_{j,i-1})$ has a conditional mean that can be approximated by the solution of the system}
 \begin{equation*}
 \begin{cases}
 \dif \E\left[V\right](t)&=-\theta_t\E\left[V\right](t)\dif t\\
@@ -617,9 +615,9 @@ where $\tilde{\mathcal{L}}\left(\bm{\theta}; v^{M,N +1}\right)$ is the non-log v
 
 \section{Application to the April-December 2019 Uruguay wind and forecast dataset} \label{Section_6}
 
-Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hour long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models. \red{Additional cross-correlation tests were performed to ensure this assumption.}
+Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hours long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models. \red{Additional cross-correlation tests were performed to ensure this assumption.}
 
-All the following results involving a single provider refer to provider A. Also, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$, we obtain the initial guess $(\theta_0^*,\alpha^*,\delta^*)\approx(1.54,0.072,073)$.
+All the following results involving a single provider refer to provider A. Furthermore, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$, we obtain the initial guess $(\theta_0^*,\alpha^*,\delta^*)\approx(1.54,0.072,073)$.
 
 \subsection{Calibration of the approximate negative log-likelihood in $V$-space and $Z$-space}
 
@@ -644,13 +642,13 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
  fminsearch & 1.14 & 0.076 & 0.097 & 1.64 & 0.054 & 0.089 \\
  fmincon & 1.58 & 0.062 & 0.097 & 1.63 & 0.055 & 0.089 \\
  fminunc & 1.54 & 0.063 & 0.097 & 1.96 & 0.045 & 0.089 \\
- evaluations & 1.93 & 0.050 & 0.097 & 1.59 & 0.056 & 0.089 \\
+ Evaluations & 1.93 & 0.050 & 0.097 & 1.59 & 0.056 & 0.089 \\
  \bottomrule
 \end{tabular}
 \caption{Value points from Figure \ref{fig:neg-LL}.}
 \label{tab:optimal_values}
 \end{table}
-\red{Observe that all the local (possibly global) minimizers are located over the curves $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively. This effect shows that the optimization is more sensitive to the diffusion than to the drift.}\\
+\red{We observe that all the local (possibly global) minimizers are located over the curves $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively. This effect shows that the optimization is more sensitive to the diffusion than to the drift.}\\
 
 %\subsection{Calibration of the approximate negative log-likelihood in the $Z-$space}
 
@@ -665,21 +663,21 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
 %In Figure (\ref{fig:neg-LLL}), we can see the numerical level sets for the relative error function (\ref{eq:rel_error}). The center deep green band is the set $\mathbb{A}$ such that $\Psi(\bm{\theta})<0.1$ if $\bm{\theta}\in\mathbb{A}$, it is the set of fixes-points candidates. The set of fixed-points candidates which also satisfies the condition of lying over the line $\theta_0\alpha=0.097$ is non-empty, i.e., $$\mathbb{A}\cap\{(\theta_0,\alpha):\theta_0\alpha=0.097\}\neq\emptyset.$$
 
 
-In the $Z$-space, we obtain the optimal parameters $(\theta_0^Z,\alpha^Z)=(1.87,0.043)$ as a minimizer for the relative error function (\ref{eq:rel_error}) using \textit{fminsearch} from MATLAB R2019b and the training sets.\\
+In the $Z$-space, we obtain the optimal parameters $(\theta_0^Z,\alpha^Z)=(1.87,0.043)$ as minimizers for the relative error function (\ref{eq:rel_error}) using \textit{fminsearch} from MATLAB R2019b and the training sets.\\
 
-To verify and compare this two vector of parameters, (i.e., $(\theta_0^V,\alpha^V)$ and $(\theta_0^Z,\alpha^Z)$), we simulate error paths in the $V-$space. We simulate five error paths for each day in the test set and construct histograms with the transitions. The histograms can be seen in Figure (\ref{fig:hists}). We observe a slightly better approximation using $(\theta^Z_0,\alpha^Z)$.
+To verify and compare these two vector of parameters, (i.e., $(\theta_0^V,\alpha^V)$ and $(\theta_0^Z,\alpha^Z)$), we simulate error paths in the $V-$space. We simulate five error paths for each day in the test set and construct histograms with the transitions. The histograms can be seen in Figure (\ref{fig:hists}). We observe a slightly better approximation using $(\theta^Z_0,\alpha^Z)$.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.45\textwidth]{plots/classic_noDelta/Optimal.eps}
 \includegraphics[width=0.45\textwidth]{plots/classic_noDelta/Lamperti_Optimal.eps}
-\caption{Probability histograms for the error transitions. Using provider A, we overlap the real transitions from the test set with the simulated ones from the $V-$space SDE. On the left, simulations using $(\theta_0^V,\alpha^V)$. On the right, simulations using $(\theta_0^Z,\alpha^Z)$.}
+\caption{Probability histograms for error transitions. Using provider A, we overlap the real transitions from the test set with the simulated ones from the $V-$space SDE. On the left, simulations use $(\theta_0^V,\alpha^V)$. On the right, simulations use $(\theta_0^Z,\alpha^Z)$.}
 \label{fig:hists}
 \end{figure}
 
 \subsection{Model comparison and assessment of the forecast providers} \label{Model_Comp}
 
-We compare two candidate models to find the best-fit that maximizes the retained information, {\color{red} the Model 1, introduced in (\cite{elkate}, p.383), and our proposed model  (\ref{ourmodel}), from hereafter called Model 2.}
+We compare two candidate models to find the best-fit that maximizes the retained information, {\color{black} the Model 1, introduced in (\cite{elkate}, p.383), and our proposed model  (\ref{ourmodel}), from hereafter called Model 2.}
 \begin{itemize}
   \item Model 1: This model does not feature derivative tracking:
 \begin{equation}
@@ -715,7 +713,7 @@ X_0&=x_0\in [0,1],
 \end{equation}
  with $\theta_0 > 0$, $\alpha > 0$ and $\theta_t$ satisfying condition \eqref{Assumption:3} .
 \end{itemize}
-To show the better performance of Model 2, we have computed the Akaike information criterion (AIC) and the Bayesian information criterion (BIC) for the two considered models, and any combination of the three different forecast providers with  {\color{red} three approximate likelihood methods, the one based on the Beta surrogate density in the$V$-space (Subsection \ref{moments_ODEs}), the one based on the Gaussian surrogate density in the $Z$-space (Subsection \ref{moments_ODEs_Z}), and the Shoji-Ozaki local linearization method (\cite{shoz}).} 
+To show the better performance of Model 2, we have computed the Akaike information criterion (AIC) and the Bayesian information criterion (BIC) for the two considered models, and any combination of the three different forecast providers with  {\color{black} three approximate likelihood methods, the one based on the Beta surrogate density in the$V$-space (Subsection \ref{moments_ODEs}), the one based on the Gaussian surrogate density in the $Z$-space (Subsection \ref{moments_ODEs_Z}), and the Shoji-Ozaki local linearization method (\cite{shoz}).} 
 Table (\ref{tab:model_comparison}) summarizes these results, also reporting the estimate of the variability diffusion coefficient $\alpha \theta_0$. 
 It is worth observing that the best fitting is achieved with Model 2 and adopting Beta distributions as proxies of the transition densities.
 
@@ -788,12 +786,12 @@ Once derived optimal estimates of the parameters of the complete likelihood for 
 \end{figure}
 
 \subsubsection{Value of $\delta$}
-As a final verification, we study the behavior of $\delta$ as a function of the vector $\bm{\theta}$. Given a vector of parameters, we calculate an initial guess for $\delta$ solving problem (\ref{eq:likelihood_delta}). Even when it is a guess, it helps us to understand the meaning of this additional parameter qualitatively.\\
+As a final verification, we study the behavior of $\delta$ as a function of the vector $\bm{\theta}$. Given a vector of parameters, we calculate an initial guess for $\delta$ solving problem (\ref{eq:likelihood_delta}). Even when it is a guess, it helps us understand the meaning of this additional parameter qualitatively.\\
 \quad\\
 We choose as domain the most significant values of $\theta_0$ and $\theta_0\alpha$, regarding the previous numerical results. In Figure (\ref{fig:delta}) we can observe that:
 \begin{itemize}
 \item The initial time $\delta$ decreases as $\theta_0\alpha$ increases. This is a consequence of the increment in the diffusion as $\theta_0\alpha$ increases. As there is more diffusion, less time is needed for the initial transition density to cover the initial error observations.
-\item The initial time $\delta$ increases as $\theta_0$ increases. As we increment $\theta_0$, also the mean reversion becomes larger and reduces the variance for the initial transition density. Then, it is needed more time for the initial transition density to cover the initial error observations.\end{itemize}
+\item The initial time $\delta$ increases as $\theta_0$ increases. As we increment $\theta_0$, the mean reversion becomes larger and reduces the variance for the initial transition density. Then, more time is needed for the initial transition density to cover the initial error observations.\end{itemize}
 
 \begin{figure}[H]
 \centering
@@ -812,13 +810,13 @@ In this work, we propose a methodology to assess the short-term forecast of the 
 
 To this purpose, we built a phenomenological stochastic differential equation model for the normalized wind power production forecast error, with time-varying mean-reversion parameter in the linear drift coefficient, and state-dependent and time non-homogenous diffusion coefficient. We also used the Lamperti transform with unknown parameters to provide a version of the proposed model with a unit diffusion coefficient, increasing its stability properties.
 
-We used approximate likelihood-based methods for the models' calibration, developing original algorithms to derive optimal estimates of the unknown parameters.
-The likelihood approach has allowed extending the SDE models in a very effective way, incorporating an early transition with an additional parameter that accounts for the forecast's uncertainty at the beginning of each future period. As a result, we obtained a robust procedure for synthetic data generation that, using the available forecast input, allows embracing the future wind power production paths through empirical pointwise bands with prescribed confidence. 
+We used approximate likelihood-based methods for the models' calibration, and developed original algorithms to derive optimal estimates of the unknown parameters.
+The likelihood approach has allowed extending the SDE models in a very effective way, incorporating an early transition with an additional parameter that accounts for the forecast's uncertainty at the beginning of each future period. As a result, we obtained a robust procedure for synthetic data generation that, using the available forecast input, embraces future wind power production paths through empirical pointwise bands with prescribed confidence. 
 
-On the basis of historical data of wind power production and forecast from different sources, our method comes up with an objective tool for forecast assessment and comparison, by performing the model selection stage.
-The application of the procedure of modeling, inference through numerical optimization, and model selection through information criteria, to the wind power production real dataset in Uruguay during April-December 2019, with three different providers, shown the excellent performance of our proposed model, that preserves the asymmetry of wind power forecast errors and their correlation structure.
+On the basis of historical data of wind power production and forecast from different sources, our method came up with an objective tool for forecast assessment and comparison, by performing the model selection stage.
+The application of the modeling procedure, inference through numerical optimization, and model selection through information criteria, to the wind power production dataset in Uruguay between April and December 2019, with three different providers, shows the excellent performance of our proposed model, which preserves the asymmetry of wind power forecast errors and their correlation structure.
  
- We conclude that our SDE model, featuring the time-derivative tracking of the forecast, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward managing of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrix.
+ We conclude that our SDE model, featuring the time-derivative tracking of the forecast, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward the management of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrices.
  
 %---END SECTION 7---
 
