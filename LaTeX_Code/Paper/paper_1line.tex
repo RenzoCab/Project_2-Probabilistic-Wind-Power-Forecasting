@@ -174,7 +174,7 @@ A view of the global discrepancy between the real production and the forecasted 
   \label{fig:data_curtailing}
 \end{figure}
 
-We may observe that all the histograms in Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The data analysis highlighted that, during several 24-hour segments, the system operators decided to reduce or even cease the wind power production. Indeed, as recalled in (\cite{irena2}, p.3), ``Uruguay experiences high curtailment levels because generation exceeds demand.'' Despite the large country's interconnection capacity with Argentina and Brazil, there is no active cross-border market; the energy is traded via ad hoc short-term agreements. ``Even with interconnection capacity exceeding peak demand, the power system experiences high VRE curtailment, mostly at night when wind generation exceeds demand.''
+We may observe that all the histograms in Figure \ref{fig:data_curtailing} exhibit skewed patterns, to a different extent, as well as extreme observations. The presence of these features can be partly explained. The data analysis highlighted that, during several 24-hour segments, the system operators decided to reduce or even cease the wind power production. Indeed, as recalled in (\cite{irena2}, p.8), ``Uruguay experiences high curtailment levels because generation exceeds demand.'' Despite the large country's interconnection capacity with Argentina and Brazil, there is no active cross-border market; the energy is traded via ad hoc short-term agreements. (\cite{irena2}, p.3) ``Even with interconnection capacity exceeding peak demand, the power system experiences high VRE curtailment, mostly at night when wind generation exceeds demand.''
   
 The curtailment of the wind power production imposed by the system operators has a strong influence on the forecast error. To build a model that, driven by the available forecast, allows the inclusion of true power production with a prescribed degree of uncertainty, it is necessary to remove the data segments affected by wind curtailment.
 
@@ -235,7 +235,7 @@ where
 \item $\{W_t, \, t \in [0,T] \}$ is a standard real-valued Wiener process.
 \end{itemize}
 
-In this work, $(p_t)_{t \in [0,T]}$ is to be considered a deterministic forecast for the normalized wind power generation, which is provided by an official source. 
+In this work, $(p_t)_{t \in [0,T]}$ is to be considered a deterministic forecast for the normalized wind power generation, which is provided by Administrator of Electric Market. 
 
 Our goal is to achieve a specification of the model (\ref{eq:main}) to follow the available normalized wind power forecasts closely while ensuring its unbiasedness with respect to the forecast.
 
@@ -393,15 +393,15 @@ The shape of the forecast error transition histograms after applying the Lampert
 
 %---BEGIN SECTION 5---
 
-\section{ Likelihood functions of the forecast errors data and optimization algorithm} \label{Section_5} 
+\section{ Likelihood functions of the forecast error data and optimization algorithm} \label{Section_5} 
 
 \subsection{Likelihood in the $V-$space}
 
-\red{Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at a different time $t_j$ with $j = 1, \dots, M$, sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$.}
+\red{Suppose that any of $M$ non-overlapping paths of the continuous-time It\^{o} process $V = \{ V_t, t  \in [0,T] \}$, each one starting at a different time $t_j$ with $j = 1, \dots, M$, is sampled at $N + 1$ equispaced discrete points with given length interval $\Delta$. Let $ V^{M,N + 1}=\left\{ V_{t_1^{N + 1}} , V_{t_2^{N + 1}} ,\ldots , V_{t_M^{N + 1}} \right\}$ denote this random sample, with $V_{t_j^{N + 1}} =\left\{ V_{t_j + i \Delta}\,, i = 0, \ldots, N \right\}$.}
 
 Let $\rho(v \vert v_{j, i-1} ; \bm{\theta})$ be the conditional probability density of $V_{t_j + i \Delta} \equiv V_{j, i}$ given $V_{j, i-1} = v_{j, i-1}$ evaluated at $v$, where $\bm{\theta} = (\theta_0, \alpha)$ are the unknown model parameters.
 
-The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, then the likelihood function of the sample $ V^{M,N + 1}$ can be written as the following product of transition densities:  
+The It\^{o} process $V$ defined by the SDE (\ref{VtSDE}) is Markovian, and the likelihood function of the sample $ V^{M,N + 1}$ can be written as the following product of transition densities:  
 
 \begin{equation}
 \mathcal{L}\left(\bm{\theta}; V^{M,N +1}\right) = \prod\limits_{j=1}^M \left\{ \prod\limits_{i=1}^N \rho \left( {V_{j, i}| V_{j, i-1}} ; p_{[t_{j,  i-1}, t_{j , i} ]},  \bm{\theta} \right)    \right\},
@@ -420,7 +420,7 @@ The exact computation of the likelihood (\ref{likelihood}) relies on the availab
 \end{align}
 subject to the initial conditions $\rho(v , t_{j, i-1} ; \bm{\theta} ) = \delta(v - V_{j, i-1}) \,,$ where $ \delta(v - V_{j, i-1})$ is the Dirac-delta generalized function centered at $ V_{j, i-1}\,.$
 
-However, closed-form solutions to initial-boundary value problems for time-inhomogeneous diffusions can be obtained only in a few cases (see, for example, \autocite[Section 3.1]{eglix}). In our case, solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
+However, closed-form solutions to initial-boundary value problems for time-inhomogeneous diffusions can be obtained only in a few cases (see, for example, \cite[Section 3.1]{eglix}). In our case, solving numerically (\ref{eq:fpk}) for the transition densities of the process $V$ at every transition step is computationally expensive. 
 Several numerical techniques have been devised to obtain estimates for the unknown parameters of continuous-time SDE models with discrete observations (see, for example, \cite{prewo} for likelihood-based inference techniques, \cite{Sor} for an estimating function approach). As explained in the next subsection, we have considered approximate likelihood methods, similar in spirit to \autocite[Section 11.4]{saso}.
 
 \subsection{Approximate likelihood  in the $V-$space} \label{moments_ODEs}
@@ -456,7 +456,7 @@ with initial conditions $m_1(t_{j,i-1})= v_{j, i-1}$ and $m_2(t_{j,i-1})= v_{j, 
 
 \subsubsection{Moment Matching}
 
-A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive real-valued shape parameters, $\xi_1, \xi_2$. \red{Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.} 
+A suitable candidate for a surrogate transition density of $V$ is a Beta distribution on a compact interval parameterized by two positive shape parameters, $\xi_1, \xi_2$. \red{Recall that the choice of the beta proxy distribution is a natural choice as it is the invariant distribution of the Jacobi type processes.} 
 
 For any $t\in [t_{j,i-1}, t_{j, i}[$, we approximate the transition densities of the process $V$ using a Beta distribution. We equal the first two central moments of $V$ with the corresponding moments of the Beta surrogate distribution on $[-1 + \epsilon,1 - \epsilon]$ with shape parameters $\xi_1, \xi_2$.
 
@@ -502,11 +502,11 @@ where the limits $\tilde{\mu}_Z(t_{j,i}^-;\bm{\theta} )$ and $\tilde{v}_Z(t_{j,i
 
 \subsubsection{Initial guess}
 
-To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use \textbf{Least Square Minimization} and \textbf{Quadratic Variation} over the data to find an initial guess $(\theta_0^*,\alpha^*)$.
+To guarantee the good behave for our optimization algorithm, we aim to start the optimization as close as we can from the optimal parameters. We use {least square minimization} and {quadratic variation} over the data to find an initial guess $(\theta_0^*,\alpha^*)$.
 
 \begin{itemize}
 
-\item \textbf{Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. \red{For any $t\in [t_{j,i-1}, t_{j, i}[$, the random variable $(V_{j,i}|v_{j,i-1})$ has a conditional mean that can be approximated by the solution of the system}
+\item {Least square minimization:} We consider the observed data $v^{M,N+1}$ with length between observations $\Delta$, where $i\in\{0,\dots,N\}$ and $j\in\{1,\dots,M\}$. \red{For any $t\in [t_{j,i-1}, t_{j, i}[$, the random variable $(V_{j,i}|v_{j,i-1})$ has a conditional mean that can be approximated by the solution of the system}
 \begin{equation*}
 \begin{cases}
 \dif \E\left[V\right](t)&=-\theta_t\E\left[V\right](t)\dif t\\
@@ -533,7 +533,7 @@ it follows that
 \end{equation}
 \red{We approximate $\theta_0$ by Equation (\ref{Eq-4}) setting $\theta_0^*=\hat{c}$.}
 
-\item \textbf{Quadratic variation:} We approximate the quadratic variation of the  It\^{o}'s  process $V$
+\item {Quadratic variation:} We approximate the quadratic variation of the  It\^{o}'s  process $V$
 \begin{equation*}
 \langle V\rangle _t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
 \sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)},
@@ -786,7 +786,7 @@ Once derived optimal estimates of the parameters of the complete likelihood for 
 \end{figure}
 
 \subsubsection{Value of $\delta$}
-As a final verification, we study the behavior of $\delta$ as a function of the vector $\bm{\theta}$. Given a vector of parameters, we calculate an initial guess for $\delta$ solving problem (\ref{eq:likelihood_delta}). Even when it is a guess, it helps us understand the meaning of this additional parameter qualitatively.\\
+As a final verification, we study the behavior of $\delta$ as a function of the vector $\bm{\theta}$. Given a parameter vector, we calculate an initial guess for $\delta$ solving problem (\ref{eq:likelihood_delta}). Even when it is a guess, it helps us understand the meaning of this additional parameter qualitatively.\\
 \quad\\
 We choose as domain the most significant values of $\theta_0$ and $\theta_0\alpha$, regarding the previous numerical results. In Figure (\ref{fig:delta}) we can observe that:
 \begin{itemize}
@@ -811,12 +811,12 @@ In this work, we propose a methodology to assess the short-term forecast of the 
 To this purpose, we built a phenomenological stochastic differential equation model for the normalized wind power production forecast error, with time-varying mean-reversion parameter in the linear drift coefficient, and state-dependent and time non-homogenous diffusion coefficient. We also used the Lamperti transform with unknown parameters to provide a version of the proposed model with a unit diffusion coefficient, increasing its stability properties.
 
 We used approximate likelihood-based methods for the models' calibration, and developed original algorithms to derive optimal estimates of the unknown parameters.
-The likelihood approach has allowed extending the SDE models in a very effective way, incorporating an early transition with an additional parameter that accounts for the forecast's uncertainty at the beginning of each future period. As a result, we obtained a robust procedure for synthetic data generation that, using the available forecast input, embraces future wind power production paths through empirical pointwise bands with prescribed confidence. 
+The likelihood approach allowed for the extending of the SDE models in a very effective way, incorporating an early transition with an additional parameter that accounts for the forecast's uncertainty at the beginning of each future period. As a result, we obtained a robust procedure for synthetic data generation that, using the available forecast input, embraces future wind power production paths through empirical pointwise bands with prescribed confidence. 
 
-On the basis of historical data of wind power production and forecast from different sources, our method came up with an objective tool for forecast assessment and comparison, by performing the model selection stage.
+On the basis of historical data of wind power production and forecast from different sources, our method came up with an objective tool for forecast assessment and comparison by performing the model selection stage.
 The application of the modeling procedure, inference through numerical optimization, and model selection through information criteria, to the wind power production dataset in Uruguay between April and December 2019, with three different providers, shows the excellent performance of our proposed model, which preserves the asymmetry of wind power forecast errors and their correlation structure.
  
- We conclude that our SDE model, featuring the time-derivative tracking of the forecast, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward the management of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrices.
+We conclude that our SDE model, featuring a time-derivative tracking of the forecast, a time-dependent mean-reversion parameter, and a state-dependent diffusion term that suitably adjusts to the problem under study, contributes toward the management of renewable energies efficiently. This methodology paves the way for stochastic optimal control methods enabling principled decision making under uncertainty in the presence of complex energy matrices.
  
 %---END SECTION 7---
 

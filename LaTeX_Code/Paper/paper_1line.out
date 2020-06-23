@@ -4,7 +4,7 @@
 \BOOKMARK [2][-]{subsection.3.1}{Physical Constraints}{section.3}% 4
 \BOOKMARK [2][-]{subsection.3.2}{A model specification for the forecast error}{section.3}% 5
 \BOOKMARK [1][-]{section.4}{State independent diffusion term: Lamperti transform}{}% 6
-\BOOKMARK [1][-]{section.5}{ Likelihood functions of the forecast errors data and optimization algorithm}{}% 7
+\BOOKMARK [1][-]{section.5}{ Likelihood functions of the forecast error data and optimization algorithm}{}% 7
 \BOOKMARK [2][-]{subsection.5.1}{Likelihood in the V-space}{section.5}% 8
 \BOOKMARK [2][-]{subsection.5.2}{Approximate likelihood in the V-space}{section.5}% 9
 \BOOKMARK [3][-]{subsubsection.5.2.1}{Moment Matching}{subsection.5.2}% 10
