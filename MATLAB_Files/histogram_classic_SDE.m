@@ -132,7 +132,7 @@ dataKind               = 'comparable';
 dataSet                = 'MTLOG';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 whatToDo               = 'Optimal'; 
-whatToDo               = 'Lamperti_Optimal'; 
+% whatToDo               = 'Lamperti_Optimal'; 
 % whatToDo               = 'Initial_Guess'; 
 
 % PARAMETERS:
@@ -148,7 +148,7 @@ elseif  strcmp(whatToDo,'Lamperti_Optimal')
 % V1: 
 %     theta_0 = 2.8150; alpha = 0.1276;
 % V2: 
-%     theta_0 = 1.8708; alpha = 0.0431;
+    theta_0 = 1.8708; alpha = 0.0431;
 elseif  strcmp(whatToDo,'Initial_Guess')
     theta_0 = 1.6290;
     alpha   = 0.06;
@@ -225,7 +225,14 @@ h2.EdgeColor = 'r';
 xlabel('Value of Transition');
 ylabel('Probability');
 xlim([-0.1 0.1]);
-legend('Error Transitions Histogram','Simulated Error Transitions Histogram',...
-    'location','southoutside');
+if strcmp(whatToDo,'Optimal')
+    legend('Error Transitions Histogram',...
+        'Simulated Error Transitions Histogram (using $(\theta_0^V,\alpha^V)$)',...
+        'location','southoutside','interpreter','latex');
+elseif strcmp(whatToDo,'Lamperti_Optimal')
+    legend('Error Transitions Histogram',...
+        'Simulated Error Transitions Histogram (using $(\theta_0^Z,\alpha^Z)$)',...
+        'location','southoutside','interpreter','latex');
+end
 set(gca,'FontSize',12);
 saveas(gcf,[pwd '/Results/histograms/classic_noDelta/',whatToDo],'epsc');

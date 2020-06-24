@@ -14,11 +14,32 @@
 \usepackage{float}
 \usepackage{commath}
 \usepackage{fancybox}
+\usepackage{tikz}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[backend=biber, style=authoryear, citestyle=authoryear, autocite=inline, isbn=true]{biblatex} % package for bibliography 
 %\DeclareLanguageMapping{english}{english-apa}
+\definecolor{lime}{HTML}{A6CE39}
+
+\DeclareRobustCommand{\orcidicon}{
+	\begin{tikzpicture}
+	\draw[lime, fill=lime] (0,0) 
+	circle [radius=0.16] 
+	node[white] {{\fontfamily{qag}\selectfont \tiny ID}};
+	\draw[white, fill=white] (-0.0625,0.095) 
+	circle [radius=0.007];
+	\end{tikzpicture}
+	\hspace{-2mm}
+}
+\foreach \x in {A, ..., Z}{\expandafter\xdef\csname orcid\x\endcsname{\noexpand\href{https://orcid.org/\csname orcidauthor\x\endcsname}
+			{\noexpand\orcidicon}}
+}
+
+\newcommand{\orcidauthorA}{0000-0003-3220-0923} % For author RC
+\newcommand{\orcidauthorB}{0000-0003-1967-4446} % For author RT
+\newcommand{\orcidauthorC}{0000-0002-6416-6320} % For author AK
+\newcommand{\orcidauthorD}{0000-0001-5114-853X} % For author MS
 
 \theoremstyle{definition}
 \newtheorem{Def}{Definition}[section]
@@ -60,10 +81,10 @@
 \title{ Stochastic Wind Power Forecasting }  % \\  \small{Report}}
 
 %\author[1]{Waled Alhaddad}
-\author[1]{Renzo Caballero}
+\author[1]{Renzo Caballero\orcidA{}}
 \author[2]{Ahmed Kebaier}
-\author[3]{Marco Scavino}
-\author[4]{ Ra\'ul Tempone}
+\author[3]{Marco Scavino\orcidD{}}
+\author[4]{ Ra\'ul Tempone\orcidB{}}
 %\author[2]{Corresponding Author\thanks{email@2nduniversity.com}}
 \affil[1,4]{CEMSE Division, King Abdullah University of Science and Technology (KAUST), Saudi Arabia}
 \affil[2]{\red{Universit\'e Sorbonne Paris Nord, LAGA, CNRS, UMR 7539, F-93430, Villetaneuse, France}}
