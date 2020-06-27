@@ -38,7 +38,7 @@
 
 \newcommand{\orcidauthorA}{0000-0003-3220-0923} % For author RC
 \newcommand{\orcidauthorB}{0000-0003-1967-4446} % For author RT
-\newcommand{\orcidauthorC}{0000-0002-6416-6320} % For author AK
+\newcommand{\orcidauthorC}{0000-0003-3468-8811} % For author AK
 \newcommand{\orcidauthorD}{0000-0001-5114-853X} % For author MS
 
 \theoremstyle{definition}
@@ -78,11 +78,11 @@
 
 \begin{document}
 
-\title{ Stochastic Wind Power Forecasting }  % \\  \small{Report}}
+\title{ A Derivative Tracking Model for Wind Power Forecast Error }  % \\  \small{Report}}
 
 %\author[1]{Waled Alhaddad}
 \author[1]{Renzo Caballero\orcidA{}}
-\author[2]{Ahmed Kebaier}
+\author[2]{Ahmed Kebaier\orcidC{}}
 \author[3]{Marco Scavino\orcidD{}}
 \author[4]{ Ra\'ul Tempone\orcidB{}}
 %\author[2]{Corresponding Author\thanks{email@2nduniversity.com}}
@@ -106,7 +106,7 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 \end{abstract}
 
-Keywords: wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, numerical optimization, model selection
+Keywords: wind power, probabilistic forecasting, stochastic differential equations, Lamperti transform, numerical optimization, model selection, time-inhomogeneous Jacobi diffusion
 
 2020 AMS Subject Classification: 60H10, 62M20, 65K10.
 
@@ -638,7 +638,11 @@ where $\tilde{\mathcal{L}}\left(\bm{\theta}; v^{M,N +1}\right)$ is the non-log v
 
 Our statistical analysis starts with partitioning the 147 segments of normalized wind power production, each 24-hours long. We select 73 non-contiguous segments for the models' calibration procedure, assigning them to the training set. The other 74 non-contiguous segments compose the test set. Such an allocation mechanism guarantees independence among the segments, matching the assumption we did in Section \ref{Section_5} to formulate the statistical models. \red{Additional cross-correlation tests were performed to ensure this assumption.}
 
-All the following results involving a single provider refer to provider A. Furthermore, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$, we obtain the initial guess $(\theta_0^*,\alpha^*,\delta^*)\approx(1.54,0.072,073)$.
+All the following results involving a single provider refer to provider A. Furthermore, all calibrations involve the training sets and all simulations, the test sets. Following the instruction for the initial guesses from Subsection $\ref{opt_sec}$ and assuming that
+\begin{equation*}
+\theta_t=\max\left(\theta_0,\frac{\alpha\theta_0+|\dot{p}_t|}{\min(p_t,1-p_t)}\right),
+\end{equation*}
+we obtain the initial guess $(\theta_0^*,\alpha^*,\delta^*)\approx(1.54,0.072,073)$.
 
 \subsection{Calibration of the approximate negative log-likelihood in $V$-space and $Z$-space}
 
