@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage[table]{xcolor}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[english]{babel}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{blkarray}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{commath}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{proposition}
+\newtheorem{exmp}{Example}[section]\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}
+\newtheorem{ex}{Exercise}
+\theoremstyle{definition}
+\theoremstyle{remark}
+\bibliographystyle{elsarticle-num}
+
+\DeclareMathOperator{\sinc}{sinc}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\matindex}[1]{\mbox{\scriptsize#1}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\prob}{\mathbb{P}}
+
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+
+%\setcounter{secnumdepth}{0} % This line removes the numbers in the titles.
+
+\begin{document}
+\title{Annals of Applied Statistics Guidelines}
+\author{Renzo Miguel Caballero Rosas\\
+\url{Renzo.CaballeroRosas@kaust.edu.sa}\\
+\url{CaballeroRenzo@hotmail.com}\\
+\url{CaballeroRen@gmail.com}} 
+\maketitle
+
+\tableofcontents
+
+\section{Manuscript Submission}
+
+The abstract and introduction need to say \textbf{What scientific/policy question(s)} the paper addresses, \textbf{Why the topic is of interest}, and \textbf{How the data analyses will address these questions}, in as non-technical a manner as possible.\\
+\quad\\
+References should be in the name/year format (e.g., Smith, Jones, and Roberts (1992)), using “et al.” for more than three authors; subsequent references can be abbreviated (e.g., Smith et al. (1992)).\\
+\quad\\
+We encourage use of the IMS LaTex template when preparing your manuscript. The default setting is for numbered citations and references. To get the name-year format, change the line
+\begin{itemize}
+
+\item RequirePackage[numbers]\{natbib\} to
+\item RequirePackage\{natbib\},
+
+\end{itemize}
+i.e., delete [numbers].\\
+\quad\\
+Authors may use British or American spelling, as they prefer.
+
+\end{document}
