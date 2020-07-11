@@ -1,0 +1,27 @@
+[0] Config.pm:302> INFO - This is Biber 2.9
+[1] Config.pm:305> INFO - Logfile is 'A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.blg'
+[24] biber:313> INFO - === Tue Jul  7, 2020, 21:47:56
+[41] Biber.pm:371> INFO - Reading 'A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.bcf'
+[86] Biber.pm:854> INFO - Using all citekeys in bib section 0
+[96] Biber.pm:3981> INFO - Processing section 0
+[104] Biber.pm:4154> INFO - Looking for bibtex format file 'A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.bib' for section 0
+[106] bibtex.pm:1468> INFO - LaTeX decoding ...
+[148] bibtex.pm:1294> INFO - Found BibTeX data source 'A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.bib'
+[150] Utils.pm:169> WARN - Duplicate entry key: 'lamp' in file 'A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.bib', skipping ...
+[351] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[351] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[351] Biber.pm:3809> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[351] Biber.pm:3815> INFO - No sort tailoring available for locale 'en-US'
+[384] bbl.pm:617> INFO - Writing 'A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.bbl' with encoding 'ascii'
+[386] Utils.pm:169> WARN - The entry 'ait' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[387] Utils.pm:169> WARN - The entry 'ait2' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[388] Utils.pm:169> WARN - The entry 'Alf' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[396] Utils.pm:169> WARN - The entry 'elkate' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[402] Utils.pm:169> WARN - The entry 'immm' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[407] Utils.pm:169> WARN - The entry 'moma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[408] Utils.pm:169> WARN - The entry 'mozuma' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[412] Utils.pm:169> WARN - The entry 'saso' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[415] Utils.pm:169> WARN - The entry 'Sor' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[419] Utils.pm:169> WARN - The entry 'vago' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
+[421] bbl.pm:720> INFO - Output to A_Derivative_Tracking_Model_for_Wind_Power_Forecast_Error.bbl
+[421] Biber.pm:110> INFO - WARNINGS: 11

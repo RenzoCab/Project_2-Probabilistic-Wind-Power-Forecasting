@@ -1,0 +1,400 @@
+\begin{thebibliography}{30}
+% BibTex style file: imsart-nameyear.bst, 2017-11-03
+% Default style options (sort=1,type=nameyear).
+% Used options (sort=1,type=nameyear).
+
+\bibitem[\protect\citeauthoryear{A{\"i}t-Sahalia}{2002}]{ait}
+\begin{barticle}[author]
+\bauthor{\bsnm{A{\"i}t-Sahalia},~\bfnm{Yacine}\binits{Y.}}
+(\byear{2002}).
+\btitle{Maximum likelihood estimation of discretely sampled diffusions: a
+  closed-form approximation approach}.
+\bjournal{Econometrica}
+\bvolume{70}
+\bpages{223--262}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Alfonsi}{2015}]{Alf}
+\begin{bbook}[author]
+\bauthor{\bsnm{Alfonsi},~\bfnm{Aur{\'e}lien}\binits{A.}}
+(\byear{2015}).
+\btitle{Affine {D}iffusions and {R}elated {P}rocesses: {S}imulation, {T}heory
+  and {A}pplications}.
+\bseries{Bocconi \& Springer Series}
+\bvolume{6}.
+\bpublisher{Springer}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Badosa et~al.}{2018}]{bggk}
+\begin{binproceedings}[author]
+\bauthor{\bsnm{Badosa},~\bfnm{Jordi}\binits{J.}},
+  \bauthor{\bsnm{Gobet},~\bfnm{Emmanuel}\binits{E.}},
+  \bauthor{\bsnm{Grangereau},~\bfnm{Maxime}\binits{M.}} \AND
+  \bauthor{\bsnm{Kim},~\bfnm{Daeyoung}\binits{D.}}
+(\byear{2018}).
+\btitle{Day-Ahead Probabilistic Forecast of Solar Irradiance: A Stochastic
+  Differential Equation Approach}.
+In \bbooktitle{Renewable Energy: Forecasting and Risk Management}
+(\beditor{\bfnm{Philippe}\binits{P.}~\bsnm{Drobinski}},
+  \beditor{\bfnm{Mathilde}\binits{M.}~\bsnm{Mougeot}},
+  \beditor{\bfnm{Dominique}\binits{D.}~\bsnm{Picard}},
+  \beditor{\bfnm{Riwal}\binits{R.}~\bsnm{Plougonven}} \AND
+  \beditor{\bfnm{Peter}\binits{P.}~\bsnm{Tankov}}, eds.)
+\bpages{73--93}.
+\bpublisher{Springer International Publishing}, \baddress{Cham}.
+\end{binproceedings}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Chang}{2014}]{chang}
+\begin{barticle}[author]
+\bauthor{\bsnm{Chang},~\bfnm{Wen-Yeau}\binits{W.-Y.}}
+(\byear{2014}).
+\btitle{A {L}iterature {R}eview of {W}ind {F}orecasting {M}ethods}.
+\bjournal{Journal of Power and Energy Engineering}
+\bvolume{2}
+\bpages{161--168}.
+\bdoi{10.4236/jpee.2014.24023}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{D'Onofrio, Tamborrino and
+  Lansky}{2018}]{dotala}
+\begin{barticle}[author]
+\bauthor{\bsnm{D'Onofrio},~\bfnm{Giuseppe}\binits{G.}},
+  \bauthor{\bsnm{Tamborrino},~\bfnm{Massimiliano}\binits{M.}} \AND
+  \bauthor{\bsnm{Lansky},~\bfnm{Petr}\binits{P.}}
+(\byear{2018}).
+\btitle{The {J}acobi diffusion process as a neuronal model}.
+\bjournal{Chaos}
+\bvolume{28}.
+\bdoi{10.1063/1.5051494}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Egorov, Li and Xu}{2003}]{eglix}
+\begin{barticle}[author]
+\bauthor{\bsnm{Egorov},~\bfnm{Alexei~V.}\binits{A.~V.}},
+  \bauthor{\bsnm{Li},~\bfnm{Haitao}\binits{H.}} \AND
+  \bauthor{\bsnm{Xu},~\bfnm{Yuewu}\binits{Y.}}
+(\byear{2003}).
+\btitle{Maximum likelihood estimation of time-inhomogeneous diffusions}.
+\bjournal{Journal of Econometrics}
+\bvolume{114}
+\bpages{107--139}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Elkantassi, Kalligiannaki and
+  Tempone}{2017}]{elkate}
+\begin{bincollection}[author]
+\bauthor{\bsnm{Elkantassi},~\bfnm{Soumaya}\binits{S.}},
+  \bauthor{\bsnm{Kalligiannaki},~\bfnm{Evangelia}\binits{E.}} \AND
+  \bauthor{\bsnm{Tempone},~\bfnm{Ra\'ul}\binits{R.}}
+(\byear{2017}).
+\btitle{Inference and {S}ensitivity in {S}tochastic {W}ind {P}ower {F}orecast
+  {M}odels}.
+In \bbooktitle{2nd {ECCOMAS} {T}hematic {C}onference on {U}ncertainty
+  {Q}uantification in {C}omputational {S}ciences and {E}ngineering}
+(\beditor{\bfnm{M.}\binits{M.}~\bsnm{Papadrakakis}},
+  \beditor{\bfnm{V.}\binits{V.}~\bsnm{Papadopoulos}} \AND
+  \beditor{\bfnm{G.}\binits{G.}~\bsnm{Stefanou}}, eds.)
+\bpages{381--393}.
+\bpublisher{Eccomas Proceedia UNCECOMP 2017}.
+\bdoi{10.7712/120217.5377.16899}
+\end{bincollection}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Forman and Sorensen}{2008}]{foso}
+\begin{barticle}[author]
+\bauthor{\bsnm{Forman},~\bfnm{Julie~Lyng}\binits{J.~L.}} \AND
+  \bauthor{\bsnm{Sorensen},~\bfnm{Michael}\binits{M.}}
+(\byear{2008}).
+\btitle{The {P}earson Diffusions: A Class of Statistically Tractable Diffusion
+  Processes}.
+\bjournal{Scandinavian Journal of Statistics}
+\bvolume{35}
+\bpages{438--465}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Giebel et~al.}{2011}]{gieb}
+\begin{btechreport}[author]
+\bauthor{\bsnm{Giebel},~\bfnm{Gregor}\binits{G.}},
+  \bauthor{\bsnm{Brownsword},~\bfnm{Richard}\binits{R.}},
+  \bauthor{\bsnm{Kariniotakis},~\bfnm{George~N.}\binits{G.~N.}},
+  \bauthor{\bsnm{Denhard},~\bfnm{Michael}\binits{M.}} \AND
+  \bauthor{\bsnm{Draxl},~\bfnm{Caroline}\binits{C.}}
+(\byear{2011}).
+\btitle{The {S}tate of the {A}rt in {S}hort-{T}erm {P}rediction of {W}ind
+  {P}ower. A {L}iterature {O}verview}
+\btype{Technical Report} No. \bnumber{ANEMOS.plus and SafeWind projects}.
+\bdoi{10.13140/RG.2.1.2581.4485}
+\end{btechreport}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Iacus}{2008}]{iacus1}
+\begin{bbook}[author]
+\bauthor{\bsnm{Iacus},~\bfnm{Stefano~M.}\binits{S.~M.}}
+(\byear{2008}).
+\btitle{Simulation and {I}nference for {S}tochastic {D}ifferential {E}quations:
+  {W}ith {R} {E}xamples}.
+\bseries{Springer Series in Statistics}.
+\bpublisher{Springer}, \baddress{New York}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{IRENA}{2018}]{irena2}
+\begin{bbook}[author]
+\bauthor{\bsnm{IRENA}}
+(\byear{2018}).
+\btitle{Uruguay $P$ower $S$ystem $F$lexibility assessment: IRENA $F$lex$T$ool
+  $C$ase $S$tudy}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{IRENA}{2019}]{irena}
+\begin{bbook}[author]
+\bauthor{\bsnm{IRENA}}
+(\byear{2019}).
+\btitle{Innovation landscape for a renewable-powered future: Solutions to
+  integrate variable renewables}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Iversen et~al.}{2014}]{immm}
+\begin{barticle}[author]
+\bauthor{\bsnm{Iversen},~\bfnm{Emil~B.}\binits{E.~B.}},
+  \bauthor{\bsnm{Morales},~\bfnm{Juan~M.}\binits{J.~M.}},
+  \bauthor{\bsnm{M{\o}ller},~\bfnm{Jan~Kloppenborg}\binits{J.~K.}} \AND
+  \bauthor{\bsnm{Madsen},~\bfnm{Henrik}\binits{H.}}
+(\byear{2014}).
+\btitle{Probabilistic forecasts of solar irradiance using stochastic
+  differential equations}.
+\bjournal{Environmetrics}
+\bvolume{25}
+\bpages{152--164}.
+\bdoi{10.1002/10.1002/env.2267}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Karatzas and Shreve}{1998}]{KarShr}
+\begin{bincollection}[author]
+\bauthor{\bsnm{Karatzas},~\bfnm{Ioannis}\binits{I.}} \AND
+  \bauthor{\bsnm{Shreve},~\bfnm{Steven~E.}\binits{S.~E.}}
+(\byear{1998}).
+\btitle{Brownian {M}otion}.
+In \bbooktitle{Brownian {M}otion and {S}tochastic {C}alculus}.
+\bedition{second edition} ed.
+\bseries{Graduate Texts in Mathematics}
+\bvolume{113}
+\bpages{47--127}.
+\bpublisher{Springer}.
+\end{bincollection}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Lamperti}{1964}]{lamp}
+\begin{barticle}[author]
+\bauthor{\bsnm{Lamperti},~\bfnm{John}\binits{J.}}
+(\byear{1964}).
+\btitle{A simple construction of certain diffusion processes}.
+\bjournal{J. Math. Kyoto Univ.}
+\bvolume{4}
+\bpages{161--170}.
+\bdoi{10.1215/kjm/1250524711}
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Leonenko and Phillips}{2012}]{leph}
+\begin{barticle}[author]
+\bauthor{\bsnm{Leonenko},~\bfnm{G.~M.}\binits{G.~M.}} \AND
+  \bauthor{\bsnm{Phillips},~\bfnm{T.~N.}\binits{T.~N.}}
+(\byear{2012}).
+\btitle{High-order approximation of {P}earson diffusions processes}.
+\bjournal{Journal of Computational and Applied Mathematics}
+\bvolume{236}
+\bpages{2853--2868}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{M{\o}ller and Madsen}{2010}]{moma}
+\begin{btechreport}[author]
+\bauthor{\bsnm{M{\o}ller},~\bfnm{Jan~Kloppenborg}\binits{J.~K.}} \AND
+  \bauthor{\bsnm{Madsen},~\bfnm{Henrik}\binits{H.}}
+(\byear{2010}).
+\btitle{From {S}tate {D}ependent {D}iffusion to {C}onstant {D}iffusion in
+  {S}tochastic {D}ifferential {E}quations by the {L}amperti {T}ransform}
+\btype{Technical Report} No. \bnumber{IMM-Technical Report-2010-16},
+\bpublisher{Technical University of Denmark, DTU Informatics, Building 321},
+\baddress{Kgs. Lyngby, Denmark}.
+\end{btechreport}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{M{\o}ller, Zugno and Madsen}{2016}]{mozuma}
+\begin{barticle}[author]
+\bauthor{\bsnm{M{\o}ller},~\bfnm{Jan~Kloppenborg}\binits{J.~K.}},
+  \bauthor{\bsnm{Zugno},~\bfnm{Marco}\binits{M.}} \AND
+  \bauthor{\bsnm{Madsen},~\bfnm{Henrik}\binits{H.}}
+(\byear{2016}).
+\btitle{Probabilistic {F}orecasts of {W}ind {P}ower {G}eneration by
+  {S}tochastic {D}ifferential {E}quation {M}odels}.
+\bjournal{Journal of Forecasting}
+\bvolume{35}
+\bpages{189--205}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Panik}{2017}]{pani}
+\begin{bbook}[author]
+\bauthor{\bsnm{Panik},~\bfnm{Michael~J.}\binits{M.~J.}}
+(\byear{2017}).
+\btitle{Stochastic differential equations : an introduction with applications
+  in population dynamics modeling}.
+\bpublisher{John Wiley \& Sons, Inc.}, \baddress{Hoboken, NJ}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Preston and Wood}{2012}]{prewo}
+\begin{barticle}[author]
+\bauthor{\bsnm{Preston},~\bfnm{S.~P.}\binits{S.~P.}} \AND
+  \bauthor{\bsnm{Wood},~\bfnm{Andrew T.~A.}\binits{A.~T.~A.}}
+(\byear{2012}).
+\btitle{Approximation of transition densities of stochastic differential
+  equations by saddlepoint methods applied to small-time Ito--Taylor
+  sample-path expansions}.
+\bjournal{Statistics and Computing}
+\bvolume{22}
+\bpages{205--217}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{REN21}{2019}]{ren21}
+\begin{bbook}[author]
+\bauthor{\bsnm{REN21}}
+(\byear{2019}).
+\btitle{Renewables 2019 {G}lobal {S}tatus {R}eport}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{S{\"a}rkk{\"a} and Solin}{2019}]{saso}
+\begin{bbook}[author]
+\bauthor{\bsnm{S{\"a}rkk{\"a}},~\bfnm{Simo}\binits{S.}} \AND
+  \bauthor{\bsnm{Solin},~\bfnm{Arno}\binits{A.}}
+(\byear{2019}).
+\btitle{Applied {S}tochastic {D}ifferential {E}quations}.
+\bpublisher{Cambridge University Press}.
+\end{bbook}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Schicker et~al.}{2017}]{schicker2017short}
+\begin{barticle}[author]
+\bauthor{\bsnm{Schicker},~\bfnm{Irene}\binits{I.}},
+  \bauthor{\bsnm{Papazek},~\bfnm{Petrina}\binits{P.}},
+  \bauthor{\bsnm{Kann},~\bfnm{Alexander}\binits{A.}} \AND
+  \bauthor{\bsnm{Wang},~\bfnm{Yong}\binits{Y.}}
+(\byear{2017}).
+\btitle{Short-range wind speed predictions for complex terrain using an
+  interval-artificial neural network}.
+\bjournal{Energy Procedia}
+\bvolume{125}
+\bpages{199--206}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Shoji and Ozaki}{1998}]{shoz}
+\begin{barticle}[author]
+\bauthor{\bsnm{Shoji},~\bfnm{Isao}\binits{I.}} \AND
+  \bauthor{\bsnm{Ozaki},~\bfnm{Tohru}\binits{T.}}
+(\byear{1998}).
+\btitle{Estimation for nonlinear stochastic differential equations by a local
+  linearization method}.
+\bjournal{Stochastic Analysis and Applications}
+\bvolume{16}
+\bpages{733--752}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{S{\o}rensen}{2012}]{Sor}
+\begin{bincollection}[author]
+\bauthor{\bsnm{S{\o}rensen},~\bfnm{Michael}\binits{M.}}
+(\byear{2012}).
+\btitle{Estimating functions for diffusion-type processes}.
+In \bbooktitle{Statistical {M}ethods for {S}tochastic {D}ifferential
+  {E}quations}.
+\bseries{Monographs on Statistics and Applied Probability}
+\bvolume{124}
+\bpages{1--107}.
+\bpublisher{Chapman \& Hall/CRC}.
+\end{bincollection}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Sultana et~al.}{2017}]{sultana2017review}
+\begin{barticle}[author]
+\bauthor{\bsnm{Sultana},~\bfnm{W.~Razia}\binits{W.~R.}},
+  \bauthor{\bsnm{Sahoo},~\bfnm{Sarat~Kumar}\binits{S.~K.}},
+  \bauthor{\bsnm{Sukchai},~\bfnm{Sukruedee}\binits{S.}},
+  \bauthor{\bsnm{Yamuna},~\bfnm{S.}\binits{S.}} \AND
+  \bauthor{\bsnm{Venkatesh},~\bfnm{D.}\binits{D.}}
+(\byear{2017}).
+\btitle{A review on state of art development of model predictive control for
+  renewable energy applications}.
+\bjournal{Renewable and Sustainable Energy Reviews}
+\bvolume{76}
+\bpages{391--406}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Tsitsiklis and
+  Xu}{2015}]{tsitsiklis2015pricing}
+\begin{barticle}[author]
+\bauthor{\bsnm{Tsitsiklis},~\bfnm{John~N}\binits{J.~N.}} \AND
+  \bauthor{\bsnm{Xu},~\bfnm{Yunjian}\binits{Y.}}
+(\byear{2015}).
+\btitle{Pricing of fluctuations in electricity markets}.
+\bjournal{European Journal of Operational Research}
+\bvolume{246}
+\bpages{199--208}.
+\end{barticle}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Val{\'e}ry and Gouri{\'e}roux}{2011}]{vago}
+\begin{bmisc}[author]
+\bauthor{\bsnm{Val{\'e}ry},~\bfnm{Pascale}\binits{P.}} \AND
+  \bauthor{\bsnm{Gouri{\'e}roux},~\bfnm{Christian}\binits{C.}}
+(\byear{2011}).
+\btitle{A quasi-likelihood approach based on eigenfunctions for a
+  bounded-valued Jacobi process (Working Paper).}
+\bhowpublished{Available at
+  \url{https://www.researchgate.net/publication/251252253}}.
+\end{bmisc}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{}{}]{IEA}
+\begin{bmisc}[author]
+\btitle{{IEA} Press release}.
+\bhowpublished{\url{https://www.iea.org/news/global-energy-demand-to-plunge-this-year-as-a-result-of-the-biggest-shock-since-the-second-world-war}}.
+\bnote{Accessed: 2020-05-30}.
+\end{bmisc}
+\endbibitem
+
+\bibitem[\protect\citeauthoryear{Zhou et~al.}{2013}]{zhbo}
+\begin{barticle}[author]
+\bauthor{\bsnm{Zhou},~\bfnm{Z.}\binits{Z.}},
+  \bauthor{\bsnm{Botterud},~\bfnm{A.}\binits{A.}},
+  \bauthor{\bsnm{Wang},~\bfnm{J.}\binits{J.}},
+  \bauthor{\bsnm{Bessa},~\bfnm{R.~J.}\binits{R.~J.}},
+  \bauthor{\bsnm{Keko},~\bfnm{H.}\binits{H.}},
+  \bauthor{\bsnm{Sumaili},~\bfnm{J.}\binits{J.}} \AND
+  \bauthor{\bsnm{Miranda},~\bfnm{V.}\binits{V.}}
+(\byear{2013}).
+\btitle{Application of probabilistic wind power forecasting in electricity
+  markets}.
+\bjournal{Wind Energy}
+\bvolume{16}
+\bpages{321--338}.
+\bdoi{10.1002/we.1496}
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}

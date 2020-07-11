@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: aoas-template.aux
+The style file: imsart-nameyear.bst.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: aoas-template.bib.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--to sort, need author, organization, or key in IEA
+You've used 30 entries,
+            5204 wiz_defined-function locations,
+            1042 strings with 11309 characters,
+and the built_in function-call counts, 140655 in all, are:
+= -- 23561
+> -- 437
+< -- 46
++ -- 9407
+- -- 157
+* -- 7042
+:= -- 22659
+add.period$ -- 92
+call.type$ -- 30
+change.case$ -- 167
+chr.to.int$ -- 30
+cite$ -- 32
+duplicate$ -- 994
+empty$ -- 5782
+format.name$ -- 570
+if$ -- 34671
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 328
+num.names$ -- 139
+pop$ -- 699
+preamble$ -- 1
+purify$ -- 106
+quote$ -- 0
+skip$ -- 13963
+stack$ -- 0
+substring$ -- 17300
+swap$ -- 336
+text.length$ -- 266
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 741
+warning$ -- 1
+while$ -- 409
+width$ -- 0
+write$ -- 687
+(There was 1 warning)
