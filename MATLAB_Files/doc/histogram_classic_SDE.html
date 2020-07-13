@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of histogram_classic_SDE</title>
+  <meta name="keywords" content="histogram_classic_SDE">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; histogram_classic_SDE.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>histogram_classic_SDE
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="sde_FE.html" class="code" title="function sim_path_f = sde_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot) % 02/02/2020 18:28">sde_FE</a>	SDE for X_t.</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="histogram_classic_SDE.m">histogram_classic_SDE.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 epsilon                = 0.020;
+0006 dataKind               = <span class="string">'comparable'</span>;
+0007 dataSet                = <span class="string">'MTLOG'</span>;
+0008 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
+0009 whatToDo               = <span class="string">'Optimal'</span>; 
+0010 <span class="comment">% whatToDo               = 'Lamperti_Optimal';</span>
+0011 <span class="comment">% whatToDo               = 'Initial_Guess';</span>
+0012 
+0013 <span class="comment">% PARAMETERS:</span>
+0014 <span class="comment">% set(0,'defaultAxesFontSize',18);</span>
+0015 save     = 0;
+0016 delta    = 13; <span class="comment">% The time is delta*10 minutes.</span>
+0017 
+0018 <span class="keyword">if</span>  strcmp(whatToDo,<span class="string">'Optimal'</span>)
+0019     theta_0 = 1.930;
+0020     alpha   = 0.050;
+0021 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'Lamperti_Optimal'</span>)
+0022     theta_0 = 2.450;
+0023     alpha   = 0.097/2.450;
+0024     <span class="comment">% V1:</span>
+0025     theta_0 = 2.8150; alpha = 0.1276;
+0026     <span class="comment">% V2:</span>
+0027     theta_0 = 1.8708; alpha = 0.0431;
+0028 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'Initial_Guess'</span>)
+0029     theta_0 = 1.6290;
+0030     alpha   = 0.06;
+0031 <span class="keyword">else</span>
+0032     error(<span class="string">'Wrong whatToDo script!'</span>);
+0033 <span class="keyword">end</span>
+0034 
+0035 d  = Table_Testing_Complete.Date;
+0036 p  = Table_Testing_Complete.Forecast;
+0037 t  = Table_Testing_Complete.Time(1,:);
+0038 x  = Table_Testing_Complete.Real_ADME;
+0039 v  = Table_Testing_Complete.Error;
+0040 dt = t(2); <span class="comment">% This is the default dt. I will choose a smaller one.</span>
+0041 <span class="comment">% If the dt is not small enough, we always scape from [0 1].</span>
+0042 dt = dt/1;
+0043 
+0044 minus_t = linspace(-delta*dt,-dt,delta);
+0045 exten_t = [minus_t,t];
+0046 
+0047 total_x_s_trans = [];
+0048 total_v_s_trans = [];
+0049 
+0050 <span class="keyword">for</span> l = 1:1
+0051     <span class="keyword">for</span> i = 1 : height(Table_Testing_Complete)
+0052 
+0053         X = x(i,:);
+0054         P = p(i,:);
+0055         <span class="comment">% All of them show similar results:</span>
+0056         P_exten_linear = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'linear'</span>,<span class="string">'extrap'</span>);
+0057         P_exten_pchip  = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'pchip'</span>,<span class="string">'extrap'</span>);
+0058         P_exten_spline = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'spline'</span>,<span class="string">'extrap'</span>);
+0059         P_exten_makima = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'makima'</span>,<span class="string">'extrap'</span>);
+0060 
+0061         initial_error_V     = X(1)-P(1);
+0062         initial_error_slope = initial_error_V / (delta*dt);
+0063         <span class="keyword">for</span> j = 1:delta
+0064             X_exten(j) = initial_error_slope*(j-1)*dt;
+0065         <span class="keyword">end</span>
+0066 
+0067         P       = [P_exten_linear,P]; <span class="comment">% We extend the forecast.</span>
+0068         <span class="keyword">for</span> j = 1:length(P)
+0069             P(j) = max(P(j),epsilon);
+0070             P(j) = min(P(j),1-epsilon);
+0071         <span class="keyword">end</span>
+0072         P_dot   = (-P(1:end-1) + P(2:end)) / dt; <span class="comment">% This starts at 1 end ends at (end - 1).</span>
+0073         <span class="keyword">for</span> j = 1:length(P)-1
+0074             Theta_t(j) = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, P(j), P_dot(j));
+0075         <span class="keyword">end</span>
+0076 
+0077         <span class="comment">% We assume that the forecast is perfect *delta* hours before it starts.</span>
+0078         sim_path(1,1) = P(1);
+0079 
+0080         <span class="keyword">for</span> j = 1 : length(exten_t)-1
+0081             sim_path(j+1) = <a href="sde_FE.html" class="code" title="function sim_path_f = sde_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot) % 02/02/2020 18:28">sde_FE</a>(sim_path(j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j));
+0082             <span class="keyword">if</span> sim_path(j+1) &gt; 1
+0083                 sim_path(j+1) = 1;
+0084             <span class="keyword">elseif</span> sim_path(j+1) &lt; 0
+0085                 sim_path(j+1) = 0;
+0086             <span class="keyword">end</span>
+0087         <span class="keyword">end</span>
+0088 
+0089         X     = [X_exten,X];
+0090         V     = X - P;
+0091         V_sim = sim_path - P;
+0092         
+0093         x_trans(i,:)   = X(delta+2:end) - X(delta+1:end-1);
+0094         x_s_trans(i,:) = sim_path(delta+2:end) - sim_path(delta+1:end-1);
+0095         v_trans(i,:)   = V(delta+2:end) - V(delta+1:end-1);
+0096         v_s_trans(i,:) = V_sim(delta+2:end) - V_sim(delta+1:end-1);
+0097 
+0098     <span class="keyword">end</span>
+0099     
+0100     total_x_s_trans = [total_x_s_trans,x_s_trans];
+0101     total_v_s_trans = [total_v_s_trans,v_s_trans];
+0102 
+0103 <span class="keyword">end</span>
+0104 
+0105 <span class="comment">% figure('Renderer', 'painters', 'Position', [10 10 1500 900]);</span>
+0106 figure;
+0107 h1 = histogram(v_trans);
+0108 hold on; grid minor; title(<span class="string">'Error (Data and Simulated) Transitions'</span>);
+0109 h2 = histogram(total_v_s_trans);
+0110 h1.Normalization = <span class="string">'pdf'</span>;
+0111 h2.Normalization = <span class="string">'pdf'</span>;
+0112 <span class="comment">% h1.FaceAlpha = 1;</span>
+0113 h2.FaceAlpha = 0;
+0114 h2.FaceColor = [0 0 0];
+0115 h2.LineWidth = 2;
+0116 h2.EdgeColor = <span class="string">'r'</span>;
+0117 xlabel(<span class="string">'Value of Transition'</span>);
+0118 ylabel(<span class="string">'Probability'</span>);
+0119 xlim([-0.1 0.1]);
+0120 legend(<span class="string">'Error Transitions Histogram'</span>,<span class="string">'Simulated Error Transitions Histogram'</span>);
+0121 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,12);
+0122 saveas(gcf,[pwd <span class="string">'/Results/histograms/classic/'</span>,whatToDo],<span class="string">'epsc'</span>);
+0123 
+0124 <span class="comment">%% With no Delta:</span>
+0125 
+0126 close all;
+0127 clear all;
+0128 clc;
+0129 
+0130 epsilon                = 0.020;
+0131 dataKind               = <span class="string">'comparable'</span>;
+0132 dataSet                = <span class="string">'MTLOG'</span>;
+0133 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
+0134 whatToDo               = <span class="string">'Optimal'</span>; 
+0135 <span class="comment">% whatToDo               = 'Lamperti_Optimal';</span>
+0136 <span class="comment">% whatToDo               = 'Initial_Guess';</span>
+0137 
+0138 <span class="comment">% PARAMETERS:</span>
+0139 <span class="comment">% set(0,'defaultAxesFontSize',18);</span>
+0140 save     = 0;
+0141 numPaths = 1;
+0142 
+0143 <span class="keyword">if</span>  strcmp(whatToDo,<span class="string">'Optimal'</span>)
+0144     theta_0 = 1.930;
+0145     alpha   = 0.050;
+0146 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'Lamperti_Optimal'</span>)
+0147 
+0148 <span class="comment">% V1:</span>
+0149 <span class="comment">%     theta_0 = 2.8150; alpha = 0.1276;</span>
+0150 <span class="comment">% V2:</span>
+0151     theta_0 = 1.8708; alpha = 0.0431;
+0152 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'Initial_Guess'</span>)
+0153     theta_0 = 1.6290;
+0154     alpha   = 0.06;
+0155 <span class="keyword">else</span>
+0156     error(<span class="string">'Wrong whatToDo script!'</span>);
+0157 <span class="keyword">end</span>
+0158 
+0159 d  = Table_Testing_Complete.Date;
+0160 p  = Table_Testing_Complete.Forecast;
+0161 t  = Table_Testing_Complete.Time(1,:);
+0162 x  = Table_Testing_Complete.Real_ADME;
+0163 v  = Table_Testing_Complete.Error;
+0164 dt = t(2); <span class="comment">% This is the default dt. I will choose a smaller one.</span>
+0165 <span class="comment">% If the dt is not small enough, we always scape from [0 1].</span>
+0166 dt = dt/1;
+0167 
+0168 total_x_s_trans = [];
+0169 total_v_s_trans = [];
+0170 
+0171 <span class="keyword">for</span> l = 1:5
+0172     <span class="keyword">for</span> i = 1 : height(Table_Testing_Complete)
+0173 
+0174         X = x(i,:);
+0175         P = p(i,:);
+0176 
+0177         <span class="keyword">for</span> j = 1:length(P)
+0178             P(j) = max(P(j),epsilon);
+0179             P(j) = min(P(j),1-epsilon);
+0180         <span class="keyword">end</span>
+0181         P_dot   = (-P(1:end-1) + P(2:end)) / dt; <span class="comment">% This starts at 1 end ends at (end - 1).</span>
+0182         <span class="keyword">for</span> j = 1:length(P)-1
+0183             Theta_t(j) = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, P(j), P_dot(j));
+0184         <span class="keyword">end</span>
+0185 
+0186         <span class="comment">% We assume that the forecast is perfect *delta* hours before it starts.</span>
+0187         sim_path(1,1) = X(1);
+0188 
+0189         <span class="keyword">for</span> j = 1 : length(t)-1
+0190             sim_path(j+1) = <a href="sde_FE.html" class="code" title="function sim_path_f = sde_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot) % 02/02/2020 18:28">sde_FE</a>(sim_path(j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j));
+0191             <span class="keyword">if</span> sim_path(j+1) &gt; 1
+0192                 sim_path(j+1) = 1;
+0193             <span class="keyword">elseif</span> sim_path(j+1) &lt; 0
+0194                 sim_path(j+1) = 0;
+0195             <span class="keyword">end</span>
+0196         <span class="keyword">end</span>
+0197 
+0198         V     = X - P;
+0199         V_sim = sim_path - P;
+0200         
+0201         x_trans(i,:)   = X(2:end) - X(1:end-1);
+0202         x_s_trans(i,:) = sim_path(2:end) - sim_path(1:end-1);
+0203         v_trans(i,:)   = V(2:end) - V(1:end-1);
+0204         v_s_trans(i,:) = V_sim(2:end) - V_sim(1:end-1);
+0205 
+0206     <span class="keyword">end</span>
+0207     
+0208     total_x_s_trans = [total_x_s_trans,x_s_trans];
+0209     total_v_s_trans = [total_v_s_trans,v_s_trans];
+0210     
+0211 <span class="keyword">end</span>
+0212 
+0213 <span class="comment">% figure('Renderer', 'painters', 'Position', [10 10 1500 900]);</span>
+0214 figure;
+0215 h1 = histogram(v_trans);
+0216 hold on; grid minor; title(<span class="string">'Error (Data and Simulated) Transitions'</span>);
+0217 h2 = histogram(total_v_s_trans);
+0218 h1.Normalization = <span class="string">'pdf'</span>;
+0219 h2.Normalization = <span class="string">'pdf'</span>;
+0220 <span class="comment">% h1.FaceAlpha = 1;</span>
+0221 h2.FaceAlpha = 0;
+0222 h2.FaceColor = [0 0 0];
+0223 h2.LineWidth = 1;
+0224 h2.EdgeColor = <span class="string">'r'</span>;
+0225 xlabel(<span class="string">'Value of Transition'</span>);
+0226 ylabel(<span class="string">'Probability'</span>);
+0227 xlim([-0.1 0.1]);
+0228 <span class="keyword">if</span> strcmp(whatToDo,<span class="string">'Optimal'</span>)
+0229     legend(<span class="string">'Error Transitions Histogram'</span>,<span class="keyword">...</span>
+0230         <span class="string">'Simulated Error Transitions Histogram (using $(\theta_0^V,\alpha^V)$)'</span>,<span class="keyword">...</span>
+0231         <span class="string">'location'</span>,<span class="string">'southoutside'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0232 <span class="keyword">elseif</span> strcmp(whatToDo,<span class="string">'Lamperti_Optimal'</span>)
+0233     legend(<span class="string">'Error Transitions Histogram'</span>,<span class="keyword">...</span>
+0234         <span class="string">'Simulated Error Transitions Histogram (using $(\theta_0^Z,\alpha^Z)$)'</span>,<span class="keyword">...</span>
+0235         <span class="string">'location'</span>,<span class="string">'southoutside'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0236 <span class="keyword">end</span>
+0237 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,12);
+0238 saveas(gcf,[pwd <span class="string">'/Results/histograms/classic_noDelta/'</span>,whatToDo],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of load_data</title>
+  <meta name="keywords" content="load_data">
+  <meta name="description" content="19/04/2020 15:45">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; load_data.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>load_data
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>19/04/2020 15:45</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> 19/04/2020 15:45
+ dataSet can be AWSTP, MTLOG or UTEP5.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="autocorrelation_test.html" class="code" title="">autocorrelation_test</a>	</li><li><a href="autocorrelation_test_Lamperti.html" class="code" title="">autocorrelation_test_Lamperti</a>	</li><li><a href="cross_correlation_test.html" class="code" title="">cross_correlation_test</a>	</li><li><a href="cross_correlation_test_Lamperti.html" class="code" title="">cross_correlation_test_Lamperti</a>	</li><li><a href="errorVsForecast.html" class="code" title="">errorVsForecast</a>	</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="testingFile.html" class="code" title="">testingFile</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="load_data.m">load_data.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)</a>
+0002     
+0003     <span class="comment">% 19/04/2020 15:45</span>
+0004     <span class="comment">% dataSet can be AWSTP, MTLOG or UTEP5.</span>
+0005     load([<span class="string">'../../Python/Represas_Data_2/Wind_Data/'</span>,dataSet,<span class="string">'_0100_and_Real_24h_Training_Data.mat'</span>]);
+0006     load([<span class="string">'../../Python/Represas_Data_2/Wind_Data/'</span>,dataSet,<span class="string">'_0100_and_Real_24h_Testing_Data.mat'</span>]);
+0007     load([<span class="string">'../../Python/Represas_Data_2/Wind_Data/'</span>,dataSet,<span class="string">'_0100_and_Real_24h_Complete_Data.mat'</span>]);
+0008 
+0009 <span class="comment">%     Date              = Table_Training_Complete.Date;</span>
+0010 <span class="comment">%     Time              = Table_Training_Complete.Time;</span>
+0011 <span class="comment">%     Forecast          = Table_Training_Complete.Forecast;</span>
+0012 <span class="comment">%     Forecast_Dot      = Table_Training_Complete.Forecast_Dot;</span>
+0013 <span class="comment">%     real_ADME         = Table_Training_Complete.Real_ADME;</span>
+0014 <span class="comment">%     Error             = Table_Training_Complete.Error;</span>
+0015 <span class="comment">%     Error_Transitions = Table_Training_Complete.Error_Transitions;</span>
+0016 <span class="comment">%     Lamparti_Data     = Table_Training_Complete.Error_Lamp;</span>
+0017 <span class="comment">%     Lamparti_Tran     = Table_Training_Complete.Error_Lamp_Transitions;</span>
+0018 
+0019 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of path_simulator_Lamperti</title>
+  <meta name="keywords" content="path_simulator_Lamperti">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; path_simulator_Lamperti.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>path_simulator_Lamperti
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>	ciplot(lower,upper)</li><li><a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>	29/03/2020 17:49</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="sde_Lamperti_FE.html" class="code" title="function sim_path_f = sde_Lamperti_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,candidate)">sde_Lamperti_FE</a>	03/04/2020 20:37</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="path_simulator_Lamperti.m">path_simulator_Lamperti.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet  = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0008 epsilon  = 0.018;
+0009 dataKind = <span class="string">'comparable'</span>;
+0010 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
+0011 whatToDo               = <span class="string">'lamperti_clasic_optimal'</span>;
+0012 <span class="comment">% whatToDo               = 'lamperti_clasic_IG';</span>
+0013 <span class="comment">% whatToDo               = 'lamperti_optimal';</span>
+0014 
+0015 <span class="comment">% PARAMETERS:</span>
+0016 <span class="comment">% set(0,'defaultAxesFontSize',18);</span>
+0017 quantil  = 1;
+0018 save     = 1;
+0019 delta    = 21; <span class="comment">% The time is delta*10 minutes.</span>
+0020 xlimit   = 1; <span class="comment">% If this in 1, the plots start at time 0. Otherwise, at -delta.</span>
+0021 
+0022 <span class="keyword">if</span> quantil
+0023     numPaths = 5000;
+0024 <span class="keyword">else</span>
+0025     numPaths = 5;
+0026 <span class="keyword">end</span>
+0027 
+0028 <span class="keyword">if</span>  strcmp(whatToDo,<span class="string">'lamperti_clasic_optimal'</span>)
+0029     theta_0 = 1.180;
+0030     alpha   = 0.070;
+0031 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'lamperti_clasic_IG'</span>)
+0032     theta_0 = 1.6290;
+0033     alpha   = 0.06;
+0034 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'lamperti_optimal'</span>)
+0035     theta_0 = 2.200;
+0036     alpha   = 0.038;
+0037 <span class="keyword">else</span>
+0038     error(<span class="string">'Wrong whatToDo script!'</span>);
+0039 <span class="keyword">end</span>
+0040 
+0041 Z_inf = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,0,0,2);
+0042 Z_sup = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,1,0,2);
+0043 Z_100 = (Z_sup-Z_inf)/100;
+0044 
+0045 d  = Table_Testing_Complete.Date;
+0046 p  = Table_Testing_Complete.Forecast;
+0047 t  = Table_Testing_Complete.Time(1,:);
+0048 x  = Table_Testing_Complete.Real_ADME;
+0049 v  = Table_Testing_Complete.Error;
+0050 dt = t(2); <span class="comment">% This is the default dt. I will choose a smaller one.</span>
+0051 <span class="comment">% If the dt is not small enough, we always scape from [0 1].</span>
+0052 dt = dt/1;
+0053 
+0054 figure(10);
+0055 
+0056 minus_t = linspace(-delta*dt,-dt,delta);
+0057 exten_t = [minus_t,t];
+0058 
+0059 <span class="keyword">for</span> i = 1 : height(Table_Testing_Complete)
+0060 
+0061     X   = x(i,:);
+0062     P   = p(i,:);
+0063     Z   = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,X-P,P,2);
+0064     
+0065     P_exten_linear = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'linear'</span>,<span class="string">'extrap'</span>);
+0066     P              = [P_exten_linear,P]; <span class="comment">% We extend the forecast.</span>
+0067     
+0068     <span class="keyword">for</span> j = 1:length(P)
+0069         P(j) = max(P(j),epsilon);
+0070         P(j) = min(P(j),1-epsilon);
+0071     <span class="keyword">end</span>
+0072     P_dot   = (-P(1:end-1) + P(2:end)) / dt; <span class="comment">% This starts at 1 end ends at (end - 1).</span>
+0073     <span class="keyword">for</span> j = 1:length(P)-1
+0074         Theta_t(j) = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, P(j), P_dot(j));
+0075     <span class="keyword">end</span>
+0076     Z_P = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,P,0,2);
+0077     <span class="comment">% Z_P is the Lamperti transform of the forecast.</span>
+0078     
+0079     <span class="comment">% We assume that the forecast is perfect one hour before it starts.</span>
+0080     sim_path(1:numPaths,1) = Z_P(1);
+0081 
+0082     <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,10); clf(10);
+0083     J = plot(exten_t,Z_P); J.LineWidth = 2;
+0084     hold on;
+0085     J = plot(t,Z); J.LineWidth = 2;
+0086     ylim([Z_inf Z_sup]);
+0087     xlabel(<span class="string">'Time'</span>), ylabel(<span class="string">'Lamperti Power'</span>);
+0088     date = d(i);
+0089     title(date{1});
+0090     
+0091     <span class="keyword">for</span> k = 1:numPaths
+0092         <span class="keyword">for</span> j = 1 : length(exten_t)-1
+0093             
+0094             sim_path(k,j+1) = <a href="sde_Lamperti_FE.html" class="code" title="function sim_path_f = sde_Lamperti_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,candidate)">sde_Lamperti_FE</a>(sim_path(k,j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j),2);
+0095             
+0096 <span class="comment">%             if sim_path(k,j+1) &gt;= Z_sup - Z_100 * 5</span>
+0097 <span class="comment">%                 sim_path(k,j+1) = sim_path(k,j);</span>
+0098 <span class="comment">%             elseif sim_path(k,j+1) &lt;= Z_inf + Z_100 * 5</span>
+0099 <span class="comment">%                 sim_path(k,j+1) = sim_path(k,j);</span>
+0100 <span class="comment">%             end</span>
+0101         <span class="keyword">end</span>
+0102         
+0103     <span class="keyword">end</span>
+0104     
+0105     <span class="keyword">if</span> quantil == 1
+0106         
+0107         <span class="keyword">for</span> k = 1:length(sim_path(1,:))
+0108             quant(k,:) = quantile(sim_path(:,k),[0.01 0.05 0.25 0.75 0.95 0.99]);
+0109             men(k)     = mean(sim_path(:,k));
+0110         <span class="keyword">end</span>
+0111         <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,10); clf(10); hold on;
+0112         <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,1),quant(:,6),exten_t,[153 255 153]/255)
+0113         <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,2),quant(:,5),exten_t,[153 255 255]/255)
+0114         <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,3),quant(:,4),exten_t,[153 153 255]/255)
+0115         J = plot(exten_t,Z_P,<span class="string">'k'</span>); J.LineWidth = 2;
+0116         J = plot(t,Z,<span class="string">'b'</span>); J.LineWidth = 2;
+0117         legend({<span class="string">'99% confidence interval'</span>, <span class="string">'90% confidence interval'</span>, <span class="string">'50% confidence interval'</span>,<span class="keyword">...</span>
+0118             <span class="string">'Forecast'</span>, <span class="string">'Real production'</span>});
+0119         <span class="keyword">if</span> xlimit
+0120             xlim([0 max(exten_t)]);
+0121         <span class="keyword">else</span>
+0122             xlim([min(exten_t) max(exten_t)]);
+0123         <span class="keyword">end</span>
+0124         ylim([0 1]); grid minor;
+0125         xlabel(<span class="string">'Time'</span>), ylabel(<span class="string">'Lamperti Power'</span>); box;
+0126         date = d(i);
+0127         ylim([Z_inf Z_sup]);
+0128         title(date{1});
+0129         <span class="keyword">if</span> save == 1
+0130             saveas(gcf,[pwd <span class="string">'/Results/bands_testing_days/'</span>,whatToDo,<span class="string">'/'</span>,num2str(i)],<span class="string">'epsc'</span>);
+0131         <span class="keyword">end</span>
+0132         
+0133     <span class="keyword">elseif</span> quantil == 0
+0134         
+0135         plot(exten_t,sim_path,<span class="string">'r'</span>);
+0136         legend(<span class="string">'Forecast'</span>,<span class="string">'Real Production'</span>,<span class="string">'Simulations'</span>,<span class="string">'HandleVisibility'</span>,<span class="string">'off'</span>);
+0137         <span class="keyword">if</span> xlimit
+0138             xlim([0 max(exten_t)]);
+0139         <span class="keyword">else</span>
+0140             xlim([min(exten_t) max(exten_t)]);
+0141         <span class="keyword">end</span>
+0142         box; grid minor;
+0143         pause(0.1); box;
+0144         <span class="keyword">if</span> save == 1
+0145             saveas(gcf,[pwd <span class="string">'/Results/paths_testing_days/'</span>,whatToDo,<span class="string">'/'</span>,num2str(i)],<span class="string">'epsc'</span>);
+0146         <span class="keyword">end</span>
+0147         
+0148 <span class="comment">%         figure; plot(exten_t,drift,'r'); grid minor;</span>
+0149         
+0150     <span class="keyword">end</span>
+0151     
+0152     pause(0.1);
+0153     
+0154 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

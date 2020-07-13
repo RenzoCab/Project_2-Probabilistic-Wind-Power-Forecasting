@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of log_LH_evaluation_MODEL1_gamma</title>
+  <meta name="keywords" content="log_LH_evaluation_MODEL1_gamma">
+  <meta name="description" content="19/04/2020 22:09">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; log_LH_evaluation_MODEL1_gamma.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>log_LH_evaluation_MODEL1_gamma
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>19/04/2020 22:09</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [value] = log_LH_evaluation_MODEL1_gamma(batch_complete, gamma, theta_0, dt) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> 19/04/2020 22:09</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="log_dist_L.html" class="code" title="function [val] = log_dist_L(z,mu,sig) % 29/03/2020 17:49">log_dist_L</a>	</li><li><a href="moment_1_M1.html" class="code" title="function m1 = moment_1_M1(x,theta_0,p1,p2,dt,n) % 19/04/2020 21:56">moment_1_M1</a>	</li><li><a href="moment_2_M1_gamma.html" class="code" title="function m2 = moment_2_M1_gamma(x,m1,theta_0,gamma,p1,p2,dt,n) % 19/04/2020 22:00">moment_2_M1_gamma</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="likelihood_optimization_MODEL1_gamma.html" class="code" title="function [val] = likelihood_optimization_MODEL1_gamma(batch, theta_0, gamma, dt)">likelihood_optimization_MODEL1_gamma</a>	19/04/2020 22:08</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="log_LH_evaluation_MODEL1_gamma.m">log_LH_evaluation_MODEL1_gamma.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [value] = log_LH_evaluation_MODEL1_gamma(batch_complete, gamma, theta_0, dt)</a>
+0002 
+0003     <span class="comment">% 19/04/2020 22:09</span>
+0004 
+0005     <span class="keyword">for</span> i = 1:length(batch_complete(1,:))/2
+0006 
+0007         j = i*2; <span class="comment">% This is the real index (parfor must go one-by-one).</span>
+0008         <span class="comment">% Recall that: j is t_n and j-1 is t_{n-1}.</span>
+0009         p1 = batch_complete(1,j-1); p2 = batch_complete(1,j);
+0010         v1 = batch_complete(3,j-1); v2 = batch_complete(3,j);
+0011         n  = 100;
+0012         x1 = v1 + p1;
+0013         x2 = v2 + p2;
+0014 
+0015         m1 = <a href="moment_1_M1.html" class="code" title="function m1 = moment_1_M1(x,theta_0,p1,p2,dt,n) % 19/04/2020 21:56">moment_1_M1</a>(x1,theta_0,p1,p2,dt,n);
+0016         m2 = <a href="moment_2_M1_gamma.html" class="code" title="function m2 = moment_2_M1_gamma(x,m1,theta_0,gamma,p1,p2,dt,n) % 19/04/2020 22:00">moment_2_M1_gamma</a>(x1,m1,theta_0,gamma,p1,p2,dt,n);
+0017                 
+0018         val(i) = <a href="log_dist_L.html" class="code" title="function [val] = log_dist_L(z,mu,sig) % 29/03/2020 17:49">log_dist_L</a>(x2,m1(end),sqrt(m2(end)-m1(end)^2));
+0019         
+0020     <span class="keyword">end</span>
+0021     
+0022     value = sum(val);
+0023     
+0024 <span class="keyword">end</span>
+0025</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

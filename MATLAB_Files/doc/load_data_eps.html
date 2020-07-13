@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of load_data_eps</title>
+  <meta name="keywords" content="load_data_eps">
+  <meta name="description" content="19/04/2020 15:45">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; load_data_eps.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>load_data_eps
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>19/04/2020 15:45</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> 19/04/2020 15:45</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>	19/04/2020 15:45</li><li><a href="load_data_comparable.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data_comparable(dataSet)">load_data_comparable</a>	19/04/2020 15:45</li><li><a href="pe.html" class="code" title="function [pe] = pe(p, eps) % 18/03/2020 09:51">pe</a>	</li><li><a href="pe_dot.html" class="code" title="function [pe_dot] = pe_dot(pe, dt) % 18/03/2020 10:01">pe_dot</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="Empitical_theta0_M1.html" class="code" title="">Empitical_theta0_M1</a>	</li><li><a href="autocorrelation_test.html" class="code" title="">autocorrelation_test</a>	</li><li><a href="autocorrelation_test_Lamperti.html" class="code" title="">autocorrelation_test_Lamperti</a>	</li><li><a href="cross_correlation_test.html" class="code" title="">cross_correlation_test</a>	</li><li><a href="cross_correlation_test_Lamperti.html" class="code" title="">cross_correlation_test_Lamperti</a>	</li><li><a href="initial_time.html" class="code" title="">initial_time</a>	</li><li><a href="optimizeLogLikelihood.html" class="code" title="">optimizeLogLikelihood</a>	</li><li><a href="optimizeLogLikelihood_MODEL1.html" class="code" title="">optimizeLogLikelihood_MODEL1</a>	</li><li><a href="optimizeLogLikelihood_all.html" class="code" title="">optimizeLogLikelihood_all</a>	</li><li><a href="optimize_fixed_point.html" class="code" title="">optimize_fixed_point</a>	</li><li><a href="plotLamperti.html" class="code" title="">plotLamperti</a>	</li><li><a href="plotLamperti_V2.html" class="code" title="">plotLamperti_V2</a>	</li><li><a href="plotLogLikelihood.html" class="code" title="">plotLogLikelihood</a>	</li><li><a href="plotLogLikelihood_MODEL1.html" class="code" title="">plotLogLikelihood_MODEL1</a>	</li><li><a href="plot_theta0_gamma_model_1.html" class="code" title="">plot_theta0_gamma_model_1</a>	</li><li><a href="some_histograms.html" class="code" title="">some_histograms</a>	</li><li><a href="testingFile.html" class="code" title="">testingFile</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="load_data_eps.m">load_data_eps.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)</a>
+0002     
+0003     <span class="comment">% 19/04/2020 15:45</span>
+0004     
+0005     <span class="keyword">if</span> strcmp(dataKind,<span class="string">'classic'</span>)
+0006         [Table_Training_Complete, Table_Testing_Complete, ~] = <a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>(dataSet);
+0007     <span class="keyword">elseif</span> strcmp(dataKind,<span class="string">'comparable'</span>)
+0008         [Table_Training_Complete, Table_Testing_Complete, ~] = <a href="load_data_comparable.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data_comparable(dataSet)">load_data_comparable</a>(dataSet);
+0009     <span class="keyword">end</span>
+0010     
+0011     <span class="keyword">if</span> strcmp(dataNumber,<span class="string">'training'</span>)
+0012         table_to_use = Table_Training_Complete;
+0013     <span class="keyword">elseif</span> strcmp(dataNumber,<span class="string">'testing'</span>)
+0014         table_to_use = Table_Testing_Complete;
+0015     <span class="keyword">end</span>
+0016 
+0017     Time      = table_to_use.Time;
+0018     Forecast  = table_to_use.Forecast;
+0019     Real_ADME = table_to_use.Real_ADME;
+0020 
+0021     dt         = Time(1,2);
+0022     [M, ~] = size(Forecast);
+0023     
+0024     <span class="keyword">for</span> i = 1:M
+0025         Forecast(i,:)          = <a href="pe.html" class="code" title="function [pe] = pe(p, eps) % 18/03/2020 09:51">pe</a>(Forecast(i,:), ep);
+0026         Forecast_Dot(i,:)      = <a href="pe_dot.html" class="code" title="function [pe_dot] = pe_dot(pe, dt) % 18/03/2020 10:01">pe_dot</a>(Forecast(i,:), dt);
+0027         Error(i,:)             = Real_ADME(i,:) - Forecast(i,:);
+0028         Error_Transitions(i,:) = Error(i,2:end) - Error(i,1:end-1);
+0029     <span class="keyword">end</span>
+0030 
+0031     table_to_use.Forecast          = Forecast;
+0032     table_to_use.Forecast_Dot      = Forecast_Dot;
+0033     table_to_use.Error             = Error;
+0034     table_to_use.Error_Transitions = Error_Transitions;
+0035     
+0036 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

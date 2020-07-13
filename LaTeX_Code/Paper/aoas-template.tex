@@ -191,8 +191,8 @@ The next Figure \ref{fig:sample_data} shows the wind power real production durin
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/four_days/377.eps}
-\includegraphics[width=0.45\textwidth]{plots/four_days/417.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/four_days/377.eps}\quad
+\includegraphics[width=0.485\textwidth]{plots/four_days/417.eps}\\
 %\quad\\
 %\includegraphics[width=0.45\textwidth]{plots/four_days/437.eps}
 %\includegraphics[width=0.45\textwidth]{plots/four_days/477.eps}
@@ -204,11 +204,11 @@ A view of the global discrepancy between the real production and the forecasted 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/LP_6.eps}
-\includegraphics[width=0.45\textwidth]{plots/MP_6.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/LP_6.eps}
+\includegraphics[width=0.485\textwidth]{plots/MP_6.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{plots/HP_6.eps}
-\includegraphics[width=0.45\textwidth]{plots/AP_6.eps}
+\includegraphics[width=0.485\textwidth]{plots/HP_6.eps}
+\includegraphics[width=0.485\textwidth]{plots/AP_6.eps}
 \caption{Wind production forecast error histograms during the period April-December 2019: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:data_curtailing}
 \end{figure}
@@ -222,11 +222,11 @@ In the absence of the curtailment intervention, the forecast error histograms sh
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/LP.eps}
-\includegraphics[width=0.45\textwidth]{plots/MP.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/LP.eps}
+\includegraphics[width=0.485\textwidth]{plots/MP.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{plots/HP.eps}
-\includegraphics[width=0.45\textwidth]{plots/AP.eps}
+\includegraphics[width=0.485\textwidth]{plots/HP.eps}
+\includegraphics[width=0.485\textwidth]{plots/AP.eps}
 \caption{Wind production forecast error histograms during the period April-December 2019 after removing 24-hour segments with artificial wind curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:data_after_clean}
 \end{figure}
@@ -236,11 +236,11 @@ The forecast error transition histograms, displayed in the next Figure \ref{fig:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/LP_t.eps}
-\includegraphics[width=0.45\textwidth]{plots/MP_t.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/LP_t.eps}
+\includegraphics[width=0.485\textwidth]{plots/MP_t.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{plots/HP_t.eps}
-\includegraphics[width=0.45\textwidth]{plots/AP_t.eps}
+\includegraphics[width=0.485\textwidth]{plots/HP_t.eps}
+\includegraphics[width=0.485\textwidth]{plots/AP_t.eps}
 \caption{Forecast error transition histograms during the period April-December 2019 without wind power production curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
 \label{fig:error_transitions}
 \end{figure}
@@ -315,7 +315,7 @@ Remark: Observe that a mean-reverting model without derivative tracking shows a 
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=0.45\textwidth]{plots/31.eps}\includegraphics[width=0.45\textwidth]{plots/31_2.eps}
+  \includegraphics[width=0.485\textwidth]{plots/31.eps}\quad\includegraphics[width=0.485\textwidth]{plots/31_2.eps}
   \caption{Pointwise confidence bands fitted, for the same daily segment, through diffusion models without derivative tracking (plot on the left) and with derivative tracking (plot on the right).}
   \label{fig:derivative_tracking}
 \end{figure}
@@ -423,11 +423,11 @@ In this case, the Lamperti transform has been applied using the optimal estimate
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/LP_t_LP.eps}
-\includegraphics[width=0.45\textwidth]{plots/MP_t_LP.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/LP_t_LP.eps}
+\includegraphics[width=0.485\textwidth]{plots/MP_t_LP.eps}\\
 \quad\\
-\includegraphics[width=0.45\textwidth]{plots/HP_t_LP.eps}
-\includegraphics[width=0.45\textwidth]{plots/AP_t_LP.eps}
+\includegraphics[width=0.485\textwidth]{plots/HP_t_LP.eps}
+\includegraphics[width=0.485\textwidth]{plots/AP_t_LP.eps}
 \caption{Lamperti transformed forecast error transition histograms between April and December 2019 without wind power production curtailment: low-power (upper-left plot), mid-power (upper-right plot), high-power (lower-left plot), and the global range of power (lower-right plot).}
   \label{fig:LP_transitions}
 \end{figure}
@@ -681,7 +681,7 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\textwidth]{plots/LL/Log-Likelihood.eps}\includegraphics[width=0.5\textwidth]{plots/LL/Log-Likelihood_testing.eps}
+\includegraphics[width=0.485\textwidth]{plots/LL/Log-Likelihood.eps}\quad\includegraphics[width=0.485\textwidth]{plots/LL/Log-Likelihood_testing.eps}
 \caption{{Negative log-likelihood's level sets for the training sets (plot on the left), and for the test sets (plot on the right). All optimal values are located over the curve $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively.}}
 \label{fig:neg-LL}
 \end{figure}
@@ -725,9 +725,9 @@ To verify and compare these two vector of parameters, (i.e., $(\theta_0^V,\alpha
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/classic_noDelta/Optimal.eps}
-\includegraphics[width=0.45\textwidth]{plots/classic_noDelta/Lamperti_Optimal.eps}
-\caption{Probability histograms for error transitions. Using provider A, we overlap the real transitions from the test set with the simulated ones from the $V-$space SDE. On the left, simulations use $(\theta_0^V,\alpha^V)$. On the right, simulations use $(\theta_0^Z,\alpha^Z)$.}
+\includegraphics[width=0.485\textwidth]{plots/classic_noDelta/Optimal.eps}
+\includegraphics[width=0.485\textwidth]{plots/classic_noDelta/Lamperti_Optimal.eps}
+\caption{Density histograms for error transitions. Using provider A, we overlap the real transitions from the test set with the simulated ones from the $V-$space SDE. On the left, simulations use $(\theta_0^V,\alpha^V)$. On the right, simulations use $(\theta_0^Z,\alpha^Z)$.}
 \label{fig:hists}
 \end{figure}
 
@@ -820,8 +820,8 @@ After calibrating Model 2 on the training set using the complete likelihood (\re
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/paths/1.eps}
-\includegraphics[width=0.45\textwidth]{plots/paths/2.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/paths/1.eps}\quad
+\includegraphics[width=0.485\textwidth]{plots/paths/2.eps}\\
 %\quad\\
 %\includegraphics[width=0.45\textwidth]{plots/paths/3.eps}
 %\includegraphics[width=0.45\textwidth]{plots/paths/4.eps}
@@ -832,8 +832,8 @@ Once derived optimal estimates of the parameters of the complete likelihood for 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\textwidth]{plots/bands/1.eps}
-\includegraphics[width=0.45\textwidth]{plots/bands/2.eps}\\
+\includegraphics[width=0.485\textwidth]{plots/bands/1.eps}\quad
+\includegraphics[width=0.485\textwidth]{plots/bands/2.eps}\\
 %\quad\\
 %\includegraphics[width=0.45\textwidth]{plots/bands/3.eps}
 %\includegraphics[width=0.45\textwidth]{plots/bands/4.eps}
@@ -851,7 +851,7 @@ We choose as domain the most significant values of $\theta_0$ and $\theta_0\alph
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{plots/delta/contour_delta.eps}
+\includegraphics[width=0.6\textwidth]{plots/delta/contour_delta.eps}
 \caption{Initial value for $\delta$ as a function of the elements of the parameter vector $\bm{\theta}$.}
 \label{fig:delta}
 \end{figure}

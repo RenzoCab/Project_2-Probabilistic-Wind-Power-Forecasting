@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of first_log_LH_evaluation</title>
+  <meta name="keywords" content="first_log_LH_evaluation">
+  <meta name="description" content="function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; first_log_LH_evaluation.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>first_log_LH_evaluation
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times) 
+ 09/02/2020 18:35</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="log_dist.html" class="code" title="function [val] = log_dist(v,xi1,xi2) % 03/02/2020 11:20">log_dist</a>	</li><li><a href="moment_1.html" class="code" title="function m1 = moment_1(v,theta_0,alpha,th1,th2,p1,p2,dt,n)">moment_1</a>	02/04/2020 15:16</li><li><a href="moment_2.html" class="code" title="function m2 = moment_2(v,theta_0,th1,th2,p1,p2,alpha,m1,dt,n) % 02/04/2020 15:13">moment_2</a>	</li><li><a href="moments_matching.html" class="code" title="function [xi1,xi2] = moments_matching(m1,m2) % 02/02/2020 19:17">moments_matching</a>	disp(['m1 = ',num2str(m1),' and m2 = ',num2str(m2),'.']);</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="initial_time.html" class="code" title="">initial_time</a>	</li><li><a href="likelihood_optimization_all.html" class="code" title="function [val] = likelihood_optimization_all(batch, theta_0, alpha, delta, dt, N)">likelihood_optimization_all</a>	10/02/2020 11:20</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="first_log_LH_evaluation.m">first_log_LH_evaluation.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <span class="comment">% function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)</span>
+0002 <a name="_sub0" href="#_subfunctions" class="code">function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times) </a>
+0003     <span class="comment">% 09/02/2020 18:35</span>
+0004 
+0005     <span class="keyword">for</span> i = 0:length(batch_complete(1,:))/((N-1)*2)-1
+0006     
+0007         p1  = batch_complete(1,1 + i*(N-1)*2);
+0008         p2  = batch_complete(1,12 + i*(N-1)*2); <span class="comment">% This is the measurement at 01:10.</span>
+0009         p0  = p1 - delta*(p2-p1)/(6*dt);
+0010         p0  = min(1-0.018,p0); p0 = max(0.018,p0);
+0011         n   = 50;
+0012         th1 = batch_complete(4,1  + i*(N-1)*2);
+0013         th0 = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, p0, (p1-p0)/(delta));
+0014         v0  = 0; v1 = batch_complete(3,1  + i*(N-1)*2);
+0015         
+0016         <span class="keyword">if</span> abs(v1) &lt; 0.1
+0017 
+0018         v_ini(i+1) = v1;
+0019         <span class="comment">% (v,theta_0,alpha,th1,th2,p1,p2,dt,n)</span>
+0020         m1   = <a href="moment_1.html" class="code" title="function m1 = moment_1(v,theta_0,alpha,th1,th2,p1,p2,dt,n)">moment_1</a>(v0,theta_0,alpha,th0,th1,p0,p1,delta,n);
+0021         <span class="comment">% (v,theta_0,th1,th2,p1,p2,alpha,m1,dt,n)</span>
+0022         m2   = <a href="moment_2.html" class="code" title="function m2 = moment_2(v,theta_0,th1,th2,p1,p2,alpha,m1,dt,n) % 02/04/2020 15:13">moment_2</a>(v0,theta_0,th0,th1,p0,p1,alpha,m1,delta,n);
+0023         mom1(i+1)  = m1(end);
+0024         mom2(i+1)  = m2(end);
+0025         
+0026         [xi1(i+1),xi2(i+1)] = <a href="moments_matching.html" class="code" title="function [xi1,xi2] = moments_matching(m1,m2) % 02/02/2020 19:17">moments_matching</a>(m1(end),m2(end));
+0027         sig2(i+1) = 1/(4*(xi1(i+1)*2+1));
+0028         val(i+1)   = -<a href="log_dist.html" class="code" title="function [val] = log_dist(v,xi1,xi2) % 03/02/2020 11:20">log_dist</a>(v1,xi1(i+1),xi2(i+1));
+0029         
+0030         <span class="keyword">else</span>
+0031             val(i+1) = 0;
+0032         <span class="keyword">end</span>
+0033     
+0034     <span class="keyword">end</span>
+0035 
+0036     <span class="keyword">if</span> delta == 1/norm
+0037         figure
+0038         histogram((v_ini+1)/2,100,<span class="string">'Normalization'</span>,<span class="string">'pdf'</span>)
+0039         hold on
+0040     <span class="keyword">end</span>
+0041     <span class="keyword">if</span> delta == times
+0042         X = 0:.01:1;
+0043         <span class="keyword">for</span> i = 1:length(xi1)
+0044             y1 = betapdf(X,xi1(i),xi1(i));
+0045             plot(X,y1);
+0046         <span class="keyword">end</span>
+0047         histogram((v_ini+1)/2,100,<span class="string">'Normalization'</span>,<span class="string">'pdf'</span>)
+0048     <span class="keyword">end</span>
+0049     
+0050     value = sum(val);
+0051 <span class="comment">%     m2    = mean(mom2);</span>
+0052 <span class="comment">%     xi1   = mean(xi1);</span>
+0053 <span class="comment">%     sig2  = mean(sig2);</span>
+0054                 
+0055 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

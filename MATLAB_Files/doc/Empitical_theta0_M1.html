@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of Empitical_theta0_M1</title>
+  <meta name="keywords" content="Empitical_theta0_M1">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; Empitical_theta0_M1.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>Empitical_theta0_M1
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>	11/02/2020 09:35</li><li><a href="sde_FE_MODEL1.html" class="code" title="function sim_path_f = sde_FE_MODEL1(sim_path_i,alpha,theta_0,dt,P) % 02/02/2020 18:28">sde_FE_MODEL1</a>	SDE for X_t in MODEL 1.</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="Empitical_theta0_M1.m">Empitical_theta0_M1.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be 1 (Gaussian Proxy), 2 (Shoji-Ozaki) or 3 (Beta Proxy).</span>
+0006 approx        = 3;
+0007 <span class="comment">% dataSet can be AWSTP, MTLOG or UTEP5.</span>
+0008 dataSet       = <span class="string">'MTLOG'</span>;
+0009 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0010 epsilon       = 0.018;
+0011 [Ta_Tra_Comp] = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet);
+0012 
+0013 Table_Training = Ta_Tra_Comp; <span class="comment">% We copy it so we can modify it.</span>
+0014 
+0015 Date              = Ta_Tra_Comp.Date;
+0016 Time              = Ta_Tra_Comp.Time;
+0017 Forecast          = Ta_Tra_Comp.Forecast;
+0018 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0019 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0020 Error             = Ta_Tra_Comp.Error;
+0021 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0022 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0023 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0024 
+0025 dt             = Time(1,2);
+0026 [M, N_ini]     = size(Forecast);
+0027 N              = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0028 
+0029 num_days = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0030 [Table_Training, batch] = <a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>(Table_Training,num_days,N);
+0031 
+0032 theta_0_vec = -5:0.2:5;
+0033 
+0034 <span class="keyword">for</span> k = 1:length(theta_0_vec)
+0035 
+0036     <span class="keyword">for</span> i = 1:length(batch(1,:))/2
+0037 
+0038         j = i*2;
+0039         p1 = batch(1,j-1); p2 = batch(1,j);
+0040         v1 = batch(3,j-1); v2 = batch(3,j);
+0041         n  = 100;
+0042         x1 = v1 + p1;
+0043         x2 = v2 + p2;
+0044 
+0045         alpha   = 0.093 / theta_0_vec(k);
+0046         theta_0 = theta_0_vec(k);
+0047 
+0048         <span class="keyword">for</span> j = 1:200
+0049             sim_path_f(j) = <a href="sde_FE_MODEL1.html" class="code" title="function sim_path_f = sde_FE_MODEL1(sim_path_i,alpha,theta_0,dt,P) % 02/02/2020 18:28">sde_FE_MODEL1</a>(x1,alpha,theta_0,dt,p1);
+0050         <span class="keyword">end</span>
+0051         e_x1(i) = (mean(sim_path_f)-x2)^2;
+0052 
+0053     <span class="keyword">end</span>
+0054     
+0055     toPlot(k) = mean(e_x1);
+0056 
+0057 <span class="keyword">end</span>
+0058 
+0059 plot(theta_0_vec,toPlot);
+0060 grid on;</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

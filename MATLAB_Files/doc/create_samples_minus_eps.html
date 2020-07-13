@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of create_samples_minus_eps</title>
+  <meta name="keywords" content="create_samples_minus_eps">
+  <meta name="description" content="15/03/2020 21:07">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; create_samples_minus_eps.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>create_samples_minus_eps
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>15/03/2020 21:07</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> 15/03/2020 21:07</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="optimizeLogLikelihood.html" class="code" title="">optimizeLogLikelihood</a>	</li><li><a href="optimizeLogLikelihood_MODEL1.html" class="code" title="">optimizeLogLikelihood_MODEL1</a>	</li><li><a href="optimizeLogLikelihood_all.html" class="code" title="">optimizeLogLikelihood_all</a>	</li><li><a href="optimize_fixed_point.html" class="code" title="">optimize_fixed_point</a>	</li><li><a href="plotLamperti_V2.html" class="code" title="">plotLamperti_V2</a>	</li><li><a href="plotLogLikelihood.html" class="code" title="">plotLogLikelihood</a>	</li><li><a href="plotLogLikelihood_MODEL1.html" class="code" title="">plotLogLikelihood_MODEL1</a>	</li><li><a href="plot_epsilon.html" class="code" title="">plot_epsilon</a>	</li><li><a href="plot_theta0_gamma_model_1.html" class="code" title="">plot_theta0_gamma_model_1</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="create_samples_minus_eps.m">create_samples_minus_eps.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)</a>
+0002     <span class="comment">% 15/03/2020 21:07</span>
+0003     
+0004     <span class="comment">% This returns the error V for only the samples where the forecast is</span>
+0005     <span class="comment">% inside [e,1-e].</span>
+0006 
+0007     [M, N_ini]         = size(Forecast);
+0008     minus_eps_samples  = -1*ones(M*10,N_ini);
+0009     eps_forecast       = -1*ones(M*10,N_ini); <span class="comment">% For testing.</span>
+0010     
+0011     counter1     = 0;
+0012     max_count_2  = 0;
+0013     only_one     = 0; 
+0014     <span class="comment">% (^^) This is to remove the row, in case it has only one value.</span>
+0015         
+0016     <span class="keyword">for</span> i = 1:M
+0017         counter2 = 1;
+0018         flag     = 0;
+0019         <span class="keyword">for</span> j = 1:N_ini
+0020             
+0021             <span class="keyword">if</span> (Forecast(i,j) &gt;= gamma &amp;&amp; Forecast(i,j) &lt;= 1-gamma)
+0022                 <span class="keyword">if</span> flag == 0
+0023                     flag     = 1;
+0024                     counter1 = counter1 + 1;
+0025                     only_one = 1;
+0026                 <span class="keyword">else</span>
+0027                     only_one = 0;
+0028                 <span class="keyword">end</span>
+0029                 minus_eps_samples(counter1,counter2) = Error(i,j);
+0030                 eps_forecast(counter1,counter2)      = Forecast(i,j);
+0031                 counter2                             = counter2 + 1;
+0032                 max_count_2                          = max(max_count_2,counter2);
+0033             <span class="keyword">else</span>
+0034                 flag     = 0;
+0035                 counter2 = 1;
+0036                 <span class="keyword">if</span> only_one == 1
+0037                     counter1 = counter1 - 1;
+0038                     only_one = 0;
+0039                 <span class="keyword">end</span>
+0040             <span class="keyword">end</span>
+0041             
+0042         <span class="keyword">end</span>
+0043     <span class="keyword">end</span>
+0044     
+0045     minus_eps_samples  = minus_eps_samples(1:counter1, 1:max_count_2-1);
+0046     eps_forecast       = eps_forecast(1:counter1, 1:max_count_2-1);
+0047 
+0048 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

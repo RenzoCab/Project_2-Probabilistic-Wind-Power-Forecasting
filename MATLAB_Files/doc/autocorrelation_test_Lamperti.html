@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of autocorrelation_test_Lamperti</title>
+  <meta name="keywords" content="autocorrelation_test_Lamperti">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; autocorrelation_test_Lamperti.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>autocorrelation_test_Lamperti
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>	19/04/2020 15:45</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="autocorrelation_test_Lamperti.m">autocorrelation_test_Lamperti.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet       = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0008 epsilon       = 0.020;
+0009 <span class="comment">% dataKind can be classic or comparable.</span>
+0010 dataKind      = <span class="string">'comparable'</span>;
+0011 train_data             = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0012 test_data              = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
+0013 [~, ~, table_complete] = <a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>(dataSet);
+0014 
+0015 train_error = transpose(train_data.Error_Lamp);
+0016 test_error  = transpose(test_data.Error_Lamp);
+0017 all_error   = transpose(table_complete.Error_Lamp);
+0018 
+0019 train_error_vec = train_error(:);
+0020 test_error_vec  = test_error(:);
+0021 all_error_vec   = all_error(:);
+0022 L               = length(train_error_vec) + length(test_error_vec);
+0023 all_error_vec   = all_error_vec(end-L+1:end);
+0024 
+0025 <span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+0026 
+0027 figure;
+0028 
+0029 [acf,lags,bounds] = autocorr(train_error_vec,<span class="string">'NumLags'</span>,200);
+0030 stem(lags,acf); xlabel(<span class="string">'Lag'</span>); ylabel(<span class="string">'\rho(k)'</span>);
+0031 hold on;
+0032 <span class="comment">% h = line(lags,bounds(1)*ones(length(acf),1));</span>
+0033 <span class="comment">% h1 = line(lags,bounds(2)*ones(length(acf),1));</span>
+0034 <span class="comment">% set(h,'color',[1 0 0]);</span>
+0035 <span class="comment">% set(h1,'color',[1 0 0]);</span>
+0036 
+0037 hold on;
+0038 
+0039 [acf,lags,bounds] = autocorr(test_error_vec,<span class="string">'NumLags'</span>,200);
+0040 stem(lags,acf); xlabel(<span class="string">'Lag'</span>); ylabel(<span class="string">'\rho(k)'</span>);
+0041 <span class="comment">% h = line(lags,bounds(1)*ones(length(acf),1));</span>
+0042 <span class="comment">% h1 = line(lags,bounds(2)*ones(length(acf),1));</span>
+0043 <span class="comment">% set(h,'color',[1 0 0]);</span>
+0044 <span class="comment">% set(h1,'color',[1 0 0]);</span>
+0045 
+0046 [acf,lags,bounds] = autocorr(all_error_vec,<span class="string">'NumLags'</span>,200);
+0047 stem(lags,acf); xlabel(<span class="string">'Lag'</span>); ylabel(<span class="string">'\rho(k)'</span>);
+0048 <span class="comment">% h = line(lags,bounds(1)*ones(length(acf),1));</span>
+0049 <span class="comment">% h1 = line(lags,bounds(2)*ones(length(acf),1));</span>
+0050 <span class="comment">% set(h,'color',[1 0 0]);</span>
+0051 <span class="comment">% set(h1,'color',[1 0 0]);</span>
+0052 
+0053 grid minor;
+0054 title(<span class="string">'Sample Autocorrelation Function (observations)'</span>);
+0055 legend({<span class="string">'Training data'</span>,<span class="string">'Testing data'</span>,<span class="string">'All data'</span>});
+0056 saveas(gcf,[pwd <span class="string">'/Results/Autocorrelation/observations_L'</span>],<span class="string">'epsc'</span>);
+0057 
+0058 <span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+0059 
+0060 train_tran = transpose(train_data.Error_Lamp_Transitions);
+0061 test_tran  = transpose(test_data.Error_Lamp_Transitions);
+0062 all_tran   = transpose(table_complete.Error_Lamp_Transitions);
+0063 
+0064 train_tran_vec = train_tran(:);
+0065 test_tran_vec  = test_tran(:);
+0066 all_tran_vec   = all_tran(:);
+0067 all_tran_vec   = all_tran_vec(end-L+1:end);
+0068 
+0069 figure;
+0070 
+0071 [acf,lags,bounds] = autocorr(train_tran_vec,<span class="string">'NumLags'</span>,200);
+0072 stem(lags,acf); xlabel(<span class="string">'Lag'</span>); ylabel(<span class="string">'\rho(k)'</span>);
+0073 hold on;
+0074 <span class="comment">% h = line(lags,bounds(1)*ones(length(acf),1));</span>
+0075 <span class="comment">% h1 = line(lags,bounds(2)*ones(length(acf),1));</span>
+0076 <span class="comment">% set(h,'color',[1 0 0]);</span>
+0077 <span class="comment">% set(h1,'color',[1 0 0]);</span>
+0078 
+0079 hold on;
+0080 
+0081 [acf,lags,bounds] = autocorr(test_tran_vec,<span class="string">'NumLags'</span>,200);
+0082 stem(lags,acf); xlabel(<span class="string">'Lag'</span>); ylabel(<span class="string">'\rho(k)'</span>);
+0083 <span class="comment">% h = line(lags,bounds(1)*ones(length(acf),1));</span>
+0084 <span class="comment">% h1 = line(lags,bounds(2)*ones(length(acf),1));</span>
+0085 <span class="comment">% set(h,'color',[1 0 0]);</span>
+0086 <span class="comment">% set(h1,'color',[1 0 0]);</span>
+0087 
+0088 [acf,lags,bounds] = autocorr(all_tran_vec,<span class="string">'NumLags'</span>,200);
+0089 stem(lags,acf); xlabel(<span class="string">'Lag'</span>); ylabel(<span class="string">'\rho(k)'</span>);
+0090 <span class="comment">% h = line(lags,bounds(1)*ones(length(acf),1));</span>
+0091 <span class="comment">% h1 = line(lags,bounds(2)*ones(length(acf),1));</span>
+0092 <span class="comment">% set(h,'color',[1 0 0]);</span>
+0093 <span class="comment">% set(h1,'color',[1 0 0]);</span>
+0094 
+0095 grid minor;
+0096 title(<span class="string">'Sample Autocorrelation Function (transitions)'</span>);
+0097 legend({<span class="string">'Training data'</span>,<span class="string">'Testing data'</span>,<span class="string">'All data'</span>});
+0098 saveas(gcf,[pwd <span class="string">'/Results/Autocorrelation/transitions_L'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

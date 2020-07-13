@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of ciplot</title>
+  <meta name="keywords" content="ciplot">
+  <meta name="description" content="ciplot(lower,upper)">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; ciplot.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>ciplot
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>ciplot(lower,upper)</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function ciplot(lower,upper,x,colour,alpha); </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> ciplot(lower,upper)       
+ ciplot(lower,upper,x)
+ ciplot(lower,upper,x,colour)
+
+ Plots a shaded region on a graph between specified lower and upper confidence intervals (L and U).
+ l and u must be vectors of the same length.
+ Uses the 'fill' function, not 'area'. Therefore multiple shaded plots
+ can be overlayed without a problem. Make them transparent for total visibility.
+ x data can be specified, otherwise plots against index values.
+ colour can be specified (eg 'k'). Defaults to blue.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="path_simulator_IG.html" class="code" title="">path_simulator_IG</a>	</li><li><a href="path_simulator_Lamperti.html" class="code" title="">path_simulator_Lamperti</a>	</li><li><a href="path_simulator_OPT.html" class="code" title="">path_simulator_OPT</a>	</li><li><a href="path_simulator_OPT_forSuppMat.html" class="code" title="">path_simulator_OPT_forSuppMat</a>	Supplementary Material for the Wind-Power Paper.</li><li><a href="path_simulator_OPT_model_1.html" class="code" title="">path_simulator_OPT_model_1</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="ciplot.m">ciplot.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function ciplot(lower,upper,x,colour,alpha);</a>
+0002      
+0003 <span class="comment">% ciplot(lower,upper)</span>
+0004 <span class="comment">% ciplot(lower,upper,x)</span>
+0005 <span class="comment">% ciplot(lower,upper,x,colour)</span>
+0006 <span class="comment">%</span>
+0007 <span class="comment">% Plots a shaded region on a graph between specified lower and upper confidence intervals (L and U).</span>
+0008 <span class="comment">% l and u must be vectors of the same length.</span>
+0009 <span class="comment">% Uses the 'fill' function, not 'area'. Therefore multiple shaded plots</span>
+0010 <span class="comment">% can be overlayed without a problem. Make them transparent for total visibility.</span>
+0011 <span class="comment">% x data can be specified, otherwise plots against index values.</span>
+0012 <span class="comment">% colour can be specified (eg 'k'). Defaults to blue.</span>
+0013 
+0014 <span class="comment">% Raymond Reynolds 24/11/06</span>
+0015 
+0016 <span class="keyword">if</span> length(lower)~=length(upper)
+0017     error(<span class="string">'lower and upper vectors must be same length'</span>)
+0018 <span class="keyword">end</span>
+0019 
+0020 <span class="keyword">if</span> nargin&lt;5
+0021     alpha=1;
+0022 <span class="keyword">end</span>
+0023 
+0024 <span class="keyword">if</span> nargin&lt;4
+0025     colour=<span class="string">'b'</span>;
+0026 <span class="keyword">end</span>
+0027 
+0028 <span class="keyword">if</span> nargin&lt;3
+0029     x=1:length(lower);
+0030 <span class="keyword">end</span>
+0031 
+0032 <span class="comment">% convert to row vectors so fliplr can work</span>
+0033 <span class="keyword">if</span> find(size(x)==(max(size(x))))&lt;2
+0034 x=x'; <span class="keyword">end</span>
+0035 <span class="keyword">if</span> find(size(lower)==(max(size(lower))))&lt;2
+0036 lower=lower'; <span class="keyword">end</span>
+0037 <span class="keyword">if</span> find(size(upper)==(max(size(upper))))&lt;2
+0038 upper=upper'; <span class="keyword">end</span>
+0039 
+0040 f = fill([x fliplr(x)],[upper fliplr(lower)],<span class="string">'r'</span>);
+0041 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(f,<span class="string">'FaceAlpha'</span>,alpha);
+0042 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(f,<span class="string">'FaceColor'</span>,colour);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

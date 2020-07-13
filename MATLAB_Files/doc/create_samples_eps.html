@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of create_samples_eps</title>
+  <meta name="keywords" content="create_samples_eps">
+  <meta name="description" content="14/03/2020 17:33">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; create_samples_eps.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>create_samples_eps
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>14/03/2020 17:33</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [eps_samples] = create_samples_eps(Forecast, Real, eps) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> 14/03/2020 17:33</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="plot_epsilon.html" class="code" title="">plot_epsilon</a>	</li><li><a href="testingFile.html" class="code" title="">testingFile</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="create_samples_eps.m">create_samples_eps.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [eps_samples] = create_samples_eps(Forecast, Real, eps)</a>
+0002     <span class="comment">% 14/03/2020 17:33</span>
+0003     
+0004     <span class="comment">% This returns the error V for only the samples where the forecast is</span>
+0005     <span class="comment">% outside [e,1-e]. Also, the error is calculated, contemplating that the</span>
+0006     <span class="comment">% forecast can only take values e or 1-e.</span>
+0007 
+0008     [M, N_ini]   = size(Forecast);
+0009     eps_samples  = -1*ones(M*3,N_ini);
+0010     eps_forecast = -1*ones(M*3,N_ini); <span class="comment">% For testing.</span>
+0011     flag         = 0;
+0012     counter1     = 0;
+0013     max_count_2  = 0;
+0014     only_one     = 0; 
+0015     <span class="comment">% (^^) This is to remove the row, in case it has only one value.</span>
+0016         
+0017     <span class="keyword">for</span> i = 1:M
+0018         counter2 = 1;
+0019         <span class="keyword">for</span> j = 1:N_ini
+0020             
+0021             <span class="keyword">if</span> (Forecast(i,j) &lt; eps || Forecast(i,j) &gt; 1-eps)
+0022                 <span class="keyword">if</span> flag == 0
+0023                     flag     = 1;
+0024                     counter1 = counter1 + 1;
+0025                     only_one = 1;
+0026                 <span class="keyword">else</span>
+0027                     only_one = 0;
+0028                 <span class="keyword">end</span>
+0029                 <span class="keyword">if</span> Forecast(i,j) &lt; eps
+0030                     eps_samples(counter1,counter2) = Real(i,j) - eps;
+0031                 <span class="keyword">elseif</span> Forecast(i,j) &gt; 1-eps
+0032                     eps_samples(counter1,counter2) = Real(i,j) - (1-eps);
+0033                 <span class="keyword">end</span>
+0034                 eps_forecast(counter1,counter2) = Forecast(i,j);
+0035                 counter2                        = counter2 + 1;
+0036                 max_count_2                     = max(max_count_2,counter2);
+0037             <span class="keyword">else</span>
+0038                 flag     = 0;
+0039                 counter2 = 1;
+0040                 <span class="keyword">if</span> only_one == 1
+0041                     counter1 = counter1 - 1;
+0042                     only_one = 0;
+0043                 <span class="keyword">end</span>
+0044             <span class="keyword">end</span>
+0045             
+0046         <span class="keyword">end</span>
+0047     <span class="keyword">end</span>
+0048     
+0049     eps_samples  = eps_samples(1:counter1, 1:max_count_2-1);
+0050     eps_forecast = eps_forecast(1:counter1, 1:max_count_2-1);
+0051 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

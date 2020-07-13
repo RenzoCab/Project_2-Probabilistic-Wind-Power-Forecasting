@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sde_Lamperti_FE_2_TEXSTING</title>
+  <meta name="keywords" content="sde_Lamperti_FE_2_TEXSTING">
+  <meta name="description" content="b = sde_Lamperti_drift(sim_path_i,alpha,theta_0,Theta_t,P,P_dot);">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; sde_Lamperti_FE_2_TEXSTING.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>sde_Lamperti_FE_2_TEXSTING
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>b = sde_Lamperti_drift(sim_path_i,alpha,theta_0,Theta_t,P,P_dot);</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function sim_path_f = sde_Lamperti_FE_2_TEXSTING(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,m,mm) % 02/04/2020 20:40 </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment">     b = sde_Lamperti_drift(sim_path_i,alpha,theta_0,Theta_t,P,P_dot);
+ 
+     sim_path_f = sim_path_i + dt * (2*b*sim_path_i + 1) + ...
+         2 * sim_path_i * sqrt(dt) * randn(1);</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="testingFile.html" class="code" title="">testingFile</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="sde_Lamperti_FE_2_TEXSTING.m">sde_Lamperti_FE_2_TEXSTING.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sim_path_f = sde_Lamperti_FE_2_TEXSTING(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,m,mm) </a><span class="comment">% 02/04/2020 20:40</span>
+0002 
+0003 <span class="comment">%     b = sde_Lamperti_drift(sim_path_i,alpha,theta_0,Theta_t,P,P_dot);</span>
+0004 <span class="comment">%</span>
+0005 <span class="comment">%     sim_path_f = sim_path_i + dt * (2*b*sim_path_i + 1) + ...</span>
+0006 <span class="comment">%         2 * sim_path_i * sqrt(dt) * randn(1);</span>
+0007     
+0008     n  = 200;
+0009     dt = dt / n;
+0010     fv = sim_path_i;
+0011     
+0012     <span class="keyword">for</span> i = 1:n
+0013         
+0014         forplot(i) = sim_path_i;
+0015         b = sde_Lamperti_drift(sim_path_i,alpha,theta_0,Theta_t,P,P_dot);
+0016         bforplot(i) = b;
+0017         
+0018         sim_path_i = sim_path_i + dt * (2*b*sim_path_i + 1) + <span class="keyword">...</span>
+0019         2 * sim_path_i * sqrt(dt) * randn(1);
+0020         
+0021     <span class="keyword">end</span>
+0022     
+0023     sim_path_f = sim_path_i;
+0024     
+0025     <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,m);
+0026     hold on;
+0027     plot(forplot);
+0028     <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,mm);
+0029     hold on;
+0030     plot(bforplot);
+0031     
+0032     
+0033 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

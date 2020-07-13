@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of initial_guess</title>
+  <meta name="keywords" content="initial_guess">
+  <meta name="description" content="09/02/2020 09:30">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; initial_guess.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>initial_guess
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>09/02/2020 09:30</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [est] = initial_guess(real_prod, M, N, dt) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> 09/02/2020 09:30</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="optimizeLogLikelihood.html" class="code" title="">optimizeLogLikelihood</a>	</li><li><a href="optimizeLogLikelihood_MODEL1.html" class="code" title="">optimizeLogLikelihood_MODEL1</a>	</li><li><a href="optimizeLogLikelihood_all.html" class="code" title="">optimizeLogLikelihood_all</a>	</li><li><a href="optimize_fixed_point.html" class="code" title="">optimize_fixed_point</a>	</li><li><a href="plotLamperti_V2.html" class="code" title="">plotLamperti_V2</a>	</li><li><a href="plotLogLikelihood.html" class="code" title="">plotLogLikelihood</a>	</li><li><a href="plotLogLikelihood_MODEL1.html" class="code" title="">plotLogLikelihood_MODEL1</a>	</li><li><a href="plot_epsilon.html" class="code" title="">plot_epsilon</a>	</li><li><a href="plot_theta0_gamma_model_1.html" class="code" title="">plot_theta0_gamma_model_1</a>	</li><li><a href="testingFile.html" class="code" title="">testingFile</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="initial_guess.m">initial_guess.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [est] = initial_guess(real_prod, M, N, dt)</a>
+0002     <span class="comment">% 09/02/2020 09:30</span>
+0003     est = 0;
+0004 
+0005     <span class="keyword">for</span> i = 1:M
+0006         numerator = 0; denominator = 0;
+0007         <span class="keyword">for</span> j = 1:N
+0008             numerator   = numerator + (real_prod(i,j+1) - real_prod(i,j))^2;
+0009             denominator = denominator + real_prod(i,j)*(1-real_prod(i,j));
+0010         <span class="keyword">end</span>
+0011         est = est + numerator/denominator;
+0012     <span class="keyword">end</span>
+0013     est = est / (2*M*dt);
+0014 
+0015 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

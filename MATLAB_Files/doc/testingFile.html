@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of testingFile</title>
+  <meta name="keywords" content="testingFile">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; testingFile.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>testingFile
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>	</li><li><a href="create_samples_eps.html" class="code" title="function [eps_samples] = create_samples_eps(Forecast, Real, eps)">create_samples_eps</a>	14/03/2020 17:33</li><li><a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>	09/02/2020 09:30</li><li><a href="initial_theta.html" class="code" title="function [val] = initial_theta(error, alpha, forecast, M, N, dt, theta)">initial_theta</a>	09/02/2020 09:58</li><li><a href="initial_theta_0.html" class="code" title="function [val] = initial_theta_0(error, M, N, dt, theta)">initial_theta_0</a>	13/03/2020 18:10</li><li><a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>	29/03/2020 17:49</li><li><a href="likelihood_optimization.html" class="code" title="function [val] = likelihood_optimization(batch, theta_0, alpha, dt)">likelihood_optimization</a>	10/02/2020 11:20</li><li><a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>	19/04/2020 15:45</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="log_LH_evaluation.html" class="code" title="function [value] = log_LH_evaluation(batch_complete, alpha, theta_0, dt) % 03/02/2020 19:42">log_LH_evaluation</a>	</li><li><a href="log_dist_L.html" class="code" title="function [val] = log_dist_L(z,mu,sig) % 29/03/2020 17:49">log_dist_L</a>	</li><li><a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>	</li><li><a href="new_batch.html" class="code" title="function [Table_Training, new_bat] = new_batch(Table_Training, batch_size, N)">new_batch</a>	03/02/2020 17:41</li><li><a href="sde_Lamperti_FE_2_TEXSTING.html" class="code" title="function sim_path_f = sde_Lamperti_FE_2_TEXSTING(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,m,mm) % 02/04/2020 20:40">sde_Lamperti_FE_2_TEXSTING</a>	b = sde_Lamperti_drift(sim_path_i,alpha,theta_0,Theta_t,P,P_dot);</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="testingFile.m">testingFile.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% TESTING:</span>
+0006 <span class="comment">% v     = 0.2</span>
+0007 <span class="comment">% th1   = 1</span>
+0008 <span class="comment">% th2   = 2</span>
+0009 <span class="comment">% dt    = 0.05</span>
+0010 <span class="comment">% n     = 10</span>
+0011 <span class="comment">% p1    = 0.5</span>
+0012 <span class="comment">% p2    = 0.6</span>
+0013 <span class="comment">% alpha = 0.1</span>
+0014 <span class="comment">% m1    = moment_1(v,th1,th2,dt,n)</span>
+0015 <span class="comment">% m2    = moment_2(v,th1,th2,p1,p2,alpha,m1,dt,n)</span>
+0016 
+0017 epsilon = 0.018;
+0018 Ta_Tra_Comp = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon);
+0019 
+0020 Table_Training = Ta_Tra_Comp; <span class="comment">% We copy it so we can modify it.</span>
+0021 
+0022 Date              = Ta_Tra_Comp.Date;
+0023 Time              = Ta_Tra_Comp.Time;
+0024 Forecast          = Ta_Tra_Comp.Forecast;
+0025 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0026 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0027 Error             = Ta_Tra_Comp.Error;
+0028 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0029 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0030 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0031 
+0032 dt             = Time(1,2);
+0033 [M, N_ini]     = size(Forecast);
+0034 N              = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0035 
+0036 num_days = 127;
+0037 
+0038 <span class="comment">% we_remove_badSamples = 0;</span>
+0039 <span class="comment">% if we_remove_badSamples == 0</span>
+0040 <span class="comment">%     [Table_Training, batch] = new_batch_fixed(Table_Training,num_days,N);</span>
+0041 <span class="comment">% elseif we_remove_badSamples == 1</span>
+0042 <span class="comment">%     [Table_Training, batch] = new_batch_fixed_2(Table_Training,num_days,N);</span>
+0043 <span class="comment">% end</span>
+0044 
+0045 ini_theta = 10;
+0046 ini_alpha = 10;
+0047 len_theta = 500;
+0048 len_alpha = 300;
+0049 div_theta = 100; 
+0050 div_alpha = 300;
+0051 
+0052 <span class="comment">% Initial parameters:</span>
+0053 <span class="keyword">if</span> 1 == 2
+0054     est = <a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>(Real_ADME, M, N, dt);
+0055     limit_theta = 2000;
+0056     div_theta   = 1000;
+0057     <span class="keyword">for</span> i = 1:limit_theta
+0058         val(i) = <a href="initial_theta.html" class="code" title="function [val] = initial_theta(error, alpha, forecast, M, N, dt, theta)">initial_theta</a>(Error, Forecast, M, N, dt, i/div_theta);
+0059         val2(i) = <a href="initial_theta_0.html" class="code" title="function [val] = initial_theta_0(error, M, N, dt, theta)">initial_theta_0</a>(Error, M, N, dt, i/div_theta);
+0060         disp(num2str(i/limit_theta*100));
+0061     <span class="keyword">end</span>
+0062     theta_ini = find(min(val)==val) / div_theta;
+0063     alpha_ini = est/theta_ini;
+0064 <span class="keyword">end</span>
+0065 
+0066 <span class="comment">%% Testing Epsilon:</span>
+0067 
+0068 est = <a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>(Real_ADME, M, N, dt);
+0069 
+0070 epsilon     = 0.2;
+0071 epsilon_new = 0.1;
+0072 step        = 1;
+0073 plot_eps    = epsilon_new;
+0074 <span class="keyword">while</span> abs(epsilon-epsilon_new)/epsilon &gt; 0.05
+0075     epsilon     = epsilon_new;
+0076     samples     = <a href="create_samples_eps.html" class="code" title="function [eps_samples] = create_samples_eps(Forecast, Real, eps)">create_samples_eps</a>(Forecast, Real_ADME, epsilon);
+0077     <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>     = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples, dt);
+0078     epsilon_new = est / <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>;
+0079     disp([<span class="string">'========== Step: '</span>,num2str(step),<span class="string">' =========='</span>]);
+0080     disp([<span class="string">'Epsilon = '</span>,num2str(epsilon_new)]);
+0081     disp([<span class="string">'Theta(t) = '</span>,num2str(<a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>)]);
+0082     step = step + 1;
+0083     plot_eps(end+1) = epsilon_new;
+0084 <span class="keyword">end</span>
+0085 
+0086 Forecast_vec = Forecast(:);
+0087 disp(<span class="string">'=============================='</span>);
+0088 disp([<span class="string">'Minimum forecast: '</span>,num2str(min(Forecast_vec))]);
+0089 disp([<span class="string">'Maximum forecast: '</span>,num2str(max(Forecast_vec))]);
+0090 plot(plot_eps); grid minor;
+0091 
+0092 <span class="comment">%%</span>
+0093 
+0094 <span class="keyword">if</span> 1 == 2
+0095 
+0096     plot([1/div_theta:1/div_theta:2],val); grid minor; hold on;
+0097     title(<span class="string">'Value function'</span>);
+0098     xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0099     plot(theta_ini,val(theta_ini*div_theta),<span class="string">'*r'</span>);
+0100     disp([<span class="string">'Initial \theta_0 = '</span>,num2str(theta_ini)]);
+0101     disp([<span class="string">'Initial \alpha = '</span>,num2str(alpha_ini)]);
+0102     saveas(gcf,[pwd <span class="string">'/Results/initial_guess/initial_theta_1'</span>],<span class="string">'epsc'</span>);
+0103 
+0104     figure;
+0105     plot([1/div_theta:1/div_theta:2],val2); grid minor; hold on;
+0106     title(<span class="string">'Value function'</span>);
+0107     xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0108     theta_ini_2 = find(min(val2)==val2) / div_theta;
+0109     plot(theta_ini_2,val2(theta_ini_2*div_theta),<span class="string">'*r'</span>);
+0110     disp([<span class="string">'Initial \theta_0 using initial_theta_0 is '</span>,num2str(theta_ini_2)]);
+0111     saveas(gcf,[pwd <span class="string">'/log_likelihood_2'</span>],<span class="string">'epsc'</span>);
+0112     saveas(gcf,[pwd <span class="string">'/Results/initial_guess/initial_theta_2'</span>],<span class="string">'epsc'</span>);
+0113 
+0114 <span class="keyword">end</span>
+0115 
+0116 <span class="keyword">if</span> 1 == 1
+0117     val = [];
+0118     <span class="comment">% TO PLOT THE LIKELIHOOD:</span>
+0119     
+0120     <span class="keyword">for</span> i = 0:5720/2-1
+0121         n(i+1) = batch(3,2+i*2) - batch(3,1+i*2);
+0122     <span class="keyword">end</span>
+0123 <span class="comment">%     plot(n);</span>
+0124 <span class="comment">%     grid minor;</span>
+0125 <span class="comment">%     xlim([1 5720/2]);</span>
+0126     lev1 = []; lev2 = []; lev3 = []; lev4 = []; lev5 = [];
+0127     <span class="keyword">for</span> j = 1:5720/2
+0128         
+0129         <span class="keyword">if</span>     0.000 &lt;= abs(n(j)) &amp;&amp; abs(n(j)) &lt; 0.010
+0130             lev1(end+1) = j;
+0131         <span class="keyword">elseif</span> 0.010 &lt;= abs(n(j)) &amp;&amp; abs(n(j)) &lt; 0.025
+0132             lev2(end+1) = j;
+0133         <span class="keyword">elseif</span> 0.025 &lt;= abs(n(j)) &amp;&amp; abs(n(j)) &lt; 0.050
+0134             lev3(end+1) = j;
+0135         <span class="keyword">elseif</span> 0.050 &lt;= abs(n(j)) &amp;&amp; abs(n(j)) &lt; 0.100
+0136             lev4(end+1) = j;
+0137         <span class="keyword">elseif</span> 0.100 &lt;= abs(n(j)) &amp;&amp; abs(n(j)) &lt; 0.150
+0138             lev5(end+1) = j;
+0139         <span class="keyword">end</span>
+0140 
+0141     <span class="keyword">end</span>
+0142     
+0143     <span class="keyword">for</span> z = 0:length(batch(1,:))-1
+0144         
+0145         <span class="keyword">if</span> 1==1<span class="comment">%ismember((z+1) / 2, lev5)</span>
+0146         
+0147             auxBatch = batch(:,1+2*z:2+2*z);
+0148 
+0149             <span class="keyword">for</span> i = ini_theta:1:len_theta
+0150 
+0151                 vec = ones(1,len_alpha);
+0152 
+0153 <span class="comment">%                 parfor j = ini_alpha:len_alpha</span>
+0154                 <span class="keyword">for</span> j = ini_alpha:len_alpha
+0155                     theta          = i/div_theta;
+0156                     alpha          = (j-1+ini_alpha)/div_alpha;
+0157                     batch_complete = <a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>(auxBatch, theta);
+0158                     vec(j)         = Inf;
+0159                     vec(j)         = -<a href="log_LH_evaluation.html" class="code" title="function [value] = log_LH_evaluation(batch_complete, alpha, theta_0, dt) % 03/02/2020 19:42">log_LH_evaluation</a>(batch_complete, alpha, dt);
+0160                 <span class="keyword">end</span>
+0161 
+0162                 val(i+1-ini_theta,:) = vec(ini_alpha:len_alpha);
+0163 
+0164                 disp(num2str(i/len_theta*100));
+0165 
+0166             <span class="keyword">end</span>
+0167 
+0168             pause(0.1);
+0169             figure;
+0170             hold on;
+0171             vec_theta = [ini_theta:len_theta] / div_theta;
+0172             vec_alpha = [ini_alpha:len_alpha] / div_alpha;
+0173             [X,Y] = meshgrid(vec_theta,vec_alpha);
+0174             contourf(X,Y,val',20); colorbar;
+0175             xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0176             ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0177             title([<span class="string">'Negative Log-likelihoog for '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0178             title([<span class="string">'Log-likelihoog 1 Transition: '</span>,num2str(n(z+1))]);
+0179             plot(1.145,0.0823,<span class="string">'-p'</span>,<span class="string">'MarkerFaceColor'</span>,<span class="string">'red'</span>,<span class="string">'MarkerSize'</span>,15);
+0180             pause(0.1);
+0181             saveas(gcf,[pwd <span class="string">'/Results/likelihood/level_sets/'</span>,num2str(z+1)],<span class="string">'epsc'</span>);
+0182 
+0183         <span class="keyword">end</span>
+0184 
+0185     <span class="keyword">end</span>
+0186 
+0187     vec_theta = [ini_theta:len_theta] / div_theta;
+0188     vec_alpha = [ini_alpha:len_alpha] / div_alpha;
+0189     [X,Y] = meshgrid(vec_theta,vec_alpha);
+0190     
+0191 <span class="comment">%     s = surf(X,Y,val'); s.EdgeColor = 'none';</span>
+0192     
+0193     contourf(X,Y,val',20); colorbar;
+0194     
+0195     xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0196     ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0197     title([<span class="string">'Negative Log-likelihoog for '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0198     view(-45,45); box on; grid minor;
+0199     <span class="keyword">if</span> 1 == 0
+0200         saveas(gcf,[pwd <span class="string">'/Results/likelihood/neg_log_likelihood'</span>],<span class="string">'epsc'</span>);
+0201     <span class="keyword">end</span>
+0202 
+0203 <span class="keyword">end</span>
+0204 
+0205 <span class="keyword">if</span> 1 == 2
+0206     
+0207     <span class="comment">%&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+0208     
+0209     theta_0 = 3;
+0210     alpha = 0.03;
+0211 
+0212     batch_complete = <a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>(batch, alpha, theta_0);
+0213     
+0214 <span class="comment">%     % &gt;&gt;&gt;</span>
+0215 <span class="comment">%</span>
+0216 <span class="comment">%     norm = 100;</span>
+0217 <span class="comment">%     times = 1;</span>
+0218 <span class="comment">%</span>
+0219 <span class="comment">%     for delta = 1:1:norm*times</span>
+0220 <span class="comment">%</span>
+0221 <span class="comment">%         pause(0.1);</span>
+0222 <span class="comment">%         disp(num2str(delta/(norm*times)));</span>
+0223 <span class="comment">%         [val(delta),m1(delta),m2(delta),xi1(delta),xi2(delta),sig2(delta)] = ...</span>
+0224 <span class="comment">%             first_log_LH_evaluation(batch_complete, theta_0, alpha, delta/norm, dt, N);</span>
+0225 <span class="comment">%</span>
+0226 <span class="comment">%     end</span>
+0227 <span class="comment">%     title('Initial error Histogram and All 1-element Likelihoods');</span>
+0228 <span class="comment">%     grid minor;</span>
+0229 <span class="comment">%     %&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
+0230     
+0231 <span class="comment">%     figure;</span>
+0232 <span class="comment">%     plot([1:norm*times]/norm,val);</span>
+0233 <span class="comment">%     title('-log-likelihoog')</span>
+0234 <span class="comment">%     figure;</span>
+0235 <span class="comment">%     plot([1:norm*times]/norm,xi1);</span>
+0236 <span class="comment">%     title('xi1')</span>
+0237 <span class="comment">%     figure;</span>
+0238 <span class="comment">%     plot([1:norm*times]/norm,m2);</span>
+0239 <span class="comment">%     title('m2')</span>
+0240 <span class="comment">%     figure;</span>
+0241 <span class="comment">%     plot([1:norm*times]/norm,sig2);</span>
+0242 <span class="comment">%     title('sig2')</span>
+0243 <span class="comment">%</span>
+0244 <span class="comment">%     [vall,ind] = min(val);</span>
+0245 <span class="comment">%</span>
+0246     <span class="comment">% &gt;&gt;&gt;</span>
+0247     
+0248 <span class="keyword">end</span>
+0249 
+0250 theta = 1.145;
+0251 alpha = 0.0823;
+0252 x0 = [theta, alpha];
+0253 num_days = 127;
+0254 [Table_Training, batch] = <a href="new_batch.html" class="code" title="function [Table_Training, new_bat] = new_batch(Table_Training, batch_size, N)">new_batch</a>(Table_Training,num_days,N);
+0255 fun = @(x) -<a href="likelihood_optimization.html" class="code" title="function [val] = likelihood_optimization(batch, theta_0, alpha, dt)">likelihood_optimization</a>(batch, x(1), x(2), dt);
+0256 options = optimset(<span class="string">'PlotFcns'</span>,@optimplotfval);
+0257 
+0258 x = fminsearch(fun, x0, options);
+0259 
+0260 <span class="comment">%% TESTING:</span>
+0261 
+0262 close all; clear all; clc;
+0263 
+0264 theta = 1.145;
+0265 alpha = 0.0823;
+0266 
+0267 dt = 0.0069;
+0268 [Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = <a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>();
+0269 Table_Training = Ta_Tra_Comp; <span class="comment">% We copy it so we can modify it.</span>
+0270 num_days = 127; N = 144;
+0271 [Table_Training, batch] = <a href="new_batch.html" class="code" title="function [Table_Training, new_bat] = new_batch(Table_Training, batch_size, N)">new_batch</a>(Table_Training,num_days,N);
+0272 Out = <a href="likelihood_optimization.html" class="code" title="function [val] = likelihood_optimization(batch, theta_0, alpha, dt)">likelihood_optimization</a>(batch, theta, alpha, dt);
+0273 disp(num2str(Out));
+0274 
+0275 <span class="comment">%% HISTOGRAMS:</span>
+0276 
+0277 close all;
+0278 clear all;
+0279 clc;
+0280 
+0281 epsilon = 0.018;
+0282 Ta_Tra_Comp = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon);
+0283 
+0284 Table_Training = Ta_Tra_Comp; <span class="comment">% We copy it so we can modify it.</span>
+0285 
+0286 Date              = Ta_Tra_Comp.Date;
+0287 Time              = Ta_Tra_Comp.Time;
+0288 Forecast          = Ta_Tra_Comp.Forecast;
+0289 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0290 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0291 Error             = Ta_Tra_Comp.Error;
+0292 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0293 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0294 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0295 
+0296 Forecast_Dot = Forecast_Dot(:)*Time(1,2);
+0297 
+0298 histogram(Forecast_Dot);
+0299 
+0300 <span class="comment">%% Testing Z^2 computation:</span>
+0301 
+0302 close all;
+0303 clear all;
+0304 clc;
+0305 
+0306 epsilon                = 0.018;
+0307 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon);
+0308 
+0309 t  = Table_Testing_Complete.Time(1,:);
+0310 dt = t(2);
+0311 
+0312 theta_0 = 1.2656;
+0313 alpha   = 0.07052;
+0314 
+0315 z1 = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,-0.07,0.2-0.03);
+0316 z2 = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,0.02,0.2-0.03);
+0317 
+0318 P_dot        = (-0.03) / dt;
+0319 Theta_t      = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, 0.2-0.03, P_dot);
+0320 
+0321 n = -0.04:0.01:-0.03;
+0322 
+0323 Z_inf = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,0,0);
+0324 Z_sup = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,1,0);
+0325 Z_inf_2 = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,0,0)^2;
+0326 Z_sup_2 = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,1,0)^2;
+0327 Z_100 = (Z_sup-Z_inf)/100;
+0328 
+0329 <span class="keyword">for</span> i = 1:length(n)
+0330     
+0331     figure(i)
+0332     figure(i*1000)
+0333     zz = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,n(i),0.2-0.03);
+0334     disp(num2str(zz*sqrt(2*alpha*theta_0)/(pi/2)));
+0335     disp([<span class="string">'i='</span>,num2str(i),<span class="string">', n = '</span>,num2str(n(i)),<span class="string">', z = '</span>,num2str(zz),<span class="string">', and zz^2 = '</span>,num2str(zz^2)]);
+0336     <span class="keyword">for</span> k = 1:100
+0337         sim_path_z_2(k) = <a href="sde_Lamperti_FE_2_TEXSTING.html" class="code" title="function sim_path_f = sde_Lamperti_FE_2_TEXSTING(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,m,mm) % 02/04/2020 20:40">sde_Lamperti_FE_2_TEXSTING</a>(zz^2,alpha,theta_0,Theta_t,dt,0.2-0.03,P_dot,i,i*1000);
+0338     <span class="keyword">end</span>
+0339 
+0340 <span class="keyword">end</span>
+0341 
+0342 <span class="comment">%% Testing Plot Likelihood for Model 1 and only 1 transition:</span>
+0343 
+0344 xx = 0:0.01:1;
+0345 
+0346 <span class="keyword">for</span> i = 1:length(xx)
+0347     
+0348     dist_to_plot(i) = <a href="log_dist_L.html" class="code" title="function [val] = log_dist_L(z,mu,sig) % 29/03/2020 17:49">log_dist_L</a>(xx(i),m1(end),sqrt(m2(end)-m1(end)^2));
+0349     
+0350 <span class="keyword">end</span>
+0351 
+0352 dist_to_plot_val = <a href="log_dist_L.html" class="code" title="function [val] = log_dist_L(z,mu,sig) % 29/03/2020 17:49">log_dist_L</a>(x2,m1(end),sqrt(m2(end)-m1(end)^2));
+0353 
+0354 figure;
+0355 plot(xx,dist_to_plot);
+0356 hold on;
+0357 plot(x2,dist_to_plot_val,<span class="string">'x'</span>);
+0358 
+0359 <span class="comment">%% Testing datetick:</span>
+0360 
+0361 load count.dat;
+0362 n = length(count);
+0363 year = repmat(1995,1,n);
+0364 month = repmat(4,1,n);
+0365 day = repmat(18,1,n);
+0366 hour = [1:n];
+0367 minutes = zeros(1,n);
+0368 sdate = datenum(year,month,day,hour,minutes,minutes);
+0369 bar3(sdate,count);
+0370 datetick(<span class="string">'y'</span>,<span class="string">'HHPM'</span>);
+0371 
+0372 <span class="comment">%% Testing datetick:</span>
+0373 
+0374 close all;
+0375 clear all;
+0376 clc;
+0377 
+0378 y = rand(25,1);
+0379 x = [13:37]/24;
+0380 plot(x,y);
+0381 xticks(x);
+0382 datetick(<span class="string">'x'</span>,<span class="string">'HHPM'</span>,<span class="string">'keepticks'</span>);
+0383 grid minor;
+0384 xlim([min(x) max(x)]);
+0385 xtickangle(90);
+0386 
+0387 
+0388 
+0389 
+0390 
+0391 
+0392 
+0393 
+0394 
+0395 
+0396 
+0397 
+0398 
+0399 
+0400 
+0401 
+0402 
+0403 
+0404 
+0405 
+0406</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

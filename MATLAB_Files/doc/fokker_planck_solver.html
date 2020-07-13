@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of fokker_planck_solver</title>
+  <meta name="keywords" content="fokker_planck_solver">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; fokker_planck_solver.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>fokker_planck_solver
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="fokker_planck_solver.m">fokker_planck_solver.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet  = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0008 epsilon  = 0.020;
+0009 <span class="comment">% dataKind can be classic or comparable.</span>
+0010 dataKind = <span class="string">'comparable'</span>;
+0011 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
+0012 
+0013 delta   = 13; <span class="comment">% The time is delta*10 minutes.</span>
+0014 theta_0 = 2.2210;
+0015 alpha   = 0.0436;
+0016 
+0017 d  = Table_Testing_Complete.Date;
+0018 p  = Table_Testing_Complete.Forecast;
+0019 t  = Table_Testing_Complete.Time(1,:);
+0020 x  = Table_Testing_Complete.Real_ADME;
+0021 dt = t(2); <span class="comment">% This is the default dt. I will choose a smaller one.</span>
+0022 
+0023 minus_t = linspace(-delta*dt,-dt,delta);
+0024 exten_t = [minus_t,t];
+0025 NT      = 1000000;
+0026 NX      = 1000;
+0027 
+0028 <span class="keyword">for</span> i = 1 : height(Table_Testing_Complete)
+0029 
+0030     X = x(i,:);
+0031     P = p(i,:);
+0032     <span class="comment">% All of them show similar results:</span>
+0033     P_exten_linear = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'linear'</span>,<span class="string">'extrap'</span>);
+0034     P              = [P_exten_linear,P]; <span class="comment">% We extend the forecast.</span>
+0035     dP             = (P(2:end) - P(1:end-1)) / dt; dP(end+1) = dP(end);
+0036     
+0037     pde_time = linspace(exten_t(1),exten_t(end),NT);
+0038     short_t  = linspace(t(1),t(end),NT);
+0039     P        = interp1(exten_t,P,pde_time);
+0040     dP       = interp1(exten_t,dP,pde_time);
+0041     X        = interp1(t,X,short_t);
+0042     dt       = pde_time(2) - pde_time(1);
+0043     
+0044     pde_space    = linspace(0,1,NX);
+0045     pde_val(1,:) = normpdf(pde_space,P(1),0.1);
+0046     d_g          = zeros(1,NX);
+0047     dd_h         = zeros(1,NX);
+0048     
+0049     <span class="keyword">for</span> j = 1:length(pde_time)-1
+0050         
+0051         ddp = dP(j);
+0052         pp  = P(j);
+0053         tt  = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, pp, ddp);
+0054         
+0055         g = (ddp-tt*(pde_space+pp)).*pde_val(j,:);
+0056         h = alpha*theta_0*pde_space.*(1-pde_space).*pde_val(j,:);
+0057         
+0058         <span class="keyword">for</span> k = 2:NX-1
+0059             
+0060             <span class="keyword">if</span> g(k) &lt; 0
+0061                 d_g(k) = (g(k+1)-g(k))/dt;
+0062             <span class="keyword">elseif</span> g(k) &gt;= 0
+0063                 d_g(k) = (g(k)-g(k-1))/dt;
+0064             <span class="keyword">end</span>
+0065             dd_h(k) = (h(k+1)-2*h(k)-h(k-1))/dt^2;
+0066             
+0067         <span class="keyword">end</span>
+0068         
+0069         plot(pde_val(j,:));
+0070         hold on;
+0071         
+0072         pde_val(j+1,:) = pde_val(j,:) + dt*(-d_g+dd_h);
+0073         
+0074     <span class="keyword">end</span>
+0075     
+0076 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

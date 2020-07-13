@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of cross_correlation_test_Lamperti</title>
+  <meta name="keywords" content="cross_correlation_test_Lamperti">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; cross_correlation_test_Lamperti.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>cross_correlation_test_Lamperti
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>	19/04/2020 15:45</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="cross_correlation_test_Lamperti.m">cross_correlation_test_Lamperti.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet       = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0008 epsilon       = 0.020;
+0009 <span class="comment">% dataKind can be classic or comparable.</span>
+0010 dataKind      = <span class="string">'comparable'</span>;
+0011 train_data             = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0012 test_data              = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
+0013 [~, ~, table_complete] = <a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>(dataSet);
+0014 lag                    = 150;
+0015 font_size              = 14;
+0016 
+0017 train_error = transpose(train_data.Error_Lamp);
+0018 test_error  = transpose(test_data.Error_Lamp);
+0019 all_error   = transpose(table_complete.Error_Lamp);
+0020 
+0021 [N1,M1]   = size(train_error);
+0022 [N2,M2]   = size(test_error);
+0023 all_error = all_error(:,end-(M1+M2)+1:end);
+0024 [N3,M3]   = size(all_error);
+0025 
+0026 <span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+0027 
+0028 <span class="keyword">for</span> i = 1:M1-1
+0029     train_xcorr(:,i) = xcorr(train_error(:,i),train_error(:,i+1),lag,<span class="string">'normalized'</span>);
+0030 <span class="keyword">end</span>
+0031 <span class="keyword">for</span> i = 1:M2-1
+0032     test_xcorr(:,i) = xcorr(test_error(:,i),test_error(:,i+1),lag,<span class="string">'normalized'</span>);
+0033 <span class="keyword">end</span>
+0034 <span class="keyword">for</span> i = 1:M3-1
+0035     all_xcorr(:,i) = xcorr(all_error(:,i),all_error(:,i+1),lag,<span class="string">'normalized'</span>);
+0036 <span class="keyword">end</span>
+0037 
+0038 X1 = 1:M1-1; X2 = 1:M2-1; X3 = 1:M3-1;
+0039 Y  = -lag:1:lag;
+0040 [x1,y1] = meshgrid(X1,Y);
+0041 [x2,y2] = meshgrid(X2,Y);
+0042 [x3,y3] = meshgrid(X3,Y);
+0043 
+0044 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0045 contour(x1,y1,train_xcorr); colorbar;
+0046 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0047 imagesc(X1,Y,train_xcorr); colorbar;
+0048 title(<span class="string">'Sample xcorr Function (observatios - training)'</span>);
+0049 xlabel(<span class="string">'Day'</span>); ylabel(<span class="string">'Lag'</span>);
+0050 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,font_size);
+0051 saveas(gcf,[pwd <span class="string">'/Results/cross_correlation/obs_training_L'</span>],<span class="string">'epsc'</span>);
+0052 
+0053 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0054 contour(x2,y2,test_xcorr); colorbar;
+0055 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0056 imagesc(X2,Y,test_xcorr); colorbar;
+0057 title(<span class="string">'Sample xcorr Function (observatios - testing)'</span>);
+0058 xlabel(<span class="string">'Day'</span>); ylabel(<span class="string">'Lag'</span>);
+0059 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,font_size);
+0060 saveas(gcf,[pwd <span class="string">'/Results/cross_correlation/obs_testing_L'</span>],<span class="string">'epsc'</span>);
+0061 
+0062 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0063 contour(x3,y3,all_xcorr); colorbar;
+0064 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0065 imagesc(X3,Y,all_xcorr); colorbar;
+0066 title(<span class="string">'Sample xcorr Function (observatios - all data)'</span>);
+0067 xlabel(<span class="string">'Day'</span>); ylabel(<span class="string">'Lag'</span>);
+0068 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,font_size);
+0069 saveas(gcf,[pwd <span class="string">'/Results/cross_correlation/obs_alldata_L'</span>],<span class="string">'epsc'</span>);
+0070 
+0071 <span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+0072 
+0073 train_tran = transpose(train_data.Error_Lamp_Transitions);
+0074 test_tran  = transpose(test_data.Error_Lamp_Transitions);
+0075 all_tran   = transpose(table_complete.Error_Lamp_Transitions);
+0076 
+0077 [N1,M1]   = size(train_tran);
+0078 [N2,M2]   = size(test_tran);
+0079 all_error = all_tran(:,end-(M1+M2)+1:end);
+0080 [N3,M3]   = size(all_tran);
+0081 
+0082 <span class="keyword">for</span> i = 1:M1-1
+0083     train_xcorr(:,i) = xcorr(train_tran(:,i),train_tran(:,i+1),lag,<span class="string">'normalized'</span>);
+0084 <span class="keyword">end</span>
+0085 <span class="keyword">for</span> i = 1:M2-1
+0086     test_xcorr(:,i) = xcorr(test_tran(:,i),test_tran(:,i+1),lag,<span class="string">'normalized'</span>);
+0087 <span class="keyword">end</span>
+0088 <span class="keyword">for</span> i = 1:M3-1
+0089     all_xcorr(:,i) = xcorr(all_tran(:,i),all_tran(:,i+1),lag,<span class="string">'normalized'</span>);
+0090 <span class="keyword">end</span>
+0091 
+0092 X1 = 1:M1-1; X2 = 1:M2-1; X3 = 1:M3-1;
+0093 Y  = -lag:1:lag;
+0094 [x1,y1] = meshgrid(X1,Y);
+0095 [x2,y2] = meshgrid(X2,Y);
+0096 [x3,y3] = meshgrid(X3,Y);
+0097 
+0098 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0099 contour(x1,y1,train_xcorr); colorbar;
+0100 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0101 imagesc(X1,Y,train_xcorr); colorbar;
+0102 title(<span class="string">'Sample xcorr Function (transitions - training)'</span>);
+0103 xlabel(<span class="string">'Day'</span>); ylabel(<span class="string">'Lag'</span>);
+0104 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,font_size);
+0105 saveas(gcf,[pwd <span class="string">'/Results/cross_correlation/tran_training_L'</span>],<span class="string">'epsc'</span>);
+0106 
+0107 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0108 contour(x2,y2,test_xcorr); colorbar;
+0109 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0110 imagesc(X2,Y,test_xcorr); colorbar;
+0111 title(<span class="string">'Sample xcorr Function (transitions - testing)'</span>);
+0112 xlabel(<span class="string">'Day'</span>); ylabel(<span class="string">'Lag'</span>);
+0113 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,font_size);
+0114 saveas(gcf,[pwd <span class="string">'/Results/cross_correlation/tran_testing_L'</span>],<span class="string">'epsc'</span>);
+0115 
+0116 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0117 contour(x3,y3,all_xcorr); colorbar;
+0118 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600]);
+0119 imagesc(X3,Y,all_xcorr); colorbar;
+0120 title(<span class="string">'Sample xcorr Function (transitions - all data)'</span>);
+0121 xlabel(<span class="string">'Day'</span>); ylabel(<span class="string">'Lag'</span>);
+0122 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,font_size);
+0123 saveas(gcf,[pwd <span class="string">'/Results/cross_correlation/tran_alldata_L'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

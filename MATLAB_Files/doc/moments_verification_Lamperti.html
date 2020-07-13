@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of moments_verification_Lamperti</title>
+  <meta name="keywords" content="moments_verification_Lamperti">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; moments_verification_Lamperti.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>moments_verification_Lamperti
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>	29/03/2020 17:49</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="moment_1_L.html" class="code" title="function m1 = moment_1_L(z,theta_0,alpha,p1,p2,dt,n)">moment_1_L</a>	29/03/2020 16:28</li><li><a href="moment_2_L.html" class="code" title="function m2 = moment_2_L(m1,theta_0,alpha,p1,p2,dt,n)">moment_2_L</a>	29/03/2020 16:50</li><li><a href="sde_Lamperti_FE.html" class="code" title="function sim_path_f = sde_Lamperti_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,candidate)">sde_Lamperti_FE</a>	03/04/2020 20:37</li><li><a href="sde_Lamperti_FE_2.html" class="code" title="function sim_path_f = sde_Lamperti_FE_2(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot)">sde_Lamperti_FE_2</a>	02/04/2020 20:40</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="moments_verification_Lamperti.m">moments_verification_Lamperti.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 epsilon                = 0.018;
+0006 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon);
+0007 
+0008 t  = Table_Testing_Complete.Time(1,:);
+0009 dt = t(2);
+0010 
+0011 theta_0 = 1.2656;
+0012 alpha   = 0.07052;
+0013 n       = 500;
+0014 p_end   = 1/2;
+0015 p_lims  = 0.03;
+0016 
+0017 p = p_end-p_lims:0.001:p_end+p_lims;
+0018 v = -0.3:0.01:0.3;
+0019 
+0020 <span class="keyword">for</span> i = 1:length(p)
+0021     
+0022     <span class="keyword">for</span> j = 1:length(v)
+0023         
+0024         disp([num2str(i/length(p)),<span class="string">' and '</span>,num2str(j/length(v))]);
+0025                 
+0026         z = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,v(j),p(i),2);
+0027         
+0028         P_dot        = (p_end-p(i)) / dt;
+0029         Theta_t      = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, p(i), P_dot);
+0030         
+0031         Exp_Z   = <a href="moment_1_L.html" class="code" title="function m1 = moment_1_L(z,theta_0,alpha,p1,p2,dt,n)">moment_1_L</a>(z,theta_0,alpha,p(i),p_end,dt,n);
+0032         Exp_Z_2 = <a href="moment_2_L.html" class="code" title="function m2 = moment_2_L(m1,theta_0,alpha,p1,p2,dt,n)">moment_2_L</a>(Exp_Z,theta_0,alpha,p(i),p_end,dt,n) + Exp_Z(end)^2;
+0033                 
+0034         <span class="keyword">for</span> k = 1:100
+0035             sim_path_z(k)   = <a href="sde_Lamperti_FE.html" class="code" title="function sim_path_f = sde_Lamperti_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,candidate)">sde_Lamperti_FE</a>(z,alpha,theta_0,Theta_t,dt,p(i),P_dot,2);
+0036             sim_path_z_2(k) = <a href="sde_Lamperti_FE_2.html" class="code" title="function sim_path_f = sde_Lamperti_FE_2(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot)">sde_Lamperti_FE_2</a>(z^2,alpha,theta_0,Theta_t,dt,p(i),P_dot);
+0037         <span class="keyword">end</span>
+0038         
+0039         Exp_Z_emp   = mean(sim_path_z);
+0040         Exp_Z_emp_2 = mean(sim_path_z_2);
+0041 
+0042         exp_z_ode(i,j)   = Exp_Z(end);
+0043         exp_z_2_ode(i,j) = Exp_Z_2(end);
+0044         exp_z_emp(i,j)   = Exp_Z_emp;
+0045         exp_z_emp_2(i,j) = Exp_Z_emp_2;
+0046         
+0047     <span class="keyword">end</span>
+0048 <span class="keyword">end</span>
+0049 
+0050 error_z   = abs(exp_z_ode-exp_z_emp);
+0051 error_z_2 = abs(exp_z_2_ode-exp_z_emp_2);
+0052 
+0053 figure;
+0054 [V,Y] = meshgrid(p-p_end,v);
+0055 surf(V,Y,exp_z_emp');
+0056 title(<span class="string">'$E[Z]$ Empirical'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0057 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0058 xlim([min(p-p_end) max(p-p_end)]); ylim([min(v) max(v)]);
+0059 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/1'</span>],<span class="string">'epsc'</span>);
+0060 
+0061 figure;
+0062 surf(V,Y,exp_z_ode');
+0063 title(<span class="string">'$E[Z]$ ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0064 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0065 xlim([min(p-p_end) max(p-p_end)]); ylim([min(v) max(v)]);
+0066 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/2'</span>],<span class="string">'epsc'</span>);
+0067 
+0068 figure;
+0069 contourf(V,Y,error_z'); colorbar;
+0070 title(<span class="string">'$E[Z]$ Abs-error Empirical-ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0071 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0072 xlim([min(p-p_end) max(p-p_end)]); ylim([min(v) max(v)]);
+0073 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/3'</span>],<span class="string">'epsc'</span>);
+0074 
+0075 figure;
+0076 surf(V,Y,exp_z_emp_2');
+0077 title(<span class="string">'$E[Z^2]$ Empirical'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0078 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0079 xlim([min(p-p_end) max(p-p_end)]); ylim([min(v) max(v)]);
+0080 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/4'</span>],<span class="string">'epsc'</span>);
+0081 
+0082 figure;
+0083 surf(V,Y,exp_z_2_ode');
+0084 title(<span class="string">'$E[Z^2]$ ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0085 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0086 xlim([min(p-p_end) max(p-p_end)]); ylim([min(v) max(v)]);
+0087 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/5'</span>],<span class="string">'epsc'</span>);
+0088 
+0089 figure;
+0090 contourf(V,Y,error_z_2',[0:0.1:1]); colorbar;
+0091 title(<span class="string">'$E[Z^2]$ Abs-error Empirical-ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0092 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0093 xlim([min(p-p_end) max(p-p_end)]); ylim([min(v) max(v)]);
+0094 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/6'</span>],<span class="string">'epsc'</span>);
+0095 
+0096 <span class="comment">%% Now we plot w.r.t. p_end:</span>
+0097 
+0098 error_z = []; error_z_2 = [];
+0099 p_end = 0.2:0.1:0.8;
+0100 
+0101 Z_inf = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,0,0,2) ;
+0102 Z_sup = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,1,0,2) ;
+0103 Z_100 = (Z_sup-Z_inf)/100;
+0104 
+0105 <span class="keyword">for</span> l = 1:length(p_end)
+0106     
+0107     p = p_end(l)-p_lims:0.001:p_end(l)+p_lims;
+0108     disp([<span class="string">'Completed: '</span>,num2str(l/length(p_end)*100),<span class="string">'%'</span>]);
+0109     num_trunc = 0;
+0110 
+0111     <span class="keyword">for</span> i = 1:length(p)
+0112         disp(num2str(i/length(p)));
+0113         <span class="keyword">for</span> j = 1:length(v)
+0114 
+0115             <span class="keyword">if</span> v(j) &lt; -p(i)
+0116                 v_toUse   = -p(i);
+0117                 num_trunc = num_trunc + 1;
+0118                 flag      = 0;
+0119             <span class="keyword">elseif</span> v(j) &gt; 1-p(i)
+0120                 v_toUse   = 1-p(i);
+0121                 num_trunc = num_trunc + 1;
+0122                 flag      = 0;
+0123             <span class="keyword">else</span>
+0124                 v_toUse = v(j);
+0125                 flag    = 1;
+0126             <span class="keyword">end</span>
+0127             
+0128             z = <a href="lamperti_transform.html" class="code" title="function [val] = lamperti_transform(theta_0,alpha,v,p,candidate)">lamperti_transform</a>(theta_0,alpha,v_toUse,p(i),2);
+0129             
+0130             <span class="keyword">if</span> z &gt;= Z_sup - Z_100 * 5
+0131                 z = Z_sup - Z_100 * 5;
+0132                 <span class="keyword">if</span> flag == 1
+0133                     flag = 0;
+0134                     num_trunc = num_trunc + 1;
+0135                 <span class="keyword">end</span>
+0136             <span class="keyword">elseif</span> z &lt;= Z_inf + Z_100 * 5
+0137                 z = Z_inf + Z_100 * 5;
+0138                 <span class="keyword">if</span> flag == 1
+0139                     flag = 0;
+0140                     num_trunc = num_trunc + 1;
+0141                 <span class="keyword">end</span>
+0142             <span class="keyword">end</span>
+0143         
+0144             P_dot        = (p_end(l)-p(i)) / dt;
+0145             Theta_t      = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, p(i), P_dot);
+0146 
+0147             Exp_Z   = <a href="moment_1_L.html" class="code" title="function m1 = moment_1_L(z,theta_0,alpha,p1,p2,dt,n)">moment_1_L</a>(z,theta_0,alpha,p(i),p_end(l),dt,n);
+0148             Var_Z   = <a href="moment_2_L.html" class="code" title="function m2 = moment_2_L(m1,theta_0,alpha,p1,p2,dt,n)">moment_2_L</a>(Exp_Z,theta_0,alpha,p(i),p_end(l),dt,n);
+0149             Exp_Z_2 = Var_Z + Exp_Z(end)^2;
+0150 
+0151             <span class="keyword">for</span> k = 1:100
+0152                 sim_path_z(k)   = <a href="sde_Lamperti_FE.html" class="code" title="function sim_path_f = sde_Lamperti_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot,candidate)">sde_Lamperti_FE</a>(z,alpha,theta_0,Theta_t,dt,p(i),P_dot,2);
+0153                 sim_path_z_2(k) = <a href="sde_Lamperti_FE_2.html" class="code" title="function sim_path_f = sde_Lamperti_FE_2(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot)">sde_Lamperti_FE_2</a>(z^2,alpha,theta_0,Theta_t,dt,p(i),P_dot);
+0154             <span class="keyword">end</span>
+0155 
+0156             Exp_Z_emp   = mean(sim_path_z);
+0157             Exp_Z_emp_2 = mean(sim_path_z_2);
+0158 
+0159             z_plot(i,j)      = z;
+0160             exp_z_ode(i,j)   = Exp_Z(end)*flag;
+0161             exp_z_2_ode(i,j) = Exp_Z_2(end)*flag;
+0162             var_z_ode(i,j)   = Var_Z(end)*flag;
+0163             exp_z_emp(i,j)   = Exp_Z_emp*flag;
+0164             exp_z_emp_2(i,j) = Exp_Z_emp_2*flag;
+0165             flat_plot(i,j)   = flag;
+0166 
+0167         <span class="keyword">end</span>
+0168     <span class="keyword">end</span>
+0169     
+0170     dif_exp_z   = abs(exp_z_ode-exp_z_emp);
+0171     dif_exp_z_2 = abs(exp_z_2_ode-exp_z_emp_2);
+0172     
+0173     figure;
+0174     surf(V,Y,(exp_z_ode)'); 
+0175     title([<span class="string">'First moment ODE P(t+1)='</span>,num2str(p_end(l))]);
+0176     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0177     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/fm_ODE_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0178     figure;
+0179     surf(V,Y,(exp_z_emp)'); 
+0180     title([<span class="string">'First moment MC P(t+1)='</span>,num2str(p_end(l))]);
+0181     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0182     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/fm_MC_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0183     figure;
+0184     surf(V,Y,(exp_z_2_ode)');
+0185     title([<span class="string">'Second moment ODE P(t+1)='</span>,num2str(p_end(l))]);
+0186     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0187     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/sm_ODE_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0188     figure;
+0189     surf(V,Y,(var_z_ode)');
+0190     title([<span class="string">'Variance ODE P(t+1)='</span>,num2str(p_end(l))]);
+0191     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0192     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/var_ODE_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0193     figure;
+0194     surf(V,Y,(exp_z_emp_2)'); 
+0195     title([<span class="string">'Second moment MC P(t+1)='</span>,num2str(p_end(l))]);
+0196     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0197     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/sm_MC_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0198     figure;
+0199     contourf(V,Y,(dif_exp_z)',[0:0.1:1]); colorbar;
+0200     title([<span class="string">'Error first moment when P(t+1)='</span>,num2str(p_end(l))]);
+0201     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0202     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/fm_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0203     figure;
+0204     contourf(V,Y,(dif_exp_z_2)',[0:0.1:1]); colorbar;
+0205     title([<span class="string">'Error second moment when P(t+1)='</span>,num2str(p_end(l))]);
+0206     xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0207     saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/errors/sm_'</span>,num2str(l)],<span class="string">'epsc'</span>);
+0208     
+0209     figure;
+0210     surf(V,Y,(flat_plot)'); 
+0211     title([<span class="string">'Flag for P(t+1)='</span>,num2str(p_end(l))]);
+0212     figure;
+0213     surf(V,Y,(z_plot)'); 
+0214     title([<span class="string">'Z(v,p) for P(t+1)='</span>,num2str(p_end(l))]);
+0215     
+0216     error_z(l)   = sum(sum(abs(dif_exp_z))) / (length(p)*length(v) - num_trunc);
+0217     error_z_2(l) = sum(sum(abs(dif_exp_z_2))) / (length(p)*length(v) - num_trunc);
+0218     
+0219     pause(0.5);
+0220     
+0221 <span class="keyword">end</span>
+0222 
+0223 figure;
+0224 plot(p_end,error_z);
+0225 hold on;
+0226 plot(p_end,error_z_2);
+0227 grid minor;
+0228 xlabel(<span class="string">'Next Forecast Value'</span>);
+0229 ylabel(<span class="string">'Error'</span>);
+0230 title(<span class="string">'Lamperti moments mean absolute error'</span>);
+0231 legend(<span class="string">'Error first moment (empirical-ODE)'</span>,<span class="string">'Error second moment (empirical-ODE)'</span>);
+0232 xlim([min(p_end) max(p_end)]);
+0233 saveas(gcf,[pwd <span class="string">'/Results/moments/lamperti/7'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

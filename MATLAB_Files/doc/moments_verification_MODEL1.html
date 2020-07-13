@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of moments_verification_MODEL1</title>
+  <meta name="keywords" content="moments_verification_MODEL1">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; moments_verification_MODEL1.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>moments_verification_MODEL1
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="moment_1_M1.html" class="code" title="function m1 = moment_1_M1(x,theta_0,p1,p2,dt,n) % 19/04/2020 21:56">moment_1_M1</a>	</li><li><a href="moment_2_M1.html" class="code" title="function m2 = moment_2_M1(x,m1,theta_0,alpha,p1,p2,dt,n) % 19/04/2020 22:00">moment_2_M1</a>	</li><li><a href="sde_FE_MODEL1.html" class="code" title="function sim_path_f = sde_FE_MODEL1(sim_path_i,alpha,theta_0,dt,P) % 02/02/2020 18:28">sde_FE_MODEL1</a>	SDE for X_t in MODEL 1.</li><li><a href="sde_FE_MODEL1_2.html" class="code" title="function sim_path_f = sde_FE_MODEL1_2(sim_path_i,alpha,theta_0,dt,P) % 01/04/2020 19:53">sde_FE_MODEL1_2</a>	SDE for X_t^2 in MODEL 1.</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="moments_verification_MODEL1.m">moments_verification_MODEL1.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet                = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0008 epsilon                = 0.018;
+0009 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet);
+0010 
+0011 t  = Table_Testing_Complete.Time(1,:);
+0012 dt = t(2);
+0013 
+0014 theta_0 = 1.2656;
+0015 alpha   = 0.07052;
+0016 n       = 100;
+0017 p_end   = 1/2;
+0018 p_lims  = 0.03;
+0019 
+0020 p = p_end-p_lims:0.001:p_end+p_lims;
+0021 x = -0.4:0.001:0.2;
+0022 <span class="comment">% Here we are being confused. The vector x is the error vector. The idea is</span>
+0023 <span class="comment">% that for each p, we compute the measurement as p+x, which would imply</span>
+0024 <span class="comment">% that this vector x is the error vector v, but we called it x.</span>
+0025 
+0026 <span class="keyword">for</span> i = 1:length(p)
+0027     <span class="keyword">for</span> j = 1:length(x)
+0028                         
+0029 <span class="comment">%         moment_1_M1(x,theta_0,p1,p2,dt,n)</span>
+0030         Exp_X   = <a href="moment_1_M1.html" class="code" title="function m1 = moment_1_M1(x,theta_0,p1,p2,dt,n) % 19/04/2020 21:56">moment_1_M1</a>(p(i)+x(j),theta_0,p(i),p_end,dt,n);
+0031 <span class="comment">%         moment_2_M1(x,m1,theta_0,alpha,p1,p2,dt,n)</span>
+0032         Exp_X_2 = <a href="moment_2_M1.html" class="code" title="function m2 = moment_2_M1(x,m1,theta_0,alpha,p1,p2,dt,n) % 19/04/2020 22:00">moment_2_M1</a>(p(i)+x(j),Exp_X,theta_0,alpha,p(i),p_end,dt,n);
+0033                 
+0034         <span class="keyword">for</span> k = 1:100
+0035 <span class="comment">%             sde_FE_MODEL1(sim_path_i,alpha,theta_0,dt,P)</span>
+0036             sim_path_x(k)   = <a href="sde_FE_MODEL1.html" class="code" title="function sim_path_f = sde_FE_MODEL1(sim_path_i,alpha,theta_0,dt,P) % 02/02/2020 18:28">sde_FE_MODEL1</a>(p(i)+x(j),alpha,theta_0,dt,p(i));
+0037 <span class="comment">%             sde_FE_MODEL1_2(sim_path_i,alpha,theta_0,dt,P)</span>
+0038             sim_path_x_2(k) = <a href="sde_FE_MODEL1_2.html" class="code" title="function sim_path_f = sde_FE_MODEL1_2(sim_path_i,alpha,theta_0,dt,P) % 01/04/2020 19:53">sde_FE_MODEL1_2</a>((p(i)+x(j))^2,alpha,theta_0,dt,p(i));
+0039         <span class="keyword">end</span>
+0040         
+0041         Exp_X_emp   = mean(sim_path_x);
+0042         Exp_X_emp_2 = mean(sim_path_x_2);
+0043 
+0044         exp_x_ode(i,j)   = Exp_X(end);
+0045         exp_x_2_ode(i,j) = Exp_X_2(end);
+0046         exp_x_emp(i,j)   = Exp_X_emp;
+0047         exp_x_emp_2(i,j) = Exp_X_emp_2;
+0048         
+0049     <span class="keyword">end</span>
+0050 <span class="keyword">end</span>
+0051 
+0052 error_v   = abs(exp_x_ode-exp_x_emp);
+0053 error_v_2 = abs(exp_x_2_ode-exp_x_emp_2);
+0054 
+0055 figure;
+0056 [V,Y] = meshgrid(p-p_end,x);
+0057 surf(V,Y,exp_x_emp');
+0058 title(<span class="string">'$E[V]$ Empirical'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0059 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0060 xlim([min(p-p_end) max(p-p_end)]); ylim([min(x) max(x)]);
+0061 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/1'</span>],<span class="string">'epsc'</span>);
+0062 
+0063 figure;
+0064 surf(V,Y,exp_x_ode');
+0065 title(<span class="string">'$E[V]$ ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0066 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0067 xlim([min(p-p_end) max(p-p_end)]); ylim([min(x) max(x)]);
+0068 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/2'</span>],<span class="string">'epsc'</span>);
+0069 
+0070 figure;
+0071 contourf(V,Y,error_v'); colorbar;
+0072 title(<span class="string">'$E[V]$ Abs-error Empirical-ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0073 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0074 xlim([min(p-p_end) max(p-p_end)]); ylim([min(x) max(x)]);
+0075 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/3'</span>],<span class="string">'epsc'</span>);
+0076 
+0077 figure;
+0078 surf(V,Y,exp_x_emp_2');
+0079 title(<span class="string">'$E[V^2]$ Empirical'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0080 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0081 xlim([min(p-p_end) max(p-p_end)]); ylim([min(x) max(x)]);
+0082 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/4'</span>],<span class="string">'epsc'</span>);
+0083 
+0084 figure;
+0085 surf(V,Y,exp_x_2_ode');
+0086 title(<span class="string">'$E[V^2]$ ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0087 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0088 xlim([min(p-p_end) max(p-p_end)]); ylim([min(x) max(x)]);
+0089 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/5'</span>],<span class="string">'epsc'</span>);
+0090 
+0091 figure;
+0092 contourf(V,Y,error_v_2',10); colorbar;
+0093 title(<span class="string">'$E[V^2]$ Abs-error Empirical-ODE'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0094 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0095 xlim([min(p-p_end) max(p-p_end)]); ylim([min(x) max(x)]);
+0096 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/6'</span>],<span class="string">'epsc'</span>);
+0097 
+0098 <span class="comment">%% Now we plot w.r.t. p_end: STILL NOT DONE</span>
+0099 
+0100 error_v = []; error_v_2 = [];
+0101 p_end = 0.2:0.1:0.8;
+0102 
+0103 <span class="keyword">for</span> l = 1:length(p_end)
+0104     
+0105     p = p_end(l)-p_lims:0.001:p_end(l)+p_lims;
+0106     disp([<span class="string">'Completed: '</span>,num2str(l/length(p_end)*100),<span class="string">'%'</span>]);
+0107     num_trunc = 0;
+0108 
+0109     <span class="keyword">for</span> i = 1:length(p)
+0110         <span class="keyword">for</span> j = 1:length(x)
+0111             
+0112             x_to_use = p(i)+x(j);
+0113             
+0114             <span class="keyword">if</span> 0 &gt; x_to_use
+0115                 x_to_use   = 0;
+0116                 num_trunc = num_trunc + 1;
+0117                 flag      = 0;
+0118             <span class="keyword">elseif</span> x_to_use &gt; 1
+0119                 x_to_use   = 1;
+0120                 num_trunc = num_trunc + 1;
+0121                 flag      = 0;
+0122             <span class="keyword">else</span>
+0123                 flag    = 1;
+0124             <span class="keyword">end</span>
+0125             
+0126             Exp_X   = <a href="moment_1_M1.html" class="code" title="function m1 = moment_1_M1(x,theta_0,p1,p2,dt,n) % 19/04/2020 21:56">moment_1_M1</a>(x_to_use,theta_0,p(i),p_end(l),dt,n);
+0127             Exp_X_2 = <a href="moment_2_M1.html" class="code" title="function m2 = moment_2_M1(x,m1,theta_0,alpha,p1,p2,dt,n) % 19/04/2020 22:00">moment_2_M1</a>(x_to_use,Exp_X,theta_0,alpha,p(i),p_end(l),dt,n);
+0128 
+0129             <span class="keyword">for</span> k = 1:100
+0130                 sim_path_x(k)   = <a href="sde_FE_MODEL1.html" class="code" title="function sim_path_f = sde_FE_MODEL1(sim_path_i,alpha,theta_0,dt,P) % 02/02/2020 18:28">sde_FE_MODEL1</a>(x_to_use,alpha,theta_0,dt,p(i));
+0131                 sim_path_x_2(k) = <a href="sde_FE_MODEL1_2.html" class="code" title="function sim_path_f = sde_FE_MODEL1_2(sim_path_i,alpha,theta_0,dt,P) % 01/04/2020 19:53">sde_FE_MODEL1_2</a>(x_to_use^2,alpha,theta_0,dt,p(i));
+0132             <span class="keyword">end</span>
+0133 
+0134             Exp_X_emp   = mean(sim_path_x);
+0135             Exp_X_emp_2 = mean(sim_path_x_2);
+0136 
+0137             exp_x_ode(i,j)   = Exp_X(end)*flag;
+0138             exp_x_2_ode(i,j) = Exp_X_2(end)*flag;
+0139             exp_x_emp(i,j)   = Exp_X_emp*flag;
+0140             exp_x_emp_2(i,j) = Exp_X_emp_2*flag;
+0141 
+0142         <span class="keyword">end</span>
+0143     <span class="keyword">end</span>
+0144 
+0145     error_v(l)   = sum(sum(abs(exp_x_ode-exp_x_emp))) / (length(p)*length(x) - num_trunc);
+0146     error_v_2(l) = sum(sum(abs(exp_x_2_ode-exp_x_emp_2))) / (length(p)*length(x) - num_trunc);
+0147     
+0148 <span class="keyword">end</span>
+0149 
+0150 figure;
+0151 plot(p_end,error_v);
+0152 hold on;
+0153 plot(p_end,error_v_2);
+0154 grid minor;
+0155 xlabel(<span class="string">'Next Forecast Value'</span>);
+0156 ylabel(<span class="string">'Error'</span>);
+0157 title(<span class="string">'Moments mean absolute error'</span>);
+0158 legend(<span class="string">'Error first moment (empirical-ODE)'</span>,<span class="string">'Error second moment (empirical-ODE)'</span>);
+0159 xlim([min(p_end) max(p_end)]);
+0160 saveas(gcf,[pwd <span class="string">'/Results/moments/model1/7'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

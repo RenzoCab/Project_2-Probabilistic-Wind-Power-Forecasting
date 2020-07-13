@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of plot_theta0_gamma_model_1</title>
+  <meta name="keywords" content="plot_theta0_gamma_model_1">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; plot_theta0_gamma_model_1.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>plot_theta0_gamma_model_1
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>	15/03/2020 21:07</li><li><a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>	09/02/2020 09:30</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="mean_regression_M1.html" class="code" title="function [val] = mean_regression_M1(batch_complete, dt, rang, gamma) % 16/03/2020 11:08">mean_regression_M1</a>	</li><li><a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>	11/02/2020 09:35</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="plot_theta0_gamma_model_1.m">plot_theta0_gamma_model_1.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0008 epsilon       = 0.018;
+0009 approx        = 1;
+0010 [Ta_Tra_Comp] = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet);
+0011 
+0012 Date              = Ta_Tra_Comp.Date;
+0013 Time              = Ta_Tra_Comp.Time;
+0014 Forecast          = Ta_Tra_Comp.Forecast;
+0015 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0016 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0017 Error             = Ta_Tra_Comp.Error;
+0018 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0019 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0020 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0021 
+0022 dt         = Time(1,2);
+0023 [M, N_ini] = size(Forecast);
+0024 N          = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0025 
+0026 num_days   = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0027 [~, batch] = <a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>(Ta_Tra_Comp,num_days,N);
+0028 
+0029 <span class="comment">%% Initial parameters:</span>
+0030 
+0031 gamma_vec = [0:0.05:0.46];
+0032 
+0033 <span class="keyword">for</span> i = 1:length(gamma_vec)
+0034 
+0035     disp(num2str(i/length(gamma_vec)));
+0036     gamma         = gamma_vec(i); 
+0037     samples_gamma = <a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>(Forecast, Error, gamma);
+0038     rang          = [-4:0.1:4];
+0039     est           = <a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>(Real_ADME, M, N, dt);
+0040     theta_ini     = <a href="mean_regression_M1.html" class="code" title="function [val] = mean_regression_M1(batch_complete, dt, rang, gamma) % 16/03/2020 11:08">mean_regression_M1</a>(batch, dt, rang, gamma_vec(i));
+0041     theta_ini     = rang(theta_ini == min(theta_ini(:)));
+0042     alpha_ini     = est/theta_ini;
+0043     theta_vec(i)  = theta_ini;
+0044     alpha_vec(i)  = alpha_ini;
+0045     
+0046 <span class="keyword">end</span>
+0047 
+0048 plot(gamma_vec,theta_vec);
+0049 hold on;
+0050 plot(gamma_vec,alpha_vec);
+0051 grid minor; xlabel(<span class="string">'Gamma'</span>);
+0052 sup_lim = max([max(theta_vec) max(alpha_vec)]);
+0053 <span class="comment">% ylim([0 sup_lim]);</span>
+0054 xlim([min(gamma_vec) max(gamma_vec)]);
+0055 legend(<span class="string">'Theta_0'</span>,<span class="string">'Alpha'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

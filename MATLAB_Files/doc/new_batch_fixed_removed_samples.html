@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of new_batch_fixed_removed_samples</title>
+  <meta name="keywords" content="new_batch_fixed_removed_samples">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; new_batch_fixed_removed_samples.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>new_batch_fixed_removed_samples
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [Table_Training, new_bat] = new_batch_fixed_removed_samples(Table_Training, eta, batch_size, N) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="initial_time.html" class="code" title="">initial_time</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="new_batch_fixed_removed_samples.m">new_batch_fixed_removed_samples.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [Table_Training, new_bat] = new_batch_fixed_removed_samples(Table_Training, eta, batch_size, N)</a>
+0002 
+0003     Forecast     = Table_Training.Forecast;
+0004     Forecast_Dot = Table_Training.Forecast_Dot;
+0005     Error        = Table_Training.Error;
+0006     new_bat      = [];
+0007         
+0008     <span class="keyword">for</span> i = 1:batch_size
+0009         <span class="keyword">for</span> j = 2:N
+0010             forecast(2*j-3:2*j-2)     = Forecast(i,j-1:j);
+0011             forecast_dot(2*j-3:2*j-2) = Forecast_Dot(i,j-1:j);
+0012             error(2*j-3:2*j-2)        = Error(i,j-1:j);
+0013         <span class="keyword">end</span>
+0014         <span class="keyword">if</span> error(1) &lt; eta &amp;&amp; error(1) &gt; -eta
+0015             new_bat = [new_bat, [forecast; forecast_dot; error]];
+0016         <span class="keyword">end</span>
+0017     <span class="keyword">end</span>
+0018 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

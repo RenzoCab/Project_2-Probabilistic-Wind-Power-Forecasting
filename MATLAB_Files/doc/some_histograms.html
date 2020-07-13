@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of some_histograms</title>
+  <meta name="keywords" content="some_histograms">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; some_histograms.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>some_histograms
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="some_histograms.m">some_histograms.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet                = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0008 epsilon                = 0.018;
+0009 Ta_Tra_Comp            = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet);
+0010 
+0011 Time              = Ta_Tra_Comp.Time;
+0012 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0013 Error             = Ta_Tra_Comp.Error;
+0014 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0015 
+0016 Forecast_Transitions = Forecast_Dot(:) * Time(1,2);
+0017 Error_aux = Error;
+0018 
+0019 <span class="comment">% We create real measurements transitions:</span>
+0020 [M,N] = size(Real_ADME);
+0021 <span class="keyword">for</span> i = 1:M
+0022     
+0023     <span class="keyword">for</span> j = 2:N
+0024         
+0025         Real_ADME_transitions(i,j-1) = Real_ADME(i,j) - Real_ADME(i,j-1);
+0026         
+0027     <span class="keyword">end</span>
+0028     
+0029 <span class="keyword">end</span>
+0030 
+0031 h1 = histogram(Forecast_Transitions);
+0032 grid minor; title(<span class="string">'Forecast Transitions'</span>);
+0033 h1.Normalization = <span class="string">'pdf'</span>;
+0034 xlabel(<span class="string">'Value of Transition'</span>);
+0035 ylabel(<span class="string">'Probability'</span>);
+0036 saveas(gcf,[pwd <span class="string">'/Results/histograms/others/forecast_transitions'</span>],<span class="string">'epsc'</span>);
+0037 
+0038 figure;
+0039 h1 = histogram(Error);
+0040 grid minor; title(<span class="string">'Error Measurement'</span>);
+0041 h1.Normalization = <span class="string">'pdf'</span>;
+0042 xlabel(<span class="string">'Value of Error'</span>);
+0043 ylabel(<span class="string">'Probability'</span>);
+0044 saveas(gcf,[pwd <span class="string">'/Results/histograms/others/error_measurement'</span>],<span class="string">'epsc'</span>);
+0045 
+0046 Forecast_Transitions = Forecast_Transitions(:);
+0047 Error(:,end)         = []; <span class="comment">% We remove the error at final time for each day.</span>
+0048 Error                = Error(:);
+0049 figure;
+0050 plot(Forecast_Transitions,Error,<span class="string">'*'</span>);
+0051 xlim([-0.03 0.03]); ylim([-0.3 0.3]);
+0052 xlabel(<span class="string">'Prev. Rel. Forecast'</span>); ylabel(<span class="string">'Prev. Error (V)'</span>);
+0053 grid minor;
+0054 saveas(gcf,[pwd <span class="string">'/Results/histograms/others/error_and_forecast'</span>],<span class="string">'epsc'</span>);
+0055 
+0056 figure;
+0057 h1 = histogram(Real_ADME_transitions);
+0058 grid minor; title(<span class="string">'Real Measurements Transitions'</span>);
+0059 h1.Normalization = <span class="string">'pdf'</span>;
+0060 xlabel(<span class="string">'Value of Transition'</span>);
+0061 ylabel(<span class="string">'Probability'</span>);
+0062 saveas(gcf,[pwd <span class="string">'/Results/histograms/others/real_measurements_transitions'</span>],<span class="string">'epsc'</span>);
+0063 
+0064 figure;
+0065 h1 = histogram(Real_ADME);
+0066 grid minor; title(<span class="string">'Real Measurements'</span>);
+0067 h1.Normalization = <span class="string">'pdf'</span>;
+0068 xlabel(<span class="string">'Value of Measurements'</span>);
+0069 ylabel(<span class="string">'Probability'</span>);
+0070 saveas(gcf,[pwd <span class="string">'/Results/histograms/others/real_measurements'</span>],<span class="string">'epsc'</span>);
+0071 
+0072 figure;
+0073 h1 = histogram(Error_aux(:,1));
+0074 grid minor; title(<span class="string">'Error Measurement Initial'</span>);
+0075 h1.Normalization = <span class="string">'pdf'</span>;
+0076 xlabel(<span class="string">'Value of Error'</span>);
+0077 ylabel(<span class="string">'Probability'</span>);
+0078 saveas(gcf,[pwd <span class="string">'/Results/histograms/others/error_measurement_initial'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

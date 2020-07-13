@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of initial_time</title>
+  <meta name="keywords" content="initial_time">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; initial_time.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>initial_time
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>	</li><li><a href="first_log_LH_evaluation.html" class="code" title="function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)">first_log_LH_evaluation</a>	function [value,m2,xi1,sig2] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>	11/02/2020 09:35</li><li><a href="new_batch_fixed_removed_samples.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed_removed_samples(Table_Training, eta, batch_size, N)">new_batch_fixed_removed_samples</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="initial_time.m">initial_time.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet               = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0008 epsilon               = 0.020;
+0009 eta                   = 0.1;
+0010 we_remove_bad_samples = 1;
+0011 <span class="comment">% dataKind can be classic or comparable.</span>
+0012 dataKind = <span class="string">'comparable'</span>;
+0013 Ta_Tra_Comp           = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0014 save_plots            = 0;
+0015 
+0016 Time     = Ta_Tra_Comp.Time;
+0017 Forecast = Ta_Tra_Comp.Forecast;
+0018 
+0019 dt         = Time(1,2);
+0020 [~, N_ini] = size(Forecast);
+0021 N          = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0022 
+0023 num_days = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0024 
+0025 <span class="keyword">if</span> we_remove_bad_samples == 0
+0026     [~, batch] = <a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>(Ta_Tra_Comp,num_days,N);
+0027 <span class="keyword">elseif</span> we_remove_bad_samples == 1
+0028     [~, batch] = <a href="new_batch_fixed_removed_samples.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed_removed_samples(Table_Training, eta, batch_size, N)">new_batch_fixed_removed_samples</a>(Ta_Tra_Comp,eta,num_days,N);
+0029 <span class="keyword">end</span>
+0030 
+0031 theta_0 = 1.180;
+0032 alpha   = 0.070;
+0033 
+0034 batch_complete = <a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>(batch, alpha, theta_0);
+0035 
+0036 norm  = 1000;
+0037 times = 1;
+0038 
+0039 <span class="keyword">for</span> delta = 1:1:norm*times
+0040 
+0041     disp(num2str(delta/(norm*times)));
+0042     
+0043     [val(delta),m2(delta),xi1(delta),sig2(delta)] = <span class="keyword">...</span>
+0044         <a href="first_log_LH_evaluation.html" class="code" title="function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)">first_log_LH_evaluation</a>(batch_complete, theta_0, alpha, delta/norm, dt, N, norm, times);
+0045 
+0046 <span class="keyword">end</span>
+0047 
+0048 title(<span class="string">'Initial error Histogram and 1-element Likelihoods'</span>);
+0049 grid minor;
+0050 <span class="keyword">if</span> save_plots == 1
+0051 saveas(gcf,[pwd [<span class="string">'/Results/delta/allLH_'</span>,num2str(we_remove_bad_samples)]],<span class="string">'epsc'</span>);
+0052 <span class="keyword">end</span>
+0053 <span class="comment">% The likelihoods plotted corresponds to the final value of $\delta$.</span>
+0054 <span class="comment">% This value is 'times' in days.</span>
+0055 
+0056 figure;
+0057 plot([1:norm*times]/norm,val);
+0058 xlabel(<span class="string">'$\delta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0059 title(<span class="string">'Negative log-Likelihood'</span>); grid minor;
+0060 <span class="keyword">if</span> save_plots == 1
+0061 saveas(gcf,[pwd [<span class="string">'/Results/delta/LL_'</span>,num2str(we_remove_bad_samples)]],<span class="string">'epsc'</span>);
+0062 <span class="keyword">end</span>
+0063 
+0064 <span class="keyword">for</span> i = 1:length(val)-1
+0065     fd(i) = (val(i+1)-val(i))/(1/norm);
+0066 <span class="keyword">end</span>
+0067 
+0068 figure;
+0069 plot([1:norm*times-1]/norm,fd);
+0070 xlabel(<span class="string">'$\delta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0071 title(<span class="string">'F-D for Negative log-Likelihood'</span>); grid minor;
+0072 <span class="keyword">if</span> save_plots == 1
+0073 saveas(gcf,[pwd [<span class="string">'/Results/delta/dif_LL_'</span>,num2str(we_remove_bad_samples)]],<span class="string">'epsc'</span>);
+0074 <span class="keyword">end</span>
+0075 
+0076 figure;
+0077 plot([1:norm*times]/norm,xi1);
+0078 xlabel(<span class="string">'$\delta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0079 title(<span class="string">'Mean $\xi_1$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>); grid minor;
+0080 <span class="keyword">if</span> save_plots == 1
+0081 saveas(gcf,[pwd [<span class="string">'/Results/delta/Xi_'</span>,num2str(we_remove_bad_samples)]],<span class="string">'epsc'</span>);
+0082 <span class="keyword">end</span>
+0083 
+0084 figure;
+0085 plot([1:norm*times]/norm,m2);
+0086 xlabel(<span class="string">'$\delta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0087 title(<span class="string">'Mean $m_2(t_0)$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>); grid minor;
+0088 <span class="keyword">if</span> save_plots == 1
+0089 saveas(gcf,[pwd [<span class="string">'/Results/delta/M2_'</span>,num2str(we_remove_bad_samples)]],<span class="string">'epsc'</span>);
+0090 <span class="keyword">end</span>
+0091 
+0092 figure;
+0093 plot([1:norm*times]/norm,sig2);
+0094 xlabel(<span class="string">'$\delta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0095 title(<span class="string">'Mean $\sigma_2$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>); grid minor;
+0096 <span class="keyword">if</span> save_plots == 1
+0097 saveas(gcf,[pwd [<span class="string">'/Results/delta/Sig_'</span>,num2str(we_remove_bad_samples)]],<span class="string">'epsc'</span>);
+0098 <span class="keyword">end</span>
+0099 
+0100 <span class="comment">%% Delta w.r.t. Eta:</span>
+0101 
+0102 close all;
+0103 clear all;
+0104 clc;
+0105 
+0106 initial    = 1; <span class="comment">% Lamperti values --&gt; 0.</span>
+0107 save_plots = 0;
+0108 
+0109 <span class="keyword">if</span> initial == 1
+0110     theta_0 = 1.5441;
+0111     alpha   = 0.0717;
+0112     <span class="comment">% Delta = 105 --&gt; We round in 110.</span>
+0113 <span class="keyword">elseif</span> initial == 0
+0114     theta_0 = 1.93;
+0115     alpha   = 0.05;
+0116     <span class="comment">% Delta = 125 --&gt; We round in 130.</span>
+0117 <span class="keyword">elseif</span> initial == 2
+0118     theta_0 = 2.450;
+0119     alpha   = 0.097/2.450;
+0120     <span class="comment">% Delta = 128 --&gt; We round in 130.</span>
+0121 <span class="keyword">end</span>
+0122 
+0123 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0124 dataSet  = <span class="string">'MTLOG'</span>;
+0125 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0126 epsilon  = 0.018;
+0127 eta      = 0.005:0.005:0.2;
+0128 <span class="comment">% dataKind can be classic or comparable.</span>
+0129 dataKind = <span class="string">'comparable'</span>;
+0130 
+0131 Ta_Tra_Comp = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0132 Time        = Ta_Tra_Comp.Time;
+0133 Forecast    = Ta_Tra_Comp.Forecast;
+0134 num_days    = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0135 dt          = Time(1,2);
+0136 [M, N_ini]  = size(Forecast);
+0137 N           = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0138 norm        = 1000;
+0139 times       = 1;
+0140 
+0141 <span class="keyword">for</span> j = 1:length(eta)
+0142 
+0143     [~, batch]     = <a href="new_batch_fixed_removed_samples.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed_removed_samples(Table_Training, eta, batch_size, N)">new_batch_fixed_removed_samples</a>(Ta_Tra_Comp,eta(j),num_days,N);
+0144     batch_complete = <a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>(batch, alpha, theta_0);
+0145 
+0146     <span class="keyword">for</span> delta = 1:1:norm*times
+0147         disp(num2str(delta/(norm*times)));
+0148 
+0149 <span class="comment">%         [val(delta),m2(delta),xi1(delta),sig2(delta)] = ...</span>
+0150         val(delta) = <span class="keyword">...</span>
+0151             <a href="first_log_LH_evaluation.html" class="code" title="function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)">first_log_LH_evaluation</a>(batch_complete, theta_0, alpha, delta/norm, dt, N, norm, times);
+0152     <span class="keyword">end</span>
+0153 
+0154     [min_val,min_index(j)] = min(val);
+0155 
+0156 <span class="keyword">end</span>
+0157 
+0158 figure;
+0159 plot(eta,min_index/norm);
+0160 xlabel(<span class="string">'$\eta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0161 ylabel(<span class="string">'$\delta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0162 title(<span class="string">'$\delta$ over $\eta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>); grid minor;
+0163 <span class="keyword">if</span> save_plots == 1
+0164     <span class="keyword">if</span> initial == 1
+0165         saveas(gcf,[pwd <span class="string">'/Results/delta/eta_ini'</span>],<span class="string">'epsc'</span>);
+0166     <span class="keyword">else</span>
+0167         saveas(gcf,[pwd <span class="string">'/Results/delta/eta_opt'</span>],<span class="string">'epsc'</span>);
+0168     <span class="keyword">end</span>
+0169 <span class="keyword">end</span>
+0170 
+0171 figure;
+0172 plot(eta,min_index/norm*24*60);
+0173 xlabel(<span class="string">'$\eta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0174 ylabel(<span class="string">'$\delta$ in minutes'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0175 title(<span class="string">'$\delta$ over $\eta$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>); grid minor;
+0176 <span class="keyword">if</span> save_plots == 1
+0177     <span class="keyword">if</span> initial == 1
+0178         saveas(gcf,[pwd <span class="string">'/Results/delta/eta_min_ini'</span>],<span class="string">'epsc'</span>);
+0179     <span class="keyword">else</span>
+0180         saveas(gcf,[pwd <span class="string">'/Results/delta/eta_min_opt'</span>],<span class="string">'epsc'</span>);
+0181     <span class="keyword">end</span>
+0182 <span class="keyword">end</span>
+0183 
+0184 <span class="comment">%% Experiment: Delta w.r.t. the product theta_0*alpha</span>
+0185 
+0186 close all;
+0187 clear all;
+0188 clc;
+0189 
+0190 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0191 dataSet     = <span class="string">'MTLOG'</span>;
+0192 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0193 epsilon     = 0.018;
+0194 eta         = 0.2;
+0195 <span class="comment">% dataKind can be classic or comparable.</span>
+0196 dataKind    = <span class="string">'comparable'</span>;
+0197 Ta_Tra_Comp = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0198 Time        = Ta_Tra_Comp.Time;
+0199 Forecast    = Ta_Tra_Comp.Forecast;
+0200 num_days    = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0201 dt          = Time(1,2);
+0202 [M, N_ini]  = size(Forecast);
+0203 N           = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0204 norm        = 1000;
+0205 times       = 1;
+0206 
+0207 prod    = [0.07:0.0001:0.11];
+0208 theta_0 = [1:0.005:3];
+0209 
+0210 <span class="keyword">for</span> i = 1:length(prod)
+0211     parfor j = 1:length(theta_0)
+0212         
+0213         theta = theta_0(j);
+0214         alpha = prod(i)/theta;
+0215 
+0216         [~, batch]     = <a href="new_batch_fixed_removed_samples.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed_removed_samples(Table_Training, eta, batch_size, N)">new_batch_fixed_removed_samples</a>(Ta_Tra_Comp,eta,num_days,N);
+0217         batch_complete = <a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>(batch, alpha, theta);
+0218 
+0219         val = [];
+0220         
+0221         <span class="keyword">for</span> delta = 1:1:norm*times
+0222             val(delta) = <a href="first_log_LH_evaluation.html" class="code" title="function [value] = first_log_LH_evaluation(batch_complete, theta_0, alpha, delta, dt, N, norm, times)">first_log_LH_evaluation</a>(batch_complete, theta, alpha, delta/norm, dt, N, norm, times);
+0223         <span class="keyword">end</span>
+0224 
+0225         [min_val,min_index] = min(val);
+0226         min_delta(i,j) = min_index/norm*60*24;
+0227 
+0228     <span class="keyword">end</span>
+0229 <span class="keyword">end</span>
+0230 
+0231 <span class="comment">% To save the matrix with the evaluations, we use:</span>
+0232 <span class="comment">% save([pwd '/Results/delta/min_delta.mat'],'min_delta');</span>
+0233 <span class="comment">% save([pwd '/Results/delta/min_delta_v2.mat'],'min_delta');</span>
+0234 <span class="comment">% To load the matrix with the evaluations, we use:</span>
+0235 <span class="comment">% load([pwd '/Results/delta/min_delta.mat'],'min_delta');</span>
+0236 <span class="comment">% load([pwd '/Results/delta/min_delta_v2.mat'],'min_delta');</span>
+0237 
+0238 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600])
+0239 [X,Y] = meshgrid(prod,theta_0);
+0240 contourf(X,Y,min_delta',200,<span class="string">'edgecolor'</span>,<span class="string">'none'</span>); colorbar;
+0241 xlabel(<span class="string">'$\theta_0\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0242 ylabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0243 title([<span class="string">'Optimal Initial Time'</span>]);
+0244 legend(<span class="string">'Value of $\delta$ (minutes)'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0245 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,16);
+0246 saveas(gcf,[pwd <span class="string">'/Results/delta/contour_delta'</span>],<span class="string">'epsc'</span>);
+0247 saveas(gcf,[pwd <span class="string">'/Results/delta/contour_delta'</span>],<span class="string">'bmp'</span>);
+0248 saveas(gcf,[pwd <span class="string">'/Results/delta/contour_delta'</span>],<span class="string">'png'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of plotLogLikelihood_MODEL1</title>
+  <meta name="keywords" content="plotLogLikelihood_MODEL1">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; plotLogLikelihood_MODEL1.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>plotLogLikelihood_MODEL1
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>	</li><li><a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>	15/03/2020 21:07</li><li><a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>	09/02/2020 09:30</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="log_LH_evaluation_MODEL1.html" class="code" title="function [value] = log_LH_evaluation_MODEL1(batch_complete, alpha, theta_0, dt, approx)">log_LH_evaluation_MODEL1</a>	19/04/2020 22:09</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>	</li><li><a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>	11/02/2020 09:35</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="plotLogLikelihood_MODEL1.m">plotLogLikelihood_MODEL1.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% Lamperti has no sense here. I wanted to plot it as a function of the</span>
+0006 <span class="comment">% parameters. Still, as the Lamperti transform also depends on the</span>
+0007 <span class="comment">% parameters, the data set changed in each evaluation of the Likelihood,</span>
+0008 <span class="comment">% which has no sense. See plotLamperti.m.</span>
+0009 
+0010 <span class="comment">% dataSet can be 1 (Gaussian Proxy), 2 (Shoji-Ozaki) or 3 (Beta Proxy).</span>
+0011 approx        = 3;
+0012 <span class="comment">% dataSet can be AWSTP, MTLOG or UTEP5.</span>
+0013 dataSet       = <span class="string">'MTLOG'</span>;
+0014 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0015 epsilon       = 0.020;
+0016 <span class="comment">% dataKind can be classic or comparable.</span>
+0017 dataKind = <span class="string">'comparable'</span>;
+0018 [Ta_Tra_Comp] = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0019 
+0020 <span class="comment">% AWSTP) (B)</span>
+0021 <span class="comment">% 1) T_0 = 0.0400, Alpha = 2.6300, prod = 0.1052, f = -29115.</span>
+0022 <span class="comment">% AIC = -58226, BIA = -58211.</span>
+0023 <span class="comment">% 2) T_0 = 0.0400, Alpha = 2.6000, prod = 0.1040, f = -29115.</span>
+0024 <span class="comment">% AIC = -58226, BIA = -58211.</span>
+0025 <span class="comment">% 3) T_0 = 0.0400, Alpha = 2.6000, prod = 0.1040, f = -29146.</span>
+0026 <span class="comment">% AIC = -58288, BIA = -58273.</span>
+0027 <span class="comment">% MTLOG) (A)</span>
+0028 <span class="comment">% 1) T_0 = 0.0400, Alpha = 2.6300, prod = 0.1052, f = -29115.</span>
+0029 <span class="comment">% AIC = -58226, BIA = -58211.</span>
+0030 <span class="comment">% 2) T_0 = 0.0400, Alpha = 2.6000, prod = 0.1040, f = -29115.</span>
+0031 <span class="comment">% AIC = -58226, BIA = -58211.</span>
+0032 <span class="comment">% 3) T_0 = 0.0400, Alpha = 2.6000, prod = 0.1040, f = -29145.</span>
+0033 <span class="comment">% AIC = -58286, BIA = -58271.</span>
+0034 <span class="comment">% UTEP5) (C)</span>
+0035 <span class="comment">% 1) T_0 = 0.0400, Alpha = 2.6300, prod = 0.1052, f = -29115.</span>
+0036 <span class="comment">% AIC = -58226, BIA = -58211.</span>
+0037 <span class="comment">% 2) T_0 = 0.0400, Alpha = 2.6000, prod = 0.1040, f = -29115.</span>
+0038 <span class="comment">% AIC = -58226, BIA = -58211.</span>
+0039 <span class="comment">% 3) T_0 = 0.0400, Alpha = 2.6000, prod = 0.1040, f = -29145.</span>
+0040 <span class="comment">% AIC = -58286, BIA = -58271.</span>
+0041 
+0042 Table_Training = Ta_Tra_Comp; <span class="comment">% We copy it so we can modify it.</span>
+0043 
+0044 Date              = Ta_Tra_Comp.Date;
+0045 Time              = Ta_Tra_Comp.Time;
+0046 Forecast          = Ta_Tra_Comp.Forecast;
+0047 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0048 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0049 Error             = Ta_Tra_Comp.Error;
+0050 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0051 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0052 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0053 
+0054 dt             = Time(1,2);
+0055 [M, N_ini]     = size(Forecast);
+0056 N              = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0057 
+0058 num_days = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0059 [Table_Training, batch] = <a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>(Table_Training,num_days,N);
+0060 
+0061 <span class="comment">%% Initial parameters:</span>
+0062 
+0063 est           = <a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>(Real_ADME, M, N, dt);
+0064 gamma         = 0.35; 
+0065 samples_gamma = <a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>(Forecast, Error, gamma);
+0066 theta_ini     = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples_gamma, dt);
+0067 alpha_ini     = est/theta_ini;
+0068 
+0069 <span class="comment">%% Log-Likelihood plot:</span>
+0070 
+0071 val = [];
+0072 
+0073 vec_theta = 0.01:0.01:3;
+0074 vec_alpha = 0.01:0.01:3;
+0075 num_divs  = 10000;
+0076 
+0077 <span class="keyword">for</span> i = 1:length(vec_theta)
+0078 
+0079     vec = ones(1,length(vec_alpha));
+0080 
+0081     parfor j = 1:length(vec_alpha)
+0082         
+0083         theta_0        = vec_theta(i);
+0084         alpha          = vec_alpha(j);
+0085         batch_complete = <a href="batch_with_theta.html" class="code" title="function [batch_theta] = batch_with_theta(batch, alpha, theta_0) % 09/02/2020 18:51">batch_with_theta</a>(batch, alpha, theta_0);
+0086         vec(j)         = -<a href="log_LH_evaluation_MODEL1.html" class="code" title="function [value] = log_LH_evaluation_MODEL1(batch_complete, alpha, theta_0, dt, approx)">log_LH_evaluation_MODEL1</a>(batch_complete, alpha, theta_0, dt, approx);
+0087 
+0088     <span class="keyword">end</span>
+0089 
+0090     val(i,:) = vec(:);
+0091 
+0092     disp(num2str(i/length(vec_theta)*100));
+0093 
+0094 <span class="keyword">end</span>
+0095 
+0096 <span class="comment">% To save the matrix with the evaluations, we use:</span>
+0097 <span class="comment">% save([pwd '/Results/likelihood/model1/Log-Likelihood.mat'],'val');</span>
+0098 <span class="comment">% To load the matrix with the evaluations, we use:</span>
+0099 <span class="comment">% load([pwd '/Results/likelihood/model1/Log-Likelihood.mat'],'val');</span>
+0100 
+0101 minMatrix = min(val(:));
+0102 [row,col] = find(val==minMatrix);
+0103 theta_0_opt_4 = vec_theta(row);
+0104 alpha_opt_4   = vec_alpha(col);
+0105 alpha_plot    = theta_0_opt_4*alpha_opt_4 ./ vec_theta;
+0106 
+0107 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600])
+0108 hold on;
+0109 [X,Y] = meshgrid(vec_theta,vec_alpha);
+0110 contourf(X,Y,val',num_divs); <span class="comment">% colorbar;</span>
+0111 xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0112 ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0113 title([<span class="string">'Negative Log-Likelihoog for '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0114 plot(vec_theta,alpha_plot,<span class="string">'LineWidth'</span>,2);
+0115 <span class="comment">% plot(theta_ini,alpha_ini,'-p','MarkerFaceColor','red','MarkerSize',12);</span>
+0116 plot(theta_0_opt_4,alpha_opt_4,<span class="string">'-p'</span>,<span class="string">'MarkerFaceColor'</span>,<span class="string">'white'</span>,<span class="string">'MarkerSize'</span>,12);
+0117 legend(<span class="string">'Level sets'</span>,<span class="string">'Curve $\theta_0\alpha=C$'</span>,<span class="string">'Optimal value (evaluations)'</span>,<span class="keyword">...</span>
+0118     <span class="string">'interpreter'</span>,<span class="string">'Latex'</span>);
+0119 ylim([min(vec_alpha) max(vec_alpha)]);
+0120 pause(0.1);
+0121 <span class="comment">% To save the plot and change the fonts size, we use:</span>
+0122 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,16);
+0123 saveas(gcf,[pwd <span class="string">'/Results/likelihood/model1/Log-Likelihood_'</span>,num2str(approx),<span class="string">'_'</span>,dataSet],<span class="string">'epsc'</span>);
+0124 
+0125 <span class="comment">%% Plot with the important line:</span>
+0126 
+0127 <span class="comment">% alpha_1 = 0.0728./vec_theta;</span>
+0128 <span class="comment">% alpha_2 = 0.0828./vec_theta;</span>
+0129 <span class="comment">% alpha_3 = 0.0928./vec_theta;</span>
+0130 <span class="comment">% alpha_4 = 0.1028./vec_theta;</span>
+0131 <span class="comment">% alpha_5 = 0.1128./vec_theta;</span>
+0132 <span class="comment">%</span>
+0133 <span class="comment">% parfor i = 1:length(alpha_2)</span>
+0134 <span class="comment">%</span>
+0135 <span class="comment">%     disp(num2str(i/length(alpha_2)*100));</span>
+0136 <span class="comment">%</span>
+0137 <span class="comment">%     batch_complete = batch_with_theta(batch, alpha_2(i), vec_theta(i));</span>
+0138 <span class="comment">%</span>
+0139 <span class="comment">%     vec_1(i) = -log_LH_evaluation_MODEL1(batch_complete, alpha_1(i), vec_theta(i), dt);</span>
+0140 <span class="comment">%     vec_2(i) = -log_LH_evaluation_MODEL1(batch_complete, alpha_2(i), vec_theta(i), dt);</span>
+0141 <span class="comment">%     vec_3(i) = -log_LH_evaluation_MODEL1(batch_complete, alpha_3(i), vec_theta(i), dt);</span>
+0142 <span class="comment">%     vec_4(i) = -log_LH_evaluation_MODEL1(batch_complete, alpha_4(i), vec_theta(i), dt);</span>
+0143 <span class="comment">%     vec_5(i) = -log_LH_evaluation_MODEL1(batch_complete, alpha_5(i), vec_theta(i), dt);</span>
+0144 <span class="comment">%</span>
+0145 <span class="comment">% end</span>
+0146 <span class="comment">%</span>
+0147 <span class="comment">% figure;</span>
+0148 <span class="comment">% plot(vec_theta,vec_1,'LineWidth',2);</span>
+0149 <span class="comment">% hold on;</span>
+0150 <span class="comment">% plot(vec_theta,vec_2,'LineWidth',2);</span>
+0151 <span class="comment">% plot(vec_theta,vec_3,'LineWidth',2);</span>
+0152 <span class="comment">% plot(vec_theta,vec_4,'LineWidth',2);</span>
+0153 <span class="comment">% plot(vec_theta,vec_5,'LineWidth',2);</span>
+0154 <span class="comment">% title(['Negative Log-Likelihoog for ',num2str(num_days),' days']);</span>
+0155 <span class="comment">% grid minor;</span>
+0156 <span class="comment">% xlabel('$\theta_0$','interpreter','latex');</span>
+0157 <span class="comment">% ylabel('Negative Log-Likelihoog evaluation');</span>
+0158 <span class="comment">% legend('Curve $\theta_0\alpha=0.0728$','Curve $\theta_0\alpha=0.0828$',...</span>
+0159 <span class="comment">%     'Curve $\theta_0\alpha=0.0928$','Curve $\theta_0\alpha=0.1028$',...</span>
+0160 <span class="comment">%     'Curve $\theta_0\alpha=0.1128$','Interpreter','Latex');</span>
+0161 <span class="comment">% xlim([min(vec_theta) max(vec_theta)]);</span>
+0162 <span class="comment">% saveas(gcf,[pwd '/Results/likelihood/model1/Log-Likelihood_Evaluations'],'epsc');</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

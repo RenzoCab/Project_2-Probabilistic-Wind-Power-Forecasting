@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of plotLamperti</title>
+  <meta name="keywords" content="plotLamperti">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; plotLamperti.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>plotLamperti
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="batch_L.html" class="code" title="function [val] = batch_L(batch, theta0, alpha)">batch_L</a>	29/03/2020 19:42</li><li><a href="batch_with_theta_L.html" class="code" title="function [batch_theta] = batch_with_theta_L(batch, alpha, theta_0) % 29/03/2020 19:43">batch_with_theta_L</a>	</li><li><a href="likelihood_nested_optimization_L.html" class="code" title="function [x0,fval] = likelihood_nested_optimization_L(batch, x0, dt)">likelihood_nested_optimization_L</a>	</li><li><a href="likelihood_optimization_L.html" class="code" title="function [val] = likelihood_optimization_L(batch, theta0, alpha, dt)">likelihood_optimization_L</a>	29/03/2020 11:20</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>	11/02/2020 09:35</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="plotLamperti.m">plotLamperti.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 likelihood    = <span class="string">'lamperti'</span>;
+0006 <span class="comment">% dataSet can be AWSTP, MTLOG or UTEP5.</span>
+0007 dataSet = <span class="string">'MTLOG'</span>;
+0008 <span class="comment">% epsilon can be 0.035 (B), 0.018 (A) or 0.028 (C).</span>
+0009 epsilon       = 0.018;
+0010 <span class="comment">% dataKind can be classic or comparable.</span>
+0011 dataKind = <span class="string">'comparable'</span>;
+0012 [Ta_Tra_Comp] = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0013 
+0014 Table_Training = Ta_Tra_Comp; <span class="comment">% We copy it so we can modify it.</span>
+0015 
+0016 Date              = Ta_Tra_Comp.Date;
+0017 Time              = Ta_Tra_Comp.Time;
+0018 Forecast          = Ta_Tra_Comp.Forecast;
+0019 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0020 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0021 Error             = Ta_Tra_Comp.Error;
+0022 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0023 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0024 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0025 
+0026 dt         = Time(1,2);
+0027 [M, N_ini] = size(Forecast);
+0028 N          = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0029 
+0030 num_days                = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0031 [Table_Training, batch] = <a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>(Table_Training,num_days,N);
+0032 
+0033 <span class="comment">%% Log-Likelihood plot:</span>
+0034 
+0035 val_theta_0 = [];
+0036 val_alpha   = [];
+0037 val_fval    = [];
+0038 val_fval_2  = [];
+0039 
+0040 vec_theta_0 = 0.5:0.005:3;
+0041 vec_alpha   = 0.01:0.001:0.1;
+0042 num_divs    = 20;
+0043 new_alpha   = 0.0965./vec_theta_0;
+0044 
+0045 <span class="comment">% Version 2:</span>
+0046 vec_theta_0 = 0.5:0.05:10;
+0047 vec_alpha   = 0.01:0.01:1;
+0048 new_alpha   = 0.0965./vec_theta_0;
+0049 
+0050 <span class="keyword">for</span> i = 1:length(vec_theta_0)
+0051 
+0052     aux_theta_0 = ones(1,length(vec_alpha));
+0053     aux_alpha   = ones(1,length(vec_alpha));
+0054     aux_fval    = ones(1,length(vec_alpha));
+0055     aux_fval_2  = ones(1,length(vec_alpha));
+0056     theta_0     = vec_theta_0(i);
+0057     
+0058     parfor j = 1:length(vec_alpha)
+0059         
+0060         alpha          = vec_alpha(j);
+0061         x0             = [theta_0,alpha];
+0062         [x1,fval]      = <a href="likelihood_nested_optimization_L.html" class="code" title="function [x0,fval] = likelihood_nested_optimization_L(batch, x0, dt)">likelihood_nested_optimization_L</a>(batch, x0, dt);
+0063         aux_theta_0(j) = x1(1);
+0064         aux_alpha(j)   = x1(2);
+0065         aux_fval(j)    = fval;
+0066         
+0067         <a href="batch_L.html" class="code" title="function [val] = batch_L(batch, theta0, alpha)">batch_L</a>        = <a href="batch_with_theta_L.html" class="code" title="function [batch_theta] = batch_with_theta_L(batch, alpha, theta_0) % 29/03/2020 19:43">batch_with_theta_L</a>(batch, alpha, theta_0);
+0068         aux_fval_2(j)  = -<a href="likelihood_optimization_L.html" class="code" title="function [val] = likelihood_optimization_L(batch, theta0, alpha, dt)">likelihood_optimization_L</a>(<a href="batch_L.html" class="code" title="function [val] = batch_L(batch, theta0, alpha)">batch_L</a>, theta_0, alpha, dt);
+0069         
+0070     <span class="keyword">end</span>
+0071 
+0072     val_theta_0(i,:) = aux_theta_0(:);
+0073     val_alpha(i,:)   = aux_alpha(:);
+0074     val_fval(i,:)    = aux_fval(:);
+0075     val_fval_2(i,:)  = aux_fval_2(:);
+0076 
+0077     disp(num2str(i/length(vec_theta_0)*100));
+0078 
+0079 <span class="keyword">end</span>
+0080 
+0081 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_theta_0.mat'],'val_theta_0');</span>
+0082 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_alpha.mat'],'val_alpha');</span>
+0083 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_fval.mat'],'val_fval');</span>
+0084 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_fval_2.mat'],'val_fval_2');</span>
+0085 
+0086 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_theta_0_V2.mat'],'val_theta_0');</span>
+0087 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_alpha_V2.mat'],'val_alpha');</span>
+0088 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_fval_V2.mat'],'val_fval');</span>
+0089 <span class="comment">% load([pwd '/Results/likelihood/',likelihood,'/val_fval_2_V2.mat'],'val_fval_2');</span>
+0090 
+0091 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_theta_0.mat'],'val_theta_0');</span>
+0092 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_alpha.mat'],'val_alpha');</span>
+0093 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_fval.mat'],'val_fval');</span>
+0094 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_fval_2.mat'],'val_fval_2');</span>
+0095 
+0096 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_theta_0_V2.mat'],'val_theta_0');</span>
+0097 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_alpha_V2.mat'],'val_alpha');</span>
+0098 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_fval_V2.mat'],'val_fval');</span>
+0099 <span class="comment">% save([pwd '/Results/likelihood/',likelihood,'/val_fval_2_V2.mat'],'val_fval_2');</span>
+0100 
+0101 <span class="keyword">for</span> i = 1:length(vec_theta_0)
+0102     <span class="keyword">for</span> j = 1:length(vec_alpha)
+0103         rel_change_theta_0(i,j) = abs(vec_theta_0(i)-val_theta_0(i,j)) / abs(vec_theta_0(i));
+0104         rel_change_alpha(i,j)   = abs(vec_alpha(j)-val_alpha(i,j)) / abs(vec_alpha(j));
+0105         
+0106         rel_change_prod(i,j) = abs(vec_theta_0(i)*vec_alpha(j)-val_theta_0(i,j)*val_alpha(i,j)) / <span class="keyword">...</span>
+0107             abs(vec_theta_0(i)*vec_alpha(j));
+0108         
+0109         rel_change_tot(i,j) = rel_change_theta_0(i,j) + rel_change_alpha(i,j) + rel_change_prod(i,j);
+0110     <span class="keyword">end</span>
+0111 <span class="keyword">end</span>
+0112 
+0113 total_change = rel_change_theta_0 + rel_change_alpha;
+0114 total_change = rel_change_prod;
+0115 total_change = rel_change_tot;
+0116 
+0117 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 600])
+0118 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
+0119 hold on;
+0120 <span class="comment">% contourf(X,Y,total_change',[0:0.05:1]); colorbar;</span>
+0121 contourf(X,Y,total_change'); colorbar;
+0122 colormap summer;
+0123 plot(vec_theta_0,new_alpha,<span class="string">'LineWidth'</span>,2,<span class="string">'Color'</span>,<span class="string">'r'</span>);
+0124 ylim([min(vec_alpha) max(vec_alpha)]);
+0125 xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0126 ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0127 title([<span class="string">'Fixed-Point Lamperti '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0128 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,16);
+0129 legend(<span class="string">'Level sets'</span>,<span class="string">'Curve $\theta_0\alpha=0.097$'</span>,<span class="string">'Interpreter'</span>,<span class="string">'Latex'</span>);
+0130 pause(0.1);
+0131 saveas(gcf,[pwd <span class="string">'/Results/likelihood/'</span>,likelihood,<span class="string">'/Log-Likelihood'</span>],<span class="string">'epsc'</span>);
+0132 saveas(gcf,[pwd <span class="string">'/Results/likelihood/'</span>,likelihood,<span class="string">'/Log-Likelihood'</span>],<span class="string">'png'</span>);
+0133 
+0134 figure;
+0135 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
+0136 hold on;
+0137 contourf(X,Y,val_fval'); colorbar;
+0138 <span class="comment">% colormap summer;</span>
+0139 <span class="comment">% plot(vec_theta_0,new_alpha,'LineWidth',2,'Color','r');</span>
+0140 xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0141 ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0142 title([<span class="string">'Value in optimal point '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0143 <span class="comment">% legend('Level sets','Curve $\theta_0\alpha=0.097$','Interpreter','Latex');</span>
+0144 pause(0.1);
+0145 saveas(gcf,[pwd <span class="string">'/Results/likelihood/'</span>,likelihood,<span class="string">'/Log-Likelihood_f'</span>],<span class="string">'epsc'</span>);
+0146 
+0147 figure;
+0148 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
+0149 hold on;
+0150 contourf(X,Y,val_fval_2'); colorbar;
+0151 <span class="comment">% colormap summer;</span>
+0152 <span class="comment">% plot(vec_theta_0,new_alpha,'LineWidth',2,'Color','r');</span>
+0153 xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0154 ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0155 title([<span class="string">'Value in point '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0156 <span class="comment">% legend('Level sets','Curve $\theta_0\alpha=0.097$','Interpreter','Latex');</span>
+0157 pause(0.1);
+0158 saveas(gcf,[pwd <span class="string">'/Results/likelihood/'</span>,likelihood,<span class="string">'/Log-Likelihood_f_2'</span>],<span class="string">'epsc'</span>);
+0159 
+0160 figure;
+0161 [X,Y] = meshgrid(vec_theta_0,vec_alpha);
+0162 hold on;
+0163 contourf(X,Y,val_fval_2'-val_fval'); colorbar;
+0164 <span class="comment">% colormap summer;</span>
+0165 <span class="comment">% plot(vec_theta_0,new_alpha,'LineWidth',2,'Color','r');</span>
+0166 xlabel(<span class="string">'$\theta_0$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0167 ylabel(<span class="string">'$\alpha$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0168 title([<span class="string">'Difference '</span>,num2str(num_days),<span class="string">' days'</span>]);
+0169 <span class="comment">% legend('Level sets','Curve $\theta_0\alpha=0.097$','Interpreter','Latex');</span>
+0170 pause(0.1);
+0171 saveas(gcf,[pwd <span class="string">'/Results/likelihood/'</span>,likelihood,<span class="string">'/Log-Likelihood_f_extra'</span>],<span class="string">'epsc'</span>);
+0172 
+0173 <span class="comment">%% Plot with zoom:</span>
+0174 
+0175 <span class="comment">% figure;</span>
+0176 <span class="comment">% hold on;</span>
+0177 <span class="comment">% [X,Y] = meshgrid(vec_theta_0(1:61),vec_alpha);</span>
+0178 <span class="comment">% total_change = total_change(1:61,:);</span>
+0179 <span class="comment">% contourf(X,Y,total_change',num_divs, 'LineStyle','none'); colorbar;</span>
+0180 <span class="comment">% xlabel('$\theta_0$','interpreter','latex');</span>
+0181 <span class="comment">% ylabel('$\alpha$','interpreter','latex');</span>
+0182 <span class="comment">% title(['Fixed-Point Lamperti ',num2str(num_days),' days']);</span>
+0183 <span class="comment">% legend('Level sets');</span>
+0184 <span class="comment">% pause(0.1);</span>
+0185 <span class="comment">% saveas(gcf,[pwd '/Results/likelihood/',likelihood,'/Log-Likelihood_Zoom'],'epsc');</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

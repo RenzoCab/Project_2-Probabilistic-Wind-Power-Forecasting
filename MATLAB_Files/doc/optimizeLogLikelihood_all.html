@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of optimizeLogLikelihood_all</title>
+  <meta name="keywords" content="optimizeLogLikelihood_all">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; optimizeLogLikelihood_all.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>optimizeLogLikelihood_all
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>	15/03/2020 21:07</li><li><a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>	09/02/2020 09:30</li><li><a href="likelihood_optimization_all.html" class="code" title="function [val] = likelihood_optimization_all(batch, theta_0, alpha, delta, dt, N)">likelihood_optimization_all</a>	10/02/2020 11:20</li><li><a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>	19/04/2020 15:45</li><li><a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>	</li><li><a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>	11/02/2020 09:35</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="optimizeLogLikelihood_all.m">optimizeLogLikelihood_all.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% In this function, we optimize (theta,alpha,delta), all together.</span>
+0006 <span class="comment">% In the end, we have some initial and final points.</span>
+0007 
+0008 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0009 dataSet       = <span class="string">'MTLOG'</span>;
+0010 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0011 epsilon       = 0.020;
+0012 <span class="comment">% dataKind can be classic or comparable.</span>
+0013 dataKind      = <span class="string">'comparable'</span>;
+0014 [Ta_Tra_Comp] = <a href="load_data_eps.html" class="code" title="function [table_to_use] = load_data_eps(ep,dataSet,dataKind,dataNumber)">load_data_eps</a>(epsilon,dataSet,dataKind);
+0015 
+0016 Date              = Ta_Tra_Comp.Date;
+0017 Time              = Ta_Tra_Comp.Time;
+0018 Forecast          = Ta_Tra_Comp.Forecast;
+0019 Forecast_Dot      = Ta_Tra_Comp.Forecast_Dot;
+0020 Real_ADME         = Ta_Tra_Comp.Real_ADME;
+0021 Error             = Ta_Tra_Comp.Error;
+0022 Error_Transitions = Ta_Tra_Comp.Error_Transitions;
+0023 Lamparti_Data     = Ta_Tra_Comp.Error_Lamp;
+0024 Lamparti_Tran     = Ta_Tra_Comp.Error_Lamp_Transitions;
+0025 
+0026 dt         = Time(1,2);
+0027 [M, N_ini] = size(Forecast);
+0028 N          = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0029 
+0030 num_days   = height(Ta_Tra_Comp); <span class="comment">% Maximum 127 for MTLOG.</span>
+0031 [~, batch] = <a href="new_batch_fixed.html" class="code" title="function [Table_Training, new_bat] = new_batch_fixed(Table_Training, batch_size, N)">new_batch_fixed</a>(Ta_Tra_Comp,num_days,N);
+0032 
+0033 <span class="comment">%% Initial parameters:</span>
+0034 
+0035 est           = <a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>(Real_ADME, M, N, dt);
+0036 gamma         = 0.35; 
+0037 samples_gamma = <a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>(Forecast, Error, gamma);
+0038 theta_ini     = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples_gamma, dt);
+0039 alpha_ini     = est/theta_ini;
+0040 
+0041 <span class="comment">%% Optimization:</span>
+0042 
+0043 theta_0 = theta_ini;
+0044 alpha   = alpha_ini;
+0045     
+0046 x0  = [theta_0, alpha, 0.05];
+0047 fun = @(x) -<a href="likelihood_optimization_all.html" class="code" title="function [val] = likelihood_optimization_all(batch, theta_0, alpha, delta, dt, N)">likelihood_optimization_all</a>(batch, x(1), x(2), x(3), dt, N);
+0048 
+0049 x = fminsearch(fun, x0);
+0050 <span class="comment">% Initial Delta: 0.05.</span>
+0051 <span class="comment">% Theta = 1.4617, Alpha = 0.066422, eps = 0.020, prod = 0.0971, Delta = 0.084315.</span>
+0052 
+0053 <span class="comment">%% Many initial guesses for Delta:</span>
+0054 
+0055 theta_0   = theta_ini;
+0056 alpha     = alpha_ini;
+0057 Delta_vec = [0:0.05:1];
+0058 fun       = @(x) -<a href="likelihood_optimization_all.html" class="code" title="function [val] = likelihood_optimization_all(batch, theta_0, alpha, delta, dt, N)">likelihood_optimization_all</a>(batch, x(1), x(2), x(3), dt, N);
+0059 
+0060 parfor i = 1:length(Delta_vec)
+0061 
+0062     x0           = [theta_0, alpha, Delta_vec(i)];
+0063     [x,f]        = fminsearch(fun, x0);
+0064     results(i,:) = x;
+0065     evals(i)     = f;
+0066     prod(i)      = x(1)*x(2);
+0067 
+0068 <span class="keyword">end</span>
+0069 
+0070 <span class="comment">% 21/02/2020:</span>
+0071 
+0072 <span class="comment">%     Theta_0   Alpha     Delta     Product     Eval (*1.0e+04)</span>
+0073 <span class="comment">%     =========================================================</span>
+0074 <span class="comment">%     2.2210    0.0436    0.0856    0.0969     -3.6964</span>
+0075 <span class="comment">%     1.4617    0.0664    0.0844    0.0971     -3.6963</span>
+0076 <span class="comment">%     1.3647    0.0712    0.0839    0.0971     -3.6962</span>
+0077 <span class="comment">%     1.4607    0.0665    0.0844    0.0971     -3.6963</span>
+0078 <span class="comment">%     1.4422    0.0673    0.0842    0.0971     -3.6963</span>
+0079 <span class="comment">%     1.4653    0.0663    0.0842    0.0971     -3.6963</span>
+0080 <span class="comment">%     1.4585    0.0665    0.0843    0.0970     -3.6963</span>
+0081 <span class="comment">%     1.2390    0.0784    0.0837    0.0972     -3.6962</span>
+0082 <span class="comment">%     2.6163    0.0370    0.0901    0.0968     -3.6963</span>
+0083 <span class="comment">%     2.7354    0.0353    0.0877    0.0964     -3.6962</span>
+0084 <span class="comment">%     2.7330    0.0354    0.0910    0.0967     -3.6962</span>
+0085 <span class="comment">%     2.7365    0.0354    0.0922    0.0968     -3.6962</span>
+0086 <span class="comment">%     2.7901    0.0347    0.0913    0.0967     -3.6961</span>
+0087 <span class="comment">%     2.7938    0.0350    0.0923    0.0977     -3.6961</span>
+0088 <span class="comment">%     2.7364    0.0354    0.0909    0.0968     -3.6962</span>
+0089 <span class="comment">%     2.3509    0.0412    0.0883    0.0968     -3.6964</span>
+0090 <span class="comment">%     2.3509    0.0412    0.0880    0.0969     -3.6964</span>
+0091 <span class="comment">%     2.0711    0.0466    0.7088    0.0965     -3.6955</span>
+0092 <span class="comment">%     2.3536    0.0411    0.0882    0.0968     -3.6964</span>
+0093 <span class="comment">%     2.4210    0.0400    0.0888    0.0969     -3.6963</span>
+0094 <span class="comment">%     2.3508    0.0412    0.0894    0.0968     -3.6964</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

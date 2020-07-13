@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of path_simulator_OPT</title>
+  <meta name="keywords" content="path_simulator_OPT">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; path_simulator_OPT.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>path_simulator_OPT
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>	ciplot(lower,upper)</li><li><a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>	18/03/2020 10:41</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="sde_FE.html" class="code" title="function sim_path_f = sde_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot) % 02/02/2020 18:28">sde_FE</a>	SDE for X_t.</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="path_simulator_OPT.m">path_simulator_OPT.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet  = <span class="string">'MTLOG'</span>;
+0007 <span class="comment">% epsilon can be 0.035 (B), 0.020 (A) or 0.028 (C).</span>
+0008 epsilon  = 0.020;
+0009 <span class="comment">% dataKind can be classic or comparable.</span>
+0010 dataKind = <span class="string">'comparable'</span>;
+0011 set_type = <span class="string">'testing'</span>; <span class="comment">% 'testing' or 'training'.</span>
+0012 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind,set_type);
+0013 whatToDo = <span class="string">'optimal_value'</span>;
+0014 <span class="comment">% whatToDo = 'Optimal_Lamperti';</span>
+0015 
+0016 <span class="comment">% PARAMETERS:</span>
+0017 <span class="comment">% set(0,'defaultAxesFontSize',18);</span>
+0018 quantil  = 0;
+0019 save     = 0;
+0020 delta    = 13; <span class="comment">% The time is delta*10 minutes.</span>
+0021 xlimit   = 1; <span class="comment">% If this in 1, the plots start at time 0. Otherwise, at -delta.</span>
+0022 norm_lim = 0; <span class="comment">% If 1, x=[0,1], if 0, x=[1PM 1PM].</span>
+0023 <span class="comment">% Also, when norm_lim = 0, we check the real accuracy for the bands.</span>
+0024 new_time = [13-(1/6)*delta:1/6:37]/24;
+0025 counting   = zeros(4,1);
+0026 counting_2 = zeros(4,1);
+0027 
+0028 <span class="comment">% 31/05/2020:</span>
+0029 <span class="comment">% 1.0000</span>
+0030 <span class="comment">% 0.8946 --&gt; 99%</span>
+0031 <span class="comment">% 0.7661 --&gt; 90%</span>
+0032 <span class="comment">% 0.3840 --&gt; 50%</span>
+0033 
+0034 <span class="keyword">if</span> quantil
+0035     numPaths = 5000;
+0036 <span class="keyword">else</span>
+0037     numPaths = 5;
+0038 <span class="keyword">end</span>
+0039 
+0040 <span class="keyword">if</span>  strcmp(whatToDo,<span class="string">'optimal_value'</span>)
+0041     
+0042     <span class="keyword">if</span>  strcmp(set_type,<span class="string">'testing'</span>) <span class="comment">% We do inference with training.</span>
+0043         theta_0 = 1.93;
+0044         alpha   = 0.05;
+0045     <span class="keyword">elseif</span> strcmp(set_type,<span class="string">'training'</span>) <span class="comment">% We do inference with testing.</span>
+0046         theta_0 = 1.59;
+0047         alpha   = 0.056;
+0048     <span class="keyword">end</span>
+0049     
+0050 <span class="keyword">elseif</span>  strcmp(whatToDo,<span class="string">'Optimal_Lamperti'</span>)
+0051     
+0052 <span class="comment">%     theta_0 = 2.200;</span>
+0053 <span class="comment">%     alpha   = 0.038;</span>
+0054 <span class="comment">% V2:</span>
+0055     theta_0 = 1.8708;
+0056     alpha   = 0.0431;    
+0057     
+0058 <span class="keyword">else</span>
+0059     error(<span class="string">'Wrong whatToDo script!'</span>);
+0060 <span class="keyword">end</span>
+0061 
+0062 d  = Table_Testing_Complete.Date;
+0063 p  = Table_Testing_Complete.Forecast;
+0064 t  = Table_Testing_Complete.Time(1,:);
+0065 x  = Table_Testing_Complete.Real_ADME;
+0066 v  = Table_Testing_Complete.Error;
+0067 dt = t(2); <span class="comment">% This is the default dt. I will choose a smaller one.</span>
+0068 <span class="comment">% If the dt is not small enough, we always scape from [0 1].</span>
+0069 dt = dt/1;
+0070 
+0071 figure(10);
+0072 
+0073 minus_t = linspace(-delta*dt,-dt,delta);
+0074 <span class="keyword">if</span> norm_lim == 1
+0075     exten_t = [minus_t,t];
+0076 <span class="keyword">elseif</span> norm_lim == 0
+0077     exten_t = new_time;
+0078     t       = [13:1/6:37]/24;
+0079     t_ticks = [13:37]/24;
+0080 <span class="comment">%     t_ticks = [13:2:37]/24;</span>
+0081 <span class="keyword">end</span>
+0082 
+0083 <span class="keyword">for</span> i = 1 : height(Table_Testing_Complete)
+0084 
+0085     X = x(i,:);
+0086     P = p(i,:);
+0087     <span class="comment">% All of them show similar results:</span>
+0088     P_exten_linear = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'linear'</span>,<span class="string">'extrap'</span>);
+0089     P_exten_pchip  = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'pchip'</span>,<span class="string">'extrap'</span>);
+0090     P_exten_spline = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'spline'</span>,<span class="string">'extrap'</span>);
+0091     P_exten_makima = interp1([0 6*dt],[P(1) P(6)],minus_t,<span class="string">'makima'</span>,<span class="string">'extrap'</span>);
+0092     
+0093     P       = [P_exten_linear,P]; <span class="comment">% We extend the forecast.</span>
+0094     <span class="keyword">for</span> j = 1:length(P)
+0095         P(j) = max(P(j),epsilon);
+0096         P(j) = min(P(j),1-epsilon);
+0097     <span class="keyword">end</span>
+0098     P_dot   = (-P(1:end-1) + P(2:end)) / dt; <span class="comment">% This starts at 1 end ends at (end - 1).</span>
+0099     <span class="keyword">for</span> j = 1:length(P)-1
+0100         Theta_t(j) = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(theta_0, alpha, P(j), P_dot(j));
+0101     <span class="keyword">end</span>
+0102     
+0103     <span class="comment">% We assume that the forecast is perfect one hour before it starts.</span>
+0104     sim_path(1:numPaths,1) = P(1);
+0105 
+0106     <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,10); clf(10);
+0107     J = plot(exten_t,P); J.LineWidth = 2;
+0108     hold on;
+0109     J = plot(t,X); J.LineWidth = 2;
+0110     xlim([min(exten_t) max(exten_t)]); ylim([0 1]); grid minor;
+0111     xlabel(<span class="string">'Time'</span>), ylabel(<span class="string">'Power'</span>);
+0112     date = d(i);
+0113     date_format = datetime(date{1},<span class="string">'InputFormat'</span>,<span class="string">'yyyyMMdd'</span>);
+0114     date_format_next = date_format + days(1);
+0115     title([datestr(date_format),<span class="string">' and '</span>,datestr(date_format_next)]);
+0116     
+0117     <span class="keyword">for</span> k = 1:numPaths
+0118         <span class="keyword">for</span> j = 1 : length(exten_t)-1
+0119             sim_path(k,j+1) = <a href="sde_FE.html" class="code" title="function sim_path_f = sde_FE(sim_path_i,alpha,theta_0,Theta_t,dt,P,P_dot) % 02/02/2020 18:28">sde_FE</a>(sim_path(k,j),alpha,theta_0,Theta_t(j),dt,P(j),P_dot(j));
+0120             <span class="keyword">if</span> sim_path(k,j+1) &gt; 1
+0121                 sim_path(k,j+1) = 1;
+0122             <span class="keyword">elseif</span> sim_path(k,j+1) &lt; 0
+0123                 sim_path(k,j+1) = 0;
+0124             <span class="keyword">end</span>
+0125         <span class="keyword">end</span>
+0126     <span class="keyword">end</span>
+0127     
+0128     <span class="keyword">if</span> quantil == 1
+0129         
+0130         <span class="keyword">if</span> norm_lim == 1
+0131         
+0132             <span class="keyword">for</span> k = 1:length(sim_path(1,:))
+0133                 quant(k,:) = quantile(sim_path(:,k),[0.01 0.05 0.25 0.75 0.95 0.99]);
+0134                 men(k)     = mean(sim_path(:,k));
+0135             <span class="keyword">end</span>
+0136             <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,10); clf(10); hold on;
+0137             <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,1),quant(:,6),exten_t,[153 255 153]/255)
+0138             <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,2),quant(:,5),exten_t,[153 255 255]/255)
+0139             <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,3),quant(:,4),exten_t,[153 153 255]/255)
+0140             J = plot(exten_t,P,<span class="string">'k'</span>); J.LineWidth = 2;
+0141             J = plot(t,X,<span class="string">'b'</span>); J.LineWidth = 2;
+0142             legend({<span class="string">'99% confidence interval'</span>, <span class="string">'90% confidence interval'</span>, <span class="string">'50% confidence interval'</span>,<span class="keyword">...</span>
+0143                 <span class="string">'Forecast'</span>, <span class="string">'Real production'</span>});
+0144             
+0145             <span class="keyword">if</span> xlimit
+0146                 xlim([0 max(exten_t)]);
+0147             <span class="keyword">else</span>
+0148                 xlim([min(exten_t) max(exten_t)]);
+0149             <span class="keyword">end</span>
+0150             
+0151             ylim([0 1]); grid minor;
+0152             xlabel(<span class="string">'Time'</span>), ylabel(<span class="string">'Power'</span>); box;
+0153             date = d(i);
+0154             date_format = datetime(date{1},<span class="string">'InputFormat'</span>,<span class="string">'yyyyMMdd'</span>);
+0155             date_format_next = date_format + days(1);
+0156             title([datestr(date_format),<span class="string">' and '</span>,datestr(date_format_next)]);
+0157             <span class="keyword">if</span> save == 1
+0158                 saveas(gcf,[pwd <span class="string">'/Results/bands_testing_days/'</span>,whatToDo,<span class="string">'/'</span>,num2str(i)],<span class="string">'epsc'</span>);
+0159             <span class="keyword">end</span>
+0160         
+0161         <span class="keyword">elseif</span> norm_lim == 0
+0162             
+0163             <span class="keyword">for</span> k = 1:length(sim_path(1,:))
+0164                 quant(k,:) = quantile(sim_path(:,k),[0.01 0.05 0.25 0.75 0.95 0.99]);
+0165                 men(k)     = mean(sim_path(:,k));
+0166             <span class="keyword">end</span>
+0167             <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,10); clf(10); hold on;
+0168             <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,1),quant(:,6),exten_t,[153 255 153]/255)
+0169             <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,2),quant(:,5),exten_t,[153 255 255]/255)
+0170             <a href="ciplot.html" class="code" title="function ciplot(lower,upper,x,colour,alpha);">ciplot</a>(quant(:,3),quant(:,4),exten_t,[153 153 255]/255)
+0171             J = plot(exten_t,P,<span class="string">'k'</span>); J.LineWidth = 2;
+0172             J = plot(t,X,<span class="string">'b'</span>); J.LineWidth = 2;
+0173             legend({<span class="string">'99% confidence interval'</span>, <span class="string">'90% confidence interval'</span>, <span class="string">'50% confidence interval'</span>,<span class="keyword">...</span>
+0174                 <span class="string">'Forecast'</span>, <span class="string">'Real production'</span>});
+0175 <span class="comment">%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...</span>
+0176 <span class="comment">%                 'Forecast', 'Real production'},'location','southeast');</span>
+0177 <span class="comment">%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...</span>
+0178 <span class="comment">%                 'Forecast', 'Real production'},'location','northwest');</span>
+0179 <span class="comment">%             legend({'99% confidence interval', '90% confidence interval', '50% confidence interval',...</span>
+0180 <span class="comment">%                 'Forecast', 'Real production'},'location','southwest');</span>
+0181             
+0182             xticks(t_ticks);
+0183             datetick(<span class="string">'x'</span>,<span class="string">'HHPM'</span>,<span class="string">'keepticks'</span>);
+0184             xtickangle(90);
+0185             
+0186             <span class="keyword">if</span> xlimit
+0187                 xlim([min(t_ticks) max(t_ticks)]);
+0188             <span class="keyword">else</span>
+0189                 xlim([min(new_time) max(new_time)]);
+0190             <span class="keyword">end</span>
+0191             
+0192             ylim([0 1]); grid minor;
+0193             xlabel(<span class="string">'Time'</span>), ylabel(<span class="string">'Power'</span>); box;
+0194             date = d(i);
+0195             date_format = datetime(date{1},<span class="string">'InputFormat'</span>,<span class="string">'yyyyMMdd'</span>);
+0196             date_format_next = date_format + days(1);
+0197             title([datestr(date_format),<span class="string">' and '</span>,datestr(date_format_next)]);
+0198             <span class="keyword">if</span> save == 1
+0199                 saveas(gcf,[pwd <span class="string">'/Results/bands_testing_days/'</span>,whatToDo,<span class="string">'/withDate/'</span>,num2str(i)],<span class="string">'epsc'</span>);
+0200             <span class="keyword">end</span>
+0201             
+0202             <span class="comment">% We check the real accuracy for the bands:</span>
+0203             aux    = ones(4,1);
+0204             <span class="keyword">for</span> k = 1:145
+0205                 counting(1) = counting(1) + 1;
+0206                 <span class="keyword">if</span> quant(k+delta,1) &lt; X(k) &amp;&amp; quant(k+delta,6) &gt; X(k)
+0207                     counting(2) = counting(2) + 1;
+0208                 <span class="keyword">else</span>
+0209                     aux(2)      = 0;
+0210                 <span class="keyword">end</span>
+0211                 <span class="keyword">if</span> quant(k+delta,2) &lt; X(k) &amp;&amp; quant(k+delta,5) &gt; X(k)
+0212                     counting(3) = counting(3) + 1;
+0213                 <span class="keyword">else</span>
+0214                     aux(3)      = 0;
+0215                 <span class="keyword">end</span>
+0216                 <span class="keyword">if</span> quant(k+delta,3) &lt; X(k) &amp;&amp; quant(k+delta,4) &gt; X(k)
+0217                     counting(4) = counting(4) + 1;
+0218                 <span class="keyword">else</span>
+0219                     aux(4)      = 0;
+0220                 <span class="keyword">end</span>
+0221             <span class="keyword">end</span>
+0222             counting_2 = counting_2 + aux;
+0223             disp(num2str(counting/counting(1)));
+0224             
+0225         <span class="keyword">end</span>
+0226         
+0227     <span class="keyword">else</span>
+0228         
+0229         <span class="keyword">if</span> norm_lim == 1
+0230         
+0231             plot(exten_t,sim_path,<span class="string">'r'</span>);
+0232             legend(<span class="string">'Forecast'</span>,<span class="string">'Real Production'</span>,<span class="string">'Simulations'</span>,<span class="string">'HandleVisibility'</span>,<span class="string">'off'</span>);
+0233             <span class="keyword">if</span> xlimit
+0234                 xlim([0 max(exten_t)]);
+0235             <span class="keyword">else</span>
+0236                 xlim([min(exten_t) max(exten_t)]);
+0237             <span class="keyword">end</span>
+0238             box;
+0239             pause(0.1); box;
+0240             <span class="keyword">if</span> save == 1
+0241                 saveas(gcf,[pwd <span class="string">'/Results/paths_testing_days/'</span>,whatToDo,<span class="string">'/'</span>,num2str(i)],<span class="string">'epsc'</span>);
+0242             <span class="keyword">end</span>
+0243         
+0244         <span class="keyword">elseif</span> norm_lim == 0
+0245             
+0246             plot(exten_t,sim_path,<span class="string">'r'</span>);
+0247             legend(<span class="string">'Forecast'</span>,<span class="string">'Real Production'</span>,<span class="string">'Simulations'</span>,<span class="string">'HandleVisibility'</span>,<span class="string">'off'</span>);
+0248             
+0249             xticks(t_ticks);
+0250             datetick(<span class="string">'x'</span>,<span class="string">'HHPM'</span>,<span class="string">'keepticks'</span>);
+0251             xtickangle(90);
+0252             
+0253             pause(0.1); box;
+0254             <span class="keyword">if</span> xlimit
+0255                 xlim([min(t_ticks) max(t_ticks)]);
+0256             <span class="keyword">else</span>
+0257                 xlim([min(new_time) max(new_time)]);
+0258             <span class="keyword">end</span>
+0259             
+0260             box;
+0261             <span class="keyword">if</span> save == 1
+0262                 saveas(gcf,[pwd <span class="string">'/Results/paths_testing_days/'</span>,whatToDo,<span class="string">'/withDate/'</span>,num2str(i)],<span class="string">'epsc'</span>);
+0263             <span class="keyword">end</span>
+0264             
+0265         <span class="keyword">end</span>
+0266         
+0267     <span class="keyword">end</span>
+0268     
+0269     pause(0.1);
+0270     
+0271 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

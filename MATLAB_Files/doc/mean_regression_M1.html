@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of mean_regression_M1</title>
+  <meta name="keywords" content="mean_regression_M1">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; mean_regression_M1.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>mean_regression_M1
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function [val] = mean_regression_M1(batch_complete, dt, rang, gamma) % 16/03/2020 11:08 </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="mean_regression_M1_eq.html" class="code" title="function [val] = mean_regression_M1_eq(x1,theta_0,dt,m,n)">mean_regression_M1_eq</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="optimizeLogLikelihood_MODEL1.html" class="code" title="">optimizeLogLikelihood_MODEL1</a>	</li><li><a href="plot_theta0_gamma_model_1.html" class="code" title="">plot_theta0_gamma_model_1</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="mean_regression_M1.m">mean_regression_M1.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function [val] = mean_regression_M1(batch_complete, dt, rang, gamma) </a><span class="comment">% 16/03/2020 11:08</span>
+0002 
+0003     num_of_samples = length(batch_complete(1,:))/2;
+0004 
+0005     theta_0   = rang;
+0006     max_error = 0;
+0007     
+0008     <span class="keyword">for</span> k = 1:length(theta_0)
+0009         
+0010         value     = [];
+0011         value_2   = [];
+0012         index     = [];
+0013         count_1   = 0;
+0014         count_2   = 0;
+0015         val_1     = 0;
+0016         val_2     = 0;
+0017         extra_div = 1;
+0018         dt        = dt * extra_div;
+0019         theta_pos = 0;
+0020         theta_neg = 0;
+0021         
+0022         <span class="keyword">for</span> i = 1:num_of_samples/extra_div
+0023 
+0024             j = i*2*extra_div; <span class="comment">% This is the real index (parfor must go one-by-one).</span>
+0025             <span class="comment">% Recall that: j is t_n and j-1 is t_{n-1}.</span>
+0026             p1 = batch_complete(1,j-1); p2 = batch_complete(1,j);
+0027             v1 = batch_complete(3,j-1); v2 = batch_complete(3,j);
+0028             x1 = v1 + p1; x2 = v2 + p2;
+0029 
+0030             n = p1;
+0031             m = (p2 - p1) / dt;
+0032 
+0033             value(i)   = <a href="mean_regression_M1_eq.html" class="code" title="function [val] = mean_regression_M1_eq(x1,theta_0,dt,m,n)">mean_regression_M1_eq</a>(x1,theta_0(k),dt,m,n);
+0034             value_2(i) = <a href="mean_regression_M1_eq.html" class="code" title="function [val] = mean_regression_M1_eq(x1,theta_0,dt,m,n)">mean_regression_M1_eq</a>(x1,theta_0(k),dt,p1,p2);
+0035             aux_1(i)   = value(i);
+0036             aux_2(i)   = value_2(i);
+0037             value(i)   = (value(i) - x2)^2;
+0038             aux_3(i)   = x1;
+0039             aux_4(i)   = x2;
+0040             aux_5(i)   = p1;
+0041             aux_6(i)   = p2;
+0042             
+0043             <span class="keyword">if</span> not(p1 &gt; gamma &amp;&amp; p1 &lt; 1-gamma)
+0044                 index(end+1) = i;
+0045             <span class="keyword">end</span>
+0046             
+0047             <span class="keyword">if</span> abs(x2-p2) &lt; abs(x1-p1)
+0048                 count_2 = count_2 + 1;
+0049                 val_2   = val_2 + abs(x2-p2);
+0050             <span class="keyword">else</span>
+0051                 count_1 = count_1 + 1;
+0052                 val_1   = val_1 + abs(x1-p1);
+0053             <span class="keyword">end</span>
+0054             
+0055             <span class="keyword">if</span> x1 &lt; p1 &amp;&amp; x2 &lt; p2 &amp;&amp; x2 &lt; x1
+0056                 theta_neg = theta_neg + 1;
+0057             <span class="keyword">elseif</span> x1 &lt; p1 &amp;&amp; x2 &lt; p2 &amp;&amp; x2 &gt; x1
+0058                 theta_pos = theta_pos + 1;
+0059             <span class="keyword">elseif</span> x1 &gt; p1 &amp;&amp; x2 &gt; p2 &amp;&amp; x2 &lt; x1
+0060                 theta_pos = theta_pos + 1;
+0061             <span class="keyword">elseif</span> x1 &gt; p1 &amp;&amp; x2 &gt; p2 &amp;&amp; x2 &gt; x1
+0062                 theta_neg = theta_neg + 1;
+0063             <span class="keyword">end</span>
+0064             <span class="comment">% This shows that it is more likely to obtain a negative Theta_0.</span>
+0065             
+0066         <span class="keyword">end</span>
+0067         
+0068         <span class="keyword">for</span> i = length(index):-1:1
+0069             value(index(i)) = [];
+0070         <span class="keyword">end</span>
+0071         
+0072         <span class="comment">% Error Forward-Euler and Exact solution:</span>
+0073         max_error = max(max_error,max(abs(aux_1-aux_2)));
+0074         
+0075         val(k) = mean(value);
+0076 
+0077     <span class="keyword">end</span>
+0078 
+0079 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

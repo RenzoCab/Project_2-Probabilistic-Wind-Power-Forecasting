@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of plot_epsilon</title>
+  <meta name="keywords" content="plot_epsilon">
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; plot_epsilon.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>plot_epsilon
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong></strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>This is a script file. </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"></pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="create_samples_eps.html" class="code" title="function [eps_samples] = create_samples_eps(Forecast, Real, eps)">create_samples_eps</a>	14/03/2020 17:33</li><li><a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>	15/03/2020 21:07</li><li><a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>	09/02/2020 09:30</li><li><a href="load_data_comparable.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data_comparable(dataSet)">load_data_comparable</a>	19/04/2020 15:45</li><li><a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>	TEMPLATE/SET Edit data stored in a Template object</li><li><a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>	</li><li><a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>	</li><li><a href="value_function_QMM_eps.html" class="code" title="function [val,accum] = value_function_QMM_eps(error, theta_t, dt) % 15/03/2020 19:13">value_function_QMM_eps</a>	</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="plot_epsilon.m">plot_epsilon.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 close all;
+0002 clear all;
+0003 clc;
+0004 
+0005 <span class="comment">% dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).</span>
+0006 dataSet  = <span class="string">'MTLOG'</span>;
+0007 [Ta_Tra_Comp, Ta_Test_Compl, Ta_Comp] = <a href="load_data_comparable.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data_comparable(dataSet)">load_data_comparable</a>(dataSet);
+0008 
+0009 figure(1); figure(2); 
+0010 
+0011 Time      = Ta_Tra_Comp.Time;
+0012 Forecast  = Ta_Tra_Comp.Forecast;
+0013 Error     = Ta_Tra_Comp.Error;
+0014 Real_ADME = Ta_Tra_Comp.Real_ADME;
+0015 
+0016 dt             = Time(1,2);
+0017 [M, N_ini]     = size(Forecast);
+0018 N              = N_ini - 1; <span class="comment">% We have N_ini measurements but N samples.</span>
+0019 addLimitation  = 1;
+0020 maxChange      = 1.01;
+0021 maxIter        = 100;
+0022 
+0023 est               = <a href="initial_guess.html" class="code" title="function [est] = initial_guess(real_prod, M, N, dt)">initial_guess</a>(Real_ADME, M, N, dt);
+0024 samples_minus_eps = <a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>(Forecast, Error, 0.2);
+0025 [theta_0,~]       = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples_minus_eps, dt);
+0026 max_plot_theta    = 0;
+0027 
+0028 <span class="keyword">for</span> n = 1:500
+0029 
+0030     epsilon_new = 0.01 + rand(1)*0.09;
+0031     step        = 1;
+0032     plot_eps    = epsilon_new;
+0033     plot_theta  = [];
+0034     counter     = 0;
+0035 
+0036     <span class="keyword">while</span> (step &lt; maxIter)
+0037 
+0038         epsilon     = epsilon_new;
+0039         samples     = <a href="create_samples_eps.html" class="code" title="function [eps_samples] = create_samples_eps(Forecast, Real, eps)">create_samples_eps</a>(Forecast, Real_ADME, epsilon);
+0040         <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>     = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples, dt);
+0041         <span class="keyword">if</span> <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a> &gt; theta_0
+0042             epsilon_new = est / <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>;
+0043             <span class="keyword">if</span> addLimitation
+0044                 <span class="keyword">if</span> epsilon_new &gt; epsilon*maxChange
+0045                     epsilon_new = epsilon*maxChange;
+0046                 <span class="keyword">elseif</span> epsilon_new &lt; epsilon/maxChange
+0047                     epsilon_new = epsilon/maxChange;
+0048                 <span class="keyword">end</span>
+0049             <span class="keyword">end</span>
+0050               disp([<span class="string">'========== Step: '</span>,num2str(step),<span class="string">' =========='</span>]);
+0051             disp([<span class="string">'Epsilon = '</span>,num2str(epsilon_new)]);
+0052             disp([<span class="string">'Theta(t) = '</span>,num2str(<a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>)]);
+0053             step = step + 1;
+0054             plot_eps(end+1)   = epsilon_new;
+0055             plot_theta(end+1) = <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>;
+0056             counter           = counter + 1;
+0057         <span class="keyword">else</span>
+0058             epsilon_new = epsilon_new * 0.999;
+0059         <span class="keyword">end</span>
+0060 
+0061     <span class="keyword">end</span>
+0062 
+0063     max_plot_theta = max(max(plot_theta(1:end-1)),max_plot_theta);
+0064     
+0065     Forecast_vec = Forecast(:);
+0066     disp(<span class="string">'=============================='</span>);
+0067     disp([<span class="string">'Minimum forecast: '</span>,num2str(min(Forecast_vec))]);
+0068     disp([<span class="string">'Maximum forecast: '</span>,num2str(max(Forecast_vec))]);
+0069 
+0070     <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,1);
+0071     plot([0:step-2],plot_eps(1:end-1)); 
+0072     hold on;
+0073     title(<span class="string">'$\epsilon$ over iterations'</span>,<span class="string">'Interpreter'</span>,<span class="string">'Latex'</span>);
+0074     xlabel(<span class="string">'Number iteration'</span>);
+0075     xlim([0 step-2]);
+0076     ylim([0 0.1]);
+0077 
+0078     <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,2);
+0079     plot(plot_theta(1:end-1)); 
+0080     hold on;
+0081     plot(theta_0*ones(1,length(plot_theta(1:end-1))));
+0082     title(<span class="string">'k over iterations'</span>,<span class="string">'Interpreter'</span>,<span class="string">'Latex'</span>);
+0083     xlabel(<span class="string">'Number iteration'</span>);
+0084     xlim([1 step-2]);
+0085     ylim([theta_0*0.9 max_plot_theta*1.1]);
+0086     
+0087     pause(0.1)
+0088 
+0089 <span class="keyword">end</span>
+0090 
+0091 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,1);
+0092 grid minor;
+0093 saveas(gcf,[pwd <span class="string">'/Results/epsilon/epsilon'</span>],<span class="string">'epsc'</span>);
+0094 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(0,<span class="string">'CurrentFigure'</span>,2);
+0095 grid minor;
+0096 saveas(gcf,[pwd <span class="string">'/Results/epsilon/theta_t'</span>],<span class="string">'epsc'</span>);
+0097 
+0098 <span class="comment">%% Plot QMM formula as a function of delta:</span>
+0099 
+0100 epsilon           = [0.01:0.00001:0.05];
+0101 samples_minus_eps = <a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>(Forecast, Error, 0.1);
+0102 therta_sweep      = [0:0.01:10];
+0103 
+0104 <span class="keyword">for</span> i = 1:length(epsilon)
+0105 
+0106     samples                   = <a href="create_samples_eps.html" class="code" title="function [eps_samples] = create_samples_eps(Forecast, Real, eps)">create_samples_eps</a>(Forecast, Real_ADME, epsilon(i));
+0107     <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(i)                = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples, dt);
+0108     [min_value_fun_real(i),~] = <a href="value_function_QMM_eps.html" class="code" title="function [val,accum] = value_function_QMM_eps(error, theta_t, dt) % 15/03/2020 19:13">value_function_QMM_eps</a>(samples, <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(i), dt);
+0109 
+0110     <span class="keyword">for</span> j = 1:length(therta_sweep)
+0111         min_val(j) = <a href="value_function_QMM_eps.html" class="code" title="function [val,accum] = value_function_QMM_eps(error, theta_t, dt) % 15/03/2020 19:13">value_function_QMM_eps</a>(samples, therta_sweep(j), dt);
+0112     <span class="keyword">end</span>
+0113     min_value_fun_hard(i) = min(min_val);
+0114     
+0115     <span class="keyword">if</span> theta_0 &gt; <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(i)
+0116         <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(i) = theta_0;
+0117     <span class="keyword">end</span>
+0118     [min_value_fun(i),accum(i)] = <a href="value_function_QMM_eps.html" class="code" title="function [val,accum] = value_function_QMM_eps(error, theta_t, dt) % 15/03/2020 19:13">value_function_QMM_eps</a>(samples, <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>(i), dt);
+0119     
+0120 <span class="keyword">end</span>
+0121 
+0122 figure;
+0123 plot(epsilon, min_value_fun);
+0124 hold on;
+0125 plot(epsilon, min_value_fun_real);
+0126 plot(epsilon, min_value_fun_hard);
+0127 legend(<span class="string">'Using fixed k'</span>, <span class="string">'Using analytic minimum'</span>, <span class="string">'Using samples minimum'</span>, <span class="string">'interpreter'</span>, <span class="string">'latex'</span>);
+0128 grid minor;
+0129 xlim([min(epsilon) max(epsilon)]);
+0130 title(<span class="string">'LSM over $\epsilon$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0131 xlabel(<span class="string">'$\epsilon$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0132 saveas(gcf,[pwd <span class="string">'/Results/epsilon/LSM'</span>],<span class="string">'epsc'</span>);
+0133 
+0134 figure;
+0135 plot(epsilon, <a href="theta_t.html" class="code" title="function [theta_t] = theta_t(theta_0, alpha, pe, pe_dot) % 13/03/2020 19:09">theta_t</a>); grid minor;
+0136 xlim([min(epsilon) max(epsilon)]);
+0137 title(<span class="string">'k over $\epsilon$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0138 xlabel(<span class="string">'$\epsilon$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0139 saveas(gcf,[pwd <span class="string">'/Results/epsilon/theta_over_eps'</span>],<span class="string">'epsc'</span>);
+0140 
+0141 figure;
+0142 plot(epsilon, accum); grid minor;
+0143 xlim([min(epsilon) max(epsilon)]);
+0144 title(<span class="string">'Number of samples over $\epsilon$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0145 xlabel(<span class="string">'$\epsilon$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0146 saveas(gcf,[pwd <span class="string">'/Results/epsilon/num_over_eps'</span>],<span class="string">'epsc'</span>);
+0147 
+0148 <span class="comment">%% Plot theta_0:</span>
+0149 
+0150 epsilon = [0.01:0.001:0.49];
+0151 accum   = [];
+0152 
+0153 <span class="keyword">for</span> i = 1:length(epsilon)
+0154 
+0155     samples               = <a href="create_samples_minus_eps.html" class="code" title="function [minus_eps_samples] = create_samples_minus_eps(Forecast, Error, gamma)">create_samples_minus_eps</a>(Forecast, Error, epsilon(i));
+0156     [theta_0(i),accum(i)] = <a href="mean_regression_eps.html" class="code" title="function [val, accum] = mean_regression_eps(error, dt) % 16/03/2020 11:08">mean_regression_eps</a>(samples, dt);
+0157     
+0158 <span class="keyword">end</span>
+0159 
+0160 figure;
+0161 plot(epsilon, theta_0);
+0162 title(<span class="string">'$\theta_0$ approximation over $\gamma$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0163 xlim([min(epsilon) max(epsilon)]);
+0164 xlabel(<span class="string">'$\gamma$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0165 grid minor;
+0166 saveas(gcf,[pwd <span class="string">'/Results/epsilon/theta_0'</span>],<span class="string">'epsc'</span>);
+0167 
+0168 figure;
+0169 plot(epsilon, accum); grid minor;
+0170 xlim([min(epsilon) max(epsilon)]);
+0171 title(<span class="string">'Number of samples over $\gamma$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0172 xlabel(<span class="string">'$\gamma$'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
+0173 saveas(gcf,[pwd <span class="string">'/Results/epsilon/num_over_eps_t0'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>

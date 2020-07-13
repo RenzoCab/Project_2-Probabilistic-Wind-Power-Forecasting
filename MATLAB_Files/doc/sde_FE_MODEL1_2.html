@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of sde_FE_MODEL1_2</title>
+  <meta name="keywords" content="sde_FE_MODEL1_2">
+  <meta name="description" content="SDE for X_t^2 in MODEL 1.">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html v1.5 &copy; 2003-2005 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<div><a href="../index.html">Home</a> &gt;  <a href="index.html">.</a> &gt; sde_FE_MODEL1_2.m</div>
+
+<!--<table width="100%"><tr><td align="left"><a href="../index.html"><img alt="<" border="0" src="../left.png">&nbsp;Master index</a></td>
+<td align="right"><a href="index.html">Index for .&nbsp;<img alt=">" border="0" src="../right.png"></a></td></tr></table>-->
+
+<h1>sde_FE_MODEL1_2
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>SDE for X_t^2 in MODEL 1.</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function sim_path_f = sde_FE_MODEL1_2(sim_path_i,alpha,theta_0,dt,P) % 01/04/2020 19:53 </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> SDE for X_t^2 in MODEL 1.</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+</ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="moments_verification_MODEL1.html" class="code" title="">moments_verification_MODEL1</a>	</li></ul>
+<!-- crossreference -->
+
+
+<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<p><a href="sde_FE_MODEL1_2.m">sde_FE_MODEL1_2.m</a></p>
+<h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre>0001 <a name="_sub0" href="#_subfunctions" class="code">function sim_path_f = sde_FE_MODEL1_2(sim_path_i,alpha,theta_0,dt,P) </a><span class="comment">% 01/04/2020 19:53</span>
+0002 
+0003     <span class="comment">% SDE for X_t^2 in MODEL 1.</span>
+0004 
+0005     sim_path_f = sim_path_i + 2*theta_0*(sqrt(sim_path_i)*(alpha+P) - <span class="keyword">...</span>
+0006         sim_path_i*(1+alpha)) * dt + 2*sqrt(sim_path_i)*sqrt(2*alpha*theta_0 * <span class="keyword">...</span>
+0007         sqrt(sim_path_i)*(1-sqrt(sim_path_i))) * sqrt(dt) * randn(1);
+0008     
+0009 <span class="keyword">end</span></pre></div>
+<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+</body>
+</html>
