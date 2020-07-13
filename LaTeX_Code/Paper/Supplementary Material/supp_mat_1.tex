@@ -16,6 +16,17 @@
 %% Packages
 \RequirePackage{amsthm,amsmath,amsfonts,amssymb}
 \RequirePackage[authoryear]{natbib}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{commath}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{url}
 %\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 %\RequirePackage{graphicx}% uncomment this for including figures
 
@@ -117,6 +128,92 @@ ABSTRACT FOR THIS DATA.
 %%%% Main text entry area:
 
 \tableofcontents
+
+\section{Seasonality effect}
+
+To guaranty an homogeneous year, we study the Mean Absolute Error (MAE) for each provider and for each day. In Figures (\ref{MAE_pA}), (\ref{MAE_pB}), and (\ref{MAE_pC}), we can see the daily and weekly MAE for the providers A, B, and C, respectively.\\
+To compute the vector that we are piloting, we realize the operation
+\begin{equation*}
+\hat{V}(j) =\frac{1}{145} \sum_{i=1}^{145}|V(i,j)|\quad\text{where}\quad j\in\{1,\dots,147\}.
+\end{equation*}
+Recall that $V(i,j)$ is the normalized error between the ADME real production and the UTE forecast at time $i$ and for the day $j$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.485\textwidth]{plots/mean_errors/prov_A/MAE.eps}
+\caption{Daily and weekly for the provider A.}
+\label{MAE_pA}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.485\textwidth]{plots/mean_errors/prov_B/MAE.eps}
+\caption{Daily and weekly for the provider B.}
+\label{MAE_pB}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.485\textwidth]{plots/mean_errors/prov_C/MAE.eps}
+\caption{Daily and weekly for the provider C.}
+\label{MAE_pC}
+\end{figure}
+
+\section{Hourly effect}
+
+We want to see the error throughout the day. We compute the MAE for each provider for each measurement during the day. In Figures (\ref{HMAE_pA}), (\ref{HMAE_pB}), and (\ref{HMAE_pC}), we can see the hourly MAE for the providers A, B, and C, respectively.\\
+
+To compute the vector that we are piloting, we realize the operation
+\begin{equation*}
+\hat{V}(i) =\frac{1}{147} \sum_{j=1}^{147}|V(i,j)|\quad\text{where}\quad i\in\{1,\dots,145\}.
+\end{equation*}
+Recall that $V(i,j)$ is the normalized error between the ADME real production and the UTE forecast at time $i$ and for the day $j$.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.485\textwidth]{plots/mean_errors/prov_A/H_MAE.eps}
+\caption{MAE along the day for the provider A.}
+\label{HMAE_pA}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.485\textwidth]{plots/mean_errors/prov_B/H_MAE.eps}
+\caption{MAE along the day for the provider B.}
+\label{HMAE_pB}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.485\textwidth]{plots/mean_errors/prov_C/H_MAE.eps}
+\caption{MAE along the day for the provider C.}
+\label{HMAE_pC}
+\end{figure}
+
+\section{Forecast Error Vs Forecast:}
+
+We plot the forecast error as a function of the forecast value for each provider. In Figures (\ref{sA}), (\ref{sB}), and (\ref{sC}), we can see this plots for the providers A, B, and C, respectively.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{plots/scatter/prov_A/scatter.eps}
+\caption{MAE along the day for the provider A.}
+\label{sA}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{plots/scatter/prov_B/scatter.eps}
+\caption{MAE along the day for the provider B.}
+\label{sB}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{plots/scatter/prov_C/scatter.eps}
+\caption{MAE along the day for the provider C.}
+\label{sC}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Single Appendix:                         %%

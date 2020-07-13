@@ -7,7 +7,7 @@ dataKind               = 'comparable';
 dataSet                = 'MTLOG';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 whatToDo               = 'Optimal'; 
-% whatToDo               = 'Lamperti_Optimal'; 
+whatToDo               = 'Lamperti_Optimal'; 
 % whatToDo               = 'Initial_Guess'; 
 
 % PARAMETERS:
@@ -132,7 +132,7 @@ dataKind               = 'comparable';
 dataSet                = 'MTLOG';
 Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 whatToDo               = 'Optimal'; 
-% whatToDo               = 'Lamperti_Optimal'; 
+whatToDo               = 'Lamperti_Optimal'; 
 % whatToDo               = 'Initial_Guess'; 
 
 % PARAMETERS:
@@ -223,7 +223,7 @@ h2.FaceColor = [0 0 0];
 h2.LineWidth = 1;
 h2.EdgeColor = 'r';
 xlabel('Value of Transition');
-ylabel('Probability');
+% ylabel('Probability');
 xlim([-0.1 0.1]);
 if strcmp(whatToDo,'Optimal')
     legend('Error Transitions Histogram',...
@@ -235,4 +235,4 @@ elseif strcmp(whatToDo,'Lamperti_Optimal')
         'location','southoutside','interpreter','latex');
 end
 set(gca,'FontSize',12);
-saveas(gcf,[pwd '/Results/histograms/classic_noDelta/',whatToDo],'epsc');
+saveas(gcf,[pwd '/Results/histograms/classic_noDelta/',whatToDo],'svg');
