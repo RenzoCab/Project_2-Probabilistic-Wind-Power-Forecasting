@@ -84,7 +84,7 @@
 %% Enter the title of your article here     %%
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Supplementary Material (3/3): Simulations}
+\title{Supplementary Material (3/3): SIMULATIONS}
 %\title{A sample article title with some additional note\thanksref{T1}}
 \runtitle{Supplementary Material}
 %\thankstext{T1}{A sample of additional note to the title.}
@@ -136,6 +136,143 @@ ABSTRACT FOR THIS DATA.
 %%%% Main text entry area:
 
 \tableofcontents
+
+\newpage
+
+\section{Provider A - Paths Simulations over testing forecast}
+
+\graphicspath{{./plots/forecast_from_testing/paths/}}
+
+\newcounter{i}
+\newcounter{j}
+
+\forloop{i}{0}{\value{i} < 9}{
+
+\begin{figure}[!htb]
+\centering
+\setcounter{j}{\value{i}*8+1}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+2}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+3}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+4}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+5}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+6}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+7}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+8}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}
+\end{figure}
+
+\newpage
+
+}
+
+\section{Provider A - Probabilistic Bands Simulations over testing forecast}
+
+\graphicspath{{./plots/forecast_from_testing/bands/}}
+
+\forloop{i}{0}{\value{i} < 9}{
+
+\begin{figure}[!htb]
+\centering
+\setcounter{j}{\value{i}*8+1}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+2}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+3}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+4}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+5}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+6}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+7}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+8}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}
+\end{figure}
+
+\newpage
+
+}
+
+\section{Provider A - Paths Simulations over training forecast}
+
+\graphicspath{{./plots/forecast_from_training/paths/}}
+
+\forloop{i}{0}{\value{i} < 9}{
+
+\begin{figure}[!htb]
+\centering
+\setcounter{j}{\value{i}*8+1}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+2}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+3}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+4}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+5}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+6}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+7}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+8}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}
+\end{figure}
+
+\newpage
+
+}
+
+\section{Provider A - Probabilistic Bands Simulations over training forecast}
+
+\graphicspath{{./plots/forecast_from_training/bands/}}
+
+\forloop{i}{0}{\value{i} < 9}{
+
+\begin{figure}[!htb]
+\centering
+\setcounter{j}{\value{i}*8+1}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+2}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+3}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+4}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+5}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+6}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\\
+\quad\\
+\setcounter{j}{\value{i}*8+7}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}\quad
+\setcounter{j}{\value{i}*8+8}
+{\includegraphics[width=\mysize\columnwidth]{\arabic{j}.eps}}
+\end{figure}
+
+\newpage
+
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Single Appendix:                         %%
