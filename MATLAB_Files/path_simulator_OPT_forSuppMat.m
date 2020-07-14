@@ -99,9 +99,9 @@ for y = 1:2
             sim_path(1:numPaths,1) = P(1);
 
             set(0,'CurrentFigure',10); clf(10);
-            J = plot(exten_t,P); J.LineWidth = 2;
+            J = plot(exten_t,P,'k'); J.LineWidth = 2;
             hold on;
-            J = plot(t,X); J.LineWidth = 2;
+            J = plot(t,X,'b'); J.LineWidth = 2;
             xlim([min(exten_t) max(exten_t)]); ylim([0 1]); grid minor;
         %     xlabel('Time'), ylabel('Power');
             date = d(i);
