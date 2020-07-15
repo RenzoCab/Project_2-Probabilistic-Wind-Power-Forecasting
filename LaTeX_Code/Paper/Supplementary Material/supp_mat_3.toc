@@ -1,4 +1,4 @@
 \contentsline {section}{\numberline {1}Provider A - Paths Simulations over testing forecast}{2}{section.1}
-\contentsline {section}{\numberline {2}Provider A - Probabilistic Bands Simulations over testing forecast}{11}{section.2}
-\contentsline {section}{\numberline {3}Provider A - Paths Simulations over training forecast}{20}{section.3}
-\contentsline {section}{\numberline {4}Provider A - Probabilistic Bands Simulations over training forecast}{29}{section.4}
+\contentsline {section}{\numberline {2}Provider A - Probabilistic Bands Simulations over testing forecast}{12}{section.2}
+\contentsline {section}{\numberline {3}Provider A - Paths Simulations over training forecast}{22}{section.3}
+\contentsline {section}{\numberline {4}Provider A - Probabilistic Bands Simulations over training forecast}{32}{section.4}

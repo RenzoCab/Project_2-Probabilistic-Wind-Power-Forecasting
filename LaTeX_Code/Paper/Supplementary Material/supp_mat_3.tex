@@ -112,7 +112,7 @@
 \end{aug}
 
 \begin{abstract}
-In this material, we provide all the simulations corresponding to the provider A. We show the case where we do fitting with the training data and simulate over the testing data, and the contrary.
+In this material, we provide the simulation-based results corresponding to the forecast provider A. First, given the calibrated SDE Model 2 using a training dataset with 73 non-contiguous segments, each 24-hours long, we show simulated wind power production paths and empirical pointwise confidence bands for the wind power production in all the 74 non-contiguous segments of the testing dataset. Then, we show the results obtained by swapping the training dataset's roles and the testing dataset.
 \end{abstract}
 
 \begin{keyword}
@@ -175,6 +175,14 @@ In this material, we provide all the simulations corresponding to the provider A
 
 }
 
+\begin{figure}[!htb]
+\centering
+{\includegraphics[width=\mysize\columnwidth]{73.eps}}\quad
+{\includegraphics[width=\mysize\columnwidth]{74.eps}}\\
+\end{figure}
+
+\newpage
+
 \section{Provider A - Probabilistic Bands Simulations over testing forecast}
 \quad
 \graphicspath{{./plots/forecast_from_testing/bands/}}
@@ -207,6 +215,14 @@ In this material, we provide all the simulations corresponding to the provider A
 \newpage
 
 }
+
+\begin{figure}[!htb]
+\centering
+{\includegraphics[width=\mysize\columnwidth]{73.eps}}\quad
+{\includegraphics[width=\mysize\columnwidth]{74.eps}}\\
+\end{figure}
+
+\newpage
 
 \section{Provider A - Paths Simulations over training forecast}
 \quad
@@ -241,6 +257,13 @@ In this material, we provide all the simulations corresponding to the provider A
 
 }
 
+\begin{figure}[!htb]
+\centering
+{\includegraphics[width=\mysize\columnwidth]{73.eps}}
+\end{figure}
+
+\newpage
+
 \section{Provider A - Probabilistic Bands Simulations over training forecast}
 \quad
 \graphicspath{{./plots/forecast_from_training/bands/}}
@@ -273,6 +296,13 @@ In this material, we provide all the simulations corresponding to the provider A
 \newpage
 
 }
+
+\begin{figure}[!htb]
+\centering
+{\includegraphics[width=\mysize\columnwidth]{73.eps}}
+\end{figure}
+
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Single Appendix:                         %%

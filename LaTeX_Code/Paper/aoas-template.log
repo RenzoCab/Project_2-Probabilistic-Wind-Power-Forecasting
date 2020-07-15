@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  13 JUL 2020 20:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  15 JUL 2020 10:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1232,46 +1232,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--169
  []
 
 [3]
-Package epstopdf Info: Source file: <plots/four_days/377.eps>
-(epstopdf)                    date: 2020-05-17 19:47:31
-(epstopdf)                    size: 40276 bytes
-(epstopdf)             Output file: <plots/four_days/377-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 20:02:38
-(epstopdf)                    size: 11966 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/four_days/377-eps-con
-verted-to.pdf plots/four_days/377.eps>
+Package epstopdf Info: Source file: <plots/four_days/1.eps>
+(epstopdf)                    date: 2020-07-13 16:08:50
+(epstopdf)                    size: 40040 bytes
+(epstopdf)             Output file: <plots/four_days/1-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-07-15 10:27:24
+(epstopdf)                    size: 12040 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/four_days/1-eps-conve
+rted-to.pdf plots/four_days/1.eps>
 (epstopdf)             \includegraphics on input line 194.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./plots/four_days/377-eps-converted-to.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/four_days/377-eps-converted-to.pdf, id=210, 378.41376pt x 307.1475pt>
-File: plots/four_days/377-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/four_days/377-eps-converted-to.pdf>
-Package pdftex.def Info: plots/four_days/377-eps-converted-to.pdf  used on inpu
-t line 194.
-(pdftex.def)             Requested size: 196.91025pt x 159.82541pt.
-Package epstopdf Info: Source file: <plots/four_days/417.eps>
-(epstopdf)                    date: 2020-05-17 19:47:54
-(epstopdf)                    size: 40285 bytes
-(epstopdf)             Output file: <plots/four_days/417-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-05-17 20:02:38
-(epstopdf)                    size: 11930 bytes
-(epstopdf)             Command: <epstopdf --outfile=plots/four_days/417-eps-con
-verted-to.pdf plots/four_days/417.eps>
+pdfTeX warning: pdflatex (file ./plots/four_days/1-eps-converted-to.pdf): PDF i
+nclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<plots/four_days/1-eps-converted-to.pdf, id=210, 361.35pt x 309.155pt>
+File: plots/four_days/1-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/four_days/1-eps-converted-to.pdf>
+Package pdftex.def Info: plots/four_days/1-eps-converted-to.pdf  used on input 
+line 194.
+(pdftex.def)             Requested size: 196.91025pt x 168.46962pt.
+Package epstopdf Info: Source file: <plots/four_days/3.eps>
+(epstopdf)                    date: 2020-07-13 16:08:56
+(epstopdf)                    size: 39952 bytes
+(epstopdf)             Output file: <plots/four_days/3-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-07-15 10:27:24
+(epstopdf)                    size: 12042 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/four_days/3-eps-conve
+rted-to.pdf plots/four_days/3.eps>
 (epstopdf)             \includegraphics on input line 195.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex (file ./plots/four_days/417-eps-converted-to.pdf): PDF
- inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/four_days/417-eps-converted-to.pdf, id=211, 378.41376pt x 307.1475pt>
-File: plots/four_days/417-eps-converted-to.pdf Graphic file (type pdf)
-<use plots/four_days/417-eps-converted-to.pdf>
-Package pdftex.def Info: plots/four_days/417-eps-converted-to.pdf  used on inpu
-t line 195.
-(pdftex.def)             Requested size: 196.91025pt x 159.82541pt.
+pdfTeX warning: pdflatex (file ./plots/four_days/3-eps-converted-to.pdf): PDF i
+nclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<plots/four_days/3-eps-converted-to.pdf, id=211, 361.35pt x 309.155pt>
+File: plots/four_days/3-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/four_days/3-eps-converted-to.pdf>
+Package pdftex.def Info: plots/four_days/3-eps-converted-to.pdf  used on input 
+line 195.
+(pdftex.def)             Requested size: 196.91025pt x 168.46962pt.
 Package epstopdf Info: Source file: <plots/LP_6.eps>
 (epstopdf)                    date: 2020-05-17 20:15:39
 (epstopdf)                    size: 37899 bytes
@@ -1352,8 +1352,8 @@ File: plots/AP_6-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: plots/AP_6-eps-converted-to.pdf  used on input line 21
 1.
 (pdftex.def)             Requested size: 196.91025pt x 145.38416pt.
-[4 <./plots/four_days/377-eps-converted-to.pdf> <./plots/four_days/417-eps-conv
-erted-to.pdf>]
+[4 <./plots/four_days/1-eps-converted-to.pdf> <./plots/four_days/3-eps-converte
+d-to.pdf>]
 Package epstopdf Info: Source file: <plots/LP.eps>
 (epstopdf)                    date: 2020-05-28 18:49:01
 (epstopdf)                    size: 38482 bytes
@@ -1484,10 +1484,10 @@ File: plots/AP_t-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: plots/AP_t-eps-converted-to.pdf  used on input line 24
 3.
 (pdftex.def)             Requested size: 196.91025pt x 145.38416pt.
- [6 <./plots/LP-eps-converted-to.pdf> <./plots/MP-eps-converted-to.pdf> <./plot
-s/HP-eps-converted-to.pdf> <./plots/AP-eps-converted-to.pdf>] [7 <./plots/LP_t-
-eps-converted-to.pdf> <./plots/MP_t-eps-converted-to.pdf> <./plots/HP_t-eps-con
-verted-to.pdf> <./plots/AP_t-eps-converted-to.pdf>]
+[6 <./plots/LP-eps-converted-to.pdf> <./plots/MP-eps-converted-to.pdf> <./plots
+/HP-eps-converted-to.pdf> <./plots/AP-eps-converted-to.pdf>] [7 <./plots/LP_t-e
+ps-converted-to.pdf> <./plots/MP_t-eps-converted-to.pdf> <./plots/HP_t-eps-conv
+erted-to.pdf> <./plots/AP_t-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <plots/31.eps>
 (epstopdf)                    date: 2020-05-29 22:46:20
 (epstopdf)                    size: 77216 bytes
@@ -1825,11 +1825,11 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 819.
 
 Package epstopdf Info: Source file: <plots/paths/1.eps>
-(epstopdf)                    date: 2020-05-23 19:28:43
-(epstopdf)                    size: 58384 bytes
+(epstopdf)                    date: 2020-07-14 23:59:29
+(epstopdf)                    size: 53380 bytes
 (epstopdf)             Output file: <plots/paths/1-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-06-09 16:23:00
-(epstopdf)                    size: 17148 bytes
+(epstopdf)                    date: 2020-07-15 10:26:01
+(epstopdf)                    size: 16766 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/paths/1-eps-converted
 -to.pdf plots/paths/1.eps>
 (epstopdf)             \includegraphics on input line 823.
@@ -1838,18 +1838,18 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./plots/paths/1-eps-converted-to.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/paths/1-eps-converted-to.pdf, id=644, 372.39125pt x 304.13625pt>
+<plots/paths/1-eps-converted-to.pdf, id=644, 361.35pt x 309.155pt>
 File: plots/paths/1-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/paths/1-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths/1-eps-converted-to.pdf  used on input line
  823.
-(pdftex.def)             Requested size: 196.91025pt x 160.82481pt.
+(pdftex.def)             Requested size: 196.91025pt x 168.46962pt.
 Package epstopdf Info: Source file: <plots/paths/2.eps>
-(epstopdf)                    date: 2020-05-23 19:28:44
-(epstopdf)                    size: 58146 bytes
+(epstopdf)                    date: 2020-07-14 23:59:30
+(epstopdf)                    size: 53127 bytes
 (epstopdf)             Output file: <plots/paths/2-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-06-09 16:23:00
-(epstopdf)                    size: 17004 bytes
+(epstopdf)                    date: 2020-07-15 10:26:01
+(epstopdf)                    size: 16620 bytes
 (epstopdf)             Command: <epstopdf --outfile=plots/paths/2-eps-converted
 -to.pdf plots/paths/2.eps>
 (epstopdf)             \includegraphics on input line 824.
@@ -1858,12 +1858,12 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./plots/paths/2-eps-converted-to.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<plots/paths/2-eps-converted-to.pdf, id=645, 372.39125pt x 304.13625pt>
+<plots/paths/2-eps-converted-to.pdf, id=645, 361.35pt x 309.155pt>
 File: plots/paths/2-eps-converted-to.pdf Graphic file (type pdf)
 <use plots/paths/2-eps-converted-to.pdf>
 Package pdftex.def Info: plots/paths/2-eps-converted-to.pdf  used on input line
  824.
-(pdftex.def)             Requested size: 196.91025pt x 160.82481pt.
+(pdftex.def)             Requested size: 196.91025pt x 168.46962pt.
 Package epstopdf Info: Source file: <plots/bands/1.eps>
 (epstopdf)                    date: 2020-05-29 22:50:14
 (epstopdf)                    size: 78089 bytes
@@ -1969,8 +1969,8 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 29578 strings out of 492982
- 577731 string characters out of 6134896
+ 29577 strings out of 492982
+ 577710 string characters out of 6134896
  611612 words of memory out of 5000000
  32539 multiletter control sequences out of 15000+600000
  606775 words of font info for 147 fonts, out of 8000000 for 9000
@@ -2003,7 +2003,7 @@ r/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on aoas-template.pdf (24 pages, 1486708 bytes).
+Output written on aoas-template.pdf (24 pages, 1486106 bytes).
 PDF statistics:
  868 PDF objects out of 1000 (max. 8388607)
  687 compressed objects within 7 object streams
