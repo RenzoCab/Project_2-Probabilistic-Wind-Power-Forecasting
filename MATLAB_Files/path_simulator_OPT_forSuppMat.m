@@ -3,11 +3,14 @@
 % KAUST: King Abdullah University of Science and Technology
 % email: Renzo.CaballeroRosas@kaust.edu.sa CaballeroRenzo@hotmail.com
 % Website: https://orcid.org/0000-0003-3220-0923.
-% July 2020; Last revision: 13/07/2020.
+% July 2020; Last revision: 19/07/2020.
 
 close all;
 clear all;
 clc;
+
+% We fix the seed:
+rng(1);
 
 % dataSet can be AWSTP (B), MTLOG (A) or UTEP5 (C).
 dataSet  = 'MTLOG';
@@ -19,6 +22,7 @@ set_type = 'testing'; % 'testing' or 'training'.
 
 types    = {'testing','training'};
 options  = {0,1};
+angle    = 45;
 
 for y = 1:2
     
@@ -72,7 +76,7 @@ for y = 1:2
         elseif norm_lim == 0
             exten_t = new_time;
             t       = [13:1/6:37]/24;
-            t_ticks = [13:37]/24;
+            t_ticks = [13:2:37]/24;
         end
 
         for i = 1 : height(Table_Testing_Complete)
@@ -137,7 +141,7 @@ for y = 1:2
 
                 xticks(t_ticks);
                 datetick('x','HHPM','keepticks');
-                xtickangle(90);
+                xtickangle(angle);
 
                 if xlimit
                     xlim([min(t_ticks) max(t_ticks)]);
@@ -163,7 +167,7 @@ for y = 1:2
 
                 xticks(t_ticks);
                 datetick('x','HHPM','keepticks');
-                xtickangle(90);
+                xtickangle(angle);
 
                 pause(0.1); box;
                 if xlimit

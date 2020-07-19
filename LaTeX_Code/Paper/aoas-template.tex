@@ -196,7 +196,7 @@ The next Figure \ref{fig:sample_data} shows the wind power real production durin
 %\quad\\
 %\includegraphics[width=0.45\textwidth]{plots/four_days/437.eps}
 %\includegraphics[width=0.45\textwidth]{plots/four_days/477.eps}
-\caption{Four 24-hour segments with the wind power real production in Uruguay (orange line) recorded every ten minutes, and the hourly wind power production forecasted by provider A (blue line).}
+\caption{Two 24-hour segments with the normalized wind power real production in Uruguay (blue line) recorded every ten minutes, and the hourly wind power production forecasted by provider A (black line).}
   \label{fig:sample_data}
 \end{figure}
 
@@ -315,7 +315,7 @@ Remark: Observe that a mean-reverting model without derivative tracking shows a 
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=0.485\textwidth]{plots/31.eps}\quad\includegraphics[width=0.485\textwidth]{plots/31_2.eps}
+  \includegraphics[width=0.485\textwidth]{plots/31_2.eps}\quad\includegraphics[width=0.485\textwidth]{plots/31.eps}
   \caption{Pointwise confidence bands fitted, for the same daily segment, through diffusion models without derivative tracking (plot on the left) and with derivative tracking (plot on the right).}
   \label{fig:derivative_tracking}
 \end{figure}
@@ -876,11 +876,12 @@ We conclude that our SDE model, featuring a time-derivative tracking of the fore
  
 %---END SECTION 7---
 
-%---BEGIN APPENDIX---
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Single Appendix:                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendix}
+\section*{}%% if no title is needed, leave empty \section*{}.
 
-\section{Appendix} \label{Appendix}
-
-\subsection{The model}
 For a time horizon $T>0$, a parameter $\alpha > 0$, and $(\theta_t)_{t\in[0,T]}$ a positive deterministic  function,  let us consider the model  given by
 \begin{equation}
 \begin{cases}
@@ -974,14 +975,7 @@ $\tau_1=\infty$ a.s. provided that $\theta_t(1-p_t) -\dot p_t -\alpha \theta_0 \
 
 Remark: As the diffusion coefficient of $X_t$  given by  $x \mapsto \sqrt{2 \alpha \theta_0 x(1-x)}$  is strictly positive for all $x \in  ]0,1[$, the condition \eqref{Assumption:3}  ensures that the transformation between $Z_t$ and $X_t$ is bijective, so that we deduce the properties of existence and uniqueness of $Z_t$ from those of $X_t$. The application of  It\^{o}'s formula in Section \ref{Section_4} is subjected to the condition \eqref{Assumption:3} that avoids the process $X_t$ hits the boundaries of the interval $ ]0,1[$, otherwise the Lamperti transform is not applicable.
 
-%---END APPENDIX---
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Single Appendix:                         %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{appendix}
-%\section*{???}%% if no title is needed, leave empty \section*{}.
-%\end{appendix}
+\end{appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Multiple Appendixes:                     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -997,7 +991,10 @@ Remark: As the diffusion coefficient of $X_t$  given by  $x \mapsto \sqrt{2 \alp
 %% should be provided in the                %%
 %% Acknowledgements section.                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section*{Acknowledgements}
+\section*{Acknowledgements}
+This work was partially supported by the KAUST Office of Sponsored Research (OSR) under Award number URF/1/2584 -- 01 -- 01 in the KAUST Competitive Research Grants Program Round 8 and the Alexander von Humboldt Foundation.
+
+
 % The authors would like to thank ...
 % 
 % The first author was supported by ...
@@ -1010,10 +1007,14 @@ Remark: As the diffusion coefficient of $X_t$  given by  $x \mapsto \sqrt{2 \alp
 %% with title inside \textbf{} and short    %%
 %% description below.                       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{supplement}
-%\textbf{???}.
-%???.
-%\end{supplement}
+\begin{supplement}
+
+\sname{Supplement}
+\stitle{DATA AND SIMULATIONS}
+\slink[doi]{COMPLETED BY THE TYPESETTER}
+\sdatatype{.pdf}
+\sdescription{Supplementary Material contains the entire dataset with normalized wind-power production, the simulation-based results, and the complete set of empirical pointwise confidence bands for wind power production -- all corresponding to the forecast provider A.}
+\end{supplement}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%

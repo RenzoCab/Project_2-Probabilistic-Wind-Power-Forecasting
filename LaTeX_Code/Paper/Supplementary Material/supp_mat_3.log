@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  15 JUL 2020 20:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  19 JUL 2020 10:20
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -8839,10 +8839,10 @@ LaTeX Font Warning: Size substitutions with differences
  )
 (\end occurred when \ifnum on line 138 was incomplete) 
 Here is how much of TeX's memory you used:
- 30347 strings out of 492982
- 651287 string characters out of 6134896
+ 30348 strings out of 492982
+ 651309 string characters out of 6134896
  589865 words of memory out of 5000000
- 33358 multiletter control sequences out of 15000+600000
+ 33359 multiletter control sequences out of 15000+600000
  584648 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,8n,54p,10382b,715s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -8850,7 +8850,7 @@ Here is how much of TeX's memory you used:
 -dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on supp_mat_3.pdf (41 pages, 4382922 bytes).
+Output written on supp_mat_3.pdf (41 pages, 4382986 bytes).
 PDF statistics:
  2924 PDF objects out of 2984 (max. 8388607)
  1976 compressed objects within 20 object streams
