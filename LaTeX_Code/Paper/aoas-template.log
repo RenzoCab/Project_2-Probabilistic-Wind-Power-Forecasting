@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  19 JUL 2020 12:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.1.29)  19 JUL 2020 13:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1529,10 +1529,6 @@ Package pdftex.def Info: plots/31-eps-converted-to.pdf  used on input line 318.
 
 (pdftex.def)             Requested size: 196.91025pt x 166.11282pt.
 [8 <./plots/31_2-eps-converted-to.pdf> <./plots/31-eps-converted-to.pdf>]
-
-LaTeX Warning: Reference `Appendix' on page 9 undefined on input line 353.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 352--354
 
  []
@@ -1971,15 +1967,12 @@ Package rerunfilecheck Info: File `aoas-template.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.07501pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 29584 strings out of 492982
- 577788 string characters out of 6134896
+ 29583 strings out of 492982
+ 577778 string characters out of 6134896
  611565 words of memory out of 5000000
- 32543 multiletter control sequences out of 15000+600000
+ 32542 multiletter control sequences out of 15000+600000
  606775 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,21n,54p,10385b,915s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2010,7 +2003,7 @@ r/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on aoas-template.pdf (25 pages, 1483745 bytes).
+Output written on aoas-template.pdf (25 pages, 1483185 bytes).
 PDF statistics:
  878 PDF objects out of 1000 (max. 8388607)
  696 compressed objects within 7 object streams
