@@ -2,10 +2,10 @@ function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_t
     
     % 18/03/2020 10:41
 
-    if strcmp(set_type,'classic')
-        if strcmp(dataKind,'testing')
+    if strcmp(dataKind,'classic')
+        if strcmp(set_type,'testing')
             [~, Table_Testing_Complete, ~] = load_data(dataSet);
-        elseif strcmp(dataKind,'training')
+        elseif strcmp(set_type,'training')
             [Table_Testing_Complete, ~, ~] = load_data(dataSet);
         end
     elseif strcmp(dataKind,'comparable')

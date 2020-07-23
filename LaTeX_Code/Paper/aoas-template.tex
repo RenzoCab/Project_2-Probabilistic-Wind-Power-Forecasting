@@ -132,7 +132,7 @@ Reliable wind power generation forecasting is crucial for applications such as t
 
 %---BEGIN SECTION 1---
 
-\section{Introduction}  \label{Section_1}
+\section{Introduction} \label{Section_1}
 
 Despite the Covid-19 pandemic causing ``the biggest shock to the global energy system in more than seven decades'' the recent report released on April 30, 2020, by the International Energy Agency (\url{https://www.iea.org/reports/global-energy-review-2020}) stresses that projections of energy demand will fall 6\% in 2020 -- seven times the decline after the 2008 global financial crisis -- It is emphasized that ``renewables are set to be the only energy source that will grow in 2020, with their share of global electricity generation projected to jump thanks to their priority access to grids and low operating cost'' (\cite{IEA}). 
 
@@ -142,11 +142,12 @@ Wind and solar energy are expanding renewable generation capacity, experiencing 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{plots/wind_and_solar/plot_over_years.eps}
-\caption{Installed wind and solar power over the years \cite{sultana2017review}. We recall the importance of accurate forecasts to use green energies optimally.}
+\includegraphics[width=0.9\textwidth]{plots/wind_and_solar/plot_over_years_IRENA.eps}
+\caption{Worldwide installed wind and solar power 2010--2019 \citep{irena20}. We recall the importance of accurate forecasts to use green energies optimally.}
 \end{figure}
 
-Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
+%Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite[5]{gieb}, \cite[162]{chang}, \cite{zhbo}):
+Reliable wind power generation forecasting is crucial for the following applications (see, for example, \cite{gieb}, \cite{chang}, \cite{zhbo}):
 \begin{itemize}
 \item Allocation of energy reserves such as water levels in dams or oil, and gas reserves.
 \item Operation scheduling of controllable power plants.
@@ -315,7 +316,7 @@ Remark: Observe that a mean-reverting model without derivative tracking shows a 
 
 \begin{figure}[H]
 \centering
-  \includegraphics[width=0.485\textwidth]{plots/31_2.eps}\quad\includegraphics[width=0.485\textwidth]{plots/31.eps}
+  \includegraphics[width=0.485\textwidth]{plots/1.eps}\quad\includegraphics[width=0.485\textwidth]{plots/bands/1.eps}
   \caption{Pointwise confidence bands fitted, for the same daily segment, through diffusion models without derivative tracking (plot on the left) and with derivative tracking (plot on the right).}
   \label{fig:derivative_tracking}
 \end{figure}
@@ -334,7 +335,7 @@ where $\theta>0$, and $a$, $b$, and $c$ are parameters such that the square root
 
 An exhaustive classification of the (stationary) Pearson diffusions is presented in \cite[440-443]{foso} where, in particular, it is discussed the case $a < 0$ and $b(x; \bm{\theta}) = \sqrt{2 a \theta x (x-1)}$, where the invariant distribution is a Beta distribution with parameters $\left( \frac{\mu}{-a}, \frac{1 - \mu}{-a} \right),$ that leads to the well-known Jacobi diffusions, so-called because the eigenfunctions of the infinitesimal generator of these processes are the Jacobi polynomials (see, for example, \cite[2860-2861]{leph}). 
 
-It is worth mentioning that Jacobi diffusions have been successfully applied in several disciplines, among them finance (see \cite{vago} and references therein) and neuroscience (\cite{dotala}).
+It is worth mentioning that Jacobi diffusions have been successfully applied in several disciplines, among them finance (see (\cite{vago}) and references therein) and neuroscience (\cite{dotala}).
 
 However, a distinctive feature in our proposed model 
 \begin{equation}
@@ -354,12 +355,12 @@ The proof of this theoretical statement is presented in the Appendix. \\
 
 Remark: Condition (B) shows that the time-varying parameter $\theta_t$ becomes unbounded when $p_t = 0$ or $p_t = 1$. Therefore, we consider the following truncated prediction function
 \begin{equation}
-  p_t^{\epsilon} = \left\{
-  \begin{array}{@{}cl@{}}
-    \epsilon \!\!\!&\text{if \quad} p_t  < \epsilon  \\
-    p_t  \!\!\!&\text{if \quad}  \epsilon \leq p_t < 1 - \epsilon \\
-    1 - \epsilon  \!\!\!&\text{if \quad}  p_t \geq 1 - \epsilon
- \end{array}\right.  \label{corrforecast}
+p_t^{\epsilon}=\begin{cases}
+\epsilon&\quad\text{if}\quad p_t<\epsilon\\
+p_t&\quad\text{if}\quad\epsilon\leq p_t<1-\epsilon\\
+1-\epsilon&\quad\text{if}\quad p_t\geq1-\epsilon
+\end{cases}
+\label{corrforecast}
 \end{equation}
 that satisfies $p_t^{\epsilon} \in [\epsilon, 1 - \epsilon]$ for any $0 < \epsilon < \frac{1}{2}$ and $t \in [0,T]$, providing that $\theta_t$ is bounded for every $t \in [0,T]$. \\
 
@@ -590,7 +591,7 @@ It follows that
 \langle V\rangle _t=\int_0^t b(V_s; \bm{\theta}, p_s)^2 \dif s, \text{ where }  \:\: b(V_s; \bm{\theta}, p_s) = 
 \sqrt{2 \alpha \theta_0 (V_s +p_s ) (1-V_s - p_s)},
 \end{equation*}
-with the discrete sum $\sum_{0< t_{j, i-1} \leq t}\left(V_{t_{j, i}} - V_{t_{j, i-1}}\right)^2$.
+with the discrete sum $\sum_{0< t_{j, i-1} \leq t}\left(V_{t_{j, i}} - V_{t_{j, i-1}}\right)^2$.\smallskip
 
 As initial guess for the diffusion variability coefficient $\theta_0 \alpha$, we choose
 \begin{equation}
@@ -701,7 +702,7 @@ As an auxiliary verification, we plot the negative log-likelihood (negative vers
  Evaluations & 1.93 & 0.050 & 0.097 & 1.59 & 0.056 & 0.089 \\
  \bottomrule
 \end{tabular}
-\caption{Value points from Figure \ref{fig:neg-LL}.}
+\caption{Coordinates of the initial guess point and of the optimal points represented in Figure \ref{fig:neg-LL}.}
 \label{tab:optimal_values}
 \end{table}
 {We observe that all the local (possibly global) minimizers are located over the curves $\theta_0\alpha=0.097$ and $\theta_0\alpha=0.089$ for the training and test sets, respectively. This effect shows that the optimization is more sensitive to the diffusion than to the drift.}\\
@@ -992,8 +993,7 @@ Remark: As the diffusion coefficient of $X_t$  given by  $x \mapsto \sqrt{2 \alp
 %% Acknowledgements section.                %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgements}
-This work was partially supported by the KAUST Office of Sponsored Research (OSR) under Award number URF/1/2584 -- 01 -- 01 in the KAUST Competitive Research Grants Program Round 8 and the Alexander von Humboldt Foundation.
-
+This research was partially supported by the KAUST Office of Sponsored Research (OSR) under Award number URF/1/2584 -- 01 -- 01 in the KAUST Competitive Research Grants Program Round 8, the Alexander von Humboldt Foundation, the chair Risques Financiers, Fondation du Risque, and the Laboratory of Excellence MME-DII Grant no. ANR11-LBX--0023--01 (\url{http://labex-mme-dii.u-cergy.fr/}). We thank UTE (\url{https://portal.ute.com.uy/}) for providing the data used in this research.
 
 % The authors would like to thank ...
 % 

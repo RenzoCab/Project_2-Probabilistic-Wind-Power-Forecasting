@@ -163,6 +163,14 @@ In \bbooktitle{2nd {ECCOMAS} {T}hematic {C}onference on {U}ncertainty
 \end{bbook}
 \endbibitem
 
+\bibitem[\protect\citeauthoryear{IRENA}{2020}]{irena20}
+\begin{bbook}[author]
+\bauthor{\bsnm{IRENA}}
+(\byear{2020}).
+\btitle{Renewable Energy Statistics 2020 The International Renewable Energy Agency, Abu Dhabi}
+\end{bbook}
+\endbibitem
+
 \bibitem[\protect\citeauthoryear{Iversen et~al.}{2014}]{immm}
 \begin{barticle}[author]
 \bauthor{\bsnm{Iversen},~\bfnm{Emil~B.}\binits{E.~B.}},
@@ -370,10 +378,10 @@ In \bbooktitle{Statistical {M}ethods for {S}tochastic {D}ifferential
 \end{bmisc}
 \endbibitem
 
-\bibitem[\protect\citeauthoryear{}{}]{IEA}
-\begin{bmisc}[author]
-\btitle{{IEA} Press release}.
-\bhowpublished{{https://www.iea.org/news/global-energy-demand-to-plunge-this-year-as-a-result-of-the-biggest-shock-since-the-second-world-war}}.
+\bibitem[\protect\citeauthoryear{IEA}{2020}]{IEA}
+\begin{bmisc}
+\btitle{IEA Press release}.
+\bhowpublished{https://www.iea.org/news/global-energy-demand-to-plunge-this-year-as-a-result-of-the-biggest-shock-since-the-second-world-war}.
 \bnote{Accessed: 2020-05-30}.
 \end{bmisc}
 \endbibitem

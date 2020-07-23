@@ -47,10 +47,10 @@ This function is called by:
 0002     
 0003     <span class="comment">% 18/03/2020 10:41</span>
 0004 
-0005     <span class="keyword">if</span> strcmp(set_type,<span class="string">'classic'</span>)
-0006         <span class="keyword">if</span> strcmp(dataKind,<span class="string">'testing'</span>)
+0005     <span class="keyword">if</span> strcmp(dataKind,<span class="string">'classic'</span>)
+0006         <span class="keyword">if</span> strcmp(set_type,<span class="string">'testing'</span>)
 0007             [~, Table_Testing_Complete, ~] = <a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>(dataSet);
-0008         <span class="keyword">elseif</span> strcmp(dataKind,<span class="string">'training'</span>)
+0008         <span class="keyword">elseif</span> strcmp(set_type,<span class="string">'training'</span>)
 0009             [Table_Testing_Complete, ~, ~] = <a href="load_data.html" class="code" title="function [Table_Training_Complete, Table_Testing_Complete, Table_Complete] = load_data(dataSet)">load_data</a>(dataSet);
 0010         <span class="keyword">end</span>
 0011     <span class="keyword">elseif</span> strcmp(dataKind,<span class="string">'comparable'</span>)
@@ -77,6 +77,6 @@ This function is called by:
 0032     Table_Testing_Complete.Error_Transitions = Error_Transitions;
 0033     
 0034 <span class="keyword">end</span></pre></div>
-<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+<hr><address>Generated on Sun 19-Jul-2020 13:36:44 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
 </body>
 </html>

@@ -12,12 +12,13 @@ Table_Testing_Complete = load_data_eps_test(epsilon,dataSet,dataKind);
 % PARAMETERS:
 % set(0,'defaultAxesFontSize',18);
 quantil  = 1;
-save     = 0;
+save     = 1;
 delta    = 22; % The time is delta*10 minutes.
 xlimit   = 1; % If this in 1, the plots start at time 0. Otherwise, at -delta.
 norm_lim = 0; % If 1, x=[0,1], if 0, x=[1PM 1PM].
 new_time = [13-(1/6)*delta:1/6:37]/24;
 new_ti   = [1:1/6:25];
+angle    = 45;
 
 if quantil
     numPaths = 5000;
@@ -49,7 +50,7 @@ if norm_lim == 1
 elseif norm_lim == 0
     exten_t = new_time;
     t       = [13:1/6:37]/24;
-    t_ticks = [13:37]/24;
+    t_ticks = [13:2:37]/24;
 end
 
 for i = 1 : height(Table_Testing_Complete)
@@ -151,7 +152,7 @@ for i = 1 : height(Table_Testing_Complete)
             
             xticks(t_ticks);
             datetick('x','HHPM','keepticks');
-            xtickangle(90);
+            xtickangle(angle);
             
             if xlimit
                 xlim([min(t_ticks) max(t_ticks)]);
@@ -160,7 +161,8 @@ for i = 1 : height(Table_Testing_Complete)
             end
             
             ylim([0 1]); grid minor;
-            xlabel('Time'), ylabel('Power'); box;
+%             xlabel('Time'), ylabel('Power');
+            box;
             date = d(i);
             date_format = datetime(date{1},'InputFormat','yyyyMMdd');
             date_format_next = date_format + days(1);
@@ -196,7 +198,7 @@ for i = 1 : height(Table_Testing_Complete)
             
             xticks(t_ticks);
             datetick('x','HHPM','keepticks');
-            xtickangle(90);
+            xtickangle(angle);
             
             pause(0.1); box;
             if xlimit

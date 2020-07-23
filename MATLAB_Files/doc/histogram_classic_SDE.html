@@ -52,7 +52,7 @@ This function is called by:
 0007 dataSet                = <span class="string">'MTLOG'</span>;
 0008 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
 0009 whatToDo               = <span class="string">'Optimal'</span>; 
-0010 <span class="comment">% whatToDo               = 'Lamperti_Optimal';</span>
+0010 whatToDo               = <span class="string">'Lamperti_Optimal'</span>; 
 0011 <span class="comment">% whatToDo               = 'Initial_Guess';</span>
 0012 
 0013 <span class="comment">% PARAMETERS:</span>
@@ -177,7 +177,7 @@ This function is called by:
 0132 dataSet                = <span class="string">'MTLOG'</span>;
 0133 Table_Testing_Complete = <a href="load_data_eps_test.html" class="code" title="function [Table_Testing_Complete] = load_data_eps_test(ep,dataSet,dataKind,set_type)">load_data_eps_test</a>(epsilon,dataSet,dataKind);
 0134 whatToDo               = <span class="string">'Optimal'</span>; 
-0135 <span class="comment">% whatToDo               = 'Lamperti_Optimal';</span>
+0135 whatToDo               = <span class="string">'Lamperti_Optimal'</span>; 
 0136 <span class="comment">% whatToDo               = 'Initial_Guess';</span>
 0137 
 0138 <span class="comment">% PARAMETERS:</span>
@@ -268,7 +268,7 @@ This function is called by:
 0223 h2.LineWidth = 1;
 0224 h2.EdgeColor = <span class="string">'r'</span>;
 0225 xlabel(<span class="string">'Value of Transition'</span>);
-0226 ylabel(<span class="string">'Probability'</span>);
+0226 <span class="comment">% ylabel('Probability');</span>
 0227 xlim([-0.1 0.1]);
 0228 <span class="keyword">if</span> strcmp(whatToDo,<span class="string">'Optimal'</span>)
 0229     legend(<span class="string">'Error Transitions Histogram'</span>,<span class="keyword">...</span>
@@ -280,7 +280,7 @@ This function is called by:
 0235         <span class="string">'location'</span>,<span class="string">'southoutside'</span>,<span class="string">'interpreter'</span>,<span class="string">'latex'</span>);
 0236 <span class="keyword">end</span>
 0237 <a href="../m2html/@template/set.html" class="code" title="function tpl = set(tpl,action,varargin)">set</a>(gca,<span class="string">'FontSize'</span>,12);
-0238 saveas(gcf,[pwd <span class="string">'/Results/histograms/classic_noDelta/'</span>,whatToDo],<span class="string">'epsc'</span>);</pre></div>
-<hr><address>Generated on Mon 13-Jul-2020 17:43:51 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+0238 saveas(gcf,[pwd <span class="string">'/Results/histograms/classic_noDelta/'</span>,whatToDo],<span class="string">'svg'</span>);</pre></div>
+<hr><address>Generated on Sun 19-Jul-2020 13:36:44 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
 </body>
 </html>
