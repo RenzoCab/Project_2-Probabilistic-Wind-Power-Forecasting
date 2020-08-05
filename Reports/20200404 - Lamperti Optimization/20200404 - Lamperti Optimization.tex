@@ -1,0 +1,57 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[aspectratio=169]{beamer}\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{amsmath,mathtools}
+\usepackage{booktabs}
+\usepackage{mathptmx}
+\usepackage[11pt]{moresize}
+\usepackage{hyperref}
+\usepackage{commath}
+\usepackage{bm}
+\usepackage{subfigure}
+\usepackage{siunitx}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+\setbeamertemplate{caption}[numbered]
+\addtobeamertemplate{navigation symbols}{}{
+\usebeamerfont{footline}
+\usebeamercolor[fg]{footline}
+\hspace{1em}
+\insertframenumber/\inserttotalframenumber}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\I}{\mathbb{I}}
+\DeclareMathOperator{\sign}{sign}
+
+\title{Lamperti Optimization}
+\subtitle{Renzo Miguel Caballero Rosas}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\setbeamercolor{background canvas}{bg=white!10}
+\begin{frame}\frametitle{Description:}
+
+Let $\{\Delta V_i\}_{i=1}^n$ be the set of all error transitions, and $\psi(\theta_0,\alpha,\Delta V)$ the Lamperti transform. Notice that the Lamperti transitions $\{\Delta Z_i\}_{i=1}^n$ depend on $(\theta_0,\alpha)$ because $$\{\Delta Z_i\}_{i=1}^n=\psi(\theta_0,\alpha,\{\Delta V_i\}_{i=1}^n).$$
+Then, if we compute $$\max_{(\theta_0,\alpha)}\mathbf{L}(\theta_0,\alpha,\{\Delta Z_i\}_{i=1}^n),$$
+we are \alert{NOT} computing a MLE in the classical sense. However, we can try to find a fixed point ${\color{blue}(\theta_0^*,\alpha^*)}$ such that $${\color{blue}(\theta_0^*,\alpha^*)}=\arg\max_{(\theta_0,\alpha)}\mathbf{L}\left(\theta_0,\alpha,\psi({\color{blue}\theta_0^*},{\color{blue}\alpha^*},\{\Delta V_i\}_{i=1}^n)\right).$$
+In this point, the likelihood has a maximum for the data set corresponding to that point.
+
+\end{frame}
+
+\end{document}

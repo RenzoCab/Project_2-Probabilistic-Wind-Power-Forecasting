@@ -1,0 +1,289 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[activeacute, english]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multicol}
+
+\newcommand\dist{\stackrel{\mathclap{\footnotesize\mbox{d.}}}{=}}
+\usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\usepackage[spanish,onelanguage]{algorithm2e}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposición}
+%\newenvironment{proof}[1][Demostración]{\begin{trivlist}
+%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definición]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Ejemplo]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Nota]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\negr}[1]{\textit{\textbf{#1}}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\title{Power Forecasting Update \\ based on discussion notes}
+
+\author{Waleed Alhaddad}
+
+\date{14/08/2019}
+\begin{document}
+\maketitle
+
+
+% Participants:
+% \begin{multicols}{3}
+% \begin{itemize}
+% 	\item Waleed
+% 	\item Ahmed
+% 	\item Raul
+% \end{itemize}
+% \end{multicols}
+
+\section{Notes and calculations}
+\begin{itemize}
+\item We prove that the stochastic process of the SDE stays within the range $[0,1]$. Our model is given as follows,
+\begin{equation}
+\begin{split}
+dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t  \\ %\quad t > 0
+V_0 & = v_0
+\end{split}\label{VtSDE}
+\end{equation}
+where $V_t = X_t - p_t$ and $\theta_t = \max \left( \theta_0 , \frac{|\dot{p}_t|}{\min \left( p_t, 1-p_t\right)} \right)$. For ease of notation, we denote the drift coefficient by $a(v,t) = -\theta_t v$  and $b(v,t)=\sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} $. It is known that the above SDE has transition densities obeying the following Fokker-Plank PDE,
+\begin{equation}
+	\frac{\partial f(v, t)}{\partial t} = - \frac{\partial}{\partial v} \left( a(v,t) f(v,t) \right) + \frac{\partial^2}{\partial v^2} \left( b^2(v,t) f(v,t)\right)
+\end{equation}
+which can be rewritten as follows,
+\begin{equation}
+	\frac{\partial f(v, t)}{\partial t} =- \frac{\partial}{\partial v} S(v,t)
+\end{equation}
+where $S$ is known as the probability current and is given by,
+\begin{equation}
+	S(v,t) = - a(v,t) f(v,t) - \frac{\partial}{\partial v} \left( b^2(v,t) f(v,t) \right)
+\end{equation}
+We can further define an associated probability potential given by,
+\begin{equation}
+	\Phi (v,t) = \ln \left( b^2(v,t) \right) - \int^v \frac{a(v^{'},t)}{ b^2(v^{'},t)} \ d v^{'}
+\end{equation}
+And the probability current $S$ can be written in terms of this potential as follows,
+\begin{equation}
+	S(v,t) = - b^2 (v,t) e^{-\Phi(v,t)} \frac{\partial }{\partial x} \left(  e^{\Phi (v,t) } f(v,t) \right)
+\end{equation}
+We will show that the probability potential  $\Phi$ tends to infinity at the boarders of the range $[0,1]$. Thus the probability current tends to zero at the boarders. In our case, the probability potential is given by,
+\begin{equation}
+\begin{split}
+	\Phi (v,t) &=  \ln \left( 2 \theta_t \alpha \left( 1-2v-2p_t \right) \right) - \int^v \frac{- \theta_t }{2 \theta_t \alpha (1-2v^{'} - 2p_t) } \ d v^{'}\\
+	&= \ln \left( 2 \theta_t \alpha \left( 1- 2v -2p_t  \right)^{1-\frac{1}{4 \alpha}} \right)
+\end{split}
+\end{equation}
+Note that $|\left( 1- 2v -2p_t  \right)^{1-\frac{1}{4 \alpha}} | \leq 1 $ and $\alpha$ is a constant. Also, note that taking the limit as $v\to 1$ implies that $p_t\to 0 $ since $v= x- p_t$ and likewise we have that $v\to -1 $ implies that $p_t \to 1$. Taking the previous notes in consideration and that $\theta_t = \max \left( \theta_0 , \frac{|\dot{p}_t|}{\min \left( p_t, 1-p_t\right)} \right) \to \infty $ as $p_t \to 0$ (equivalently as $v \to 1$) or $p_t \to 1 $ (equivalently as $v \to -1$). Therefore, we have that
+\begin{equation}
+	\lim_{v \to 1} \Phi (v,t) = \infty , \quad \lim_{v \to -1} \Phi (v,t) = \infty
+\end{equation}
+Thus equivalently,
+\begin{equation}
+	\lim_{v \to 1} S(v,t)=0 , \quad \lim_{v \to -1} S(v,t) = 0
+\end{equation}
+
+Finally, we conclude that the boarders of the range $[-1,1]$ are reflectors and are impenetrable. Hence, the process $V_t$ cannot exit the range $[-1,1]$.
+
+\item Optimizer initialization
+	\begin{itemize}
+		\item Use least-squares as follows:
+		\begin{itemize}
+			\item When the first moment is explicit, we use the estimator
+			$$\underset{\theta_0}{\arg\min} \sum\limits_{i}^M \sum\limits_j^N (m_1(x,t_{i,j}|\theta_t) - x_{i,j})^2$$ where $m_1(x,t_{i,j}|\theta_0)$ is the first moment of the SDE.
+
+			\item When the first moment is not explicit, we apply least squares on the discretized SDE using Euler to get a first estimate on $\theta_0$ as follows,
+			$$ \arg\min \sum\limits_{i}^M \sum\limits_j^N \left( v_{i+1,j}  - v_{i,j}- \left( - \theta_t v_{i,j}\right) \left(t_{i+1,j} - t_{i,j} \right)  \right)^2 $$ where $v_{i,j}=x_{i,j}-p_{i,j}$
+		\end{itemize} %2*np.sum( forecast_data_inter[1,sel,:]* (1-forecast_data_inter[1,sel,:]) )
+		\item Use brackets to get a first estimate on the product
+		$$\theta_0 \alpha = \frac{1}{M} \sum\limits_i^M \frac{ \sum\limits_j^N (x_{i+1,j}  - x_{i,j})^2}{2 \sum\limits_j^N x_{i,j}(1-x_{i,j}) }$$
+		\item combine both estimates to obtain an estimate for the parameters $\theta_0$ and $\alpha$ individually.
+	\end{itemize}
+
+
+\item Compare the following models:
+	\begin{itemize}
+		\item Moments approach with a Beta proxy. The SDE is given by
+		\begin{equation}
+		\begin{split}
+		dV_t &=  - \theta_t V_t \  dt + \sqrt{2 \theta_t \alpha (V_t +p_t ) (1-V_t-p_t)} \  dW_t  \\ %\quad t > 0
+		V_0 & = v_0
+	\end{split}\label{VtSDE}
+	\end{equation}
+		and the moments by,
+		\begin{equation}
+		\begin{split}
+		\frac{d m_1 (t)}{dt} &= - m_1(t)\theta_t \\
+		\frac{d m_2 (t)}{dt} &=  -2 m_2(t)\theta(1+\alpha) + 2\alpha\theta m_1(t)(1-2p_t) + 2 \alpha\theta p_t (1-p_t)\\
+		\end{split}
+		\end{equation}
+		with initial conditions $m_1(t_1)=x,\ m_2(t_1)=x^2$ where $x$ is an observation of the process $V_t$ at the previous time step.\\
+		The solution of the ODEs above is given by,
+		\begin{equation}
+		\begin{split}
+			m_1(t_2) & = m_1(t_1) e^{-\int_{t_1}^{t_2} \theta_t \ dt }\\
+		m_2(t_2) & = m_2 (t_1) e^{-2(1+\alpha)\int_{t_1}^{t_2} \theta_t \ dt} \\
+		& + \alpha \int_{t_1}^{t_2} \left(2\theta_s m_1(s)( 1-2p_s)+ 2\theta_s p_s(1-p_s)\right)   e^{-2(1+\alpha)\int_{t_1}^{t_2-s} \theta_u \ du}  \ ds
+		\end{split}
+		\end{equation}
+
+		We linearly interpolate the forecast, observations and parameters between the observation. Then we integrate numerically using the tripizoidal rule. We define a uniform grid $i=\{0,1,2,3 \ \cdots K \}$ such that $\Delta t = \frac{t_2 - t_1}{K} =  \frac{\Delta N }{K} $. Where $\Delta N $ is the time between the observations of the process $V_t$.
+		\begin{align*}
+			\int_{t_1}^{t_2} \theta_t \ dt & \approx I_{1,K} = \sum_{i=0}^K \frac{ \theta_i + \theta_{i+1} } {2} \Delta t  \\
+	\end{align*}
+Similarly,
+	\begin{equation*}
+	\begin{split}
+		\int_{t_1}^{t_2} & \left(2\theta_s m_1(s)( 1-2p_s)+ 2\theta_s p_s(1-p_s)\right)   e^{-2(1+\alpha)\int_{t_1}^{t_2-s} \theta_u \ du}  \ ds \\
+		 & \approx I_{2,K} = \sum_{i=0}^K \Delta t  \frac{ \left( 2 \theta_{i+1}m_{1,i+1}(1-2p_{i+1}) +2 \theta_{i+1} p_{i+1} (1-p_{i+1})  \right) e^{-2(1+\alpha) I_{1,i+1} } }{2} \ +\\
+		&  \Delta t \frac{\left( 2 \theta_{i}m_{1,i}(1-2p_{i}) +2 \theta_{i} p_{i} (1-p_{i})  \right) e^{-2(1+\alpha) I_{i} } }{2}  \\
+\end{split}
+\end{equation*}
+Finally, we have
+\begin{equation}
+\begin{split}
+	m_1(t_2) & \approx m_1(t_1) e^{-I_1 }\\
+m_2(t_2) & = m_2 (t_1) e^{-2(1+\alpha)I_1}  + \alpha I_2 \\
+\end{split}
+\end{equation}
+with initial conditions $m_1(t_1)= m_{1,0}=x,\ m_2(t_1)=m_{2,0}=x^2$ where $x$ is an observation of the process $V_t$ at the previous time step.\\
+		\item Moments approach with a Gaussian proxy after a Lamperti transformation and an approximation in the first moment. The SDE is given by,
+		\begin{equation}
+			dZ_t= \frac{- \theta_t (1+ \sin(Z_t) - 2p_t) + \alpha \theta_t \sin (Z_t)   }{\cos (Z_t)} + \sqrt{2 \alpha \theta_t} dW_t
+	\end{equation}
+		where $Z_t = \arcsin \left( \frac{1}{2} \left( V_t+p_t \right) - 1 \right) $. After the assumption that $\E[\sin(Z_t)]
+	 \approx \E Z_t$. Note that $Z_t \in \R $ is not bounded and so this approximation cannot be justified by a small angle approximation. We can write approximate moments as follows,
+		\begin{equation*}
+					m_1(t_2)= \arcsin \left( e^{- (1-\alpha) \int_{t_1}^{t_2} \theta_t \ dt }  \left(  \int_{t_1}^{t_2} \theta_s \left( 2p_s-1\right)e^{(1-\alpha) \int_{t_1}^{s} \theta_u \ du } \ ds \right) + \sin (Z_{t_1}) \right)
+		\end{equation*}
+		By linearizing the variance around the mean, we can obtain the following approximate variance
+		\begin{equation}
+					v(t_2)= e^{2\int_{t_1}^{t_2} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(s)} \ ds} \left(\alpha \int_{t_1}^{t_2} \theta_s e^{-2\int_{t_1}^{s} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(u)} du } \ ds  \right)
+		\end{equation}
+		where $a(x;\theta_s)=\frac{- \theta_t (1+ \sin(x) - 2p_t) + \alpha \theta_t \sin (x)   }{\cos (x)}$ is the drift term after the Lamperti transformation. Thus,
+		\begin{align*}
+			\frac{\partial a(x;\theta_s)}{\partial x} = \theta_t (2p_t - 1) \tan (x) \sec (x) + \theta_t (\alpha - 1)\sec^2 (x) \
+		\end{align*}
+		We linearly interpolate the forecast, observations and parameters between the observation. Then, we integrate numerically using the tripizoidal rule,
+		\begin{equation*}
+			\begin{split}
+			& \int_{t_1}^{t_2}  \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(s)} \ ds \\
+			& \approx I_{3,K}= \sum_{i=0}^K \frac{ \theta_{i+1} (2p_{i+1} - 1) \tan (m_{1,i+1}) \sec (m_{1,i+1}) + \theta_{i+1}(\alpha - 1)\sec^2 (m_{1,i+1}) }{2} \Delta t \ + \\
+			& \frac{ \theta_i (2p_i - 1) \tan (m_{1,i}) \sec (m_{1,i}) + \theta_{i} (\alpha - 1)\sec^2 (m_{1,i}) }{2} \Delta t
+			\end{split}
+		\end{equation*}
+
+		\begin{equation*}
+			\begin{split}
+			& \int_{t_1}^{t_2} \theta_s \left( 2p_s-1\right)e^{(1-\alpha) \int_{t_1}^{s} \theta_u \ du } \ ds \\
+			& \approx I_{4,K}= \sum_{i=0}^K \frac{ \theta_{i+1} \left( 2p_{i+1}-1\right)e^{(1-\alpha)I_{1,i+1} } +  \theta_i \left( 2p_i-1\right)e^{(1-\alpha) I_{1,i} }}{2} \Delta t \\
+			\end{split}
+		\end{equation*}
+
+		\begin{equation*}
+			\begin{split}
+			& \int_{t_1}^{t_2} \theta_s e^{-2\int_{t_1}^{s} \frac{\partial a(x;\theta_s)}{\partial x}|_{x=m_1(u)} du } \ ds \approx I_{5,K}= \sum_{i=0}^K \frac{ \theta_{i+1}e^{-2 I_{3,i+1} } + \theta_{i}e^{-2 I_{3,i} } }{2} \Delta t \\
+			\end{split}
+		\end{equation*}
+
+Finally, we have
+		\begin{equation}
+			m_{1}(t_2)  \approx \arcsin \left(   e^{-(1-\alpha)I_{1,K}} I_{4,K} +  \sin(m_{1}(t_1) \right)
+	\end{equation}
+	\begin{equation}
+		v(t_2)  \approx e^{2I_{3,K}} \alpha I_{5,K}
+\end{equation}
+
+		\item Moments approach with a Gaussian proxy on a linearized SDE after a Lamperti transformation. The SDE becomes an Ornstein-Uhlenbeck  type,
+		\begin{equation}
+			dZ_t = - \theta_t (1-2p_t) \ dt + \theta_t(\alpha -1)  Z_t \ dt + \sqrt{2 \alpha \theta_t} \ dW_t
+		\end{equation}
+		which has an explicit solution given by,
+		\begin{eqnarray*}
+			Z_t = Z_0 e^{(\alpha-1)\int_0^t \theta_s \ ds } - \int_0^t \theta_s (1-2p_s) e^{(\alpha-1)\int_s^t \theta_u \ du } \ ds \\ + \int_0^t \sqrt{2 \theta_s \alpha} \ e^{(\alpha-1)\int_s^t \theta_u \ du } \ dW_s
+	\end{eqnarray*}
+	and its mean and variance are given by,
+	\begin{align}
+		m_1(t_2) &= m_1(t_1) e^{(\alpha-1)\int_{t_1}^{t_2} \theta_s \ ds } - \int_{t_1}^{t_2} \theta_s (1-2p_s) e^{(\alpha-1)\int_s^t_2 \theta_u \ du } \ ds\\
+		v(t_2) &= \int_{t_1}^{t_2} \sqrt{2 \theta_s \alpha} \ e^{(\alpha-1)\int_s^{t_2} \theta_u \ du }
+\end{align}
+
+\begin{equation*}
+	\begin{split}
+	& \int_s^{t_2} \theta_u \ du \approx I_{6,n}= \sum_{i=n}^K \frac{ \theta_i + \theta_{i+1} }{2}\Delta t \\
+	\end{split}
+\end{equation*}
+for $n$ such that $s=n \Delta t$.
+
+\begin{equation*}
+	\begin{split}
+	& \int_{t_1}^{t_2} \theta_s (1-2p_s) e^{(\alpha-1)\int_s^t_2 \theta_u \ du } \ ds \\
+	& \approx I_{7,K}= \sum_{i=0}^K \frac{    \theta_{i+1} (1-2p_{i+1}) e^{(\alpha-1)I_{6,i+1} }    +    \theta_{i} (1-2p_{i}) e^{(\alpha-1)I_{6,i} }      }{2}\Delta t \\
+	\end{split}
+\end{equation*}
+
+\begin{equation*}
+	\begin{split}
+	& \int_{t_1}^{t_2} \sqrt{2 \theta_s \alpha} \ e^{(\alpha-1)\int_s^{t_2} \theta_u \ du } \\
+	& \approx I_{8,K}= \sum_{i=0}^K \frac{     \sqrt{2 \theta_{i+1} \alpha} \ e^{(\alpha-1)I_{6,i+1} }    +     \sqrt{2 \theta_{i} \alpha} \ e^{(\alpha-1)I_{6,i} }      }{2}\Delta t \\
+	\end{split}
+\end{equation*}
+
+Finally, we have
+		\begin{equation}
+			m_{1}(t_2)  \approx m_1(t_1) e^{(\alpha-1)I_{1,K}} - I_{7,K}
+	\end{equation}
+	\begin{equation}
+		v(t_2)  \approx I_{8,K}
+\end{equation}
+
+
+\end{itemize}
+
+
+\end{itemize}
+
+\section{To-do}
+\begin{itemize}
+	%\item Do a Feller test to show that the stochastic process stays almost surely inside the interval $[0,1]$.
+	\item Adapt the code to run the three different SDEs mentioned above and obtain the parameters.
+	\item Adapt the code to optimize using Nelder-Mead algorithm.
+	\item Simulate the SDE in Lamperti space to avoid numerical errors pushing the process outside the range $[0,1]$
+	\item Simulate from SDE and check and compare its Q-Q plot with that of the data. In this way, we can see if we have captured skewness and/or the heavy "tails". Do that for different power levels.
+	\item Another way to showcase the skewness of the beta at different times and levels is to plot its shape parameters. When one shape parameter is larger than the other parameter, we can deduce that it is skewed either to the left or right.
+	\item cleaning data from human intervention by setting a probabilistic threshold on the transitions, i.e. if the next point is extremely improbable, then it might be human intervention. The threshold is chosen depending on the number of samples in the data set.
+	\item verify our optimization results with that of MCMC to be sure that there aren't any hidden far away valleys in our likelihood.
+\end{itemize}
+\section{Future explorations}
+
+\begin{itemize}
+	\item Introducing non-markovianity or subordinate time versus adding jumps.
+	\item Define 'tails' in bounded intervals.
+	\item Regularization of the mean reversion parameter $\theta_t = \max \left(  \theta_0, \frac{|\dot{p}_t|}{\min(p_t,1-p_t)} \right)$  for further analytical manipulations.
+\end{itemize}
+
+
+\end{document}

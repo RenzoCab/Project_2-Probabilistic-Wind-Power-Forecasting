@@ -1,0 +1,121 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[activeacute, english]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newcommand\dist{\stackrel{\mathclap{\footnotesize\mbox{d.}}}{=}}
+\usepackage[spanish,onelanguage,ruled,lined, linesnumbered]{algorithm2e}
+\usepackage[spanish,onelanguage]{algorithm2e}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposición}
+%\newenvironment{proof}[1][Demostración]{\begin{trivlist}
+%		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definición]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Ejemplo]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Nota]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newcommand{\negr}[1]{\textit{\textbf{#1}}}
+
+\title{Power Forecasting and Control\\ discussion notes}
+
+\author{Waleed Alhaddad }
+
+\date{}
+\begin{document}
+\maketitle
+
+%\section{Notes and To-do}
+\begin{itemize}
+\item Check the how reasonable are the obtained parameters through the quadratic variation
+\begin{equation}
+\sum_{i,j} (X_{i,j} - X_{i,j})^2 \approx 2 \theta_t \alpha \sum_{i,j}  X_{i,j} (1-X_{i,j})
+\end{equation}
+\item Apply the model to the french data
+	\begin{itemize}
+	\item We are waiting for the details of the evolution of the maximum installed capacity to be able to normalize.
+	\item Exploit the pyramid structure of the forecast updates, as the french 	recompute the forecast every hour.
+	\item We are also waiting to know if the forecasting technology changed during those years and when. This will enable us to  pick upon the particularities of the different forecasting technologies. Also, to check if the newest forecasting technology performs better in practice.
+	\end{itemize}
+\item Understand, apply and extend the "R" package DiffusionRgqd to our case of multiple paths and see how it performs in comparison.
+\item Plot the likelihood as two "profile likelihood" plots as common in the statistics literature. This means fix one of the parameters, optimize in the other and plot. For instance, it  can be expressed in terms varying $\sigma$ as
+\begin{equation}
+R(\sigma) = \frac{\max_\mu \mathcal{L}(\mu, \sigma)}{\mathcal{L}(\hat{\mu}, \hat{\sigma})}
+\end{equation}
+And similarly, we plot $R(\mu)$.
+
+\item The issue with the power curtailing or human intervention is still open. The ideas so far:
+\begin{itemize}
+\item set a threshold to $\theta_t$ to prevent the process from following such sudden changes. However, this involves choosing some value of $\theta_t$ and a threshold. Also, the data is not refined enough to identify such changes from natural wind speed changes (as currently its recorded at intervals of one hour)
+\item Introduce a jumping process, adds complexity to the model but might enhance it overall. This will enable us to capture the sudden changes.
+\item Regime switching, similar to the first point, but in this case we can assume that $\theta_t$ follows some Markov Chain instead of hard setting thresholds.
+\end{itemize}
+\item Double check that the Feller condition is satisfied to ensure the positivity  of the process.
+\item Try to see if we can make the system ergodic, especially when we have higher frequency data. This is done when $\Delta n \to \infty$ where $\Delta$ is the interval between each sample of $n$ total samples.
+
+ Then we can leverage existing theoretical results regarding the asymptotic behavior of our model.
+\item Possibility of adding regularizers on $\theta_t$ that way we can manipulate it and differentiate it easily for further theoretical work.
+
+\item Assign an a distribution on the initial point and optimized it separately. By that I mean, optimize it without involving the likelihood and its optimization.
+
+\item Once we have higher frequency data, we can use Ahmad's MLE estimators to find the parameters of the model in a simpler and faster way. Regarding this point, I have his papers from 2012 and 2013 which are in the shared Dropbox folder.
+
+\item Another motivation of the project is that power production companies are not allowed to dump more power into the grid than authorized. Otherwise, they have to pay hefty fines as they endanger the grid by using it above its capacity.
+
+\item It may also be possible to obtain the aggregated power production of France for both controllable and non-controllable energy sources. This will benefit us in two ways, we can identify  human intervention more easily and it can be used as data and a test case for Renzo's optimal control ongoing project. Currently this data set is sparse and has some negative values we couldn't understand. (see Dropbox shared folder under "Realized\_ Production")
+
+\end{itemize}
+
+%\newpage
+%\section{Things to do}
+%\begin{itemize}
+%\item
+%\end{itemize}
+%
+%
+%
+%\section{Things to do}
+%\begin{itemize}
+%\item
+%\end{itemize}
+
+%\section{Motivation}
+
+
+%\section{Introduction}
+
+
+
+%\section{Model}
+
+
+%\section{Conclusion}
+
+
+
+%\subsection{Model}
+%\begin{thebibliography}{99}
+%	\bibitem{apo} Apostol, T. (1974). \emph{Mathematical Analysis} (2nd ed.),  Addison-Wesley. pp.218-230
+%	\bibitem{E} Cabaña, E. (2012). \emph{Introducción a los
+%		procesos estocásticos}, Notas
+%	para el Curso de la Licenciatura en Estadística, Universidad de la República. pp.98-115
+%\end{thebibliography}
+
+
+\end{document}
