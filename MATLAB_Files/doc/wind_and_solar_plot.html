@@ -40,27 +40,47 @@ This function is called by:
 <!-- crossreference -->
 
 
-<h2><a name="_download"></a>DOWNLOAD <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
-<p><a href="wind_and_solar_plot.m">wind_and_solar_plot.m</a></p>
+
 <h2><a name="_source"></a>SOURCE CODE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
 <div class="fragment"><pre>0001 close all
 0002 clear all
 0003 clc
 0004 
-0005 time   = [2000:1:2019];
-0006 wind   = [17 24 31 39 48 59 74 94 121 159 196 239 283 319 370 423 489 537 600 666];
-0007 solar  = [1.3 1.6 2.1 2.6 3.7 5.1 6.7 9.2 16 23 40 70 101 138 178 290 285 340 400 467];
-0008 toPlot = [wind;solar];
-0009 
-0010 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 400]);
-0011 bar(time,toPlot);
-0012 grid minor;
-0013 legend(<span class="string">'Wind'</span>,<span class="string">'Solar'</span>,<span class="string">'location'</span>,<span class="string">'northwest'</span>);
-0014 ylabel(<span class="string">'GW'</span>);
-0015 xlabel(<span class="string">'Year'</span>);
-0016 title(<span class="string">'Installed Wind and Solar Power over the years'</span>);
-0017 
-0018 saveas(gcf,[pwd <span class="string">'/Results/wind_and_solar/plot_over_years'</span>],<span class="string">'epsc'</span>);</pre></div>
-<hr><address>Generated on Sun 19-Jul-2020 13:36:44 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
+0005 <span class="comment">%% From sultana2017review:</span>
+0006 
+0007 time   = [2000:1:2019];
+0008 wind   = [17 24 31 39 48 59 74 94 121 159 196 239 283 319 370 423 489 537 600 666];
+0009 solar  = [1.3 1.6 2.1 2.6 3.7 5.1 6.7 9.2 16 23 40 70 101 138 178 290 285 340 400 467];
+0010 toPlot = [wind;solar];
+0011 
+0012 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 400]);
+0013 bar(time,toPlot);
+0014 grid minor;
+0015 legend(<span class="string">'Wind'</span>,<span class="string">'Solar'</span>,<span class="string">'location'</span>,<span class="string">'northwest'</span>);
+0016 ylabel(<span class="string">'GW'</span>);
+0017 xlabel(<span class="string">'Year'</span>);
+0018 title(<span class="string">'Installed Wind and Solar Power over the years'</span>);
+0019 
+0020 saveas(gcf,[pwd <span class="string">'/Results/wind_and_solar/plot_over_years'</span>],<span class="string">'epsc'</span>);
+0021 
+0022 <span class="comment">%% From IRENA (2020):</span>
+0023 
+0024 <span class="comment">% The power is in GW, and it is capacity.</span>
+0025 
+0026 time   = [2010 2011 2012 2013 2014 2015 2016 2017 2018 2019];
+0027 wind   = [180846 220015 266905 299916 349297 416241 466844 514376 563186 622408] / 1000;
+0028 solar  = [41545 73738 104085 139596 176088 222091 295948 388569 486721 584842] / 1000;
+0029 toPlot = [wind;solar];
+0030 
+0031 figure(<span class="string">'Renderer'</span>, <span class="string">'painters'</span>, <span class="string">'Position'</span>, [10 10 900 400]);
+0032 bar(time,toPlot);
+0033 grid minor;
+0034 legend(<span class="string">'Wind'</span>,<span class="string">'Solar'</span>,<span class="string">'location'</span>,<span class="string">'northwest'</span>);
+0035 ylabel(<span class="string">'GW'</span>);
+0036 xlabel(<span class="string">'Year'</span>);
+0037 title(<span class="string">'Installed Wind and Solar Power over the years'</span>);
+0038 
+0039 saveas(gcf,[pwd <span class="string">'/Results/wind_and_solar/plot_over_years_IRENA'</span>],<span class="string">'epsc'</span>);</pre></div>
+<hr><address>Generated on Sat 15-Aug-2020 22:53:17 by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" title="Matlab Documentation in HTML">m2html</a></strong> &copy; 2005</address>
 </body>
 </html>

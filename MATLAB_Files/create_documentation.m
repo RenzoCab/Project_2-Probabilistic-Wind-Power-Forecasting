@@ -17,4 +17,4 @@ try
 end
 
 m2html('mfiles','./', 'htmldir','doc', 'recursive','on', 'global','on',...
-    'download','on','graph','on');
+    'download','off','graph','on');
